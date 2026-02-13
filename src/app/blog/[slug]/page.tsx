@@ -9,12 +9,35 @@ import { DocumentRenderer } from '@keystatic/core/renderer';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getToc } from '@/lib/getToc';
 import TableOfContents from '@/components/blog/TableOfContents';
+import { BlogCTA } from '@/components/blog/BlogCTA';
+import { Metadata } from 'next';
 
 const reader = createReader(process.cwd(), config);
 
 export async function generateStaticParams() {
     const posts = await reader.collections.posts.list();
     return posts.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const post = await reader.collections.posts.read(slug);
+
+    if (!post) {
+        return {};
+    }
+
+    return {
+        title: post.title,
+        description: post.excerpt,
+        openGraph: {
+            title: post.title,
+            description: post.excerpt,
+            type: 'article',
+            publishedTime: post.publishedDate ?? undefined,
+            images: post.coverImage ? [post.coverImage] : [],
+        },
+    };
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -60,7 +83,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <TableOfContents toc={toc} />
                     </div>
 
-                    <div className="prose prose-lg max-w-none text-slate-700 prose-headings:text-[#002335] prose-a:text-[#e26c5c] prose-strong:text-[#002335]">
+                    <div className="prose prose-lg max-w-none text-slate-700 prose-headings:text-[#002335] prose-a:text-[#e26c5c] prose-strong:text-[#002335] mb-16">
                         <DocumentRenderer
                             document={content}
                             renderers={{
@@ -93,6 +116,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                 },
                             }}
                         />
+                    </div>
+
+                    {/* CTA Section */}
+                    <div className="mt-16 border-t pt-16">
+                        <BlogCTA />
                     </div>
                 </div>
             </article>

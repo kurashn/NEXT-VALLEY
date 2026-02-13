@@ -19,6 +19,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://next-valley.com"), // 仮のURL。本番環境に合わせて変更してください
   title: {
     default: "NEXT VALLEY | 教室運営者のためのデジタルパートナー",
     template: "%s | NEXT VALLEY",
@@ -27,14 +28,14 @@ export const metadata: Metadata = {
   keywords: ["教室 集客", "スクール 運営", "ホームページ制作", "AI活用", "業務効率化", "個人教室", "学習塾", "ピアノ教室", "英会話スクール", "ヨガスタジオ"],
   openGraph: {
     title: "NEXT VALLEY | 教室運営者のためのデジタルパートナー",
-    description: "生徒が集まらない、業務に追われる...その悩み、AIとデジタルで解決しませんか？初期費用0円・月額制で、あなたの教室の「資産」を共に創ります。",
-    url: "https://next-valley.com", // 仮のURL
+    description: "生徒が集まらない、業務に追われる...その悩み、AIとデジタルで解決しませんか？初期費用0円・月額制のパートナー。",
+    url: "https://next-valley.com",
     siteName: "NEXT VALLEY",
     locale: "ja_JP",
     type: "website",
     images: [
       {
-        url: "/og-image.png", // 後で画像を作成・配置する必要があるが、まずは定義
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "NEXT VALLEY - 教室運営者のためのデジタルパートナー",
