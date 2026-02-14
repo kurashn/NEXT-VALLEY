@@ -27,7 +27,8 @@ export function Benefits() {
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
                     <h2 className="text-2xl md:text-3xl font-bold text-[#002335] mb-4">
-                        LINE登録で、<span className="text-[#e26c5c]">3つの特典</span>が手に入ります
+                        LINE登録で、3つの特典が<br className="md:hidden" />
+                        <span className="text-[#e26c5c]">手に入ります</span>
                     </h2>
                     <p className="text-[#002335]/70 text-sm md:text-base">
                         無料プレビュー以外にも、教室運営に役立つ情報をお届けします。
