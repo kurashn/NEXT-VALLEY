@@ -20,7 +20,7 @@ export function Strategy() {
                         <div className="inline-block px-4 py-1.5 rounded-full bg-[#e26c5c] border border-[#e26c5c] text-xs font-bold text-white tracking-widest mb-4">
                             他社と何が違うのか
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight text-balance">
+                        <h2 className="text-2xl md:text-5xl font-bold text-white leading-tight text-balance">
                             営業トークは、しません。<br className="hidden md:block" />実物をお見せします。
                         </h2>
                     </motion.div>

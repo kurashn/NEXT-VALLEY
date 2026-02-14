@@ -11,7 +11,7 @@ export function Service() {
         <section id="service" className="py-24 px-4 bg-muted/30">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+                    <h2 className="text-2xl md:text-5xl font-bold text-foreground mb-6">
                         料金プラン
                     </h2>
                     <p className="text-muted-foreground text-lg">

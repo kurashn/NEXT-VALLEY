@@ -37,7 +37,7 @@ export function FAQ() {
             <div className="max-w-3xl mx-auto">
                 <div className="text-center mb-16">
                     <span className="text-[#e26c5c] font-bold tracking-wider text-sm bg-[#e26c5c]/10 px-3 py-1 rounded-full border border-[#e26c5c]/20">FAQ</span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#002335] mt-6 mb-6">よくあるご質問</h2>
+                    <h2 className="text-2xl md:text-4xl font-bold text-[#002335] mt-6 mb-6">よくあるご質問</h2>
                     <p className="text-[#002335]/70">
                         「無料プレビュー」に関する<br className="md:hidden" />よくあるご質問をまとめました。
                     </p>

@@ -16,7 +16,7 @@ export function Solution() {
                         viewport={{ once: true }}
                     >
                         <span className="text-[#e26c5c] font-bold tracking-wider text-sm">私たちの強み</span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#002335] mt-2 mb-4">
+                        <h2 className="text-2xl md:text-4xl font-bold text-[#002335] mt-2 mb-4">
                             AIの「スピード」× 人間の「戦略」。<br className="hidden md:block" />
                             この掛け算が、結果を出す。
                         </h2>

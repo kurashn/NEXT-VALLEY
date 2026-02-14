@@ -57,7 +57,7 @@ export function Works() {
         <section id="works" className="py-24 px-4 bg-slate-50">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-[#002335] mb-6 tracking-tight">
+                    <h2 className="text-2xl md:text-5xl font-bold text-[#002335] mb-6 tracking-tight">
                         制作実績
                     </h2>
                     <p className="text-[#002335]/70 text-lg md:text-xl max-w-2xl mx-auto">

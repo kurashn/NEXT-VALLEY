@@ -104,23 +104,23 @@ export default function Navbar() {
                   <Menu className="w-6 h-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-[#002335]/95 backdrop-blur-xl border-l border-white/10">
-                <div className="flex flex-col gap-8 mt-10">
-                  <div className="flex flex-col gap-4">
+              <SheetContent side="right" className="bg-[#002335]/95 backdrop-blur-xl border-l border-white/10 sm:max-w-xs">
+                <div className="flex flex-col gap-8 mt-10 px-8">
+                  <div className="flex flex-col gap-6">
                     {navLinks.map((link) => (
                       <a
                         key={link.name}
                         href={link.href}
-                        onClick={(e) => handleScroll(e, link.href)}
-                        className="text-lg font-medium text-white hover:text-primary transition-colors"
+                        onClick={(e) => link.href.startsWith("/#") && handleScroll(e, link.href)}
+                        className="text-lg font-medium text-white hover:text-[#e26c5c] transition-colors py-2 border-b border-white/10"
                       >
                         {link.name}
                       </a>
                     ))}
                   </div>
-                  <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer">
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg shadow-primary/20 cursor-pointer">
-                      <Zap className="w-4 h-4 mr-2" />
+                  <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer" className="mt-4">
+                    <Button className="w-full bg-[#e26c5c] hover:bg-[#d05a4b] text-white font-bold shadow-lg rounded-full py-6 text-lg">
+                      <Zap className="w-5 h-5 mr-2" />
                       無料相談はこちら
                     </Button>
                   </a>

@@ -25,7 +25,7 @@ export function CTA() {
                     </span>
                 </div>
 
-                <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight text-white leading-tight">
+                <h2 className="text-3xl md:text-6xl font-bold mb-8 tracking-tight text-white leading-tight">
                     リスクゼロで、<br />プロの<span className="text-[#e26c5c] mx-2">「無料改善案」</span>を<br />
                     試してみませんか？
                 </h2>

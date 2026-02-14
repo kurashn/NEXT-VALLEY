@@ -58,7 +58,7 @@ export function Roadmap() {
                         viewport={{ once: true }}
                     >
                         <span className="text-[#e26c5c] font-bold tracking-wider text-sm bg-[#e26c5c]/10 px-3 py-1 rounded-full border border-[#e26c5c]/20">FLOW</span>
-                        <h2 className="text-3xl md:text-5xl font-bold text-[#002335] mt-6 mb-6">制作の流れ</h2>
+                        <h2 className="text-2xl md:text-5xl font-bold text-[#002335] mt-6 mb-6">制作の流れ</h2>
                         <p className="text-[#002335]/70 text-lg">
                             「いきなり契約」は怖いもの。<br />
                             だから私たちは、<span className="bg-[#e26c5c]/10 text-[#e26c5c] font-bold px-1 rounded-md">まず実物を見ていただく</span>ことから始めます。
@@ -68,7 +68,7 @@ export function Roadmap() {
 
                 <div className="relative">
                     {/* Continuous Center Line */}
-                    <div className="absolute left-8 top-0 bottom-0 w-1 bg-[#002335]/5 md:left-1/2 md:-ml-0.5 rounded-full" />
+                    <div className="absolute left-4 top-0 bottom-0 w-1 bg-[#002335]/5 md:left-1/2 md:-ml-0.5 rounded-full" />
 
                     <div className="space-y-12 md:space-y-24">
                         {steps.map((step, idx) => (
@@ -81,13 +81,13 @@ export function Roadmap() {
                                 className={`relative flex flex-col md:flex-row gap-8 items-center ${idx % 2 === 0 ? "md:flex-row-reverse" : ""}`}
                             >
                                 {/* Center Marker */}
-                                <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full bg-white border-4 border-[#002335]/10 z-10 flex items-center justify-center transform -ml-4 md:ml-0 shadow-sm">
+                                <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full bg-white border-4 border-[#002335]/10 z-10 flex items-center justify-center transform -ml-4 md:ml-0 shadow-sm">
                                     <div className={`w-3 h-3 rounded-full ${step.bg.replace('/10', '')}`} />
                                 </div>
 
                                 {/* Content Card */}
-                                <div className="w-full md:w-[calc(50%-3rem)] ml-16 md:ml-0 group">
-                                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-[#002335]/5 hover:shadow-xl hover:border-[#e26c5c]/20 transition-all duration-300 relative overflow-hidden">
+                                <div className="w-full md:w-[calc(50%-3rem)] ml-12 md:ml-0 group">
+                                    <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-[#002335]/5 hover:shadow-xl hover:border-[#e26c5c]/20 transition-all duration-300 relative overflow-hidden">
                                         {/* Step Number Background */}
                                         <div className="absolute -right-4 -top-4 text-9xl font-bold text-[#002335]/[0.02] select-none group-hover:text-[#e26c5c]/[0.05] transition-colors">
                                             {idx + 1}

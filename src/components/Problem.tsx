@@ -41,7 +41,7 @@ export function Problem() {
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#e26c5c]/10 border border-[#e26c5c]/20 rounded-full mb-6">
                             <span className="text-[#e26c5c] text-xs font-bold tracking-widest">こんなお悩みありませんか？</span>
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#002335] mb-4 text-balance">
+                        <h2 className="text-2xl md:text-4xl font-bold text-[#002335] mb-4 text-balance">
                             こんなに頑張っているのに、<br />
                             なぜ生徒が集まらないのか。
                         </h2>

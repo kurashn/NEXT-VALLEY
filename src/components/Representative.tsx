@@ -60,7 +60,7 @@ export function Representative() {
                             MESSAGE
                         </div>
 
-                        <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-8">
+                        <h2 className="text-2xl md:text-5xl font-bold leading-tight mb-8">
                             まずは、<span className="text-[#e26c5c]">「無料改善案」</span>を<br />
                             見てみませんか？
                         </h2>
