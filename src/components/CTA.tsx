@@ -1,8 +1,7 @@
-"use client";
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export function CTA() {
     return (
@@ -10,11 +9,12 @@ export function CTA() {
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-[#002335]/90 z-10" />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                     src="/cta-bg-photo.png"
                     alt="Background"
-                    className="w-full h-full object-cover opacity-40 mix-blend-overlay"
+                    fill
+                    className="object-cover opacity-40 mix-blend-overlay"
+                    sizes="100vw"
                 />
             </div>
 

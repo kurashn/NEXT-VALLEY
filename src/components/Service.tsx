@@ -1,4 +1,4 @@
-"use client";
+// Server Component - no client-side interactivity needed
 
 import React from "react";
 import { Check, Rocket, Star } from "lucide-react";

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { Menu, Zap, X } from "lucide-react";
-// import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+
 import Image from "next/image";
 
 const navLinks = [
@@ -79,7 +79,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             <div className="flex items-center gap-6">
               {navLinks.map((link) => (
                 <Link
@@ -102,7 +102,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Nav */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">

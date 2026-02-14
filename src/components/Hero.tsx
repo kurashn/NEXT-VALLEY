@@ -4,7 +4,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-// import { motion } from "framer-motion";
+
 import Image from "next/image";
 
 export default function Hero() {

@@ -1,4 +1,4 @@
-"use client";
+// Server Component - no client-side interactivity needed
 
 import React from "react";
 import { Badge } from "@/components/ui/badge";

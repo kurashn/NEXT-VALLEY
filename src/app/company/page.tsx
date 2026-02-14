@@ -18,7 +18,7 @@ export default function CompanyPage() {
                         事業情報
                     </h1>
                     <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
-                        AIと戦略で、教育の未来を創る。
+                        AIと戦略で、選ばれる教室へ。
                     </p>
                 </div>
             </section>

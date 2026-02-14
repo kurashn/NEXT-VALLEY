@@ -1,9 +1,9 @@
-"use client";
+// Server Component — FadeIn handles its own client boundary
 
 import React from "react";
 import { Clock, Smartphone, AlertCircle } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
-// import { motion } from "framer-motion";
+
 import Image from "next/image";
 
 export function Problem() {

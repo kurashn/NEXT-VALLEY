@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, X } from "lucide-react";
-// import { motion, AnimatePresence } from "framer-motion";
+
 
 export function FloatingCTA() {
     const [visible, setVisible] = useState(false);

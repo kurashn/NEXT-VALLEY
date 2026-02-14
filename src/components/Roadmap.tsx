@@ -1,7 +1,7 @@
-"use client";
+// Server Component — FadeIn handles its own client boundary
 
 import React from "react";
-// import { motion } from "framer-motion";
+
 import { FadeIn } from "@/components/ui/FadeIn";
 import { MessageCircle, Zap, UserCheck, Rocket } from "lucide-react";
 

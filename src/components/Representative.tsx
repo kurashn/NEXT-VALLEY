@@ -1,23 +1,18 @@
-"use client";
+// Server Component — FadeIn handles its own client boundary
 
 import React from "react";
 import Image from "next/image";
-// import { motion } from "framer-motion";
+
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Sparkles, ArrowRight } from "lucide-react";
 
 export function Representative() {
     return (
         <section className="relative py-24 px-4 overflow-hidden bg-[#002335] text-white">
-            {/* Background Image with Overlay */}
+            {/* Background Gradient Overlay */}
             <div className="absolute inset-0 z-0">
-                <Image
-                    src="/representative_bg_cool.png"
-                    alt="Background"
-                    fill
-                    className="object-cover opacity-40 mix-blend-overlay"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#002335] via-[#002335]/90 to-[#002335]/70" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#002335] via-[#00304d] to-[#002335]" />
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-[#e26c5c]/5 blur-3xl rounded-full" />
             </div>
 
             <div className="max-w-6xl mx-auto relative z-10">
