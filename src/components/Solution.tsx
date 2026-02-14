@@ -25,15 +25,15 @@ export function Solution() {
 
                 <div className="flex flex-col lg:flex-row items-center gap-16">
                     {/* Visual Side */}
-                    <FadeIn className="flex-1 relative w-full aspect-square md:aspect-video lg:aspect-square max-w-md mx-auto">
+                    <FadeIn className="flex-1 relative w-full aspect-video max-w-sm lg:max-w-md mx-auto">
                         <div className="absolute inset-0 bg-gradient-to-tr from-[#002335]/20 to-[#e26c5c]/20 rounded-full blur-3xl opacity-60" />
                         <Image
                             src="/ai-person.webp"
                             alt="AI Speed x Human Strategy"
                             width={600}
                             height={600}
-                            className="relative z-10 drop-shadow-2xl rounded-3xl object-cover"
-                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="relative z-10 drop-shadow-2xl rounded-3xl object-contain w-full h-full"
+                            sizes="(max-width: 768px) 90vw, (max-width: 1024px) 50vw, 400px"
                         />
                     </FadeIn>
 
