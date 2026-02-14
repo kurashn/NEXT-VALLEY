@@ -2,7 +2,8 @@
 
 import React from "react";
 import { Clock, Smartphone, AlertCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { FadeIn } from "@/components/ui/FadeIn";
+// import { motion } from "framer-motion";
 import Image from "next/image";
 
 export function Problem() {
@@ -34,30 +35,25 @@ export function Problem() {
 
             <div className="container mx-auto px-6 relative">
                 <div className="text-center mb-16">
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#e26c5c]/10 border border-[#e26c5c]/20 rounded-full mb-6">
-                            <span className="text-[#e26c5c] text-xs font-bold tracking-widest">こんなお悩みありませんか？</span>
-                        </div>
-                        <h2 className="text-2xl md:text-4xl font-bold text-[#002335] mb-4 text-balance">
-                            こんなに頑張っているのに、<br />
-                            なぜ生徒が集まらないのか。
-                        </h2>
-                        <p className="text-[#002335]/60 text-lg">実はそれ、「教え方」ではなく「届け方」の問題かもしれません。</p>
-                    </motion.div>
+                    <div className="text-center mb-16">
+                        <FadeIn>
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#e26c5c]/10 border border-[#e26c5c]/20 rounded-full mb-6">
+                                <span className="text-[#e26c5c] text-xs font-bold tracking-widest">こんなお悩みありませんか？</span>
+                            </div>
+                            <h2 className="text-2xl md:text-4xl font-bold text-[#002335] mb-4 text-balance">
+                                こんなに頑張っているのに、<br />
+                                なぜ生徒が集まらないのか。
+                            </h2>
+                            <p className="text-[#002335]/60 text-lg">実はそれ、「教え方」ではなく「届け方」の問題かもしれません。</p>
+                        </FadeIn>
+                    </div>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8">
                     {problems.map((item, idx) => (
-                        <motion.div
+                        <FadeIn
                             key={idx}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.15 }}
+                            delay={idx * 150}
                             className="group bg-white rounded-2xl border border-[#002335]/10 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                         >
                             <div className="relative h-48 overflow-hidden">
@@ -82,7 +78,7 @@ export function Problem() {
                                     {item.desc}
                                 </p>
                             </div>
-                        </motion.div>
+                        </FadeIn>
                     ))}
                 </div>
             </div>

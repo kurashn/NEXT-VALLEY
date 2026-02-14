@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { FadeIn } from "@/components/ui/FadeIn";
+// import { motion } from "framer-motion";
 import { MousePointerClick } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -12,18 +13,14 @@ export function Strategy() {
 
                 {/* Text Content */}
                 <div className="flex-1 space-y-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
+                    <FadeIn>
                         <div className="inline-block px-4 py-1.5 rounded-full bg-[#e26c5c] border border-[#e26c5c] text-xs font-bold text-white tracking-widest mb-4">
                             他社と何が違うのか
                         </div>
                         <h2 className="text-2xl md:text-5xl font-bold text-white leading-tight text-balance">
                             営業トークは、しません。<br className="hidden md:block" />実物をお見せします。
                         </h2>
-                    </motion.div>
+                    </FadeIn>
                     <p className="text-white/80 text-lg leading-relaxed">
                         まず先に、あなたの教室のリニューアル案を勝手に作ります。<br /><br />
                         あなたの教室の魅力が「ホームページのせい」で伝わっていないなら、<br />
@@ -64,10 +61,8 @@ export function Strategy() {
                         </div>
                     </div>
 
-                    <motion.div
-                        initial={{ opacity: 0, x: 50, rotate: 12 }}
-                        whileInView={{ opacity: 1, x: 20, rotate: 6 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
+                    <FadeIn
+                        delay={200}
                         className="absolute w-64 h-96 bg-white rounded-2xl shadow-2xl z-20 border-[6px] border-[#002335] overflow-hidden"
                     >
                         <div className="w-full h-full relative">
@@ -89,19 +84,14 @@ export function Strategy() {
                             </div>
 
                             {/* Floating Cursor/Click */}
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 1, type: "spring" }}
-                                className="absolute bottom-8 right-8"
-                            >
+                            <div className="absolute bottom-8 right-8 animate-bounce">
                                 <div className="relative">
                                     <div className="absolute -inset-2 bg-[#e26c5c]/20 rounded-full blur-md opacity-50 animate-ping" />
                                     <MousePointerClick className="relative z-10 text-[#e26c5c] w-8 h-8 fill-[#e26c5c]/20" />
                                 </div>
-                            </motion.div>
+                            </div>
                         </div>
-                    </motion.div>
+                    </FadeIn>
                 </div>
 
             </div>

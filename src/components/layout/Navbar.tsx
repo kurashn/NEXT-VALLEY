@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Zap } from "lucide-react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+// import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
 
 const navLinks = [
@@ -20,15 +20,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const { scrollY } = useScroll();
+  // const { scrollY } = useScroll();
   const pathname = usePathname();
   // const router = useRouter(); // router is not used
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 20);
-  });
+  // React useEffect for scroll handling to remove framer-motion dependency for critical path
+  React.useEffect(() => {
+    const handleScrollChange = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScrollChange);
+    return () => window.removeEventListener("scroll", handleScrollChange);
+  }, []);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
     if (href.startsWith("/#")) {
@@ -52,7 +57,7 @@ export default function Navbar() {
   };
 
   return (
-    <motion.nav
+    <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || !isHome
         ? "bg-[#002335]/90 backdrop-blur-xl border-b border-white/10 shadow-sm"
         : "bg-transparent border-b border-transparent"
@@ -130,6 +135,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </motion.nav >
+    </nav >
   );
 }

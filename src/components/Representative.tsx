@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
+import { FadeIn } from "@/components/ui/FadeIn";
 import { Sparkles, ArrowRight } from "lucide-react";
 
 export function Representative() {
@@ -47,13 +48,7 @@ export function Representative() {
                     </div>
 
                     {/* Message Column */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="w-full md:w-7/12"
-                    >
+                    <FadeIn className="w-full md:w-7/12">
                         {/* New Catchphrase */}
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e26c5c]/20 border border-[#e26c5c]/30 text-[#e26c5c] text-xs font-bold tracking-widest mb-6">
                             <Sparkles className="w-3 h-3" />
@@ -100,7 +95,7 @@ export function Representative() {
                                 <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                             </a>
                         </div>
-                    </motion.div>
+                    </FadeIn>
 
                 </div>
             </div>

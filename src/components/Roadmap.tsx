@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
+import { FadeIn } from "@/components/ui/FadeIn";
 import { MessageCircle, Zap, UserCheck, Rocket } from "lucide-react";
 
 export function Roadmap() {
@@ -52,18 +53,16 @@ export function Roadmap() {
 
             <div className="max-w-4xl mx-auto relative z-10">
                 <div className="text-center mb-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <span className="text-[#e26c5c] font-bold tracking-wider text-sm bg-[#e26c5c]/10 px-3 py-1 rounded-full border border-[#e26c5c]/20">FLOW</span>
-                        <h2 className="text-2xl md:text-5xl font-bold text-[#002335] mt-6 mb-6">制作の流れ</h2>
-                        <p className="text-[#002335]/70 text-lg">
-                            「いきなり契約」は怖いもの。<br />
-                            だから私たちは、<span className="bg-[#e26c5c]/10 text-[#e26c5c] font-bold px-1 rounded-md">まず実物を見ていただく</span>ことから始めます。
-                        </p>
-                    </motion.div>
+                    <div className="text-center mb-20">
+                        <FadeIn>
+                            <span className="text-[#e26c5c] font-bold tracking-wider text-sm bg-[#e26c5c]/10 px-3 py-1 rounded-full border border-[#e26c5c]/20">FLOW</span>
+                            <h2 className="text-2xl md:text-5xl font-bold text-[#002335] mt-6 mb-6">制作の流れ</h2>
+                            <p className="text-[#002335]/70 text-lg">
+                                「いきなり契約」は怖いもの。<br />
+                                だから私たちは、<span className="bg-[#e26c5c]/10 text-[#e26c5c] font-bold px-1 rounded-md">まず実物を見ていただく</span>ことから始めます。
+                            </p>
+                        </FadeIn>
+                    </div>
                 </div>
 
                 <div className="relative">
@@ -72,12 +71,9 @@ export function Roadmap() {
 
                     <div className="space-y-12 md:space-y-24">
                         {steps.map((step, idx) => (
-                            <motion.div
+                            <FadeIn
                                 key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
+                                delay={idx * 150}
                                 className={`relative flex flex-col md:flex-row gap-8 items-center ${idx % 2 === 0 ? "md:flex-row-reverse" : ""}`}
                             >
                                 {/* Center Marker */}
@@ -107,7 +103,7 @@ export function Roadmap() {
                                         </p>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </FadeIn>
                         ))}
                     </div>
                 </div>

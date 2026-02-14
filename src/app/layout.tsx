@@ -73,7 +73,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        {children}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-T6ZVHJKZ2S"
           strategy="afterInteractive"
