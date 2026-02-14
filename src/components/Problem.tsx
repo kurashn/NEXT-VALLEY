@@ -6,23 +6,27 @@ import { FadeIn } from "@/components/ui/FadeIn";
 
 import Image from "next/image";
 
+import problemEnglish from "@/images/problem-english.webp";
+import problemDance from "@/images/problem-dance.webp";
+import problemMusic from "@/images/problem-music.webp";
+
 export function Problem() {
     const problems = [
         {
             icon: Smartphone,
-            image: "/problem-english.webp",
+            image: problemEnglish,
             title: "ホームページ、\nスマホで見たことありますか？",
             desc: "「昔作ったまま」のサイトは、スマホ世代の保護者から見ると「信頼できない」と判断されてしまいます。それだけで入会率は激減します。"
         },
         {
             icon: AlertCircle,
-            image: "/problem-dance.webp",
+            image: problemDance,
             title: "毎日SNS更新...\nでも問い合わせゼロ。",
             desc: "一生懸命更新しても、戦略がなければただの徒労。見込み客に届いていない「空回り」状態です。"
         },
         {
             icon: Clock,
-            image: "/problem-music.webp",
+            image: problemMusic,
             title: "「集客する時間」が、\nもう残っていない。",
             desc: "先生の本分は「教えること」。しかし集客に時間を奪われ、肝心の授業がおろそかになっては本末転倒です。"
         }

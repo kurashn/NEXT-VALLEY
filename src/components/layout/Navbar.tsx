@@ -6,6 +6,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 import { Menu, Zap, X } from "lucide-react";
 
 import Image from "next/image";
+import logo from "@/images/logo-new.png";
 
 const navLinks = [
   { name: "お悩み", href: "/#problem" },
@@ -69,7 +70,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group relative">
             <Image
-              src="/logo-new.png"
+              src={logo}
               alt="NEXT VALLEY"
               width={180}
               height={40}

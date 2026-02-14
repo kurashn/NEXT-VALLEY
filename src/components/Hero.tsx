@@ -7,17 +7,20 @@ import { ArrowRight, Sparkles } from "lucide-react";
 
 import Image from "next/image";
 
+import heroBg from "@/images/hero-digital.webp";
+
 export default function Hero() {
     return (
         <section className="relative min-h-[90vh] md:min-h-[110vh] flex items-center justify-center overflow-hidden bg-[#002335]">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/hero-digital.webp"
+                    src={heroBg}
                     alt="Background"
                     fill
                     className="object-cover opacity-90"
                     priority
+                    placeholder="blur"
                     sizes="100vw"
                 />
                 {/* Gradient Overlay for Readability */}
