@@ -25,21 +25,21 @@ export default function Hero() {
             </div>
 
             <div className="container relative z-10 mx-auto px-6 text-center">
-                <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-forwards">
+                <div className="max-w-4xl mx-auto">
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm font-medium mb-8 shadow-lg animate-in fade-in zoom-in duration-700 delay-100 fill-mode-forwards">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm font-medium mb-8 shadow-lg">
                         <Sparkles className="w-4 h-4 text-[#e26c5c]" />
                         <span>教室・スクール専門のデジタルパートナー</span>
                     </div>
 
                     {/* Headline */}
-                    <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-[1.2] mb-8 drop-shadow-xl animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200 fill-mode-forwards">
+                    <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-[1.2] mb-8 drop-shadow-xl">
                         教室の集客、<br />
                         <span className="text-[#e26c5c]">まるごと</span>お任せください。
                     </h1>
 
                     {/* Subtext */}
-                    <p className="text-slate-200 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto drop-shadow-md animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 fill-mode-forwards">
+                    <p className="text-slate-200 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto drop-shadow-md">
                         "生徒が増えない"を終わりにする。
                         <br className="hidden md:block" />
                         AI × 人間の最強タッグで、
@@ -48,7 +48,7 @@ export default function Hero() {
                     </p>
 
                     {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row items-center gap-4 justify-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500 fill-mode-forwards">
+                    <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
                         <Button
                             size="lg"
                             className="h-14 px-10 text-lg font-bold bg-[#e26c5c] hover:bg-[#e26c5c]/90 text-white shadow-xl shadow-[#e26c5c]/20 hover:shadow-[#e26c5c]/40 hover:scale-105 transition-all duration-300 rounded-full border border-[#e26c5c]/30 cursor-pointer"
@@ -64,8 +64,8 @@ export default function Hero() {
             </div>
 
             {/* Decorative Elements - Subtle Glows */}
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#e26c5c]/10 rounded-full mix-blend-overlay filter blur-[100px] animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/5 rounded-full mix-blend-overlay filter blur-[100px] animate-pulse delay-1000" />
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#e26c5c]/10 rounded-full mix-blend-overlay filter blur-[100px]" />
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/5 rounded-full mix-blend-overlay filter blur-[100px]" />
         </section>
     );
 }

@@ -25,7 +25,7 @@ export function Solution() {
 
                 <div className="flex flex-col lg:flex-row items-center gap-16">
                     {/* Visual Side */}
-                    <FadeIn className="flex-1 relative w-full aspect-video max-w-sm lg:max-w-md mx-auto">
+                    <FadeIn className="flex-1 relative w-full aspect-square md:aspect-video max-w-md lg:max-w-xl mx-auto">
                         <div className="absolute inset-0 bg-gradient-to-tr from-[#002335]/20 to-[#e26c5c]/20 rounded-full blur-3xl opacity-60" />
                         <Image
                             src="/ai-person.webp"
@@ -40,7 +40,6 @@ export function Solution() {
                     {/* Content Side */}
                     <div className="flex-1 space-y-8">
                         <FadeIn
-                            delay={200}
                             className="group flex gap-6 items-start p-6 rounded-2xl border border-[#002335]/10 hover:border-[#002335]/20 hover:bg-[#002335]/[0.02] transition-all duration-300"
                         >
                             <div className="w-12 h-12 rounded-2xl bg-[#002335]/10 text-[#002335] flex items-center justify-center shrink-0 group-hover:bg-[#002335]/15 transition-colors">
@@ -56,7 +55,6 @@ export function Solution() {
                         </FadeIn>
 
                         <FadeIn
-                            delay={400}
                             className="group flex gap-6 items-start p-6 rounded-2xl border border-[#002335]/10 hover:border-[#e26c5c]/20 hover:bg-[#e26c5c]/[0.03] transition-all duration-300"
                         >
                             <div className="w-12 h-12 rounded-2xl bg-[#e26c5c]/10 text-[#e26c5c] flex items-center justify-center shrink-0 group-hover:bg-[#e26c5c]/15 transition-colors">

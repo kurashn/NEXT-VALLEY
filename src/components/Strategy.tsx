@@ -62,7 +62,6 @@ export function Strategy() {
                     </div>
 
                     <FadeIn
-                        delay={200}
                         className="absolute w-64 h-96 bg-white rounded-2xl shadow-2xl z-20 border-[6px] border-[#002335] overflow-hidden"
                     >
                         <div className="w-full h-full relative">
@@ -84,9 +83,9 @@ export function Strategy() {
                             </div>
 
                             {/* Floating Cursor/Click */}
-                            <div className="absolute bottom-8 right-8 animate-bounce">
+                            <div className="absolute bottom-8 right-8">
                                 <div className="relative">
-                                    <div className="absolute -inset-2 bg-[#e26c5c]/20 rounded-full blur-md opacity-50 animate-ping" />
+                                    <div className="absolute -inset-2 bg-[#e26c5c]/20 rounded-full blur-md opacity-50" />
                                     <MousePointerClick className="relative z-10 text-[#e26c5c] w-8 h-8 fill-[#e26c5c]/20" />
                                 </div>
                             </div>

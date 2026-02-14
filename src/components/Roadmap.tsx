@@ -73,7 +73,6 @@ export function Roadmap() {
                         {steps.map((step, idx) => (
                             <FadeIn
                                 key={idx}
-                                delay={idx * 150}
                                 className={`relative flex flex-col md:flex-row gap-8 items-center ${idx % 2 === 0 ? "md:flex-row-reverse" : ""}`}
                             >
                                 {/* Center Marker */}

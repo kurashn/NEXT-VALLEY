@@ -69,7 +69,7 @@ export function Service() {
                                 </div>
 
                                 <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer">
-                                    <Button size="lg" className="w-full bg-[#06C755] hover:bg-[#05b34c] text-white font-bold text-xl h-16 shadow-xl shadow-[#06C755]/20 animate-pulse hover:animate-none">
+                                    <Button size="lg" className="w-full bg-[#06C755] hover:bg-[#05b34c] text-white font-bold text-xl h-16 shadow-xl shadow-[#06C755]/20">
                                         無料プレビューをもらう
                                         <Rocket className="ml-2 w-6 h-6" />
                                     </Button>

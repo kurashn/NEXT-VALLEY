@@ -37,7 +37,7 @@ export function CTA() {
 
                 <div className="flex flex-col items-center gap-4">
                     <div className="relative group">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-[#06C755] to-[#00d455] rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                        <div className="absolute -inset-1 bg-gradient-to-r from-[#06C755] to-[#00d455] rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
                         <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer">
                             <Button
                                 size="lg"
@@ -46,7 +46,7 @@ export function CTA() {
                                 <span className="flex flex-col items-center">
                                     <span className="flex items-center gap-2">
                                         無料プレビューをもらう
-                                        <ArrowRight className="w-6 h-6 animate-pulse" />
+                                        <ArrowRight className="w-6 h-6" />
                                     </span>
                                     <span className="text-xs font-normal opacity-90 mt-1 tracking-wide">
                                         ※ 最適な提案のため、簡単なヒアリングがあります

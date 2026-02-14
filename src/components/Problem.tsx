@@ -53,7 +53,6 @@ export function Problem() {
                     {problems.map((item, idx) => (
                         <FadeIn
                             key={idx}
-                            delay={idx * 150}
                             className="group bg-white rounded-2xl border border-[#002335]/10 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                         >
                             <div className="relative h-48 overflow-hidden">
