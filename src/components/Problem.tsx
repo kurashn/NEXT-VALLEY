@@ -3,6 +3,7 @@
 import React from "react";
 import { Clock, Smartphone, AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function Problem() {
     const problems = [
@@ -61,11 +62,11 @@ export function Problem() {
                         >
                             <div className="relative h-48 overflow-hidden">
                                 <div className="absolute inset-0 bg-[#002335]/20 z-10 group-hover:bg-transparent transition-colors duration-500" />
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
+                                <Image
                                     src={item.image}
                                     alt={item.title}
-                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                    fill
+                                    className="object-cover transform group-hover:scale-110 transition-transform duration-700"
                                 />
                                 <div className="absolute bottom-4 left-4 z-20 w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-lg">
                                     <item.icon className="w-5 h-5 text-[#e26c5c]" />
