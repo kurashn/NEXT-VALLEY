@@ -49,13 +49,15 @@ export default function Hero() {
 
                     {/* CTA Buttons */}
                     <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
-                        <Button
-                            size="lg"
-                            className="h-14 px-10 text-lg font-bold bg-[#e26c5c] hover:bg-[#e26c5c]/90 text-white shadow-xl shadow-[#e26c5c]/20 hover:shadow-[#e26c5c]/40 hover:scale-105 transition-all duration-300 rounded-full border border-[#e26c5c]/30 cursor-pointer"
-                        >
-                            無料プレビューをもらう
-                            <ArrowRight className="ml-2 w-5 h-5" />
-                        </Button>
+                        <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer">
+                            <Button
+                                size="lg"
+                                className="h-14 px-10 text-lg font-bold bg-[#e26c5c] hover:bg-[#e26c5c]/90 text-white shadow-xl shadow-[#e26c5c]/20 hover:shadow-[#e26c5c]/40 hover:scale-105 transition-all duration-300 rounded-full border border-[#e26c5c]/30 cursor-pointer"
+                            >
+                                無料プレビューをもらう
+                                <ArrowRight className="ml-2 w-5 h-5" />
+                            </Button>
+                        </a>
                         <p className="text-sm text-slate-400 mt-4 sm:mt-0 sm:ml-4">
                             ※ 毎月5教室限定・費用は一切かかりません
                         </p>
