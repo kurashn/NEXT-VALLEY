@@ -22,10 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '',
         '/contact',
         '/blog',
-        '/service', // Anchor link on page.tsx but might be good to have if it becomes a page or just root
-        '/token-economy', // Wait, looking at Navbar, links are sections on home page except blog/contact
-        // Navbar links: /#problem, /#solution, /#strategy, /#service, /blog, /contact
-        // Additional pages found in file list: /privacy, /terms, /tokusho
+        '/company',
         '/privacy',
         '/terms',
         '/tokusho',
