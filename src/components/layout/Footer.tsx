@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
+
 import Image from "next/image";
+import logo from "@/images/logo-new.png";
 
 export function Footer() {
     return (
@@ -9,7 +11,7 @@ export function Footer() {
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
                 <a href="#" className="flex items-center gap-2 group">
                     <Image
-                        src="/logo-new.png"
+                        src={logo}
                         alt="NEXT VALLEY"
                         width={150}
                         height={34}
