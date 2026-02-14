@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://next-valley.com"), // 仮のURL。本番環境に合わせて変更してください
+  metadataBase: new URL("https://nextvalley-jpn.com"),
   title: {
     default: "NEXT VALLEY | 教室運営者のためのデジタルパートナー",
     template: "%s | NEXT VALLEY",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "NEXT VALLEY | 教室運営者のためのデジタルパートナー",
     description: "生徒が集まらない、業務に追われる...その悩み、AIとデジタルで解決しませんか？初期費用0円・月額制のパートナー。",
-    url: "https://next-valley.com",
+    url: "https://nextvalley-jpn.com",
     siteName: "NEXT VALLEY",
     locale: "ja_JP",
     type: "website",
