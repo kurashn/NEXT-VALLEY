@@ -68,6 +68,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-T6ZVHJKZ2S"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-T6ZVHJKZ2S');
+            `,
+          }}
+        />
       </body>
     </html>
   );
