@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Zap } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { Menu, Zap, X } from "lucide-react";
 // import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
 
@@ -109,7 +109,11 @@ export default function Navbar() {
                   <Menu className="w-6 h-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-[#002335]/95 backdrop-blur-xl border-l border-white/10 sm:max-w-xs">
+              <SheetContent side="right" className="bg-[#002335]/95 backdrop-blur-xl border-l border-white/10 sm:max-w-xs" showCloseButton={false}>
+                <SheetClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-secondary text-white">
+                  <X className="h-6 w-6" />
+                  <span className="sr-only">Close</span>
+                </SheetClose>
                 <div className="flex flex-col gap-8 mt-10 px-8">
                   <div className="flex flex-col gap-6">
                     {navLinks.map((link) => (
