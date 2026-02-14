@@ -4,7 +4,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Hero() {
@@ -25,55 +25,30 @@ export default function Hero() {
             </div>
 
             <div className="container relative z-10 mx-auto px-6 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="max-w-4xl mx-auto"
-                >
+                <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-forwards">
                     {/* Badge */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm font-medium mb-8 shadow-lg"
-                    >
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm font-medium mb-8 shadow-lg animate-in fade-in zoom-in duration-700 delay-100 fill-mode-forwards">
                         <Sparkles className="w-4 h-4 text-[#e26c5c]" />
                         <span>教室・スクール専門のデジタルパートナー</span>
-                    </motion.div>
+                    </div>
 
                     {/* Headline */}
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.3 }}
-                        className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-[1.2] mb-8 drop-shadow-xl"
-                    >
+                    <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-[1.2] mb-8 drop-shadow-xl animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200 fill-mode-forwards">
                         教室の集客、<br />
                         <span className="text-[#e26c5c]">まるごと</span>お任せください。
-                    </motion.h1>
+                    </h1>
 
                     {/* Subtext */}
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.5 }}
-                        className="text-slate-200 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto drop-shadow-md"
-                    >
+                    <p className="text-slate-200 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto drop-shadow-md animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 fill-mode-forwards">
                         "生徒が増えない"を終わりにする。
                         <br className="hidden md:block" />
                         AI × 人間の最強タッグで、
                         <br className="hidden md:block" />
                         集客も業務効率化もまとめて解決します。
-                    </motion.p>
+                    </p>
 
                     {/* CTA Buttons */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.7 }}
-                        className="flex flex-col sm:flex-row items-center gap-4 justify-center"
-                    >
+                    <div className="flex flex-col sm:flex-row items-center gap-4 justify-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500 fill-mode-forwards">
                         <Button
                             size="lg"
                             className="h-14 px-10 text-lg font-bold bg-[#e26c5c] hover:bg-[#e26c5c]/90 text-white shadow-xl shadow-[#e26c5c]/20 hover:shadow-[#e26c5c]/40 hover:scale-105 transition-all duration-300 rounded-full border border-[#e26c5c]/30 cursor-pointer"
@@ -84,8 +59,8 @@ export default function Hero() {
                         <p className="text-sm text-slate-400 mt-4 sm:mt-0 sm:ml-4">
                             ※ 毎月5教室限定・費用は一切かかりません
                         </p>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
             </div>
 
             {/* Decorative Elements - Subtle Glows */}
