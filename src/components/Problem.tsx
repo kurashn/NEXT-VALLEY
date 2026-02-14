@@ -9,19 +9,19 @@ export function Problem() {
     const problems = [
         {
             icon: Smartphone,
-            image: "/problem-english.png",
+            image: "/problem-english.webp",
             title: "ホームページ、\nスマホで見たことありますか？",
             desc: "「昔作ったまま」のサイトは、スマホ世代の保護者から見ると「信頼できない」と判断されてしまいます。それだけで入会率は激減します。"
         },
         {
             icon: AlertCircle,
-            image: "/problem-dance.png",
+            image: "/problem-dance.webp",
             title: "毎日SNS更新...\nでも問い合わせゼロ。",
             desc: "一生懸命更新しても、戦略がなければただの徒労。見込み客に届いていない「空回り」状態です。"
         },
         {
             icon: Clock,
-            image: "/problem-music.png",
+            image: "/problem-music.webp",
             title: "「集客する時間」が、\nもう残っていない。",
             desc: "先生の本分は「教えること」。しかし集客に時間を奪われ、肝心の授業がおろそかになっては本末転倒です。"
         }
@@ -67,6 +67,7 @@ export function Problem() {
                                     alt={item.title}
                                     fill
                                     className="object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
                                 <div className="absolute bottom-4 left-4 z-20 w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-lg">
                                     <item.icon className="w-5 h-5 text-[#e26c5c]" />

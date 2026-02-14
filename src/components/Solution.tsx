@@ -36,11 +36,12 @@ export function Solution() {
                     >
                         <div className="absolute inset-0 bg-gradient-to-tr from-[#002335]/20 to-[#e26c5c]/20 rounded-full blur-3xl opacity-60" />
                         <Image
-                            src="/ai-person.jpeg"
+                            src="/ai-person.webp"
                             alt="AI Speed x Human Strategy"
                             width={600}
                             height={600}
                             className="relative z-10 drop-shadow-2xl rounded-3xl object-cover"
+                            sizes="(max-width: 768px) 100vw, 50vw"
                         />
                     </motion.div>
 

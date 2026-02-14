@@ -13,11 +13,12 @@ export default function Hero() {
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/hero-digital.png"
+                    src="/hero-digital.webp"
                     alt="Background"
                     fill
                     className="object-cover opacity-90"
                     priority
+                    sizes="100vw"
                 />
                 {/* Gradient Overlay for Readability */}
                 <div className="absolute inset-0 bg-gradient-to-b from-[#002335]/90 via-[#002335]/70 to-[#002335]/95" />
