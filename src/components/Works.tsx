@@ -70,12 +70,13 @@ export function Works() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
                     {featuredWorks.map((work, index) => (
                         <Card key={index} className="bg-white border-none shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300">
-                            <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                            <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
                                 <Image
                                     src={work.image}
                                     alt={work.name}
                                     fill
-                                    className="object-cover transition-transform duration-500 hover:scale-105"
+                                    className="object-cover object-top transition-transform duration-500 hover:scale-105"
+                                    sizes="(max-width: 1024px) 100vw, 33vw"
                                 />
                             </div>
                             <CardContent className="p-8 flex-1 flex flex-col">
