@@ -1,8 +1,16 @@
 "use client";
 
-export function FadeIn({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+import React from "react";
+
+interface FadeInProps {
+    children: React.ReactNode;
+    className?: string;
+    delay?: number;
+}
+
+export function FadeIn({ children, className = "", delay = 0 }: FadeInProps) {
     return (
-        <div className={className}>
+        <div className={className} style={{ transitionDelay: `${delay}s` }}>
             {children}
         </div>
     );

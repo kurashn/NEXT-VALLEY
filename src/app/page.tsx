@@ -12,6 +12,7 @@ import Navbar from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FAQ } from "@/components/FAQ";
 import { Benefits } from "@/components/Benefits";
+import { Column } from "@/components/Column";
 
 export default function Home() {
   return (
@@ -85,6 +86,7 @@ export default function Home() {
       <div id="service"><Service /></div>
       <div id="works"><Works /></div>
       <Roadmap />
+      <Column />
       <FAQ />
       <Benefits />
       <CTA />

@@ -6,42 +6,56 @@ import { Card, CardContent } from "@/components/ui/card";
 import { School, Building2, Globe } from "lucide-react";
 import Image from "next/image";
 
+// Featured Works
+import work1 from "@/images/works/works1.jpg";
+import work4 from "@/images/works/works4.jpg";
+import work5 from "@/images/works/works5.jpg";
+
+// Other Works
+import work2 from "@/images/works/works2.jpg";
+import work3 from "@/images/works/works3.jpg";
+import work6 from "@/images/works/works6.jpg";
+import work7 from "@/images/works/works7.jpg";
+import work8 from "@/images/works/works8.jpg";
+import work9 from "@/images/works/works9.jpg";
+import work11 from "@/images/works/works11.jpg";
+
 export function Works() {
     const featuredWorks = [
         {
             name: "Tulip Ballet Studio様",
             category: "Education",
             label: "教育・スクール",
-            image: "/images/works/works1.jpg",
+            image: work1,
             review: "非常に丁寧に、かつ、希望どおり作成していただきました！ウェブ関係はまったくわからず、毎回質問したりしていましたが、いつも丁寧に優しく答えてくださいました。また、様々な提案もしてくださり、想像以上の素敵なホームページを作成していただきました。依頼して本当に良かったと実感しております。丁重に要望を取り入れてくださり、徹底して顧客のニーズに合わせてくださいます。"
         },
         {
             name: "ECCジュニア 一里山教室様",
             category: "Education",
             label: "教育・スクール",
-            image: "/images/works/works4.jpg",
+            image: work4,
             review: "ホームページ制作のお願いから公開まで迅速に対応していただけました。Webに関する知識が全くなかったのですが、丁寧に説明していただき、安心して依頼をすることができました。コミュニケーションも円滑にとれ、写真選びなども親身に対応してくださり、感謝しています。LINEを使ってフランクな形でやり取りができるのも大変良かったです！"
         },
         {
             name: "Rythmique Garden様",
             category: "Education",
             label: "教育・スクール",
-            image: "/images/works/works5.jpg",
+            image: work5,
             review: "初めてのホームページ作成で、何も分からずほぼ全てお任せだったのですが、一つ一つ、丁寧に教えてくださいました。また、様々な提案もしてくださり、想像以上の素敵なホームページを作成していただきました。依頼して本当に良かったと実感しております。丁重に要望を取り入れてくださり、徹底して顧客のニーズに合わせてくださいます。"
         }
     ];
 
     const otherWorks = [
         // Education
-        { name: "Colours Musical Studio様", category: "Education", label: "教育・スクール", image: "/images/works/works2.jpg" },
-        { name: "まや子どもの家様", category: "Education", label: "教育・スクール", image: "/images/works/works3.jpg" },
-        { name: "Yuma English House様", category: "Education", label: "教育・スクール", image: "/images/works/works8.jpg" },
-        { name: "DANCE STUDIO PLUS様", category: "Education", label: "教育・スクール", image: "/images/works/works9.jpg" },
-        { name: "K-coaching様", category: "Education", label: "教育・スクール", image: "/images/works/works11.jpg" },
+        { name: "Colours Musical Studio様", category: "Education", label: "教育・スクール", image: work2 },
+        { name: "まや子どもの家様", category: "Education", label: "教育・スクール", image: work3 },
+        { name: "Yuma English House様", category: "Education", label: "教育・スクール", image: work8 },
+        { name: "DANCE STUDIO PLUS様", category: "Education", label: "教育・スクール", image: work9 },
+        { name: "K-coaching様", category: "Education", label: "教育・スクール", image: work11 },
 
         // Corporate
-        { name: "株式会社ビビッドディレクション様", category: "Corporate", label: "企業・サービス", image: "/images/works/works6.jpg" },
-        { name: "株式会社ワナビィ様", category: "Corporate", label: "企業・サービス", image: "/images/works/works7.jpg" },
+        { name: "株式会社ビビッドディレクション様", category: "Corporate", label: "企業・サービス", image: work6 },
+        { name: "株式会社ワナビィ様", category: "Corporate", label: "企業・サービス", image: work7 },
     ];
 
     const getIcon = (category: string) => {
@@ -76,6 +90,7 @@ export function Works() {
                                     alt={work.name}
                                     fill
                                     className="object-cover object-top transition-transform duration-500 hover:scale-105"
+                                    placeholder="blur"
                                     sizes="(max-width: 1024px) 100vw, 33vw"
                                 />
                             </div>
@@ -109,7 +124,14 @@ export function Works() {
                         <div key={index} className="bg-white p-2 rounded-lg shadow-sm border border-slate-100 flex items-center gap-3 hover:shadow-md transition-all overflow-hidden group">
                             <div className="w-12 h-12 rounded bg-slate-50 flex-shrink-0 overflow-hidden relative">
                                 {work.image ? (
-                                    <Image src={work.image} alt={work.name} fill className="object-cover" />
+                                    <Image
+                                        src={work.image}
+                                        alt={work.name}
+                                        fill
+                                        className="object-cover"
+                                        placeholder="blur"
+                                        sizes="100px" // Small size for list icons
+                                    />
                                 ) : (
                                     <div className="w-full h-full flex items-center justify-center">
                                         {getIcon(work.category)}

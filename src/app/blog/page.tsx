@@ -41,17 +41,12 @@ export default async function BlogPage() {
                                 className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100"
                             >
                                 <div className="aspect-video relative bg-slate-200 overflow-hidden">
-                                    {post.entry.coverImage && (
-                                        <NextImage
-                                            src={post.entry.coverImage}
-                                            alt={post.entry.title}
-                                            fill
-                                            className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                        />
-                                    )}
-                                    {!post.entry.coverImage && (
-                                        <div className="absolute inset-0 bg-[#002335]/5 group-hover:bg-[#002335]/10 transition-colors" />
-                                    )}
+                                    <NextImage
+                                        src={post.entry.coverImage || `/blog/${post.slug}/opengraph-image`}
+                                        alt={post.entry.title}
+                                        fill
+                                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                    />
                                 </div>
                                 <div className="p-6">
                                     <div className="text-xs text-slate-500 mb-2">

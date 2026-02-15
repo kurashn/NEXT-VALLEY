@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import bg from "@/images/cta-bg-photo.webp";
 
 export function CTA() {
     return (
@@ -10,10 +11,11 @@ export function CTA() {
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-[#002335]/90 z-10" />
                 <Image
-                    src="/cta-bg-photo.png"
+                    src={bg}
                     alt="Background"
                     fill
                     className="object-cover opacity-40 mix-blend-overlay"
+                    placeholder="blur"
                     sizes="100vw"
                 />
             </div>

@@ -66,17 +66,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <div className="text-slate-500 mb-8">
                             {post.publishedDate}
                         </div>
-                        {post.coverImage && (
-                            <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-12 shadow-md">
-                                <NextImage
-                                    src={post.coverImage}
-                                    alt={post.title}
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                />
-                            </div>
-                        )}
+                        <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-12 shadow-md">
+                            <NextImage
+                                src={post.coverImage || `/blog/${slug}/opengraph-image`}
+                                alt={post.title}
+                                fill
+                                className="object-cover"
+                                priority
+                            />
+                        </div>
                     </header>
 
                     <div className="mb-12">

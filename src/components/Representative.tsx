@@ -6,6 +6,8 @@ import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Sparkles, ArrowRight } from "lucide-react";
 
+import shunk from "@/images/shunk.webp";
+
 export function Representative() {
     return (
         <section className="relative py-24 px-4 overflow-hidden bg-[#002335] text-white">
@@ -28,10 +30,12 @@ export function Representative() {
                             {/* Main Image Container */}
                             <div className="relative w-full h-full rounded-tl-3xl rounded-br-3xl overflow-hidden shadow-2xl z-10">
                                 <Image
-                                    src="/shunk.jpg"
+                                    src={shunk}
                                     alt="NEXT VALLEY 代表"
                                     fill
                                     className="object-cover"
+                                    placeholder="blur"
+                                    sizes="(max-width: 768px) 100vw, 400px"
                                 />
                                 {/* Name Overlay */}
                                 <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6">
