@@ -13,11 +13,11 @@ export const BlogCTA = () => {
                 ホームページ制作とAI活用で解決します。
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Link href="/contact" className="w-full sm:w-auto">
+                <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                     <Button size="lg" className="w-full sm:w-auto bg-[#e26c5c] hover:bg-[#d05a4b] text-white font-bold px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
                         まずは無料相談する
                     </Button>
-                </Link>
+                </a>
                 <p className="text-xs text-slate-500 mt-2 sm:mt-0">
                     ※ 無理な営業は一切いたしません
                 </p>
