@@ -88,9 +88,28 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                 block: {
                                     heading: ({ level, children, textAlign }) => {
                                         const childrenArray = Array.isArray(children) ? children : [children];
+
+                                        const extractNodeText = (node: any): string => {
+                                            if (!node) return '';
+                                            if (typeof node === 'string') return node;
+                                            if (node.text) return node.text;
+                                            if (node.children) {
+                                                if (Array.isArray(node.children)) {
+                                                    return node.children.map(extractNodeText).join('');
+                                                }
+                                                return extractNodeText(node.children);
+                                            }
+                                            return '';
+                                        };
+
                                         const text = childrenArray
-                                            .map((child: any) => (typeof child === 'string' ? child : child?.text || ''))
+                                            .map((child: any) => {
+                                                if (typeof child === 'string') return child;
+                                                if (child?.props?.node) return extractNodeText(child.props.node);
+                                                return '';
+                                            })
                                             .join('');
+
                                         const id = encodeURIComponent(text); // Matches getToc logic
 
                                         if (level === 2) {
