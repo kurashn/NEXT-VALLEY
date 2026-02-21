@@ -130,11 +130,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                         return <Tag style={{ textAlign }}>{children}</Tag>;
                                     },
                                     list: ({ type, children }) => {
-                                        const Tag = type === 'ordered' ? 'ol' : 'ul';
+                                        if (type === 'ordered') {
+                                            return (
+                                                <ol className="my-8 space-y-4 list-decimal ml-6">
+                                                    {children.map((child: React.ReactNode, i: number) => (
+                                                        <li key={i} className="leading-relaxed">{child}</li>
+                                                    ))}
+                                                </ol>
+                                            );
+                                        }
                                         return (
-                                            <Tag className={`my-8 space-y-4 ${type === 'ordered' ? 'list-decimal ml-6' : 'list-none pl-0'}`}>
-                                                {children}
-                                            </Tag>
+                                            <ul className="my-8 py-6 px-8 md:px-10 bg-slate-50 rounded-2xl space-y-5" style={{ listStyleType: 'disc', paddingLeft: '2.5rem' }}>
+                                                {children.map((child: React.ReactNode, i: number) => (
+                                                    <li key={i} className="leading-relaxed pl-1" style={{ display: 'list-item', color: '#e26c5c' }}>
+                                                        <span style={{ color: '#334155' }}>{child}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         );
                                     },
                                     layout: ({ layout, children }) => {
