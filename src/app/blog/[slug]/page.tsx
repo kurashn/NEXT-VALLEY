@@ -126,10 +126,30 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                                 </h3>
                                             );
                                         }
-                                        // Fallback for other levels
                                         const Tag = `h${level}` as React.ElementType;
                                         return <Tag style={{ textAlign }}>{children}</Tag>;
                                     },
+                                    list: ({ type, children }) => {
+                                        const Tag = type === 'ordered' ? 'ol' : 'ul';
+                                        return (
+                                            <Tag className={`my-8 space-y-4 ${type === 'ordered' ? 'list-decimal ml-6' : 'list-none pl-0'}`}>
+                                                {children}
+                                            </Tag>
+                                        );
+                                    },
+                                    layout: ({ layout, children }) => {
+                                        return (
+                                            <div
+                                                style={{
+                                                    display: 'grid',
+                                                    gridTemplateColumns: layout.map((width) => `${width}fr`).join(' '),
+                                                    gap: '1rem',
+                                                }}
+                                            >
+                                                {children}
+                                            </div>
+                                        );
+                                    }
                                 },
                             }}
                         />
