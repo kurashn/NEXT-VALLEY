@@ -16,14 +16,21 @@ export function getToc(content: any[]): TocItem[] {
     content.forEach((node) => {
         if (node.type === 'heading') {
             const level = node.level;
-            const text = node.children
-                .map((child: any) => child.text)
-                .join('');
-            const id = text; // Encoding might be needed for Japanese characters in URLs
+            const text = extractText(node.children);
+            const id = encodeURIComponent(text);
 
             toc.push({ text, id, level });
         }
     });
 
     return toc;
+}
+
+function extractText(children: any[]): string {
+    if (!children) return '';
+    return children.reduce((acc, child) => {
+        if (child.text) return acc + child.text;
+        if (child.children) return acc + extractText(child.children);
+        return acc;
+    }, '');
 }

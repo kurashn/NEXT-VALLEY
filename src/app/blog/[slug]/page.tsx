@@ -91,7 +91,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                         const text = childrenArray
                                             .map((child: any) => (typeof child === 'string' ? child : child?.text || ''))
                                             .join('');
-                                        const id = text; // Matches getToc logic
+                                        const id = encodeURIComponent(text); // Matches getToc logic
 
                                         if (level === 2) {
                                             return (
