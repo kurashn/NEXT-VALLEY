@@ -96,9 +96,11 @@ export function Service() {
                                 </p>
                             </CardHeader>
                             <CardFooter>
-                                <Button className="w-full bg-white hover:bg-slate-100 text-slate-700 border border-slate-300" variant="outline">
-                                    今すぐ制作を申し込む
-                                </Button>
+                                <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer" className="w-full">
+                                    <Button className="w-full bg-white hover:bg-slate-100 text-slate-700 border border-slate-300" variant="outline">
+                                        今すぐ制作を申し込む
+                                    </Button>
+                                </a>
                             </CardFooter>
                         </Card>
 
@@ -115,9 +117,11 @@ export function Service() {
                                 </p>
                             </CardHeader>
                             <CardFooter>
-                                <Button className="w-full bg-white hover:bg-slate-100 text-slate-700 border border-slate-300" variant="outline">
-                                    集客までフルサポートで申し込む
-                                </Button>
+                                <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer" className="w-full">
+                                    <Button className="w-full bg-white hover:bg-slate-100 text-slate-700 border border-slate-300" variant="outline">
+                                        集客までフルサポートで申し込む
+                                    </Button>
+                                </a>
                             </CardFooter>
                         </Card>
                     </div>
