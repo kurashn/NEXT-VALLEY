@@ -26,7 +26,7 @@ export function Solution() {
 
                 <div className="flex flex-col lg:flex-row items-center gap-16">
                     {/* Visual Side */}
-                    <FadeIn className="flex-1 relative w-full aspect-square md:aspect-video max-w-md lg:max-w-xl mx-auto">
+                    <FadeIn className="flex-1 relative w-full aspect-square md:aspect-video max-w-md lg:max-w-none mx-auto">
                         <div className="absolute inset-0 bg-gradient-to-tr from-[#002335]/20 to-[#e26c5c]/20 rounded-full blur-3xl opacity-60" />
 
                         {/* ... */}
@@ -34,11 +34,11 @@ export function Solution() {
                         <Image
                             src={aiPerson}
                             alt="AI Speed x Human Strategy"
-                            width={600}
-                            height={600}
+                            width={900}
+                            height={900}
                             className="relative z-10 drop-shadow-2xl rounded-3xl object-contain w-full h-full"
                             placeholder="blur"
-                            sizes="(max-width: 768px) 90vw, (max-width: 1024px) 50vw, 400px"
+                            sizes="(max-width: 768px) 90vw, (max-width: 1024px) 50vw, 50vw"
                         />
                     </FadeIn>
 
