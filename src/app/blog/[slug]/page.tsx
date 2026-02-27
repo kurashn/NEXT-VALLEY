@@ -81,7 +81,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <TableOfContents toc={toc} />
                     </div>
 
-                    <div className="prose prose-lg max-w-none text-slate-700 prose-headings:text-[#002335] prose-a:text-[#e26c5c] prose-strong:text-[#002335] mb-16">
+                    <div className="prose prose-lg max-w-none text-slate-700 prose-headings:text-[#002335] prose-a:text-[#e26c5c] prose-strong:text-[#002335] prose-strong:bg-[linear-gradient(transparent_60%,#fbd5d0_60%)] mb-16">
                         <DocumentRenderer
                             document={content}
                             renderers={{
