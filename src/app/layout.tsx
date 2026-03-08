@@ -60,7 +60,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isMaintenanceMode = process.env.MAINTENANCE_MODE === "true";
+  // 一時的に強制的にメンテナンスモードをON
+  const isMaintenanceMode = true; // process.env.MAINTENANCE_MODE === "true";
 
   return (
     <html lang="en">
