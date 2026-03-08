@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Maintenance } from "@/components/Maintenance";
 import Script from "next/script";
 import "./globals.css";
 
@@ -59,12 +60,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isMaintenanceMode = process.env.MAINTENANCE_MODE === "true";
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {isMaintenanceMode ? <Maintenance /> : children}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-T6ZVHJKZ2S"
           strategy="afterInteractive"
