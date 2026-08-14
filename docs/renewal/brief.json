@@ -1,0 +1,47 @@
+{
+  "project": "NEXT VALLEY サイトリニューアル",
+  "date": "2026-08-13",
+  "pivot": "AI活用のプロチームとして再構築（2026-08-14転換）。マーケティング・制作は手段であり、成果は「根本的な売上アップ」と「業務効率化」。HP制作会社の枠を外す",
+  "goal": "見積もり・提案依頼（具体的な案件を持つ経営者に、見積もり/提案を依頼してもらう）",
+  "reader": "集客がうまくいかない、または業務に追われている中小企業の経営者。AIで何かできそうだとは思っているが、何から始めればいいか分からない。",
+  "objections": [
+    "この会社に任せて大丈夫か。ちゃんとした実績があるのか（実績・信頼性への不安）",
+    "作っても集客につながらないのではないか（費用対効果への不安）",
+    "見積もりを頼んだらしつこく営業されるのではないか（現サイトでも訴求済みの不安）"
+  ],
+  "services": [
+    "HP・LP制作",
+    "SEO・MEO集客",
+    "SNSマーケティング",
+    "AI活用コンサルティング",
+    "HP運用ツール・SaaS（準備中）"
+  ],
+  "proof": {
+    "available": [
+      "制作実績（実名・URL掲載可）— 具体リストはユーザーから収集待ち",
+      "お客様の声 — 実文はユーザーから収集待ち"
+    ],
+    "existing_assets": [
+      "works1〜11の実績スクリーンショット画像（src/images/works/）",
+      "代表写真（倉林 駿 / shunk.webp）",
+      "ロゴ（logo-new.png / logo.svg）"
+    ],
+    "notes": "検証できない数字（No.1等）は載せない"
+  },
+  "pricing": {
+    "policy": "サービス別に設計し直す（制作=買い切り型、運用・マーケ=月額型など）",
+    "current": "無料プレビュー → 制作¥77,000 → おまかせ集客¥44,000/月",
+    "todo": "新料金の具体額はユーザーから収集待ち"
+  },
+  "contact": {
+    "line": "https://lin.ee/N4QXdJL",
+    "email": "info@nextvalley-jpn.com",
+    "form": "既存のnodemailer + Gmail SMTP構成あり"
+  },
+  "publish": {
+    "domain": "nextvalley-jpn.com（現ドメインのまま）",
+    "stack": "Next.js 16 + Tailwind 4 + Keystatic（既存構成を維持してリニューアル）",
+    "deadline": "未指定"
+  },
+  "design_route": "A（参考: shishi-w.com / gaaboo.jp / daigokikaku.co.jp。色はブランドの紺×コーラルを維持）"
+}

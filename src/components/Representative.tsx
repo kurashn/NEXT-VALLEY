@@ -1,102 +1,82 @@
-// Server Component — FadeIn handles its own client boundary
+// Server Component — 代表メッセージ（sample世界観ブラッシュアップ版）
+// 明るいグレー地・白カード・セリフ見出し・引用符・署名
 
 import React from "react";
 import Image from "next/image";
-
 import { FadeIn } from "@/components/ui/FadeIn";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { SerifHeading, serif } from "@/components/ui/SerifHeading";
 
 import shunk from "@/images/shunk.webp";
 
 export function Representative() {
     return (
-        <section className="relative py-24 px-4 overflow-hidden bg-[#002335] text-white">
-            {/* Background Gradient Overlay */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#002335] via-[#00304d] to-[#002335]" />
-                <div className="absolute top-0 right-0 w-1/2 h-full bg-[#e26c5c]/5 blur-3xl rounded-full" />
-            </div>
+        <section className="relative overflow-hidden bg-base px-4 py-16 md:px-6 md:py-24">
 
-            <div className="max-w-6xl mx-auto relative z-10">
-                <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+            <div className="relative mx-auto max-w-6xl">
+                <FadeIn>
+                    <SerifHeading en="Message" jp="代表メッセージ" />
+                </FadeIn>
 
-                    {/* Photo Column - Smart & Cool Style */}
-                    <div className="w-full md:w-5/12 relative group">
-                        <div className="relative w-64 h-80 md:w-80 md:h-[420px] mx-auto md:mx-0">
-                            {/* Stylish Frame Elements */}
-                            <div className="absolute top-4 -right-4 w-full h-full border-2 border-[#e26c5c]/30 rounded-br-3xl z-0" />
-                            <div className="absolute -bottom-4 -left-4 w-full h-full bg-[#e26c5c]/10 rounded-tl-3xl z-0 backdrop-blur-sm" />
-
-                            {/* Main Image Container */}
-                            <div className="relative w-full h-full rounded-tl-3xl rounded-br-3xl overflow-hidden shadow-2xl z-10">
+                <FadeIn>
+                    <div className="flex flex-col gap-8 rounded-2xl bg-white p-7 shadow-[0_16px_40px_rgba(31,26,20,0.06)] md:flex-row md:gap-14 md:p-14">
+                        {/* 写真 */}
+                        <div className="mx-auto w-full max-w-[280px] shrink-0 md:mx-0 md:w-72">
+                            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl">
                                 <Image
                                     src={shunk}
-                                    alt="NEXT VALLEY 代表"
+                                    alt="NEXT VALLEY 代表 倉林駿"
                                     fill
                                     className="object-cover"
                                     placeholder="blur"
-                                    sizes="(max-width: 768px) 100vw, 400px"
+                                    sizes="(max-width: 768px) 280px, 288px"
                                 />
-                                {/* Name Overlay */}
-                                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6">
-                                    <p className="text-white font-bold text-xl tracking-widest">倉林 駿</p>
-                                    <p className="text-[#e26c5c] text-xs font-medium tracking-wider">NEXT VALLEY REPRESENTATIVE</p>
-                                </div>
+                            </div>
+                            <div className="mt-5 flex items-baseline justify-center gap-3 md:justify-start">
+                                <p className="text-xl font-bold tracking-widest text-ink">倉林 駿</p>
+                            </div>
+                        </div>
+
+                        {/* メッセージ */}
+                        <div className="relative">
+                            <span
+                                aria-hidden
+                                className="absolute -top-4 left-0 text-6xl leading-none text-coral/60 md:-left-2"
+                                style={{ fontFamily: serif }}
+                            >
+                                “
+                            </span>
+                            <h3
+                                className="mb-8 pt-8 text-[clamp(1.5rem,3.2vw,2.25rem)] font-bold leading-[1.5] tracking-[0.02em] text-navy"
+                                style={{ fontFamily: serif }}
+                            >
+                                営業トークより、
+                                <br />
+                                実物を見てください。
+                            </h3>
+
+                            <div className="space-y-6 text-[15px] leading-[2] tracking-[0.02em] text-ink-sub">
+                                <p>こんにちは、代表の倉林 駿（くらはやし <span className="nowrap">しゅん）です。</span></p>
+                                <p>
+                                    「制作会社に頼むと高そう」「本当に効果が出るのか分からない」——Web制作の相談をためらう理由は、だいたい<span className="nowrap">この2つです。</span>
+                                </p>
+                                <p>
+                                    だから私たちは、先に実物をお見せすることにしています。あなたの会社の現状を診断し、具体的な改善案と見積もりを無料で作る。気に入らなければ、<span className="nowrap">断ってください。</span>
+                                </p>
+                                <p className="font-bold text-ink">
+                                    電話営業もしつこい連絡も、一切しません。リスクは私たちに、安心は<span className="nowrap">あなたに。</span>
+                                </p>
+                            </div>
+
+                            {/* 署名 */}
+                            <div className="mt-10 flex items-center justify-end gap-4">
+                                <span aria-hidden className="block h-px w-16 bg-coral" />
+                                <p className="text-sm text-ink-sub">
+                                    NEXT VALLEY 代表　<span className="text-lg font-bold text-ink">倉林 駿</span>
+                                </p>
                             </div>
                         </div>
                     </div>
-
-                    {/* Message Column */}
-                    <FadeIn className="w-full md:w-7/12">
-                        {/* New Catchphrase */}
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e26c5c]/20 border border-[#e26c5c]/30 text-[#e26c5c] text-xs font-bold tracking-widest mb-6">
-                            <Sparkles className="w-3 h-3" />
-                            MESSAGE
-                        </div>
-
-                        <h2 className="text-2xl md:text-5xl font-bold leading-tight mb-8">
-                            まずは、<span className="text-[#e26c5c]">「無料改善案」</span>を<br />
-                            見てみませんか？
-                        </h2>
-
-                        <div className="space-y-6 text-slate-300 leading-relaxed text-base md:text-lg">
-                            <p>
-                                こんにちは、代表の倉林 駿（くらはやし しゅん）です。<br />
-                                ここまで読んでいただき、ありがとうございます。
-                            </p>
-                            <p>
-                                「ホームページのリニューアル、失敗したくない...」<br />
-                                「本当に効果が出るのか不安...」
-                            </p>
-                            <p>
-                                その気持ち、痛いほどわかります。<br />
-                                だからこそ、私たちは<strong className="text-white border-b border-[#e26c5c]">「まずは実物を見てもらう」</strong>ことにこだわっています。
-                            </p>
-                            <p>
-                                営業トークで説得するのではなく、<br />
-                                あなたの教室だけの「具体的な改善ビジョン」を形にしてお見せする。
-                            </p>
-                            <p>
-                                もちろん、気に入らなければ断っていただいて構いません。<br />
-                                リスクは私たちに、安心はあなたに。
-                            </p>
-                        </div>
-
-                        {/* Signature / CTA */}
-                        <div className="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                            <div>
-                                <p className="text-sm text-slate-400 mb-1">NEXT VALLEY 代表</p>
-                                <p className="text-xl font-bold tracking-wider">倉林 駿</p>
-                            </div>
-
-                            <a href="#service" className="group flex items-center gap-2 text-[#e26c5c] font-bold hover:text-white transition-colors">
-                                <span className="border-b border-[#e26c5c] group-hover:border-white transition-colors">プラン詳細を見る</span>
-                                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                            </a>
-                        </div>
-                    </FadeIn>
-
-                </div>
+                </FadeIn>
             </div>
         </section>
     );

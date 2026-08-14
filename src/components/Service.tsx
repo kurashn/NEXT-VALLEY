@@ -1,133 +1,351 @@
-// Server Component - no client-side interactivity needed
+// Server Component — サービス5本柱（sample/service.png の忠実再現）
+// ウォームベージュ地・多色セリフ見出し・白カード＋ソフトなイラスト＋コーラル↗
 
 import React from "react";
-import { Check, Rocket, Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { FadeIn } from "@/components/ui/FadeIn";
+
+/* ── カード右側のソフトイラスト（SVG。ベージュ×コーラルの柔らかい質感） ── */
+
+const soft = {
+    panel: "#ffffff",
+    line: "#e9e2d8",
+    beige: "#efe9e0",
+    beige2: "#e3dccf",
+    coral: "#e26c5c",
+    coralSoft: "#f0b3a8",
+    ink: "#8a8378",
+};
+
+function IlloWeb() {
+    return (
+        <svg viewBox="0 0 240 170" className="h-full w-full" fill="none" aria-hidden>
+            {/* ブラウザ */}
+            <g filter="url(#s1)">
+                <rect x="30" y="24" width="150" height="112" rx="10" fill={soft.panel} />
+            </g>
+            <rect x="30" y="24" width="150" height="112" rx="10" stroke={soft.line} />
+            <line x1="30" y1="48" x2="180" y2="48" stroke={soft.line} />
+            <circle cx="44" cy="36" r="3" fill={soft.coralSoft} />
+            <circle cx="55" cy="36" r="3" fill={soft.beige2} />
+            <rect x="44" y="60" width="70" height="46" rx="6" fill={soft.beige} />
+            <path d="M52 98l16-18 12 12 10-10 14 16z" fill={soft.coralSoft} />
+            <circle cx="97" cy="72" r="5" fill={soft.coral} opacity="0.7" />
+            <rect x="124" y="62" width="44" height="7" rx="3.5" fill={soft.beige2} />
+            <rect x="124" y="76" width="36" height="7" rx="3.5" fill={soft.beige} />
+            <rect x="44" y="114" width="124" height="7" rx="3.5" fill={soft.beige} />
+            {/* スマホ */}
+            <g filter="url(#s1)">
+                <rect x="168" y="52" width="44" height="88" rx="10" fill={soft.panel} />
+            </g>
+            <rect x="168" y="52" width="44" height="88" rx="10" stroke={soft.line} />
+            <rect x="176" y="64" width="28" height="20" rx="4" fill={soft.beige} />
+            <rect x="176" y="90" width="28" height="5" rx="2.5" fill={soft.beige2} />
+            <rect x="176" y="100" width="20" height="5" rx="2.5" fill={soft.beige} />
+            <rect x="176" y="116" width="28" height="10" rx="5" fill={soft.coral} opacity="0.85" />
+            <defs>
+                <filter id="s1" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#1f1a14" floodOpacity="0.08" />
+                </filter>
+            </defs>
+        </svg>
+    );
+}
+
+function IlloSeo() {
+    return (
+        <svg viewBox="0 0 240 170" className="h-full w-full" fill="none" aria-hidden>
+            {/* SEOブラウザ */}
+            <g filter="url(#s2)">
+                <rect x="88" y="18" width="120" height="84" rx="10" fill={soft.panel} />
+            </g>
+            <rect x="88" y="18" width="120" height="84" rx="10" stroke={soft.line} />
+            <rect x="100" y="30" width="42" height="12" rx="6" fill={soft.coral} opacity="0.85" />
+            <rect x="100" y="52" width="96" height="6" rx="3" fill={soft.beige2} />
+            <rect x="100" y="64" width="80" height="6" rx="3" fill={soft.beige} />
+            <rect x="100" y="76" width="88" height="6" rx="3" fill={soft.beige} />
+            {/* マップカード */}
+            <g filter="url(#s2)">
+                <rect x="150" y="70" width="72" height="60" rx="10" fill={soft.panel} />
+            </g>
+            <rect x="150" y="70" width="72" height="60" rx="10" stroke={soft.line} />
+            <path d="M150 96l24-10 24 10 24-10v34h-72z" fill={soft.beige} opacity="0.8" />
+            <circle cx="186" cy="92" r="9" fill={soft.coral} />
+            <circle cx="186" cy="92" r="3.5" fill="#fff" />
+            <path d="M186 101l0 10" stroke={soft.coral} strokeWidth="3" />
+            {/* 棒グラフカード */}
+            <g filter="url(#s2)">
+                <rect x="120" y="112" width="64" height="46" rx="8" fill={soft.panel} />
+            </g>
+            <rect x="120" y="112" width="64" height="46" rx="8" stroke={soft.line} />
+            <rect x="130" y="136" width="8" height="14" rx="2" fill={soft.beige2} />
+            <rect x="144" y="128" width="8" height="22" rx="2" fill={soft.coralSoft} />
+            <rect x="158" y="122" width="8" height="28" rx="2" fill={soft.coral} />
+            {/* 虫眼鏡 */}
+            <circle cx="60" cy="76" r="30" stroke={soft.beige2} strokeWidth="10" fill="rgba(255,255,255,0.6)" />
+            <circle cx="60" cy="76" r="30" stroke={soft.ink} strokeWidth="1" opacity="0.25" />
+            <rect x="80" y="102" width="34" height="12" rx="6" transform="rotate(45 80 102)" fill={soft.beige2} />
+            <defs>
+                <filter id="s2" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#1f1a14" floodOpacity="0.08" />
+                </filter>
+            </defs>
+        </svg>
+    );
+}
+
+function IlloSns() {
+    return (
+        <svg viewBox="0 0 240 170" className="h-full w-full" fill="none" aria-hidden>
+            {/* スマホ */}
+            <g filter="url(#s3)" transform="rotate(8 150 90)">
+                <rect x="118" y="16" width="72" height="140" rx="14" fill={soft.panel} />
+            </g>
+            <g transform="rotate(8 150 90)">
+                <rect x="118" y="16" width="72" height="140" rx="14" stroke={soft.line} />
+                <rect x="130" y="34" width="48" height="8" rx="4" fill={soft.beige2} />
+                <rect x="130" y="50" width="48" height="36" rx="6" fill={soft.beige} />
+                <rect x="130" y="94" width="34" height="6" rx="3" fill={soft.beige2} />
+                <rect x="130" y="106" width="44" height="6" rx="3" fill={soft.beige} />
+                <rect x="130" y="126" width="48" height="12" rx="6" fill={soft.coral} opacity="0.85" />
+            </g>
+            {/* SNSバッジ: Instagram風 */}
+            <g filter="url(#s3)">
+                <rect x="52" y="30" width="40" height="40" rx="11" fill="url(#ig)" />
+            </g>
+            <rect x="63" y="41" width="18" height="18" rx="6" stroke="#fff" strokeWidth="2.5" />
+            <circle cx="72" cy="50" r="4.5" stroke="#fff" strokeWidth="2.5" />
+            <circle cx="78.5" cy="43.5" r="1.6" fill="#fff" />
+            {/* X風 */}
+            <g filter="url(#s3)">
+                <circle cx="66" cy="106" r="19" fill="#1a1a1a" />
+            </g>
+            <path d="M58 98l16 16M74 98l-16 16" stroke="#fff" strokeWidth="3" strokeLinecap="round" />
+            {/* LINE風 */}
+            <g filter="url(#s3)">
+                <circle cx="98" cy="146" r="17" fill="#06c755" />
+            </g>
+            <ellipse cx="98" cy="145" rx="9.5" ry="8" fill="#fff" />
+            <path d="M94 152l-2 5 7-4z" fill="#fff" />
+            <defs>
+                <linearGradient id="ig" x1="52" y1="70" x2="92" y2="30">
+                    <stop stopColor="#f9ce34" />
+                    <stop offset="0.5" stopColor="#ee2a7b" />
+                    <stop offset="1" stopColor="#6228d7" />
+                </linearGradient>
+                <filter id="s3" x="-30%" y="-30%" width="160%" height="160%">
+                    <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#1f1a14" floodOpacity="0.1" />
+                </filter>
+            </defs>
+        </svg>
+    );
+}
+
+function IlloOps() {
+    return (
+        <svg viewBox="0 0 240 170" className="h-full w-full" fill="none" aria-hidden>
+            {/* ブラウザ */}
+            <g filter="url(#s4)">
+                <rect x="60" y="20" width="130" height="92" rx="10" fill={soft.panel} />
+            </g>
+            <rect x="60" y="20" width="130" height="92" rx="10" stroke={soft.line} />
+            <line x1="60" y1="42" x2="190" y2="42" stroke={soft.line} />
+            <circle cx="73" cy="31" r="3" fill={soft.coralSoft} />
+            <circle cx="84" cy="31" r="3" fill={soft.beige2} />
+            <rect x="74" y="54" width="60" height="7" rx="3.5" fill={soft.beige2} />
+            <rect x="74" y="68" width="90" height="7" rx="3.5" fill={soft.beige} />
+            <rect x="74" y="82" width="76" height="7" rx="3.5" fill={soft.beige} />
+            {/* 歯車 大 */}
+            <g filter="url(#s4)">
+                <Gear cx={158} cy={118} r={26} fill={soft.beige2} />
+            </g>
+            {/* 歯車 小 */}
+            <g filter="url(#s4)">
+                <Gear cx={196} cy={92} r={16} fill={soft.coralSoft} />
+            </g>
+            {/* レンチ */}
+            <g filter="url(#s4)" transform="rotate(-35 108 132)">
+                <rect x="96" y="126" width="52" height="11" rx="5.5" fill={soft.ink} opacity="0.55" />
+                <circle cx="96" cy="131" r="11" fill="none" stroke={soft.ink} strokeWidth="7" opacity="0.55" />
+            </g>
+            <defs>
+                <filter id="s4" x="-30%" y="-30%" width="160%" height="160%">
+                    <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#1f1a14" floodOpacity="0.08" />
+                </filter>
+            </defs>
+        </svg>
+    );
+}
+
+/* 歯車のヘルパー */
+function Gear({ cx, cy, r, fill }: { cx: number; cy: number; r: number; fill: string }) {
+    const teeth = 8;
+    const paths = [];
+    for (let i = 0; i < teeth; i++) {
+        const a = (i * 2 * Math.PI) / teeth;
+        const x = cx + Math.cos(a) * (r + 5);
+        const y = cy + Math.sin(a) * (r + 5);
+        paths.push(<rect key={i} x={x - 4} y={y - 4} width="8" height="8" rx="2" fill={fill} transform={`rotate(${(a * 180) / Math.PI} ${x} ${y})`} />);
+    }
+    return (
+        <g>
+            {paths}
+            <circle cx={cx} cy={cy} r={r} fill={fill} />
+            <circle cx={cx} cy={cy} r={r * 0.42} fill={soft.panel} />
+        </g>
+    );
+}
+
+function IlloAi() {
+    return (
+        <svg viewBox="0 0 340 170" className="h-full w-full" fill="none" aria-hidden>
+            {/* 脳ネットワーク */}
+            <g stroke={soft.beige2} strokeWidth="1.5">
+                <path d="M60 60 L92 44 L120 66 L96 92 L60 60Z" />
+                <path d="M92 44 L128 30 M120 66 L154 58 M96 92 L128 112 M60 60 L34 44 M60 60 L38 86" />
+            </g>
+            <g fill={soft.coral}>
+                <circle cx="60" cy="60" r="4" />
+                <circle cx="92" cy="44" r="3.5" />
+                <circle cx="120" cy="66" r="4" />
+                <circle cx="96" cy="92" r="3.5" />
+            </g>
+            <g fill={soft.beige2}>
+                <circle cx="128" cy="30" r="3" />
+                <circle cx="154" cy="58" r="3" />
+                <circle cx="128" cy="112" r="3" />
+                <circle cx="34" cy="44" r="3" />
+                <circle cx="38" cy="86" r="3" />
+            </g>
+            {/* ノートPC */}
+            <g filter="url(#s5)">
+                <rect x="182" y="30" width="120" height="86" rx="8" fill={soft.panel} />
+            </g>
+            <rect x="182" y="30" width="120" height="86" rx="8" stroke={soft.line} />
+            <rect x="192" y="42" width="42" height="8" rx="4" fill={soft.beige2} />
+            {/* 円グラフ */}
+            <circle cx="212" cy="80" r="18" fill={soft.beige} />
+            <path d="M212 80 L212 62 A18 18 0 0 1 229 86 Z" fill={soft.coral} opacity="0.85" />
+            {/* 折れ線 */}
+            <polyline points="242,96 256,82 268,88 282,66 294,72" stroke={soft.coral} strokeWidth="2.5" />
+            <g fill={soft.coral}>
+                <circle cx="256" cy="82" r="2.5" />
+                <circle cx="282" cy="66" r="2.5" />
+            </g>
+            <path d="M170 116h144l10 14a6 6 0 0 1-6 8H166a6 6 0 0 1-6-8z" fill={soft.beige2} />
+            <defs>
+                <filter id="s5" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#1f1a14" floodOpacity="0.08" />
+                </filter>
+            </defs>
+        </svg>
+    );
+}
+
+/* ── データ ── */
+
+const services = [
+    {
+        en: "AI CONSULTING",
+        title: "AI活用コンサルティング",
+        body: <>「AIで業務を効率化したいが、何から始めればいいか分からない」という方へ。自社の制作現場でAIを日常的に使い倒しているからこそ、机上の空論ではない導入支援ができます。ツールの選定・活用研修から業務フローの<span className="nowrap">設計まで。</span></>,
+        illo: IlloAi,
+        wide: true,
+    },
+    {
+        en: "WEB PRODUCTION",
+        title: "HP・LP制作",
+        body: <>「誰に、何を、どう届けるか」から設計するホームページ・ランディングページ。デザインの好みではなく、成果から逆算して<span className="nowrap">作ります。</span></>,
+        illo: IlloWeb,
+    },
+    {
+        en: "SEO / MEO",
+        title: "SEO・MEO集客",
+        body: <>検索結果とGoogleマップで「いま探している人」に見つけてもらう施策。上位表示のためではなく、問い合わせにつながる導線として<span className="nowrap">設計します。</span></>,
+        illo: IlloSeo,
+    },
+    {
+        en: "SNS MARKETING",
+        title: <>SNS<span className="nowrap">マーケティング</span></>,
+        body: <>Instagram・X・LINEなどの運用設計から実務まで。「何を投稿すればいいか分からない」を、投稿計画ごと<span className="nowrap">引き受けます。</span></>,
+        illo: IlloSns,
+    },
+    {
+        en: "OPERATION SUPPORT",
+        title: "HP運用サポート・ツール",
+        body: <>公開後の更新・保守と、自社で運用するためのツール提供。※詳細は<span className="nowrap">準備中です。</span></>,
+        illo: IlloOps,
+        wip: true,
+    },
+];
+
+/* 多色セリフの見出し（service.pngの配色） */
+const letterColors = ["#2e7f92", "#b8452f", "#b07d1a", "#1a1a1a"];
 
 export function Service() {
     return (
-        <section id="service" className="py-24 px-4 bg-muted/30">
-            <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-2xl md:text-5xl font-bold text-foreground mb-6">
-                        料金プラン
-                    </h2>
-                    <p className="text-muted-foreground text-lg">
-                        あなたの教室に合ったプランを、お選びください。
+        <section className="relative overflow-hidden bg-cream px-4 py-16 md:px-6 md:py-24">
+
+            <div className="relative mx-auto max-w-7xl">
+                <FadeIn>
+                    {/* ラベル */}
+                    <p className="mb-3 flex items-center gap-2.5 text-[13px] font-bold tracking-[0.3em] text-ink">
+                        <span aria-hidden className="block h-2 w-2 rounded-full bg-coral" />
+                        事業内容
                     </p>
-                </div>
+                    {/* 多色セリフ */}
+                    <p
+                        aria-label="Service"
+                        className="text-[clamp(3rem,7.5vw,5.5rem)] font-bold leading-none"
+                        style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                    >
+                        {"Service".split("").map((ch, i) => (
+                            <span key={i} aria-hidden style={{ color: letterColors[i % letterColors.length] }}>
+                                {ch}
+                            </span>
+                        ))}
+                    </p>
+                    <span aria-hidden className="mt-4 block h-0.5 w-10 bg-coral" />
+                    <p className="lead mt-6 text-[15px] leading-[2] tracking-[0.05em] text-ink-sub md:mb-2">
+                        AI活用を軸に、マーケティングから制作まで。
+                        <br />
+                        全部を売り込みません。課題に合わせて、必要な打ち手だけを<span className="nowrap">提案します。</span>
+                    </p>
+                </FadeIn>
 
-                <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
-
-                    {/* Plan A: お試し (RECOMMENDED) */}
-                    {/* Plan A: お試し (Main Focus) */}
-                    <div className="md:col-span-3 mb-8">
-                        <Card className="relative bg-white border-4 border-[#e26c5c] shadow-2xl flex flex-col md:flex-row overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
-                            <div className="absolute top-0 right-0 bg-[#e26c5c] text-white text-xs font-bold px-3 py-1 rounded-bl-xl z-20">
-                                申込者の90%がここからスタート
+                {/* サービスカード */}
+                <div className="mt-10 grid gap-6 md:mt-14 md:grid-cols-2">
+                    {services.map((s, i) => (
+                        <FadeIn key={s.en} delay={i * 0.08} className={s.wide ? "md:col-span-2" : ""}>
+                            <div className="group relative flex h-full flex-col gap-6 overflow-hidden rounded-[20px] bg-white p-8 shadow-[0_16px_40px_rgba(31,26,20,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_56px_rgba(31,26,20,0.1)] sm:flex-row sm:items-center md:p-10">
+                                {/* テキスト */}
+                                <div className={s.wide ? "sm:w-[60%]" : "sm:w-[55%]"}>
+                                    <p className="mb-4 text-xs font-bold tracking-[0.25em] text-coral-deep">{s.en}</p>
+                                    <h3 className="mb-4 flex flex-wrap items-center gap-3 text-2xl font-bold leading-snug text-ink md:text-[28px]">
+                                        {s.title}
+                                        {s.wip && (
+                                            <span className="rounded-full bg-cream px-3 py-1 text-xs font-normal text-ink-sub">
+                                                準備中
+                                            </span>
+                                        )}
+                                    </h3>
+                                    <span aria-hidden className="mb-5 block h-0.5 w-8 bg-coral" />
+                                    <p className="text-sm leading-[2] text-ink-sub">{s.body}</p>
+                                </div>
+                                {/* イラスト */}
+                                <div
+                                    aria-hidden
+                                    className={`pointer-events-none h-40 shrink-0 transition-transform duration-300 group-hover:scale-[1.04] sm:h-44 ${
+                                        s.wide ? "sm:w-[40%]" : "sm:w-[45%]"
+                                    }`}
+                                >
+                                    <s.illo />
+                                </div>
                             </div>
-
-                            <div className="md:w-2/5 bg-[#e26c5c]/5 p-8 flex flex-col justify-center items-center text-center border-b md:border-b-0 md:border-r border-[#e26c5c]/20 relative">
-                                <div className="mb-4">
-                                    <Badge className="bg-[#e26c5c] text-white hover:bg-[#e26c5c] px-6 py-2 text-base font-bold shadow-lg mb-4">
-                                        <Star className="w-4 h-4 fill-current mr-2" />
-                                        人気No.1
-                                    </Badge>
-                                    <CardTitle className="text-2xl md:text-3xl font-bold text-[#002335]">まずはお試しプラン</CardTitle>
-                                </div>
-                                <div className="flex items-baseline justify-center gap-2 mb-4">
-                                    <span className="text-6xl font-bold text-[#e26c5c]">¥0</span>
-                                    <span className="text-xl text-[#002335]/60 font-medium">(無料)</span>
-                                </div>
-                                <p className="text-[#002335] font-bold mt-2">
-                                    毎月5教室限定
-                                </p>
-                            </div>
-
-                            <CardContent className="md:w-3/5 p-8 flex flex-col justify-center">
-                                <CardDescription className="text-lg text-[#002335]/80 font-medium mb-6 text-center md:text-left">
-                                    「失敗したくない」「まずは提案を見てみたい」という方はこちら。<br />
-                                    プロがあなたの教室専用の改善案・デザインを無料で作成します。
-                                </CardDescription>
-
-                                <div className="grid md:grid-cols-2 gap-4 mb-8">
-                                    {[
-                                        "HP改善案の作成",
-                                        "トップページデザイン",
-                                        "スマホ実機での確認",
-                                        "強引な営業は一切なし"
-                                    ].map((feature) => (
-                                        <div key={feature} className="flex items-center font-bold text-[#002335]">
-                                            <div className="rounded-full bg-[#06C755]/10 p-1 mr-3 shrink-0">
-                                                <Check className="w-4 h-4 text-[#06C755]" />
-                                            </div>
-                                            {feature}
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer">
-                                    <Button size="lg" className="w-full bg-[#06C755] hover:bg-[#05b34c] text-white font-bold text-xl h-16 shadow-xl shadow-[#06C755]/20">
-                                        無料プレビューをもらう
-                                        <Rocket className="ml-2 w-6 h-6" />
-                                    </Button>
-                                </a>
-                                <p className="text-center text-xs text-[#002335]/50 mt-3">
-                                    ※ リスクは一切ありません。気に入らなければ断ってください。
-                                </p>
-                            </CardContent>
-                        </Card>
-                    </div>
-
-                    {/* Secondary Plans Container */}
-                    <div className="md:col-span-3 grid md:grid-cols-2 gap-6 opacity-90 hover:opacity-100 transition-opacity">
-                        {/* Plan B: 制作プラン */}
-                        <Card className="bg-slate-50 border-slate-200 shadow-none hover:shadow-md transition-all">
-                            <CardHeader className="pb-4">
-                                <CardTitle className="text-lg font-bold text-slate-700">制作プラン</CardTitle>
-                                <div className="flex items-baseline gap-1">
-                                    <span className="text-2xl font-bold text-slate-900">¥77,000</span>
-                                    <span className="text-xs text-slate-500">(税込)</span>
-                                </div>
-                                <p className="text-sm text-slate-600 mt-2">
-                                    「無料プレビューは飛ばして、最短で制作したい」というお急ぎの方。
-                                </p>
-                            </CardHeader>
-                            <CardFooter>
-                                <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer" className="w-full">
-                                    <Button className="w-full bg-white hover:bg-slate-100 text-slate-700 border border-slate-300" variant="outline">
-                                        今すぐ制作を申し込む
-                                    </Button>
-                                </a>
-                            </CardFooter>
-                        </Card>
-
-                        {/* Plan C: おまかせ集客 */}
-                        <Card className="bg-slate-50 border-slate-200 shadow-none hover:shadow-md transition-all">
-                            <CardHeader className="pb-4">
-                                <CardTitle className="text-lg font-bold text-slate-700">おまかせ集客プラン</CardTitle>
-                                <div className="flex items-baseline gap-1">
-                                    <span className="text-2xl font-bold text-slate-900">¥44,000</span>
-                                    <span className="text-xs text-slate-500">/月(税込)</span>
-                                </div>
-                                <p className="text-sm text-slate-600 mt-2">
-                                    「制作から集客まで丸投げしたい」という方。
-                                </p>
-                            </CardHeader>
-                            <CardFooter>
-                                <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer" className="w-full">
-                                    <Button className="w-full bg-white hover:bg-slate-100 text-slate-700 border border-slate-300" variant="outline">
-                                        集客までフルサポートで申し込む
-                                    </Button>
-                                </a>
-                            </CardFooter>
-                        </Card>
-                    </div>
-
+                        </FadeIn>
+                    ))}
                 </div>
             </div>
         </section>
     );
 }
+

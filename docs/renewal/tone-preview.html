@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXT VALLEY リニューアル — 最終トーン（堅牢×ロゴカラー）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: #f0f0f0;
+    color: #002335;
+    line-height: 1.8;
+  }
+  .intro { max-width: 960px; margin: 0 auto; padding: 48px 24px 8px; }
+  .intro h1 { font-size: 24px; margin-bottom: 8px; }
+  .intro p { color: #666; font-size: 14px; }
+  .tone { max-width: 960px; margin: 40px auto 64px; background: #fff; border: 1px solid #ddd; }
+  .tone-head { padding: 20px 32px; border-bottom: 1px solid #ddd; }
+  .tone-head h2 { font-size: 20px; }
+  .tone-head p { font-size: 13px; color: #666; }
+  .swatches { display: flex; }
+  .swatch { flex: 1; height: 56px; position: relative; }
+  .swatch span {
+    position: absolute; bottom: 4px; left: 6px;
+    font-size: 10px; font-family: monospace;
+    background: rgba(255,255,255,.9); color: #333; padding: 1px 4px;
+  }
+  .sample { padding: 72px 48px; }
+  .label { font-size: 12px; letter-spacing: .25em; margin-bottom: 20px; font-weight: bold; color: #e26c5c; }
+  .sample h3 { font-size: 42px; line-height: 1.35; margin-bottom: 24px; font-weight: 700; }
+  .sample .body { font-size: 16px; max-width: 34em; margin-bottom: 32px; }
+  .cta { display: inline-block; padding: 16px 40px; font-size: 16px; font-weight: bold; text-decoration: none; background: #e26c5c; color: #ffffff; }
+
+  /* ダークセクション（濃紺） */
+  .dark { background: #002335; }
+  .dark h3 { color: #ffffff; }
+  .dark .body { color: #9fb0bd; }
+
+  /* ライトセクション（白） */
+  .light { background: #ffffff; border-top: 1px solid #ddd; }
+  .light h3 { color: #002335; }
+  .light .body { color: #5c6b78; }
+  .light .card-row { display: flex; gap: 0; border: 1px solid #e2e6ea; }
+  .light .card { flex: 1; padding: 32px 24px; border-right: 1px solid #e2e6ea; }
+  .light .card:last-child { border-right: none; }
+  .light .card b { display: block; font-size: 17px; margin-bottom: 8px; color: #002335; }
+  .light .card p { font-size: 13px; color: #5c6b78; }
+  .logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 40px; }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>最終トーン — 堅牢 × ロゴカラー</h1>
+  <p>案1の骨格のまま、アクセントをロゴのコーラル（#e26c5c）に、文字色をロゴの紺（#002335）に統一。白セクションと紺セクションを交互に使います。</p>
+</div>
+
+<div class="tone">
+  <div class="tone-head">
+    <h2>配色（ロゴの2色＋補助3色）</h2>
+    <p>角丸なし・影なし・罫線1px。区切りは余白で作る</p>
+  </div>
+  <div class="swatches">
+    <div class="swatch" style="background:#ffffff; border-bottom:1px solid #eee"><span>#ffffff 背景</span></div>
+    <div class="swatch" style="background:#002335"><span>#002335 文字/紺地</span></div>
+    <div class="swatch" style="background:#5c6b78"><span>#5c6b78 補助文字</span></div>
+    <div class="swatch" style="background:#e2e6ea"><span>#e2e6ea 罫線</span></div>
+    <div class="swatch" style="background:#e26c5c"><span>#e26c5c アクセント</span></div>
+  </div>
+
+  <!-- ダーク面: ファーストビュー想定 -->
+  <div class="sample dark">
+    <div class="logo-row">
+      <svg width="135" height="30" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0L15 20L0 40H12L27 20L12 0H0Z" fill="#e26c5c" />
+        <text x="36" y="28" font-family="Arial, sans-serif" font-weight="bold" font-size="24" letter-spacing="-0.02em" fill="#ffffff">NEXT VALLEY</text>
+      </svg>
+    </div>
+    <p class="label">WEB PRODUCTION &amp; MARKETING</p>
+    <h3>作って終わりにしない、<br>Webの実働部隊。</h3>
+    <p class="body">ホームページは、公開した日から仕事が始まります。NEXT VALLEYは制作から集客・運用までを一社で引き受け、成果の数字まで並走するWeb制作会社です。</p>
+    <a class="cta" href="#">見積もり・提案を依頼する</a>
+  </div>
+
+  <!-- ライト面: サービスセクション想定 -->
+  <div class="sample light">
+    <p class="label">SERVICE</p>
+    <h3 style="font-size:32px">制作から集客まで、一社で。</h3>
+    <p class="body">窓口がひとつだから、話が速い。作る人と集める人が同じチームにいます。</p>
+    <div class="card-row">
+      <div class="card"><b>HP・LP制作</b><p>成果から逆算して設計するホームページ・ランディングページ</p></div>
+      <div class="card"><b>SEO・MEO集客</b><p>検索とGoogleマップで「探している人」に見つけてもらう</p></div>
+      <div class="card"><b>SNSマーケティング</b><p>SNSの運用設計から実務まで。集客の動線をつくる</p></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

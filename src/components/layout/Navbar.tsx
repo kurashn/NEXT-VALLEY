@@ -1,41 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
-import { Menu, Zap, X } from "lucide-react";
+// sample/fv-sankou.png のナビ再現: 深い紺地・白リンク・コーラルの角丸ボタン
 
+import React from "react";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { Menu, X, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import logo from "@/images/logo-new.png";
 
 const navLinks = [
-  { name: "お悩み", href: "/#problem" },
-  { name: "私たちの強み", href: "/#solution" },
-  { name: "選ばれる理由", href: "/#strategy" },
-  { name: "料金", href: "/#service" },
+  { name: "サービス", href: "/#service" },
+  { name: "制作実績", href: "/#works" },
+  { name: "私たちの強み", href: "/#reason" },
+  { name: "会社情報", href: "/company" },
   { name: "お役立ちコラム", href: "/blog" },
   { name: "お問い合わせ", href: "/contact" },
 ];
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-
 export default function Navbar() {
-  // const { scrollY } = useScroll();
-  const pathname = usePathname();
-  // const router = useRouter(); // router is not used
-  const isHome = pathname === "/";
-  const [scrolled, setScrolled] = useState(false);
-
-  // React useEffect for scroll handling to remove framer-motion dependency for critical path
-  React.useEffect(() => {
-    const handleScrollChange = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScrollChange);
-    return () => window.removeEventListener("scroll", handleScrollChange);
-  }, []);
-
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
     if (href.startsWith("/#")) {
       const targetId = href.replace("/#", "");
@@ -43,7 +26,7 @@ export default function Navbar() {
 
       if (element) {
         e.preventDefault();
-        const offset = 80;
+        const offset = 88;
         const elementPosition = element.getBoundingClientRect().top + window.scrollY;
 
         window.scrollTo({
@@ -58,81 +41,87 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || !isHome
-        ? "bg-[#002335]/90 backdrop-blur-xl border-b border-white/10 shadow-sm"
-        : "bg-transparent border-b border-transparent"
-        }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-20">
-
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group relative">
+    <nav className="fixed left-0 right-0 top-0 z-50 bg-navy-deep">
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
+        <div className="flex h-20 items-center justify-between gap-6">
+          {/* ロゴ */}
+          <Link href="/" className="flex min-h-11 shrink-0 items-center">
             <Image
               src={logo}
               alt="NEXT VALLEY"
               width={180}
               height={40}
-              className="h-10 w-auto object-contain transition-all duration-300"
+              className="h-9 w-auto object-contain"
               priority
             />
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-8">
-            <div className="flex items-center gap-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleScroll(e, link.href)}
-                  className="text-sm font-medium text-white/90 transition-colors relative group hover:text-[#e26c5c]"
-                >
-                  {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#e26c5c] transition-all group-hover:w-full" />
-                </Link>
-              ))}
-            </div>
-            <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg shadow-primary/20 rounded-full px-6 cursor-pointer">
-                <Zap className="w-4 h-4 mr-2" />
-                無料相談はこちら
-              </Button>
-            </a>
+          {/* デスクトップナビ */}
+          <div className="hidden items-center gap-8 lg:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
+                className="text-sm font-medium text-white transition-colors hover:text-coral"
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
 
-          {/* Mobile Nav */}
+          {/* CTA（コーラルの角丸ボタン） */}
+          <a
+            href="https://lin.ee/N4QXdJL"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden h-12 items-center gap-3 rounded-lg bg-coral-deep px-6 text-sm font-bold text-white transition-opacity hover:opacity-90 lg:inline-flex"
+          >
+            無料診断を受ける
+            <ArrowRight className="h-4 w-4" />
+          </a>
+
+          {/* モバイルナビ */}
           <div className="lg:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
-                  <Menu className="w-6 h-6" />
-                </Button>
+                <button
+                  aria-label="メニューを開く"
+                  className="flex h-11 w-11 items-center justify-center text-white"
+                >
+                  <Menu className="h-6 w-6" />
+                </button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-[#002335]/95 backdrop-blur-xl border-l border-white/10 sm:max-w-xs" showCloseButton={false}>
-                <SheetClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-secondary text-white">
+              <SheetContent
+                side="right"
+                className="border-l border-navy-line bg-navy-deep sm:max-w-xs"
+                showCloseButton={false}
+              >
+                <SheetClose className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center text-white">
                   <X className="h-6 w-6" />
-                  <span className="sr-only">Close</span>
+                  <span className="sr-only">閉じる</span>
                 </SheetClose>
-                <div className="flex flex-col gap-8 mt-10 px-8">
-                  <div className="flex flex-col gap-6">
+                <div className="mt-14 flex flex-col gap-8 px-8">
+                  <div className="flex flex-col">
                     {navLinks.map((link) => (
                       <a
                         key={link.name}
                         href={link.href}
                         onClick={(e) => link.href.startsWith("/#") && handleScroll(e, link.href)}
-                        className="text-lg font-medium text-white hover:text-[#e26c5c] transition-colors py-2 border-b border-white/10"
+                        className="border-b border-navy-line py-4 text-base font-medium text-white transition-colors hover:text-coral"
                       >
                         {link.name}
                       </a>
                     ))}
                   </div>
-                  <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer" className="mt-4">
-                    <Button className="w-full bg-[#e26c5c] hover:bg-[#d05a4b] text-white font-bold shadow-lg rounded-full py-6 text-lg">
-                      <Zap className="w-5 h-5 mr-2" />
-                      無料相談はこちら
-                    </Button>
+                  <a
+                    href="https://lin.ee/N4QXdJL"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-14 items-center justify-center gap-2 rounded-lg bg-coral-deep text-base font-bold text-white"
+                  >
+                    無料診断を受ける
+                    <ArrowRight className="h-4 w-4" />
                   </a>
                 </div>
               </SheetContent>
@@ -140,6 +129,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </nav >
+    </nav>
   );
 }

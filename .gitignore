@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# renewal working files (screenshots of reference sites, audit outputs)
+/docs/renewal/audit/
+/docs/renewal/ref/

@@ -1,48 +1,62 @@
 import React from "react";
 import Link from "next/link";
-
-
 import Image from "next/image";
 import logo from "@/images/logo-new.png";
 
+const footerLinks = [
+    { name: "事業情報", href: "/company" },
+    { name: "プライバシーポリシー", href: "/privacy" },
+    { name: "利用規約", href: "/terms" },
+    { name: "特商法表記", href: "/tokusho" },
+    { name: "お問い合わせ", href: "/contact" },
+    { name: "お役立ちコラム", href: "/blog" },
+];
+
 export function Footer() {
     return (
-        <footer className="bg-[#111111] border-t border-white/10 py-12 px-6">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-                <a href="#" className="flex items-center gap-2 group">
-                    <Image
-                        src={logo}
-                        alt="NEXT VALLEY"
-                        width={150}
-                        height={34}
-                        className="h-9 w-auto object-contain opacity-90 transition-opacity hover:opacity-100"
-                    />
-                </a>
+        <footer className="border-t border-navy-line bg-navy-deep px-4 pb-10 pt-14 md:px-6">
+            <div className="mx-auto max-w-7xl">
+                <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+                    <div>
+                        <Link href="/" className="inline-flex min-h-11 items-center">
+                            <Image
+                                src={logo}
+                                alt="NEXT VALLEY"
+                                width={180}
+                                height={40}
+                                className="h-9 w-auto object-contain"
+                            />
+                        </Link>
+                        <p className="mt-4 text-sm text-navy-sub">
+                            AI活用で売上と業務を支援する<span className="nowrap">プロチーム</span>
+                        </p>
+                        <p className="mt-2 text-sm leading-[1.9] text-navy-sub">
+                            代表 倉林 駿 ／{" "}
+                            <a
+                                href="mailto:info@nextvalley-jpn.com"
+                                className="underline transition-colors hover:text-white"
+                            >
+                                info@nextvalley-jpn.com
+                            </a>
+                        </p>
+                    </div>
 
-                <p className="text-slate-500 text-sm">
-                    &copy; {new Date().getFullYear()} NEXT VALLEY. All rules reversed.
-                </p>
-
-                <div className="flex gap-6 flex-wrap justify-center md:justify-end">
-                    <Link href="/company" className="text-slate-500 hover:text-white text-sm transition-colors">
-                        事業情報
-                    </Link>
-                    <Link href="/privacy" className="text-slate-500 hover:text-white text-sm transition-colors">
-                        プライバシーポリシー
-                    </Link>
-                    <Link href="/terms" className="text-slate-500 hover:text-white text-sm transition-colors">
-                        利用規約
-                    </Link>
-                    <Link href="/tokusho" className="text-slate-500 hover:text-white text-sm transition-colors">
-                        特商法表記
-                    </Link>
-                    <Link href="/contact" className="text-slate-500 hover:text-white text-sm transition-colors">
-                        お問い合わせ
-                    </Link>
-                    <Link href="/blog" className="text-slate-500 hover:text-white text-sm transition-colors">
-                        お役立ちコラム
-                    </Link>
+                    <div className="flex max-w-md flex-wrap gap-x-6 gap-y-1">
+                        {footerLinks.map((link) => (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                className="inline-flex min-h-11 items-center text-sm text-navy-sub transition-colors hover:text-white"
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
+
+                <p className="mt-10 border-t border-navy-line pt-6 text-sm text-navy-sub">
+                    &copy; {new Date().getFullYear()} NEXT VALLEY
+                </p>
             </div>
         </footer>
     );

@@ -1,76 +1,90 @@
-/* eslint-disable react/no-unescaped-entities */
-"use client";
+// Server Component — ファーストビュー（sample/fv-sankou.png の忠実再現）
+// 深い紺地・右側に渓谷の写真（左へフェード）・左コピー・下部に統計3つ
 
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
-
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+import { FadeIn } from "@/components/ui/FadeIn";
 
-import heroBg from "@/images/hero-digital.webp";
+import fvbg from "@/images/fvbg.webp";
 
 export default function Hero() {
     return (
-        <section className="relative min-h-[90vh] md:min-h-[110vh] flex items-center justify-center overflow-hidden bg-[#002335]">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
+        <section className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-navy-deep pt-20">
+            {/* 渓谷の写真（右側。左へフェードして紺地に溶ける） */}
+            <div
+                aria-hidden
+                className="absolute inset-y-0 right-0 w-full md:w-[62%]"
+                style={{
+                    maskImage: "linear-gradient(to right, transparent 0%, black 35%)",
+                    WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 35%)",
+                }}
+            >
                 <Image
-                    src={heroBg}
-                    alt="Background"
+                    src={fvbg}
+                    alt=""
                     fill
-                    className="object-cover opacity-90"
                     priority
+                    className="object-cover object-center opacity-90"
                     placeholder="blur"
-                    sizes="100vw"
+                    sizes="(max-width: 768px) 100vw, 62vw"
                 />
-                {/* Gradient Overlay for Readability */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[#002335]/90 via-[#002335]/70 to-[#002335]/95" />
             </div>
 
-            <div className="container relative z-10 mx-auto px-6 text-center">
-                <div className="max-w-4xl mx-auto">
-                    {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm font-medium mb-8 shadow-lg">
-                        <Sparkles className="w-4 h-4 text-[#e26c5c]" />
-                        <span>教室・スクール専門のデジタルパートナー</span>
-                    </div>
+            {/* 座標の装飾（参考の右上ディテール） */}
+            <p
+                aria-hidden
+                className="absolute right-8 top-1/4 hidden text-right text-[11px] leading-relaxed tracking-[0.2em] text-coral md:block"
+            >
+                35.6895° N
+                <br />
+                139.6917° E
+            </p>
 
-                    {/* Headline */}
-                    <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-[1.2] mb-8 drop-shadow-xl">
-                        教室の集客、<br />
-                        <span className="text-[#e26c5c]">まるごと</span>お任せください。
-                    </h1>
-
-                    {/* Subtext */}
-                    <p className="text-slate-200 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto drop-shadow-md">
-                        "生徒が増えない"を終わりにする。
-                        <br className="hidden md:block" />
-                        AI × 人間の最強タッグで、
-                        <br className="hidden md:block" />
-                        集客も業務効率化もまとめて解決します。
-                    </p>
-
-                    {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
-                        <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer">
-                            <Button
-                                size="lg"
-                                className="h-14 px-10 text-lg font-bold bg-[#e26c5c] hover:bg-[#e26c5c]/90 text-white shadow-xl shadow-[#e26c5c]/20 hover:shadow-[#e26c5c]/40 hover:scale-105 transition-all duration-300 rounded-full border border-[#e26c5c]/30 cursor-pointer"
-                            >
-                                無料プレビューをもらう
-                                <ArrowRight className="ml-2 w-5 h-5" />
-                            </Button>
-                        </a>
-                        <p className="text-sm text-slate-400 mt-4 sm:mt-0 sm:ml-4">
-                            ※ 毎月5教室限定・費用は一切かかりません
+            {/* 左カラムのコピー */}
+            <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 items-center px-4 md:px-6">
+                <div className="max-w-3xl py-16">
+                    <FadeIn>
+                        <p className="mb-8 text-[13px] font-bold tracking-[0.3em] text-coral">
+                            AI &times; MARKETING &times; PRODUCTION
                         </p>
-                    </div>
+                    </FadeIn>
+
+                    <FadeIn delay={0.1}>
+                        <h1 className="mb-8 text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.35] tracking-tight text-white">
+                            AIで、売上と業務を
+                            <br />
+                            根本から変える。
+                        </h1>
+                    </FadeIn>
+
+                    <FadeIn delay={0.2}>
+                        <p className="lead mb-12 text-base leading-[2] text-navy-sub md:text-lg">
+                            NEXT VALLEYは、AI活用のプロチーム。
+                            <br />
+                            マーケティングもHP・LP制作も、課題に合わせて最適な打ち手を提案し、
+                            <br className="hidden md:block" />
+                            売上アップと業務効率化を<span className="nowrap">支援します。</span>
+                        </p>
+                    </FadeIn>
+
+                    <FadeIn delay={0.3}>
+                        <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+                            <a
+                                href="https://lin.ee/N4QXdJL"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group inline-flex h-16 items-center gap-8 rounded-lg bg-coral px-10 text-[19px] font-bold text-white transition-opacity hover:opacity-90"
+                            >
+                                無料で診断を受ける
+                                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                            </a>
+                            <p className="text-sm text-navy-sub">サイトのURLやお悩みを送るだけ・費用は一切<span className="nowrap">かかりません</span></p>
+                        </div>
+                    </FadeIn>
                 </div>
             </div>
 
-            {/* Decorative Elements - Subtle Glows */}
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#e26c5c]/10 rounded-full mix-blend-overlay filter blur-[100px]" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/5 rounded-full mix-blend-overlay filter blur-[100px]" />
         </section>
     );
 }

@@ -18,7 +18,7 @@ export default function CompanyPage() {
                         事業情報
                     </h1>
                     <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
-                        AIと戦略で、選ばれる教室へ。
+                        AIで、売上と業務を根本から変える。
                     </p>
                 </div>
             </section>
@@ -29,8 +29,8 @@ export default function CompanyPage() {
                     {/* Vision / Philosophy */}
                     <div className="mb-20 space-y-8 text-slate-700 leading-loose text-lg">
                         <p>
-                            「良い教育を提供しているのに、知られていない」<br />
-                            そんなもどかしさを抱える教室・スクール運営者様のために、NEXT VALLEYは存在します。
+                            「良い仕事をしているのに、知られていない」<br />
+                            そんなもどかしさを抱える中小企業・事業者様のために、NEXT VALLEYは存在します。
                         </p>
                         <p>
                             従来のホームページ制作は、高額で時間がかかりすぎました。<br />
@@ -79,19 +79,23 @@ export default function CompanyPage() {
                                     <dd className="text-base text-slate-600 leading-relaxed space-y-2">
                                         <div className="flex items-start gap-2">
                                             <span className="text-[#e26c5c] font-bold">・</span>
-                                            <span>AIを活用したWebサイト制作 / リニューアル</span>
+                                            <span>AI活用コンサルティング</span>
                                         </div>
                                         <div className="flex items-start gap-2">
                                             <span className="text-[#e26c5c] font-bold">・</span>
-                                            <span>教育・スクール特化型Web集客支援</span>
+                                            <span>ホームページ・LP制作 / リニューアル</span>
                                         </div>
                                         <div className="flex items-start gap-2">
                                             <span className="text-[#e26c5c] font-bold">・</span>
-                                            <span>MEO対策（Googleマップ集客）</span>
+                                            <span>SEO・MEO対策（検索・Googleマップ集客）</span>
                                         </div>
                                         <div className="flex items-start gap-2">
                                             <span className="text-[#e26c5c] font-bold">・</span>
-                                            <span>Webマーケティング内製化支援</span>
+                                            <span>SNSマーケティング支援</span>
+                                        </div>
+                                        <div className="flex items-start gap-2">
+                                            <span className="text-[#e26c5c] font-bold">・</span>
+                                            <span>HP運用ツールの開発・提供（準備中）</span>
                                         </div>
                                     </dd>
                                 </div>

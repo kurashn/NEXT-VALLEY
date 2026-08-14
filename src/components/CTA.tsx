@@ -1,66 +1,84 @@
+// Server Component — 最終CTA（コンバージョン最適化版）
+// ライト面のまま、中央寄せの大型パネル＋主役のLINEボタン＋安心材料
+
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
-import bg from "@/images/cta-bg-photo.webp";
+import { MessageCircle, Mail, Check } from "lucide-react";
+import { FadeIn } from "@/components/ui/FadeIn";
+import { SerifHeading, serif } from "@/components/ui/SerifHeading";
+
+const assurances = ["診断・提案・見積もりは無料", "しつこい営業なし", "全国オンライン対応"];
 
 export function CTA() {
     return (
-        <section className="py-24 px-4 bg-[#002335] relative overflow-hidden text-white">
-            {/* Background Image with Overlay */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-[#002335]/90 z-10" />
-                <Image
-                    src={bg}
-                    alt="Background"
-                    fill
-                    className="object-cover opacity-40 mix-blend-overlay"
-                    placeholder="blur"
-                    sizes="100vw"
-                />
-            </div>
+        <section className="relative overflow-hidden bg-base px-4 py-16 md:px-6 md:py-24">
+            <div className="relative mx-auto max-w-5xl">
+                <FadeIn>
+                    <SerifHeading en="Contact" jp="お問い合わせ" />
+                </FadeIn>
 
-            <div className="max-w-4xl mx-auto text-center relative z-10">
-                <div className="inline-block mb-6">
-                    <span className="bg-[#e26c5c] text-white text-xs md:text-sm font-bold px-4 py-1.5 rounded-full tracking-wider shadow-lg">
-                        毎月5教室限定・完全無料
-                    </span>
-                </div>
+                <FadeIn>
+                    <div className="relative overflow-hidden rounded-[28px] bg-white px-6 py-12 text-center shadow-[0_16px_40px_rgba(31,26,20,0.06)] md:px-16 md:py-16">
+                        {/* 上辺のコーラルアクセント */}
+                        <span aria-hidden className="absolute left-0 top-0 h-1.5 w-full bg-coral" />
 
-                <h2 className="text-3xl md:text-6xl font-bold mb-8 tracking-tight text-white leading-tight">
-                    リスクゼロで、<br />プロの<span className="text-[#e26c5c] mx-2">「無料改善案」</span>を<br />
-                    試してみませんか？
-                </h2>
-                <p className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-                    いきなりの契約は不要です。<br />
-                    まずはあなたの教室専用の<span className="font-bold text-white border-b border-[#e26c5c]">「完成イメージ」</span>をスマホで確認してください。<br />
-                    気に入らなければ、そのまま断っていただいて構いません。
-                </p>
+                        <p className="mb-5 text-[13px] font-bold tracking-[0.3em] text-coral-deep">
+                            FREE CHECK &amp; PROPOSAL
+                        </p>
+                        <h3 className="mb-5 text-[clamp(1.625rem,4vw,2.75rem)] font-bold leading-[1.45] tracking-tight text-ink">
+                            まずは、<span className="text-coral-deep">無料診断</span>から。
+                        </h3>
+                        <p className="lead mx-auto mb-10 max-w-[32em] text-[15px] leading-[2] text-ink-sub">
+                            サイトのURLやお悩みをLINEで送るだけ。改善の打ち手と概算お見積もりをまとめて<span className="nowrap">お返しします。</span>
+                            <br className="hidden md:block" />
+                            提案を見てから、頼むかどうか決めて<span className="nowrap">ください。</span>
+                        </p>
 
-                <div className="flex flex-col items-center gap-4">
-                    <div className="relative group">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-[#06C755] to-[#00d455] rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                        <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer">
-                            <Button
-                                size="lg"
-                                className="relative w-full md:w-auto bg-[#06C755] hover:bg-[#05b34c] text-white font-bold text-xl px-12 py-8 h-auto rounded-xl shadow-[0_0_40px_rgba(6,199,85,0.4)] transition-all hover:scale-[1.02] hover:shadow-[0_0_60px_rgba(6,199,85,0.6)] border border-white/20 cursor-pointer"
+                        {/* LINE登録特典 */}
+                        <p className="mx-auto mb-8 inline-flex max-w-full flex-col items-center gap-1 rounded-2xl bg-cream px-6 py-4 text-sm font-bold text-ink">
+                            <span className="text-coral-deep">＼ いまLINE登録で特典 ／</span>
+                            <span className="leading-[1.8]">
+                                <span className="nowrap">『プロが見ている</span>
+                                <span className="nowrap">HP改善チェックリスト30項目』</span>
+                                <span className="nowrap">PDFをプレゼント</span>
+                            </span>
+                        </p>
+
+                        {/* 主役: LINE / 従属: メール */}
+                        <div className="mx-auto flex max-w-xl flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+                            <a
+                                href="https://lin.ee/N4QXdJL"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex h-16 items-center justify-center gap-2.5 rounded-full bg-[#05a247] px-8 text-[19px] font-bold text-white shadow-[0_12px_28px_rgba(5,162,71,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(5,162,71,0.45)] sm:flex-1"
                             >
-                                <span className="flex flex-col items-center">
-                                    <span className="flex items-center gap-2">
-                                        無料プレビューをもらう
-                                        <ArrowRight className="w-6 h-6" />
-                                    </span>
-                                    <span className="text-xs font-normal opacity-90 mt-1 tracking-wide">
-                                        ※ 最適な提案のため、簡単なヒアリングがあります
-                                    </span>
-                                </span>
-                            </Button>
-                        </a>
+                                <MessageCircle className="h-6 w-6" aria-hidden />
+                                LINEで無料診断を受ける
+                            </a>
+                            <a
+                                href="/contact"
+                                className="inline-flex h-16 items-center justify-center gap-2 rounded-full border border-line bg-white px-8 text-[15px] font-bold text-ink transition-colors hover:border-coral hover:text-coral-deep"
+                            >
+                                <Mail className="h-5 w-5" aria-hidden />
+                                メールで相談する
+                            </a>
+                        </div>
+
+                        {/* 安心材料 */}
+                        <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
+                            {assurances.map((a) => (
+                                <li key={a} className="flex items-center gap-1.5 text-sm font-bold text-ink-sub">
+                                    <Check className="h-4 w-4 text-coral-deep" aria-hidden />
+                                    {a}
+                                </li>
+                            ))}
+                        </ul>
+
+                        {/* 一言の後押し */}
+                        <p className="mt-8 text-sm text-ink-sub" style={{ fontFamily: serif }}>
+                            — 気に入らなければ、断ってください —
+                        </p>
                     </div>
-                    <p className="text-white/60 text-xs md:text-sm mt-4">
-                        強引な営業は一切いたしませんのでご安心ください
-                    </p>
-                </div>
+                </FadeIn>
             </div>
         </section>
     );
