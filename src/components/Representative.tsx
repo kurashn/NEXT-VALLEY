@@ -6,7 +6,7 @@ import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading, serif } from "@/components/ui/SerifHeading";
 
-import shunk from "@/images/shunk.webp";
+import shun from "@/images/shun-new.webp";
 
 export function Representative() {
     return (
@@ -20,15 +20,15 @@ export function Representative() {
                 <FadeIn>
                     <div className="flex flex-col gap-8 rounded-2xl bg-white p-7 shadow-[0_16px_40px_rgba(31,26,20,0.06)] md:flex-row md:gap-14 md:p-14">
                         {/* 写真 */}
-                        <div className="mx-auto w-44 shrink-0 md:mx-0 md:w-72">
-                            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl">
+                        <div className="mx-auto w-full max-w-[320px] shrink-0 md:mx-0 md:w-80">
+                            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
                                 <Image
-                                    src={shunk}
+                                    src={shun}
                                     alt="NEXT VALLEY 代表 倉林駿"
                                     fill
                                     className="object-cover"
                                     placeholder="blur"
-                                    sizes="(max-width: 768px) 176px, 288px"
+                                    sizes="(max-width: 768px) 320px, 320px"
                                 />
                             </div>
                         </div>
