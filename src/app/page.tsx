@@ -21,6 +21,16 @@ export default function Home() {
             "@context": "https://schema.org",
             "@graph": [
               {
+                "@type": "Organization",
+                "name": "NEXT VALLEY",
+                "url": "https://nextvalley-jpn.com",
+                "logo": "https://nextvalley-jpn.com/og-image.png",
+                "founder": { "@type": "Person", "name": "倉林 駿" },
+                "foundingDate": "2021-01",
+                "email": "info@nextvalley-jpn.com",
+                "sameAs": ["https://sitechat.jp/"]
+              },
+              {
                 "@type": "ProfessionalService",
                 "name": "NEXT VALLEY",
                 "image": "https://nextvalley-jpn.com/og-image.png",

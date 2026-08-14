@@ -2,6 +2,7 @@
 // ウォームベージュ地・多色セリフ見出し・白カード＋ソフトなイラスト＋コーラル↗
 
 import React from "react";
+import { ArrowUpRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 
 /* ── カード右側のソフトイラスト（SVG。ベージュ×コーラルの柔らかい質感） ── */
@@ -108,24 +109,27 @@ function IlloSns() {
                 <rect x="130" y="106" width="44" height="6" rx="3" fill={soft.beige} />
                 <rect x="130" y="126" width="48" height="12" rx="6" fill={soft.coral} opacity="0.85" />
             </g>
-            {/* SNSバッジ: Instagram風 */}
+            {/* SNSバッジ: Instagram（角丸スクエア＋レンズ＋ドット） */}
             <g filter="url(#s3)">
-                <rect x="52" y="30" width="40" height="40" rx="11" fill="url(#ig)" />
+                <rect x="52" y="30" width="40" height="40" rx="10" fill="url(#ig)" />
             </g>
-            <rect x="63" y="41" width="18" height="18" rx="6" stroke="#fff" strokeWidth="2.5" />
-            <circle cx="72" cy="50" r="4.5" stroke="#fff" strokeWidth="2.5" />
-            <circle cx="78.5" cy="43.5" r="1.6" fill="#fff" />
-            {/* X風 */}
+            <rect x="60.5" y="38.5" width="23" height="23" rx="7" stroke="#fff" strokeWidth="2.6" fill="none" />
+            <circle cx="72" cy="50" r="5.6" stroke="#fff" strokeWidth="2.6" fill="none" />
+            <circle cx="79.4" cy="42.8" r="1.9" fill="#fff" />
+            {/* X（斜めの2ストローク） */}
             <g filter="url(#s3)">
                 <circle cx="66" cy="106" r="19" fill="#1a1a1a" />
             </g>
-            <path d="M58 98l16 16M74 98l-16 16" stroke="#fff" strokeWidth="3" strokeLinecap="round" />
-            {/* LINE風 */}
+            <path d="M58.5 97.5 L73.5 114.5 M73.5 97.5 L58.5 114.5" stroke="#fff" strokeWidth="3.2" strokeLinecap="round" />
+            {/* LINE（角丸スクエア＋白バブル＋LINE文字） */}
             <g filter="url(#s3)">
-                <circle cx="98" cy="146" r="17" fill="#06c755" />
+                <rect x="80" y="128" width="38" height="38" rx="10" fill="#06c755" />
             </g>
-            <ellipse cx="98" cy="145" rx="9.5" ry="8" fill="#fff" />
-            <path d="M94 152l-2 5 7-4z" fill="#fff" />
+            <path
+                d="M99 136.5c-7.6 0-13.7 4.9-13.7 11 0 5.4 4.8 9.9 11.3 10.8.5.1.8.3.8.8l-.2 2.4c-.1.7.6 1 1.2.7 5.9-3.3 12-7.3 13.5-11.7.5-1.1.8-2.1.8-3 0-6.1-6.1-11-13.7-11z"
+                fill="#fff"
+            />
+            <text x="99" y="150.5" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="7.5" fill="#06c755">LINE</text>
             <defs>
                 <linearGradient id="ig" x1="52" y1="70" x2="92" y2="30">
                     <stop stopColor="#f9ce34" />
@@ -241,6 +245,52 @@ function IlloAi() {
     );
 }
 
+
+function IlloDesign() {
+    return (
+        <svg viewBox="0 0 240 170" className="h-full w-full" fill="none" aria-hidden>
+            {/* チラシ2枚 */}
+            <g filter="url(#s6)" transform="rotate(-6 100 90)">
+                <rect x="52" y="30" width="92" height="120" rx="8" fill={soft.panel} />
+            </g>
+            <g transform="rotate(-6 100 90)">
+                <rect x="52" y="30" width="92" height="120" rx="8" stroke={soft.line} />
+                <rect x="64" y="44" width="68" height="34" rx="5" fill={soft.coralSoft} />
+                <rect x="64" y="88" width="52" height="7" rx="3.5" fill={soft.beige2} />
+                <rect x="64" y="102" width="66" height="6" rx="3" fill={soft.beige} />
+                <rect x="64" y="114" width="58" height="6" rx="3" fill={soft.beige} />
+                <rect x="64" y="130" width="36" height="10" rx="5" fill={soft.coral} opacity="0.85" />
+            </g>
+            <g filter="url(#s6)" transform="rotate(7 170 95)">
+                <rect x="128" y="42" width="80" height="104" rx="8" fill={soft.panel} />
+            </g>
+            <g transform="rotate(7 170 95)">
+                <rect x="128" y="42" width="80" height="104" rx="8" stroke={soft.line} />
+                <circle cx="168" cy="76" r="18" fill={soft.beige} />
+                <path d="M168 76 L168 58 A18 18 0 0 1 185 82 Z" fill={soft.coral} opacity="0.8" />
+                <rect x="140" y="104" width="56" height="6" rx="3" fill={soft.beige2} />
+                <rect x="140" y="116" width="44" height="6" rx="3" fill={soft.beige} />
+            </g>
+            {/* カラースウォッチ */}
+            <g filter="url(#s6)">
+                <rect x="30" y="120" width="18" height="26" rx="4" fill="#e26c5c" />
+                <rect x="42" y="126" width="18" height="26" rx="4" fill="#2e7f92" />
+                <rect x="54" y="132" width="18" height="26" rx="4" fill="#b07d1a" />
+            </g>
+            {/* ペン */}
+            <g filter="url(#s6)" transform="rotate(40 205 60)">
+                <rect x="198" y="24" width="12" height="58" rx="6" fill={soft.ink} opacity="0.6" />
+                <path d="M198 82 L204 96 L210 82 Z" fill={soft.coral} />
+            </g>
+            <defs>
+                <filter id="s6" x="-30%" y="-30%" width="160%" height="160%">
+                    <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#1f1a14" floodOpacity="0.09" />
+                </filter>
+            </defs>
+        </svg>
+    );
+}
+
 /* ── データ ── */
 
 const services = [
@@ -265,16 +315,23 @@ const services = [
     },
     {
         en: "SNS MARKETING",
-        title: <>SNS<span className="nowrap">マーケティング</span></>,
+        title: "SNSマーケティング",
         body: <>Instagram・X・LINEなどの運用設計から実務まで。「何を投稿すればいいか分からない」を、投稿計画ごと<span className="nowrap">引き受けます。</span></>,
         illo: IlloSns,
     },
     {
+        en: "DESIGN",
+        title: "デザイン制作",
+        body: <>ロゴ・チラシ・パンフレット・バナーなどの販促デザインもワンストップで。LINE公式アカウントの構築・運用（LINEマーケティング）にも<span className="nowrap">対応します。</span></>,
+        illo: IlloDesign,
+    },
+    {
         en: "OPERATION SUPPORT",
-        title: "HP運用サポート・ツール",
-        body: <>公開後の更新・保守と、自社で運用するためのツール提供。※詳細は<span className="nowrap">準備中です。</span></>,
+        title: <>HP運用ツール<span className="nowrap">『SiteChat』</span></>,
+        body: <>公開中のホームページを、チャットで指示するだけで安全に修正できる自社開発ツール。AIが修正案を作り、あなたの承認なしに公開されることは<span className="nowrap">ありません。</span></>,
         illo: IlloOps,
-        wip: true,
+        href: "https://sitechat.jp/",
+        wide: true,
     },
 ];
 
@@ -314,35 +371,42 @@ export function Service() {
 
                 {/* サービスカード */}
                 <div className="mt-10 grid gap-6 md:mt-14 md:grid-cols-2">
-                    {services.map((s, i) => (
-                        <FadeIn key={s.en} delay={i * 0.08} className={s.wide ? "md:col-span-2" : ""}>
-                            <div className="group relative flex h-full flex-col gap-6 overflow-hidden rounded-[20px] bg-white p-8 shadow-[0_16px_40px_rgba(31,26,20,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_56px_rgba(31,26,20,0.1)] sm:flex-row sm:items-center md:p-10">
-                                {/* テキスト */}
-                                <div className={s.wide ? "sm:w-[60%]" : "sm:w-[55%]"}>
-                                    <p className="mb-4 text-xs font-bold tracking-[0.25em] text-coral-deep">{s.en}</p>
-                                    <h3 className="mb-4 flex flex-wrap items-center gap-3 text-2xl font-bold leading-snug text-ink md:text-[28px]">
-                                        {s.title}
-                                        {s.wip && (
-                                            <span className="rounded-full bg-cream px-3 py-1 text-xs font-normal text-ink-sub">
-                                                準備中
-                                            </span>
-                                        )}
-                                    </h3>
-                                    <span aria-hidden className="mb-5 block h-0.5 w-8 bg-coral" />
-                                    <p className="text-sm leading-[2] text-ink-sub">{s.body}</p>
-                                </div>
-                                {/* イラスト */}
-                                <div
-                                    aria-hidden
-                                    className={`pointer-events-none h-40 shrink-0 transition-transform duration-300 group-hover:scale-[1.04] sm:h-44 ${
-                                        s.wide ? "sm:w-[40%]" : "sm:w-[45%]"
-                                    }`}
+                    {services.map((s, i) => {
+                        const Card = s.href ? "a" : "div";
+                        return (
+                            <FadeIn key={s.en} delay={i * 0.08} className={s.wide ? "md:col-span-2" : ""}>
+                                <Card
+                                    {...(s.href ? { href: s.href, target: "_blank", rel: "noopener noreferrer" } : {})}
+                                    className="group relative flex h-full flex-col gap-6 overflow-hidden rounded-[20px] bg-white p-8 shadow-[0_16px_40px_rgba(31,26,20,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_56px_rgba(31,26,20,0.1)] lg:flex-row lg:items-center md:p-10"
                                 >
-                                    <s.illo />
-                                </div>
-                            </div>
-                        </FadeIn>
-                    ))}
+                                    {s.href && (
+                                        <ArrowUpRight
+                                            aria-hidden
+                                            className="absolute right-6 top-6 h-6 w-6 text-coral transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                                        />
+                                    )}
+                                    {/* テキスト */}
+                                    <div className={s.wide ? "lg:w-[60%]" : "lg:w-[55%]"}>
+                                        <p className="mb-4 text-xs font-bold tracking-[0.25em] text-coral-deep">{s.en}</p>
+                                        <h3 className="mb-4 flex flex-wrap items-center gap-3 text-2xl font-bold leading-snug text-ink md:text-[28px]">
+                                            {s.title}
+                                        </h3>
+                                        <span aria-hidden className="mb-5 block h-0.5 w-8 bg-coral" />
+                                        <p className="text-sm leading-[2] text-ink-sub">{s.body}</p>
+                                    </div>
+                                    {/* イラスト */}
+                                    <div
+                                        aria-hidden
+                                        className={`pointer-events-none h-40 shrink-0 transition-transform duration-300 group-hover:scale-[1.04] lg:h-44 ${
+                                            s.wide ? "lg:w-[40%]" : "lg:w-[45%]"
+                                        }`}
+                                    >
+                                        <s.illo />
+                                    </div>
+                                </Card>
+                            </FadeIn>
+                        );
+                    })}
                 </div>
             </div>
         </section>

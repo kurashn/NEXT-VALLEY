@@ -20,7 +20,7 @@ export function Representative() {
                 <FadeIn>
                     <div className="flex flex-col gap-8 rounded-2xl bg-white p-7 shadow-[0_16px_40px_rgba(31,26,20,0.06)] md:flex-row md:gap-14 md:p-14">
                         {/* 写真 */}
-                        <div className="mx-auto w-full max-w-[280px] shrink-0 md:mx-0 md:w-72">
+                        <div className="mx-auto w-44 shrink-0 md:mx-0 md:w-72">
                             <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl">
                                 <Image
                                     src={shunk}
@@ -28,25 +28,15 @@ export function Representative() {
                                     fill
                                     className="object-cover"
                                     placeholder="blur"
-                                    sizes="(max-width: 768px) 280px, 288px"
+                                    sizes="(max-width: 768px) 176px, 288px"
                                 />
-                            </div>
-                            <div className="mt-5 flex items-baseline justify-center gap-3 md:justify-start">
-                                <p className="text-xl font-bold tracking-widest text-ink">倉林 駿</p>
                             </div>
                         </div>
 
                         {/* メッセージ */}
                         <div className="relative">
-                            <span
-                                aria-hidden
-                                className="absolute -top-4 left-0 text-6xl leading-none text-coral/60 md:-left-2"
-                                style={{ fontFamily: serif }}
-                            >
-                                “
-                            </span>
                             <h3
-                                className="mb-8 pt-8 text-[clamp(1.5rem,3.2vw,2.25rem)] font-bold leading-[1.5] tracking-[0.02em] text-navy"
+                                className="mb-8 text-[clamp(1.5rem,3.2vw,2.25rem)] font-bold leading-[1.5] tracking-[0.02em] text-navy"
                                 style={{ fontFamily: serif }}
                             >
                                 営業トークより、
@@ -57,13 +47,13 @@ export function Representative() {
                             <div className="space-y-6 text-[15px] leading-[2] tracking-[0.02em] text-ink-sub">
                                 <p>こんにちは、代表の倉林 駿（くらはやし <span className="nowrap">しゅん）です。</span></p>
                                 <p>
-                                    「制作会社に頼むと高そう」「本当に効果が出るのか分からない」——Web制作の相談をためらう理由は、だいたい<span className="nowrap">この2つです。</span>
+                                    「頼むと高そう」「本当に効果が出るのか分からない」。相談をためらう理由は、だいたい<span className="nowrap">この2つです。</span>
                                 </p>
                                 <p>
                                     だから私たちは、先に実物をお見せすることにしています。あなたの会社の現状を診断し、具体的な改善案と見積もりを無料で作る。気に入らなければ、<span className="nowrap">断ってください。</span>
                                 </p>
                                 <p className="font-bold text-ink">
-                                    電話営業もしつこい連絡も、一切しません。リスクは私たちに、安心は<span className="nowrap">あなたに。</span>
+                                    無理な売り込みは一切しません。提案の中身で、判断して<span className="nowrap">ください。</span>
                                 </p>
                             </div>
 

@@ -7,7 +7,7 @@ import { ShindanTool } from "@/components/ShindanTool";
 export const metadata: Metadata = {
     title: "Web集客セルフ診断（無料・3分）",
     description:
-        "15の質問に答えるだけで、あなたの会社のWeb集客の弱点が分かる無料セルフ診断。検索で見つからない、問い合わせが来ない、何から手を付ければいいか分からない——その原因をその場で特定します。",
+        "15の質問に答えるだけで、あなたの会社のWeb集客の弱点が分かる無料セルフ診断。検索で見つからない、問い合わせが来ない、何から手を付ければいいか分からない。その原因をその場で特定します。",
 };
 
 export default function ShindanPage() {

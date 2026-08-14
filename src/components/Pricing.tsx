@@ -8,10 +8,10 @@ import { SerifHeading } from "@/components/ui/SerifHeading";
 
 /* おすすめパッケージの内容（金額は仮） */
 const packageFeatures = [
-    "成果から逆算したホームページ制作",
-    "SEO・MEO集客の設計と運用",
-    "毎月のアクセス・問い合わせレポート",
-    "公開後の更新・改善もおまかせ",
+    { key: "hp", node: <>成果から逆算した<span className="nowrap">ホームページ制作</span></> },
+    { key: "seo", node: <>SEO・MEO集客の<span className="nowrap">設計と運用</span></> },
+    { key: "report", node: <>毎月のアクセス・<span className="nowrap">問い合わせレポート</span></> },
+    { key: "ops", node: <>公開後の更新・改善も<span className="nowrap">おまかせ</span></> },
 ];
 
 const rows = [
@@ -19,8 +19,9 @@ const rows = [
     { key: "hp", service: <>ホームページ制作</>, type: "買い切り", price: "¥220,000〜" },
     { key: "seo", service: <>SEO・MEO集客</>, type: "月額", price: "¥33,000〜/月" },
     { key: "sns", service: <>SNSマーケティング</>, type: "月額", price: "¥44,000〜/月" },
+    { key: "design", service: <>デザイン制作<span className="nowrap">（ロゴ・チラシ等）</span></>, type: "スポット", price: "応相談" },
     { key: "ai", service: <><span className="nowrap">AI活用</span><span className="nowrap">コンサルティング</span></>, type: "スポット / 月額", price: "応相談" },
-    { key: "tool", service: <><span className="nowrap">HP運用</span><span className="nowrap">サポート・ツール</span></>, type: "—", price: "準備中" },
+    { key: "tool", service: <>HP運用ツール<span className="nowrap">『SiteChat』</span></>, type: "SaaS", price: <a href="https://sitechat.jp/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center font-bold text-coral-deep underline underline-offset-4">サイトを見る</a> },
 ];
 
 export function Pricing() {
@@ -37,37 +38,56 @@ export function Pricing() {
 
                 {/* おすすめパッケージ */}
                 <FadeIn>
-                    <div className="relative mb-8 overflow-hidden rounded-2xl border-2 border-coral bg-white shadow-[0_16px_40px_rgba(31,26,20,0.08)] md:mb-10">
-                        <span className="absolute right-0 top-0 rounded-bl-xl bg-coral-deep px-4 py-1.5 text-xs font-bold tracking-wider text-white">
+                    <div className="relative mb-8 overflow-hidden rounded-2xl bg-white shadow-[0_20px_48px_rgba(31,26,20,0.1)] md:mb-10">
+                        <span className="absolute right-0 top-0 z-10 rounded-bl-xl bg-coral px-5 py-2 text-[13px] font-bold tracking-wider text-navy-deep">
                             おすすめ
                         </span>
-                        <div className="flex flex-col gap-6 p-7 md:flex-row md:items-center md:gap-10 md:p-10">
-                            <div className="md:w-[45%]">
-                                <p className="mb-2 text-xs font-bold tracking-[0.25em] text-coral-deep">
-                                    ALL-IN-ONE
-                                </p>
-                                <h3 className="mb-3 text-2xl font-bold leading-snug text-ink md:text-[26px]">
-                                    まるごと集客プラン
-                                </h3>
-                                <p className="mb-5 text-sm leading-[1.9] text-ink-sub">
-                                    「作る」と「集める」をセットで。この分業をなくすことが、いちばん成果に<span className="nowrap">つながります。</span>
-                                </p>
-                                <p className="text-ink">
-                                    <span className="text-sm text-ink-sub">初期</span>{" "}
-                                    <span className="text-3xl font-bold tabular-nums">¥165,000</span>
-                                    <span className="text-sm">〜</span>
-                                    <span className="mx-2 text-ink-sub">＋</span>
-                                    <span className="text-sm text-ink-sub">月額</span>{" "}
-                                    <span className="text-3xl font-bold tabular-nums">¥44,000</span>
-                                    <span className="text-sm">〜（税込）</span>
-                                </p>
+                        <div className="flex flex-col md:flex-row md:items-stretch">
+                            {/* 左: 紺のプラン面 */}
+                            <div className="relative overflow-hidden bg-navy-deep p-8 text-white md:w-[44%] md:p-10">
+                                <div
+                                    aria-hidden
+                                    className="absolute inset-0 opacity-30"
+                                    style={{
+                                        backgroundImage:
+                                            "linear-gradient(var(--color-navy-line) 1px, transparent 1px), linear-gradient(90deg, var(--color-navy-line) 1px, transparent 1px)",
+                                        backgroundSize: "64px 64px",
+                                    }}
+                                />
+                                <div className="relative">
+                                    <p className="mb-3 text-xs font-bold tracking-[0.25em] text-coral">ALL-IN-ONE</p>
+                                    <h3 className="mb-4 text-2xl font-bold leading-snug md:text-[28px]">
+                                        まるごと集客プラン
+                                    </h3>
+                                    <p className="mb-8 text-sm leading-[1.9] text-navy-sub">
+                                        「作る」と「集める」をセットで。この分業をなくすことが、いちばん成果に<span className="nowrap">つながります。</span>
+                                    </p>
+                                    <p>
+                                        <span className="nowrap">
+                                            <span className="text-sm text-navy-sub">初期</span>{" "}
+                                            <span className="text-4xl font-bold tabular-nums">¥165,000</span>
+                                            <span className="text-sm">〜</span>
+                                        </span>
+                                        <br />
+                                        <span className="nowrap">
+                                            <span className="text-sm text-navy-sub">＋ 月額</span>{" "}
+                                            <span className="text-4xl font-bold tabular-nums">¥44,000</span>
+                                            <span className="text-sm">〜（税込）</span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <span aria-hidden className="absolute bottom-0 left-0 h-1 w-full bg-coral" />
                             </div>
-                            <div className="flex-1">
-                                <ul className="mb-6 grid gap-2.5 sm:grid-cols-2">
+                            {/* 右: 内訳とCTA */}
+                            <div className="flex-1 p-8 md:p-10">
+                                <p className="mb-4 text-xs font-bold tracking-[0.2em] text-ink-sub">プランに含まれるもの</p>
+                                <ul className="mb-8 grid gap-3">
                                     {packageFeatures.map((f) => (
-                                        <li key={f} className="flex items-start gap-2 text-sm font-bold leading-snug text-ink">
-                                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-coral-deep" aria-hidden />
-                                            {f}
+                                        <li key={f.key} className="flex items-start gap-3 text-[15px] font-bold leading-snug text-ink">
+                                            <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-coral/15">
+                                                <Check className="h-3.5 w-3.5 text-coral-deep" aria-hidden />
+                                            </span>
+                                            <span>{f.node}</span>
                                         </li>
                                     ))}
                                 </ul>

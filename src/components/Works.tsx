@@ -5,7 +5,6 @@ import React from "react";
 import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading, serif } from "@/components/ui/SerifHeading";
-import { InlineCTA } from "@/components/ui/InlineCTA";
 
 // Featured Works
 import work1 from "@/images/works/works1.jpg";
@@ -75,12 +74,12 @@ export function Works() {
                     {featuredWorks.map((work, i) => (
                         <FadeIn key={work.name} delay={i * 0.08} className="flex">
                             <article className="group flex flex-1 flex-col overflow-hidden rounded-2xl bg-white shadow-[0_16px_40px_rgba(31,26,20,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_56px_rgba(31,26,20,0.1)]">
-                                <div className="relative aspect-video w-full overflow-hidden">
+                                <div className="relative w-full overflow-hidden bg-white" style={{ aspectRatio: "995 / 580" }}>
                                     <Image
                                         src={work.image}
                                         alt={`${work.name}のホームページ`}
                                         fill
-                                        className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                                        className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
                                         placeholder="blur"
                                         sizes="(max-width: 1024px) 100vw, 33vw"
                                     />
@@ -92,16 +91,7 @@ export function Works() {
                                         </span>
                                     </p>
                                     <h3 className="mb-4 text-lg font-bold text-ink">{work.name}</h3>
-                                    <div className="relative flex-1">
-                                        <span
-                                            aria-hidden
-                                            className="absolute -top-2 left-0 text-4xl leading-none text-coral/70"
-                                            style={{ fontFamily: serif }}
-                                        >
-                                            “
-                                        </span>
-                                        <p className="pl-7 pt-1 text-sm leading-[2] text-ink-sub">{work.review}</p>
-                                    </div>
+                                    <p className="flex-1 text-sm leading-[2] text-ink-sub">{work.review}</p>
                                 </div>
                             </article>
                         </FadeIn>
@@ -135,12 +125,6 @@ export function Works() {
                     </p>
                 </FadeIn>
 
-                <FadeIn>
-                    <InlineCTA
-                        message={<>あなたのサイトも、次の実績に。<br className="md:hidden" />まずは現状を無料で診断します。</>}
-                        button="無料でサイト診断を受ける"
-                    />
-                </FadeIn>
             </div>
         </section>
     );

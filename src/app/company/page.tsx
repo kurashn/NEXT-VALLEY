@@ -91,11 +91,15 @@ export default function CompanyPage() {
                                         </div>
                                         <div className="flex items-start gap-2">
                                             <span className="text-[#e26c5c] font-bold">・</span>
-                                            <span>SNSマーケティング支援</span>
+                                            <span>SNS・LINEマーケティング支援</span>
                                         </div>
                                         <div className="flex items-start gap-2">
                                             <span className="text-[#e26c5c] font-bold">・</span>
-                                            <span>HP運用ツールの開発・提供（準備中）</span>
+                                            <span>デザイン制作（ロゴ・チラシ・パンフレット）</span>
+                                        </div>
+                                        <div className="flex items-start gap-2">
+                                            <span className="text-[#e26c5c] font-bold">・</span>
+                                            <span>HP運用ツール『SiteChat』の開発・提供</span>
                                         </div>
                                     </dd>
                                 </div>

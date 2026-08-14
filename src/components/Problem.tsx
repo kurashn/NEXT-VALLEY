@@ -110,25 +110,25 @@ const problems = [
         icon: TrendingDown,
         art: ArtFunnel,
         title: <>集客が、<br />うまくいかない</>,
-        body: <>HP・SNS・広告。やってはいるが、どれも中途半端で問い合わせに<span className="nowrap">つながらない。</span></>,
+        body: <>HP・SNS・広告。やってはいるが、どれも中途半端で、問い合わせに<span className="nowrap">つながらない。</span></>,
     },
     {
         icon: MonitorSmartphone,
         art: ArtBrowser,
-        title: <>ホームページが<span className="nowrap">古いまま</span></>,
-        body: <>10年前のサイトが放置されたまま。会社の顔が、機会損失を<span className="nowrap">生んでいる。</span></>,
+        title: <>ホームページが、<br />古いまま</>,
+        body: <>10年前のサイトが放置されたまま。会社の顔が、毎日の機会損失を生み<span className="nowrap">続けている。</span></>,
     },
     {
         icon: Clock,
         art: ArtClock,
         title: <>人手が足りず、<br />業務に追われる</>,
-        body: <>AIで効率化できると聞くが、何から始めればいいか分からない。日々の業務で手一杯に<span className="nowrap">なっている。</span></>,
+        body: <>AIで効率化したいが、何から始めればいいか分からず、日々の業務で手一杯に<span className="nowrap">なっている。</span></>,
     },
     {
         icon: ChartColumn,
         art: ArtChart,
-        title: <>施策の成果が<span className="nowrap">見えない</span></>,
-        body: <>何が効いているのか分からず、社内の理解も予算も<span className="nowrap">得られない。</span></>,
+        title: <>施策の成果が、<br />見えない</>,
+        body: <>何が効いているのか分からないまま、社内の理解も、来期の予算も得られずに<span className="nowrap">いる。</span></>,
     },
 ];
 

@@ -11,10 +11,10 @@ import fvbg from "@/images/fvbg.webp";
 export default function Hero() {
     return (
         <section className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-navy-deep pt-20">
-            {/* 渓谷の写真（右側。左へフェードして紺地に溶ける） */}
+            {/* 渓谷の写真（右側。左へブレンドし、fv2.png参考の斜めの切れ込みを重ねる） */}
             <div
                 aria-hidden
-                className="absolute inset-y-0 right-0 w-full md:w-[62%]"
+                className="absolute inset-y-0 right-0 hidden w-[62%] md:block"
                 style={{
                     maskImage: "linear-gradient(to right, transparent 0%, black 35%)",
                     WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 35%)",
@@ -25,9 +25,9 @@ export default function Hero() {
                     alt=""
                     fill
                     priority
-                    className="object-cover object-center opacity-90"
+                    className="object-cover object-center opacity-95"
                     placeholder="blur"
-                    sizes="(max-width: 768px) 100vw, 62vw"
+                    sizes="62vw"
                 />
             </div>
 
@@ -69,7 +69,7 @@ export default function Hero() {
                     </FadeIn>
 
                     <FadeIn delay={0.3}>
-                        <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+                        <div className="flex flex-col items-start gap-4">
                             <a
                                 href="https://lin.ee/N4QXdJL"
                                 target="_blank"

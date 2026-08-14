@@ -48,14 +48,14 @@ export function Flow() {
                             <li className="flex-1 list-none">
                                 <FadeIn delay={i * 0.08} className="h-full">
                                     <div className="group flex h-full flex-col rounded-2xl bg-white p-7 shadow-[0_16px_40px_rgba(31,26,20,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_56px_rgba(31,26,20,0.1)]">
-                                        <div className="mb-5 flex items-baseline justify-between">
+                                        <div className="mb-5">
+                                            <p className="mb-1 text-xs font-bold tracking-[0.3em] text-coral-deep">STEP</p>
                                             <p
                                                 className="text-4xl font-bold leading-none text-coral md:text-5xl"
                                                 style={{ fontFamily: serif }}
                                             >
                                                 {String(i + 1).padStart(2, "0")}
                                             </p>
-                                            <p className="text-xs font-bold tracking-[0.3em] text-coral-deep">STEP</p>
                                         </div>
                                         <h3 className="mb-4 text-base font-bold leading-snug text-ink md:text-lg">
                                             {s.title}

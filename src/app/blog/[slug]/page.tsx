@@ -53,6 +53,32 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
     return (
         <main className="min-h-screen bg-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Article",
+                        headline: post.title,
+                        description: post.excerpt || undefined,
+                        image: post.coverImage
+                            ? `https://nextvalley-jpn.com${post.coverImage}`
+                            : undefined,
+                        datePublished: post.publishedDate || undefined,
+                        author: {
+                            "@type": "Organization",
+                            name: "NEXT VALLEY",
+                            url: "https://nextvalley-jpn.com",
+                        },
+                        publisher: {
+                            "@type": "Organization",
+                            name: "NEXT VALLEY",
+                            url: "https://nextvalley-jpn.com",
+                        },
+                        mainEntityOfPage: `https://nextvalley-jpn.com/blog/${slug}`,
+                    }),
+                }}
+            />
             <Navbar />
             <article className="pt-32 pb-20 px-4">
                 <div className="max-w-3xl mx-auto">
