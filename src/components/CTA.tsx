@@ -73,6 +73,14 @@ export function CTA() {
                             ))}
                         </ul>
 
+                        {/* セルフ診断への導線 */}
+                        <p className="mt-8 text-sm text-ink-sub">
+                            まずは自分で確かめたい方へ →{" "}
+                            <a href="/shindan" className="inline-flex min-h-11 items-center font-bold text-coral-deep underline underline-offset-4 transition-opacity hover:opacity-80">
+                                3分でできるWeb集客セルフ診断
+                            </a>
+                        </p>
+
                         {/* 一言の後押し */}
                         <p className="mt-8 text-sm text-ink-sub" style={{ fontFamily: serif }}>
                             — 気に入らなければ、断ってください —

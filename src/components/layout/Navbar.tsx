@@ -11,6 +11,7 @@ import logo from "@/images/logo-new.png";
 
 const navLinks = [
   { name: "サービス", href: "/#service" },
+  { name: "無料セルフ診断", href: "/shindan" },
   { name: "制作実績", href: "/#works" },
   { name: "私たちの強み", href: "/#reason" },
   { name: "会社情報", href: "/company" },
