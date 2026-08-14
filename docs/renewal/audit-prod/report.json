@@ -1,0 +1,93 @@
+{
+  "target": "https://www.nextvalley-jpn.com",
+  "results": [
+    {
+      "level": "WARN",
+      "check": "はみ出し",
+      "message": "[mobile 375px] 画面外にはみ出した要素が 4 件あります",
+      "detail": [
+        "  div.pointer-events-none.absolute",
+        "  div.pointer-events-none.absolute",
+        "  div.pointer-events-none.absolute",
+        "  div.pointer-events-none.absolute"
+      ]
+    },
+    {
+      "level": "INFO",
+      "check": "スクリーンショット",
+      "message": "[mobile 375px] docs/renewal/audit-prod/mobile-375.png"
+    },
+    {
+      "level": "WARN",
+      "check": "はみ出し",
+      "message": "[tablet 768px] 画面外にはみ出した要素が 1 件あります",
+      "detail": [
+        "  g"
+      ]
+    },
+    {
+      "level": "INFO",
+      "check": "スクリーンショット",
+      "message": "[tablet 768px] docs/renewal/audit-prod/tablet-768.png"
+    },
+    {
+      "level": "INFO",
+      "check": "スクリーンショット",
+      "message": "[desktop 1440px] docs/renewal/audit-prod/desktop-1440.png"
+    },
+    {
+      "level": "WARN",
+      "check": "画像サイズ属性",
+      "message": "width/height未指定の画像が 12 件（表示中にレイアウトがずれます）",
+      "detail": [
+        "  image?url=%2F_next%2Fstatic%2Fmedia%2Ffvbg.98073405.webp&w=1",
+        "  image?url=%2F_next%2Fstatic%2Fmedia%2Fworks1.913fe27a.jpg&w=",
+        "  image?url=%2F_next%2Fstatic%2Fmedia%2Fworks4.b8d6aa17.jpg&w=",
+        "  image?url=%2F_next%2Fstatic%2Fmedia%2Fworks5.c9a96ac4.jpg&w=",
+        "  image?url=%2F_next%2Fstatic%2Fmedia%2Fworks2.44fb9a3b.jpg&w=",
+        "  image?url=%2F_next%2Fstatic%2Fmedia%2Fworks3.9b4f74e1.jpg&w=",
+        "  image?url=%2F_next%2Fstatic%2Fmedia%2Fworks8.654487fd.jpg&w=",
+        "  image?url=%2F_next%2Fstatic%2Fmedia%2Fworks9.77b697a3.jpg&w=",
+        "  image?url=%2F_next%2Fstatic%2Fmedia%2Fworks11.af0850df.jpg&w",
+        "  image?url=%2F_next%2Fstatic%2Fmedia%2Fworks6.b8195a2f.jpg&w=",
+        "  image?url=%2F_next%2Fstatic%2Fmedia%2Fworks7.e136679c.jpg&w=",
+        "  image?url=%2F_next%2Fstatic%2Fmedia%2Fshun-new.1d01d2dd.webp"
+      ]
+    },
+    {
+      "level": "WARN",
+      "check": "自己完結",
+      "message": "外部ドメインのCSS/JSを 18 件参照しています",
+      "detail": [
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/ad24b3b0881818aa.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/3c8259d25096a433.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/ea80403269d20319.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/turbopack-69b944a388d9c78b.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/ff1a16fafef87110.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/0bd6498bda341889.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/97d36f6b1f8c8263.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/c80b0df8a426ea1d.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/307afa88b54aade9.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/a6dad97d9634a72d.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/c8c6b753cc8abaef.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/69612ba1977e9e61.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/9c7e952585299b55.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/4a247b0856560779.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/41add871b4a112fa.js",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/b7bf1ed3f164a43b.js",
+        "  https://www.googletagmanager.com/gtag/js?id=G-T6ZVHJKZ2S",
+        "  https://www.nextvalley-jpn.com/_next/static/chunks/4d5c1a22b1966a07.css"
+      ]
+    },
+    {
+      "level": "INFO",
+      "check": "総転送量",
+      "message": "225KB"
+    },
+    {
+      "level": "INFO",
+      "check": "LCP",
+      "message": "840ms（目安 2500ms以下）"
+    }
+  ]
+}

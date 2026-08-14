@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>サービス概要資料 | NEXT VALLEY</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #041627;
+    --navy-line: #1b3a4f;
+    --navy-sub: #9fb0bd;
+    --coral: #e26c5c;
+    --coral-deep: #b8452f;
+    --ink: #1a1a1a;
+    --ink-sub: #5c6b78;
+    --cream: #f3f1ec;
+    --line: #e5e5e5;
+  }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    color: var(--ink);
+    line-height: 1.7;
+    background: #555;
+  }
+  .page { width: 210mm; height: 297mm; padding: 0; page-break-after: always; position: relative; overflow: hidden; background: #fff; margin: 0 auto; }
+  .page:last-child { page-break-after: auto; }
+  @media screen { .page { margin: 16px auto; box-shadow: 0 8px 30px rgba(0,0,0,.35); } }
+  @media print { body { background: #fff; } .page { margin: 0; box-shadow: none; } }
+
+  /* ヘッダー帯 */
+  .head { background: var(--navy); color: #fff; padding: 5.5mm 14mm; display: flex; justify-content: space-between; align-items: center; }
+  .head .brand { display: flex; align-items: center; gap: 7px; }
+  .head .brand svg { height: 20px; }
+  .head .brand b { font-size: 15px; letter-spacing: .05em; }
+  .head .tag { color: var(--coral); font-size: 10.5px; font-weight: bold; letter-spacing: .25em; }
+  .body { padding: 6mm 14mm; }
+
+  /* 見出し */
+  h2 { font-size: 14px; color: var(--navy); border-left: 5px solid var(--coral); padding-left: 9px; margin: 0 0 3mm; }
+  h2 .en { color: var(--coral-deep); font-size: 9.5px; letter-spacing: .22em; display: block; }
+  .sec { margin-bottom: 4.5mm; }
+
+  /* 1枚目: リード */
+  .lead-block { background: var(--navy); color: #fff; border-radius: 4mm; padding: 5mm 8mm; margin-bottom: 4.5mm; position: relative; overflow: hidden; }
+  .lead-block .deco { position: absolute; right: -6mm; top: -8mm; height: 150%; opacity: .15; }
+  .lead-block .l1 { color: var(--coral); font-size: 9.5px; font-weight: bold; letter-spacing: .25em; margin-bottom: 2mm; }
+  .lead-block h1 { font-size: 19px; line-height: 1.4; margin-bottom: 1.5mm; }
+  .lead-block p { color: var(--navy-sub); font-size: 10.5px; max-width: 44em; }
+
+  /* サービスグリッド */
+  .svc { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+  .svc .card { border: 1px solid var(--line); border-radius: 3mm; padding: 2.6mm 4mm; }
+  .svc .card .en { color: var(--coral-deep); font-size: 8.5px; font-weight: bold; letter-spacing: .18em; }
+  .svc .card b { display: block; font-size: 11.5px; color: var(--navy); margin: 0.8mm 0 1mm; }
+  .svc .card p { font-size: 9.5px; color: var(--ink-sub); line-height: 1.6; }
+
+  /* 料金 */
+  .plan { display: flex; border-radius: 3.5mm; overflow: hidden; border: 2px solid var(--coral); margin-bottom: 3.5mm; }
+  .plan .left { background: var(--navy); color: #fff; padding: 4mm 6mm; width: 44%; position: relative; }
+  .plan .left .en { color: var(--coral); font-size: 8.5px; font-weight: bold; letter-spacing: .2em; }
+  .plan .left b { display: block; font-size: 15px; margin: 1.5mm 0 2mm; }
+  .plan .left .price { font-size: 11px; color: var(--navy-sub); }
+  .plan .left .price strong { color: #fff; font-size: 17px; }
+  .plan .right { flex: 1; padding: 3.5mm 6mm; background: #fff; }
+  .plan .right ul { list-style: none; font-size: 10.5px; }
+  .plan .right li { padding: 0.6mm 0; color: var(--ink); font-weight: bold; }
+  .plan .right li::before { content: "✓ "; color: var(--coral-deep); }
+  .plan .badge { position: absolute; top: 0; right: 0; background: var(--coral); color: var(--navy); font-size: 9px; font-weight: bold; padding: 1mm 3mm; border-bottom-left-radius: 2mm; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 10.5px; }
+  th { background: var(--navy); color: #fff; text-align: left; padding: 2mm 4mm; font-size: 10px; }
+  td { border-bottom: 1px solid var(--line); padding: 1.7mm 4mm; }
+  td.p { font-weight: bold; white-space: nowrap; }
+  .note { font-size: 9px; color: var(--ink-sub); margin-top: 2mm; }
+
+  /* 2枚目: フロー */
+  .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+  .flow .step { border: 1px solid var(--line); border-radius: 3mm; padding: 4mm; }
+  .flow .num { color: var(--coral); font-family: Georgia, serif; font-size: 20px; font-weight: bold; }
+  .flow b { display: block; font-size: 10.5px; color: var(--navy); margin: 1mm 0 1.5mm; }
+  .flow p { font-size: 9px; color: var(--ink-sub); line-height: 1.6; }
+
+  /* 理由 */
+  .reasons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+  .reasons .r { background: var(--cream); border-radius: 3mm; padding: 4mm 5mm; }
+  .reasons .num { color: var(--coral-deep); font-family: Georgia, serif; font-weight: bold; font-size: 15px; }
+  .reasons b { display: block; font-size: 11px; color: var(--navy); margin: 1mm 0 1.5mm; }
+  .reasons p { font-size: 9.5px; color: var(--ink-sub); line-height: 1.65; }
+
+  /* 実績 */
+  .works-stat { display: flex; align-items: baseline; gap: 3mm; margin-bottom: 2.5mm; }
+  .works-stat strong { font-size: 24px; color: var(--navy); }
+  .works-stat span { font-size: 10.5px; color: var(--ink-sub); }
+  .works-names { font-size: 10px; color: var(--ink-sub); margin-bottom: 3mm; }
+  .voice { background: var(--cream); border-left: 3px solid var(--coral); border-radius: 2mm; padding: 3.5mm 5mm; font-size: 10px; color: var(--ink-sub); line-height: 1.8; }
+  .voice b { color: var(--navy); }
+
+  /* 連絡先 */
+  .contact { background: var(--navy); color: #fff; border-radius: 4mm; padding: 7mm 9mm; display: flex; justify-content: space-between; align-items: center; gap: 6mm; }
+  .contact h3 { font-size: 15px; margin-bottom: 2mm; }
+  .contact h3 em { color: var(--coral); font-style: normal; }
+  .contact p { font-size: 10px; color: var(--navy-sub); }
+  .contact .btn { background: #05a247; color: #fff; font-weight: bold; font-size: 12px; padding: 3.5mm 7mm; border-radius: 99px; white-space: nowrap; }
+  .contact .urls { font-size: 9.5px; color: var(--navy-sub); margin-top: 2mm; }
+  .contact .urls b { color: #fff; }
+
+  .foot { position: absolute; bottom: 6mm; left: 14mm; right: 14mm; display: flex; justify-content: space-between; font-size: 8.5px; color: var(--ink-sub); border-top: 1px solid var(--line); padding-top: 2.5mm; }
+</style>
+</head>
+<body>
+
+<!-- 1枚目 -->
+<div class="page">
+  <div class="head">
+    <div class="brand">
+      <img src="../../src/images/logo-new.png" alt="NEXT VALLEY" style="height: 26px; width: auto;">
+    </div>
+    <span class="tag">SERVICE GUIDE</span>
+  </div>
+  <div class="body">
+
+    <div class="lead-block">
+      <svg class="deco" viewBox="0 0 27 40" fill="none"><path d="M0 0L15 20L0 40H12L27 20L12 0H0Z" stroke="#e26c5c" stroke-width="0.8"/></svg>
+      <p class="l1">AI × MARKETING × PRODUCTION</p>
+      <h1>AIで、売上と業務を根本から変える。</h1>
+      <p>NEXT VALLEYは、AI活用のプロチーム。マーケティングもHP・LP制作も、課題に合わせて最適な打ち手を提案し、売上アップと業務効率化を支援します。</p>
+    </div>
+
+    <div class="sec">
+      <h2><span class="en">SERVICE</span>事業内容 — 全部を売り込みません。必要な打ち手だけを提案します</h2>
+      <div class="svc">
+        <div class="card">
+          <span class="en">AI CONSULTING</span>
+          <b>AI活用コンサルティング</b>
+          <p>現場でAIを使い倒しているチームによる実践的な導入支援。ツール選定・研修から業務フロー設計まで。</p>
+        </div>
+        <div class="card">
+          <span class="en">WEB PRODUCTION</span>
+          <b>HP・LP制作</b>
+          <p>成果から逆算して設計・制作。AI活用で通常1ヶ月の構築を最短3〜5日に短縮します。</p>
+        </div>
+        <div class="card">
+          <span class="en">SEO / MEO</span>
+          <b>SEO・MEO集客</b>
+          <p>検索とGoogleマップで「いま探している人」に見つけてもらい、問い合わせにつなげます。</p>
+        </div>
+        <div class="card">
+          <span class="en">SNS MARKETING</span>
+          <b>SNSマーケティング</b>
+          <p>Instagram・XからLINE公式アカウントの構築・運用まで、計画ごと引き受けます。</p>
+        </div>
+        <div class="card">
+          <span class="en">DESIGN</span>
+          <b>デザイン制作</b>
+          <p>ロゴ・チラシ・パンフレット・バナーなど、Webと世界観を揃えた販促物を作ります。</p>
+        </div>
+        <div class="card">
+          <span class="en">OPERATION SUPPORT</span>
+          <b>HP運用ツール『SiteChat』</b>
+          <p>公開中のHPをチャットだけで安全に修正できる自社ツール。※希望者にのみご案内。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2><span class="en">PRICE</span>料金 — 診断・提案・お見積もりまで無料</h2>
+
+      <div class="plan">
+        <div class="left">
+          <span class="badge">おすすめ</span>
+          <span class="en">ALL-IN-ONE</span>
+          <b>まるごと集客プラン</b>
+          <p class="price"><span style="white-space:nowrap">初期 <strong>¥165,000</strong>〜</span> <span style="white-space:nowrap">＋ 月額 <strong>¥44,000</strong>〜（税込）</span></p>
+        </div>
+        <div class="right">
+          <ul>
+            <li>成果から逆算したホームページ制作</li>
+            <li>SEO・MEO集客の設計と運用</li>
+            <li>毎月のアクセス・問い合わせレポート</li>
+            <li>公開後の更新・改善もおまかせ</li>
+          </ul>
+        </div>
+      </div>
+
+      <table>
+        <tr><th>単品でのご依頼</th><th>形態</th><th>目安（税込）</th></tr>
+        <tr><td>LP制作</td><td>買い切り</td><td class="p">¥110,000〜</td></tr>
+        <tr><td>ホームページ制作</td><td>買い切り</td><td class="p">¥220,000〜</td></tr>
+        <tr><td>SEO・MEO集客</td><td>月額</td><td class="p">¥33,000〜/月</td></tr>
+        <tr><td>SNSマーケティング</td><td>月額</td><td class="p">¥44,000〜/月</td></tr>
+        <tr><td>デザイン制作（ロゴ・チラシ等）／ AI活用コンサルティング ／ SiteChat</td><td>スポット等</td><td class="p">応相談</td></tr>
+      </table>
+      <p class="note">※ 内容により変動します。正式な金額は無料のお見積もりでご提示します。追加料金が発生する場合は、必ず事前にお伝えします。</p>
+    </div>
+
+  </div>
+  <div class="foot"><span>NEXT VALLEY ／ サービス概要資料</span><span>1 / 2</span></div>
+</div>
+
+<!-- 2枚目 -->
+<div class="page">
+  <div class="head">
+    <div class="brand">
+      <img src="../../src/images/logo-new.png" alt="NEXT VALLEY" style="height: 26px; width: auto;">
+    </div>
+    <span class="tag">SERVICE GUIDE</span>
+  </div>
+  <div class="body">
+
+    <div class="sec">
+      <h2><span class="en">FLOW</span>ご依頼の流れ — 提案を見てから、決めてください</h2>
+      <div class="flow">
+        <div class="step">
+          <span class="num">01</span>
+          <b>ご相談</b>
+          <p>LINEまたはメールでご連絡ください。「今のサイトのURLを送るだけ」で大丈夫です。</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <b>ご提案・お見積もり（無料）</b>
+          <p>現状を診断し、改善案と金額をセットでご提示。断っていただいても構いません。</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <b>制作</b>
+          <p>AIを活用した制作フローで、通常1ヶ月の構築を最短3〜5日に短縮します。</p>
+        </div>
+        <div class="step">
+          <span class="num">04</span>
+          <b>公開・運用</b>
+          <p>公開して終わりではなく、アクセスと問い合わせの数字を見ながら改善を続けます。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2><span class="en">REASON</span>選ばれる理由</h2>
+      <div class="reasons">
+        <div class="r">
+          <span class="num">01</span>
+          <b>戦略から実行まで、ワンチーム</b>
+          <p>提案する人と、作る人・運用する人が同じチーム。施策が「点」で終わらず、売上までの設計図でつながります。</p>
+        </div>
+        <div class="r">
+          <span class="num">02</span>
+          <b>現場で使い倒しているAIノウハウ</b>
+          <p>自社の制作・マーケの現場でAIを日常的に活用。その実践のやり方ごと提供する、机上の空論ではない支援です。</p>
+        </div>
+        <div class="r">
+          <span class="num">03</span>
+          <b>施策のあとは、数字で報告</b>
+          <p>アクセス数・問い合わせ数など、成果を毎月レポート。数字で判断できる状態を保ちます。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2><span class="en">WORKS</span>制作実績</h2>
+      <div class="works-stat"><strong>50社以上</strong><span>の制作・支援実績（スクールから企業サイトまで）</span></div>
+      <p class="works-names">Tulip Ballet Studio様 ／ ECCジュニア 一里山教室様 ／ Rythmique Garden様 ／ 株式会社ビビッドディレクション様 ／ 株式会社ワナビィ様 ほか</p>
+      <div class="voice">
+        <b>お客様の声：</b>「Webに関する知識が全くなかったのですが、丁寧に説明していただき、安心して依頼をすることができました。LINEを使ってフランクな形でやり取りができるのも大変良かったです！」（ECCジュニア 一里山教室様）
+      </div>
+    </div>
+
+    <div class="contact">
+      <div>
+        <h3>まずは、<em>無料診断</em>から。</h3>
+        <p>サイトのURLやお悩みをLINEで送るだけ。改善の打ち手と概算お見積もりをお返しします。しつこい営業は一切ありません。</p>
+        <p class="urls">
+          <b>LINE</b>：lin.ee/N4QXdJL　<b>Mail</b>：info@nextvalley-jpn.com<br>
+          <b>Web</b>：www.nextvalley-jpn.com（3分でできる無料セルフ診断あり）
+        </p>
+      </div>
+      <span class="btn">LINEで無料診断</span>
+    </div>
+
+  </div>
+  <div class="foot"><span>屋号 NEXT VALLEY ／ 代表 倉林 駿 ／ 2021年1月事業開始</span><span>2 / 2</span></div>
+</div>
+
+</body>
+</html>
