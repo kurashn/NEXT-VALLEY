@@ -29,7 +29,14 @@ export default function TokushoPage() {
                         <div className="border-b border-slate-100 pb-4">
                             <dt className="text-sm font-bold text-[#002335] mb-1">所在地</dt>
                             <dd className="text-slate-600">
-                                詳細については、お取引の際に請求があれば遅滞なく開示いたします。
+                                ご請求をいただければ、遅滞なく開示いたします。下記メールアドレスまでご請求ください。
+                            </dd>
+                        </div>
+
+                        <div className="border-b border-slate-100 pb-4">
+                            <dt className="text-sm font-bold text-[#002335] mb-1">電話番号</dt>
+                            <dd className="text-slate-600">
+                                ご請求をいただければ、遅滞なく開示いたします。下記メールアドレスまでご請求ください。
                             </dd>
                         </div>
 

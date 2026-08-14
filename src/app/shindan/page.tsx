@@ -19,11 +19,6 @@ export default function ShindanPage() {
                     <h1 className="sr-only">Web集客セルフ診断（無料・3分）</h1>
                     <SerifHeading en="Check" jp="Web集客セルフ診断" />
                     <ShindanTool />
-                    <p className="mt-8 text-center text-sm leading-[1.9] text-ink-sub">
-                        じっくり確認したい方には、LINE登録特典として
-                        <br className="md:hidden" />
-                        『プロが見ているHP改善チェックリスト30項目』PDFもご用意しています。
-                    </p>
                 </div>
             </section>
             <Footer />

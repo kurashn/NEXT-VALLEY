@@ -28,7 +28,7 @@ export default function Home() {
                 "founder": { "@type": "Person", "name": "倉林 駿" },
                 "foundingDate": "2021-01",
                 "email": "info@nextvalley-jpn.com",
-                "sameAs": ["https://sitechat.jp/"]
+                "sameAs": []
               },
               {
                 "@type": "ProfessionalService",

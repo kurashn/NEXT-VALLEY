@@ -15,7 +15,6 @@ const siteLinks = [
 const contentLinks = [
     { name: "無料セルフ診断", href: "/shindan" },
     { name: "お役立ちコラム", href: "/blog" },
-    { name: "SiteChat", href: "https://sitechat.jp/", external: true },
     { name: "事業情報", href: "/company" },
     { name: "お問い合わせ", href: "/contact" },
 ];
@@ -70,7 +69,7 @@ export function Footer() {
                                     <li key={l.name}>
                                         <Link
                                             href={l.href}
-                                            className="inline-flex min-h-11 min-w-11 items-center text-sm text-navy-sub transition-colors hover:text-white"
+                                            className="inline-flex min-h-11 min-w-11 items-center whitespace-nowrap text-sm text-navy-sub transition-colors hover:text-white"
                                         >
                                             {l.name}
                                         </Link>
@@ -81,29 +80,16 @@ export function Footer() {
                         <div>
                             <p className="mb-4 text-xs font-bold tracking-[0.25em] text-coral">CONTENTS</p>
                             <ul className="space-y-1">
-                                {contentLinks.map((l) =>
-                                    l.external ? (
-                                        <li key={l.name}>
-                                            <a
-                                                href={l.href}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex min-h-11 min-w-11 items-center text-sm text-navy-sub transition-colors hover:text-white"
-                                            >
-                                                {l.name}
-                                            </a>
-                                        </li>
-                                    ) : (
-                                        <li key={l.name}>
-                                            <Link
-                                                href={l.href}
-                                                className="inline-flex min-h-11 min-w-11 items-center text-sm text-navy-sub transition-colors hover:text-white"
-                                            >
-                                                {l.name}
-                                            </Link>
-                                        </li>
-                                    )
-                                )}
+                                {contentLinks.map((l) => (
+                                    <li key={l.name}>
+                                        <Link
+                                            href={l.href}
+                                            className="inline-flex min-h-11 min-w-11 items-center whitespace-nowrap text-sm text-navy-sub transition-colors hover:text-white"
+                                        >
+                                            {l.name}
+                                        </Link>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                         <div>
@@ -113,7 +99,7 @@ export function Footer() {
                                     <li key={l.name}>
                                         <Link
                                             href={l.href}
-                                            className="inline-flex min-h-11 min-w-11 items-center text-sm text-navy-sub transition-colors hover:text-white"
+                                            className="inline-flex min-h-11 min-w-11 items-center whitespace-nowrap text-sm text-navy-sub transition-colors hover:text-white"
                                         >
                                             {l.name}
                                         </Link>

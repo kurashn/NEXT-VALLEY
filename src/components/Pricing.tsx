@@ -21,7 +21,7 @@ const rows = [
     { key: "sns", service: <>SNSマーケティング</>, type: "月額", price: "¥44,000〜/月" },
     { key: "design", service: <>デザイン制作<span className="nowrap">（ロゴ・チラシ等）</span></>, type: "スポット", price: "応相談" },
     { key: "ai", service: <><span className="nowrap">AI活用</span><span className="nowrap">コンサルティング</span></>, type: "スポット / 月額", price: "応相談" },
-    { key: "tool", service: <>HP運用ツール<span className="nowrap">『SiteChat』</span></>, type: "SaaS", price: <a href="https://sitechat.jp/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center font-bold text-coral-deep underline underline-offset-4">サイトを見る</a> },
+    { key: "tool", service: <>HP運用ツール<span className="nowrap">『SiteChat』</span></>, type: "SaaS", price: "応相談" },
 ];
 
 export function Pricing() {

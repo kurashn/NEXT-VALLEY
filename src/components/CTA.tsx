@@ -33,16 +33,6 @@ export function CTA() {
                             提案を見てから、頼むかどうか決めて<span className="nowrap">ください。</span>
                         </p>
 
-                        {/* LINE登録特典 */}
-                        <p className="mx-auto mb-8 inline-flex max-w-full flex-col items-center gap-1 rounded-2xl bg-cream px-6 py-4 text-sm font-bold text-ink">
-                            <span className="text-coral-deep">＼ いまLINE登録で特典 ／</span>
-                            <span className="leading-[1.8]">
-                                <span className="nowrap">『プロが見ている</span>
-                                <span className="nowrap">HP改善チェックリスト30項目』</span>
-                                <span className="nowrap">PDFをプレゼント</span>
-                            </span>
-                        </p>
-
                         {/* 主役: LINE / 従属: メール */}
                         <div className="mx-auto flex max-w-xl flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
                             <a

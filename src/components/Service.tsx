@@ -2,7 +2,6 @@
 // ウォームベージュ地・多色セリフ見出し・白カード＋ソフトなイラスト＋コーラル↗
 
 import React from "react";
-import { ArrowUpRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 
 /* ── カード右側のソフトイラスト（SVG。ベージュ×コーラルの柔らかい質感） ── */
@@ -316,21 +315,20 @@ const services = [
     {
         en: "SNS MARKETING",
         title: "SNSマーケティング",
-        body: <>Instagram・X・LINEなどの運用設計から実務まで。「何を投稿すればいいか分からない」を、投稿計画ごと<span className="nowrap">引き受けます。</span></>,
+        body: <>Instagram・Xから、LINE公式アカウント（LINEマーケティング）の構築・運用まで。「何を投稿すればいいか分からない」を、計画ごと<span className="nowrap">引き受けます。</span></>,
         illo: IlloSns,
     },
     {
         en: "DESIGN",
         title: "デザイン制作",
-        body: <>ロゴ・チラシ・パンフレット・バナーなどの販促デザインもワンストップで。LINE公式アカウントの構築・運用（LINEマーケティング）にも<span className="nowrap">対応します。</span></>,
+        body: <>ロゴ・チラシ・パンフレット・バナーなどの販促デザインもワンストップで。Webと世界観を揃えた「ちゃんと伝わる」販促物を<span className="nowrap">作ります。</span></>,
         illo: IlloDesign,
     },
     {
         en: "OPERATION SUPPORT",
         title: <>HP運用ツール<span className="nowrap">『SiteChat』</span></>,
-        body: <>公開中のホームページを、チャットで指示するだけで安全に修正できる自社開発ツール。AIが修正案を作り、あなたの承認なしに公開されることは<span className="nowrap">ありません。</span></>,
+        body: <>公開中のホームページを、チャットで指示するだけで安全に修正できる自社開発ツール。AIが修正案を作り、あなたの承認なしに公開されることはありません。※現在はご希望のお客様にのみ<span className="nowrap">ご案内しています。</span></>,
         illo: IlloOps,
-        href: "https://sitechat.jp/",
         wide: true,
     },
 ];
@@ -372,19 +370,11 @@ export function Service() {
                 {/* サービスカード */}
                 <div className="mt-10 grid gap-6 md:mt-14 md:grid-cols-2">
                     {services.map((s, i) => {
-                        const Card = s.href ? "a" : "div";
                         return (
                             <FadeIn key={s.en} delay={i * 0.08} className={s.wide ? "md:col-span-2" : ""}>
-                                <Card
-                                    {...(s.href ? { href: s.href, target: "_blank", rel: "noopener noreferrer" } : {})}
+                                <div
                                     className="group relative flex h-full flex-col gap-6 overflow-hidden rounded-[20px] bg-white p-8 shadow-[0_16px_40px_rgba(31,26,20,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_56px_rgba(31,26,20,0.1)] lg:flex-row lg:items-center md:p-10"
                                 >
-                                    {s.href && (
-                                        <ArrowUpRight
-                                            aria-hidden
-                                            className="absolute right-6 top-6 h-6 w-6 text-coral transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                                        />
-                                    )}
                                     {/* テキスト */}
                                     <div className={s.wide ? "lg:w-[60%]" : "lg:w-[55%]"}>
                                         <p className="mb-4 text-xs font-bold tracking-[0.25em] text-coral-deep">{s.en}</p>
@@ -403,7 +393,7 @@ export function Service() {
                                     >
                                         <s.illo />
                                     </div>
-                                </Card>
+                                </div>
                             </FadeIn>
                         );
                     })}

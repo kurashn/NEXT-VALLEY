@@ -11,10 +11,10 @@ import fvbg from "@/images/fvbg.webp";
 export default function Hero() {
     return (
         <section className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-navy-deep pt-20">
-            {/* 渓谷の写真（右側。左へブレンドし、fv2.png参考の斜めの切れ込みを重ねる） */}
+            {/* 渓谷の写真（デスクトップは右側ブレンド、モバイルは減光して全面に） */}
             <div
                 aria-hidden
-                className="absolute inset-y-0 right-0 hidden w-[62%] md:block"
+                className="absolute inset-y-0 right-0 w-full md:w-[62%]"
                 style={{
                     maskImage: "linear-gradient(to right, transparent 0%, black 35%)",
                     WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 35%)",
@@ -25,21 +25,11 @@ export default function Hero() {
                     alt=""
                     fill
                     priority
-                    className="object-cover object-center opacity-95"
+                    className="object-cover object-center opacity-45 md:opacity-95"
                     placeholder="blur"
-                    sizes="62vw"
+                    sizes="(max-width: 768px) 100vw, 62vw"
                 />
             </div>
-
-            {/* 座標の装飾（参考の右上ディテール） */}
-            <p
-                aria-hidden
-                className="absolute right-8 top-1/4 hidden text-right text-[11px] leading-relaxed tracking-[0.2em] text-coral md:block"
-            >
-                35.6895° N
-                <br />
-                139.6917° E
-            </p>
 
             {/* 左カラムのコピー */}
             <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 items-center px-4 md:px-6">
@@ -79,7 +69,7 @@ export default function Hero() {
                                 無料で診断を受ける
                                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </a>
-                            <p className="text-sm text-navy-sub">サイトのURLやお悩みを送るだけ・費用は一切<span className="nowrap">かかりません</span></p>
+                            <p className="text-sm text-navy-sub">サイトのURLやお悩みを送るだけ・<span className="nowrap">費用は一切かかりません</span></p>
                         </div>
                     </FadeIn>
                 </div>
