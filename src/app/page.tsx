@@ -10,7 +10,7 @@ import { FAQ, faqs } from "@/components/FAQ";
 import { CTA } from "@/components/CTA";
 import Navbar from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { AIConsultProvider, AIConsultSection, AIConsultFloating } from "@/components/AIConsult";
+import { AIConsultProvider, SelfCheckSection } from "@/components/AIConsult";
 
 export default function Home() {
   return (
@@ -64,7 +64,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <div id="problem"><Problem /></div>
-      <AIConsultSection />
+      <SelfCheckSection />
       <div id="service"><Service /></div>
       <div id="reason"><Reasons /></div>
       <div id="works"><Works /></div>
@@ -74,7 +74,6 @@ export default function Home() {
       <FAQ />
       <CTA />
       <Footer />
-      <AIConsultFloating />
       </AIConsultProvider>
     </main>
   );

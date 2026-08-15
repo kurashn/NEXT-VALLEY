@@ -30,14 +30,6 @@ const featuredWorks = [
         ),
     },
     {
-        name: "ECCジュニア 一里山教室様",
-        label: "教育・スクール",
-        image: work4,
-        review: (
-            <>ホームページ制作のお願いから公開まで迅速に対応していただけました。Webに関する知識が全くなかったのですが、丁寧に説明していただき、安心して依頼をすることができました。写真選びなども親身に対応してくださり、感謝しています。LINEを使ってフランクな形でやり取りができるのも大変<span className="nowrap">良かったです！</span></>
-        ),
-    },
-    {
         name: "Rythmique Garden様",
         label: "教育・スクール",
         image: work5,
@@ -45,16 +37,23 @@ const featuredWorks = [
             <>初めてのホームページ作成で、何も分からずほぼ全てお任せだったのですが、一つ一つ、丁寧に教えてくださいました。また、様々な提案もしてくださり、想像以上の素敵なホームページを作成していただきました。依頼して本当に良かったと実感して<span className="nowrap">おります。</span></>
         ),
     },
+    {
+        name: "株式会社ワナビィ様",
+        label: "企業・サービス",
+        image: work7,
+        review: null,
+        caption: "コーポレートサイトの制作事例。スクールに限らず、企業サイトも手がけています。",
+    },
 ];
 
 const otherWorks = [
+    { name: "ECCジュニア 一里山教室様", image: work4 },
     { name: "Colours Musical Studio様", image: work2 },
     { name: "まや子どもの家様", image: work3 },
     { name: "Yuma English House様", image: work8 },
     { name: "DANCE STUDIO PLUS様", image: work9 },
     { name: "K-coaching様", image: work11 },
     { name: "株式会社ビビッドディレクション様", image: work6 },
-    { name: "株式会社ワナビィ様", image: work7 },
 ];
 
 export function Works() {
@@ -91,7 +90,9 @@ export function Works() {
                                         </span>
                                     </p>
                                     <h3 className="mb-4 text-lg font-bold text-ink">{work.name}</h3>
-                                    <p className="flex-1 text-sm leading-[2] text-ink-sub">{work.review}</p>
+                                    <p className="flex-1 text-sm leading-[2] text-ink-sub">
+                                        {work.review ?? work.caption}
+                                    </p>
                                 </div>
                             </article>
                         </FadeIn>

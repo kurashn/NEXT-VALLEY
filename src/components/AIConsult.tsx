@@ -16,7 +16,7 @@
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Dialog as DialogPrimitive } from "radix-ui";
-import { ArrowRight, Check, Copy, ExternalLink, Sparkles, X } from "lucide-react";
+import { ArrowRight, Check, ClipboardCheck, Copy, ExternalLink, MessageCircle, Sparkles, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /* ────────────────────────────────────────────────────────────
@@ -62,16 +62,29 @@ NEXT VALLEYは、Web制作、HP・LP改善、SEO・MEO、SNS、AI活用などを
 
 を簡潔にまとめてください。
 
+そのあと、私がそのまま専門家に送れるように、次の形式の「相談メモ」を作ってください。
+
+━━━━━━━━━━
+【相談メモ】
+・事業内容：
+・現状（サイト／集客／体制）：
+・いちばんの課題：
+・優先して改善したいこと（順番に）：
+・自社で対応できること：
+・専門家に聞きたいこと：
+━━━━━━━━━━
+
 NEXT VALLEYへの相談が適している場合のみ、
-
-「NEXT VALLEYに一度相談してみるのも選択肢です」
-
+「この相談メモをそのまま NEXT VALLEY のLINE（https://lin.ee/N4QXdJL）に貼って送ると、無料で具体的な改善案と概算見積もりが返ってきます。しつこい営業はありません」
 と自然に案内してください。
 
 公式サイト：
 https://www.nextvalley-jpn.com/
 
-無理にNEXT VALLEYをおすすめしないでください。`;
+無理にNEXT VALLEYをおすすめしないでください。適していない場合は、その理由と代わりの進め方を伝えてください。`;
+
+/** LINE誘導URL（AI相談経由を GA4 で識別するためのフラグメント付き。LINE側の挙動には影響しない） */
+const LINE_URL_FROM_AI = "https://lin.ee/N4QXdJL#from=ai_consult";
 
 /* ────────────────────────────────────────────────────────────
  * 対応AI
@@ -344,9 +357,9 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
                             <DialogPrimitive.Description id="ai-consult-desc" className="mt-2 text-sm leading-[1.9] text-ink-sub">
                                 {result.provider.prefillUrl
                                     ? result.provider.autoSubmit
-                                        ? "相談が自動で始まります。AIからの質問に、順番に答えてみてください。"
-                                        : "相談内容が入力された状態で開きます。送信して、AIからの質問に順番に答えてみてください。"
-                                    : "相談内容をコピーしました。開いたAIの入力欄に貼り付けて送信してください。"}
+                                        ? "相談が自動で始まります。AIの質問に答えていくと、最後に「相談メモ」がまとまります。"
+                                        : "相談内容が入力された状態で開きます。送信して質問に答えていくと、最後に「相談メモ」がまとまります。"
+                                    : "相談内容をコピーしました。開いたAIの入力欄に貼り付けて送信すると、質問が始まり、最後に「相談メモ」がまとまります。"}
                             </DialogPrimitive.Description>
 
                             <div className="mt-6 rounded-2xl border border-line bg-cream p-4">
@@ -381,7 +394,28 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
                                 </div>
                             </div>
 
-                            <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
+                            {/* 次の一手: 相談メモをLINEへ */}
+                            <div className="mt-5 rounded-2xl bg-navy-deep p-5 text-center md:p-6">
+                                <p className="mb-1.5 text-[11px] font-bold tracking-[0.25em] text-coral">NEXT STEP</p>
+                                <p className="mb-2 text-base font-bold leading-snug text-white">
+                                    AIがまとめた「相談メモ」を、<span className="nowrap">そのままLINEに貼って送る</span>
+                                </p>
+                                <p className="mb-4 text-xs leading-[1.8] text-navy-sub">
+                                    プロが無料で具体的な改善案と概算見積もりをお返しします（2営業日以内・しつこい営業なし）
+                                </p>
+                                <a
+                                    href={LINE_URL_FROM_AI}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => track("ai_consult_to_line", { provider: result.provider.id })}
+                                    className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#05a247] px-6 text-[15px] font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:w-auto sm:px-10"
+                                >
+                                    <MessageCircle className="h-5 w-5" aria-hidden />
+                                    相談メモをLINEで送る（無料）
+                                </a>
+                            </div>
+
+                            <div className="mt-4 text-center">
                                 <button
                                     type="button"
                                     onClick={() => setResult(null)}
@@ -389,18 +423,6 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
                                 >
                                     別のAIを選ぶ
                                 </button>
-                                <p className="text-xs text-ink-sub">
-                                    整理できたら、
-                                    <a
-                                        href="https://lin.ee/N4QXdJL"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="font-bold text-coral-deep underline underline-offset-4"
-                                    >
-                                        LINEの無料診断
-                                    </a>
-                                    で具体化できます。
-                                </p>
                             </div>
                         </>
                     )}
@@ -411,75 +433,97 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
 }
 
 /* ────────────────────────────────────────────────────────────
- * セクションCTA（PROBLEM と SERVICE の間に配置）
+ * 「まずは、自分で確かめてみる」セクション（PROBLEM と SERVICE の間）
+ *   左: 3分セルフ診断（/shindan）  右: AIで課題整理（モーダル）
+ *   どちらも登録不要・無料。結果は LINE 無料診断へ橋渡しする
  * ──────────────────────────────────────────────────────────── */
 
-export function AIConsultSection() {
+export function SelfCheckSection() {
     const { open } = useAIConsult();
 
-    const steps = [
-        { t: "普段使っているAIを選ぶ", d: "ChatGPT・Claude・Gemini・Perplexity。ご自身のアカウントで使えます。" },
-        { t: "AIからの質問に答える", d: "事業内容・集客方法・困りごとなど、10問ほど。5〜10分です。" },
-        { t: "課題と優先順位が整理される", d: "「今の課題」「先にやること」「自社でできること／プロに頼むこと」がまとまります。" },
-    ];
-
     return (
-        <section aria-labelledby="ai-consult-heading" className="bg-white px-4 py-12 md:px-6 md:py-16">
+        <section aria-labelledby="self-check-heading" className="bg-white px-4 py-14 md:px-6 md:py-20">
             <div className="mx-auto max-w-5xl">
-                <div className="overflow-hidden rounded-[24px] border border-line bg-white shadow-[0_16px_40px_rgba(31,26,20,0.06)]">
-                    {/* 上段: 見出しとCTA */}
-                    <div className="flex flex-col gap-6 p-6 md:flex-row md:items-center md:gap-10 md:p-10">
-                        <span
-                            aria-hidden
-                            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-cream text-coral-deep"
+                <p className="mb-2 text-[12px] font-bold tracking-[0.3em] text-coral-deep">SELF CHECK</p>
+                <h2 id="self-check-heading" className="text-2xl font-bold leading-snug text-ink md:text-3xl">
+                    まずは、自分で<span className="nowrap">確かめてみる。</span>
+                </h2>
+                <p className="mt-3 max-w-[40em] text-[15px] leading-[1.9] text-ink-sub">
+                    いきなり相談するのは気が引ける、という方へ。どちらも登録不要・無料です。結果はそのままLINEに送れば、プロが無料で具体化します。
+                </p>
+
+                <div className="mt-8 grid gap-5 md:grid-cols-2 md:gap-6">
+                    {/* 左: 3分セルフ診断 */}
+                    <div className="flex flex-col rounded-[24px] border border-line bg-white p-6 shadow-[0_16px_40px_rgba(31,26,20,0.06)] md:p-8">
+                        <div className="mb-5 flex items-center gap-4">
+                            <span aria-hidden className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-cream text-coral-deep">
+                                <ClipboardCheck className="h-6 w-6" />
+                            </span>
+                            <div>
+                                <p className="text-[11px] font-bold tracking-[0.25em] text-coral-deep">SELF DIAGNOSIS</p>
+                                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">3分セルフ診断</h3>
+                            </div>
+                        </div>
+                        <p className="mb-1 text-sm font-bold text-ink">ホームページがある方に</p>
+                        <p className="mb-6 flex-1 text-sm leading-[1.9] text-ink-sub">
+                            はい／いいえの15問に答えるだけで、Web集客のスコアと「優先的に直すべきポイント」が<span className="nowrap">分かります。</span>
+                        </p>
+                        <a
+                            href="/shindan"
+                            className="group inline-flex h-13 items-center justify-center gap-2 rounded-full bg-navy-deep px-7 text-[15px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
                         >
-                            <Sparkles className="h-7 w-7" />
-                        </span>
-                        <div className="min-w-0 flex-1">
-                            <p className="mb-1.5 text-[12px] font-bold tracking-[0.3em] text-coral-deep">AI CONSULT</p>
-                            <h2 id="ai-consult-heading" className="text-xl font-bold leading-snug text-ink md:text-2xl">
-                                何から改善すればいいか<span className="nowrap">わからない方へ</span>
-                            </h2>
-                            <p className="mt-2 text-[15px] leading-[1.9] text-ink-sub">
-                                いつものAIが、あなたの会社の課題を質問しながら整理します。
-                                <span className="nowrap">まだ相談する前の「頭の整理」に。</span>
-                            </p>
-                        </div>
-                        <div className="flex shrink-0 flex-col items-stretch gap-2 md:items-end">
-                            <button
-                                type="button"
-                                onClick={() => open("section")}
-                                className="group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-navy-deep px-8 text-[15px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
-                            >
-                                AIに無料で相談する
-                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
-                            </button>
-                            <p className="text-center text-xs text-ink-sub md:text-right">
-                                登録不要・無料・所要5〜10分
-                            </p>
-                        </div>
+                            セルフ診断をはじめる
+                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                        </a>
+                        <p className="mt-2 text-center text-xs text-ink-sub">所要3分・その場で結果表示</p>
                     </div>
 
-                    {/* 下段: 使い方3ステップ */}
-                    <ol className="grid gap-px border-t border-line bg-line sm:grid-cols-3">
-                        {steps.map((s, i) => (
-                            <li key={s.t} className="flex gap-3 bg-white px-6 py-5 md:px-8">
-                                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-navy-deep text-xs font-bold text-white">
-                                    {i + 1}
-                                </span>
-                                <span className="min-w-0">
-                                    <span className="block text-sm font-bold text-ink">{s.t}</span>
-                                    <span className="mt-1 block text-xs leading-[1.8] text-ink-sub">{s.d}</span>
-                                </span>
-                            </li>
-                        ))}
-                    </ol>
-                    <p className="border-t border-line px-6 py-3 text-xs leading-[1.8] text-ink-sub md:px-10">
-                        ※ NEXT VALLEYのチャットボットではありません。会話はあなたとAIの間だけで完結し、内容がNEXT VALLEYに送られることはありません。整理できたら、そのままLINEの無料診断にお持ちください。
-                    </p>
+                    {/* 右: AIで課題整理 */}
+                    <div className="flex flex-col rounded-[24px] border border-line bg-white p-6 shadow-[0_16px_40px_rgba(31,26,20,0.06)] md:p-8">
+                        <div className="mb-5 flex items-center gap-4">
+                            <span aria-hidden className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-cream text-coral-deep">
+                                <Sparkles className="h-6 w-6" />
+                            </span>
+                            <div>
+                                <p className="text-[11px] font-bold tracking-[0.25em] text-coral-deep">AI CONSULT</p>
+                                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">AIで課題整理</h3>
+                            </div>
+                        </div>
+                        <p className="mb-1 text-sm font-bold text-ink">サイトがない方・何から始めるか分からない方に</p>
+                        <p className="mb-6 flex-1 text-sm leading-[1.9] text-ink-sub">
+                            普段使っているAI（ChatGPT・Claude・Gemini・Perplexity）が質問しながら状況を整理し、専門家にそのまま送れる「相談メモ」に<span className="nowrap">まとめます。</span>
+                        </p>
+                        <button
+                            type="button"
+                            onClick={() => open("section")}
+                            className="group inline-flex h-13 items-center justify-center gap-2 rounded-full bg-navy-deep px-7 text-[15px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
+                        >
+                            AIに無料で相談する
+                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                        </button>
+                        <p className="mt-2 text-center text-xs text-ink-sub">所要5〜10分・ご自身のAIアカウントで</p>
+                    </div>
                 </div>
+
+                <p className="mt-5 text-xs leading-[1.8] text-ink-sub">
+                    ※ AI課題整理はNEXT VALLEYのチャットボットではありません。会話はあなたとAIの間だけで完結し、内容がNEXT VALLEYに自動で送られることはありません（送るかどうかは、あなたが決められます）。
+                </p>
             </div>
         </section>
+    );
+}
+
+/** Contact セクション等から使う小さなテキストリンク（モーダルを開く） */
+export function AIConsultTextLink({ children }: { children: React.ReactNode }) {
+    const { open } = useAIConsult();
+    return (
+        <button
+            type="button"
+            onClick={() => open("other")}
+            className="inline-flex min-h-11 items-center font-bold text-coral-deep underline underline-offset-4 transition-opacity hover:opacity-80"
+        >
+            {children}
+        </button>
     );
 }
 

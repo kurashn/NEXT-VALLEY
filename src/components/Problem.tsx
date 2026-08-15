@@ -109,25 +109,25 @@ const problems = [
     {
         icon: TrendingDown,
         art: ArtFunnel,
-        title: <>集客が、<br />うまくいかない</>,
+        title: <>集客が、<br className="hidden md:block" />うまくいかない</>,
         body: <>HP・SNS・広告。やってはいるが、どれも中途半端で、問い合わせに<span className="nowrap">つながらない。</span></>,
     },
     {
         icon: MonitorSmartphone,
         art: ArtBrowser,
-        title: <>ホームページが、<br />古いまま</>,
+        title: <>ホームページが、<br className="hidden md:block" />古いまま</>,
         body: <>10年前のサイトが放置されたまま。会社の顔が、毎日の機会損失を生み<span className="nowrap">続けている。</span></>,
     },
     {
         icon: Clock,
         art: ArtClock,
-        title: <>人手が足りず、<br />業務に追われる</>,
+        title: <>人手が足りず、<br className="hidden md:block" />業務に追われる</>,
         body: <>AIで効率化したいが、何から始めればいいか分からず、日々の業務で手一杯に<span className="nowrap">なっている。</span></>,
     },
     {
         icon: ChartColumn,
         art: ArtChart,
-        title: <>施策の成果が、<br />見えない</>,
+        title: <>施策の成果が、<br className="hidden md:block" />見えない</>,
         body: <>何が効いているのか分からないまま、社内の理解も、来期の予算も得られずに<span className="nowrap">いる。</span></>,
     },
 ];
@@ -189,14 +189,14 @@ export function Problem() {
                                 {/* カード右側を大きく占める背景アート */}
                                 <div
                                     aria-hidden
-                                    className="pointer-events-none absolute -right-6 top-3 h-44 w-[80%] opacity-80 transition-opacity duration-300 group-hover:opacity-100"
+                                    className="pointer-events-none absolute -right-2 top-2 h-28 w-[52%] opacity-80 transition-opacity duration-300 group-hover:opacity-100 md:-right-6 md:top-3 md:h-44 md:w-[80%]"
                                 >
                                     <p.art />
                                 </div>
                                 {/* アート裏の淡いハイライト */}
                                 <div
                                     aria-hidden
-                                    className="pointer-events-none absolute right-0 top-0 h-48 w-2/3"
+                                    className="pointer-events-none absolute right-0 top-0 h-32 w-1/2 md:h-48 md:w-2/3"
                                     style={{
                                         background:
                                             "radial-gradient(ellipse at 70% 30%, rgba(226,108,92,0.08), transparent 70%)",
@@ -209,7 +209,7 @@ export function Problem() {
                                 </p>
                                 <p.icon
                                     aria-hidden
-                                    className="relative mb-12 h-11 w-11 text-coral transition-transform duration-300 group-hover:scale-110"
+                                    className="relative mb-6 h-10 w-10 text-coral transition-transform duration-300 group-hover:scale-110 md:mb-12 md:h-11 md:w-11"
                                     strokeWidth={1.5}
                                 />
                                 <h3 className="relative mb-4 text-xl font-bold leading-snug text-white">{p.title}</h3>

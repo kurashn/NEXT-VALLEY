@@ -5,6 +5,7 @@ import React from "react";
 import { MessageCircle, Mail, Check } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading, serif } from "@/components/ui/SerifHeading";
+import { AIConsultTextLink } from "@/components/AIConsult";
 
 const assurances = ["診断・提案・見積もりは無料", "しつこい営業なし", "全国オンライン対応"];
 
@@ -63,12 +64,14 @@ export function CTA() {
                             ))}
                         </ul>
 
-                        {/* セルフ診断への導線 */}
-                        <p className="mt-8 text-sm text-ink-sub">
-                            まずは自分で確かめたい方へ →{" "}
+                        {/* まだ迷う人向け: 2つのセルフツールへ */}
+                        <p className="mt-8 text-sm leading-[2] text-ink-sub">
+                            まだ迷う方は →{" "}
                             <a href="/shindan" className="inline-flex min-h-11 items-center font-bold text-coral-deep underline underline-offset-4 transition-opacity hover:opacity-80">
-                                3分でできるWeb集客セルフ診断
+                                3分セルフ診断
                             </a>
+                            <span className="mx-2">／</span>
+                            <AIConsultTextLink>AIで課題整理</AIConsultTextLink>
                         </p>
 
                         {/* 一言の後押し */}

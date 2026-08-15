@@ -11,7 +11,7 @@ import logo from "@/images/logo-new.png";
 
 const navLinks = [
   { name: "サービス", href: "/#service" },
-  { name: "無料セルフ診断", href: "/shindan" },
+  { name: "3分セルフ診断", href: "/shindan" },
   { name: "制作実績", href: "/#works" },
   { name: "私たちの強み", href: "/#reason" },
   { name: "会社情報", href: "/company" },
@@ -78,7 +78,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="hidden h-12 items-center gap-3 rounded-lg bg-coral-deep px-6 text-sm font-bold text-white transition-opacity hover:opacity-90 lg:inline-flex"
           >
-            無料診断を受ける
+            LINEで無料診断
             <ArrowRight className="h-4 w-4" />
           </a>
 
@@ -121,7 +121,7 @@ export default function Navbar() {
                     rel="noopener noreferrer"
                     className="inline-flex h-14 items-center justify-center gap-2 rounded-lg bg-coral-deep text-base font-bold text-white"
                   >
-                    無料診断を受ける
+                    LINEで無料診断
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </div>
