@@ -248,7 +248,7 @@ export function Problem() {
                             }}
                         />
 
-                        <div className="relative flex flex-row items-start gap-4 px-5 py-7 md:items-center md:gap-10 md:px-14 md:py-10">
+                        <div className="relative flex flex-col items-start gap-5 px-5 py-7 md:flex-row md:items-center md:gap-10 md:px-14 md:py-10">
                             <span
                                 aria-hidden
                                 className="glow-pulse flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-coral/60 [&>svg]:h-6 md:h-24 md:w-24 md:[&>svg]:h-10"
@@ -257,10 +257,8 @@ export function Problem() {
                             </span>
                             <div className="min-w-0 flex-1">
                                 <p className="mb-2 text-[15px] text-white md:mb-3 md:text-[17px]">原因はあなたではありません。</p>
-                                <p className="text-[clamp(1.25rem,3.4vw,2.5rem)] font-bold leading-[1.5] text-white">
-                                    <span className="text-coral">『作る会社』</span>と
-                                    <br className="md:hidden" />
-                                    <span className="text-coral">『集める会社』</span>が
+                                <p className="text-[clamp(1.1875rem,3.4vw,2.5rem)] font-bold leading-[1.5] text-white">
+                                    <span className="nowrap"><span className="text-coral">『作る会社』</span>と<span className="text-coral">『集める会社』</span>が</span>
                                     <span className="nowrap">分かれていることです。</span>
                                 </p>
                             </div>

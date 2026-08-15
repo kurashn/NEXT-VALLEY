@@ -289,7 +289,7 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
                                 普段使っているAIを<span className="nowrap">選んでください</span>
                             </DialogPrimitive.Title>
                             <DialogPrimitive.Description id="ai-consult-desc" className="mt-2 text-sm leading-[1.9] text-ink-sub">
-                                選んだAIが新しいタブで開き、あなたの会社の課題を整理する相談が始まります。
+                                選んだAIが新しいタブで開き、あなたの会社について10問ほど質問してきます。答えていくと、課題と優先順位が整理されます（5〜10分）。
                             </DialogPrimitive.Description>
 
                             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -417,38 +417,66 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
 export function AIConsultSection() {
     const { open } = useAIConsult();
 
+    const steps = [
+        { t: "普段使っているAIを選ぶ", d: "ChatGPT・Claude・Gemini・Perplexity。ご自身のアカウントで使えます。" },
+        { t: "AIからの質問に答える", d: "事業内容・集客方法・困りごとなど、10問ほど。5〜10分です。" },
+        { t: "課題と優先順位が整理される", d: "「今の課題」「先にやること」「自社でできること／プロに頼むこと」がまとまります。" },
+    ];
+
     return (
         <section aria-labelledby="ai-consult-heading" className="bg-white px-4 py-12 md:px-6 md:py-16">
             <div className="mx-auto max-w-5xl">
-                <div className="flex flex-col gap-6 rounded-[24px] border border-line bg-white p-6 shadow-[0_16px_40px_rgba(31,26,20,0.06)] md:flex-row md:items-center md:gap-10 md:p-10">
-                    <span
-                        aria-hidden
-                        className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-cream text-coral-deep"
-                    >
-                        <Sparkles className="h-7 w-7" />
-                    </span>
-                    <div className="min-w-0 flex-1">
-                        <p className="mb-1.5 text-[12px] font-bold tracking-[0.3em] text-coral-deep">AI CONSULT</p>
-                        <h2 id="ai-consult-heading" className="text-xl font-bold leading-snug text-ink md:text-2xl">
-                            何から改善すればいいか<span className="nowrap">わからない方へ</span>
-                        </h2>
-                        <p className="mt-2 text-[15px] leading-[1.9] text-ink-sub">
-                            あなたの会社の課題をAIと一緒に<span className="nowrap">整理できます。</span>
-                        </p>
-                    </div>
-                    <div className="flex shrink-0 flex-col items-stretch gap-2 md:items-end">
-                        <button
-                            type="button"
-                            onClick={() => open("section")}
-                            className="group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-navy-deep px-8 text-[15px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
+                <div className="overflow-hidden rounded-[24px] border border-line bg-white shadow-[0_16px_40px_rgba(31,26,20,0.06)]">
+                    {/* 上段: 見出しとCTA */}
+                    <div className="flex flex-col gap-6 p-6 md:flex-row md:items-center md:gap-10 md:p-10">
+                        <span
+                            aria-hidden
+                            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-cream text-coral-deep"
                         >
-                            AIに無料で相談する
-                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
-                        </button>
-                        <p className="text-center text-xs text-ink-sub md:text-right">
-                            ChatGPT・Claude・Gemini・<span className="nowrap">Perplexityから選べます</span>
-                        </p>
+                            <Sparkles className="h-7 w-7" />
+                        </span>
+                        <div className="min-w-0 flex-1">
+                            <p className="mb-1.5 text-[12px] font-bold tracking-[0.3em] text-coral-deep">AI CONSULT</p>
+                            <h2 id="ai-consult-heading" className="text-xl font-bold leading-snug text-ink md:text-2xl">
+                                何から改善すればいいか<span className="nowrap">わからない方へ</span>
+                            </h2>
+                            <p className="mt-2 text-[15px] leading-[1.9] text-ink-sub">
+                                いつものAIが、あなたの会社の課題を質問しながら整理します。
+                                <span className="nowrap">まだ相談する前の「頭の整理」に。</span>
+                            </p>
+                        </div>
+                        <div className="flex shrink-0 flex-col items-stretch gap-2 md:items-end">
+                            <button
+                                type="button"
+                                onClick={() => open("section")}
+                                className="group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-navy-deep px-8 text-[15px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
+                            >
+                                AIに無料で相談する
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                            </button>
+                            <p className="text-center text-xs text-ink-sub md:text-right">
+                                登録不要・無料・所要5〜10分
+                            </p>
+                        </div>
                     </div>
+
+                    {/* 下段: 使い方3ステップ */}
+                    <ol className="grid gap-px border-t border-line bg-line sm:grid-cols-3">
+                        {steps.map((s, i) => (
+                            <li key={s.t} className="flex gap-3 bg-white px-6 py-5 md:px-8">
+                                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-navy-deep text-xs font-bold text-white">
+                                    {i + 1}
+                                </span>
+                                <span className="min-w-0">
+                                    <span className="block text-sm font-bold text-ink">{s.t}</span>
+                                    <span className="mt-1 block text-xs leading-[1.8] text-ink-sub">{s.d}</span>
+                                </span>
+                            </li>
+                        ))}
+                    </ol>
+                    <p className="border-t border-line px-6 py-3 text-xs leading-[1.8] text-ink-sub md:px-10">
+                        ※ NEXT VALLEYのチャットボットではありません。会話はあなたとAIの間だけで完結し、内容がNEXT VALLEYに送られることはありません。整理できたら、そのままLINEの無料診断にお持ちください。
+                    </p>
                 </div>
             </div>
         </section>
@@ -474,14 +502,14 @@ export function AIConsultFloating() {
         <button
             type="button"
             onClick={() => open("floating")}
-            aria-label="AIに無料で相談する"
+            aria-label="AIで課題を整理する（無料）"
             className={cn(
                 "fixed bottom-4 right-4 z-40 inline-flex h-12 items-center gap-2 rounded-full bg-navy-deep pl-4 pr-5 text-sm font-bold text-white shadow-[0_12px_28px_rgba(4,22,39,0.35)] transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral md:bottom-6 md:right-6",
                 visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
             )}
         >
             <Sparkles className="h-4 w-4 text-coral" aria-hidden />
-            AI相談
+            AIで課題整理
         </button>
     );
 }

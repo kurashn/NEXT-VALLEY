@@ -130,7 +130,7 @@ function IlloSns() {
             />
             <text x="99" y="150.5" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="7.5" fill="#06c755">LINE</text>
             <defs>
-                <linearGradient id="ig" x1="52" y1="70" x2="92" y2="30">
+                <linearGradient id="ig" gradientUnits="userSpaceOnUse" x1="52" y1="70" x2="92" y2="30">
                     <stop stopColor="#f9ce34" />
                     <stop offset="0.5" stopColor="#ee2a7b" />
                     <stop offset="1" stopColor="#6228d7" />
