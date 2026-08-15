@@ -11,6 +11,7 @@ import { getToc } from '@/lib/getToc';
 import TableOfContents from '@/components/blog/TableOfContents';
 import { BlogCTA } from '@/components/blog/BlogCTA';
 import { AuthorBox } from '@/components/blog/AuthorBox';
+import { RelatedPosts } from '@/components/blog/RelatedPosts';
 import { Metadata } from 'next';
 
 const reader = createReader(process.cwd(), config);
@@ -199,6 +200,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             }}
                         />
                     </div>
+
+                    <RelatedPosts currentSlug={slug} />
 
                     <AuthorBox />
 

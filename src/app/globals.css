@@ -19,6 +19,24 @@
   .toc-link.active {
     @apply text-coral-deep font-bold;
   }
+
+  /* 記事内テーブル: 1列目（順番・項目名）を折り返さず、セル内の文字は縦書きにしない */
+  .prose table {
+    @apply w-full text-sm;
+    table-layout: auto;
+  }
+  .prose th,
+  .prose td {
+    @apply align-top;
+    word-break: normal;
+    overflow-wrap: anywhere;
+    line-break: strict;
+  }
+  .prose th:first-child,
+  .prose td:first-child {
+    white-space: nowrap;
+    padding-right: 1rem;
+  }
 }
 
 @custom-variant dark (&:is(.dark *));
