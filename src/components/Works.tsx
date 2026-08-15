@@ -19,6 +19,8 @@ import work7 from "@/images/works/works7.jpg";
 import work8 from "@/images/works/works8.jpg";
 import work9 from "@/images/works/works9.jpg";
 import work11 from "@/images/works/works11.jpg";
+import work12 from "@/images/works/works12.jpg";
+import work13 from "@/images/works/works13.jpg";
 
 const featuredWorks = [
     {
@@ -38,11 +40,11 @@ const featuredWorks = [
         ),
     },
     {
-        name: "株式会社ワナビィ様",
-        label: "企業・サービス",
-        image: work7,
+        name: "BowlingNavi -ボウナビ- 様",
+        label: "メディア・情報サイト",
+        image: work12,
         review: null,
-        caption: "コーポレートサイトの制作事例。スクールに限らず、企業サイトも手がけています。",
+        caption: "関西のボウリング大会情報サイト。大会検索・コラム・診断コンテンツを備えたメディアサイトの制作事例です。",
     },
 ];
 
@@ -54,6 +56,8 @@ const otherWorks = [
     { name: "DANCE STUDIO PLUS様", image: work9 },
     { name: "K-coaching様", image: work11 },
     { name: "株式会社ビビッドディレクション様", image: work6 },
+    { name: "株式会社ワナビィ様", image: work7 },
+    { name: "タイ北部チェンマイ情報ステーション様", image: work13 },
 ];
 
 export function Works() {
@@ -64,7 +68,7 @@ export function Works() {
                 <FadeIn>
                     <SerifHeading en="Works" jp="制作実績" />
                     <p className="lead -mt-6 mb-10 text-[15px] leading-[2] tracking-[0.03em] text-ink-sub md:mb-14">
-                        スクールから企業サイトまで、50社以上の制作・支援実績があります。
+                        スクールから企業サイト・情報メディアまで、50社以上の制作・支援実績があります。
                     </p>
                 </FadeIn>
 
