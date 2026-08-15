@@ -13,11 +13,11 @@
   }
 
   .toc-link {
-    @apply block py-1 text-slate-600 hover:text-[#e26c5c] transition-colors text-sm;
+    @apply block py-1 text-slate-600 hover:text-coral-deep transition-colors text-sm;
   }
 
   .toc-link.active {
-    @apply text-[#e26c5c] font-bold;
+    @apply text-coral-deep font-bold;
   }
 }
 

@@ -10,6 +10,7 @@ import { DocumentRenderer } from '@keystatic/core/renderer';
 import { getToc } from '@/lib/getToc';
 import TableOfContents from '@/components/blog/TableOfContents';
 import { BlogCTA } from '@/components/blog/BlogCTA';
+import { AuthorBox } from '@/components/blog/AuthorBox';
 import { Metadata } from 'next';
 
 const reader = createReader(process.cwd(), config);
@@ -65,15 +66,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             ? `https://nextvalley-jpn.com${post.coverImage}`
                             : undefined,
                         datePublished: post.publishedDate || undefined,
+                        dateModified: post.publishedDate || undefined,
                         author: {
-                            "@type": "Organization",
-                            name: "NEXT VALLEY",
-                            url: "https://nextvalley-jpn.com",
+                            "@type": "Person",
+                            name: "倉林 駿",
+                            jobTitle: "NEXT VALLEY 代表",
+                            url: "https://nextvalley-jpn.com/company",
                         },
                         publisher: {
                             "@type": "Organization",
                             name: "NEXT VALLEY",
                             url: "https://nextvalley-jpn.com",
+                            logo: {
+                                "@type": "ImageObject",
+                                url: "https://nextvalley-jpn.com/og-image.png",
+                            },
                         },
                         mainEntityOfPage: `https://nextvalley-jpn.com/blog/${slug}`,
                     }),
@@ -107,7 +114,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <TableOfContents toc={toc} />
                     </div>
 
-                    <div className="prose prose-lg max-w-none text-slate-700 prose-headings:text-[#002335] prose-a:text-[#e26c5c] prose-strong:text-[#002335] prose-strong:bg-[linear-gradient(transparent_60%,#fbd5d0_60%)] mb-16">
+                    <div className="prose prose-lg max-w-none text-slate-700 prose-headings:text-[#002335] prose-a:text-coral-deep prose-a:font-bold prose-strong:text-[#002335] prose-strong:bg-[linear-gradient(transparent_60%,#fbd5d0_60%)] mb-16">
                         <DocumentRenderer
                             document={content}
                             renderers={{
@@ -192,6 +199,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             }}
                         />
                     </div>
+
+                    <AuthorBox />
 
                     {/* CTA Section */}
                     <div className="mt-16 border-t pt-16">
