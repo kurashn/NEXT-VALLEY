@@ -83,7 +83,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <article className="pt-32 pb-20 px-4">
                 <div className="max-w-3xl mx-auto">
                     <header className="mb-12 text-center">
-                        <Badge className="bg-[#e26c5c] hover:bg-[#e26c5c] text-white border-none px-4 py-1.5 text-sm mb-6 tracking-wider">
+                        <Badge className="bg-coral-deep hover:bg-coral-deep text-white border-none px-4 py-1.5 text-sm mb-6 tracking-wider">
                             COLUMN
                         </Badge>
                         <h1 className="text-3xl md:text-4xl font-bold text-[#002335] mb-6 leading-tight">

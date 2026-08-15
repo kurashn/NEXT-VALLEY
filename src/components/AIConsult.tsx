@@ -489,7 +489,7 @@ export function SelfCheckSection() {
                                 <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">AIで課題整理</h3>
                             </div>
                         </div>
-                        <p className="mb-1 text-sm font-bold text-ink">サイトがない方・何から始めるか分からない方に</p>
+                        <p className="mb-1 text-sm font-bold text-ink">サイトがない方・<span className="nowrap">何から始めるか分からない方に</span></p>
                         <p className="mb-6 flex-1 text-sm leading-[1.9] text-ink-sub">
                             普段使っているAI（ChatGPT・Claude・Gemini・Perplexity）が質問しながら状況を整理し、専門家にそのまま送れる「相談メモ」に<span className="nowrap">まとめます。</span>
                         </p>

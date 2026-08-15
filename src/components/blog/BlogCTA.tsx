@@ -1,27 +1,35 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { MessageCircle } from "lucide-react";
 
 export const BlogCTA = () => {
     return (
-        <div className="my-16 bg-[#eef2f6] rounded-2xl p-8 md:p-12 text-center">
-            <h3 className="text-2xl md:text-3xl font-bold text-[#002335] mb-4">
-                教室の「集客」と「業務」にお悩みですか？
+        <div className="my-16 rounded-2xl bg-[#eef2f6] p-8 text-center md:p-12">
+            <p className="mb-3 text-[12px] font-bold tracking-[0.3em] text-coral-deep">FREE CHECK</p>
+            <h3 className="mb-4 text-2xl font-bold text-navy md:text-3xl">
+                「うちの場合は、どこから？」を<span className="nowrap">無料でお答えします</span>
             </h3>
-            <p className="text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto">
-                NEXT VALLEYは、個人・小規模教室専門のデジタルパートナーです。<br className="hidden md:block" />
-                「生徒が集まらない」「事務作業に追われている」...そんな悩みを、<br className="hidden md:block" />
-                ホームページ制作とAI活用で解決します。
+            <p className="mx-auto mb-8 max-w-2xl leading-[1.9] text-ink-sub">
+                NEXT VALLEYは、AI活用のプロチームです。マーケティングもHP・LP制作も、課題に合わせて必要な打ち手だけを提案します。
+                <br className="hidden md:block" />
+                サイトのURLやお悩みをLINEで送るだけで、改善の打ち手と概算お見積もりをお返しします。
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                    <Button size="lg" className="w-full sm:w-auto bg-[#e26c5c] hover:bg-[#d05a4b] text-white font-bold px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
-                        まずは無料相談する
-                    </Button>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <a
+                    href="https://lin.ee/N4QXdJL"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-[#05a247] px-8 text-[19px] font-bold text-white shadow-[0_12px_28px_rgba(5,162,71,0.3)] transition-all hover:-translate-y-0.5 sm:w-auto"
+                >
+                    <MessageCircle className="h-5 w-5" aria-hidden />
+                    LINEで無料診断を受ける
                 </a>
-                <p className="text-xs text-slate-500 mt-2 sm:mt-0">
-                    ※ 無理な営業は一切いたしません
-                </p>
+                <a
+                    href="/shindan"
+                    className="inline-flex h-14 w-full items-center justify-center rounded-full border border-line bg-white px-8 text-[15px] font-bold text-ink transition-colors hover:border-coral hover:text-coral-deep sm:w-auto"
+                >
+                    3分セルフ診断を試す
+                </a>
             </div>
+            <p className="mt-4 text-xs text-ink-sub">※ 診断・提案・見積もりは無料。しつこい営業は一切ありません</p>
         </div>
     );
 };

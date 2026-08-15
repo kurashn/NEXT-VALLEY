@@ -22,7 +22,7 @@ export default async function BlogPage() {
             <section className="pt-32 pb-20 px-4">
                 <div className="max-w-4xl mx-auto">
                     <div className="text-center mb-16">
-                        <Badge className="bg-[#e26c5c] hover:bg-[#e26c5c] text-white border-none px-4 py-1.5 text-sm mb-4 tracking-wider">
+                        <Badge className="bg-coral-deep hover:bg-coral-deep text-white border-none px-4 py-1.5 text-sm mb-4 tracking-wider">
                             COLUMN
                         </Badge>
                         <h1 className="text-3xl md:text-5xl font-bold text-[#002335] mb-6">
