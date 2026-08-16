@@ -1,0 +1,106 @@
+/* 無料プレビューLP 専用スタイル（.lp- プレフィックス／他ページに影響させない） */
+
+.lp-root {
+  font-family: var(--lp-font-sans), "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-feature-settings: "palt" 1;
+  letter-spacing: 0.01em;
+}
+.lp-serif {
+  font-family: var(--lp-font-serif), Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+.lp-mincho {
+  font-family: var(--lp-font-mincho), "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+
+/* 極薄グリッド＋ビネット（FV／最終CTA） */
+.lp-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+.lp-vignette {
+  background:
+    radial-gradient(60% 70% at 70% 40%, rgba(226, 108, 92, 0.16), transparent 70%),
+    linear-gradient(180deg, rgba(4, 22, 39, 0) 60%, rgba(4, 22, 39, 0.9) 100%);
+}
+
+/* デバイスモックの浮遊 */
+@keyframes lp-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes lp-float-2 {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-14px) rotate(-2deg); }
+}
+.lp-float { animation: lp-float 7s ease-in-out infinite; }
+.lp-float-2 { animation: lp-float-2 8s ease-in-out infinite; }
+
+/* 残り枠のドット・脈動 */
+@keyframes lp-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(226, 108, 92, 0.6); }
+  70% { box-shadow: 0 0 0 10px rgba(226, 108, 92, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(226, 108, 92, 0); }
+}
+.lp-pulse { animation: lp-pulse 2s ease-out infinite; }
+
+/* 業種ティッカー */
+@keyframes lp-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.lp-ticker {
+  display: flex;
+  width: max-content;
+  animation: lp-ticker 40s linear infinite;
+}
+.lp-ticker:hover { animation-play-state: paused; }
+
+/* CTAの光沢スイープ */
+.lp-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.lp-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
+}
+.lp-cta:hover::after { transform: translateX(120%); }
+
+/* スクロールの手がかり */
+@keyframes lp-cue {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+.lp-cue::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  animation: lp-cue 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+/* 取り消し線（「一般的な流れ」の否定表現） */
+.lp-strike {
+  background: linear-gradient(transparent 52%, rgba(226, 108, 92, 0.35) 52%, rgba(226, 108, 92, 0.35) 68%, transparent 68%);
+}
+
+/* モバイル追従バー分の下余白 */
+@media (max-width: 767px) {
+  .lp-root { padding-bottom: 84px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-float, .lp-float-2, .lp-pulse, .lp-ticker, .lp-cue::after { animation: none; }
+  .lp-cta::after { display: none; }
+}

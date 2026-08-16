@@ -221,6 +221,11 @@
   --color-teal: #2e7f92;        /* 遊び色（大型セリフ文字専用・AA大文字3:1） */
   --color-ink-faint: #7c8b97;   /* 大型装飾数字用 */
   --color-line-green: #06c755;  /* LINEブランドボタン専用 */
+
+  /* 影・角丸のトークン（カード類はこれだけを使う） */
+  --shadow-card: 0 16px 40px rgba(31, 26, 20, 0.06);
+  --shadow-card-hover: 0 24px 56px rgba(31, 26, 20, 0.12);
+  --shadow-cta: 0 12px 28px rgba(226, 108, 92, 0.35);
 }
 
 /* セクション上辺のアーチ（gaabooの曲線切替）。

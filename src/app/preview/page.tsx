@@ -1,14 +1,33 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check, MessageCircle, Clock, Gift, ShieldCheck } from "lucide-react";
-import { Footer } from "@/components/layout/Footer";
-import { serif } from "@/components/ui/SerifHeading";
+import { Noto_Sans_JP, Instrument_Serif, Shippori_Mincho } from "next/font/google";
+import {
+    ArrowRight,
+    ArrowDown,
+    Check,
+    MessageCircle,
+    Monitor,
+    Smartphone,
+    Sparkles,
+    Palette,
+    Gift,
+    ShieldCheck,
+    X,
+    Quote,
+} from "lucide-react";
+import { FadeIn } from "@/components/ui/FadeIn";
 import logo from "@/images/logo-new.png";
 import fvbg from "@/images/fvbg.webp";
-import sample1 from "@/images/works/works1.jpg";
-import sample2 from "@/images/works/works12.jpg";
-import sample3 from "@/images/works/works14.jpg";
+import work1 from "@/images/works/works1.jpg";
+import work5 from "@/images/works/works5.jpg";
+import work8 from "@/images/works/works8.jpg";
+import work14 from "@/images/works/works14.jpg";
+import work15 from "@/images/works/works15.jpg";
+import work17 from "@/images/works/works17.jpg";
+import work12 from "@/images/works/works12.jpg";
+import work18 from "@/images/works/works18.jpg";
+import "./preview.css";
 
 /**
  * 無料プレビュー制作キャンペーン LP（/preview）
@@ -16,25 +35,94 @@ import sample3 from "@/images/works/works14.jpg";
  * - 毎月10社限定。残り枠は下の定数を書き換えるだけで更新できる
  */
 const REMAINING_SLOTS = 10; // ← 今月の残り枠（毎月ここを更新）
+const TOTAL_SLOTS = 10;
 const LINE_URL = "https://lin.ee/N4QXdJL#from=preview";
 
+/* LP専用の書体（本体サイトには影響しない） */
+const lpSans = Noto_Sans_JP({ variable: "--lp-font-sans", subsets: ["latin"], weight: ["400", "500", "700", "900"], display: "swap", preload: false });
+const lpSerif = Instrument_Serif({ variable: "--lp-font-serif", subsets: ["latin"], weight: "400", display: "swap" });
+const lpMincho = Shippori_Mincho({ variable: "--lp-font-mincho", subsets: ["latin"], weight: ["500", "700"], display: "swap", preload: false });
+
 export const metadata: Metadata = {
-    title: "無料プレビュー制作｜先にトップページのデザインをお見せします（毎月10社限定）",
+    title: "無料プレビュー制作｜契約前にトップページのデザインをお見せします（毎月10社限定）",
     description:
         "ホームページをこれから作る方へ。契約前に、あなたの会社のトップページのデザインを無料でお作りしてお見せします。気に入らなければそこで終わり。費用はかかりません。毎月10社限定・3営業日以内。",
     alternates: { canonical: "https://www.nextvalley-jpn.com/preview" },
+    openGraph: {
+        title: "先に見せます。あなたのトップページを、無料で。｜NEXT VALLEY",
+        description: "契約前にトップページのデザインを無料制作。3営業日以内・毎月10社限定・断ってOK。",
+        url: "https://www.nextvalley-jpn.com/preview",
+        siteName: "NEXT VALLEY",
+        locale: "ja_JP",
+        type: "website",
+        images: [{ url: "/og-preview.png", width: 1200, height: 630, alt: "先に見せます。あなたのトップページを、無料で。" }],
+    },
+    twitter: { card: "summary_large_image", title: "先に見せます。あなたのトップページを、無料で。｜NEXT VALLEY", images: ["/og-preview.png"] },
 };
+
+/* ───────────────────────── データ ───────────────────────── */
+
+const heroChips = [
+    { k: "費用", v: "0円" },
+    { k: "納期", v: "3営業日以内" },
+    { k: "断っても", v: "OK" },
+];
+
+const industries = [
+    "スクール・教室", "不動産", "建設・工務店", "フィットネス", "美容・サロン", "飲食店", "士業", "医療・整体", "EC・物販", "情報メディア", "コンサルティング", "製造業",
+];
+
+const usualFlow = [
+    "制作会社を何社も比較する",
+    "見積もりと実績だけで契約を決める",
+    "打ち合わせを重ねて、数週間待つ",
+    "完成して初めてデザインを見る",
+    "「イメージと違う…」でも、もう戻れない",
+];
+
+const ourFlow = [
+    "LINEで5つの質問に答える（2分）",
+    "3営業日以内にトップページ案が届く",
+    "実物を見てから、頼むかどうか決める",
+];
+
+const deliverables = [
+    { icon: Monitor, t: "PC版トップページ", d: "実際のブラウザで見た状態の画像。構成・写真の置き方・文字の大きさまで、そのまま確認できます。" },
+    { icon: Smartphone, t: "スマホ版トップページ", d: "来訪者の7割はスマホ。指で触る前提のレイアウトを、別途つくって同時にお渡しします。" },
+    { icon: Sparkles, t: "業種と強みに合わせた構成", d: "テンプレートの色替えではありません。「誰に・何を・どう伝えるか」から組み立てます。" },
+    { icon: Palette, t: "希望の雰囲気を反映", d: "「上品に」「元気に」「信頼感を」。ひと言の希望から、色・書体・余白のトーンを決めます。" },
+];
 
 const steps = [
     { n: "01", t: "LINEで5つ答える", d: "業種・地域・伝えたい強み・好みの雰囲気・素材の有無。所要2分。写真やロゴがなくても大丈夫です。" },
-    { n: "02", t: "3営業日でトップページ案が届く", d: "PC・スマホの2枚の画像でお届け。AIを活用した制作環境で、待たせません。" },
+    { n: "02", t: "3営業日以内に、トップページ案が届く", d: "PC・スマホの2枚の画像でお届け。AIを活用した制作環境で、お待たせしません。" },
     { n: "03", t: "見てから決める", d: "気に入れば正式制作へ（公開まで担当）。気に入らなければ、そこで終わりで大丈夫です。営業はしません。" },
 ];
 
-const forWho = [
-    "これからホームページを作ろうとしている",
-    "制作会社を比べているが、完成イメージが湧かず決められない",
-    "「作る前に、実物を見て判断したい」と思っている",
+const chatQuestions = ["① 業種と、お店・会社のお名前", "② 地域（対象エリア）", "③ いちばん伝えたい強み", "④ 好みの雰囲気（上品・元気 など）", "⑤ 写真やロゴの有無"];
+
+const samples = [
+    { img: work1, name: "Tulip Ballet Studio様", label: "バレエ教室" },
+    { img: work5, name: "Rythmique Garden様", label: "リトミック教室" },
+    { img: work8, name: "Yuma English House様", label: "英語教室" },
+    { img: work14, name: "久和不動産株式会社様", label: "不動産" },
+    { img: work15, name: "株式会社西辻工務店様", label: "建設・工務店" },
+    { img: work17, name: "株式会社アイ・セカンド様", label: "企業サイト" },
+    { img: work18, name: "パーソナルジムMe様", label: "フィットネス" },
+    { img: work12, name: "BowlingNavi -ボウナビ- 様", label: "情報メディア" },
+];
+
+const voices = [
+    {
+        name: "Tulip Ballet Studio様",
+        label: "バレエ教室",
+        text: "非常に丁寧に、かつ、希望どおり作成していただきました！ウェブ関係はまったくわからず、毎回質問したりしていましたが、いつも丁寧に優しく答えてくださいました。想像以上の素敵なホームページを作成していただきました。",
+    },
+    {
+        name: "Rythmique Garden様",
+        label: "リトミック教室",
+        text: "初めてのホームページ作成で、何も分からずほぼ全てお任せだったのですが、一つ一つ、丁寧に教えてくださいました。また、様々な提案もしてくださり、依頼して本当に良かったと実感しております。",
+    },
 ];
 
 const faqs = [
@@ -45,219 +133,526 @@ const faqs = [
     { q: "なぜ無料でできるのですか？", a: "AIを活用した制作環境で、トップページ1枚を作るコストが大幅に下がったからです。その分を「先に実物を見てもらう」ことに使っています。契約前に判断材料を渡した方が、お互いに後悔がないと考えています。" },
 ];
 
+/* ───────────────────────── 部品 ───────────────────────── */
+
+function LineButton({ className = "" }: { className?: string }) {
+    return (
+        <a
+            href={LINE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`lp-cta group inline-flex h-16 w-full max-w-md items-center justify-center gap-3 rounded-full bg-[#05a247] px-6 text-[19px] font-bold text-white shadow-[0_14px_32px_rgba(5,162,71,0.38)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(5,162,71,0.45)] sm:w-auto sm:max-w-none sm:px-9 ${className}`}
+        >
+            <MessageCircle className="h-6 w-6 shrink-0" aria-hidden />
+            <span className="whitespace-nowrap">
+                <span className="hidden sm:inline">LINEで</span>無料プレビューを申し込む
+            </span>
+            <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
+        </a>
+    );
+}
+
+function SectionHead({ en, jp, lead, dark = false, align = "left" }: { en: string; jp: React.ReactNode; lead?: React.ReactNode; dark?: boolean; align?: "left" | "center" }) {
+    return (
+        <div className={`mb-10 md:mb-14 ${align === "center" ? "text-center" : ""}`}>
+            <p className={`lp-serif text-[clamp(2.75rem,6vw,4.5rem)] leading-[0.9] tracking-[-0.01em] ${dark ? "text-white/90" : "text-navy"}`}>{en}</p>
+            <h2 className={`mt-4 text-[clamp(1.5rem,3.2vw,2.5rem)] font-bold leading-[1.4] tracking-tight ${dark ? "text-white" : "text-ink"}`}>{jp}</h2>
+            {lead && <p className={`lead mt-4 max-w-[38em] text-[15px] leading-[2] ${align === "center" ? "mx-auto" : ""} ${dark ? "text-navy-sub" : "text-ink-sub"}`}>{lead}</p>}
+        </div>
+    );
+}
+
+function SlotsMeter({ dark = true }: { dark?: boolean }) {
+    return (
+        <div className={`inline-flex flex-wrap items-center gap-x-4 gap-y-2 rounded-full border px-4 py-2 ${dark ? "border-white/15 bg-white/[0.04]" : "border-line bg-white"}`}>
+            <span className="relative flex h-2.5 w-2.5">
+                <span className="lp-pulse absolute inline-flex h-full w-full rounded-full bg-coral" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-coral" />
+            </span>
+            <span className={`text-sm font-bold ${dark ? "text-white" : "text-ink"}`}>
+                今月の残り枠 <span className="lp-serif text-2xl leading-none text-coral">{REMAINING_SLOTS}</span>
+                <span className={dark ? "text-navy-sub" : "text-ink-sub"}> / {TOTAL_SLOTS}社</span>
+            </span>
+            <span className="flex gap-1" aria-hidden>
+                {Array.from({ length: TOTAL_SLOTS }).map((_, i) => (
+                    <span key={i} className={`h-1.5 w-3 rounded-full ${i < REMAINING_SLOTS ? "bg-coral" : dark ? "bg-white/15" : "bg-line"}`} />
+                ))}
+            </span>
+        </div>
+    );
+}
+
+/* 制作例のスタック（実物のトップページ案が「届く」イメージ） */
+function DeviceMock() {
+    return (
+        <div className="relative mx-auto w-full max-w-[560px] pb-10 pr-6 pt-8 md:pr-10" aria-hidden>
+            {/* 後ろのカード */}
+            <div className="absolute inset-x-8 bottom-4 top-14 rotate-[3deg] overflow-hidden rounded-[18px] bg-white opacity-90 shadow-[0_30px_60px_rgba(0,0,0,0.45)] md:inset-x-12">
+                <Image src={work5} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 520px" />
+            </div>
+            {/* 前のカード */}
+            <div className="lp-float relative overflow-hidden rounded-[18px] bg-white shadow-[0_40px_80px_rgba(0,0,0,0.55)] ring-1 ring-white/20">
+                <div className="relative aspect-[995/580] w-full">
+                    <Image src={work1} alt="" fill priority className="object-cover" sizes="(max-width: 768px) 100vw, 560px" />
+                </div>
+                <div className="flex items-center justify-between border-t border-line bg-white px-4 py-2.5 text-[11px] text-ink-sub">
+                    <span className="flex items-center gap-1.5"><Monitor className="h-3.5 w-3.5" /> PC版</span>
+                    <span className="flex items-center gap-1.5"><Smartphone className="h-3.5 w-3.5" /> スマホ版</span>
+                    <span className="font-bold text-coral-deep">preview_v1.png</span>
+                </div>
+            </div>
+            {/* ステッカー */}
+            <div className="absolute -left-1 top-2 rotate-[-4deg] rounded-full bg-coral-deep px-4 py-2 text-[12px] font-bold tracking-[0.1em] text-white shadow-cta md:-left-5">
+                3営業日以内にお届け
+            </div>
+            <div className="absolute bottom-3 right-2 rounded-full border border-white/20 bg-navy-deep/85 px-4 py-2 text-[12px] font-bold text-white shadow-lg backdrop-blur md:right-4">
+                PC＋スマホ 2枚セット
+            </div>
+        </div>
+    );
+}
+
+/* ───────────────────────── ページ ───────────────────────── */
+
 export default function PreviewPage() {
     return (
-        <main className="min-h-screen bg-base text-ink">
-            {/* 最小ヘッダー（ナビなし・ゴールを1つに） */}
-            <header className="fixed left-0 right-0 top-0 z-50 bg-navy-deep">
-                <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:h-20 md:px-6">
+        <main className={`lp-root ${lpSans.variable} ${lpSerif.variable} ${lpMincho.variable} min-h-screen bg-base text-ink`}>
+            {/* ヘッダー（ナビなし・ゴールを1つに） */}
+            <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/5 bg-navy-deep/85 backdrop-blur-md">
+                <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-20 md:px-6">
                     <Link href="/" className="flex min-h-11 items-center">
                         <Image src={logo} alt="NEXT VALLEY" width={180} height={40} className="h-8 w-auto object-contain md:h-9" priority />
                     </Link>
-                    <a
-                        href={LINE_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex h-11 items-center gap-2 rounded-full bg-[#05a247] px-5 text-[19px] font-bold text-white transition-opacity hover:opacity-90"
-                    >
-                        <MessageCircle className="h-4 w-4" aria-hidden />
-                        LINEで申し込む
-                    </a>
-                </div>
-            </header>
-
-            {/* FV */}
-            <section className="relative overflow-hidden bg-navy-deep pt-16 md:pt-20">
-                <div
-                    aria-hidden
-                    className="absolute inset-y-0 right-0 w-full md:w-[62%]"
-                    style={{ maskImage: "linear-gradient(to right, transparent 0%, black 35%)", WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 35%)" }}
-                >
-                    <Image src={fvbg} alt="" fill priority className="object-cover object-center opacity-45 md:opacity-95" placeholder="blur" sizes="(max-width: 768px) 100vw, 62vw" />
-                </div>
-                <div className="relative z-10 mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
-                    <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-coral/60 px-4 py-1.5 text-[12px] font-bold tracking-[0.2em] text-coral">
-                        <span className="h-1.5 w-1.5 rounded-full bg-coral" />
-                        FREE PREVIEW ／ 毎月10社限定
-                    </p>
-                    <h1 className="max-w-3xl text-[clamp(1.875rem,5vw,4.25rem)] font-bold leading-[1.35] tracking-tight text-white">
-                        先に見せます。
-                        <br />
-                        あなたのホームページの
-                        <br className="md:hidden" />
-                        トップページを、<span className="text-coral">無料で。</span>
-                    </h1>
-                    <p className="lead mt-8 max-w-[34em] text-base leading-[2] text-navy-sub md:text-lg">
-                        契約の前に、あなたの会社のトップページのデザインをお作りしてお見せします。気に入らなければ、そこで終わりで<span className="nowrap">大丈夫です。</span>
-                    </p>
-
-                    <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-bold text-white">
-                        {[["費用", "0円"], ["納期", "3営業日以内"], ["今月の残り枠", `${REMAINING_SLOTS}社`]].map(([k, v]) => (
-                            <li key={k} className="flex items-center gap-2">
-                                <Check className="h-4 w-4 text-coral" aria-hidden />
-                                <span className="text-navy-sub">{k}</span> {v}
-                            </li>
-                        ))}
-                    </ul>
-
-                    <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+                    <div className="flex items-center gap-4">
+                        <p className="hidden items-center gap-2 rounded-full bg-navy-deep px-3 py-1.5 text-sm font-bold text-white md:inline-flex">
+                            <span className="h-1.5 w-1.5 rounded-full bg-coral" />
+                            毎月10社限定・今月あと{REMAINING_SLOTS}社
+                        </p>
                         <a
                             href={LINE_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group inline-flex h-16 items-center gap-3 rounded-full bg-[#05a247] px-10 text-[19px] font-bold text-white shadow-[0_12px_28px_rgba(5,162,71,0.35)] transition-all hover:-translate-y-0.5"
+                            className="inline-flex h-11 items-center gap-2 rounded-full bg-[#05a247] px-5 text-[19px] font-bold text-white transition-all hover:-translate-y-0.5"
                         >
-                            <MessageCircle className="h-6 w-6" aria-hidden />
-                            LINEで無料プレビューを申し込む
-                            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden />
+                            <MessageCircle className="h-4 w-4" aria-hidden />
+                            <span className="whitespace-nowrap">LINEで申し込む</span>
                         </a>
-                        <p className="text-sm text-navy-sub">
-                            LINEで「プレビュー希望」と送るだけ・<span className="nowrap">しつこい営業なし</span>
-                        </p>
+                    </div>
+                </div>
+            </header>
+
+            {/* ── FV ── */}
+            <section className="relative overflow-hidden bg-navy-deep pt-16 md:pt-20">
+                <div aria-hidden className="absolute inset-0 opacity-50 md:opacity-70" style={{ maskImage: "linear-gradient(to bottom, black 20%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, black 20%, transparent 100%)" }}>
+                    <Image src={fvbg} alt="" fill priority className="object-cover object-center opacity-40" placeholder="blur" sizes="100vw" />
+                </div>
+                <div aria-hidden className="lp-vignette pointer-events-none absolute inset-0" />
+                <div aria-hidden className="lp-grid pointer-events-none absolute inset-0 opacity-[0.06]" />
+
+                <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 px-4 pb-24 pt-14 md:grid-cols-12 md:px-6 md:pb-32 md:pt-20 lg:gap-8">
+                    <div className="min-w-0 md:col-span-7">
+                        <FadeIn>
+                            <p className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-coral/60 bg-coral/10 px-4 py-2 text-[12px] font-bold tracking-[0.2em] text-coral">
+                                <span className="h-1.5 w-1.5 rounded-full bg-coral" />
+                                FREE PREVIEW ／ 毎月10社限定
+                            </p>
+                        </FadeIn>
+                        <FadeIn delay={0.08}>
+                            <h1 className="text-white">
+                                <span className="block text-[clamp(2.75rem,7.2vw,6rem)] font-black leading-[1.1] tracking-[-0.03em]">先に、見せます。</span>
+                                <span className="mt-5 block text-[clamp(1.375rem,3vw,2.5rem)] font-bold leading-[1.4] tracking-tight">
+                                    あなたのホームページの<br />トップページを、<span className="text-coral">無料で。</span>
+                                </span>
+                            </h1>
+                        </FadeIn>
+                        <FadeIn delay={0.16}>
+                            <p className="lead mt-8 max-w-[34em] text-base leading-[2] text-navy-sub md:text-lg">
+                                契約の前に、あなたの会社のトップページのデザインをお作りしてお見せします。
+                                <br className="hidden md:block" />
+                                気に入らなければ、そこで終わりで<span className="nowrap">大丈夫です。</span>
+                            </p>
+                        </FadeIn>
+                        <FadeIn delay={0.22}>
+                            <ul className="mt-8 flex flex-wrap gap-2.5">
+                                {heroChips.map(({ k, v }) => (
+                                    <li key={k} className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] py-2 pl-3 pr-4 text-sm text-white backdrop-blur-sm">
+                                        <Check className="h-4 w-4 text-coral" aria-hidden />
+                                        <span className="text-navy-sub">{k}</span>
+                                        <span className="font-bold">{v}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </FadeIn>
+                        <FadeIn delay={0.3}>
+                            <div className="mt-10 flex flex-col items-stretch gap-5 sm:items-start">
+                                <LineButton />
+                                <p className="text-sm text-navy-sub">
+                                    LINEで「プレビュー希望」と送るだけ・<span className="nowrap">しつこい営業なし</span>
+                                </p>
+                                <SlotsMeter />
+                            </div>
+                        </FadeIn>
+                    </div>
+
+                    <div className="min-w-0 md:col-span-5">
+                        <FadeIn delay={0.25} className="pt-6 md:pt-0">
+                            <DeviceMock />
+                        </FadeIn>
+                    </div>
+                </div>
+
+                {/* スクロールの手がかり */}
+                <div aria-hidden className="pointer-events-none absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex">
+                    <span className="text-[10px] font-bold tracking-[0.35em] text-white/50">SCROLL</span>
+                    <span className="lp-cue relative block h-10 w-px overflow-hidden text-coral/80" />
+                </div>
+            </section>
+
+            {/* ── 業種ティッカー ── */}
+            <section className="border-y border-line bg-white py-5" aria-label="対応業種">
+                <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-4 md:flex-row md:px-6">
+                    <p className="shrink-0 text-[12px] font-bold tracking-[0.25em] text-ink">
+                        制作・支援実績 <span className="lp-serif text-2xl leading-none text-coral-deep">50</span>社以上
+                    </p>
+                    <div className="relative w-full overflow-hidden" style={{ maskImage: "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)", WebkitMaskImage: "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)" }}>
+                        <div className="lp-ticker gap-3 pr-3">
+                            {[...industries, ...industries].map((t, i) => (
+                                <span key={i} className="whitespace-nowrap rounded-full border border-line px-4 py-2 text-[13px] text-ink-sub">
+                                    {t}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* こんな方へ */}
-            <section className="bg-base px-4 py-16 md:px-6 md:py-24">
-                <div className="mx-auto max-w-5xl">
-                    <p className="text-[12px] font-bold tracking-[0.3em] text-coral-deep">FOR</p>
-                    <h2 className="mt-2 text-2xl font-bold leading-snug text-ink md:text-3xl">こんな方のための<span className="nowrap">サービスです</span></h2>
-                    <ul className="mt-8 grid gap-4 md:grid-cols-3">
-                        {forWho.map((f) => (
-                            <li key={f} className="flex items-start gap-3 rounded-2xl bg-white p-6 shadow-[0_16px_40px_rgba(31,26,20,0.06)]">
-                                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-coral/15">
-                                    <Check className="h-3.5 w-3.5 text-coral-deep" aria-hidden />
+            {/* ── 一般的な流れ vs 私たち ── */}
+            <section className="bg-base px-4 py-20 md:px-6 md:py-28">
+                <div className="mx-auto max-w-6xl">
+                    <FadeIn>
+                        <SectionHead
+                            en="Why"
+                            jp={<>「作ってから後悔」を、<span className="nowrap">なくしたい。</span></>}
+                            lead={<>ホームページは、完成するまでデザインが分からないのが普通でした。だから私たちは、順番を変えました。</>}
+                        />
+                    </FadeIn>
+                    <div className="grid gap-6 md:grid-cols-2">
+                        <FadeIn>
+                            <div className="h-full rounded-[20px] border border-line bg-white p-7 md:p-9">
+                                <p className="text-[12px] font-bold tracking-[0.25em] text-ink-sub">一般的な流れ</p>
+                                <ol className="mt-5 space-y-3">
+                                    {usualFlow.map((t, i) => (
+                                        <li key={t} className="flex items-start gap-3 text-[15px] leading-[1.8] text-ink-sub">
+                                            <span className="lp-serif mt-0.5 w-6 shrink-0 text-lg leading-none text-ink-sub">{i + 1}</span>
+                                            <span className={i === usualFlow.length - 1 ? "lp-strike font-bold text-ink" : ""}>{t}</span>
+                                        </li>
+                                    ))}
+                                </ol>
+                                <p className="mt-6 flex items-center gap-2 text-sm font-bold text-ink">
+                                    <X className="h-4 w-4 text-coral-deep" aria-hidden />
+                                    見るのは、お金を払った後。
+                                </p>
+                            </div>
+                        </FadeIn>
+                        <FadeIn delay={0.1}>
+                            <div className="relative h-full overflow-hidden rounded-[20px] bg-navy-deep p-7 text-white shadow-[0_30px_60px_rgba(4,22,39,0.35)] md:p-9">
+                                <span aria-hidden className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-coral/20 blur-3xl" />
+                                <p className="text-[12px] font-bold tracking-[0.25em] text-coral">NEXT VALLEY の流れ</p>
+                                <ol className="mt-5 space-y-3">
+                                    {ourFlow.map((t, i) => (
+                                        <li key={t} className="flex items-start gap-3 text-[15px] font-bold leading-[1.8]">
+                                            <span className="lp-serif mt-0.5 w-6 shrink-0 text-lg leading-none text-coral">{i + 1}</span>
+                                            <span>{t}</span>
+                                        </li>
+                                    ))}
+                                </ol>
+                                <p className="mt-6 flex items-center gap-2 text-sm font-bold">
+                                    <Check className="h-4 w-4 text-coral" aria-hidden />
+                                    見るのは、決める前。費用は0円。
+                                </p>
+                            </div>
+                        </FadeIn>
+                    </div>
+                </div>
+            </section>
+
+            {/* ── お届けするもの ── */}
+            <section className="bg-cream px-4 py-20 md:px-6 md:py-28">
+                <div className="mx-auto max-w-6xl">
+                    <FadeIn>
+                        <SectionHead en="Preview" jp={<>プレビューで、<span className="nowrap">お届けするもの</span></>} lead="「ラフなイメージ図」ではありません。そのまま公開まで仕上げられる、実物のトップページ案です。" />
+                    </FadeIn>
+                    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                        {deliverables.map((d, i) => (
+                            <FadeIn key={d.t} delay={i * 0.06}>
+                                <div className="group h-full rounded-[20px] bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+                                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-navy-deep text-coral transition-transform duration-300 group-hover:scale-105">
+                                        <d.icon className="h-6 w-6" aria-hidden />
+                                    </span>
+                                    <h3 className="mt-5 text-lg font-bold leading-snug text-ink">{d.t}</h3>
+                                    <p className="mt-3 text-sm leading-[2] text-ink-sub">{d.d}</p>
+                                </div>
+                            </FadeIn>
+                        ))}
+                    </div>
+                    <FadeIn>
+                        <p className="mt-6 text-sm leading-[1.9] text-ink-sub">
+                            ※ 本気でホームページを作る予定の事業者様が対象です。デザインの参考資料としてのご利用は<span className="nowrap">ご遠慮ください。</span>
+                        </p>
+                    </FadeIn>
+                </div>
+            </section>
+
+            {/* ── 3ステップ＋LINEチャットのイメージ ── */}
+            <section id="flow" className="bg-base px-4 py-20 md:px-6 md:py-28">
+                <div className="mx-auto max-w-6xl">
+                    <FadeIn>
+                        <SectionHead en="Flow" jp="申し込みから、3ステップ。" lead="必要なのはLINEだけ。電話も、打ち合わせの日程調整もありません。" />
+                    </FadeIn>
+                    <div className="grid items-start gap-10 lg:grid-cols-12">
+                        <ol className="space-y-4 lg:col-span-7">
+                            {steps.map((s, i) => (
+                                <FadeIn key={s.n} delay={i * 0.08}>
+                                    <li className="flex gap-6 rounded-[20px] bg-white p-7 shadow-card md:p-8">
+                                        <div className="shrink-0 text-center">
+                                            <p className="lp-serif text-5xl leading-none text-coral">{s.n}</p>
+                                            <p className="mt-2 text-[10px] font-bold tracking-[0.3em] text-coral-deep">STEP</p>
+                                        </div>
+                                        <div>
+                                            <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">{s.t}</h3>
+                                            <p className="mt-2 text-sm leading-[2] text-ink-sub">{s.d}</p>
+                                        </div>
+                                    </li>
+                                </FadeIn>
+                            ))}
+                        </ol>
+
+                        {/* LINEチャットのモック */}
+                        <FadeIn delay={0.15} className="lg:col-span-5">
+                            <div className="mx-auto max-w-[380px] overflow-hidden rounded-[28px] border border-line bg-[#8cabd9] shadow-card-hover" aria-hidden>
+                                <div className="flex items-center gap-2 bg-[#2c3e50] px-4 py-3 text-white">
+                                    <span className="h-7 w-7 rounded-full bg-white/20" />
+                                    <span className="text-sm font-bold">NEXT VALLEY</span>
+                                </div>
+                                <div className="space-y-3 p-4 text-[13px] leading-[1.7]">
+                                    <div className="flex justify-end">
+                                        <p className="max-w-[78%] rounded-2xl rounded-tr-sm bg-[#8de055] px-3.5 py-2 text-ink">プレビュー希望</p>
+                                    </div>
+                                    <div className="flex justify-start">
+                                        <div className="max-w-[86%] rounded-2xl rounded-tl-sm bg-white px-3.5 py-2.5 text-ink">
+                                            <p>ありがとうございます！5つだけ教えてください。</p>
+                                            <ul className="mt-2 space-y-1">
+                                                {chatQuestions.map((q) => (
+                                                    <li key={q}>{q}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div className="flex justify-end">
+                                        <p className="max-w-[78%] rounded-2xl rounded-tr-sm bg-[#8de055] px-3.5 py-2 text-ink">① 整体院「〇〇整骨院」 ② 大阪市 ③ 産後の骨盤ケア ④ やさしく清潔感 ⑤ 写真あり・ロゴなし</p>
+                                    </div>
+                                    <div className="flex justify-start">
+                                        <p className="max-w-[86%] rounded-2xl rounded-tl-sm bg-white px-3.5 py-2.5 text-ink">
+                                            受付完了です。<span className="font-bold">3営業日以内</span>にトップページ案（PC・スマホ）をお送りします。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </FadeIn>
+                    </div>
+                    <FadeIn>
+                        <div className="mt-14 flex flex-col items-center gap-4 text-center">
+                            <p className="text-[15px] font-bold text-ink">
+                                所要2分。送るのは「プレビュー希望」の<span className="nowrap">ひと言だけ。</span>
+                            </p>
+                            <LineButton />
+                        </div>
+                    </FadeIn>
+                </div>
+            </section>
+
+            {/* ── 制作例 ── */}
+            <section className="overflow-hidden bg-navy-deep px-4 py-20 text-white md:px-6 md:py-28">
+                <div className="mx-auto max-w-6xl">
+                    <FadeIn>
+                        <SectionHead dark en="Works" jp="こんな品質で、お届けします。" lead="実際に制作したサイトの一部です。プレビューも同じ制作環境・同じ手で作ります。" />
+                    </FadeIn>
+                    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                        {samples.map((w, i) => (
+                            <FadeIn key={w.name} delay={(i % 4) * 0.06}>
+                                <div className="group overflow-hidden rounded-[16px] bg-white/[0.04] ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-1 hover:ring-coral/60">
+                                    <div className="relative w-full overflow-hidden bg-white" style={{ aspectRatio: "995 / 580" }}>
+                                        <Image src={w.img} alt={`${w.name}のホームページ`} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" placeholder="blur" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+                                    </div>
+                                    <div className="px-4 py-3">
+                                        <p className="text-[11px] text-navy-sub">{w.label}</p>
+                                        <p className="text-sm font-bold">{w.name}</p>
+                                    </div>
+                                </div>
+                            </FadeIn>
+                        ))}
+                    </div>
+
+                    {/* お客様の声 */}
+                    <div className="mt-14 grid gap-5 md:grid-cols-2">
+                        {voices.map((v, i) => (
+                            <FadeIn key={v.name} delay={i * 0.08}>
+                                <figure className="h-full rounded-[20px] border border-white/10 bg-white/[0.04] p-7 md:p-8">
+                                    <Quote className="h-6 w-6 text-coral" aria-hidden />
+                                    <blockquote className="mt-4 text-[15px] leading-[2] text-white/90">{v.text}</blockquote>
+                                    <figcaption className="mt-5 text-sm">
+                                        <span className="font-bold text-white">{v.name}</span>
+                                        <span className="ml-2 text-navy-sub">{v.label}</span>
+                                    </figcaption>
+                                </figure>
+                            </FadeIn>
+                        ))}
+                    </div>
+                    <FadeIn>
+                        <p className="mt-8 text-sm">
+                            <Link href="/#works" className="inline-flex min-h-11 items-center gap-1 font-bold text-white underline underline-offset-4 transition-colors hover:text-coral">
+                                すべての実績を見る <ArrowRight className="h-4 w-4" aria-hidden />
+                            </Link>
+                        </p>
+                    </FadeIn>
+                </div>
+            </section>
+
+            {/* ── なぜ無料か ＋ 料金 ── */}
+            <section className="bg-cream px-4 py-20 md:px-6 md:py-28">
+                <div className="mx-auto max-w-6xl">
+                    <FadeIn>
+                        <SectionHead en="Honest" jp="なぜ無料か。そして、その先の料金。" lead="タネも仕掛けもありません。先に全部お伝えしておきます。" />
+                    </FadeIn>
+                    <div className="grid gap-6 md:grid-cols-2">
+                        <FadeIn>
+                            <div className="h-full rounded-[20px] bg-white p-8 shadow-card md:p-10">
+                                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cream text-coral-deep">
+                                    <Gift className="h-6 w-6" aria-hidden />
                                 </span>
-                                <span className="text-[15px] font-bold leading-[1.8] text-ink">{f}</span>
+                                <h3 className="mt-5 text-xl font-bold leading-snug text-ink md:text-2xl">なぜ、無料でできるのか</h3>
+                                <p className="mt-4 text-[15px] leading-[2] text-ink-sub">
+                                    AIを活用した制作環境で、トップページ1枚を作るコストが大幅に下がりました。その分を「契約前に実物を見てもらう」ことに使っています。判断材料を先に渡した方が、お互いに後悔がない<span className="nowrap">からです。</span>
+                                </p>
+                                <ul className="mt-6 space-y-2.5">
+                                    {["プレビューは完全無料・後から請求なし", "断っても、追いかけの連絡なし", "電話営業は一切しません"].map((t) => (
+                                        <li key={t} className="flex items-center gap-2.5 text-sm font-bold text-ink">
+                                            <ShieldCheck className="h-4 w-4 shrink-0 text-coral-deep" aria-hidden />
+                                            {t}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </FadeIn>
+                        <FadeIn delay={0.1}>
+                            <div className="relative h-full overflow-hidden rounded-[20px] bg-navy-deep p-8 text-white md:p-10">
+                                <span aria-hidden className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-coral/15 blur-3xl" />
+                                <p className="text-[12px] font-bold tracking-[0.25em] text-coral">気に入ったら、正式制作へ</p>
+                                <h3 className="mt-3 text-xl font-bold leading-snug md:text-2xl">プレビューのデザインを、そのまま公開まで。</h3>
+                                <p className="mt-4 text-[15px] leading-[2] text-navy-sub">
+                                    公開まで進める場合の目安です。内容により変動しますが、正式なお見積もりを先にお出しし、追加費用が出る場合は必ず事前に<span className="nowrap">お伝えします。</span>
+                                </p>
+                                <ul className="mt-6 divide-y divide-white/10 border-y border-white/10">
+                                    {[["LP制作", "¥110,000〜"], ["ホームページ制作", "¥220,000〜"]].map(([k, v]) => (
+                                        <li key={k} className="flex items-center justify-between py-3.5">
+                                            <span className="text-[15px]">{k}</span>
+                                            <span className="text-lg font-bold"><span className="lp-serif text-2xl leading-none">{v.replace("〜", "")}</span>〜</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <p className="mt-4 text-xs text-navy-sub">税込目安。公開後の運用・集客のご相談も承ります。</p>
+                            </div>
+                        </FadeIn>
+                    </div>
+                </div>
+            </section>
+
+            {/* ── FAQ ── */}
+            <section className="bg-base px-4 py-20 md:px-6 md:py-28">
+                <div className="mx-auto max-w-4xl">
+                    <FadeIn>
+                        <SectionHead en="FAQ" jp="よくあるご質問" />
+                    </FadeIn>
+                    <FadeIn>
+                        <div className="rounded-[20px] bg-white px-6 shadow-card md:px-10">
+                            {faqs.map((f, i) => (
+                                <details key={f.q} className={`group ${i > 0 ? "border-t border-line" : ""}`}>
+                                    <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-5 [&::-webkit-details-marker]:hidden">
+                                        <span className="text-base font-bold leading-snug text-ink transition-colors group-hover:text-coral-deep">{f.q}</span>
+                                        <span aria-hidden className="shrink-0 text-xl font-bold text-coral transition-transform group-open:rotate-45">＋</span>
+                                    </summary>
+                                    <p className="pb-6 text-[15px] leading-[2] text-ink-sub">{f.a}</p>
+                                </details>
+                            ))}
+                        </div>
+                    </FadeIn>
+                </div>
+            </section>
+
+            {/* ── 最終CTA ── */}
+            <section className="relative overflow-hidden bg-navy-deep px-4 py-24 text-white md:px-6 md:py-32">
+                <div aria-hidden className="absolute inset-0 opacity-30" style={{ maskImage: "linear-gradient(to top, black 30%, transparent 100%)", WebkitMaskImage: "linear-gradient(to top, black 30%, transparent 100%)" }}>
+                    <Image src={fvbg} alt="" fill className="object-cover object-center" sizes="100vw" />
+                </div>
+                <div aria-hidden className="lp-grid pointer-events-none absolute inset-0 opacity-[0.05]" />
+                <div className="relative mx-auto max-w-4xl text-center">
+                    <FadeIn>
+                        <div className="mb-6 flex justify-center">
+                            <SlotsMeter />
+                        </div>
+                        <p className="lp-serif text-[clamp(3rem,7vw,5.5rem)] leading-[0.9] text-white/90">Let&rsquo;s see it first.</p>
+                        <h2 className="mt-5 text-[clamp(1.5rem,3.6vw,2.75rem)] font-bold leading-[1.45]">
+                            まずは、あなたのトップページを<br className="md:hidden" />見てみませんか。
+                        </h2>
+                        <p className="mx-auto mt-5 max-w-[32em] text-[15px] leading-[2] text-navy-sub">
+                            LINEで「プレビュー希望」と送っていただければ、5つの質問をお送りします。答えるだけで<span className="nowrap">申込完了です。</span>
+                        </p>
+                        <div className="mt-9 flex flex-col items-center gap-4">
+                            <LineButton />
+                            <p className="text-xs text-navy-sub">費用0円・3営業日以内・断ってOK・<span className="nowrap">しつこい営業なし</span></p>
+                        </div>
+                        <p className="mt-10 flex items-center justify-center gap-2 text-sm text-navy-sub md:hidden">
+                            <ArrowDown className="h-4 w-4 animate-bounce text-coral" aria-hidden />
+                            画面の下のボタンからも申し込めます
+                        </p>
+                    </FadeIn>
+                </div>
+            </section>
+
+            {/* ── ミニフッター ── */}
+            <footer className="border-t border-navy-line bg-navy-deep py-10 text-navy-sub">
+                <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 text-xs md:flex-row md:items-center md:px-6">
+                    <div className="flex flex-col gap-3">
+                        <Link href="/" className="inline-flex min-h-11 items-center">
+                            <Image src={logo} alt="NEXT VALLEY" width={150} height={34} className="h-7 w-auto object-contain" />
+                        </Link>
+                        <p>屋号 NEXT VALLEY ／ 代表 倉林 駿 ／ AI活用で売上と業務を支援するプロチーム</p>
+                    </div>
+                    <ul className="flex flex-wrap gap-x-6 gap-y-1">
+                        {[["/", "トップページ"], ["/company", "事業情報"], ["/tokusho", "特定商取引法に基づく表記"], ["/privacy", "プライバシーポリシー"]].map(([href, label]) => (
+                            <li key={href}>
+                                <Link href={href} className="inline-flex min-h-11 items-center transition-colors hover:text-white">
+                                    {label}
+                                </Link>
                             </li>
                         ))}
                     </ul>
-                    <p className="mt-6 text-sm leading-[1.9] text-ink-sub">
-                        ※ 本気でホームページを作る予定の事業者様が対象です。デザインの参考資料としてのご利用はご遠慮ください。
-                    </p>
                 </div>
-            </section>
+                <p className="mx-auto mt-4 max-w-7xl px-4 text-xs md:px-6">&copy; {new Date().getFullYear()} NEXT VALLEY</p>
+            </footer>
 
-            {/* 流れ */}
-            <section className="bg-cream px-4 py-16 md:px-6 md:py-24">
-                <div className="mx-auto max-w-5xl">
-                    <p className="text-[12px] font-bold tracking-[0.3em] text-coral-deep">FLOW</p>
-                    <h2 className="mt-2 text-2xl font-bold leading-snug text-ink md:text-3xl">申し込みから3ステップ</h2>
-                    <ol className="mt-8 grid gap-5 md:grid-cols-3">
-                        {steps.map((s) => (
-                            <li key={s.n} className="rounded-2xl bg-white p-7 shadow-[0_16px_40px_rgba(31,26,20,0.06)]">
-                                <p className="text-4xl font-bold leading-none text-coral" style={{ fontFamily: serif }}>{s.n}</p>
-                                <h3 className="mt-4 text-lg font-bold leading-snug text-ink">{s.t}</h3>
-                                <p className="mt-3 text-sm leading-[2] text-ink-sub">{s.d}</p>
-                            </li>
-                        ))}
-                    </ol>
-                </div>
-            </section>
-
-            {/* 制作例 */}
-            <section className="bg-base px-4 py-16 md:px-6 md:py-24">
-                <div className="mx-auto max-w-5xl">
-                    <p className="text-[12px] font-bold tracking-[0.3em] text-coral-deep">SAMPLE</p>
-                    <h2 className="mt-2 text-2xl font-bold leading-snug text-ink md:text-3xl">こんな品質でお届けします</h2>
-                    <p className="mt-3 text-[15px] leading-[1.9] text-ink-sub">実際に制作したサイトの一部です。50社以上の制作・支援実績があります。</p>
-                    <div className="mt-8 grid gap-5 md:grid-cols-3">
-                        {[
-                            { img: sample1, name: "Tulip Ballet Studio様", label: "教室・スクール" },
-                            { img: sample2, name: "BowlingNavi様", label: "情報メディア" },
-                            { img: sample3, name: "久和不動産株式会社様", label: "不動産" },
-                        ].map((w) => (
-                            <div key={w.name} className="overflow-hidden rounded-2xl bg-white shadow-[0_16px_40px_rgba(31,26,20,0.06)]">
-                                <div className="relative w-full bg-white" style={{ aspectRatio: "995 / 580" }}>
-                                    <Image src={w.img} alt={`${w.name}のホームページ`} fill className="object-cover" placeholder="blur" sizes="(max-width: 768px) 100vw, 33vw" />
-                                </div>
-                                <div className="p-4">
-                                    <p className="text-[11px] text-ink-sub">{w.label}</p>
-                                    <p className="text-sm font-bold text-ink">{w.name}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <p className="mt-6 text-sm">
-                        <Link href="/#works" className="inline-flex min-h-11 items-center font-bold text-coral-deep underline underline-offset-4">
-                            すべての実績を見る →
-                        </Link>
-                    </p>
-                </div>
-            </section>
-
-            {/* なぜ無料か ＋ 料金 */}
-            <section className="bg-cream px-4 py-16 md:px-6 md:py-24">
-                <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
-                    <div className="rounded-2xl bg-white p-8 shadow-[0_16px_40px_rgba(31,26,20,0.06)]">
-                        <Gift className="h-8 w-8 text-coral-deep" aria-hidden />
-                        <h2 className="mt-4 text-xl font-bold leading-snug text-ink">なぜ、無料でできるのか</h2>
-                        <p className="mt-3 text-[15px] leading-[2] text-ink-sub">
-                            AIを活用した制作環境で、トップページ1枚を作るコストが大幅に下がりました。その分を「契約前に実物を見てもらう」ことに使っています。判断材料を先に渡した方が、お互いに後悔がないからです。
-                        </p>
-                    </div>
-                    <div className="rounded-2xl bg-navy-deep p-8 text-white">
-                        <ShieldCheck className="h-8 w-8 text-coral" aria-hidden />
-                        <h2 className="mt-4 text-xl font-bold leading-snug">気に入ったら、正式制作へ</h2>
-                        <p className="mt-3 text-[15px] leading-[2] text-navy-sub">
-                            プレビューは無料。公開まで進める場合の目安は下記です（内容により変動・正式なお見積もりを先にお出しします）。
-                        </p>
-                        <ul className="mt-5 space-y-2 text-[15px]">
-                            <li className="flex justify-between border-b border-navy-line pb-2"><span>LP制作</span><span className="font-bold">¥110,000〜</span></li>
-                            <li className="flex justify-between border-b border-navy-line pb-2"><span>ホームページ制作</span><span className="font-bold">¥220,000〜</span></li>
-                        </ul>
-                        <p className="mt-4 text-xs text-navy-sub">プレビューで作ったデザインを、そのまま公開まで仕上げます。</p>
-                    </div>
-                </div>
-            </section>
-
-            {/* FAQ */}
-            <section className="bg-base px-4 py-16 md:px-6 md:py-24">
-                <div className="mx-auto max-w-4xl">
-                    <p className="text-[12px] font-bold tracking-[0.3em] text-coral-deep">FAQ</p>
-                    <h2 className="mt-2 text-2xl font-bold leading-snug text-ink md:text-3xl">よくあるご質問</h2>
-                    <div className="mt-8 rounded-2xl bg-white px-6 shadow-[0_16px_40px_rgba(31,26,20,0.06)] md:px-10">
-                        {faqs.map((f, i) => (
-                            <details key={f.q} className={`group ${i > 0 ? "border-t border-line" : ""}`}>
-                                <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-5 [&::-webkit-details-marker]:hidden">
-                                    <span className="text-base font-bold leading-snug text-ink">{f.q}</span>
-                                    <span aria-hidden className="shrink-0 text-xl font-bold text-coral transition-transform group-open:rotate-45">＋</span>
-                                </summary>
-                                <p className="pb-6 text-[15px] leading-[2] text-ink-sub">{f.a}</p>
-                            </details>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* 最終CTA */}
-            <section className="bg-cream px-4 py-16 md:px-6 md:py-24">
-                <div className="mx-auto max-w-4xl rounded-[28px] bg-white px-6 py-12 text-center shadow-[0_16px_40px_rgba(31,26,20,0.06)] md:px-16 md:py-16">
-                    <p className="mb-4 inline-flex items-center gap-2 text-[12px] font-bold tracking-[0.3em] text-coral-deep">
-                        <Clock className="h-4 w-4" aria-hidden />
-                        今月の残り枠：{REMAINING_SLOTS}社
-                    </p>
-                    <h2 className="text-[clamp(1.5rem,4vw,2.5rem)] font-bold leading-[1.45] text-ink">
-                        まずは、あなたのトップページを<br className="md:hidden" />見てみませんか。
-                    </h2>
-                    <p className="mx-auto mt-4 max-w-[30em] text-[15px] leading-[2] text-ink-sub">
-                        LINEで「プレビュー希望」と送っていただければ、5つの質問をお送りします。答えるだけで申込完了です。
-                    </p>
-                    <a
-                        href={LINE_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-8 inline-flex h-16 items-center justify-center gap-3 rounded-full bg-[#05a247] px-10 text-[19px] font-bold text-white shadow-[0_12px_28px_rgba(5,162,71,0.35)] transition-all hover:-translate-y-0.5"
-                    >
-                        <MessageCircle className="h-6 w-6" aria-hidden />
-                        LINEで無料プレビューを申し込む
-                    </a>
-                    <p className="mt-5 text-xs text-ink-sub">費用0円・3営業日以内・断ってOK・しつこい営業なし</p>
-                </div>
-            </section>
-
-            <Footer />
+            {/* ── モバイル追従CTA ── */}
+            <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-navy-deep/90 p-3 backdrop-blur-md md:hidden" style={{ paddingBottom: "max(12px, env(safe-area-inset-bottom))" }}>
+                <a
+                    href={LINE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-14 w-full items-center justify-center gap-2.5 rounded-full bg-[#05a247] text-[19px] font-bold text-white shadow-[0_10px_24px_rgba(5,162,71,0.4)]"
+                >
+                    <MessageCircle className="h-5 w-5" aria-hidden />
+                    LINEで無料プレビューを申し込む
+                </a>
+            </div>
         </main>
     );
 }
