@@ -4,9 +4,7 @@ import Link from "next/link";
 import { Noto_Sans_JP, Instrument_Serif } from "next/font/google";
 import {
     ArrowRight,
-    ArrowDown,
     Check,
-    MessageCircle,
     Monitor,
     Smartphone,
     Sparkles,
@@ -23,6 +21,8 @@ import {
     UserRoundCheck,
 } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { PreviewApply } from "./PreviewApply";
+import { StickyApply } from "./StickyApply";
 import logo from "@/images/logo-new.png";
 import shun from "@/images/shun-new.webp";
 import fvPhoto from "@/images/hero-digital.webp";
@@ -35,7 +35,6 @@ import "./preview.css";
  */
 const REMAINING_SLOTS = 8; // ← 今月の残り枠（毎月ここを更新）
 const TOTAL_SLOTS = 10;
-const LINE_URL = "https://lin.ee/N4QXdJL#from=preview";
 
 /* LP専用の書体（本体サイトには影響しない） */
 const lpSans = Noto_Sans_JP({ variable: "--lp-font-sans", subsets: ["latin"], weight: ["400", "500", "700", "900"], display: "swap", preload: false });
@@ -100,7 +99,7 @@ const usualFlow = [
 ];
 
 const ourFlow = [
-    "LINEで5つの質問に答える（所要2分・事業の確認あり）",
+    "このページで5つの質問に答え、LINEで送る（所要2分）",
     "3営業日以内に、あなたのトップページ案が届く",
     "実物を見てから、頼むかどうかを決める",
 ];
@@ -126,13 +125,11 @@ const voices = [
 ];
 
 const steps = [
-    { n: "01", t: <>LINEで「プレビュー希望」と<span className="nowrap">送る</span></>, d: "5つの質問が届きます。業種・地域・伝えたい強み・好みの雰囲気・素材の有無。あわせて、事業が分かるもの（店舗名・SNS・Googleマップ・既存サイトのいずれか）を教えてください。所要2分。写真やロゴがなくても大丈夫です。" },
+    { n: "01", t: <>このページで5つの質問に答え、<span className="nowrap">LINEで送る</span></>, d: "業種・地域・伝えたい強み・好みの雰囲気・素材の有無の5つと、事業が分かるもの（店舗名・SNS・Googleマップ・既存サイトのいずれか）。答えた内容がそのままメッセージになるので、LINEに貼り付けて送るだけ。所要2分。写真やロゴがなくても大丈夫です。" },
     { n: "02", t: "確認のうえ、3営業日以内にトップページ案が届く", d: "事業の実態と、ご希望の内容を確認してから制作に入ります（条件に合わない場合は、その旨をお伝えします）。PC・スマホの2枚の画像でお届け。" },
     { n: "03", t: "見てから、決める", d: "気に入れば正式制作へ（公開まで担当）。気に入らなければ、そこで終わりで大丈夫です。こちらから追いかける連絡はしません。" },
 ];
 
-const chatQuestions = ["① 業種と、お店・会社のお名前", "② 地域（対象エリア）", "③ いちばん伝えたい強み", "④ 好みの雰囲気（上品・元気 など）", "⑤ 写真やロゴの有無"];
-const chatProof = "＋ 事業が分かるもの（店舗名・SNS・Googleマップ・既存サイトのいずれか）";
 
 const compareRows: { k: string; a: string; b: string; c: React.ReactNode }[] = [
     { k: "契約前にデザインを見られる", a: "△ ラフ案や口頭説明が中心", b: "× テンプレートから選ぶ", c: "◎ 実物のトップページ案（PC・スマホ）" },
@@ -185,15 +182,10 @@ const faqs = [
 function LineButton({ className = "" }: { className?: string }) {
     return (
         <a
-            href={LINE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`lp-cta group inline-flex h-16 w-full max-w-md items-center justify-center gap-3 rounded-full bg-[#05a247] px-6 text-[19px] font-bold text-white shadow-[0_14px_32px_rgba(5,162,71,0.38)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(5,162,71,0.45)] sm:w-auto sm:max-w-none sm:px-9 ${className}`}
+            href="#apply"
+            className={`lp-cta group inline-flex h-16 w-full max-w-md items-center justify-center gap-3 rounded-full bg-coral-deep px-6 text-[17px] font-bold text-white shadow-cta transition-all duration-300 hover:-translate-y-0.5 sm:w-auto sm:max-w-none sm:px-9 ${className}`}
         >
-            <MessageCircle className="h-6 w-6 shrink-0" aria-hidden />
-            <span className="whitespace-nowrap">
-                <span className="hidden sm:inline">LINEで</span>無料プレビューを申し込む
-            </span>
+            <span className="whitespace-nowrap">無料プレビューを申し込む</span>
             <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
         </a>
     );
@@ -205,7 +197,7 @@ function CtaBlock({ message, dark = false }: { message: React.ReactNode; dark?: 
             <p className={`text-[15px] font-bold leading-[1.9] ${dark ? "text-white" : "text-ink"}`}>{message}</p>
             <LineButton />
             <p className={`text-xs ${dark ? "text-navy-sub" : "text-ink-sub"}`}>
-                費用0円・3営業日以内・断ってOK・<span className="nowrap">しつこい営業なし</span>
+                5つの質問に答えて、LINEで送るだけ（所要2分）・費用0円・<span className="nowrap">断ってOK</span>
             </p>
         </div>
     );
@@ -261,13 +253,11 @@ export default function PreviewPage() {
                             毎月10社限定・今月あと{REMAINING_SLOTS}社
                         </p>
                         <a
-                            href={LINE_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex h-11 items-center gap-2 rounded-full bg-[#05a247] px-5 text-[19px] font-bold text-white transition-all hover:-translate-y-0.5"
+                            href="#apply"
+                            className="inline-flex h-11 items-center gap-2 rounded-full bg-coral-deep px-5 text-sm font-bold text-white transition-all hover:-translate-y-0.5"
                         >
-                            <MessageCircle className="h-4 w-4" aria-hidden />
-                            <span className="whitespace-nowrap">LINEで申し込む</span>
+                            <span className="whitespace-nowrap">無料で申し込む</span>
+                            <ArrowRight className="h-4 w-4" aria-hidden />
                         </a>
                     </div>
                 </div>
@@ -324,7 +314,7 @@ export default function PreviewPage() {
                             <div className="mt-10 flex flex-col items-stretch gap-5 sm:items-start">
                                 <LineButton />
                                 <p className="text-sm text-navy-sub">
-                                    LINEで「プレビュー希望」と送るだけ・所要2分・<span className="nowrap">しつこい営業なし</span>
+                                    5つの質問に答えて、LINEで送るだけ・所要2分・<span className="nowrap">しつこい営業なし</span>
                                     <br />
                                     ※ 事業者様限定。本気でホームページを作る方のための枠です（簡単な確認あり）
                                 </p>
@@ -545,7 +535,7 @@ export default function PreviewPage() {
             <section id="flow" className="bg-white px-4 py-20 md:px-6 md:py-28">
                 <div className="mx-auto max-w-6xl">
                     <FadeIn>
-                        <SectionHead label="申し込みの流れ" jp="申し込みから、3ステップ。" lead="必要なのはLINEだけ。電話も、打ち合わせの日程調整もありません。" />
+                        <SectionHead label="申し込みの流れ" jp="申し込みから、3ステップ。" lead="必要なのはこのページとLINEだけ。電話も、打ち合わせの日程調整もありません。" />
                     </FadeIn>
                     <div className="grid items-start gap-10 lg:grid-cols-12">
                         <ol className="space-y-4 lg:col-span-7">
@@ -572,21 +562,7 @@ export default function PreviewPage() {
                                 </div>
                                 <div className="space-y-3 p-4 text-[13px] leading-[1.7]">
                                     <div className="flex justify-end">
-                                        <p className="max-w-[78%] rounded-2xl rounded-tr-sm bg-[#8de055] px-3.5 py-2 text-ink">プレビュー希望</p>
-                                    </div>
-                                    <div className="flex justify-start">
-                                        <div className="max-w-[86%] rounded-2xl rounded-tl-sm bg-white px-3.5 py-2.5 text-ink">
-                                            <p>ありがとうございます！5つだけ教えてください。</p>
-                                            <ul className="mt-2 space-y-1">
-                                                {chatQuestions.map((q) => (
-                                                    <li key={q}>{q}</li>
-                                                ))}
-                                            </ul>
-                                            <p className="mt-2 text-[12px] text-ink-sub">{chatProof}</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex justify-end">
-                                        <p className="max-w-[78%] rounded-2xl rounded-tr-sm bg-[#8de055] px-3.5 py-2 text-ink">① 整体院「〇〇整骨院」 ② 大阪市 ③ 産後の骨盤ケア ④ やさしく清潔感 ⑤ 写真あり・ロゴなし ＋ Googleマップ: 〇〇整骨院</p>
+                                        <p className="max-w-[86%] whitespace-pre-line rounded-2xl rounded-tr-sm bg-[#8de055] px-3.5 py-2 text-ink">{"【無料プレビュー希望】\n1. 業種・屋号：整体・治療院／〇〇整骨院\n2. 地域：大阪市 北区\n3. 強み：産後の骨盤ケアが得意\n4. 雰囲気：親しみやすい・やさしい\n5. 写真・ロゴ：写真あり・ロゴなし\n6. 事業が分かるもの：Googleマップ「〇〇整骨院」"}</p>
                                     </div>
                                     <div className="flex justify-start">
                                         <p className="max-w-[86%] rounded-2xl rounded-tl-sm bg-white px-3.5 py-2.5 text-ink">
@@ -598,7 +574,7 @@ export default function PreviewPage() {
                         </FadeIn>
                     </div>
                     <FadeIn>
-                        <CtaBlock message={<>送るのは「プレビュー希望」の<span className="nowrap">ひと言だけ。</span></>} />
+                        <CtaBlock message={<>質問は5つ。答えた内容が、そのまま申込メッセージに<span className="nowrap">なります。</span></>} />
                     </FadeIn>
                 </div>
             </section>
@@ -768,29 +744,30 @@ export default function PreviewPage() {
                 </div>
             </section>
 
-            {/* ── 最終CTA ＋ 追伸 ── */}
-            <section className="lp-aurora relative overflow-hidden bg-navy-deep px-4 py-24 text-white md:px-6 md:py-32">
+            {/* ── 申し込み（診断形式）＋ 追伸 ── */}
+            <section id="apply" className="lp-aurora relative overflow-hidden bg-navy-deep px-4 py-20 text-white md:px-6 md:py-28">
                 <div aria-hidden className="lp-grid pointer-events-none absolute inset-0 opacity-[0.05]" />
-                <div className="relative mx-auto max-w-4xl text-center">
+                <div className="relative mx-auto max-w-4xl">
                     <FadeIn>
-                        <div className="mb-6 flex justify-center">
-                            <SlotsMeter />
+                        <div className="mb-10 text-center">
+                            <div className="mb-6 flex justify-center">
+                                <SlotsMeter />
+                            </div>
+                            <h2 className="text-[clamp(1.625rem,3.8vw,3rem)] font-bold leading-[1.45]">
+                                まずは、あなたのトップページを<br className="md:hidden" />見てみませんか。
+                            </h2>
+                            <p className="mx-auto mt-4 max-w-[32em] text-[15px] leading-[2] text-navy-sub">
+                                5つの質問に答えると、申込メッセージが自動でできあがります。それをLINEで送れば、<span className="nowrap">申込完了です。</span>
+                            </p>
                         </div>
-                        <h2 className="text-[clamp(1.625rem,3.8vw,3rem)] font-bold leading-[1.45]">
-                            まずは、あなたのトップページを<br className="md:hidden" />見てみませんか。
-                        </h2>
-                        <p className="mx-auto mt-5 max-w-[32em] text-[15px] leading-[2] text-navy-sub">
-                            LINEで「プレビュー希望」と送っていただければ、5つの質問をお送りします。答えるだけで<span className="nowrap">申込完了です。</span>
-                        </p>
-                        <div className="mt-9 flex flex-col items-center gap-4">
-                            <LineButton />
-                            <p className="text-xs text-navy-sub">費用0円・3営業日以内・断ってOK・<span className="nowrap">しつこい営業なし</span></p>
-                        </div>
+                    </FadeIn>
+                    <FadeIn>
+                        <PreviewApply />
                     </FadeIn>
 
                     {/* 追伸（代表から） */}
                     <FadeIn>
-                        <div className="mx-auto mt-16 flex max-w-2xl flex-col items-center gap-6 rounded-[20px] border border-white/10 bg-white/[0.04] p-7 text-left sm:flex-row sm:items-start md:p-8">
+                        <div className="mx-auto mt-14 flex max-w-2xl flex-col items-center gap-6 rounded-[20px] border border-white/10 bg-white/[0.04] p-7 text-left sm:flex-row sm:items-start md:p-8">
                             <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full ring-2 ring-coral/70">
                                 <Image src={shun} alt="代表 倉林 駿" fill className="object-cover" sizes="80px" />
                             </div>
@@ -802,10 +779,6 @@ export default function PreviewPage() {
                                 <p className="mt-4 text-sm text-navy-sub">NEXT VALLEY 代表　<span className="font-bold text-white">倉林 駿</span></p>
                             </div>
                         </div>
-                        <p className="mt-10 flex items-center justify-center gap-2 text-sm text-navy-sub md:hidden">
-                            <ArrowDown className="h-4 w-4 animate-bounce text-coral" aria-hidden />
-                            画面の下のボタンからも申し込めます
-                        </p>
                     </FadeIn>
                 </div>
             </section>
@@ -832,18 +805,8 @@ export default function PreviewPage() {
                 <p className="mx-auto mt-4 max-w-7xl px-4 text-xs md:px-6">&copy; {new Date().getFullYear()} NEXT VALLEY</p>
             </footer>
 
-            {/* ── モバイル追従CTA ── */}
-            <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-navy-deep/90 p-3 backdrop-blur-md md:hidden" style={{ paddingBottom: "max(12px, env(safe-area-inset-bottom))" }}>
-                <a
-                    href={LINE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-14 w-full items-center justify-center gap-2.5 rounded-full bg-[#05a247] text-[19px] font-bold text-white shadow-[0_10px_24px_rgba(5,162,71,0.4)]"
-                >
-                    <MessageCircle className="h-5 w-5" aria-hidden />
-                    LINEで無料プレビューを申し込む
-                </a>
-            </div>
+            {/* ── モバイル追従CTA（フォーム表示中は隠れる） ── */}
+            <StickyApply />
         </main>
     );
 }
