@@ -85,7 +85,7 @@ export function WorksCarousel({ items }: { items: WorkItem[] }) {
 
             {/* コントロール */}
             <div className="mt-5 flex items-center justify-between gap-4">
-                <div className="flex items-center gap-1.5" role="tablist" aria-label="スライドページ">
+                <div className="flex items-center" role="tablist" aria-label="スライドページ">
                     {Array.from({ length: pages }, (_, i) => (
                         <button
                             key={i}
@@ -94,7 +94,7 @@ export function WorksCarousel({ items }: { items: WorkItem[] }) {
                             aria-selected={i === index}
                             aria-label={`${i + 1}ページ目`}
                             onClick={() => go(i)}
-                            className="flex h-11 w-6 cursor-pointer items-center justify-center"
+                            className="flex h-11 w-11 cursor-pointer items-center justify-center"
                         >
                             <span
                                 className={`block h-1.5 rounded-full transition-all duration-300 ${
