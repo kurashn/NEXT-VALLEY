@@ -4,8 +4,8 @@
 import React from "react";
 import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { ExternalLink } from "lucide-react";
 import { SerifHeading, serif } from "@/components/ui/SerifHeading";
+import { WorksCarousel } from "@/components/WorksCarousel";
 
 // Featured Works
 import work1 from "@/images/works/works1.jpg";
@@ -29,9 +29,7 @@ import work17 from "@/images/works/works17.jpg";
 import work18 from "@/images/works/works18.jpg";
 import work19 from "@/images/works/works19.jpg";
 import work20 from "@/images/works/works20.jpg";
-
-/** クライアントサイトへのリンク: 新規タブ・リファラー非送信（相手側の解析に NEXT VALLEY からの流入として記録されない） */
-const outLink = { target: "_blank", rel: "noopener noreferrer", referrerPolicy: "no-referrer" as const };
+import work21 from "@/images/works/works21.jpg";
 
 const featuredWorks = [
     {
@@ -54,27 +52,27 @@ const featuredWorks = [
         name: "BowlingNavi -ボウナビ- 様",
         label: "メディア・情報サイト",
         image: work12,
-        url: "https://www.bowlingnavi.com/",
         review: null,
         caption: "関西のボウリング大会情報サイト。大会検索・コラム・診断コンテンツを備えたメディアサイトの制作事例です。",
     },
 ];
 
-const otherWorks: { name: string; label: string; image: typeof work1; url?: string }[] = [
-    { name: "久和不動産株式会社様", label: "不動産", image: work14, url: "https://kyuwa-kanri.com/" },
-    { name: "株式会社西辻工務店様", label: "不動産・建設", image: work15, url: "https://www.e-builder.co.jp/" },
-    { name: "イースタンホーク様", label: "不動産サービス", image: work16, url: "https://eastern-hawk.com/" },
-    { name: "株式会社アイ・セカンド様", label: "企業サイト", image: work17, url: "https://i-second.co.jp/" },
-    { name: "I-SECOND STORE様", label: "ECサイト", image: work19, url: "https://www.i-second.jp/" },
-    { name: "パーソナルジムMe様", label: "フィットネス", image: work18, url: "https://me-gym.com/" },
-    { name: "黒鳥墓地様", label: "霊園", image: work20, url: "https://kurotori-bochi.site/" },
-    { name: "タイ北部チェンマイ情報ステーション様", label: "メディア", image: work13, url: "https://oriental-cnx.com/" },
+const otherWorks: { name: string; label: string; image: typeof work1 }[] = [
+    { name: "久和不動産株式会社様", label: "不動産", image: work14 },
+    { name: "株式会社西辻工務店様", label: "不動産・建設", image: work15 },
+    { name: "イースタンホーク様", label: "不動産サービス", image: work16 },
+    { name: "株式会社アイ・セカンド様", label: "企業サイト", image: work17 },
+    { name: "I-SECOND STORE様", label: "ECサイト", image: work19 },
+    { name: "パーソナルジムMe様", label: "フィットネス", image: work18 },
+    { name: "黒鳥墓地様", label: "霊園", image: work20 },
+    { name: "タイ北部チェンマイ情報ステーション様", label: "メディア", image: work13 },
     { name: "株式会社ビビッドディレクション様", label: "企業サイト", image: work6 },
     { name: "株式会社ワナビィ様", label: "企業サイト", image: work7 },
     { name: "ECCジュニア 一里山教室様", label: "教育・スクール", image: work4 },
     { name: "Colours Musical Studio様", label: "教育・スクール", image: work2 },
     { name: "まや子どもの家様", label: "教育・スクール", image: work3 },
     { name: "Yuma English House様", label: "教育・スクール", image: work8 },
+    { name: "Yuma English House 英検対策コース様", label: "教育・スクール（LP）", image: work21 },
     { name: "DANCE STUDIO PLUS様", label: "教育・スクール", image: work9 },
     { name: "K-coaching様", label: "教育・スクール", image: work11 },
 ];
@@ -112,16 +110,7 @@ export function Works() {
                                             {work.label}
                                         </span>
                                     </p>
-                                    <h3 className="mb-4 text-lg font-bold text-ink">
-                                        {"url" in work && work.url ? (
-                                            <a href={work.url} {...outLink} className="inline-flex min-h-11 items-center gap-1.5 transition-colors hover:text-coral-deep">
-                                                {work.name}
-                                                <ExternalLink className="h-4 w-4 text-ink-faint" aria-hidden />
-                                            </a>
-                                        ) : (
-                                            work.name
-                                        )}
-                                    </h3>
+                                    <h3 className="mb-4 text-lg font-bold text-ink">{work.name}</h3>
                                     <p className="flex-1 text-sm leading-[2] text-ink-sub">
                                         {work.review ?? work.caption}
                                     </p>
@@ -131,39 +120,9 @@ export function Works() {
                     ))}
                 </div>
 
-                {/* その他の実績（サムネ付きミニカード） */}
+                {/* その他の実績（スライダー） */}
                 <FadeIn>
-                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
-                        {otherWorks.map((work) => {
-                            const inner = (
-                                <>
-                                    <div className="relative w-full overflow-hidden bg-white" style={{ aspectRatio: "995 / 580" }}>
-                                        <Image
-                                            src={work.image}
-                                            alt={`${work.name}のホームページ`}
-                                            fill
-                                            className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
-                                            placeholder="blur"
-                                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                                        />
-                                    </div>
-                                    <div className="p-3">
-                                        <p className="mb-1 text-[11px] text-ink-sub">{work.label}</p>
-                                        <p className="flex items-center gap-1 text-[13px] font-bold leading-snug text-ink transition-colors group-hover:text-coral-deep">
-                                            <span className="min-w-0 flex-1">{work.name}</span>
-                                            {work.url && <ExternalLink className="h-3.5 w-3.5 shrink-0 text-ink-faint" aria-hidden />}
-                                        </p>
-                                    </div>
-                                </>
-                            );
-                            const cls = "group flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_8px_20px_rgba(31,26,20,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(31,26,20,0.08)]";
-                            return work.url ? (
-                                <a key={work.name} href={work.url} {...outLink} className={cls}>{inner}</a>
-                            ) : (
-                                <div key={work.name} className={cls}>{inner}</div>
-                            );
-                        })}
-                    </div>
+                    <WorksCarousel items={otherWorks} />
                     <p className="mt-8 text-sm text-ink-sub">
                         ※ クライアント様のプライバシー保護のため、一部のみ掲載しております。
                     </p>
