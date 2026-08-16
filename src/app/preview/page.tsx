@@ -25,7 +25,7 @@ import { PreviewApply } from "./PreviewApply";
 import { StickyApply } from "./StickyApply";
 import logo from "@/images/logo-new.png";
 import shun from "@/images/shun-new.webp";
-import fvPhoto from "@/images/hero-digital.webp";
+import fvPhoto from "@/images/preview-fv-shop.webp"; // Unsplash（商用利用可）: お店のレジ前で端末を扱う店主
 import "./preview.css";
 
 /**
@@ -107,7 +107,7 @@ const ourFlow = [
 const deliverables = [
     { icon: Monitor, t: "PC版トップページ", d: "実際のブラウザで見た状態の画像。構成・写真の置き方・文字の大きさまで、そのまま確認できます。" },
     { icon: Smartphone, t: "スマホ版トップページ", d: "来訪者の多くはスマホ。指で触る前提のレイアウトを、別途つくって同時にお渡しします。" },
-    { icon: Sparkles, t: "業種と強みに合わせた構成", d: "テンプレートの色替えではありません。「誰に・何を・どう伝えるか」から、あなたのお店・事業に合わせて組み立てます。" },
+    { icon: Sparkles, t: <>業種と強みに<span className="nowrap">合わせた構成</span></>, d: "テンプレートの色替えではありません。「誰に・何を・どう伝えるか」から、あなたのお店・事業に合わせて組み立てます。" },
     { icon: Palette, t: "希望の雰囲気を反映", d: "「上品に」「元気に」「信頼感を」。ひと言の希望から、色・書体・余白のトーンを決めます。" },
 ];
 
@@ -132,7 +132,7 @@ const steps = [
 
 
 const compareRows: { k: string; a: string; b: string; c: React.ReactNode }[] = [
-    { k: "契約前にデザインを見られる", a: "△ ラフ案や口頭説明が中心", b: "× テンプレートから選ぶ", c: "◎ 実物のトップページ案（PC・スマホ）" },
+    { k: "契約前にデザインを見られる", a: "△ ラフ案や口頭説明が中心", b: "× テンプレートから選ぶ", c: <>◎ 実物のトップページ案<span className="nowrap">（PC・スマホ）</span></> },
     { k: "費用が発生するタイミング", a: "契約時（着手金など）", b: "申込時", c: <>正式に依頼すると<span className="nowrap">決めたとき</span></> },
     { k: "デザイン案が届くまで", a: "契約後、数週間", b: "―", c: "3営業日以内" },
     { k: "断ったあと", a: "契約後の解約は難しい", b: "返金不可の場合も", c: "そこで終わり・営業なし" },
@@ -271,7 +271,7 @@ export default function PreviewPage() {
                     className="absolute inset-y-0 right-0 w-full md:w-[70%]"
                     style={{ maskImage: "linear-gradient(to right, transparent 0%, black 45%), linear-gradient(to top, transparent 0%, black 40%)", WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 45%)", maskComposite: "intersect", WebkitMaskComposite: "source-in" }}
                 >
-                    <Image src={fvPhoto} alt="" fill priority className="object-cover object-center opacity-30 md:opacity-40" sizes="(max-width: 768px) 100vw, 70vw" />
+                    <Image src={fvPhoto} alt="" fill priority className="object-cover object-[65%_center] opacity-35 md:opacity-50" sizes="(max-width: 768px) 100vw, 70vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/40 to-navy-deep/30" />
                 </div>
                 <div aria-hidden className="lp-grid pointer-events-none absolute inset-0 opacity-[0.06]" />
@@ -439,7 +439,7 @@ export default function PreviewPage() {
                     </FadeIn>
                     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                         {deliverables.map((d, i) => (
-                            <FadeIn key={d.t} delay={i * 0.06}>
+                            <FadeIn key={i} delay={i * 0.06}>
                                 <div className="group h-full rounded-[20px] border border-line/70 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
                                     <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-navy-deep text-coral transition-transform duration-300 group-hover:scale-105">
                                         <d.icon className="h-6 w-6" aria-hidden />
@@ -604,7 +604,7 @@ export default function PreviewPage() {
                             <div className="relative h-full overflow-hidden rounded-[20px] bg-navy-deep p-8 text-white md:p-10">
                                 <span aria-hidden className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-coral/15 blur-3xl" />
                                 <p className="text-[12px] font-bold tracking-[0.25em] text-coral">気に入ったら、正式制作へ</p>
-                                <h3 className="mt-3 text-xl font-bold leading-snug md:text-2xl">プレビューのデザインを、そのまま公開まで。</h3>
+                                <h3 className="mt-3 text-xl font-bold leading-snug md:text-2xl">プレビューのデザインを、<span className="nowrap">そのまま公開まで。</span></h3>
                                 <p className="mt-4 text-[15px] leading-[2] text-navy-sub">
                                     公開まで進める場合の目安です。内容により変動しますが、正式なお見積もりを先にお出しし、追加費用が出る場合は必ず事前に<span className="nowrap">お伝えします。</span>
                                 </p>
@@ -627,7 +627,7 @@ export default function PreviewPage() {
             <section className="bg-white px-4 py-20 md:px-6 md:py-28">
                 <div className="mx-auto max-w-6xl">
                     <FadeIn>
-                        <SectionHead label="3つの約束" jp="安心して申し込めるように、3つ約束します。" />
+                        <SectionHead label="3つの約束" jp={<>安心して申し込めるように、<span className="nowrap">3つ約束します。</span></>} />
                     </FadeIn>
                     <div className="grid gap-5 md:grid-cols-3">
                         {promises.map((p, i) => (
@@ -790,7 +790,7 @@ export default function PreviewPage() {
                         <Link href="/" className="inline-flex min-h-11 items-center">
                             <Image src={logo} alt="NEXT VALLEY" width={150} height={34} className="h-7 w-auto object-contain" />
                         </Link>
-                        <p>屋号 NEXT VALLEY ／ 代表 倉林 駿 ／ AI活用で売上と業務を支援するプロチーム</p>
+                        <p>屋号 NEXT VALLEY ／ 代表 倉林 駿 ／ <span className="nowrap">AI活用で売上と業務を支援するプロチーム</span></p>
                     </div>
                     <ul className="flex flex-wrap gap-x-6 gap-y-1">
                         {[["/", "トップページ"], ["/company", "事業情報"], ["/tokusho", "特定商取引法に基づく表記"], ["/privacy", "プライバシーポリシー"]].map(([href, label]) => (

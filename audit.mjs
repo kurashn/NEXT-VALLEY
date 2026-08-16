@@ -35,11 +35,13 @@ try {
   process.exit(2);
 }
 
-const WIDTHS = [
-  { name: 'mobile', width: 375, height: 812 },
-  { name: 'tablet', width: 768, height: 1024 },
-  { name: 'desktop', width: 1440, height: 900 },
-];
+const WIDTHS = process.env.AUDIT_WIDTHS
+  ? process.env.AUDIT_WIDTHS.split(',').map((w) => ({ name: 'w' + w, width: Number(w), height: 900 }))
+  : [
+      { name: 'mobile', width: 375, height: 812 },
+      { name: 'tablet', width: 768, height: 1024 },
+      { name: 'desktop', width: 1440, height: 900 },
+    ];
 
 // 閾値の根拠は references/quality-gates.md
 const T = {
