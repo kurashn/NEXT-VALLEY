@@ -1,0 +1,187 @@
+/* 無料プレビューLP 専用スタイル（.lp- プレフィックス／他ページに影響させない） */
+
+.lp-root {
+  font-family: var(--lp-font-sans), "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-feature-settings: "palt" 1;
+  letter-spacing: 0.01em;
+}
+.lp-serif {
+  font-family: var(--lp-font-serif), Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+.lp-mincho {
+  font-family: var(--lp-font-mincho), "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+
+/* 極薄グリッド＋ビネット（FV／最終CTA） */
+.lp-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+.lp-vignette {
+  background: linear-gradient(180deg, rgba(4, 22, 39, 0) 55%, rgba(4, 22, 39, 0.85) 100%);
+}
+
+/* 写真を使わないFV: 深い紺地に、コーラル／ティールの光をゆっくり漂わせる */
+.lp-aurora {
+  background-color: #041627;
+  background-image:
+    radial-gradient(52% 60% at 82% 18%, rgba(226, 108, 92, 0.32), transparent 70%),
+    radial-gradient(45% 55% at 12% 85%, rgba(46, 127, 146, 0.30), transparent 70%),
+    radial-gradient(60% 50% at 55% 110%, rgba(226, 108, 92, 0.12), transparent 70%),
+    linear-gradient(180deg, #041627 0%, #06203a 60%, #041627 100%);
+}
+.lp-aurora::before,
+.lp-aurora::after {
+  content: "";
+  position: absolute;
+  inset: auto;
+  width: 60vw;
+  height: 60vw;
+  max-width: 900px;
+  max-height: 900px;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.lp-aurora::before {
+  right: -20vw;
+  top: -25vw;
+  background: radial-gradient(circle, rgba(226, 108, 92, 0.55), transparent 65%);
+  animation: lp-drift-a 22s ease-in-out infinite alternate;
+}
+.lp-aurora::after {
+  left: -25vw;
+  bottom: -30vw;
+  background: radial-gradient(circle, rgba(46, 127, 146, 0.5), transparent 65%);
+  animation: lp-drift-b 26s ease-in-out infinite alternate;
+}
+@keyframes lp-drift-a {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-8vw, 6vw) scale(1.12); }
+}
+@keyframes lp-drift-b {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(8vw, -6vw) scale(1.1); }
+}
+
+/* デバイスモックの浮遊 */
+@keyframes lp-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes lp-float-2 {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-14px) rotate(-2deg); }
+}
+.lp-float { animation: lp-float 7s ease-in-out infinite; }
+.lp-float-2 { animation: lp-float-2 8s ease-in-out infinite; }
+
+/* 残り枠のドット・脈動 */
+@keyframes lp-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(226, 108, 92, 0.6); }
+  70% { box-shadow: 0 0 0 10px rgba(226, 108, 92, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(226, 108, 92, 0); }
+}
+.lp-pulse { animation: lp-pulse 2s ease-out infinite; }
+
+/* 業種ティッカー */
+@keyframes lp-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.lp-ticker {
+  display: flex;
+  width: max-content;
+  animation: lp-ticker 40s linear infinite;
+}
+.lp-ticker:hover { animation-play-state: paused; }
+
+/* CTAの光沢スイープ */
+.lp-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.lp-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
+}
+.lp-cta:hover::after { transform: translateX(120%); }
+
+/* スクロールの手がかり */
+@keyframes lp-cue {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+.lp-cue::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  animation: lp-cue 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+/* 取り消し線（「一般的な流れ」の否定表現） */
+.lp-strike {
+  background: linear-gradient(transparent 52%, rgba(226, 108, 92, 0.35) 52%, rgba(226, 108, 92, 0.35) 68%, transparent 68%);
+}
+
+/* モバイル追従バー分の下余白 */
+@media (max-width: 767px) {
+  .lp-root { padding-bottom: 84px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-float, .lp-float-2, .lp-pulse, .lp-ticker, .lp-cue::after, .lp-aurora::before, .lp-aurora::after { animation: none; }
+  .lp-cta::after { display: none; }
+}
+
+/* 強調マーカー（見出しのキーフレーズ） */
+.lp-marker {
+  background: linear-gradient(transparent 58%, rgba(226, 108, 92, 0.30) 58%, rgba(226, 108, 92, 0.30) 92%, transparent 92%);
+}
+
+/* 実例の注釈ドット */
+.lp-dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  background: #b8452f;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9), 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+.lp-dot::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 2px solid rgba(226, 108, 92, 0.7);
+  animation: lp-ring 2.4s ease-out infinite;
+}
+@keyframes lp-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .lp-dot::before { animation: none; } }
+
+/* 比較表 */
+.lp-table th, .lp-table td { padding: 14px 16px; vertical-align: top; }
+.lp-table tr + tr th, .lp-table tr + tr td { border-top: 1px solid var(--color-line); }
