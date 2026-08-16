@@ -358,13 +358,23 @@ section[id], div[id] { scroll-margin-top: 96px; }
     overflow-wrap: anywhere;
   }
 
-  /* 最終行に1〜2文字だけ落ちる「改行落ち」を防ぐ（対応ブラウザのみ） */
+  /* 改行落ち（最終行に1〜2文字だけ残る）を防ぐ（対応ブラウザのみ） */
   h1, h2, h3, p {
     text-wrap: pretty;
   }
+  /* Safari(WebKit) の pretty は段落全体を均そうとして各行が短くなり、
+     スマホで右側に余白が目立つ・両端揃えが間延びする → Safari の本文だけ通常の折り返しに */
+  @supports (font: -apple-system-body) {
+    p {
+      text-wrap: auto;
+    }
+  }
 
-  /* 記事本文は両端揃え（スマホで行末の凸凹＝右側の余白を出さない） */
-  .prose p, .prose li {
+  /* 本文は両端揃え（スマホ、特に iPhone の Safari では text-wrap: pretty が
+     段落全体のバランスを取ろうとして行末が凸凹＝右側に余白が出る。両端揃えで行を詰める）。
+     中央寄せ・右寄せの中にある段落は対象外 */
+  p:not(.text-center p):not(.text-right p),
+  .prose li {
     text-align: justify;
   }
 
