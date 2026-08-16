@@ -21,7 +21,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nextvalley-jpn.com"),
+  metadataBase: new URL("https://www.nextvalley-jpn.com"),
   title: {
     default: "NEXT VALLEY | AI活用で売上と業務を変えるプロチーム",
     template: "%s | NEXT VALLEY",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "NEXT VALLEY | AI活用で売上と業務を変えるプロチーム",
     description: "AI活用のプロチームが、マーケティングから制作まで課題に合わせて提案。売上アップと業務効率化を根本から支援します。診断・提案・見積もりは無料。",
-    url: "https://nextvalley-jpn.com",
+    url: "https://www.nextvalley-jpn.com",
     siteName: "NEXT VALLEY",
     locale: "ja_JP",
     type: "website",

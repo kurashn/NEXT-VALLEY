@@ -3,7 +3,7 @@ import { createReader } from '@keystatic/core/reader';
 import config from '../../keystatic.config';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = 'https://nextvalley-jpn.com';
+    const baseUrl = 'https://www.nextvalley-jpn.com';
     const reader = createReader(process.cwd(), config);
 
     // Get all posts
@@ -28,11 +28,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/privacy',
         '/terms',
         '/tokusho',
+        // English
+        '/en',
+        '/en/preview',
+        '/en/shindan',
+        '/en/contact',
+        '/en/company',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
-        priority: route === '' ? 1 : 0.5,
+        priority: route === '' ? 1 : route === '/en' ? 0.8 : 0.5,
     }));
 
     return [...routes, ...blogPosts];

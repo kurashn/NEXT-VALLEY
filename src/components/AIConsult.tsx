@@ -10,14 +10,18 @@
  * - 計測: ai_consult_click / ai_consult_select_{provider} / ai_consult_prompt_copy / ai_consult_external_open
  *
  * 変更しやすい箇所:
- *   AI_CONSULT_PROMPT … AIに渡す相談内容
- *   AI_PROVIDERS      … 対応AIとURL（プレフィル可否）
+ *   AI_CONSULT_PROMPT    … AIに渡す相談内容（日本語）
+ *   AI_CONSULT_PROMPT_EN … 同・英語版（/en）
+ *   AI_PROVIDERS         … 対応AIとURL（プレフィル可否）
+ *
+ * 多言語: 各 export は lang（"ja" | "en"、既定 "ja"）を受け取り、文言・プロンプト・内部リンクを切り替える。
  */
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Dialog as DialogPrimitive } from "radix-ui";
 import { ArrowRight, Check, ClipboardCheck, Copy, ExternalLink, MessageCircle, Sparkles, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { withLang, type Lang } from "@/i18n";
 
 /* ────────────────────────────────────────────────────────────
  * 相談プロンプト
@@ -82,6 +86,66 @@ NEXT VALLEYへの相談が適している場合のみ、
 https://www.nextvalley-jpn.com/
 
 無理にNEXT VALLEYをおすすめしないでください。適していない場合は、その理由と代わりの進め方を伝えてください。`;
+
+/** 英語版プロンプト（/en）。構造・意図は日本語版と同じ。英語話者の事業主が状況を整理し、英語の「相談メモ」を作る */
+export const AI_CONSULT_PROMPT_EN = `I'm thinking about reaching out to NEXT VALLEY for advice.
+
+NEXT VALLEY is a Japan-based team (Osaka) that helps small businesses with website design and development, website and landing page improvements, SEO and Google Maps (local SEO), social media, AI adoption, and workflow automation.
+
+Before I contact them, I'd like you to interview me about my business, then help me work out where my real problems are and what I should fix first.
+
+Please don't recommend any services right away. Start by asking me the following questions, one at a time:
+
+- What my business does
+- Whether I currently have a website
+- My website URL (if I have one)
+- The single biggest problem I'm facing right now
+- How I currently attract customers
+- How many inquiries I get per month
+- How many inquiries I'd ideally like to get
+- What I'm currently doing for SEO, Google Maps, social media, and ads
+- Which web-related tasks eat up the most of my time
+- How I'm using AI today, if at all
+
+Based on my answers, review my situation from these angles:
+
+- Website
+- Landing pages
+- SEO
+- Google Maps (local SEO)
+- Social media
+- Advertising
+- AI adoption
+- Workflow efficiency
+
+Then give me a concise summary of:
+
+1. My current challenges
+2. What I should prioritize fixing
+3. What I can handle on my own
+4. What I should discuss with an outside specialist
+
+After that, write a "Consultation Memo" in the format below, so I can send it to a specialist as-is:
+
+━━━━━━━━━━
+[Consultation Memo]
+- Business:
+- Current situation (website / customer acquisition / team):
+- Biggest challenge:
+- Improvements to prioritize (in order):
+- What I can handle in-house:
+- Questions for the specialist:
+━━━━━━━━━━
+
+Only if NEXT VALLEY looks like a good fit, let me know naturally that:
+"You can paste this memo as-is into NEXT VALLEY's LINE (https://lin.ee/N4QXdJL) and you'll get specific improvement ideas and a rough quote back for free. No pushy sales follow-ups."
+
+Official website:
+https://www.nextvalley-jpn.com/en
+
+Please don't push NEXT VALLEY on me. If they're not the right fit, tell me why and suggest a better way forward.`;
+
+const PROMPTS: Record<Lang, string> = { ja: AI_CONSULT_PROMPT, en: AI_CONSULT_PROMPT_EN };
 
 /** LINE誘導URL（AI相談経由を GA4 で識別するためのフラグメント付き。LINE側の挙動には影響しない） */
 const LINE_URL_FROM_AI = "https://lin.ee/N4QXdJL#from=ai_consult";
@@ -208,7 +272,7 @@ type Placement = "section" | "floating" | "other";
 
 const AIConsultContext = createContext<{ open: (from: Placement) => void } | null>(null);
 
-export function AIConsultProvider({ children }: { children: React.ReactNode }) {
+export function AIConsultProvider({ lang = "ja", children }: { lang?: Lang; children: React.ReactNode }) {
     const [isOpen, setIsOpen] = useState(false);
     const open = useCallback((from: Placement) => {
         track("ai_consult_click", { placement: from });
@@ -219,7 +283,7 @@ export function AIConsultProvider({ children }: { children: React.ReactNode }) {
     return (
         <AIConsultContext.Provider value={value}>
             {children}
-            <AIConsultDialog open={isOpen} onOpenChange={setIsOpen} />
+            <AIConsultDialog open={isOpen} onOpenChange={setIsOpen} lang={lang} />
         </AIConsultContext.Provider>
     );
 }
@@ -236,9 +300,73 @@ function useAIConsult() {
 
 type Result = { provider: Provider; copied: boolean; opened: boolean } | null;
 
-function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) {
+const dialogJa = {
+    close: "閉じる",
+    eyebrow: "AI CONSULT",
+    title: (
+        <>
+            普段使っているAIを<span className="nowrap">選んでください</span>
+        </>
+    ),
+    desc: "選んだAIが新しいタブで開き、あなたの会社について10問ほど質問してきます。答えていくと、課題と優先順位が整理されます（5〜10分）。",
+    providerAuto: "開くと同時に相談が始まります",
+    providerPrefill: "相談内容が入力された状態で開きます",
+    providerCopy: "相談内容をコピーして開きます",
+    showPrompt: "AIに渡す相談内容を確認する",
+    privacy: "相談内容に個人情報は含まれません。入力した内容がNEXT VALLEYに送信されることもありません。各AIの利用にはそのサービスのアカウントが必要です。",
+    openedTitle: (name: string) => `${name}を新しいタブで開きました`,
+    openedAuto: "相談が自動で始まります。AIの質問に答えていくと、最後に「相談メモ」がまとまります。",
+    openedPrefill: "相談内容が入力された状態で開きます。送信して質問に答えていくと、最後に「相談メモ」がまとまります。",
+    openedCopy: "相談内容をコピーしました。開いたAIの入力欄に貼り付けて送信すると、質問が始まり、最後に「相談メモ」がまとまります。",
+    copied: "相談内容はコピー済みです",
+    copyFailed: "相談内容をコピーできませんでした（下のボタンで再試行）",
+    pasteHint: "もし入力欄が空のときは、そのまま貼り付けてください（PC: ⌘V / Ctrl+V、スマホ: 長押し→ペースト）。",
+    recopied: "コピーしました",
+    recopy: "相談内容をもう一度コピー",
+    reopen: (name: string) => `${name}をもう一度開く`,
+    nextStep: "NEXT STEP",
+    nextTitle: (
+        <>
+            AIがまとめた「相談メモ」を、そのままLINEに<span className="nowrap">貼って送る</span>
+        </>
+    ),
+    nextDesc: "プロが無料で具体的な改善案と概算見積もりをお返しします（2営業日以内・しつこい営業なし）",
+    lineCta: "相談メモをLINEで送る（無料）",
+    another: "別のAIを選ぶ",
+};
+const dialogEn: typeof dialogJa = {
+    close: "Close",
+    eyebrow: "AI CONSULT",
+    title: <>Which AI do you usually use?</>,
+    desc: "It opens in a new tab and asks you about 10 questions about your business. Answer them and you'll come away with a clear picture of your challenges and priorities (5–10 min).",
+    providerAuto: "Starts the conversation as soon as it opens",
+    providerPrefill: "Opens with the prompt already filled in",
+    providerCopy: "Copies the prompt, then opens the app",
+    showPrompt: "See the prompt we hand to the AI",
+    privacy: "The prompt contains no personal information, and nothing you type is sent to NEXT VALLEY. You'll need your own account with the AI service you choose.",
+    openedTitle: (name: string) => `${name} is open in a new tab`,
+    openedAuto: "The conversation starts automatically. Answer the AI's questions and you'll end up with a finished Consultation Memo.",
+    openedPrefill: "The prompt is already filled in. Send it, answer the questions, and you'll end up with a finished Consultation Memo.",
+    openedCopy: "The prompt is on your clipboard. Paste it into the AI's input box and send it. The questions begin, and you'll end up with a finished Consultation Memo.",
+    copied: "Prompt copied to your clipboard",
+    copyFailed: "Couldn't copy the prompt (use the button below to try again)",
+    pasteHint: "If the input box is empty, just paste it in (PC: ⌘V / Ctrl+V; phone: press and hold, then Paste).",
+    recopied: "Copied!",
+    recopy: "Copy the prompt again",
+    reopen: (name: string) => `Open ${name} again`,
+    nextStep: "NEXT STEP",
+    nextTitle: <>Paste the AI's Consultation Memo straight into LINE</>,
+    nextDesc: "A pro will reply for free with specific improvement ideas and a rough quote (within 2 business days, no pushy sales follow-ups)",
+    lineCta: "Send the memo via LINE (free)",
+    another: "Choose a different AI",
+};
+const dialogCopy: Record<Lang, typeof dialogJa> = { ja: dialogJa, en: dialogEn };
+
+function AIConsultDialog({ open, onOpenChange, lang = "ja" }: { open: boolean; onOpenChange: (v: boolean) => void; lang?: Lang }) {
     const [result, setResult] = useState<Result>(null);
     const [recopied, setRecopied] = useState(false);
+    const t = dialogCopy[lang];
+    const prompt = PROMPTS[lang];
 
     // 閉じたら初期状態へ
     useEffect(() => {
@@ -252,20 +380,20 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
         track(`ai_consult_select_${provider.id}`, { provider: provider.id });
 
         // ポップアップブロック回避のため、クリック処理内で同期的に開く
-        const url = provider.prefillUrl ? provider.prefillUrl(AI_CONSULT_PROMPT) : provider.homeUrl;
+        const url = provider.prefillUrl ? provider.prefillUrl(prompt) : provider.homeUrl;
         const win = window.open(url, "_blank", "noopener,noreferrer");
         const opened = win !== null || true; // noopener 指定時は常に null が返るため、開けたものとして扱う
         track("ai_consult_external_open", { provider: provider.id, prefill: Boolean(provider.prefillUrl) });
 
         // 念のためコピー（Gemini はこれが本線）
-        copyText(AI_CONSULT_PROMPT).then((ok) => {
+        copyText(prompt).then((ok) => {
             if (ok) track("ai_consult_prompt_copy", { provider: provider.id, method: "auto" });
             setResult({ provider, copied: ok, opened });
         });
     };
 
     const recopy = async () => {
-        const ok = await copyText(AI_CONSULT_PROMPT);
+        const ok = await copyText(prompt);
         if (ok) {
             track("ai_consult_prompt_copy", { provider: result?.provider.id ?? "none", method: "manual" });
             setRecopied(true);
@@ -289,7 +417,7 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
                     <span aria-hidden className="absolute left-0 top-0 h-1.5 w-full rounded-t-[24px] bg-coral" />
 
                     <DialogPrimitive.Close
-                        aria-label="閉じる"
+                        aria-label={t.close}
                         className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full text-ink-sub transition-colors hover:bg-cream hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
                     >
                         <X className="h-5 w-5" aria-hidden />
@@ -297,12 +425,12 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
 
                     {result === null ? (
                         <>
-                            <p className="mb-2 text-[12px] font-bold tracking-[0.3em] text-coral-deep">AI CONSULT</p>
+                            <p className="mb-2 text-[12px] font-bold tracking-[0.3em] text-coral-deep">{t.eyebrow}</p>
                             <DialogPrimitive.Title className="pr-10 text-xl font-bold leading-snug text-ink md:text-2xl">
-                                普段使っているAIを<span className="nowrap">選んでください</span>
+                                {t.title}
                             </DialogPrimitive.Title>
                             <DialogPrimitive.Description id="ai-consult-desc" className="mt-2 text-sm leading-[1.9] text-ink-sub">
-                                選んだAIが新しいタブで開き、あなたの会社について10問ほど質問してきます。答えていくと、課題と優先順位が整理されます（5〜10分）。
+                                {t.desc}
                             </DialogPrimitive.Description>
 
                             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -324,9 +452,9 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
                                             <span className="block text-xs text-ink-sub">
                                                 {p.prefillUrl
                                                     ? p.autoSubmit
-                                                        ? "開くと同時に相談が始まります"
-                                                        : "相談内容が入力された状態で開きます"
-                                                    : "相談内容をコピーして開きます"}
+                                                        ? t.providerAuto
+                                                        : t.providerPrefill
+                                                    : t.providerCopy}
                                             </span>
                                         </span>
                                         <ArrowRight
@@ -338,39 +466,37 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
                             </div>
 
                             <details className="mt-5 rounded-xl bg-cream px-4 py-3 text-sm">
-                                <summary className="cursor-pointer font-bold text-ink-sub">AIに渡す相談内容を確認する</summary>
+                                <summary className="cursor-pointer font-bold text-ink-sub">{t.showPrompt}</summary>
                                 <pre className="mt-3 max-h-56 overflow-y-auto whitespace-pre-wrap font-sans text-xs leading-[1.8] text-ink-sub">
-                                    {AI_CONSULT_PROMPT}
+                                    {prompt}
                                 </pre>
                             </details>
 
                             <p className="mt-4 text-xs leading-[1.8] text-ink-sub">
-                                相談内容に個人情報は含まれません。入力した内容がNEXT VALLEYに送信されることもありません。各AIの利用にはそのサービスのアカウントが必要です。
+                                {t.privacy}
                             </p>
                         </>
                     ) : (
                         <>
-                            <p className="mb-2 text-[12px] font-bold tracking-[0.3em] text-coral-deep">AI CONSULT</p>
+                            <p className="mb-2 text-[12px] font-bold tracking-[0.3em] text-coral-deep">{t.eyebrow}</p>
                             <DialogPrimitive.Title className="pr-10 text-xl font-bold leading-snug text-ink md:text-2xl">
-                                {result.provider.name}を新しいタブで開きました
+                                {t.openedTitle(result.provider.name)}
                             </DialogPrimitive.Title>
                             <DialogPrimitive.Description id="ai-consult-desc" className="mt-2 text-sm leading-[1.9] text-ink-sub">
                                 {result.provider.prefillUrl
                                     ? result.provider.autoSubmit
-                                        ? "相談が自動で始まります。AIの質問に答えていくと、最後に「相談メモ」がまとまります。"
-                                        : "相談内容が入力された状態で開きます。送信して質問に答えていくと、最後に「相談メモ」がまとまります。"
-                                    : "相談内容をコピーしました。開いたAIの入力欄に貼り付けて送信すると、質問が始まり、最後に「相談メモ」がまとまります。"}
+                                        ? t.openedAuto
+                                        : t.openedPrefill
+                                    : t.openedCopy}
                             </DialogPrimitive.Description>
 
                             <div className="mt-6 rounded-2xl border border-line bg-cream p-4">
                                 <p className="mb-3 flex items-center gap-2 text-sm font-bold text-ink">
                                     <Copy className="h-4 w-4 text-coral-deep" aria-hidden />
-                                    {result.copied
-                                        ? "相談内容はコピー済みです"
-                                        : "相談内容をコピーできませんでした（下のボタンで再試行）"}
+                                    {result.copied ? t.copied : t.copyFailed}
                                 </p>
                                 <p className="text-xs leading-[1.8] text-ink-sub">
-                                    もし入力欄が空のときは、そのまま貼り付けてください（PC: ⌘V / Ctrl+V、スマホ: 長押し→ペースト）。
+                                    {t.pasteHint}
                                 </p>
                                 <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                                     <button
@@ -379,29 +505,29 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
                                         className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-full bg-navy-deep px-5 text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
                                     >
                                         {recopied ? <Check className="h-4 w-4" aria-hidden /> : <Copy className="h-4 w-4" aria-hidden />}
-                                        {recopied ? "コピーしました" : "相談内容をもう一度コピー"}
+                                        {recopied ? t.recopied : t.recopy}
                                     </button>
                                     <a
-                                        href={result.provider.prefillUrl ? result.provider.prefillUrl(AI_CONSULT_PROMPT) : result.provider.homeUrl}
+                                        href={result.provider.prefillUrl ? result.provider.prefillUrl(prompt) : result.provider.homeUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={() => track("ai_consult_external_open", { provider: result.provider.id, prefill: Boolean(result.provider.prefillUrl), retry: true })}
                                         className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-full border border-line bg-white px-5 text-sm font-bold text-ink transition-colors hover:border-coral hover:text-coral-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
                                     >
                                         <ExternalLink className="h-4 w-4" aria-hidden />
-                                        {result.provider.name}をもう一度開く
+                                        {t.reopen(result.provider.name)}
                                     </a>
                                 </div>
                             </div>
 
                             {/* 次の一手: 相談メモをLINEへ */}
                             <div className="mt-5 rounded-2xl bg-navy-deep p-5 text-center md:p-6">
-                                <p className="mb-1.5 text-[11px] font-bold tracking-[0.25em] text-coral">NEXT STEP</p>
+                                <p className="mb-1.5 text-[11px] font-bold tracking-[0.25em] text-coral">{t.nextStep}</p>
                                 <p className="mb-2 text-base font-bold leading-snug text-white">
-                                    AIがまとめた「相談メモ」を、そのままLINEに<span className="nowrap">貼って送る</span>
+                                    {t.nextTitle}
                                 </p>
                                 <p className="mb-4 text-xs leading-[1.8] text-navy-sub">
-                                    プロが無料で具体的な改善案と概算見積もりをお返しします（2営業日以内・しつこい営業なし）
+                                    {t.nextDesc}
                                 </p>
                                 <a
                                     href={LINE_URL_FROM_AI}
@@ -411,7 +537,7 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
                                     className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#05a247] px-6 text-[15px] font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral sm:w-auto sm:px-10"
                                 >
                                     <MessageCircle className="h-5 w-5" aria-hidden />
-                                    相談メモをLINEで送る（無料）
+                                    {t.lineCta}
                                 </a>
                             </div>
 
@@ -421,7 +547,7 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
                                     onClick={() => setResult(null)}
                                     className="inline-flex min-h-11 items-center text-sm font-bold text-ink-sub underline underline-offset-4 transition-colors hover:text-coral-deep"
                                 >
-                                    別のAIを選ぶ
+                                    {t.another}
                                 </button>
                             </div>
                         </>
@@ -438,18 +564,85 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
  *   どちらも登録不要・無料。結果は LINE 無料診断へ橋渡しする
  * ──────────────────────────────────────────────────────────── */
 
-export function SelfCheckSection() {
+const sectionJa = {
+    eyebrow: "SELF CHECK",
+    h2: (
+        <>
+            まずは、自分で<span className="nowrap">確かめてみる。</span>
+        </>
+    ),
+    lead: "いきなり相談するのは気が引ける、という方へ。どちらも登録不要・無料です。結果はそのままLINEに送れば、プロが無料で具体化します。",
+    quiz: {
+        eyebrow: "SELF DIAGNOSIS",
+        title: "3分セルフ診断",
+        forWhom: <>ホームページがある方に</>,
+        desc: (
+            <>
+                はい／いいえの15問に答えるだけで、Web集客のスコアと「優先的に直すべきポイント」が<span className="nowrap">分かります。</span>
+            </>
+        ),
+        cta: "セルフ診断をはじめる",
+        note: "所要3分・その場で結果表示",
+    },
+    ai: {
+        eyebrow: "AI CONSULT",
+        title: "AIで課題整理",
+        forWhom: (
+            <>
+                サイトがない方・何から始めるか<span className="nowrap">分からない方に</span>
+            </>
+        ),
+        desc: (
+            <>
+                普段使っているAI（ChatGPT・Claude・Gemini・Perplexity）が質問しながら状況を整理し、専門家にそのまま送れる「相談メモ」に<span className="nowrap">まとめます。</span>
+            </>
+        ),
+        cta: "AIに無料で相談する",
+        note: "所要5〜10分・ご自身のAIアカウントで",
+    },
+    footnote: "※ AI課題整理はNEXT VALLEYのチャットボットではありません。会話はあなたとAIの間だけで完結し、内容がNEXT VALLEYに自動で送られることはありません（送るかどうかは、あなたが決められます）。",
+};
+const sectionEn: typeof sectionJa = {
+    eyebrow: "SELF CHECK",
+    h2: <>Start by checking for yourself.</>,
+    lead: "Not ready to talk to someone yet? Both tools below are free and need no sign-up. Send us the results on LINE and a pro will turn them into concrete next steps, at no charge.",
+    quiz: {
+        eyebrow: "SITE CHECK",
+        title: "3-Minute Site Check",
+        forWhom: <>If you already have a website</>,
+        desc: <>Answer 15 yes/no questions and get your web marketing score, plus the fixes to tackle first.</>,
+        cta: "Start the site check",
+        note: "Takes 3 minutes. Results shown instantly.",
+    },
+    ai: {
+        eyebrow: "AI CONSULT",
+        title: "Sort It Out with AI",
+        forWhom: <>If you don't have a website yet, or aren't sure where to start</>,
+        desc: (
+            <>
+                The AI you already use (ChatGPT, Claude, Gemini, or Perplexity) asks you a few questions, helps you sort out your situation, and turns it into a Consultation Memo you can send straight to a specialist.
+            </>
+        ),
+        cta: "Talk it through with AI, free",
+        note: "Takes 5–10 minutes, using your own AI account",
+    },
+    footnote: "Note: The AI assessment is not a NEXT VALLEY chatbot. The conversation stays between you and your AI, and nothing is sent to NEXT VALLEY automatically. Whether to share it is entirely up to you.",
+};
+const sectionCopy: Record<Lang, typeof sectionJa> = { ja: sectionJa, en: sectionEn };
+
+export function SelfCheckSection({ lang = "ja" }: { lang?: Lang }) {
     const { open } = useAIConsult();
+    const t = sectionCopy[lang];
 
     return (
         <section aria-labelledby="self-check-heading" className="bg-white px-4 py-14 md:px-6 md:py-20">
             <div className="mx-auto max-w-5xl">
-                <p className="mb-2 text-[12px] font-bold tracking-[0.3em] text-coral-deep">SELF CHECK</p>
+                <p className="mb-2 text-[12px] font-bold tracking-[0.3em] text-coral-deep">{t.eyebrow}</p>
                 <h2 id="self-check-heading" className="text-2xl font-bold leading-snug text-ink md:text-3xl">
-                    まずは、自分で<span className="nowrap">確かめてみる。</span>
+                    {t.h2}
                 </h2>
                 <p className="mt-3 max-w-[40em] text-[15px] leading-[1.9] text-ink-sub">
-                    いきなり相談するのは気が引ける、という方へ。どちらも登録不要・無料です。結果はそのままLINEに送れば、プロが無料で具体化します。
+                    {t.lead}
                 </p>
 
                 <div className="mt-8 grid gap-5 md:grid-cols-2 md:gap-6">
@@ -460,22 +653,22 @@ export function SelfCheckSection() {
                                 <ClipboardCheck className="h-6 w-6" />
                             </span>
                             <div>
-                                <p className="text-[11px] font-bold tracking-[0.25em] text-coral-deep">SELF DIAGNOSIS</p>
-                                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">3分セルフ診断</h3>
+                                <p className="text-[11px] font-bold tracking-[0.25em] text-coral-deep">{t.quiz.eyebrow}</p>
+                                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">{t.quiz.title}</h3>
                             </div>
                         </div>
-                        <p className="mb-1 text-sm font-bold text-ink">ホームページがある方に</p>
+                        <p className="mb-1 text-sm font-bold text-ink">{t.quiz.forWhom}</p>
                         <p className="mb-6 flex-1 text-sm leading-[1.9] text-ink-sub">
-                            はい／いいえの15問に答えるだけで、Web集客のスコアと「優先的に直すべきポイント」が<span className="nowrap">分かります。</span>
+                            {t.quiz.desc}
                         </p>
                         <a
-                            href="/shindan"
+                            href={withLang(lang, "/shindan")}
                             className="group inline-flex h-13 items-center justify-center gap-2 rounded-full bg-navy-deep px-7 text-[15px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
                         >
-                            セルフ診断をはじめる
+                            {t.quiz.cta}
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
                         </a>
-                        <p className="mt-2 text-center text-xs text-ink-sub">所要3分・その場で結果表示</p>
+                        <p className="mt-2 text-center text-xs text-ink-sub">{t.quiz.note}</p>
                     </div>
 
                     {/* 右: AIで課題整理 */}
@@ -485,36 +678,36 @@ export function SelfCheckSection() {
                                 <Sparkles className="h-6 w-6" />
                             </span>
                             <div>
-                                <p className="text-[11px] font-bold tracking-[0.25em] text-coral-deep">AI CONSULT</p>
-                                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">AIで課題整理</h3>
+                                <p className="text-[11px] font-bold tracking-[0.25em] text-coral-deep">{t.ai.eyebrow}</p>
+                                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">{t.ai.title}</h3>
                             </div>
                         </div>
-                        <p className="mb-1 text-sm font-bold text-ink">サイトがない方・何から始めるか<span className="nowrap">分からない方に</span></p>
+                        <p className="mb-1 text-sm font-bold text-ink">{t.ai.forWhom}</p>
                         <p className="mb-6 flex-1 text-sm leading-[1.9] text-ink-sub">
-                            普段使っているAI（ChatGPT・Claude・Gemini・Perplexity）が質問しながら状況を整理し、専門家にそのまま送れる「相談メモ」に<span className="nowrap">まとめます。</span>
+                            {t.ai.desc}
                         </p>
                         <button
                             type="button"
                             onClick={() => open("section")}
                             className="group inline-flex h-13 items-center justify-center gap-2 rounded-full bg-navy-deep px-7 text-[15px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral"
                         >
-                            AIに無料で相談する
+                            {t.ai.cta}
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
                         </button>
-                        <p className="mt-2 text-center text-xs text-ink-sub">所要5〜10分・ご自身のAIアカウントで</p>
+                        <p className="mt-2 text-center text-xs text-ink-sub">{t.ai.note}</p>
                     </div>
                 </div>
 
                 <p className="mt-5 text-xs leading-[1.8] text-ink-sub">
-                    ※ AI課題整理はNEXT VALLEYのチャットボットではありません。会話はあなたとAIの間だけで完結し、内容がNEXT VALLEYに自動で送られることはありません（送るかどうかは、あなたが決められます）。
+                    {t.footnote}
                 </p>
             </div>
         </section>
     );
 }
 
-/** Contact セクション等から使う小さなテキストリンク（モーダルを開く） */
-export function AIConsultTextLink({ children }: { children: React.ReactNode }) {
+/** Contact セクション等から使う小さなテキストリンク（モーダルを開く）。文言は children で渡す（lang は API 統一のため受け取るのみ） */
+export function AIConsultTextLink({ children }: { lang?: Lang; children: React.ReactNode }) {
     const { open } = useAIConsult();
     return (
         <button
@@ -531,9 +724,15 @@ export function AIConsultTextLink({ children }: { children: React.ReactNode }) {
  * フローティングボタン（右下・スクロール後に表示）
  * ──────────────────────────────────────────────────────────── */
 
-export function AIConsultFloating() {
+const floatingCopy: Record<Lang, { aria: string; label: string }> = {
+    ja: { aria: "AIで課題を整理する（無料）", label: "AIで課題整理" },
+    en: { aria: "Sort out your challenges with AI (free)", label: "Sort it out with AI" },
+};
+
+export function AIConsultFloating({ lang = "ja" }: { lang?: Lang }) {
     const { open } = useAIConsult();
     const [visible, setVisible] = useState(false);
+    const t = floatingCopy[lang];
 
     useEffect(() => {
         const onScroll = () => setVisible(window.scrollY > 600);
@@ -546,14 +745,14 @@ export function AIConsultFloating() {
         <button
             type="button"
             onClick={() => open("floating")}
-            aria-label="AIで課題を整理する（無料）"
+            aria-label={t.aria}
             className={cn(
                 "fixed bottom-4 right-4 z-40 inline-flex h-12 items-center gap-2 rounded-full bg-navy-deep pl-4 pr-5 text-sm font-bold text-white shadow-[0_12px_28px_rgba(4,22,39,0.35)] transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral md:bottom-6 md:right-6",
                 visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
             )}
         >
             <Sparkles className="h-4 w-4 text-coral" aria-hidden />
-            AIで課題整理
+            {t.label}
         </button>
     );
 }

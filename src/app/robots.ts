@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/keystatic/', // Exclude CMS admin area
         },
-        sitemap: 'https://nextvalley-jpn.com/sitemap.xml',
+        sitemap: 'https://www.nextvalley-jpn.com/sitemap.xml',
     };
 }

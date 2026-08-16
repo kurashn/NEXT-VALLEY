@@ -64,7 +64,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         headline: post.title,
                         description: post.excerpt || undefined,
                         image: post.coverImage
-                            ? `https://nextvalley-jpn.com${post.coverImage}`
+                            ? `https://www.nextvalley-jpn.com${post.coverImage}`
                             : undefined,
                         datePublished: post.publishedDate || undefined,
                         dateModified: post.publishedDate || undefined,
@@ -72,18 +72,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             "@type": "Person",
                             name: "倉林 駿",
                             jobTitle: "NEXT VALLEY 代表",
-                            url: "https://nextvalley-jpn.com/company",
+                            url: "https://www.nextvalley-jpn.com/company",
                         },
                         publisher: {
                             "@type": "Organization",
                             name: "NEXT VALLEY",
-                            url: "https://nextvalley-jpn.com",
+                            url: "https://www.nextvalley-jpn.com",
                             logo: {
                                 "@type": "ImageObject",
-                                url: "https://nextvalley-jpn.com/og-image.png",
+                                url: "https://www.nextvalley-jpn.com/og-image.png",
                             },
                         },
-                        mainEntityOfPage: `https://nextvalley-jpn.com/blog/${slug}`,
+                        mainEntityOfPage: `https://www.nextvalley-jpn.com/blog/${slug}`,
                     }),
                 }}
             />

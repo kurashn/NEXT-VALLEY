@@ -378,6 +378,25 @@ section[id], div[id] { scroll-margin-top: 96px; }
     text-align: justify;
   }
 
+  /* 英語ページ（<main lang="en">）: 日本語向けの両端揃え・禁則設定を戻す */
+  [lang="en"] p:not(.text-center p):not(.text-right p),
+  [lang="en"] p,
+  [lang="en"] li {
+    text-align: start;
+  }
+  [lang="en"] h1,
+  [lang="en"] h2,
+  [lang="en"] h3,
+  [lang="en"] .lead {
+    line-break: auto;
+    overflow-wrap: break-word;
+  }
+  [lang="en"] h1,
+  [lang="en"] h2,
+  [lang="en"] h3 {
+    text-wrap: balance;
+  }
+
   /* 意味の塊を折らせたくない箇所だけに使う（改行落ちの個別対策） */
   .nowrap {
     display: inline-block;

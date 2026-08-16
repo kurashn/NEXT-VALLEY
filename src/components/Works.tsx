@@ -5,7 +5,8 @@ import React from "react";
 import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading, serif } from "@/components/ui/SerifHeading";
-import { WorksCarousel } from "@/components/WorksCarousel";
+import { WorksCarousel, type WorkItem } from "@/components/WorksCarousel";
+import { type Lang } from "@/i18n";
 
 // Featured Works
 import work1 from "@/images/works/works1.jpg";
@@ -31,61 +32,125 @@ import work19 from "@/images/works/works19.jpg";
 import work20 from "@/images/works/works20.jpg";
 import work21 from "@/images/works/works21.jpg";
 
-const featuredWorks = [
-    {
-        name: "Tulip Ballet Studio様",
-        label: "教育・スクール",
-        image: work1,
-        review: (
-            <>非常に丁寧に、かつ、希望どおり作成していただきました！ウェブ関係はまったくわからず、毎回質問したりしていましたが、いつも丁寧に優しく答えてくださいました。また、様々な提案もしてくださり、想像以上の素敵なホームページを作成していただきました。依頼して本当に良かったと実感して<span className="nowrap">おります。</span></>
-        ),
-    },
-    {
-        name: "Rythmique Garden様",
-        label: "教育・スクール",
-        image: work5,
-        review: (
-            <>初めてのホームページ作成で、何も分からずほぼ全てお任せだったのですが、一つ一つ、丁寧に教えてくださいました。また、様々な提案もしてくださり、想像以上の素敵なホームページを作成していただきました。依頼して本当に良かったと実感して<span className="nowrap">おります。</span></>
-        ),
-    },
-    {
-        name: "Yuma English House様",
-        label: "教育・スクール",
-        image: work8,
-        review: null,
-        caption: "英語教室のホームページに加えて、英検対策コースのランディングページも制作。集客の入口を2つに増やした事例です。",
-    },
+/* 画像（言語共通。順序は copy.featured / copy.others と一致させる） */
+const featuredImages = [work1, work5, work8];
+const otherImages = [
+    work12, work14, work15, work16, work17, work19, work18, work20, work13,
+    work6, work7, work4, work2, work3, work21, work9, work11,
 ];
 
-const otherWorks: { name: string; label: string; image: typeof work1 }[] = [
-    { name: "BowlingNavi -ボウナビ- 様", label: "メディア・情報サイト", image: work12 },
-    { name: "久和不動産株式会社様", label: "不動産", image: work14 },
-    { name: "株式会社西辻工務店様", label: "不動産・建設", image: work15 },
-    { name: "イースタンホーク様", label: "不動産サービス", image: work16 },
-    { name: "株式会社アイ・セカンド様", label: "企業サイト", image: work17 },
-    { name: "I-SECOND STORE様", label: "ECサイト", image: work19 },
-    { name: "パーソナルジムMe様", label: "フィットネス", image: work18 },
-    { name: "黒鳥墓地様", label: "霊園", image: work20 },
-    { name: "タイ北部チェンマイ情報ステーション様", label: "メディア", image: work13 },
-    { name: "株式会社ビビッドディレクション様", label: "企業サイト", image: work6 },
-    { name: "株式会社ワナビィ様", label: "企業サイト", image: work7 },
-    { name: "ECCジュニア 一里山教室様", label: "教育・スクール", image: work4 },
-    { name: "Colours Musical Studio様", label: "教育・スクール", image: work2 },
-    { name: "まや子どもの家様", label: "教育・スクール", image: work3 },
-    { name: "Yuma English House 英検対策コース様", label: "教育・スクール（LP）", image: work21 },
-    { name: "DANCE STUDIO PLUS様", label: "教育・スクール", image: work9 },
-    { name: "K-coaching様", label: "教育・スクール", image: work11 },
-];
+type FeaturedCopy = { name: string; label: string; review: React.ReactNode; caption?: string };
+type OtherCopy = { name: string; label: string };
 
-export function Works() {
+/* ── 文言（日本語 / 英語） ── */
+const ja = {
+    heading: "制作実績",
+    lead: "不動産・建設・EC・フィットネス・情報メディア・スクールまで、50社以上の制作・支援実績があります。",
+    imageAlt: (name: string) => `${name}のホームページ`,
+    featured: [
+        {
+            name: "Tulip Ballet Studio様",
+            label: "教育・スクール",
+            review: (
+                <>非常に丁寧に、かつ、希望どおり作成していただきました！ウェブ関係はまったくわからず、毎回質問したりしていましたが、いつも丁寧に優しく答えてくださいました。また、様々な提案もしてくださり、想像以上の素敵なホームページを作成していただきました。依頼して本当に良かったと実感して<span className="nowrap">おります。</span></>
+            ),
+        },
+        {
+            name: "Rythmique Garden様",
+            label: "教育・スクール",
+            review: (
+                <>初めてのホームページ作成で、何も分からずほぼ全てお任せだったのですが、一つ一つ、丁寧に教えてくださいました。また、様々な提案もしてくださり、想像以上の素敵なホームページを作成していただきました。依頼して本当に良かったと実感して<span className="nowrap">おります。</span></>
+            ),
+        },
+        {
+            name: "Yuma English House様",
+            label: "教育・スクール",
+            review: null,
+            caption: "英語教室のホームページに加えて、英検対策コースのランディングページも制作。集客の入口を2つに増やした事例です。",
+        },
+    ] as FeaturedCopy[],
+    others: [
+        { name: "BowlingNavi -ボウナビ- 様", label: "メディア・情報サイト" },
+        { name: "久和不動産株式会社様", label: "不動産" },
+        { name: "株式会社西辻工務店様", label: "不動産・建設" },
+        { name: "イースタンホーク様", label: "不動産サービス" },
+        { name: "株式会社アイ・セカンド様", label: "企業サイト" },
+        { name: "I-SECOND STORE様", label: "ECサイト" },
+        { name: "パーソナルジムMe様", label: "フィットネス" },
+        { name: "黒鳥墓地様", label: "霊園" },
+        { name: "タイ北部チェンマイ情報ステーション様", label: "メディア" },
+        { name: "株式会社ビビッドディレクション様", label: "企業サイト" },
+        { name: "株式会社ワナビィ様", label: "企業サイト" },
+        { name: "ECCジュニア 一里山教室様", label: "教育・スクール" },
+        { name: "Colours Musical Studio様", label: "教育・スクール" },
+        { name: "まや子どもの家様", label: "教育・スクール" },
+        { name: "Yuma English House 英検対策コース様", label: "教育・スクール（LP）" },
+        { name: "DANCE STUDIO PLUS様", label: "教育・スクール" },
+        { name: "K-coaching様", label: "教育・スクール" },
+    ] as OtherCopy[],
+    note: "※ クライアント様のプライバシー保護のため、一部のみ掲載しております。",
+};
+const en: typeof ja = {
+    heading: "Our work",
+    lead: "Over 50 businesses served, from real estate and construction to e-commerce, fitness, online media, and schools.",
+    imageAlt: (name: string) => `Website for ${name}`,
+    featured: [
+        {
+            name: "Tulip Ballet Studio",
+            label: "Education & Schools",
+            review: (
+                <>They built exactly what we asked for, and with real care. I knew nothing about websites and had questions at every step, but they always answered kindly and patiently. They also came up with all sorts of ideas, and the site turned out even nicer than I&apos;d imagined. I&apos;m truly glad we asked them.</>
+            ),
+        },
+        {
+            name: "Rythmique Garden",
+            label: "Education & Schools",
+            review: (
+                <>It was our first website and I had no idea what I was doing, so I left almost everything to them &mdash; and they walked me through it one step at a time. They also suggested lots of ideas, and the site turned out even nicer than I&apos;d imagined. I&apos;m truly glad we asked them.</>
+            ),
+        },
+        {
+            name: "Yuma English House",
+            label: "Education & Schools",
+            review: null,
+            caption: "Alongside the English school's main website, we built a landing page for their Eiken (English proficiency test) prep course, giving them two entry points for new students.",
+        },
+    ],
+    others: [
+        { name: "BowlingNavi", label: "Media & Information Site" },
+        { name: "KyuWa Estate Co., Ltd.", label: "Real Estate" },
+        { name: "Nishitsuji Construction Co., Ltd.", label: "Real Estate & Construction" },
+        { name: "Eastern Hawk", label: "Real Estate Services" },
+        { name: "I-SECOND Co., Ltd.", label: "Corporate Website" },
+        { name: "I-SECOND STORE", label: "E-commerce" },
+        { name: "Personal Gym Me", label: "Fitness" },
+        { name: "Kurotori Cemetery", label: "Cemetery" },
+        { name: "Chiang Mai Info Station (Northern Thailand)", label: "Media" },
+        { name: "Vivid Direction Co., Ltd.", label: "Corporate Website" },
+        { name: "Wannabe Co., Ltd.", label: "Corporate Website" },
+        { name: "ECC Junior Ichiriyama", label: "Education & Schools" },
+        { name: "Colours Musical Studio", label: "Education & Schools" },
+        { name: "Maya Children's House", label: "Education & Schools" },
+        { name: "Yuma English House: Eiken Prep Course", label: "Education & Schools (Landing Page)" },
+        { name: "DANCE STUDIO PLUS", label: "Education & Schools" },
+        { name: "K-coaching", label: "Education & Schools" },
+    ],
+    note: "To protect our clients' privacy, only a selection of our work is shown here.",
+};
+const copy: Record<Lang, typeof ja> = { ja, en };
+
+export function Works({ lang = "ja" }: { lang?: Lang }) {
+    const t = copy[lang];
+    const featuredWorks = t.featured.map((w, i) => ({ ...w, image: featuredImages[i] }));
+    const otherWorks: WorkItem[] = t.others.map((w, i) => ({ ...w, image: otherImages[i] }));
     return (
         <section className="relative overflow-hidden bg-cream px-4 py-16 md:px-6 md:py-24">
 
             <div className="relative mx-auto max-w-6xl">
                 <FadeIn>
-                    <SerifHeading en="Works" jp="制作実績" />
+                    <SerifHeading en="Works" jp={t.heading} />
                     <p className="lead -mt-6 mb-10 text-[15px] leading-[2] tracking-[0.03em] text-ink-sub md:mb-14">
-                        不動産・建設・EC・フィットネス・情報メディア・スクールまで、50社以上の制作・支援実績があります。
+                        {t.lead}
                     </p>
                 </FadeIn>
 
@@ -97,7 +162,7 @@ export function Works() {
                                 <div className="relative w-full overflow-hidden bg-white" style={{ aspectRatio: "995 / 580" }}>
                                     <Image
                                         src={work.image}
-                                        alt={`${work.name}のホームページ`}
+                                        alt={t.imageAlt(work.name)}
                                         fill
                                         className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
                                         placeholder="blur"
@@ -122,9 +187,9 @@ export function Works() {
 
                 {/* その他の実績（スライダー） */}
                 <FadeIn>
-                    <WorksCarousel items={otherWorks} />
+                    <WorksCarousel items={otherWorks} lang={lang} />
                     <p className="mt-8 text-sm text-ink-sub">
-                        ※ クライアント様のプライバシー保護のため、一部のみ掲載しております。
+                        {t.note}
                     </p>
                 </FadeIn>
 

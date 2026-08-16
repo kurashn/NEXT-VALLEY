@@ -5,37 +5,64 @@ import React from "react";
 import { ChevronRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading, serif } from "@/components/ui/SerifHeading";
+import { type Lang } from "@/i18n";
 
-const steps = [
-    {
-        title: "ご相談",
-        body: <>LINEまたはメールでご連絡ください。「今のサイトのURLを送るだけ」で<span className="nowrap">大丈夫です。</span></>,
-    },
-    {
-        title: "ご提案・お見積もり（無料）",
-        body: <>現状を診断し、改善案と金額をセットでご提示します。ここまで費用はかかりません。断っていただいても<span className="nowrap">構いません。</span></>,
-    },
-    {
-        title: "制作",
-        body: <>AIを活用した制作フローで、通常1ヶ月の構築を最短3〜5日に<span className="nowrap">短縮します。</span></>,
-    },
-    {
-        title: "公開・運用",
-        body: <>公開して終わりではなく、アクセスと問い合わせの数字を見ながら改善を<span className="nowrap">続けます。</span></>,
-    },
-];
+const ja = {
+    heading: "ご依頼の流れ",
+    steps: [
+        {
+            title: "ご相談",
+            body: <>LINEまたはメールでご連絡ください。「今のサイトのURLを送るだけ」で<span className="nowrap">大丈夫です。</span></>,
+        },
+        {
+            title: "ご提案・お見積もり（無料）",
+            body: <>現状を診断し、改善案と金額をセットでご提示します。ここまで費用はかかりません。断っていただいても<span className="nowrap">構いません。</span></>,
+        },
+        {
+            title: "制作",
+            body: <>AIを活用した制作フローで、通常1ヶ月の構築を最短3〜5日に<span className="nowrap">短縮します。</span></>,
+        },
+        {
+            title: "公開・運用",
+            body: <>公開して終わりではなく、アクセスと問い合わせの数字を見ながら改善を<span className="nowrap">続けます。</span></>,
+        },
+    ],
+};
+const en: typeof ja = {
+    heading: "How it works",
+    steps: [
+        {
+            title: "Get in touch",
+            body: <>Message us on LINE or by email. Sending the URL of your current site is enough to get started.</>,
+        },
+        {
+            title: "Proposal & quote (free)",
+            body: <>We review where you stand and send you a plan with pricing. Nothing to pay up to this point — and no hard feelings if you pass.</>,
+        },
+        {
+            title: "Build",
+            body: <>Our AI-assisted workflow cuts a typical one-month build down to as little as 3–5 days.</>,
+        },
+        {
+            title: "Launch & grow",
+            body: <>Launch is just the start. We keep improving your site based on real traffic and inquiry numbers.</>,
+        },
+    ],
+};
+const copy: Record<Lang, typeof ja> = { ja, en };
 
-export function Flow() {
+export function Flow({ lang = "ja" }: { lang?: Lang }) {
+    const t = copy[lang];
     return (
         <section className="relative overflow-hidden bg-cream px-4 py-16 md:px-6 md:py-24">
 
             <div className="relative mx-auto max-w-6xl">
                 <FadeIn>
-                    <SerifHeading en="Flow" jp="ご依頼の流れ" />
+                    <SerifHeading en="Flow" jp={t.heading} />
                 </FadeIn>
 
                 <ol className="flex flex-col items-stretch gap-3 md:flex-row md:gap-0">
-                    {steps.map((s, i) => (
+                    {t.steps.map((s, i) => (
                         <React.Fragment key={s.title}>
                             {i > 0 && (
                                 <li

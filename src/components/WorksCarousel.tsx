@@ -5,10 +5,31 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image, { type StaticImageData } from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { type Lang } from "@/i18n";
 
 export type WorkItem = { name: string; label: string; image: StaticImageData };
 
-export function WorksCarousel({ items }: { items: WorkItem[] }) {
+/* ── 支援技術向けラベル（日本語 / 英語） ── */
+const ja = {
+    listLabel: "制作実績一覧",
+    imageAlt: (name: string) => `${name}のホームページ`,
+    pagesLabel: "スライドページ",
+    pageLabel: (n: number) => `${n}ページ目`,
+    prev: "前へ",
+    next: "次へ",
+};
+const en: typeof ja = {
+    listLabel: "Our work",
+    imageAlt: (name: string) => `Website for ${name}`,
+    pagesLabel: "Slide pages",
+    pageLabel: (n: number) => `Page ${n}`,
+    prev: "Previous",
+    next: "Next",
+};
+const copy: Record<Lang, typeof ja> = { ja, en };
+
+export function WorksCarousel({ items, lang = "ja" }: { items: WorkItem[]; lang?: Lang }) {
+    const t = copy[lang];
     const trackRef = useRef<HTMLDivElement>(null);
     const [index, setIndex] = useState(0);
     const [perView, setPerView] = useState(4);
@@ -56,7 +77,7 @@ export function WorksCarousel({ items }: { items: WorkItem[] }) {
                 ref={trackRef}
                 className="scrollbar-none -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-2 md:-mx-0 md:px-0"
                 style={{ scrollbarWidth: "none" }}
-                aria-label="制作実績一覧"
+                aria-label={t.listLabel}
             >
                 {items.map((work) => (
                     <div
@@ -67,7 +88,7 @@ export function WorksCarousel({ items }: { items: WorkItem[] }) {
                             <div className="relative w-full overflow-hidden bg-white" style={{ aspectRatio: "995 / 580" }}>
                                 <Image
                                     src={work.image}
-                                    alt={`${work.name}のホームページ`}
+                                    alt={t.imageAlt(work.name)}
                                     fill
                                     className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
                                     placeholder="blur"
@@ -85,14 +106,14 @@ export function WorksCarousel({ items }: { items: WorkItem[] }) {
 
             {/* コントロール */}
             <div className="mt-5 flex items-center justify-between gap-4">
-                <div className="flex items-center" role="tablist" aria-label="スライドページ">
+                <div className="flex items-center" role="tablist" aria-label={t.pagesLabel}>
                     {Array.from({ length: pages }, (_, i) => (
                         <button
                             key={i}
                             type="button"
                             role="tab"
                             aria-selected={i === index}
-                            aria-label={`${i + 1}ページ目`}
+                            aria-label={t.pageLabel(i + 1)}
                             onClick={() => go(i)}
                             className="flex h-11 w-11 cursor-pointer items-center justify-center"
                         >
@@ -109,7 +130,7 @@ export function WorksCarousel({ items }: { items: WorkItem[] }) {
                         type="button"
                         onClick={() => go(index - 1)}
                         disabled={index === 0}
-                        aria-label="前へ"
+                        aria-label={t.prev}
                         className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-line bg-white text-ink transition-colors hover:border-coral hover:text-coral-deep disabled:cursor-default disabled:opacity-40"
                     >
                         <ChevronLeft className="h-5 w-5" aria-hidden />
@@ -118,7 +139,7 @@ export function WorksCarousel({ items }: { items: WorkItem[] }) {
                         type="button"
                         onClick={() => go(index + 1)}
                         disabled={index >= pages - 1}
-                        aria-label="次へ"
+                        aria-label={t.next}
                         className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-line bg-white text-ink transition-colors hover:border-coral hover:text-coral-deep disabled:cursor-default disabled:opacity-40"
                     >
                         <ChevronRight className="h-5 w-5" aria-hidden />

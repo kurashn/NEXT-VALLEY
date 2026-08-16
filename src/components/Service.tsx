@@ -3,6 +3,7 @@
 
 import React from "react";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { withLang, type Lang } from "@/i18n";
 
 /* ── カード右側のソフトイラスト（SVG。ベージュ×コーラルの柔らかい質感） ── */
 
@@ -292,51 +293,96 @@ function IlloDesign() {
 
 /* ── データ ── */
 
-const services = [
-    {
-        en: "AI CONSULTING",
-        title: "AI活用コンサルティング",
-        body: <>「AIで業務を効率化したいが、何から始めればいいか分からない」という方へ。自社の制作現場でAIを日常的に使い倒しているからこそ、机上の空論ではない導入支援ができます。ツールの選定・活用研修から業務フローの<span className="nowrap">設計まで。</span></>,
-        illo: IlloAi,
-        wide: true,
-    },
-    {
-        en: "WEB PRODUCTION",
-        title: "HP・LP制作",
-        body: <>「誰に、何を、どう届けるか」から設計するホームページ・ランディングページ。デザインの好みではなく、成果から逆算して作ります。<strong className="font-bold text-ink">HP・LPの制作のみのご依頼も歓迎です。</strong> これから作る方は、<a href="/preview" className="font-bold text-coral-deep underline underline-offset-4">無料プレビュー</a>で先にデザインをご覧いただけます。</>,
-        illo: IlloWeb,
-    },
-    {
-        en: "SEO / MEO",
-        title: "SEO・MEO集客",
-        body: <>検索結果とGoogleマップで「いま探している人」に見つけてもらう施策。上位表示のためではなく、問い合わせにつながる導線として<span className="nowrap">設計します。</span></>,
-        illo: IlloSeo,
-    },
-    {
-        en: "SNS MARKETING",
-        title: "SNSマーケティング",
-        body: <>Instagram・Xから、LINE公式アカウント（LINEマーケティング）の構築・運用まで。「何を投稿すればいいか分からない」を、計画ごと引き<span className="nowrap">受けます。</span></>,
-        illo: IlloSns,
-    },
-    {
-        en: "DESIGN",
-        title: "デザイン制作",
-        body: <>ロゴ・チラシ・パンフレット・バナーなどの販促デザインもワンストップで。Webと世界観を揃えた「ちゃんと伝わる」販促物を<span className="nowrap">作ります。</span></>,
-        illo: IlloDesign,
-    },
-    {
-        en: "OPERATION SUPPORT",
-        title: <>HP運用ツール<span className="nowrap">『SiteChat』</span></>,
-        body: <>公開中のホームページを、チャットで指示するだけで安全に修正できる自社開発ツール。AIが修正案を作り、あなたの承認なしに公開されることはありません。※現在はご希望のお客様にのみ<span className="nowrap">ご案内しています。</span></>,
-        illo: IlloOps,
-        wide: true,
-    },
+/* 各サービスの英字ラベル・イラスト・カード幅（言語共通。順序は copy.services と一致させる） */
+const serviceMeta = [
+    { en: "AI CONSULTING", illo: IlloAi, wide: true },
+    { en: "WEB PRODUCTION", illo: IlloWeb, wide: false },
+    { en: "SEO / MEO", illo: IlloSeo, wide: false },
+    { en: "SNS MARKETING", illo: IlloSns, wide: false },
+    { en: "DESIGN", illo: IlloDesign, wide: false },
+    { en: "OPERATION SUPPORT", illo: IlloOps, wide: true },
 ];
+
+/* ── 文言（日本語 / 英語） ── */
+const ja = {
+    label: "事業内容",
+    lead: (
+        <>
+            AI活用を軸に、マーケティングから制作まで。
+            <br />
+            全部を売り込みません。課題に合わせて、必要な打ち手だけを<span className="nowrap">提案します。</span>
+        </>
+    ),
+    services: [
+        {
+            title: <>AI活用コンサルティング</>,
+            body: <>「AIで業務を効率化したいが、何から始めればいいか分からない」という方へ。自社の制作現場でAIを日常的に使い倒しているからこそ、机上の空論ではない導入支援ができます。ツールの選定・活用研修から業務フローの<span className="nowrap">設計まで。</span></>,
+        },
+        {
+            title: <>HP・LP制作</>,
+            body: <>「誰に、何を、どう届けるか」から設計するホームページ・ランディングページ。デザインの好みではなく、成果から逆算して作ります。<strong className="font-bold text-ink">HP・LPの制作のみのご依頼も歓迎です。</strong> これから作る方は、<a href={withLang("ja", "/preview")} className="font-bold text-coral-deep underline underline-offset-4">無料プレビュー</a>で先にデザインをご覧いただけます。</>,
+        },
+        {
+            title: <>SEO・MEO集客</>,
+            body: <>検索結果とGoogleマップで「いま探している人」に見つけてもらう施策。上位表示のためではなく、問い合わせにつながる導線として<span className="nowrap">設計します。</span></>,
+        },
+        {
+            title: <>SNSマーケティング</>,
+            body: <>Instagram・Xから、LINE公式アカウント（LINEマーケティング）の構築・運用まで。「何を投稿すればいいか分からない」を、計画ごと引き<span className="nowrap">受けます。</span></>,
+        },
+        {
+            title: <>デザイン制作</>,
+            body: <>ロゴ・チラシ・パンフレット・バナーなどの販促デザインもワンストップで。Webと世界観を揃えた「ちゃんと伝わる」販促物を<span className="nowrap">作ります。</span></>,
+        },
+        {
+            title: <>HP運用ツール<span className="nowrap">『SiteChat』</span></>,
+            body: <>公開中のホームページを、チャットで指示するだけで安全に修正できる自社開発ツール。AIが修正案を作り、あなたの承認なしに公開されることはありません。※現在はご希望のお客様にのみ<span className="nowrap">ご案内しています。</span></>,
+        },
+    ],
+};
+const en: typeof ja = {
+    label: "What we do",
+    lead: (
+        <>
+            AI at the core, from marketing to production.
+            <br />
+            We won&apos;t try to sell you everything. We recommend only the moves your business actually needs.
+        </>
+    ),
+    services: [
+        {
+            title: <>AI Consulting</>,
+            body: <>Want to use AI to work smarter but don&apos;t know where to begin? We use AI every day in our own production work, so our advice comes from practice, not theory. From choosing the right tools and training your team to redesigning your workflows.</>,
+        },
+        {
+            title: <>Websites &amp; Landing Pages</>,
+            body: <>Websites and landing pages designed around who you&apos;re reaching, what you&apos;re saying, and how you&apos;ll say it. We work backward from results &mdash; not just from what looks nice. <strong className="font-bold text-ink">Website-only projects are always welcome.</strong> Building something new? Take a look at our <a href={withLang("en", "/preview")} className="font-bold text-coral-deep underline underline-offset-4">free preview</a> and see a design before you commit.</>,
+        },
+        {
+            title: <>SEO &amp; Google Maps</>,
+            body: <>Get found in search results and on Google Maps by the people who are looking right now. We don&apos;t chase rankings for their own sake &mdash; we build a path that leads to inquiries.</>,
+        },
+        {
+            title: <>Social Media Marketing</>,
+            body: <>From Instagram and X to setting up and running your official LINE account. If &ldquo;what should I even post?&rdquo; sounds familiar, we&apos;ll take the whole plan off your plate.</>,
+        },
+        {
+            title: <>Graphic Design</>,
+            body: <>Logos, flyers, brochures, banners &mdash; all your marketing materials from one team. Print and web that share the same look, so your message actually lands.</>,
+        },
+        {
+            title: <>SiteChat: Update Your Site by Chat</>,
+            body: <>Our in-house tool lets you safely update your live website just by sending a chat message. AI drafts the change, and nothing goes live without your approval. Currently available to existing clients on request.</>,
+        },
+    ],
+};
+const copy: Record<Lang, typeof ja> = { ja, en };
 
 /* 多色セリフの見出し（service.pngの配色） */
 const letterColors = ["#2e7f92", "#b8452f", "#b07d1a", "#1a1a1a"];
 
-export function Service() {
+export function Service({ lang = "ja" }: { lang?: Lang }) {
+    const t = copy[lang];
     return (
         <section className="relative overflow-hidden bg-cream px-4 py-16 md:px-6 md:py-24">
 
@@ -345,7 +391,7 @@ export function Service() {
                     {/* ラベル */}
                     <p className="mb-3 flex items-center gap-2.5 text-[13px] font-bold tracking-[0.3em] text-ink">
                         <span aria-hidden className="block h-2 w-2 rounded-full bg-coral" />
-                        事業内容
+                        {t.label}
                     </p>
                     {/* 多色セリフ */}
                     <p
@@ -361,23 +407,22 @@ export function Service() {
                     </p>
                     <span aria-hidden className="mt-4 block h-0.5 w-10 bg-coral" />
                     <p className="lead mt-6 text-[15px] leading-[2] tracking-[0.05em] text-ink-sub md:mb-2">
-                        AI活用を軸に、マーケティングから制作まで。
-                        <br />
-                        全部を売り込みません。課題に合わせて、必要な打ち手だけを<span className="nowrap">提案します。</span>
+                        {t.lead}
                     </p>
                 </FadeIn>
 
                 {/* サービスカード */}
                 <div className="mt-10 grid gap-6 md:mt-14 md:grid-cols-2">
-                    {services.map((s, i) => {
+                    {t.services.map((s, i) => {
+                        const m = serviceMeta[i];
                         return (
-                            <FadeIn key={s.en} delay={i * 0.08} className={s.wide ? "md:col-span-2" : ""}>
+                            <FadeIn key={m.en} delay={i * 0.08} className={m.wide ? "md:col-span-2" : ""}>
                                 <div
                                     className="group relative flex h-full flex-col gap-6 overflow-hidden rounded-[20px] bg-white p-8 shadow-[0_16px_40px_rgba(31,26,20,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_56px_rgba(31,26,20,0.1)] lg:flex-row lg:items-center md:p-10"
                                 >
                                     {/* テキスト */}
-                                    <div className={s.wide ? "lg:w-[60%]" : "lg:w-[55%]"}>
-                                        <p className="mb-4 text-xs font-bold tracking-[0.25em] text-coral-deep">{s.en}</p>
+                                    <div className={m.wide ? "lg:w-[60%]" : "lg:w-[55%]"}>
+                                        <p className="mb-4 text-xs font-bold tracking-[0.25em] text-coral-deep">{m.en}</p>
                                         <h3 className="mb-4 flex flex-wrap items-center gap-3 text-2xl font-bold leading-snug text-ink md:text-[28px]">
                                             {s.title}
                                         </h3>
@@ -388,10 +433,10 @@ export function Service() {
                                     <div
                                         aria-hidden
                                         className={`pointer-events-none h-40 shrink-0 transition-transform duration-300 group-hover:scale-[1.04] lg:h-44 ${
-                                            s.wide ? "lg:w-[40%]" : "lg:w-[45%]"
+                                            m.wide ? "lg:w-[40%]" : "lg:w-[45%]"
                                         }`}
                                     >
-                                        <s.illo />
+                                        <m.illo />
                                     </div>
                                 </div>
                             </FadeIn>

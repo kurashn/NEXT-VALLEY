@@ -4,6 +4,7 @@
 import React from "react";
 import { MonitorSmartphone, TrendingDown, Clock, ChartColumn } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { type Lang } from "@/i18n";
 
 /* ── カード内の背景アート（カード右側を大きく占める線画） ── */
 
@@ -105,32 +106,98 @@ function ArtChart() {
     );
 }
 
-const problems = [
-    {
-        icon: TrendingDown,
-        art: ArtFunnel,
-        title: <>集客が、<br className="hidden md:block" />うまくいかない</>,
-        body: <>HP・SNS・広告。やってはいるが、どれも中途半端で、問い合わせに<span className="nowrap">つながらない。</span></>,
-    },
-    {
-        icon: MonitorSmartphone,
-        art: ArtBrowser,
-        title: <>ホームページが、<br className="hidden md:block" />古いまま</>,
-        body: <>10年前のサイトが放置されたまま。会社の顔が、毎日の機会損失を生み<span className="nowrap">続けている。</span></>,
-    },
-    {
-        icon: Clock,
-        art: ArtClock,
-        title: <>人手が足りず、<br className="hidden md:block" />業務に追われる</>,
-        body: <>AIで効率化したいが、何から始めればいいか分からず、日々の業務で手一杯に<span className="nowrap">なっている。</span></>,
-    },
-    {
-        icon: ChartColumn,
-        art: ArtChart,
-        title: <>施策の成果が、<br className="hidden md:block" />見えない</>,
-        body: <>何が効いているのか分からないまま、社内の理解も、来期の予算も得られずに<span className="nowrap">いる。</span></>,
-    },
+/* カードのアイコン／背景アート（言語共通） */
+const visuals = [
+    { icon: TrendingDown, art: ArtFunnel },
+    { icon: MonitorSmartphone, art: ArtBrowser },
+    { icon: Clock, art: ArtClock },
+    { icon: ChartColumn, art: ArtChart },
 ];
+
+/* ── 文言（日本語 / 英語） ── */
+const ja = {
+    heading: (
+        <>
+            こんな状態のまま、
+            <br />
+            止まっていませんか。
+        </>
+    ),
+    lead: (
+        <>
+            集客も、業務も、「なんとなく」のままでは変わりません。
+            <br />
+            こんなお悩み、ありませんか？
+        </>
+    ),
+    problems: [
+        {
+            title: <>集客が、<br className="hidden md:block" />うまくいかない</>,
+            body: <>HP・SNS・広告。やってはいるが、どれも中途半端で、問い合わせに<span className="nowrap">つながらない。</span></>,
+        },
+        {
+            title: <>ホームページが、<br className="hidden md:block" />古いまま</>,
+            body: <>10年前のサイトが放置されたまま。会社の顔が、毎日の機会損失を生み<span className="nowrap">続けている。</span></>,
+        },
+        {
+            title: <>人手が足りず、<br className="hidden md:block" />業務に追われる</>,
+            body: <>AIで効率化したいが、何から始めればいいか分からず、日々の業務で手一杯に<span className="nowrap">なっている。</span></>,
+        },
+        {
+            title: <>施策の成果が、<br className="hidden md:block" />見えない</>,
+            body: <>何が効いているのか分からないまま、社内の理解も、来期の予算も得られずに<span className="nowrap">いる。</span></>,
+        },
+    ],
+    bannerLead: "原因はあなたではありません。",
+    bannerTitle: (
+        <>
+            <span className="nowrap"><span className="text-coral">『作る会社』</span>と<span className="text-coral">『集める会社』</span>が</span>
+            分かれている<span className="nowrap">ことです。</span>
+        </>
+    ),
+};
+const en: typeof ja = {
+    heading: (
+        <>
+            Does any of this
+            <br />
+            sound familiar?
+        </>
+    ),
+    lead: (
+        <>
+            Neither your marketing nor your workload will fix itself while you&apos;re just winging it.
+            <br />
+            Do any of these ring a bell?
+        </>
+    ),
+    problems: [
+        {
+            title: <>New customers <br className="hidden md:block" /> aren&apos;t coming in</>,
+            body: <>Website, social media, ads &mdash; you&apos;re doing a bit of everything, but none of it is really turning into inquiries.</>,
+        },
+        {
+            title: <>Your website <br className="hidden md:block" /> is out of date</>,
+            body: <>The site you built ten years ago is still up, untouched. The face of your business is quietly costing you customers every day.</>,
+        },
+        {
+            title: <>Short-staffed <br className="hidden md:block" /> and buried in work</>,
+            body: <>You&apos;d love to use AI to save time, but you don&apos;t know where to start &mdash; and the daily grind leaves no room to figure it out.</>,
+        },
+        {
+            title: <>No idea what&apos;s <br className="hidden md:block" /> actually working</>,
+            body: <>You can&apos;t tell which efforts are paying off, so it&apos;s hard to get your team on board &mdash; or to justify next year&apos;s budget.</>,
+        },
+    ],
+    bannerLead: "It's not your fault.",
+    bannerTitle: (
+        <>
+            The people who <span className="text-coral">build your website</span> and the people who{" "}
+            <span className="text-coral">bring in customers</span> are usually two different companies.
+        </>
+    ),
+};
+const copy: Record<Lang, typeof ja> = { ja, en };
 
 /* ロゴのシェブロンマーク */
 function SplitChevron() {
@@ -141,7 +208,8 @@ function SplitChevron() {
     );
 }
 
-export function Problem() {
+export function Problem({ lang = "ja" }: { lang?: Lang }) {
+    const t = copy[lang];
     return (
         <section className="relative overflow-hidden bg-navy-deep px-4 py-16 md:px-6 md:py-24">
             {/* 右上の等高線メッシュ装飾 */}
@@ -170,60 +238,59 @@ export function Problem() {
                 <FadeIn>
                     <p className="mb-6 text-[13px] font-bold tracking-[0.3em] text-coral">PROBLEM</p>
                     <h2 className="mb-6 text-[clamp(2rem,4vw,4rem)] font-bold leading-[1.35] tracking-tight text-white">
-                        こんな状態のまま、
-                        <br />
-                        止まっていませんか。
+                        {t.heading}
                     </h2>
                     <p className="lead mb-12 text-[15px] leading-[2] text-navy-sub md:mb-16">
-                        集客も、業務も、「なんとなく」のままでは変わりません。
-                        <br />
-                        こんなお悩み、ありませんか？
+                        {t.lead}
                     </p>
                 </FadeIn>
 
                 {/* 課題カード4枚 */}
                 <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                    {problems.map((p, i) => (
-                        <FadeIn key={i} delay={i * 0.08} className="flex">
-                            <div className="glass-edge group relative flex flex-1 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-coral/50 hover:bg-white/[0.06]">
-                                {/* カード右側を大きく占める背景アート */}
-                                <div
-                                    aria-hidden
-                                    className="pointer-events-none absolute -right-2 top-2 h-28 w-[52%] opacity-80 transition-opacity duration-300 group-hover:opacity-100 md:-right-6 md:top-3 md:h-44 md:w-[80%]"
-                                >
-                                    <p.art />
-                                </div>
-                                {/* アート裏の淡いハイライト */}
-                                <div
-                                    aria-hidden
-                                    className="pointer-events-none absolute right-0 top-0 h-32 w-1/2 md:h-48 md:w-2/3"
-                                    style={{
-                                        background:
-                                            "radial-gradient(ellipse at 70% 30%, rgba(226,108,92,0.08), transparent 70%)",
-                                    }}
-                                />
+                    {t.problems.map((p, i) => {
+                        const v = visuals[i];
+                        return (
+                            <FadeIn key={i} delay={i * 0.08} className="flex">
+                                <div className="glass-edge group relative flex flex-1 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-coral/50 hover:bg-white/[0.06]">
+                                    {/* カード右側を大きく占める背景アート */}
+                                    <div
+                                        aria-hidden
+                                        className="pointer-events-none absolute -right-2 top-2 h-28 w-[52%] opacity-80 transition-opacity duration-300 group-hover:opacity-100 md:-right-6 md:top-3 md:h-44 md:w-[80%]"
+                                    >
+                                        <v.art />
+                                    </div>
+                                    {/* アート裏の淡いハイライト */}
+                                    <div
+                                        aria-hidden
+                                        className="pointer-events-none absolute right-0 top-0 h-32 w-1/2 md:h-48 md:w-2/3"
+                                        style={{
+                                            background:
+                                                "radial-gradient(ellipse at 70% 30%, rgba(226,108,92,0.08), transparent 70%)",
+                                        }}
+                                    />
 
-                                <p className="relative mb-4 flex items-center gap-3 text-2xl font-bold tracking-widest text-coral">
-                                    {String(i + 1).padStart(2, "0")}
-                                    <span aria-hidden className="block h-px w-8 bg-coral/40" />
-                                </p>
-                                <p.icon
-                                    aria-hidden
-                                    className="relative mb-6 h-10 w-10 text-coral transition-transform duration-300 group-hover:scale-110 md:mb-12 md:h-11 md:w-11"
-                                    strokeWidth={1.5}
-                                />
-                                <h3 className="relative mb-4 text-xl font-bold leading-snug text-white">{p.title}</h3>
-                                <p className="relative flex-1 text-sm leading-[1.9] text-navy-sub">{p.body}</p>
-                                <span
-                                    aria-hidden
-                                    className="mt-5 block h-0.5 w-16 transition-all duration-300 group-hover:w-24"
-                                    style={{
-                                        background: "linear-gradient(to right, var(--color-coral), transparent)",
-                                    }}
-                                />
-                            </div>
-                        </FadeIn>
-                    ))}
+                                    <p className="relative mb-4 flex items-center gap-3 text-2xl font-bold tracking-widest text-coral">
+                                        {String(i + 1).padStart(2, "0")}
+                                        <span aria-hidden className="block h-px w-8 bg-coral/40" />
+                                    </p>
+                                    <v.icon
+                                        aria-hidden
+                                        className="relative mb-6 h-10 w-10 text-coral transition-transform duration-300 group-hover:scale-110 md:mb-12 md:h-11 md:w-11"
+                                        strokeWidth={1.5}
+                                    />
+                                    <h3 className="relative mb-4 text-xl font-bold leading-snug text-white">{p.title}</h3>
+                                    <p className="relative flex-1 text-sm leading-[1.9] text-navy-sub">{p.body}</p>
+                                    <span
+                                        aria-hidden
+                                        className="mt-5 block h-0.5 w-16 transition-all duration-300 group-hover:w-24"
+                                        style={{
+                                            background: "linear-gradient(to right, var(--color-coral), transparent)",
+                                        }}
+                                    />
+                                </div>
+                            </FadeIn>
+                        );
+                    })}
                 </div>
 
                 {/* 帯バナー（コーラルの光条つき） */}
@@ -256,10 +323,9 @@ export function Problem() {
                                 <SplitChevron />
                             </span>
                             <div className="min-w-0 flex-1">
-                                <p className="mb-2 text-[15px] text-white md:mb-3 md:text-[17px]">原因はあなたではありません。</p>
+                                <p className="mb-2 text-[15px] text-white md:mb-3 md:text-[17px]">{t.bannerLead}</p>
                                 <p className="text-[clamp(1.1875rem,3.4vw,2.5rem)] font-bold leading-[1.5] text-white">
-                                    <span className="nowrap"><span className="text-coral">『作る会社』</span>と<span className="text-coral">『集める会社』</span>が</span>
-                                    分かれている<span className="nowrap">ことです。</span>
+                                    {t.bannerTitle}
                                 </p>
                             </div>
                         </div>
