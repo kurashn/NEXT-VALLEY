@@ -33,7 +33,7 @@ import "./preview.css";
  * - ゴールは1つ: LINEで申し込む
  * - 毎月10社限定。残り枠は下の定数を書き換えるだけで全箇所に反映される
  */
-const REMAINING_SLOTS = 8; // ← 今月の残り枠（毎月ここを更新）
+const REMAINING_SLOTS = 5; // ← 今月の残り枠（毎月ここを更新）
 const TOTAL_SLOTS = 10;
 
 /* LP専用の書体（本体サイトには影響しない） */

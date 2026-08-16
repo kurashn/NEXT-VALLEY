@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import QRCode from "qrcode";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check, Copy, MessageCircle, Mail, RotateCcw } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Copy, MessageCircle, Mail, RotateCcw, Smartphone } from "lucide-react";
 
 /**
  * 無料プレビュー申込フォーム（診断形式）
@@ -44,6 +45,11 @@ function track(event: string, params: Record<string, string | number> = {}) {
     w.gtag?.("event", event, params);
 }
 
+/** メッセージ入力済みで公式LINEのトークを開くURL（スマホのLINEアプリでのみ有効） */
+function lineMessageUrl(message: string) {
+    return `https://line.me/R/oaMessage/${LINE_OA_ID}/?${encodeURIComponent(message)}`;
+}
+
 function buildMessage(a: Answers) {
     const lines = [
         "【無料プレビュー希望】",
@@ -81,11 +87,24 @@ export function PreviewApply() {
     const [a, setA] = useState<Answers>(initial);
     const [copied, setCopied] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [qrSvg, setQrSvg] = useState<string | null>(null);
+    // 端末判定はクリック時・結果表示時に参照（SSR時はモバイル扱い）
+    const [isMobile] = useState(() => (typeof navigator === "undefined" ? true : /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)));
 
     const set = (k: keyof Answers, v: string) => setA((s) => ({ ...s, [k]: v }));
 
     const screenedOut = a.role === "同業（Web制作・デザイン）" || a.timing === "時期は未定・情報収集中";
     const message = useMemo(() => buildMessage(a), [a]);
+
+    // PCで結果画面に来たら、スマホで読み取るQR（メッセージ入力済みURL）を作る
+    useEffect(() => {
+        if (step !== 7 || screenedOut || isMobile) return;
+        let cancelled = false;
+        QRCode.toString(lineMessageUrl(message), { type: "svg", errorCorrectionLevel: "L", margin: 1 })
+            .then((svg) => { if (!cancelled) setQrSvg(svg); })
+            .catch(() => QRCode.toString(LINE_URL, { type: "svg", errorCorrectionLevel: "M", margin: 1 }).then((svg) => { if (!cancelled) setQrSvg(svg); }).catch(() => setQrSvg(null)));
+        return () => { cancelled = true; };
+    }, [step, screenedOut, isMobile, message]);
 
     const canNext = (() => {
         switch (step) {
@@ -121,9 +140,14 @@ export function PreviewApply() {
         } catch {
             setCopied(false);
         }
-        track("preview_apply_to_line");
-        // メッセージ入力済みの状態で公式LINEのトークを開く（未追加の場合は友だち追加画面）
-        window.open(`https://line.me/R/oaMessage/${LINE_OA_ID}/?${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+        track("preview_apply_to_line", { device: isMobile ? "mobile" : "desktop" });
+        if (isMobile) {
+            // スマホ: メッセージ入力済みの状態でLINEアプリのトークを開く（未追加なら友だち追加画面）。同一タブで開く方がアプリ起動が確実
+            window.location.href = lineMessageUrl(message);
+        } else {
+            // PC: LINEの友だち追加ページ（PC版LINEが入っていればそこから開ける）。メッセージはコピー済みなので貼り付けてもらう
+            window.open(LINE_URL, "_blank", "noopener,noreferrer");
+        }
     };
     const copyOnly = async () => {
         try { await navigator.clipboard.writeText(message); setCopied(true); } catch { /* noop */ }
@@ -285,27 +309,73 @@ export function PreviewApply() {
                             <Check className="h-4 w-4" aria-hidden /> 入力ありがとうございます
                         </p>
                         <h3 className="mt-4 text-xl font-bold leading-snug">この内容を、LINEで送ってください。</h3>
-                        <p className="mt-2 text-sm leading-[1.9] text-ink-sub">
-                            下のボタンを押すと、この内容が入力された状態でLINEのトークが開きます。送信すれば申込完了。3営業日以内にトップページ案（PC・スマホ）をお送りします。
-                        </p>
+                        {isMobile ? (
+                            <p className="mt-2 text-sm leading-[1.9] text-ink-sub">
+                                下のボタンを押すと、この内容が入力された状態でLINEのトークが開きます。送信すれば申込完了。3営業日以内にトップページ案（PC・スマホ）をお送りします。
+                            </p>
+                        ) : (
+                            <p className="mt-2 text-sm leading-[1.9] text-ink-sub">
+                                いちばん簡単なのは、<span className="font-bold text-ink">スマホのカメラで下のQRを読み取る</span>方法です。この内容が入力された状態でLINEが開くので、送信すれば申込完了。3営業日以内にトップページ案（PC・スマホ）をお送りします。
+                            </p>
+                        )}
                         <pre className="mt-5 whitespace-pre-wrap rounded-2xl border border-line bg-base p-4 text-[13px] leading-[1.9] text-ink">{message}</pre>
-                        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-                            <button
-                                type="button"
-                                onClick={copyAndOpen}
-                                className="lp-cta group inline-flex h-16 flex-1 items-center justify-center gap-3 rounded-full bg-[#05a247] px-6 text-[19px] font-bold text-white shadow-[0_14px_32px_rgba(5,162,71,0.38)] transition-all hover:-translate-y-0.5"
-                            >
-                                <MessageCircle className="h-6 w-6" aria-hidden />
-                                LINEを開いて送る
-                                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden />
-                            </button>
-                            <button type="button" onClick={copyOnly} className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-line px-5 text-sm font-bold text-ink transition-colors hover:border-coral">
-                                <Copy className="h-4 w-4" aria-hidden /> {copied ? "コピーしました" : "内容だけコピー"}
-                            </button>
-                        </div>
-                        <p className="mt-4 text-xs leading-[1.9] text-ink-sub">
-                            まだ友だち追加していない場合は、先に追加画面が開きます。追加後にもう一度ボタンを押してください。内容が入力されていない場合は、上の内容をコピー（ボタンを押した時点でコピー済みです）して貼り付けてください。
-                        </p>
+
+                        {isMobile ? (
+                            <>
+                                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+                                    <button
+                                        type="button"
+                                        onClick={copyAndOpen}
+                                        className="lp-cta group inline-flex h-16 flex-1 items-center justify-center gap-3 rounded-full bg-[#05a247] px-6 text-[19px] font-bold text-white shadow-[0_14px_32px_rgba(5,162,71,0.38)] transition-all hover:-translate-y-0.5"
+                                    >
+                                        <MessageCircle className="h-6 w-6" aria-hidden />
+                                        LINEを開いて送る
+                                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden />
+                                    </button>
+                                    <button type="button" onClick={copyOnly} className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-line px-5 text-sm font-bold text-ink transition-colors hover:border-coral">
+                                        <Copy className="h-4 w-4" aria-hidden /> {copied ? "コピーしました" : "内容だけコピー"}
+                                    </button>
+                                </div>
+                                <p className="mt-4 text-xs leading-[1.9] text-ink-sub">
+                                    まだ友だち追加していない場合は、先に追加画面が開きます。追加後にもう一度ボタンを押してください。内容が入力されていない場合は、上の内容をコピー（ボタンを押した時点でコピー済みです）して貼り付けてください。
+                                </p>
+                            </>
+                        ) : (
+                            <>
+                                <div className="mt-6 grid gap-5 sm:grid-cols-[auto_1fr] sm:items-center">
+                                    <div className="mx-auto w-56 rounded-2xl border border-line bg-white p-2 sm:mx-0" aria-label="スマホで読み取るQRコード">
+                                        {qrSvg ? (
+                                            <div className="[&>svg]:h-auto [&>svg]:w-full" dangerouslySetInnerHTML={{ __html: qrSvg }} />
+                                        ) : (
+                                            <div className="aspect-square w-full animate-pulse rounded-xl bg-base" />
+                                        )}
+                                    </div>
+                                    <div>
+                                        <p className="flex items-center gap-2 text-[15px] font-bold text-ink">
+                                            <Smartphone className="h-5 w-5 text-coral-deep" aria-hidden />
+                                            スマホのカメラでQRを読み取る
+                                        </p>
+                                        <p className="mt-2 text-sm leading-[1.9] text-ink-sub">
+                                            LINEが開き、上の内容が入力された状態になります。まだ友だち追加していない場合は、追加してからもう一度読み取ってください。
+                                        </p>
+                                        <div className="mt-4 flex flex-wrap gap-3">
+                                            <button
+                                                type="button"
+                                                onClick={copyAndOpen}
+                                                className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#05a247] px-5 text-[19px] font-bold text-white transition-all hover:-translate-y-0.5"
+                                            >
+                                                <MessageCircle className="h-5 w-5" aria-hidden />
+                                                PC版LINEで開く
+                                            </button>
+                                            <button type="button" onClick={copyOnly} className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-line px-5 text-sm font-bold text-ink transition-colors hover:border-coral">
+                                                <Copy className="h-4 w-4" aria-hidden /> {copied ? "コピーしました" : "内容をコピー"}
+                                            </button>
+                                        </div>
+                                        <p className="mt-3 text-xs leading-[1.9] text-ink-sub">PC版LINEで開く場合は、内容をコピー（ボタンを押した時点でコピー済み）して、トークに貼り付けて送信してください。</p>
+                                    </div>
+                                </div>
+                            </>
+                        )}
                         <p className="mt-3 text-xs text-ink-sub">
                             LINEを使わない方は{" "}
                             <a href={mailHref} className="inline-flex min-h-11 items-center gap-1 font-bold text-coral-deep underline underline-offset-4">
