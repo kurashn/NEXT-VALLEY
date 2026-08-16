@@ -21,9 +21,51 @@
   background-size: 88px 88px;
 }
 .lp-vignette {
-  background:
-    radial-gradient(60% 70% at 70% 40%, rgba(226, 108, 92, 0.16), transparent 70%),
-    linear-gradient(180deg, rgba(4, 22, 39, 0) 60%, rgba(4, 22, 39, 0.9) 100%);
+  background: linear-gradient(180deg, rgba(4, 22, 39, 0) 55%, rgba(4, 22, 39, 0.85) 100%);
+}
+
+/* 写真を使わないFV: 深い紺地に、コーラル／ティールの光をゆっくり漂わせる */
+.lp-aurora {
+  background-color: #041627;
+  background-image:
+    radial-gradient(52% 60% at 82% 18%, rgba(226, 108, 92, 0.32), transparent 70%),
+    radial-gradient(45% 55% at 12% 85%, rgba(46, 127, 146, 0.30), transparent 70%),
+    radial-gradient(60% 50% at 55% 110%, rgba(226, 108, 92, 0.12), transparent 70%),
+    linear-gradient(180deg, #041627 0%, #06203a 60%, #041627 100%);
+}
+.lp-aurora::before,
+.lp-aurora::after {
+  content: "";
+  position: absolute;
+  inset: auto;
+  width: 60vw;
+  height: 60vw;
+  max-width: 900px;
+  max-height: 900px;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.lp-aurora::before {
+  right: -20vw;
+  top: -25vw;
+  background: radial-gradient(circle, rgba(226, 108, 92, 0.55), transparent 65%);
+  animation: lp-drift-a 22s ease-in-out infinite alternate;
+}
+.lp-aurora::after {
+  left: -25vw;
+  bottom: -30vw;
+  background: radial-gradient(circle, rgba(46, 127, 146, 0.5), transparent 65%);
+  animation: lp-drift-b 26s ease-in-out infinite alternate;
+}
+@keyframes lp-drift-a {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-8vw, 6vw) scale(1.12); }
+}
+@keyframes lp-drift-b {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(8vw, -6vw) scale(1.1); }
 }
 
 /* デバイスモックの浮遊 */
@@ -101,6 +143,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lp-float, .lp-float-2, .lp-pulse, .lp-ticker, .lp-cue::after { animation: none; }
+  .lp-float, .lp-float-2, .lp-pulse, .lp-ticker, .lp-cue::after, .lp-aurora::before, .lp-aurora::after { animation: none; }
   .lp-cta::after { display: none; }
 }
