@@ -4,6 +4,7 @@
 // カテゴリはボタンで選ぶだけ・URL欄で診断オファーに接続・自由記入は一言でOK
 
 import React, { useState } from "react";
+import Script from "next/script";
 import Navbar from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Input } from "@/components/ui/input";
@@ -23,6 +24,9 @@ export default function ContactPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [category, setCategory] = useState<string>(categories[0]);
+    // 迷惑メール対策: フォーム表示時刻（送信までの経過時間をサーバーで判定）
+    const [startedAt] = useState(() => Date.now());
+    const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -36,6 +40,10 @@ export default function ContactPage() {
             company: formData.get("company"),
             email: formData.get("email"),
             message: `【ご相談カテゴリ】${category}\n【サイトURL】${url || "未入力"}\n\n${messageRaw || "（自由記入なし）"}`,
+            // 迷惑メール対策用（人間には見えない・影響しない）
+            website: formData.get("website") || "",
+            elapsedMs: Date.now() - startedAt,
+            turnstileToken: formData.get("cf-turnstile-response") || undefined,
         };
 
         try {
@@ -63,6 +71,9 @@ export default function ContactPage() {
 
     return (
         <main className="min-h-screen bg-base text-ink">
+            {turnstileSiteKey && (
+                <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" />
+            )}
             <Navbar />
 
             <section className="px-4 pb-20 pt-32 md:pt-36">
@@ -99,7 +110,13 @@ export default function ContactPage() {
                                 </p>
                             </div>
                         ) : (
-                            <form onSubmit={handleSubmit} className="space-y-7">
+                            <form onSubmit={handleSubmit} className="relative space-y-7">
+                                {/* ハニーポット: 人間には見えない。bot が埋めたら破棄される */}
+                                <div aria-hidden className="pointer-events-none absolute left-0 top-0 h-0 w-0 overflow-hidden opacity-0">
+                                    <label htmlFor="website">Website</label>
+                                    <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" className="h-0 w-0" />
+                                </div>
+
                                 {/* カテゴリ: 選ぶだけ */}
                                 <div className="space-y-3">
                                     <p className="text-sm font-bold text-ink">
@@ -191,6 +208,11 @@ export default function ContactPage() {
                                         className="min-h-28 resize-y rounded-xl border-line text-base focus:border-coral"
                                     />
                                 </div>
+
+                                {/* Cloudflare Turnstile（NEXT_PUBLIC_TURNSTILE_SITE_KEY を設定した場合のみ表示） */}
+                                {turnstileSiteKey && (
+                                    <div className="cf-turnstile" data-sitekey={turnstileSiteKey} data-size="flexible" data-theme="light" />
+                                )}
 
                                 <button
                                     type="submit"
