@@ -26,14 +26,6 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import logo from "@/images/logo-new.png";
 import shun from "@/images/shun-new.webp";
 import fvPhoto from "@/images/hero-digital.webp";
-import work1 from "@/images/works/works1.jpg";
-import work5 from "@/images/works/works5.jpg";
-import work8 from "@/images/works/works8.jpg";
-import work14 from "@/images/works/works14.jpg";
-import work15 from "@/images/works/works15.jpg";
-import work17 from "@/images/works/works17.jpg";
-import work12 from "@/images/works/works12.jpg";
-import work18 from "@/images/works/works18.jpg";
 import "./preview.css";
 
 /**
@@ -41,7 +33,7 @@ import "./preview.css";
  * - ゴールは1つ: LINEで申し込む
  * - 毎月10社限定。残り枠は下の定数を書き換えるだけで全箇所に反映される
  */
-const REMAINING_SLOTS = 10; // ← 今月の残り枠（毎月ここを更新）
+const REMAINING_SLOTS = 8; // ← 今月の残り枠（毎月ここを更新）
 const TOTAL_SLOTS = 10;
 const LINE_URL = "https://lin.ee/N4QXdJL#from=preview";
 
@@ -52,7 +44,7 @@ const lpSerif = Instrument_Serif({ variable: "--lp-font-serif", subsets: ["latin
 export const metadata: Metadata = {
     title: "無料プレビュー制作｜契約前に、あなたのトップページ案をお作りします（毎月10社限定）",
     description:
-        "ホームページをこれから作る方へ。契約の前に、あなたの会社のトップページのデザイン案（PC・スマホ）を無料でお作りします。5つの質問に答えるだけ、3営業日以内にお届け。気に入らなければそこで終わり。費用も営業もありません。毎月10社限定。",
+        "ホームページをこれから作る方へ。契約の前に、あなたのお店・会社のトップページのデザイン案（PC・スマホ）を無料でお作りします。個人事業主の方も対象。5つの質問に答えるだけ、3営業日以内にお届け。気に入らなければそこで終わり。費用も営業もありません。毎月10社限定。",
     alternates: { canonical: "https://www.nextvalley-jpn.com/preview" },
     openGraph: {
         title: "先に、見せます。契約前に、あなたのトップページ案を無料で。｜NEXT VALLEY",
@@ -90,7 +82,7 @@ const fears = [
     {
         icon: Eye,
         t: <>実績は「他社の話」で<span className="nowrap">しかない</span></>,
-        d: "制作会社の実績がきれいでも、それは他の会社のサイト。「うちの会社なら、どんな見た目になるのか」は、頼むまで分かりません。",
+        d: "制作会社の実績がきれいでも、それは他社のサイト。「うちのお店・会社なら、どんな見た目になるのか」は、頼むまで分かりません。",
     },
     {
         icon: Hourglass,
@@ -116,19 +108,8 @@ const ourFlow = [
 const deliverables = [
     { icon: Monitor, t: "PC版トップページ", d: "実際のブラウザで見た状態の画像。構成・写真の置き方・文字の大きさまで、そのまま確認できます。" },
     { icon: Smartphone, t: "スマホ版トップページ", d: "来訪者の多くはスマホ。指で触る前提のレイアウトを、別途つくって同時にお渡しします。" },
-    { icon: Sparkles, t: "業種と強みに合わせた構成", d: "テンプレートの色替えではありません。「誰に・何を・どう伝えるか」から、あなたの会社用に組み立てます。" },
+    { icon: Sparkles, t: "業種と強みに合わせた構成", d: "テンプレートの色替えではありません。「誰に・何を・どう伝えるか」から、あなたのお店・事業に合わせて組み立てます。" },
     { icon: Palette, t: "希望の雰囲気を反映", d: "「上品に」「元気に」「信頼感を」。ひと言の希望から、色・書体・余白のトーンを決めます。" },
-];
-
-const samples = [
-    { img: work1, name: "Tulip Ballet Studio様", label: "バレエ教室" },
-    { img: work5, name: "Rythmique Garden様", label: "リトミック教室" },
-    { img: work8, name: "Yuma English House様", label: "英語教室" },
-    { img: work14, name: "久和不動産株式会社様", label: "不動産" },
-    { img: work15, name: "株式会社西辻工務店様", label: "建設・工務店" },
-    { img: work17, name: "株式会社アイ・セカンド様", label: "企業サイト" },
-    { img: work18, name: "パーソナルジムMe様", label: "フィットネス" },
-    { img: work12, name: "BowlingNavi -ボウナビ- 様", label: "情報メディア" },
 ];
 
 const voices = [
@@ -152,15 +133,6 @@ const steps = [
 
 const chatQuestions = ["① 業種と、お店・会社のお名前", "② 地域（対象エリア）", "③ いちばん伝えたい強み", "④ 好みの雰囲気（上品・元気 など）", "⑤ 写真やロゴの有無"];
 const chatProof = "＋ 事業が分かるもの（店舗名・SNS・Googleマップ・既存サイトのいずれか）";
-
-/* 実例の注釈（久和不動産様のトップページ案・位置は画像に対する%） */
-const annotations = [
-    { x: 63, y: 34, t: "強みを、数字で一言に", d: "「平均入居率96.8%」。文章より先に、数字で伝わる強みを最初に。" },
-    { x: 60, y: 49, t: "対象エリアを最初に明示", d: "「渋谷区・世田谷区…」。検索して来た人が、1秒で「自分向けだ」と分かる。" },
-    { x: 93, y: 14, t: "連絡先を、いつでも右上に", d: "電話・お問い合わせを常に見える位置へ。読み終わる前でも動ける。" },
-    { x: 14, y: 45, t: "スマホ版も、同時に", d: "同じ情報を縦に組み直す。来訪者の多いスマホで、まず崩れないこと。" },
-    { x: 60, y: 79, t: "業種に合った配色", d: "不動産なら、信頼感のネイビー×ゴールド。業種と強みから色を決める。" },
-];
 
 const compareRows: { k: string; a: string; b: string; c: React.ReactNode }[] = [
     { k: "契約前にデザインを見られる", a: "△ ラフ案や口頭説明が中心", b: "× テンプレートから選ぶ", c: "◎ 実物のトップページ案（PC・スマホ）" },
@@ -239,10 +211,13 @@ function CtaBlock({ message, dark = false }: { message: React.ReactNode; dark?: 
     );
 }
 
-function SectionHead({ en, jp, lead, dark = false, align = "left" }: { en: string; jp: React.ReactNode; lead?: React.ReactNode; dark?: boolean; align?: "left" | "center" }) {
+function SectionHead({ label, jp, lead, dark = false, align = "left" }: { label: string; jp: React.ReactNode; lead?: React.ReactNode; dark?: boolean; align?: "left" | "center" }) {
     return (
         <div className={`mb-10 md:mb-14 ${align === "center" ? "text-center" : ""}`}>
-            <p className={`lp-serif text-[clamp(2.75rem,6vw,4.5rem)] leading-[0.9] tracking-[-0.01em] ${dark ? "text-white/90" : "text-navy"}`}>{en}</p>
+            <p className={`inline-flex items-center gap-2.5 text-[12px] font-bold tracking-[0.25em] ${dark ? "text-coral" : "text-coral-deep"}`}>
+                <span aria-hidden className="block h-px w-6 bg-current" />
+                {label}
+            </p>
             <h2 className={`mt-4 text-[clamp(1.5rem,3.2vw,2.5rem)] font-bold leading-[1.4] tracking-tight ${dark ? "text-white" : "text-ink"}`}>{jp}</h2>
             {lead && <p className={`lead mt-4 max-w-[38em] text-[15px] leading-[2] ${align === "center" ? "mx-auto" : ""} ${dark ? "text-navy-sub" : "text-ink-sub"}`}>{lead}</p>}
         </div>
@@ -265,33 +240,6 @@ function SlotsMeter({ dark = true }: { dark?: boolean }) {
                     <span key={i} className={`h-1.5 w-3 rounded-full ${i < REMAINING_SLOTS ? "bg-coral" : dark ? "bg-white/15" : "bg-line"}`} />
                 ))}
             </span>
-        </div>
-    );
-}
-
-/* 「届くもの」のスタック（実物のトップページ案が届くイメージ） */
-function DeviceMock() {
-    return (
-        <div className="relative mx-auto w-full max-w-[560px] pb-10 pr-6 pt-8 md:pr-10" aria-hidden>
-            <div className="absolute inset-x-8 bottom-4 top-14 rotate-[3deg] overflow-hidden rounded-[18px] bg-white opacity-90 shadow-[0_30px_60px_rgba(0,0,0,0.45)] md:inset-x-12">
-                <Image src={work5} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 520px" />
-            </div>
-            <div className="lp-float relative overflow-hidden rounded-[18px] bg-white shadow-[0_40px_80px_rgba(0,0,0,0.55)] ring-1 ring-white/20">
-                <div className="relative aspect-[995/580] w-full">
-                    <Image src={work1} alt="" fill priority className="object-cover" sizes="(max-width: 768px) 100vw, 560px" />
-                </div>
-                <div className="flex items-center justify-between border-t border-line bg-white px-4 py-2.5 text-[11px] text-ink-sub">
-                    <span className="flex items-center gap-1.5"><Monitor className="h-3.5 w-3.5" /> PC版</span>
-                    <span className="flex items-center gap-1.5"><Smartphone className="h-3.5 w-3.5" /> スマホ版</span>
-                    <span className="font-bold text-coral-deep">preview_v1.png</span>
-                </div>
-            </div>
-            <div className="absolute -left-1 top-2 rotate-[-4deg] rounded-full bg-coral-deep px-4 py-2 text-[12px] font-bold tracking-[0.1em] text-white shadow-cta md:-left-5">
-                3営業日以内にお届け
-            </div>
-            <div className="absolute bottom-3 right-2 rounded-full border border-white/20 bg-navy-deep/85 px-4 py-2 text-[12px] font-bold text-white shadow-lg backdrop-blur md:right-4">
-                PC＋スマホ 2枚セット
-            </div>
         </div>
     );
 }
@@ -339,8 +287,8 @@ export default function PreviewPage() {
                 <div aria-hidden className="lp-grid pointer-events-none absolute inset-0 opacity-[0.06]" />
                 <div aria-hidden className="lp-vignette pointer-events-none absolute inset-0" />
 
-                <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 px-4 pb-24 pt-14 md:grid-cols-12 md:px-6 md:pb-32 md:pt-20 lg:gap-8">
-                    <div className="min-w-0 md:col-span-7">
+                <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-5rem)] max-w-7xl items-center px-4 pb-24 pt-14 md:px-6 md:pb-32 md:pt-20">
+                    <div className="min-w-0 max-w-3xl">
                         <FadeIn>
                             <p className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-coral/60 bg-coral/10 px-4 py-2 text-[12px] font-bold tracking-[0.2em] text-coral">
                                 <span className="h-1.5 w-1.5 rounded-full bg-coral" />
@@ -351,7 +299,7 @@ export default function PreviewPage() {
                             <h1 className="text-white">
                                 <span className="block text-[clamp(2.75rem,7.2vw,6rem)] font-black leading-[1.1] tracking-[-0.03em]">先に、見せます。</span>
                                 <span className="mt-5 block text-[clamp(1.25rem,2.6vw,2.125rem)] font-bold leading-[1.5] tracking-tight">
-                                    契約の前に、あなたの会社の<br />
+                                    契約の前に、あなたのお店・会社の<br />
                                     トップページ案を<span className="text-coral">無料で</span>お作りします。
                                 </span>
                             </h1>
@@ -385,11 +333,6 @@ export default function PreviewPage() {
                         </FadeIn>
                     </div>
 
-                    <div className="min-w-0 md:col-span-5">
-                        <FadeIn delay={0.25} className="pt-6 md:pt-0">
-                            <DeviceMock />
-                        </FadeIn>
-                    </div>
                 </div>
 
                 <div aria-hidden className="pointer-events-none absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex">
@@ -418,7 +361,7 @@ export default function PreviewPage() {
                 <div className="mx-auto max-w-6xl">
                     <FadeIn>
                         <SectionHead
-                            en="Fear"
+                            label="よくある不安"
                             jp={<>ホームページ制作で、<span className="nowrap">いちばん怖いこと。</span></>}
                             lead="ホームページは「完成するまで、どんな見た目になるか分からない」買い物でした。だから、こんな不安がついて回ります。"
                         />
@@ -426,7 +369,7 @@ export default function PreviewPage() {
                     <div className="grid gap-5 md:grid-cols-3">
                         {fears.map((f, i) => (
                             <FadeIn key={i} delay={i * 0.08}>
-                                <div className="h-full rounded-[20px] bg-white p-7 shadow-card md:p-8">
+                                <div className="h-full rounded-[20px] border border-line/70 bg-white p-7 shadow-card md:p-8">
                                     <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cream text-coral-deep">
                                         <f.icon className="h-6 w-6" aria-hidden />
                                     </span>
@@ -445,11 +388,11 @@ export default function PreviewPage() {
             </section>
 
             {/* ── 解決: 順番を変えた ── */}
-            <section className="bg-cream px-4 py-20 md:px-6 md:py-28">
+            <section className="bg-white px-4 py-20 md:px-6 md:py-28">
                 <div className="mx-auto max-w-6xl">
                     <FadeIn>
                         <SectionHead
-                            en="Answer"
+                            label="私たちの答え"
                             jp={<>だから、順番を変えました。<br className="md:hidden" /><span className="lp-marker">「見てから、決める。」</span></>}
                             lead="契約してから見るのではなく、見てから契約するかどうかを決める。それだけで、ホームページ制作の失敗はほとんど防げます。"
                         />
@@ -499,7 +442,7 @@ export default function PreviewPage() {
                 <div className="mx-auto max-w-6xl">
                     <FadeIn>
                         <SectionHead
-                            en="Preview"
+                            label="お届けするもの"
                             jp={<>プレビューで、<span className="nowrap">お届けするもの。</span></>}
                             lead="「ラフなイメージ図」ではありません。気に入れば、そのまま公開まで仕上げられる実物のトップページ案です。気になる点は、プレビューの段階でも1回まで無料で調整します。"
                         />
@@ -507,7 +450,7 @@ export default function PreviewPage() {
                     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                         {deliverables.map((d, i) => (
                             <FadeIn key={d.t} delay={i * 0.06}>
-                                <div className="group h-full rounded-[20px] bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+                                <div className="group h-full rounded-[20px] border border-line/70 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
                                     <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-navy-deep text-coral transition-transform duration-300 group-hover:scale-105">
                                         <d.icon className="h-6 w-6" aria-hidden />
                                     </span>
@@ -518,62 +461,17 @@ export default function PreviewPage() {
                         ))}
                     </div>
                     <FadeIn>
-                        <CtaBlock message={<>あなたの会社なら、どんなトップページになるか。<br className="md:hidden" />まず、それを見て<span className="nowrap">ください。</span></>} />
+                        <CtaBlock message={<>あなたのお店・会社なら、どんなトップページになるか。<br className="md:hidden" />まず、それを見て<span className="nowrap">ください。</span></>} />
                     </FadeIn>
-                </div>
-            </section>
-
-            {/* ── 実例: こんなプレビューが届く（注釈つき） ── */}
-            <section className="bg-cream px-4 py-20 md:px-6 md:py-28">
-                <div className="mx-auto max-w-6xl">
-                    <FadeIn>
-                        <SectionHead
-                            en="Sample"
-                            jp={<>たとえば、こんな<span className="lp-marker">トップページ案</span>が<span className="nowrap">届きます。</span></>}
-                            lead="実際に制作した不動産会社様のトップページを例に、「なぜこの形にしたのか」を添えました。プレビューでも、同じ考え方であなたの会社用に組み立てます。"
-                        />
-                    </FadeIn>
-                    <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
-                        <FadeIn className="lg:col-span-7">
-                            <div className="relative overflow-visible rounded-[20px] bg-white p-3 shadow-card-hover md:p-4">
-                                <div className="relative w-full overflow-hidden rounded-[14px] bg-white" style={{ aspectRatio: "995 / 580" }}>
-                                    <Image src={work14} alt="久和不動産株式会社様のトップページ（PC・スマホ）" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 60vw" />
-                                    {annotations.map((a, i) => (
-                                        <span key={a.t} className="lp-dot" style={{ left: `${a.x}%`, top: `${a.y}%` }} aria-hidden>
-                                            {i + 1}
-                                        </span>
-                                    ))}
-                                </div>
-                                <p className="mt-3 flex items-center justify-between px-1 text-[11px] text-ink-sub">
-                                    <span>久和不動産株式会社様（不動産管理）</span>
-                                    <span className="font-bold text-coral-deep">PC版 ＋ スマホ版</span>
-                                </p>
-                            </div>
-                        </FadeIn>
-                        <FadeIn delay={0.1} className="lg:col-span-5">
-                            <ol className="space-y-3">
-                                {annotations.map((a, i) => (
-                                    <li key={a.t} className="flex gap-4 rounded-[16px] bg-white p-4 shadow-card md:p-5">
-                                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-coral-deep text-[12px] font-bold text-white">{i + 1}</span>
-                                        <div>
-                                            <h3 className="text-[15px] font-bold leading-snug text-ink">{a.t}</h3>
-                                            <p className="mt-1 text-[13px] leading-[1.9] text-ink-sub">{a.d}</p>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ol>
-                            <p className="mt-4 text-xs leading-[1.9] text-ink-sub">※ 実際の納品はPC・スマホの画像です。上の注釈は説明用に添えたものです。</p>
-                        </FadeIn>
-                    </div>
                 </div>
             </section>
 
             {/* ── 比較: 一般的な選択肢と何が違うか ── */}
-            <section className="bg-base px-4 py-20 md:px-6 md:py-28">
+            <section className="bg-white px-4 py-20 md:px-6 md:py-28">
                 <div className="mx-auto max-w-6xl">
                     <FadeIn>
                         <SectionHead
-                            en="Compare"
+                            label="ほかとの違い"
                             jp={<>ほかの選択肢と、<span className="nowrap">何が違うのか。</span></>}
                             lead="一般的な例との比較です（会社やサービスにより異なります）。違いは1つ、「見る」と「払う」の順番です。"
                         />
@@ -582,7 +480,7 @@ export default function PreviewPage() {
                     <div className="space-y-4 md:hidden">
                         {compareRows.map((r, i) => (
                             <FadeIn key={r.k} delay={i * 0.04}>
-                                <div className="rounded-[20px] bg-white p-5 shadow-card">
+                                <div className="rounded-[20px] border border-line/70 bg-white p-5 shadow-card">
                                     <p className="text-[15px] font-bold text-ink">{r.k}</p>
                                     <dl className="mt-3 space-y-2 text-[13px]">
                                         <div className="flex gap-3"><dt className="w-[8.5em] shrink-0 text-ink-sub">一般的な制作会社</dt><dd className="text-ink-sub">{r.a}</dd></div>
@@ -594,7 +492,7 @@ export default function PreviewPage() {
                         ))}
                     </div>
                     <FadeIn className="hidden md:block">
-                        <div className="overflow-x-auto rounded-[20px] bg-white shadow-card">
+                        <div className="overflow-x-auto rounded-[20px] border border-line/70 bg-white shadow-card">
                             <table className="lp-table w-full min-w-[820px] text-left text-[14px]">
                                 <thead>
                                     <tr className="bg-navy-deep text-white">
@@ -620,62 +518,40 @@ export default function PreviewPage() {
                 </div>
             </section>
 
-            {/* ── 証拠: 実績と声 ── */}
-            <section className="overflow-hidden bg-navy-deep px-4 py-20 text-white md:px-6 md:py-28">
+            {/* ── お客様の声 ── */}
+            <section className="bg-base px-4 py-20 md:px-6 md:py-28">
                 <div className="mx-auto max-w-6xl">
                     <FadeIn>
-                        <SectionHead dark en="Proof" jp="こんな品質で、お届けします。" lead="実際に制作したサイトの一部です。プレビューも、正式制作も、同じ制作環境・同じ担当が作ります。" />
+                        <SectionHead label="お客様の声" jp="実際にご依頼いただいた方の声。" lead="プレビューも、正式制作も、同じ担当が同じ姿勢で作ります。" />
                     </FadeIn>
-                    <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
-                        {samples.map((w, i) => (
-                            <FadeIn key={w.name} delay={(i % 4) * 0.06}>
-                                <div className="group overflow-hidden rounded-[16px] bg-white/[0.04] ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-1 hover:ring-coral/60">
-                                    <div className="relative w-full overflow-hidden bg-white" style={{ aspectRatio: "995 / 580" }}>
-                                        <Image src={w.img} alt={`${w.name}のホームページ`} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" placeholder="blur" sizes="(max-width: 1024px) 50vw, 25vw" />
-                                    </div>
-                                    <div className="px-3 py-2.5 sm:px-4 sm:py-3">
-                                        <p className="text-[11px] text-navy-sub">{w.label}</p>
-                                        <p className="text-[12px] font-bold leading-snug sm:text-sm">{w.name}</p>
-                                    </div>
-                                </div>
-                            </FadeIn>
-                        ))}
-                    </div>
-                    <div className="mt-14 grid gap-5 md:grid-cols-2">
+                    <div className="grid gap-5 md:grid-cols-2">
                         {voices.map((v, i) => (
                             <FadeIn key={v.name} delay={i * 0.08}>
-                                <figure className="h-full rounded-[20px] border border-white/10 bg-white/[0.04] p-7 md:p-8">
+                                <figure className="h-full rounded-[20px] border border-line/70 bg-white p-7 shadow-card md:p-8">
                                     <Quote className="h-6 w-6 text-coral" aria-hidden />
-                                    <blockquote className="mt-4 text-[15px] leading-[2] text-white/90">{v.text}</blockquote>
+                                    <blockquote className="mt-4 text-[15px] leading-[2] text-ink">{v.text}</blockquote>
                                     <figcaption className="mt-5 text-sm">
-                                        <span className="font-bold text-white">{v.name}</span>
-                                        <span className="ml-2 text-navy-sub">{v.label}</span>
+                                        <span className="font-bold text-ink">{v.name}</span>
+                                        <span className="ml-2 text-ink-sub">{v.label}</span>
                                     </figcaption>
                                 </figure>
                             </FadeIn>
                         ))}
                     </div>
-                    <FadeIn>
-                        <p className="mt-8 text-sm">
-                            <Link href="/#works" className="inline-flex min-h-11 items-center gap-1 font-bold text-white underline underline-offset-4 transition-colors hover:text-coral">
-                                すべての実績を見る <ArrowRight className="h-4 w-4" aria-hidden />
-                            </Link>
-                        </p>
-                    </FadeIn>
                 </div>
             </section>
 
             {/* ── 流れ ── */}
-            <section id="flow" className="bg-base px-4 py-20 md:px-6 md:py-28">
+            <section id="flow" className="bg-white px-4 py-20 md:px-6 md:py-28">
                 <div className="mx-auto max-w-6xl">
                     <FadeIn>
-                        <SectionHead en="Flow" jp="申し込みから、3ステップ。" lead="必要なのはLINEだけ。電話も、打ち合わせの日程調整もありません。" />
+                        <SectionHead label="申し込みの流れ" jp="申し込みから、3ステップ。" lead="必要なのはLINEだけ。電話も、打ち合わせの日程調整もありません。" />
                     </FadeIn>
                     <div className="grid items-start gap-10 lg:grid-cols-12">
                         <ol className="space-y-4 lg:col-span-7">
                             {steps.map((s, i) => (
                                 <FadeIn key={s.n} delay={i * 0.08}>
-                                    <li className="flex gap-6 rounded-[20px] bg-white p-7 shadow-card md:p-8">
+                                    <li className="flex gap-6 rounded-[20px] border border-line/70 bg-white p-7 shadow-card md:p-8">
                                         <div className="shrink-0 text-center">
                                             <p className="lp-serif text-5xl leading-none text-coral">{s.n}</p>
                                             <p className="mt-2 text-[10px] font-bold tracking-[0.3em] text-coral-deep">STEP</p>
@@ -728,14 +604,14 @@ export default function PreviewPage() {
             </section>
 
             {/* ── なぜ無料か ＋ その先の料金 ── */}
-            <section className="bg-cream px-4 py-20 md:px-6 md:py-28">
+            <section className="bg-base px-4 py-20 md:px-6 md:py-28">
                 <div className="mx-auto max-w-6xl">
                     <FadeIn>
-                        <SectionHead en="Honest" jp="なぜ無料か。そして、その先の料金。" lead="タネも仕掛けもありません。先に全部お伝えしておきます。" />
+                        <SectionHead label="無料の理由と料金" jp="なぜ無料か。そして、その先の料金。" lead="タネも仕掛けもありません。先に全部お伝えしておきます。" />
                     </FadeIn>
                     <div className="grid gap-6 md:grid-cols-2">
                         <FadeIn>
-                            <div className="h-full rounded-[20px] bg-white p-8 shadow-card md:p-10">
+                            <div className="h-full rounded-[20px] border border-line/70 bg-white p-8 shadow-card md:p-10">
                                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cream text-coral-deep">
                                     <Gift className="h-6 w-6" aria-hidden />
                                 </span>
@@ -772,15 +648,15 @@ export default function PreviewPage() {
             </section>
 
             {/* ── 3つの約束（リスクの撤去） ── */}
-            <section className="bg-base px-4 py-20 md:px-6 md:py-28">
+            <section className="bg-white px-4 py-20 md:px-6 md:py-28">
                 <div className="mx-auto max-w-6xl">
                     <FadeIn>
-                        <SectionHead en="Promise" jp="安心して申し込めるように、3つ約束します。" />
+                        <SectionHead label="3つの約束" jp="安心して申し込めるように、3つ約束します。" />
                     </FadeIn>
                     <div className="grid gap-5 md:grid-cols-3">
                         {promises.map((p, i) => (
                             <FadeIn key={p.t} delay={i * 0.08}>
-                                <div className="h-full rounded-[20px] border-t-4 border-coral bg-white p-7 shadow-card md:p-8">
+                                <div className="h-full rounded-[20px] border border-line/70 border-t-4 border-t-coral bg-white p-7 shadow-card md:p-8">
                                     <p className="lp-serif text-4xl leading-none text-coral">0{i + 1}</p>
                                     <h3 className="mt-4 flex items-center gap-2 text-lg font-bold leading-snug text-ink">
                                         <ShieldCheck className="h-5 w-5 shrink-0 text-coral-deep" aria-hidden />
@@ -795,11 +671,11 @@ export default function PreviewPage() {
             </section>
 
             {/* ── 対象／対象外 ＋ 10社の理由 ── */}
-            <section className="bg-cream px-4 py-20 md:px-6 md:py-28">
+            <section className="bg-base px-4 py-20 md:px-6 md:py-28">
                 <div className="mx-auto max-w-6xl">
                     <FadeIn>
                         <SectionHead
-                            en="For"
+                            label="対象となる方"
                             jp={<>本気でホームページを作る、<span className="nowrap">事業者様のための枠です。</span></>}
                             lead="誰でも申し込めるキャンペーンではありません。実際に事業をされていて、本当にホームページを作りたい方のために、毎月10社分の制作時間を確保しています。お申し込み後、簡単な確認をさせていただき、条件に合わない場合はお断りすることがあります。"
                         />
@@ -807,7 +683,7 @@ export default function PreviewPage() {
                     <div className="mb-6 grid gap-5 md:grid-cols-3">
                         {conditions.map((c, i) => (
                             <FadeIn key={c.t} delay={i * 0.06}>
-                                <div className="flex h-full gap-4 rounded-[20px] bg-white p-6 shadow-card">
+                                <div className="flex h-full gap-4 rounded-[20px] border border-line/70 bg-white p-6 shadow-card">
                                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-navy-deep text-coral">
                                         <c.icon className="h-5 w-5" aria-hidden />
                                     </span>
@@ -822,7 +698,7 @@ export default function PreviewPage() {
                     </div>
                     <div className="grid gap-6 lg:grid-cols-12">
                         <FadeIn className="lg:col-span-7">
-                            <div className="grid h-full gap-6 rounded-[20px] bg-white p-7 shadow-card sm:grid-cols-2 md:p-9">
+                            <div className="grid h-full gap-6 rounded-[20px] border border-line/70 bg-white p-7 shadow-card sm:grid-cols-2 md:p-9">
                                 <div>
                                     <p className="text-[12px] font-bold tracking-[0.25em] text-coral-deep">対象の方</p>
                                     <ul className="mt-4 space-y-3">
@@ -853,17 +729,16 @@ export default function PreviewPage() {
                             </div>
                         </FadeIn>
                         <FadeIn delay={0.1} className="lg:col-span-5">
-                            <div className="relative h-full overflow-hidden rounded-[20px] bg-navy-deep p-7 text-white md:p-9">
-                                <span aria-hidden className="absolute -right-12 -top-12 h-44 w-44 rounded-full bg-coral/20 blur-3xl" />
-                                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-coral">
+                            <div className="relative h-full overflow-hidden rounded-[20px] border border-line/70 bg-white p-7 shadow-card md:p-9">
+                                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cream text-coral-deep">
                                     <Lock className="h-6 w-6" aria-hidden />
                                 </span>
-                                <h3 className="mt-5 text-xl font-bold leading-snug">なぜ、毎月10社までなのか</h3>
-                                <p className="mt-4 text-[15px] leading-[2] text-navy-sub">
+                                <h3 className="mt-5 text-xl font-bold leading-snug text-ink">なぜ、毎月10社までなのか</h3>
+                                <p className="mt-4 text-[15px] leading-[2] text-ink-sub">
                                     プレビューも、正式制作と同じ担当が本気で作ります。品質を落とさずに対応できる上限が、月10社です。だからこそ、本当に作る予定のある事業者様に絞ってお受けしています。枠が埋まり次第、翌月のご案内に<span className="nowrap">なります。</span>
                                 </p>
                                 <div className="mt-6">
-                                    <SlotsMeter />
+                                    <SlotsMeter dark={false} />
                                 </div>
                             </div>
                         </FadeIn>
@@ -872,13 +747,13 @@ export default function PreviewPage() {
             </section>
 
             {/* ── FAQ ── */}
-            <section className="bg-base px-4 py-20 md:px-6 md:py-28">
+            <section className="bg-white px-4 py-20 md:px-6 md:py-28">
                 <div className="mx-auto max-w-4xl">
                     <FadeIn>
-                        <SectionHead en="FAQ" jp="よくあるご質問" />
+                        <SectionHead label="よくあるご質問" jp="よくあるご質問" />
                     </FadeIn>
                     <FadeIn>
-                        <div className="rounded-[20px] bg-white px-6 shadow-card md:px-10">
+                        <div className="rounded-[20px] border border-line/70 bg-white px-6 shadow-card md:px-10">
                             {faqs.map((f, i) => (
                                 <details key={f.q} className={`group ${i > 0 ? "border-t border-line" : ""}`}>
                                     <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-5 [&::-webkit-details-marker]:hidden">
@@ -901,8 +776,7 @@ export default function PreviewPage() {
                         <div className="mb-6 flex justify-center">
                             <SlotsMeter />
                         </div>
-                        <p className="lp-serif text-[clamp(3rem,7vw,5.5rem)] leading-[0.9] text-white/90">See it first.</p>
-                        <h2 className="mt-5 text-[clamp(1.5rem,3.6vw,2.75rem)] font-bold leading-[1.45]">
+                        <h2 className="text-[clamp(1.625rem,3.8vw,3rem)] font-bold leading-[1.45]">
                             まずは、あなたのトップページを<br className="md:hidden" />見てみませんか。
                         </h2>
                         <p className="mx-auto mt-5 max-w-[32em] text-[15px] leading-[2] text-navy-sub">
