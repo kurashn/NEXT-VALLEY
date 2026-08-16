@@ -183,14 +183,14 @@ export function PreviewApply() {
                 {/* Q1 */}
                 {step === 1 && (
                     <div>
-                        <h3 className="text-xl font-bold leading-snug">業種と、お店・会社のお名前を教えてください。</h3>
+                        <h3 className="text-xl font-bold leading-snug">業種と、お店・教室・会社のお名前を教えてください。</h3>
                         <p className="mt-2 text-sm text-ink-sub">屋号・店名・会社名。開業前なら予定の名前で大丈夫です。</p>
                         <div className="mt-5 flex flex-wrap gap-2">
                             {INDUSTRIES.map((x) => (
                                 <Chip key={x} selected={a.industry === x} onClick={() => set("industry", x)}>{x}</Chip>
                             ))}
                         </div>
-                        <input className={`${inputCls} mt-4`} placeholder="お店・会社のお名前（例：〇〇整骨院）" value={a.name} onChange={(e) => set("name", e.target.value)} />
+                        <input className={`${inputCls} mt-4`} placeholder="お店・教室・会社のお名前（例：〇〇整骨院、〇〇英会話教室）" value={a.name} onChange={(e) => set("name", e.target.value)} />
                     </div>
                 )}
 

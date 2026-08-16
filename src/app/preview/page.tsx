@@ -25,7 +25,7 @@ import { PreviewApply } from "./PreviewApply";
 import { StickyApply } from "./StickyApply";
 import logo from "@/images/logo-new.png";
 import shun from "@/images/shun-new.webp";
-import fvPhoto from "@/images/preview-fv-shop.webp"; // Unsplash（商用利用可）: お店のレジ前で端末を扱う店主
+import fvPhoto from "@/images/preview-fv-laptop.webp"; // Unsplash（商用利用可）: 机の上のノートPC（人物なし）
 import "./preview.css";
 
 /**
@@ -43,7 +43,7 @@ const lpSerif = Instrument_Serif({ variable: "--lp-font-serif", subsets: ["latin
 export const metadata: Metadata = {
     title: "無料プレビュー制作｜契約前に、あなたのトップページ案をお作りします（毎月10社限定）",
     description:
-        "ホームページをこれから作る方へ。契約の前に、あなたのお店・会社のトップページのデザイン案（PC・スマホ）を無料でお作りします。個人事業主の方も対象。5つの質問に答えるだけ、3営業日以内にお届け。気に入らなければそこで終わり。費用も営業もありません。毎月10社限定。",
+        "ホームページをこれから作る方へ。契約の前に、あなたのお店・教室・会社のトップページのデザイン案（PC・スマホ）を無料でお作りします。個人事業主の方も対象。5つの質問に答えるだけ、3営業日以内にお届け。気に入らなければそこで終わり。費用も営業もありません。毎月10社限定。",
     alternates: { canonical: "https://www.nextvalley-jpn.com/preview" },
     openGraph: {
         title: "先に、見せます。契約前に、あなたのトップページ案を無料で。｜NEXT VALLEY",
@@ -81,7 +81,7 @@ const fears = [
     {
         icon: Eye,
         t: <>実績は「他社の話」で<span className="nowrap">しかない</span></>,
-        d: "制作会社の実績がきれいでも、それは他社のサイト。「うちのお店・会社なら、どんな見た目になるのか」は、頼むまで分かりません。",
+        d: "制作会社の実績がきれいでも、それは他社のサイト。「うちのお店・教室・会社なら、どんな見た目になるのか」は、頼むまで分かりません。",
     },
     {
         icon: Hourglass,
@@ -107,7 +107,7 @@ const ourFlow = [
 const deliverables = [
     { icon: Monitor, t: "PC版トップページ", d: "実際のブラウザで見た状態の画像。構成・写真の置き方・文字の大きさまで、そのまま確認できます。" },
     { icon: Smartphone, t: "スマホ版トップページ", d: "来訪者の多くはスマホ。指で触る前提のレイアウトを、別途つくって同時にお渡しします。" },
-    { icon: Sparkles, t: <>業種と強みに<span className="nowrap">合わせた構成</span></>, d: "テンプレートの色替えではありません。「誰に・何を・どう伝えるか」から、あなたのお店・事業に合わせて組み立てます。" },
+    { icon: Sparkles, t: <>業種と強みに<span className="nowrap">合わせた構成</span></>, d: "テンプレートの色替えではありません。「誰に・何を・どう伝えるか」から、あなたのお店・教室・会社に合わせて組み立てます。" },
     { icon: Palette, t: "希望の雰囲気を反映", d: "「上品に」「元気に」「信頼感を」。ひと言の希望から、色・書体・余白のトーンを決めます。" },
 ];
 
@@ -269,9 +269,9 @@ export default function PreviewPage() {
                 <div
                     aria-hidden
                     className="absolute inset-y-0 right-0 w-full md:w-[70%]"
-                    style={{ maskImage: "linear-gradient(to right, transparent 0%, black 45%), linear-gradient(to top, transparent 0%, black 40%)", WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 45%)", maskComposite: "intersect", WebkitMaskComposite: "source-in" }}
+                    style={{ maskImage: "linear-gradient(to right, transparent 0%, black 55%)", WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 55%)" }}
                 >
-                    <Image src={fvPhoto} alt="" fill priority className="object-cover object-[65%_center] opacity-35 md:opacity-50" sizes="(max-width: 768px) 100vw, 70vw" />
+                    <Image src={fvPhoto} alt="" fill priority className="object-cover object-[70%_center] opacity-30 md:opacity-40" sizes="(max-width: 768px) 100vw, 70vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/40 to-navy-deep/30" />
                 </div>
                 <div aria-hidden className="lp-grid pointer-events-none absolute inset-0 opacity-[0.06]" />
@@ -289,7 +289,7 @@ export default function PreviewPage() {
                             <h1 className="text-white">
                                 <span className="block text-[clamp(2.75rem,7.2vw,6rem)] font-black leading-[1.1] tracking-[-0.03em]">先に、見せます。</span>
                                 <span className="mt-5 block text-[clamp(1.25rem,2.6vw,2.125rem)] font-bold leading-[1.5] tracking-tight">
-                                    契約の前に、あなたのお店・会社の<br />
+                                    契約の前に、あなたのお店・教室・会社の<br />
                                     トップページ案を<span className="text-coral">無料で</span>お作りします。
                                 </span>
                             </h1>
@@ -451,7 +451,7 @@ export default function PreviewPage() {
                         ))}
                     </div>
                     <FadeIn>
-                        <CtaBlock message={<>あなたのお店・会社なら、どんなトップページになるか。<br className="md:hidden" />まず、それを見て<span className="nowrap">ください。</span></>} />
+                        <CtaBlock message={<>あなたのお店・教室・会社なら、どんなトップページになるか。<br className="md:hidden" />まず、それを見て<span className="nowrap">ください。</span></>} />
                     </FadeIn>
                 </div>
             </section>
@@ -754,7 +754,7 @@ export default function PreviewPage() {
                                 <SlotsMeter />
                             </div>
                             <h2 className="text-[clamp(1.625rem,3.8vw,3rem)] font-bold leading-[1.45]">
-                                まずは、あなたのトップページを<br className="md:hidden" />見てみませんか。
+                                まずは、あなたのトップページを<br className="md:hidden" /><span className="nowrap">見てみませんか。</span>
                             </h2>
                             <p className="mx-auto mt-4 max-w-[32em] text-[15px] leading-[2] text-navy-sub">
                                 5つの質問に答えると、申込メッセージが自動でできあがります。それをLINEで送れば、<span className="nowrap">申込完了です。</span>
