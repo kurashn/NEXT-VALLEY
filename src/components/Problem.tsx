@@ -259,7 +259,7 @@ export function Problem() {
                                 <p className="mb-2 text-[15px] text-white md:mb-3 md:text-[17px]">原因はあなたではありません。</p>
                                 <p className="text-[clamp(1.1875rem,3.4vw,2.5rem)] font-bold leading-[1.5] text-white">
                                     <span className="nowrap"><span className="text-coral">『作る会社』</span>と<span className="text-coral">『集める会社』</span>が</span>
-                                    <span className="nowrap">分かれていることです。</span>
+                                    分かれている<span className="nowrap">ことです。</span>
                                 </p>
                             </div>
                         </div>

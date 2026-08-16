@@ -398,7 +398,7 @@ function AIConsultDialog({ open, onOpenChange }: { open: boolean; onOpenChange: 
                             <div className="mt-5 rounded-2xl bg-navy-deep p-5 text-center md:p-6">
                                 <p className="mb-1.5 text-[11px] font-bold tracking-[0.25em] text-coral">NEXT STEP</p>
                                 <p className="mb-2 text-base font-bold leading-snug text-white">
-                                    AIがまとめた「相談メモ」を、<span className="nowrap">そのままLINEに貼って送る</span>
+                                    AIがまとめた「相談メモ」を、そのままLINEに<span className="nowrap">貼って送る</span>
                                 </p>
                                 <p className="mb-4 text-xs leading-[1.8] text-navy-sub">
                                     プロが無料で具体的な改善案と概算見積もりをお返しします（2営業日以内・しつこい営業なし）
@@ -489,7 +489,7 @@ export function SelfCheckSection() {
                                 <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">AIで課題整理</h3>
                             </div>
                         </div>
-                        <p className="mb-1 text-sm font-bold text-ink">サイトがない方・<span className="nowrap">何から始めるか分からない方に</span></p>
+                        <p className="mb-1 text-sm font-bold text-ink">サイトがない方・何から始めるか<span className="nowrap">分からない方に</span></p>
                         <p className="mb-6 flex-1 text-sm leading-[1.9] text-ink-sub">
                             普段使っているAI（ChatGPT・Claude・Gemini・Perplexity）が質問しながら状況を整理し、専門家にそのまま送れる「相談メモ」に<span className="nowrap">まとめます。</span>
                         </p>

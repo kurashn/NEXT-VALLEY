@@ -315,7 +315,7 @@ const services = [
     {
         en: "SNS MARKETING",
         title: "SNSマーケティング",
-        body: <>Instagram・Xから、LINE公式アカウント（LINEマーケティング）の構築・運用まで。「何を投稿すればいいか分からない」を、計画ごと<span className="nowrap">引き受けます。</span></>,
+        body: <>Instagram・Xから、LINE公式アカウント（LINEマーケティング）の構築・運用まで。「何を投稿すればいいか分からない」を、計画ごと引き<span className="nowrap">受けます。</span></>,
         illo: IlloSns,
     },
     {

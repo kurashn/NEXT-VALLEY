@@ -5,7 +5,7 @@ export const BlogCTA = () => {
         <div className="my-16 rounded-2xl bg-[#eef2f6] p-8 text-center md:p-12">
             <p className="mb-3 text-[12px] font-bold tracking-[0.3em] text-coral-deep">FREE CHECK</p>
             <h3 className="mb-4 text-2xl font-bold text-navy md:text-3xl">
-                「うちの場合は、どこから？」を<span className="nowrap">無料でお答えします</span>
+                「うちの場合は、どこから？」を無料でお<span className="nowrap">答えします</span>
             </h3>
             <p className="mx-auto mb-8 max-w-2xl leading-[1.9] text-ink-sub">
                 NEXT VALLEYは、AI活用のプロチームです。マーケティングもHP・LP制作も、課題に合わせて必要な打ち手だけを提案します。

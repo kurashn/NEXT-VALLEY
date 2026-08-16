@@ -85,7 +85,7 @@ export default function Hero() {
                                 </span>
                             </a>
                         </div>
-                        <p className="mt-4 text-sm text-navy-sub">どちらも費用は一切かかりません・<span className="nowrap">しつこい営業なし</span></p>
+                        <p className="mt-4 text-sm text-navy-sub">どちらも費用は一切かかりません・しつこい<span className="nowrap">営業なし</span></p>
                     </FadeIn>
                 </div>
             </div>

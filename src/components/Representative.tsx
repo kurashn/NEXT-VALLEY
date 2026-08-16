@@ -45,9 +45,9 @@ export function Representative() {
                             </h3>
 
                             <div className="space-y-6 text-[15px] leading-[2] tracking-[0.02em] text-ink-sub">
-                                <p>こんにちは、代表の倉林 駿（くらはやし <span className="nowrap">しゅん）です。</span></p>
+                                <p>こんにちは、代表の倉林 駿（くらはやし しゅん）<span className="nowrap">です。</span></p>
                                 <p>
-                                    「頼むと高そう」「本当に効果が出るのか分からない」。相談をためらう理由は、だいたい<span className="nowrap">この2つです。</span>
+                                    「頼むと高そう」「本当に効果が出るのか分からない」。相談をためらう理由は、だいたいこの<span className="nowrap">2つです。</span>
                                 </p>
                                 <p>
                                     だから私たちは、先に実物をお見せすることにしています。あなたの会社の現状を診断し、具体的な改善案と見積もりを無料で作る。気に入らなければ、<span className="nowrap">断ってください。</span>

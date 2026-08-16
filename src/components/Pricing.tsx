@@ -10,7 +10,7 @@ import { SerifHeading } from "@/components/ui/SerifHeading";
 const packageFeatures = [
     { key: "hp", node: <>成果から逆算した<span className="nowrap">ホームページ制作</span></> },
     { key: "seo", node: <>SEO・MEO集客の<span className="nowrap">設計と運用</span></> },
-    { key: "report", node: <>毎月のアクセス・<span className="nowrap">問い合わせレポート</span></> },
+    { key: "report", node: <>毎月のアクセス・問い合わせ<span className="nowrap">レポート</span></> },
     { key: "ops", node: <>公開後の更新・改善も<span className="nowrap">おまかせ</span></> },
 ];
 
@@ -139,7 +139,7 @@ export function Pricing() {
                         </div>
                     </div>
                     <p className="mt-6 max-w-[40em] text-sm leading-[2] text-ink-sub">
-                        内容により変動します。正式な金額は無料のお見積もりでご提示します。追加料金が発生する場合は、必ず事前に<span className="nowrap">お伝えします。</span>
+                        内容により変動します。正式な金額は無料のお見積もりでご提示します。追加料金が発生する場合は、必ず事前にお<span className="nowrap">伝えします。</span>
                     </p>
                 </FadeIn>
             </div>

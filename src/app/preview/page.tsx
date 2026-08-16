@@ -314,7 +314,7 @@ export default function PreviewPage() {
                             <div className="mt-10 flex flex-col items-stretch gap-5 sm:items-start">
                                 <LineButton />
                                 <p className="text-sm text-navy-sub">
-                                    5つの質問に答えて、LINEで送るだけ・所要2分・<span className="nowrap">しつこい営業なし</span>
+                                    5つの質問に答えて、LINEで送るだけ・所要2分・しつこい<span className="nowrap">営業なし</span>
                                     <br />
                                     ※ 事業者様限定。本気でホームページを作る方のための枠です（簡単な確認あり）
                                 </p>
@@ -352,7 +352,7 @@ export default function PreviewPage() {
                     <FadeIn>
                         <SectionHead
                             label="よくある不安"
-                            jp={<>ホームページ制作で、<span className="nowrap">いちばん怖いこと。</span></>}
+                            jp={<>ホームページ制作で、<br className="md:hidden" />いちばん怖いこと。</>}
                             lead="ホームページは「完成するまで、どんな見た目になるか分からない」買い物でした。だから、こんな不安がついて回ります。"
                         />
                     </FadeIn>
@@ -433,7 +433,7 @@ export default function PreviewPage() {
                     <FadeIn>
                         <SectionHead
                             label="お届けするもの"
-                            jp={<>プレビューで、<span className="nowrap">お届けするもの。</span></>}
+                            jp={<>プレビューで、<br className="md:hidden" />お届けするもの。</>}
                             lead="「ラフなイメージ図」ではありません。気に入れば、そのまま公開まで仕上げられる実物のトップページ案です。気になる点は、プレビューの段階でも1回まで無料で調整します。"
                         />
                     </FadeIn>
@@ -451,7 +451,7 @@ export default function PreviewPage() {
                         ))}
                     </div>
                     <FadeIn>
-                        <CtaBlock message={<>あなたのお店・教室・会社なら、どんなトップページになるか。<br className="md:hidden" />まず、それを見て<span className="nowrap">ください。</span></>} />
+                        <CtaBlock message={<>あなたのお店・教室・会社なら、どんなトップページに<span className="nowrap">なるか。</span><br className="md:hidden" />まず、それを見て<span className="nowrap">ください。</span></>} />
                     </FadeIn>
                 </div>
             </section>
@@ -462,7 +462,7 @@ export default function PreviewPage() {
                     <FadeIn>
                         <SectionHead
                             label="ほかとの違い"
-                            jp={<>ほかの選択肢と、<span className="nowrap">何が違うのか。</span></>}
+                            jp={<>ほかの選択肢と、<br className="md:hidden" />何が違うのか。</>}
                             lead="一般的な例との比較です（会社やサービスにより異なります）。違いは1つ、「見る」と「払う」の順番です。"
                         />
                     </FadeIn>
@@ -604,9 +604,9 @@ export default function PreviewPage() {
                             <div className="relative h-full overflow-hidden rounded-[20px] bg-navy-deep p-8 text-white md:p-10">
                                 <span aria-hidden className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-coral/15 blur-3xl" />
                                 <p className="text-[12px] font-bold tracking-[0.25em] text-coral">気に入ったら、正式制作へ</p>
-                                <h3 className="mt-3 text-xl font-bold leading-snug md:text-2xl">プレビューのデザインを、<span className="nowrap">そのまま公開まで。</span></h3>
+                                <h3 className="mt-3 text-xl font-bold leading-snug md:text-2xl">プレビューのデザインを、<br className="md:hidden" />そのまま公開まで。</h3>
                                 <p className="mt-4 text-[15px] leading-[2] text-navy-sub">
-                                    公開まで進める場合の目安です。内容により変動しますが、正式なお見積もりを先にお出しし、追加費用が出る場合は必ず事前に<span className="nowrap">お伝えします。</span>
+                                    公開まで進める場合の目安です。内容により変動しますが、正式なお見積もりを先にお出しし、追加費用が出る場合は必ず事前にお<span className="nowrap">伝えします。</span>
                                 </p>
                                 <ul className="mt-6 divide-y divide-white/10 border-y border-white/10">
                                     {[["LP制作", "¥110,000〜"], ["ホームページ制作", "¥220,000〜"]].map(([k, v]) => (
@@ -627,7 +627,7 @@ export default function PreviewPage() {
             <section className="bg-white px-4 py-20 md:px-6 md:py-28">
                 <div className="mx-auto max-w-6xl">
                     <FadeIn>
-                        <SectionHead label="3つの約束" jp={<>安心して申し込めるように、<span className="nowrap">3つ約束します。</span></>} />
+                        <SectionHead label="3つの約束" jp={<>安心して申し込めるように、<br className="md:hidden" />3つ約束します。</>} />
                     </FadeIn>
                     <div className="grid gap-5 md:grid-cols-3">
                         {promises.map((p, i) => (
@@ -652,7 +652,7 @@ export default function PreviewPage() {
                     <FadeIn>
                         <SectionHead
                             label="対象となる方"
-                            jp={<>本気でホームページを作る、<span className="nowrap">事業者様のための枠です。</span></>}
+                            jp={<>本気でホームページを作る、<br className="md:hidden" />事業者様のための枠です。</>}
                             lead="誰でも申し込めるキャンペーンではありません。実際に事業をされていて、本当にホームページを作りたい方のために、毎月10社分の制作時間を確保しています。お申し込み後、簡単な確認をさせていただき、条件に合わない場合はお断りすることがあります。"
                         />
                     </FadeIn>
@@ -790,7 +790,7 @@ export default function PreviewPage() {
                         <Link href="/" className="inline-flex min-h-11 items-center">
                             <Image src={logo} alt="NEXT VALLEY" width={150} height={34} className="h-7 w-auto object-contain" />
                         </Link>
-                        <p>屋号 NEXT VALLEY ／ 代表 倉林 駿 ／ <span className="nowrap">AI活用で売上と業務を支援するプロチーム</span></p>
+                        <p>屋号 NEXT VALLEY ／ 代表 倉林 駿 ／ AI活用で売上と業務を支援する<span className="nowrap">プロチーム</span></p>
                     </div>
                     <ul className="flex flex-wrap gap-x-6 gap-y-1">
                         {[["/", "トップページ"], ["/company", "事業情報"], ["/tokusho", "特定商取引法に基づく表記"], ["/privacy", "プライバシーポリシー"]].map(([href, label]) => (

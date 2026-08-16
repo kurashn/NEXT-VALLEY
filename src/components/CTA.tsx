@@ -29,7 +29,7 @@ export function CTA() {
                             まずは、<span className="text-coral-deep">無料診断</span>から。
                         </h3>
                         <p className="lead mx-auto mb-10 max-w-[32em] text-[15px] leading-[2] text-ink-sub">
-                            サイトのURLやお悩みをLINEで送るだけ。改善の打ち手と概算お見積もりをまとめて<span className="nowrap">お返しします。</span>
+                            サイトのURLやお悩みをLINEで送るだけ。改善の打ち手と概算お見積もりをまとめてお<span className="nowrap">返しします。</span>
                             <br className="hidden md:block" />
                             提案を見てから、頼むかどうか決めて<span className="nowrap">ください。</span>
                         </p>

@@ -81,7 +81,7 @@ export default function ContactPage() {
                     <div className="mb-8 text-center">
                         <h1 className="mb-4 text-3xl font-bold text-ink">お問い合わせ</h1>
                         <p className="text-[15px] leading-[2] text-ink-sub">
-                            2分で送れます。担当者より2営業日以内に<span className="nowrap">ご返信します。</span>
+                            2分で送れます。担当者より2営業日以内にご<span className="nowrap">返信します。</span>
                         </p>
                     </div>
 

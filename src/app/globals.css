@@ -363,6 +363,11 @@ section[id], div[id] { scroll-margin-top: 96px; }
     text-wrap: pretty;
   }
 
+  /* 記事本文は両端揃え（スマホで行末の凸凹＝右側の余白を出さない） */
+  .prose p, .prose li {
+    text-align: justify;
+  }
+
   /* 意味の塊を折らせたくない箇所だけに使う（改行落ちの個別対策） */
   .nowrap {
     display: inline-block;
