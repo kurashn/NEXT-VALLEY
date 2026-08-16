@@ -50,6 +50,34 @@ function lineMessageUrl(message: string) {
     return `https://line.me/R/oaMessage/${LINE_OA_ID}/?${encodeURIComponent(message)}`;
 }
 
+/** クリップボードにコピー（Clipboard API → 失敗時は execCommand にフォールバック） */
+async function copyText(text: string): Promise<boolean> {
+    try {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return true;
+        }
+    } catch { /* fallback へ */ }
+    try {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.top = "0";
+        ta.style.left = "0";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ta.setSelectionRange(0, text.length);
+        const ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        return ok;
+    } catch {
+        return false;
+    }
+}
+
 function buildMessage(a: Answers) {
     const lines = [
         "【無料プレビュー希望】",
@@ -131,26 +159,26 @@ export function PreviewApply() {
         track("preview_apply_step", { step: step + 1 });
     };
     const back = () => { setError(null); setStep(Math.max(0, step - 1)); };
-    const reset = () => { setA(initial); setStep(0); setCopied(false); setError(null); };
+    const reset = () => { setA(initial); setStep(0); setCopied(false); setCopyFailed(false); setError(null); };
 
-    const copyAndOpen = async () => {
-        try {
-            await navigator.clipboard.writeText(message);
-            setCopied(true);
-        } catch {
-            setCopied(false);
-        }
-        track("preview_apply_to_line", { device: isMobile ? "mobile" : "desktop" });
-        if (isMobile) {
-            // スマホ: メッセージ入力済みの状態でLINEアプリのトークを開く（未追加なら友だち追加画面）。同一タブで開く方がアプリ起動が確実
-            window.location.href = lineMessageUrl(message);
-        } else {
-            // PC: LINEの友だち追加ページ（PC版LINEが入っていればそこから開ける）。メッセージはコピー済みなので貼り付けてもらう
-            window.open(LINE_URL, "_blank", "noopener,noreferrer");
-        }
+    const [copyFailed, setCopyFailed] = useState(false);
+    const doCopy = async () => {
+        const ok = await copyText(message);
+        setCopied(ok);
+        setCopyFailed(!ok);
+        return ok;
     };
-    const copyOnly = async () => {
-        try { await navigator.clipboard.writeText(message); setCopied(true); } catch { /* noop */ }
+    // スマホ: コピーしてから、メッセージ入力済みでLINEアプリのトークを開く（未追加なら友だち追加画面）
+    const openLineMobile = async () => {
+        await doCopy();
+        track("preview_apply_to_line", { device: "mobile" });
+        window.location.href = lineMessageUrl(message);
+    };
+    // PC: 先にコピー→PC版LINE（友だち追加ページ）を開く。貼り付けてもらう
+    const openLineDesktop = async () => {
+        await doCopy();
+        track("preview_apply_to_line", { device: "desktop" });
+        window.open(LINE_URL, "_blank", "noopener,noreferrer");
     };
     const mailHref = `mailto:${MAIL_TO}?subject=${encodeURIComponent("無料プレビュー希望")}&body=${encodeURIComponent(message)}`;
 
@@ -318,22 +346,22 @@ export function PreviewApply() {
                                 いちばん簡単なのは、<span className="font-bold text-ink">スマホのカメラで下のQRを読み取る</span>方法です。この内容が入力された状態でLINEが開くので、送信すれば申込完了。3営業日以内にトップページ案（PC・スマホ）をお送りします。
                             </p>
                         )}
-                        <pre className="mt-5 whitespace-pre-wrap rounded-2xl border border-line bg-base p-4 text-[13px] leading-[1.9] text-ink">{message}</pre>
+                        <pre className="mt-5 select-all whitespace-pre-wrap rounded-2xl border border-line bg-base p-4 text-[13px] leading-[1.9] text-ink" title="クリックで全選択">{message}</pre>
 
                         {isMobile ? (
                             <>
                                 <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                                     <button
                                         type="button"
-                                        onClick={copyAndOpen}
+                                        onClick={openLineMobile}
                                         className="lp-cta group inline-flex h-16 flex-1 items-center justify-center gap-3 rounded-full bg-[#05a247] px-6 text-[19px] font-bold text-white shadow-[0_14px_32px_rgba(5,162,71,0.38)] transition-all hover:-translate-y-0.5"
                                     >
                                         <MessageCircle className="h-6 w-6" aria-hidden />
                                         LINEを開いて送る
                                         <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden />
                                     </button>
-                                    <button type="button" onClick={copyOnly} className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-line px-5 text-sm font-bold text-ink transition-colors hover:border-coral">
-                                        <Copy className="h-4 w-4" aria-hidden /> {copied ? "コピーしました" : "内容だけコピー"}
+                                    <button type="button" onClick={doCopy} className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-line px-5 text-sm font-bold text-ink transition-colors hover:border-coral">
+                                        <Copy className="h-4 w-4" aria-hidden /> {copied ? "コピーしました ✓" : "内容だけコピー"}
                                     </button>
                                 </div>
                                 <p className="mt-4 text-xs leading-[1.9] text-ink-sub">
@@ -361,17 +389,25 @@ export function PreviewApply() {
                                         <div className="mt-4 flex flex-wrap gap-3">
                                             <button
                                                 type="button"
-                                                onClick={copyAndOpen}
+                                                onClick={doCopy}
+                                                className={`inline-flex h-12 items-center justify-center gap-2 rounded-full px-5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 ${copied ? "bg-ink" : "bg-coral-deep"}`}
+                                            >
+                                                {copied ? <Check className="h-4 w-4" aria-hidden /> : <Copy className="h-4 w-4" aria-hidden />}
+                                                {copied ? "コピーしました ✓" : "① 内容をコピーする"}
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={openLineDesktop}
                                                 className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#05a247] px-5 text-[19px] font-bold text-white transition-all hover:-translate-y-0.5"
                                             >
                                                 <MessageCircle className="h-5 w-5" aria-hidden />
-                                                PC版LINEで開く
-                                            </button>
-                                            <button type="button" onClick={copyOnly} className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-line px-5 text-sm font-bold text-ink transition-colors hover:border-coral">
-                                                <Copy className="h-4 w-4" aria-hidden /> {copied ? "コピーしました" : "内容をコピー"}
+                                                ② PC版LINEを開く
                                             </button>
                                         </div>
-                                        <p className="mt-3 text-xs leading-[1.9] text-ink-sub">PC版LINEで開く場合は、内容をコピー（ボタンを押した時点でコピー済み）して、トークに貼り付けて送信してください。</p>
+                                        <p className="mt-3 text-xs leading-[1.9] text-ink-sub">
+                                            PC版LINEを使う場合は、①でコピー → ②で開いた友だち追加ページから「トーク」へ → 貼り付けて送信してください。
+                                            {copyFailed && <span className="block font-bold text-coral-deep">コピーできなかったようです。上の内容をクリックすると全選択できるので、Ctrl+C（Macは⌘+C）でコピーしてください。</span>}
+                                        </p>
                                     </div>
                                 </div>
                             </>
