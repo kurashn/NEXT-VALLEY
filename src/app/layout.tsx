@@ -94,7 +94,7 @@ export default function RootLayout({
                   event_category: 'cta',
                   event_label: (a.textContent || '').trim().slice(0, 50),
                   page_path: location.pathname,
-                  source: href.indexOf('from=ai_consult') !== -1 ? 'ai_consult' : 'site',
+                  source: href.indexOf('from=ai_consult') !== -1 ? 'ai_consult' : href.indexOf('from=preview') !== -1 ? 'preview' : 'site',
                 });
               } else if (href.indexOf('mailto:') === 0 || href === '/contact') {
                 gtag('event', 'mail_click', {

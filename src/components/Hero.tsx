@@ -59,18 +59,33 @@ export default function Hero() {
                     </FadeIn>
 
                     <FadeIn delay={0.3}>
-                        <div className="flex flex-col items-start gap-4">
+                        <div className="flex flex-col gap-4 sm:flex-row sm:items-stretch">
+                            {/* サイトがある方 → 無料診断 */}
                             <a
                                 href="https://lin.ee/N4QXdJL"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group inline-flex h-16 items-center gap-8 rounded-lg bg-coral px-10 text-[19px] font-bold text-white transition-opacity hover:opacity-90"
+                                className="group flex flex-col justify-center rounded-lg bg-coral px-7 py-4 text-white transition-opacity hover:opacity-90"
                             >
-                                無料で診断を受ける
-                                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                <span className="text-[11px] font-bold tracking-[0.2em] text-white/80">サイトがある方</span>
+                                <span className="inline-flex items-center gap-3 text-[19px] font-bold">
+                                    無料で診断を受ける
+                                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                </span>
                             </a>
-                            <p className="text-sm text-navy-sub">サイトのURLやお悩みを送るだけ・<span className="nowrap">費用は一切かかりません</span></p>
+                            {/* これから作る方 → 無料プレビュー */}
+                            <a
+                                href="/preview"
+                                className="group flex flex-col justify-center rounded-lg border border-white/40 px-7 py-4 text-white transition-colors hover:border-coral hover:text-coral"
+                            >
+                                <span className="text-[11px] font-bold tracking-[0.2em] text-white/70">これから作る方</span>
+                                <span className="inline-flex items-center gap-3 text-[19px] font-bold">
+                                    無料プレビューを見る
+                                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                </span>
+                            </a>
                         </div>
+                        <p className="mt-4 text-sm text-navy-sub">どちらも費用は一切かかりません・<span className="nowrap">しつこい営業なし</span></p>
                     </FadeIn>
                 </div>
             </div>

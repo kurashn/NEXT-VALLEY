@@ -12,9 +12,9 @@ import logo from "@/images/logo-new.png";
 const navLinks = [
   { name: "サービス", href: "/#service" },
   { name: "3分セルフ診断", href: "/shindan" },
+  { name: "無料プレビュー", href: "/preview" },
   { name: "制作実績", href: "/#works" },
   { name: "私たちの強み", href: "/#reason" },
-  { name: "会社情報", href: "/company" },
   { name: "お役立ちコラム", href: "/blog" },
   { name: "お問い合わせ", href: "/contact" },
 ];
@@ -58,13 +58,13 @@ export default function Navbar() {
           </Link>
 
           {/* デスクトップナビ */}
-          <div className="hidden items-center gap-8 lg:flex">
+          <div className="hidden items-center gap-6 lg:flex xl:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleScroll(e, link.href)}
-                className="text-sm font-medium text-white transition-colors hover:text-coral"
+                className="whitespace-nowrap text-sm font-medium text-white transition-colors hover:text-coral"
               >
                 {link.name}
               </Link>
@@ -76,7 +76,7 @@ export default function Navbar() {
             href="https://lin.ee/N4QXdJL"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden h-12 items-center gap-3 rounded-lg bg-coral-deep px-6 text-sm font-bold text-white transition-opacity hover:opacity-90 lg:inline-flex"
+            className="hidden h-12 shrink-0 items-center gap-3 whitespace-nowrap rounded-lg bg-coral-deep px-6 text-sm font-bold text-white transition-opacity hover:opacity-90 lg:inline-flex"
           >
             LINEで無料診断
             <ArrowRight className="h-4 w-4" />
