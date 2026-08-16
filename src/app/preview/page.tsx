@@ -25,6 +25,7 @@ import {
 import { FadeIn } from "@/components/ui/FadeIn";
 import logo from "@/images/logo-new.png";
 import shun from "@/images/shun-new.webp";
+import fvPhoto from "@/images/hero-digital.webp";
 import work1 from "@/images/works/works1.jpg";
 import work5 from "@/images/works/works5.jpg";
 import work8 from "@/images/works/works8.jpg";
@@ -309,6 +310,15 @@ export default function PreviewPage() {
 
             {/* ── FV（写真なし・オーロラ＋グリッド） ── */}
             <section className="lp-aurora relative overflow-hidden bg-navy-deep pt-16 md:pt-20">
+                {/* FV写真（トップとは別。右側に淡く敷いて左へフェード） */}
+                <div
+                    aria-hidden
+                    className="absolute inset-y-0 right-0 w-full md:w-[70%]"
+                    style={{ maskImage: "linear-gradient(to right, transparent 0%, black 45%), linear-gradient(to top, transparent 0%, black 40%)", WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 45%)", maskComposite: "intersect", WebkitMaskComposite: "source-in" }}
+                >
+                    <Image src={fvPhoto} alt="" fill priority className="object-cover object-center opacity-30 md:opacity-40" sizes="(max-width: 768px) 100vw, 70vw" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/40 to-navy-deep/30" />
+                </div>
                 <div aria-hidden className="lp-grid pointer-events-none absolute inset-0 opacity-[0.06]" />
                 <div aria-hidden className="lp-vignette pointer-events-none absolute inset-0" />
 
