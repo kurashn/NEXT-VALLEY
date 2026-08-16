@@ -153,6 +153,23 @@ const steps = [
 const chatQuestions = ["① 業種と、お店・会社のお名前", "② 地域（対象エリア）", "③ いちばん伝えたい強み", "④ 好みの雰囲気（上品・元気 など）", "⑤ 写真やロゴの有無"];
 const chatProof = "＋ 事業が分かるもの（店舗名・SNS・Googleマップ・既存サイトのいずれか）";
 
+/* 実例の注釈（久和不動産様のトップページ案・位置は画像に対する%） */
+const annotations = [
+    { x: 63, y: 34, t: "強みを、数字で一言に", d: "「平均入居率96.8%」。文章より先に、数字で伝わる強みを最初に。" },
+    { x: 60, y: 49, t: "対象エリアを最初に明示", d: "「渋谷区・世田谷区…」。検索して来た人が、1秒で「自分向けだ」と分かる。" },
+    { x: 93, y: 14, t: "連絡先を、いつでも右上に", d: "電話・お問い合わせを常に見える位置へ。読み終わる前でも動ける。" },
+    { x: 14, y: 45, t: "スマホ版も、同時に", d: "同じ情報を縦に組み直す。来訪者の多いスマホで、まず崩れないこと。" },
+    { x: 60, y: 79, t: "業種に合った配色", d: "不動産なら、信頼感のネイビー×ゴールド。業種と強みから色を決める。" },
+];
+
+const compareRows: { k: string; a: string; b: string; c: React.ReactNode }[] = [
+    { k: "契約前にデザインを見られる", a: "△ ラフ案や口頭説明が中心", b: "× テンプレートから選ぶ", c: "◎ 実物のトップページ案（PC・スマホ）" },
+    { k: "費用が発生するタイミング", a: "契約時（着手金など）", b: "申込時", c: <>正式に依頼すると<span className="nowrap">決めたとき</span></> },
+    { k: "デザイン案が届くまで", a: "契約後、数週間", b: "―", c: "3営業日以内" },
+    { k: "断ったあと", a: "契約後の解約は難しい", b: "返金不可の場合も", c: "そこで終わり・営業なし" },
+    { k: "作るのは", a: "会社による", b: "自分で組む", c: "正式制作と同じ担当" },
+];
+
 const promises = [
     { t: "プレビューは完全無料", d: "あとから請求することはありません。費用が発生するのは、気に入って正式制作に進む場合だけです。" },
     { t: "断っても、追いかけません", d: "「今回は見送ります」で終わり。電話営業も、こちらからの催促もしません。" },
@@ -187,7 +204,7 @@ const faqs = [
     { q: "「確認」では、何を見るのですか？", a: "実際に事業をされているか（店舗名・SNS・Googleマップ・既存サイトなど）と、ホームページを作る予定が本当にあるか、の2点です。審査のような堅いものではなく、LINEでのやり取りの中で確認します。" },
     { q: "個人事業主・開業前でも申し込めますか？", a: "はい。個人事業主の方も、開業が決まっている方も対象です。屋号や開業予定日、SNSなど、事業が分かるものを教えてください。" },
     { q: "同業ですが、参考に申し込めますか？", a: "申し訳ありませんが、同業（Web制作・デザイン）の方や、参考資料が目的の方はお断りしています。本気でホームページを作る事業者様のための枠です。" },
-    { q: "プレビューを見てから、修正の希望は言えますか？", a: "はい。正式制作に進む場合は、プレビューをたたき台にして、色・写真・文章などをご希望に合わせて仕上げていきます。" },
+    { q: "プレビューを見てから、修正の希望は言えますか？", a: "はい。プレビューの段階でも、気になる点は1回まで無料で調整します。正式制作に進む場合は、そのプレビューをたたき台にして、色・写真・文章などをご希望に合わせて仕上げていきます。" },
     { q: "なぜ無料でできるのですか？", a: "AIを活用した制作環境で、トップページ1枚を作るコストが大幅に下がったからです。その分を「先に実物を見てもらう」ことに使っています。契約前に判断材料を渡した方が、お互いに後悔がないと考えています。" },
 ];
 
@@ -433,7 +450,7 @@ export default function PreviewPage() {
                     <FadeIn>
                         <SectionHead
                             en="Answer"
-                            jp={<>だから、順番を変えました。<br className="md:hidden" />「見てから、決める。」</>}
+                            jp={<>だから、順番を変えました。<br className="md:hidden" /><span className="lp-marker">「見てから、決める。」</span></>}
                             lead="契約してから見るのではなく、見てから契約するかどうかを決める。それだけで、ホームページ制作の失敗はほとんど防げます。"
                         />
                     </FadeIn>
@@ -484,7 +501,7 @@ export default function PreviewPage() {
                         <SectionHead
                             en="Preview"
                             jp={<>プレビューで、<span className="nowrap">お届けするもの。</span></>}
-                            lead="「ラフなイメージ図」ではありません。気に入れば、そのまま公開まで仕上げられる実物のトップページ案です。"
+                            lead="「ラフなイメージ図」ではありません。気に入れば、そのまま公開まで仕上げられる実物のトップページ案です。気になる点は、プレビューの段階でも1回まで無料で調整します。"
                         />
                     </FadeIn>
                     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -502,6 +519,103 @@ export default function PreviewPage() {
                     </div>
                     <FadeIn>
                         <CtaBlock message={<>あなたの会社なら、どんなトップページになるか。<br className="md:hidden" />まず、それを見て<span className="nowrap">ください。</span></>} />
+                    </FadeIn>
+                </div>
+            </section>
+
+            {/* ── 実例: こんなプレビューが届く（注釈つき） ── */}
+            <section className="bg-cream px-4 py-20 md:px-6 md:py-28">
+                <div className="mx-auto max-w-6xl">
+                    <FadeIn>
+                        <SectionHead
+                            en="Sample"
+                            jp={<>たとえば、こんな<span className="lp-marker">トップページ案</span>が<span className="nowrap">届きます。</span></>}
+                            lead="実際に制作した不動産会社様のトップページを例に、「なぜこの形にしたのか」を添えました。プレビューでも、同じ考え方であなたの会社用に組み立てます。"
+                        />
+                    </FadeIn>
+                    <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
+                        <FadeIn className="lg:col-span-7">
+                            <div className="relative overflow-visible rounded-[20px] bg-white p-3 shadow-card-hover md:p-4">
+                                <div className="relative w-full overflow-hidden rounded-[14px] bg-white" style={{ aspectRatio: "995 / 580" }}>
+                                    <Image src={work14} alt="久和不動産株式会社様のトップページ（PC・スマホ）" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 60vw" />
+                                    {annotations.map((a, i) => (
+                                        <span key={a.t} className="lp-dot" style={{ left: `${a.x}%`, top: `${a.y}%` }} aria-hidden>
+                                            {i + 1}
+                                        </span>
+                                    ))}
+                                </div>
+                                <p className="mt-3 flex items-center justify-between px-1 text-[11px] text-ink-sub">
+                                    <span>久和不動産株式会社様（不動産管理）</span>
+                                    <span className="font-bold text-coral-deep">PC版 ＋ スマホ版</span>
+                                </p>
+                            </div>
+                        </FadeIn>
+                        <FadeIn delay={0.1} className="lg:col-span-5">
+                            <ol className="space-y-3">
+                                {annotations.map((a, i) => (
+                                    <li key={a.t} className="flex gap-4 rounded-[16px] bg-white p-4 shadow-card md:p-5">
+                                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-coral-deep text-[12px] font-bold text-white">{i + 1}</span>
+                                        <div>
+                                            <h3 className="text-[15px] font-bold leading-snug text-ink">{a.t}</h3>
+                                            <p className="mt-1 text-[13px] leading-[1.9] text-ink-sub">{a.d}</p>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ol>
+                            <p className="mt-4 text-xs leading-[1.9] text-ink-sub">※ 実際の納品はPC・スマホの画像です。上の注釈は説明用に添えたものです。</p>
+                        </FadeIn>
+                    </div>
+                </div>
+            </section>
+
+            {/* ── 比較: 一般的な選択肢と何が違うか ── */}
+            <section className="bg-base px-4 py-20 md:px-6 md:py-28">
+                <div className="mx-auto max-w-6xl">
+                    <FadeIn>
+                        <SectionHead
+                            en="Compare"
+                            jp={<>ほかの選択肢と、<span className="nowrap">何が違うのか。</span></>}
+                            lead="一般的な例との比較です（会社やサービスにより異なります）。違いは1つ、「見る」と「払う」の順番です。"
+                        />
+                    </FadeIn>
+                    {/* モバイル: 行ごとのカード */}
+                    <div className="space-y-4 md:hidden">
+                        {compareRows.map((r, i) => (
+                            <FadeIn key={r.k} delay={i * 0.04}>
+                                <div className="rounded-[20px] bg-white p-5 shadow-card">
+                                    <p className="text-[15px] font-bold text-ink">{r.k}</p>
+                                    <dl className="mt-3 space-y-2 text-[13px]">
+                                        <div className="flex gap-3"><dt className="w-[8.5em] shrink-0 text-ink-sub">一般的な制作会社</dt><dd className="text-ink-sub">{r.a}</dd></div>
+                                        <div className="flex gap-3"><dt className="w-[8.5em] shrink-0 text-ink-sub">格安テンプレート</dt><dd className="text-ink-sub">{r.b}</dd></div>
+                                        <div className="flex gap-3 rounded-xl bg-coral/[0.08] px-3 py-2"><dt className="w-[8.5em] shrink-0 font-bold text-coral-deep">NEXT VALLEY</dt><dd className="font-bold text-ink">{r.c}</dd></div>
+                                    </dl>
+                                </div>
+                            </FadeIn>
+                        ))}
+                    </div>
+                    <FadeIn className="hidden md:block">
+                        <div className="overflow-x-auto rounded-[20px] bg-white shadow-card">
+                            <table className="lp-table w-full min-w-[820px] text-left text-[14px]">
+                                <thead>
+                                    <tr className="bg-navy-deep text-white">
+                                        <th className="w-[26%] rounded-tl-[20px] text-[12px] font-bold tracking-[0.15em] text-navy-sub">比較項目</th>
+                                        <th className="w-[24%] font-bold">一般的な制作会社</th>
+                                        <th className="w-[22%] font-bold">格安テンプレート</th>
+                                        <th className="w-[28%] whitespace-nowrap rounded-tr-[20px] bg-coral-deep font-bold">NEXT VALLEY 無料プレビュー</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {compareRows.map((r) => (
+                                        <tr key={r.k}>
+                                            <th className="whitespace-nowrap font-bold text-ink">{r.k}</th>
+                                            <td className="whitespace-nowrap text-ink-sub">{r.a}</td>
+                                            <td className="whitespace-nowrap text-ink-sub">{r.b}</td>
+                                            <td className="whitespace-nowrap bg-coral/[0.07] font-bold text-ink">{r.c}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </FadeIn>
                 </div>
             </section>

@@ -146,3 +146,42 @@
   .lp-float, .lp-float-2, .lp-pulse, .lp-ticker, .lp-cue::after, .lp-aurora::before, .lp-aurora::after { animation: none; }
   .lp-cta::after { display: none; }
 }
+
+/* 強調マーカー（見出しのキーフレーズ） */
+.lp-marker {
+  background: linear-gradient(transparent 58%, rgba(226, 108, 92, 0.30) 58%, rgba(226, 108, 92, 0.30) 92%, transparent 92%);
+}
+
+/* 実例の注釈ドット */
+.lp-dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  background: #b8452f;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9), 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+.lp-dot::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 2px solid rgba(226, 108, 92, 0.7);
+  animation: lp-ring 2.4s ease-out infinite;
+}
+@keyframes lp-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .lp-dot::before { animation: none; } }
+
+/* 比較表 */
+.lp-table th, .lp-table td { padding: 14px 16px; vertical-align: top; }
+.lp-table tr + tr th, .lp-table tr + tr td { border-top: 1px solid var(--color-line); }
