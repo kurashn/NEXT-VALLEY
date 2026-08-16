@@ -49,15 +49,16 @@ const featuredWorks = [
         ),
     },
     {
-        name: "BowlingNavi -ボウナビ- 様",
-        label: "メディア・情報サイト",
-        image: work12,
+        name: "Yuma English House様",
+        label: "教育・スクール",
+        image: work8,
         review: null,
-        caption: "関西のボウリング大会情報サイト。大会検索・コラム・診断コンテンツを備えたメディアサイトの制作事例です。",
+        caption: "英語教室のホームページに加えて、英検対策コースのランディングページも制作。集客の入口を2つに増やした事例です。",
     },
 ];
 
 const otherWorks: { name: string; label: string; image: typeof work1 }[] = [
+    { name: "BowlingNavi -ボウナビ- 様", label: "メディア・情報サイト", image: work12 },
     { name: "久和不動産株式会社様", label: "不動産", image: work14 },
     { name: "株式会社西辻工務店様", label: "不動産・建設", image: work15 },
     { name: "イースタンホーク様", label: "不動産サービス", image: work16 },
@@ -71,7 +72,6 @@ const otherWorks: { name: string; label: string; image: typeof work1 }[] = [
     { name: "ECCジュニア 一里山教室様", label: "教育・スクール", image: work4 },
     { name: "Colours Musical Studio様", label: "教育・スクール", image: work2 },
     { name: "まや子どもの家様", label: "教育・スクール", image: work3 },
-    { name: "Yuma English House様", label: "教育・スクール", image: work8 },
     { name: "Yuma English House 英検対策コース様", label: "教育・スクール（LP）", image: work21 },
     { name: "DANCE STUDIO PLUS様", label: "教育・スクール", image: work9 },
     { name: "K-coaching様", label: "教育・スクール", image: work11 },

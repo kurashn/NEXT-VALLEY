@@ -303,7 +303,7 @@ const services = [
     {
         en: "WEB PRODUCTION",
         title: "HP・LP制作",
-        body: <>「誰に、何を、どう届けるか」から設計するホームページ・ランディングページ。デザインの好みではなく、成果から逆算して<span className="nowrap">作ります。</span></>,
+        body: <>「誰に、何を、どう届けるか」から設計するホームページ・ランディングページ。デザインの好みではなく、成果から逆算して作ります。<strong className="font-bold text-ink">HP・LPの制作のみのご依頼も歓迎です。</strong></>,
         illo: IlloWeb,
     },
     {

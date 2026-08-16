@@ -32,7 +32,7 @@ export function Pricing() {
                 <FadeIn>
                     <SerifHeading en="Price" jp="料金" />
                     <p className="lead -mt-6 mb-10 text-[15px] leading-[2] tracking-[0.03em] text-ink-sub md:mb-14">
-                        ご提案・お見積もりまでは無料です。まず内容と金額を見てから、判断してください。
+                        ご提案・お見積もりまでは無料です。まず内容と金額を見てから、判断してください。<br className="hidden md:block" />HP・LPの制作のみなど、単品でのご依頼も<span className="nowrap">歓迎です。</span>
                     </p>
                 </FadeIn>
 
