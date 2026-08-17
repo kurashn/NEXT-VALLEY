@@ -62,6 +62,8 @@ const ja = {
     submit: "この内容で送信する",
     privacyLink: "プライバシーポリシー",
     privacyNote: "に同意の上、送信してください。しつこい営業は一切ありません。",
+    // 特定電子メール法：この表示があると、公表アドレス宛の広告メール送信の適用除外が外れる
+    noSolicitation: "※ 営業・宣伝を目的とした電子メールの送信はお断りいたします。",
 };
 const en: typeof ja = {
     categories: [
@@ -109,6 +111,7 @@ const en: typeof ja = {
     submit: "Send message",
     privacyLink: "Privacy Policy (JP)",
     privacyNote: ". No pushy sales calls, ever.",
+    noSolicitation: "Note: we do not accept unsolicited sales or marketing emails.",
     // 英語では「By sending, you agree to the …」の語順にするため前置きは JSX 側で分岐
 };
 const copy: Record<Lang, typeof ja> = { ja, en };
@@ -327,6 +330,8 @@ export function ContactForm({ lang = "ja" }: { lang?: Lang }) {
                                     </a>
                                     {t.privacyNote}
                                 </p>
+
+                                <p className="text-center text-xs text-ink-faint">{t.noSolicitation}</p>
                             </form>
                         )}
                     </div>

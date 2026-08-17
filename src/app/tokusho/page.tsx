@@ -44,7 +44,8 @@ export default function TokushoPage() {
                             <dt className="text-sm font-bold text-[#002335] mb-1">お問い合わせ先</dt>
                             <dd className="text-slate-600">
                                 info@nextvalley-jpn.com<br />
-                                ※正確な記録を残すため、お問い合わせは原則メールにてお願いいたします。
+                                ※正確な記録を残すため、お問い合わせは原則メールにてお願いいたします。<br />
+                                ※営業・宣伝を目的とした電子メールの送信はお断りいたします。
                             </dd>
                         </div>
 

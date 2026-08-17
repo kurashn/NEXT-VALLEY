@@ -35,6 +35,7 @@ const copy = {
         ),
         cta: "LINEで無料診断を受ける",
         rep: "代表 倉林 駿 ／ ",
+        contactLink: "お問い合わせ",
     },
     en: {
         siteLinks: [
@@ -64,6 +65,7 @@ const copy = {
         ),
         cta: "Get a free site check on LINE",
         rep: "Shun Kurahayashi, Founder / ",
+        contactLink: "Contact",
     },
 };
 
@@ -158,12 +160,14 @@ export function Footer({ lang = "ja" }: { lang?: Lang }) {
                     <p className="text-sm text-navy-sub">&copy; {new Date().getFullYear()} NEXT VALLEY</p>
                     <p className="text-sm text-navy-sub">
                         {t.rep}
-                        <a
-                            href="mailto:info@nextvalley-jpn.com"
+                        {/* メールアドレスの平文掲載はやめ、問い合わせページへ誘導する
+                            （全ページのフッターに出ていたため、収集プログラムの主な入手元になっていた） */}
+                        <Link
+                            href={withLang(lang, "/contact")}
                             className="underline transition-colors hover:text-white"
                         >
-                            info@nextvalley-jpn.com
-                        </a>
+                            {t.contactLink}
+                        </Link>
                     </p>
                 </div>
             </div>
