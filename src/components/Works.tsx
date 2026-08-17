@@ -124,7 +124,7 @@ const en: typeof ja = {
         { name: "I-SECOND Co., Ltd.", label: "Corporate Website" },
         { name: "I-SECOND STORE", label: "E-commerce" },
         { name: "Personal Gym Me", label: "Fitness" },
-        { name: "Kurotori Cemetery", label: "Cemetery" },
+        { name: "Kurotori Bochi", label: "Cemetery" },
         { name: "Chiang Mai Info Station (Northern Thailand)", label: "Media" },
         { name: "Vivid Direction Co., Ltd.", label: "Corporate Website" },
         { name: "Wannabe Co., Ltd.", label: "Corporate Website" },

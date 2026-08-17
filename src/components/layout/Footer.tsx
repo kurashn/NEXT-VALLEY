@@ -63,7 +63,7 @@ const copy = {
             </>
         ),
         cta: "Get a free site check on LINE",
-        rep: "Shun Kurabayashi, Founder / ",
+        rep: "Shun Kurahayashi, Founder / ",
     },
 };
 

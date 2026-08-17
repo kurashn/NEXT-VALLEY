@@ -42,7 +42,7 @@ const ja = {
 };
 const en: typeof ja = {
     heading: "From the founder",
-    alt: "Shun Kurabayashi, founder of NEXT VALLEY",
+    alt: "Shun Kurahayashi, founder of NEXT VALLEY",
     title: (
         <>
             Skip the sales pitch.
@@ -50,7 +50,7 @@ const en: typeof ja = {
             See the real thing.
         </>
     ),
-    p1: <>Hi, I’m Shun Kurabayashi, founder of NEXT VALLEY.</>,
+    p1: <>Hi, I’m Shun Kurahayashi, founder of NEXT VALLEY.</>,
     p2: (
         <>
             “It’s probably expensive.” “Will it actually work?” In our experience, those two doubts are what keep most people from reaching out.
@@ -67,7 +67,7 @@ const en: typeof ja = {
         </>
     ),
     signRole: "Founder, NEXT VALLEY ",
-    signName: "Shun Kurabayashi",
+    signName: "Shun Kurahayashi",
 };
 const copy: Record<Lang, typeof ja> = { ja, en };
 

@@ -538,7 +538,7 @@ const en: typeof ja = {
     apply: {
         title: <>Want to see your homepage first?</>,
         lead: <>Answer five questions and your sign-up message is written for you. Send it via LINE and you&rsquo;re done.</>,
-        psAlt: "Shun Kurabayashi, Founder",
+        psAlt: "Shun Kurahayashi, Founder",
         psLabel: "P.S. FROM THE FOUNDER",
         psText: (
             <>
@@ -546,10 +546,10 @@ const en: typeof ja = {
             </>
         ),
         psSign: "NEXT VALLEY Founder ",
-        psName: "Shun Kurabayashi",
+        psName: "Shun Kurahayashi",
     },
     footer: {
-        tagline: <>NEXT VALLEY / Founder: Shun Kurabayashi / A team that puts AI to work for your sales and operations</>,
+        tagline: <>NEXT VALLEY / Founder: Shun Kurahayashi / A team that puts AI to work for your sales and operations</>,
         links: [
             ["/", "Home"],
             ["/company", "About"],

@@ -23,7 +23,7 @@ const jsonLdCopy = {
       "AI活用で売上と業務を変えるプロチーム。AI活用コンサルティング、HP・LP制作、SEO・MEO集客、SNSマーケティング、HP運用サポートを課題に合わせて提供。",
   },
   en: {
-    founder: "Shun Kurabayashi",
+    founder: "Shun Kurahayashi",
     description:
       "An AI-powered team helping small businesses in Japan grow: AI consulting, website & landing page production, SEO and Google Maps marketing, social media, and ongoing site support.",
   },

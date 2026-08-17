@@ -72,7 +72,7 @@ const en: typeof ja = {
     rowName: "Business name",
     name: "NEXT VALLEY",
     rowRep: "Representative",
-    rep: "Shun Kurabayashi",
+    rep: "Shun Kurahayashi",
     rowFounded: "Established",
     founded: "January 2021",
     rowServices: "What we do",
@@ -97,7 +97,7 @@ export function companyMetadata(lang: Lang): Metadata {
     return {
         title: "About Us",
         description:
-            "NEXT VALLEY is an AI-powered marketing and web design team based in Osaka, Japan, helping small businesses win more customers. Representative: Shun Kurabayashi. Established 2021.",
+            "NEXT VALLEY is an AI-powered marketing and web design team based in Osaka, Japan, helping small businesses win more customers. Representative: Shun Kurahayashi. Established 2021.",
         openGraph: {
             title: "About Us | NEXT VALLEY",
             description:
