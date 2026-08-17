@@ -90,7 +90,7 @@ https://www.nextvalley-jpn.com/
 /** 英語版プロンプト（/en）。構造・意図は日本語版と同じ。英語話者の事業主が状況を整理し、英語の「相談メモ」を作る */
 export const AI_CONSULT_PROMPT_EN = `I'm thinking about reaching out to NEXT VALLEY for advice.
 
-NEXT VALLEY is a Japan-based team (Osaka) that helps small businesses with website design and development, website and landing page improvements, SEO and Google Maps (local SEO), social media, AI adoption, and workflow automation.
+NEXT VALLEY is a Japan-based team that helps small businesses with website design and development, website and landing page improvements, SEO and Google Maps (local SEO), social media, AI adoption, and workflow automation.
 
 Before I contact them, I'd like you to interview me about my business, then help me work out where my real problems are and what I should fix first.
 

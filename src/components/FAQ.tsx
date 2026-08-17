@@ -77,7 +77,7 @@ const faqsEn: FaqItem[] = [
         a: "Thanks to our AI-assisted workflow, a build that normally takes about a month can be done in as little as 3–5 days. If you’re on a tight deadline, let us know.",
     },
     {
-        q: "I’m not near Osaka. Can you still work with me?",
+        q: "I’m not nearby. Can you still work with me?",
         a: "Yes, we work with clients anywhere in Japan. Everything happens online — LINE, email, and video calls.",
     },
 ];

@@ -97,11 +97,11 @@ export function companyMetadata(lang: Lang): Metadata {
     return {
         title: "About Us",
         description:
-            "NEXT VALLEY is an AI-powered marketing and web design team based in Osaka, Japan, helping small businesses win more customers. Representative: Shun Kurahayashi. Established 2021.",
+            "NEXT VALLEY is an AI-powered marketing and web design team in Japan, helping small businesses win more customers. Representative: Shun Kurahayashi. Established 2021.",
         openGraph: {
             title: "About Us | NEXT VALLEY",
             description:
-                "An AI-powered marketing and web design team based in Osaka, Japan, helping small businesses win more customers.",
+                "An AI-powered marketing and web design team in Japan, helping small businesses win more customers.",
             url: "https://www.nextvalley-jpn.com/en/company",
             siteName: "NEXT VALLEY",
             locale: "en_US",
