@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
         rules: {
             userAgent: '*',
             allow: '/',
-            disallow: '/keystatic/', // Exclude CMS admin area
+            disallow: ['/keystatic/', '/demo/'], // CMS管理画面と、デザイン確認用プレビュー
         },
         sitemap: 'https://www.nextvalley-jpn.com/sitemap.xml',
     };
