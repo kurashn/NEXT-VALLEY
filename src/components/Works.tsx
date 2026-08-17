@@ -31,11 +31,12 @@ import work18 from "@/images/works/works18.jpg";
 import work19 from "@/images/works/works19.jpg";
 import work20 from "@/images/works/works20.jpg";
 import work21 from "@/images/works/works21.jpg";
+import work22 from "@/images/works/works22.jpg";
 
 /* 画像（言語共通。順序は copy.featured / copy.others と一致させる） */
 const featuredImages = [work1, work5, work8];
 const otherImages = [
-    work12, work14, work15, work16, work17, work19, work18, work20, work13,
+    work22, work12, work14, work15, work16, work17, work19, work18, work20, work13,
     work6, work7, work4, work2, work3, work21, work9, work11,
 ];
 
@@ -65,11 +66,13 @@ const ja = {
         {
             name: "Yuma English House様",
             label: "教育・スクール",
-            review: null,
-            caption: "英語教室のホームページに加えて、英検対策コースのランディングページも制作。集客の入口を2つに増やした事例です。",
+            review: (
+                <>英語教室のホームページと、英検対策コースのページの2つを制作していただきました。それぞれ見ていただきたい方が違うので、分けて作るというご提案はとてもありがたかったです。お問い合わせの内容が具体的になり、ご案内もしやすく<span className="nowrap">なりました。</span></>
+            ),
         },
     ] as FeaturedCopy[],
     others: [
+        { name: "Matsumi様", label: "理容・美容" },
         { name: "BowlingNavi -ボウナビ- 様", label: "メディア・情報サイト" },
         { name: "久和不動産株式会社様", label: "不動産" },
         { name: "株式会社西辻工務店様", label: "不動産・建設" },
@@ -112,11 +115,13 @@ const en: typeof ja = {
         {
             name: "Yuma English House",
             label: "Education & Schools",
-            review: null,
-            caption: "Alongside the English school's main website, we built a landing page for their Eiken (English proficiency test) prep course, giving them two entry points for new students.",
+            review: (
+                <>They built two things for us: the school&apos;s main website and a separate page for our Eiken prep course. The two reach different audiences, so their suggestion to keep them apart was very welcome. The inquiries we receive are now much more specific, which makes them easier to answer.</>
+            ),
         },
     ],
     others: [
+        { name: "Matsumi", label: "Barbershop" },
         { name: "BowlingNavi", label: "Media & Information Site" },
         { name: "KyuWa Estate Co., Ltd.", label: "Real Estate" },
         { name: "Nishitsuji Construction Co., Ltd.", label: "Real Estate & Construction" },
