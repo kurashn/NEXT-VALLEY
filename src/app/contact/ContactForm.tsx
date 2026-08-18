@@ -246,7 +246,7 @@ export function ContactForm({ lang = "ja" }: { lang?: Lang }) {
                                             name="name"
                                             required
                                             placeholder={t.namePlaceholder}
-                                            className="h-12 rounded-xl border-line text-base focus:border-coral"
+                                            className="h-12 rounded-xl border-line text-[16px] text-ink focus:border-coral"
                                         />
                                     </div>
                                     <div className="space-y-2">
@@ -258,7 +258,7 @@ export function ContactForm({ lang = "ja" }: { lang?: Lang }) {
                                             id="company"
                                             name="company"
                                             placeholder={t.companyPlaceholder}
-                                            className="h-12 rounded-xl border-line text-base focus:border-coral"
+                                            className="h-12 rounded-xl border-line text-[16px] text-ink focus:border-coral"
                                         />
                                     </div>
                                 </div>
@@ -273,7 +273,7 @@ export function ContactForm({ lang = "ja" }: { lang?: Lang }) {
                                         type="email"
                                         required
                                         placeholder={t.emailPlaceholder}
-                                        className="h-12 rounded-xl border-line text-base focus:border-coral"
+                                        className="h-12 rounded-xl border-line text-[16px] text-ink focus:border-coral"
                                     />
                                 </div>
 
@@ -287,7 +287,7 @@ export function ContactForm({ lang = "ja" }: { lang?: Lang }) {
                                         name="url"
                                         type="url"
                                         placeholder={t.urlPlaceholder}
-                                        className="h-12 rounded-xl border-line text-base focus:border-coral"
+                                        className="h-12 rounded-xl border-line text-[16px] text-ink focus:border-coral"
                                     />
                                 </div>
 
@@ -300,7 +300,7 @@ export function ContactForm({ lang = "ja" }: { lang?: Lang }) {
                                         id="message"
                                         name="message"
                                         placeholder={t.messagePlaceholder}
-                                        className="min-h-28 resize-y rounded-xl border-line text-base focus:border-coral"
+                                        className="min-h-28 resize-y rounded-xl border-line text-[16px] text-ink focus:border-coral"
                                     />
                                 </div>
 
@@ -331,7 +331,7 @@ export function ContactForm({ lang = "ja" }: { lang?: Lang }) {
                                     {t.privacyNote}
                                 </p>
 
-                                <p className="text-center text-xs text-ink-faint">{t.noSolicitation}</p>
+                                <p className="text-center text-xs text-ink-sub">{t.noSolicitation}</p>
                             </form>
                         )}
                     </div>

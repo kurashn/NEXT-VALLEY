@@ -22,6 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '',
         '/shindan',
         '/preview',
+        '/price',
         '/contact',
         '/blog',
         '/company',
@@ -31,6 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         // English
         '/en',
         '/en/preview',
+        '/en/price',
         '/en/shindan',
         '/en/contact',
         '/en/company',

@@ -13,7 +13,7 @@ export function Maintenance() {
                     <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
                         ただいまメンテナンス中です
                     </h1>
-                    <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                    <p className="text-muted-foreground text-sm sm:text-[16px] leading-relaxed">
                         より良いサービスをご提供するため、<br className="hidden sm:block" />
                         システムのアップデートを行っております。
                     </p>

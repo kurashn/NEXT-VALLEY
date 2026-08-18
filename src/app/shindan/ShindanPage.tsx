@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { SerifHeading } from "@/components/ui/SerifHeading";
 import { ShindanTool } from "@/components/ShindanTool";
 import { langAttr, type Lang } from "@/i18n";
+import { shindanJsonLd } from "@/lib/jsonld";
 
 const ja = {
     h1: "Web集客セルフ診断（無料・3分）",
@@ -45,6 +46,10 @@ export function ShindanPage({ lang = "ja" }: { lang?: Lang }) {
     const t = copy[lang];
     return (
         <main className="min-h-screen bg-base text-ink" {...langAttr(lang)}>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(shindanJsonLd(lang)) }}
+            />
             <Navbar lang={lang} />
             <section className="px-4 pb-16 pt-32 md:px-6 md:pb-24 md:pt-36">
                 <div className="mx-auto max-w-3xl">

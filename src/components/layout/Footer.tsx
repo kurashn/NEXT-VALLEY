@@ -11,7 +11,7 @@ const copy = {
             { name: "サービス", href: "/#service" },
             { name: "制作実績", href: "/#works" },
             { name: "私たちの強み", href: "/#reason" },
-            { name: "料金", href: "/#price" },
+            { name: "料金", href: "/price" },
             { name: "ご依頼の流れ", href: "/#flow" },
         ],
         contentLinks: [
@@ -42,7 +42,7 @@ const copy = {
             { name: "Services", href: "/#service" },
             { name: "Our Work", href: "/#works" },
             { name: "Why Us", href: "/#reason" },
-            { name: "Pricing", href: "/#price" },
+            { name: "Pricing", href: "/price" },
             { name: "How It Works", href: "/#flow" },
         ],
         contentLinks: [

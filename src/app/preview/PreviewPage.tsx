@@ -7,6 +7,7 @@ import { PreviewApply } from "./PreviewApply";
 import { StickyApply } from "./StickyApply";
 import { previewCopy, REMAINING_SLOTS, TOTAL_SLOTS, type PreviewCopy } from "./copy";
 import { withLang, langAttr, type Lang } from "@/i18n";
+import { previewJsonLd } from "@/lib/jsonld";
 import logo from "@/images/logo-new.png";
 import shun from "@/images/shun-new.webp";
 import fvPhoto from "@/images/preview-fv-laptop.webp"; // Unsplash（商用利用可）: 机の上のノートPC（人物なし）
@@ -88,6 +89,10 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
     const t = previewCopy[lang];
     return (
         <main {...langAttr(lang)} className={`lp-root ${lpSans.variable} ${lpSerif.variable} min-h-screen bg-base text-ink`}>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(previewJsonLd(lang, t.faq.items)) }}
+            />
             {/* ヘッダー（ナビなし・ゴールを1つに） */}
             <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/5 bg-navy-deep/85 backdrop-blur-md">
                 <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-20 md:px-6">
