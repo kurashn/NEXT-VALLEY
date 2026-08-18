@@ -1,12 +1,15 @@
-優先度,事業者名,業種,エリア,メールアドレス,URL,同業実績,接触状況
-A,Y's Dance Company,バレエ教室,さいたま市浦和区,ysdancecom@gmail.com,https://www.ys-dance.jp/,Tulip Ballet Studio様,未
-A,STUDIO PLUM,ダンススタジオ,さいたま市北区,studio.plum8668@gmail.com,https://nmqea.hp.peraichi.com/studio.plum/,Colours Musical Studio様・DANCE STUDIO PLUS様,未
-A,ダンススタジオ スクービードゥー,ダンススタジオ,越谷市蒲生,hub-sum-fun@nifty.com,https://www.ds-scooby-doo.com/,Colours Musical Studio様・DANCE STUDIO PLUS様,未
-A,メーデルランド,幼児教室,さいたま市（武蔵浦和）,maydell.land@gmail.com,https://maydell-land.crayonsite.net/,まや子どもの家様,未
-A,sweets myu,シフォンケーキ教室,さいたま市緑区,tosatamam@yahoo.co.jp,https://sweetsmyupro.hp.peraichi.com/,―（単価36万円で予算あり）,未
-B,FITNESS STUDIO i,ジュニアフィジカル,吉川市,fitnesssaloni2022@gmail.com,https://yoshikawasaitama.hp.peraichi.com/,パーソナルジムMe様,未
-B,のざお書道教室,書道教室,浦和・武蔵浦和・大宮,nozaocalligraphyschool@gmail.com,https://nozaocalligraphyschool.com/,―,未
-B,やまさきピアノスクール,ピアノ教室,さいたま市見沼区,yamasaki_piano_school@yahoo.co.jp,https://ameblo.jp/yamasakipiano/,Rythmique Garden様,未
-B,長浜ピアノ教室,ピアノ教室,加須市,nagahama.piano@gmail.com,https://ameblo.jp/nagahamapiano/,Rythmique Garden様,未
-B,Salon de GIGI,ポーセラーツ教室,さいたま市浦和区・与野,lilsis.porce@gmail.com,https://ameblo.jp/lilgigi/,―,未
-C,SHUTTLE KIDS,バドミントンチーム,久喜市・春日部市ほか,shuttlekids.saitama@gmail.com,https://shuttlekids.hp.peraichi.com/saitama/,―,未
+接触状況,送信日,事業者名,業種,エリア,メールアドレス,URL,同業実績
+送信済み,2026-08-17,Y's Dance Company,バレエ教室,さいたま市浦和区,ysdancecom@gmail.com,https://www.ys-dance.jp/,Tulip Ballet Studio様
+送信済み,2026-08-17,STUDIO PLUM,ダンススタジオ,さいたま市北区,studio.plum8668@gmail.com,https://nmqea.hp.peraichi.com/studio.plum/,Colours Musical Studio様・DANCE STUDIO PLUS様
+送信済み,2026-08-17,ダンススタジオ スクービードゥー,ダンススタジオ,越谷市蒲生,hub-sum-fun@nifty.com,https://www.ds-scooby-doo.com/,Colours Musical Studio様・DANCE STUDIO PLUS様
+送信済み,2026-08-17,メーデルランド,幼児教室,さいたま市（武蔵浦和）,maydell.land@gmail.com,https://maydell-land.crayonsite.net/,まや子どもの家様
+送信済み,2026-08-17,sweets myu,シフォンケーキ教室,さいたま市緑区,tosatamam@yahoo.co.jp,https://sweetsmyupro.hp.peraichi.com/,―（単価36万円で予算あり）
+送信済み,2026-08-17,クレアイングリッシュスクール,子ども英語,さいたま市,ces2008@jcom.home.ne.jp,https://claire-english.com/,Yuma English House様
+送信済み,2026-08-17,Dave and Amy English School,子ども英会話（ネイティブ）,南浦和・浦和・北浦和・北与野,daveandamyenglish@gmail.com,https://www.daveandamyenglish.com/,Yuma English House様
+未送信,,FITNESS STUDIO i,ジュニアフィジカル,吉川市,fitnesssaloni2022@gmail.com,https://yoshikawasaitama.hp.peraichi.com/,パーソナルジムMe様
+未送信,,のざお書道教室,書道教室,浦和・武蔵浦和・大宮,nozaocalligraphyschool@gmail.com,https://nozaocalligraphyschool.com/,―
+未送信,,SHUTTLE KIDS,バドミントンチーム,久喜市・春日部市ほか,shuttlekids.saitama@gmail.com,https://shuttlekids.hp.peraichi.com/saitama/,―（保護者会運営の可能性）
+除外,,やまさきピアノスクール,ピアノ教室,さいたま市見沼区,yamasaki_piano_school@yahoo.co.jp,https://ameblo.jp/yamasakipiano/,アメブロのため除外
+除外,,長浜ピアノ教室,ピアノ教室,加須市,nagahama.piano@gmail.com,https://ameblo.jp/nagahamapiano/,アメブロのため除外
+除外,,Salon de GIGI,ポーセラーツ教室,さいたま市浦和区・与野,lilsis.porce@gmail.com,https://ameblo.jp/lilgigi/,アメブロのため除外
+除外,,ACE English School,幼児・子ども英会話,さいたま市西区,,https://ace-english.jp.net/,メールが example@ のまま
