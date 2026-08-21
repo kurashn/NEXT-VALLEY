@@ -2,7 +2,7 @@
 
 // sample/fv-sankou.png のナビ再現: 深い紺地・白リンク・コーラルの角丸ボタン
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { Menu, X, ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -44,6 +44,14 @@ const copy = {
 
 export default function Navbar({ lang = "ja" }: { lang?: Lang }) {
   const t = copy[lang];
+  // スクロールしたら影を落として浮かせる（ページ先頭ではフラット）
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   // PCナビは xl(1280px) から（lg 幅ではリンク＋CTA＋言語切替が収まらないため、それ未満はハンバーガー）
   const deskNav = "hidden items-center gap-5 xl:flex 2xl:gap-7";
   const deskCta = "xl:inline-flex";
@@ -73,7 +81,7 @@ export default function Navbar({ lang = "ja" }: { lang?: Lang }) {
   };
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 bg-navy-deep">
+    <nav className={`fixed left-0 right-0 top-0 z-50 bg-navy-deep transition-shadow duration-500 ${scrolled ? "shadow-[0_10px_36px_rgba(2,10,18,0.45)]" : ""}`}>
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex h-20 items-center justify-between gap-4 xl:gap-6">
           {/* ロゴ */}
@@ -107,7 +115,7 @@ export default function Navbar({ lang = "ja" }: { lang?: Lang }) {
             href="https://lin.ee/N4QXdJL"
             target="_blank"
             rel="noopener noreferrer"
-            className={`hidden h-12 shrink-0 items-center gap-3 whitespace-nowrap rounded-lg bg-coral-deep px-6 text-sm font-bold text-white transition-opacity hover:opacity-90 ${deskCta}`}
+            className={`btn-sheen hidden h-12 shrink-0 items-center gap-3 whitespace-nowrap rounded-lg bg-coral-deep px-6 text-sm font-bold text-white transition-opacity hover:opacity-90 ${deskCta}`}
           >
             {t.cta}
             <ArrowRight className="h-4 w-4" />

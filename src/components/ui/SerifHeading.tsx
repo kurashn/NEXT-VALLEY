@@ -2,6 +2,7 @@
 // セリフの英字＋縦罫線＋コーラルのJPラベル。ゴースト英字も同梱
 
 import React from "react";
+import { InView } from "./InView";
 
 export const serif = "Georgia, 'Times New Roman', 'Hiragino Mincho ProN', 'Yu Mincho', serif";
 
@@ -10,25 +11,31 @@ const letterColors = ["#2e7f92", "#b8452f", "#b07d1a", "#1a1a1a"];
 
 export function SerifHeading({ en, jp, dark = false }: { en: string; jp: string; dark?: boolean }) {
     return (
-        <div className="mb-10 flex items-center gap-4 md:mb-14 md:gap-6">
+        <InView className="mb-10 flex items-center gap-4 md:mb-14 md:gap-6">
             <p
                 aria-label={en}
-                className={`text-[clamp(3rem,7.5vw,5.5rem)] font-bold leading-none ${dark ? "text-white" : ""}`}
+                className={`sh-letters text-[clamp(3rem,7.5vw,5.5rem)] font-bold leading-none ${dark ? "text-white" : ""}`}
                 style={{ fontFamily: serif }}
             >
-                {dark
-                    ? en
-                    : en.split("").map((ch, i) => (
-                          <span key={i} aria-hidden style={{ color: letterColors[i % letterColors.length] }}>
-                              {ch}
-                          </span>
-                      ))}
+                {dark ? (
+                    <span className="sh-word">{en}</span>
+                ) : (
+                    en.split("").map((ch, i) => (
+                        <span
+                            key={i}
+                            aria-hidden
+                            style={{ color: letterColors[i % letterColors.length], "--d": `${i * 0.05}s` } as React.CSSProperties}
+                        >
+                            {ch}
+                        </span>
+                    ))
+                )}
             </p>
-            <span aria-hidden className={`block h-12 w-px md:h-14 ${dark ? "bg-white/30" : "bg-ink-faint/60"}`} />
-            <p className={`whitespace-nowrap text-[13px] font-bold md:text-[15px] tracking-[0.15em] ${dark ? "text-coral" : "text-coral-deep"}`}>
+            <span aria-hidden className={`sh-line block h-12 w-px md:h-14 ${dark ? "bg-white/30" : "bg-ink-faint/60"}`} />
+            <p className={`sh-jp whitespace-nowrap text-[13px] font-bold md:text-[15px] tracking-[0.15em] ${dark ? "text-coral" : "text-coral-deep"}`}>
                 {jp}
             </p>
-        </div>
+        </InView>
     );
 }
 

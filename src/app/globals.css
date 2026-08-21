@@ -248,6 +248,84 @@
   padding-top: var(--diag);
 }
 
+/* ── モーション基盤（2026-08 モダン化）──────────────────────
+   言語: expo-out系イージング・マスクからの立ち上がり・線が「引かれる」。
+   すべて transform/opacity/小面積filter のみ（コンポジタ完結）。 */
+
+/* ヒーロー写真: 入場時のスロー・ズーム（Ken Burns） */
+@keyframes hero-photo-in {
+  from { transform: scale(1.07); }
+  to   { transform: scale(1); }
+}
+.hero-photo-in { animation: hero-photo-in 2.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* ヒーローの帯文字: トラッキングが締まりながら現れる */
+@keyframes eyebrow-in {
+  from { opacity: 0; letter-spacing: 0.55em; }
+  to   { opacity: 1; letter-spacing: 0.3em; }
+}
+.eyebrow-in { animation: eyebrow-in 1.2s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* セクション見出し（SerifHeading）: 文字が1字ずつ浮かび上がる。
+   .is-inview は InView（IntersectionObserver）が付与する */
+.sh-letters span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.55em);
+  filter: blur(6px);
+  transition:
+    opacity 0.55s ease var(--d, 0s),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s),
+    filter 0.6s ease var(--d, 0s);
+}
+.is-inview .sh-letters span { opacity: 1; transform: none; filter: none; }
+
+/* 縦罫線が上から引かれる */
+.sh-line { transform: scaleY(0); transform-origin: top; transition: transform 0.9s 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
+.is-inview .sh-line { transform: scaleY(1); }
+
+/* 日本語ラベルが罫線の後に続く */
+.sh-jp { opacity: 0; transform: translateX(-12px); transition: opacity 0.6s 0.5s ease, transform 0.7s 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.is-inview .sh-jp { opacity: 1; transform: none; }
+
+/* ダーク版（1色表示）: 単語ごとマスクから立ち上がる */
+.sh-word { display: inline-block; opacity: 0; transform: translateY(0.5em); transition: opacity 0.6s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1); }
+.is-inview .sh-word { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo-in, .eyebrow-in { animation: none; }
+  .sh-letters span, .sh-line, .sh-jp, .sh-word { transition: none; opacity: 1; transform: none; filter: none; }
+}
+
+/* 主要CTA: ホバーで光沢が走る＋押下でわずかに沈む */
+.btn-sheen { position: relative; overflow: hidden; }
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  transform: translateX(-130%) skewX(-18deg);
+  background: linear-gradient(105deg, transparent 32%, rgba(255, 255, 255, 0.38) 50%, transparent 68%);
+  pointer-events: none;
+}
+.btn-sheen:hover::after { transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1); transform: translateX(130%) skewX(-18deg); }
+.btn-sheen:active { transform: scale(0.985); }
+@media (prefers-reduced-motion: reduce) {
+  .btn-sheen::after { display: none; }
+}
+
+/* FAQ（details/summary）: 高さがなめらかに開閉（対応ブラウザのみ。非対応は従来どおり即時） */
+@supports (interpolate-size: allow-keywords) {
+  @media (prefers-reduced-motion: no-preference) {
+    main details { interpolate-size: allow-keywords; }
+    main details::details-content {
+      block-size: 0;
+      overflow-y: clip;
+      transition: block-size 0.45s cubic-bezier(0.22, 1, 0.36, 1), content-visibility 0.45s allow-discrete;
+    }
+    main details[open]::details-content { block-size: auto; }
+  }
+}
+
 /* エンブレムのグロー明滅（PROBLEMバナー） */
 @keyframes glow-pulse {
   0%, 100% { box-shadow: 0 0 40px rgba(226, 108, 92, 0.3), inset 0 0 24px rgba(226, 108, 92, 0.1); }

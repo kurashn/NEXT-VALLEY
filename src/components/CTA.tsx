@@ -88,7 +88,7 @@ export function CTA({ lang = "ja" }: { lang?: Lang }) {
                                 href="https://lin.ee/N4QXdJL"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex h-16 items-center justify-center gap-2.5 rounded-full bg-[#05a247] px-8 text-[19px] font-bold text-white shadow-[0_12px_28px_rgba(5,162,71,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(5,162,71,0.45)] sm:flex-1"
+                                className="btn-sheen inline-flex h-16 items-center justify-center gap-2.5 rounded-full bg-[#05a247] px-8 text-[19px] font-bold text-white shadow-[0_12px_28px_rgba(5,162,71,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(5,162,71,0.45)] sm:flex-1"
                             >
                                 <MessageCircle className="h-6 w-6" aria-hidden />
                                 {t.lineBtn}

@@ -33,7 +33,7 @@ function LineButton({ t, className = "" }: { t: PreviewCopy; className?: string 
     return (
         <a
             href="#apply"
-            className={`lp-cta group inline-flex h-16 w-full max-w-md items-center justify-center gap-3 rounded-full bg-coral-deep px-6 text-[17px] font-bold text-white shadow-cta transition-all duration-300 hover:-translate-y-0.5 sm:w-auto sm:max-w-none sm:px-9 ${className}`}
+            className={`lp-cta btn-sheen group inline-flex h-16 w-full max-w-md items-center justify-center gap-3 rounded-full bg-coral-deep px-6 text-[17px] font-bold text-white shadow-cta transition-all duration-300 hover:-translate-y-0.5 sm:w-auto sm:max-w-none sm:px-9 ${className}`}
         >
             <span className="whitespace-nowrap">{t.lineButton}</span>
             <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />

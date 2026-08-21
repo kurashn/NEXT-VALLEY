@@ -12,9 +12,8 @@ import { withLang, type Lang } from "@/i18n";
 const ja = {
     h1: (
         <>
-            AIで、売上と業務を
-            <br />
-            根本から変える。
+            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>AIで、売上と業務を</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>根本から変える。</span></span>
         </>
     ),
     lead: (
@@ -39,9 +38,8 @@ const ja = {
 const en: typeof ja = {
     h1: (
         <>
-            Grow your business.
-            <br />
-            Powered by AI.
+            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>Grow your business.</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>Powered by AI.</span></span>
         </>
     ),
     lead: (
@@ -79,7 +77,7 @@ export default function Hero({ lang = "ja" }: { lang?: Lang }) {
                     alt=""
                     fill
                     priority
-                    className="object-cover object-center opacity-45 md:opacity-95"
+                    className="hero-photo-in object-cover object-center opacity-45 md:opacity-95"
                     placeholder="blur"
                     sizes="(max-width: 768px) 100vw, 62vw"
                 />
@@ -87,33 +85,29 @@ export default function Hero({ lang = "ja" }: { lang?: Lang }) {
 
             {/* 左カラムのコピー */}
             <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 items-center px-4 md:px-6">
-                <div className="max-w-3xl py-16">
-                    <FadeIn>
-                        <p className="mb-8 text-[13px] font-bold tracking-[0.3em] text-coral">
-                            AI &times; MARKETING &times; PRODUCTION
-                        </p>
-                    </FadeIn>
+                <div className="hero-scroll-out max-w-3xl py-16">
+                    <p className="eyebrow-in mb-8 text-[13px] font-bold tracking-[0.3em] text-coral">
+                        AI &times; MARKETING &times; PRODUCTION
+                    </p>
 
-                    <FadeIn delay={0.1}>
-                        <h1 className="mb-8 text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.35] tracking-tight text-white">
-                            {t.h1}
-                        </h1>
-                    </FadeIn>
+                    <h1 className="mb-8 text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.35] tracking-tight text-white">
+                        {t.h1}
+                    </h1>
 
-                    <FadeIn delay={0.2}>
+                    <FadeIn delay={0.4}>
                         <p className="lead mb-12 text-base leading-[2] text-navy-sub md:text-lg">
                             {t.lead}
                         </p>
                     </FadeIn>
 
-                    <FadeIn delay={0.3}>
+                    <FadeIn delay={0.55}>
                         <div className="flex flex-col gap-4 sm:flex-row sm:items-stretch">
                             {/* サイトがある方 → 無料診断 */}
                             <a
                                 href="https://lin.ee/N4QXdJL"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group flex flex-col justify-center rounded-lg bg-coral px-7 py-4 text-white transition-opacity hover:opacity-90"
+                                className="btn-sheen group flex flex-col justify-center rounded-lg bg-coral px-7 py-4 text-white transition-opacity hover:opacity-90"
                             >
                                 <span className="text-[11px] font-bold tracking-[0.2em] text-white/80">{t.cta1Label}</span>
                                 <span className="inline-flex items-center gap-3 text-[19px] font-bold">
