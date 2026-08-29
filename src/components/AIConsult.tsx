@@ -600,7 +600,7 @@ const sectionJa = {
         cta: "AIに無料で相談する",
         note: "所要5〜10分・ご自身のAIアカウントで",
     },
-    footnote: "※ AI課題整理はNEXT VALLEYのチャットボットではありません。会話はあなたとAIの間だけで完結し、内容がNEXT VALLEYに自動で送られることはありません（送るかどうかは、あなたが決められます）。",
+    footnote: <>※ AI課題整理はNEXT VALLEYのチャットボットではありません。<br />会話はあなたとAIの間だけで完結し、内容がNEXT VALLEYに自動で送られることはありません（送るかどうかは、あなたが決められます）。</>,
 };
 const sectionEn: typeof sectionJa = {
     eyebrow: "SELF CHECK",
@@ -626,7 +626,7 @@ const sectionEn: typeof sectionJa = {
         cta: "Talk it through with AI, free",
         note: "Takes 5–10 minutes, using your own AI account",
     },
-    footnote: "Note: The AI assessment is not a NEXT VALLEY chatbot. The conversation stays between you and your AI, and nothing is sent to NEXT VALLEY automatically. Whether to share it is entirely up to you.",
+    footnote: <>Note: The AI assessment is not a NEXT VALLEY chatbot. The conversation stays between you and your AI, and nothing is sent to NEXT VALLEY automatically. Whether to share it is entirely up to you.</>,
 };
 const sectionCopy: Record<Lang, typeof sectionJa> = { ja: sectionJa, en: sectionEn };
 

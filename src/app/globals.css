@@ -505,3 +505,82 @@ section[id], div[id] { scroll-margin-top: 96px; }
     @apply leading-relaxed tracking-normal;
   }
 }
+/* ══ 金継ぎ追補スタイル（NEXT VALLEY トップ・写しへの修理デモ・2026-08-28）══
+   元の規則と同じセレクタで後から上書きする。:root の変数は触らない。本体は無改変。
+   1巡目=naoshi自動処方（文字段・角丸・似て非なる色）を役割で整理して手仕事で集約 */
+
+/* ── 1. 低コントラスト（破れ）: ヒーロー主CTAの小ラベル 文字#F9E2DE/地#E26C5C 比2.59 ──
+   地をヘッダーボタンと同じ既存色 coral-deep(#B8452F) に揃え、文字は不透明の白へ（新色は発明しない） */
+a.btn-sheen.bg-coral { background-color: var(--color-coral-deep); }
+a.btn-sheen .text-white\/80, a.btn-sheen .text-white\/70 { color: #ffffff; }
+
+/* ── 2. 文字サイズ 役割内の割れ ──
+   本文: 補足14 / 本文16 / 表示用の数字・欧文題は残す（役割が違う）
+   極小文字 11px×22件 → 14px（12px以上・補足の段へ） */
+.text-\[11px\] { font-size: 14px; }
+.text-\[12px\] { font-size: 14px; }
+.text-\[13px\] { font-size: 14px; }
+.text-xs      { font-size: 14px; }
+.text-\[15px\] { font-size: 16px; }
+.text-lg      { font-size: 16px; }
+.text-\[19px\] { font-size: 19px; }
+.text-4xl     { font-size: 40px; }   /* 36→40 数字の表示段を1本に */
+.text-5xl     { font-size: 48px; }   /* 60→48 */
+@media (min-width: 48rem) {
+  .md\:text-\[15px\] { font-size: 16px; }
+  .md\:text-\[17px\] { font-size: 16px; }
+  .md\:text-lg  { font-size: 16px; }
+  .md\:text-6xl { font-size: 48px; }
+  .md\:text-5xl { font-size: 48px; }
+}
+/* h3 を2段へ: 小見出し20px / 節の見出し clamp(1.5rem,2.6vw,2rem) */
+h3.text-base, h3.text-lg, h3.text-xl { font-size: 20px; }
+h3.text-2xl,
+h3.text-\[clamp\(1\.375rem\,2\.6vw\,2rem\)\],
+h3.text-\[clamp\(1\.625rem\,4vw\,2\.75rem\)\],
+h3.text-\[clamp\(1\.5rem\,3\.2vw\,2\.25rem\)\] { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+@media (min-width: 48rem) {
+  h3.md\:text-lg, h3.md\:text-xl { font-size: 20px; }
+  h3.md\:text-\[28px\] { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+}
+/* ボタンを2段へ: 14 / 19 */
+a.group.text-\[15px\], a.flex.text-xs { font-size: 14px; }
+
+/* ── 3. 角丸 7種→3種（12=ボタン・20=面・999=丸） ── */
+.rounded-md { border-radius: 12px; }
+.rounded-2xl, .rounded-\[24px\], .rounded-\[28px\] { border-radius: 20px; }
+.rounded-r-xl { border-radius: 0 20px 20px 0; }
+.rounded-l-xl { border-radius: 20px 0 0 20px; }
+.rounded-bl-xl { border-radius: 0 0 0 20px; }
+
+/* ── 4. 似て非なる色（役割のある色は統合しない） ──
+   #002335(navy)→#041627(navy-deep): 同じ紺の2本を1本に。#F4EFE8→#F3F1EC: 節の生成りを1本に。
+   #FFFFFF / #F3F1EC の節の地（セクションの拍）と #E5E5E5 の罫線は役割色として残す */
+.text-navy { color: var(--color-navy-deep); }
+.bg-navy   { background-color: var(--color-navy-deep); }
+.bg-\[\#f4efe8\] { background-color: #f3f1ec; }
+
+/* ── 5. 読みやすさの補助: カタカナ語の泣き別れ（word-break:auto-phrase）は、本文の両端揃えと組み合わさると文字間が伸びるため本体では不採用 ── */
+
+/* ── 6. 2巡目（再計測の結果から） ── */
+/* ボタンの段: 「AIに無料で相談する」をボタンの標準14pxへ／価格帯の「おすすめ」札は「その他」の16pxへ */
+button.group { font-size: 14px; }
+span.absolute.text-\[13px\] { font-size: 16px; }
+/* 本文の表示段: 数字の40px（text-4xl）と白い一文の40pxを48pxの1段へ */
+.text-4xl { font-size: 48px; }
+p.text-\[clamp\(1\.1875rem\,3\.4vw\,2\.5rem\)\] { font-size: clamp(1.5rem, 3.75vw, 3rem); }
+/* ヒーロー写真の上の文字（画素検査で床割れ・768/390幅）: 狭い幅では写真が文字の下まで回り込むので、写真の濃さを落として文字を立てる */
+@media (max-width: 1279.98px) { .hero-photo-in { opacity: .35 !important; } }
+@media (max-width: 767.98px)  { .hero-photo-in { opacity: .2 !important; } }
+
+/* ── 7. 3巡目 ── */
+/* 390幅のヒーロー小見出し（coral）が写真の明部で比4.12→写真をさらに落とす */
+@media (max-width: 767.98px)  { .hero-photo-in { opacity: .1 !important; } }
+/* 1024未満では白い一文を24px（数字札と同じ段）に */
+@media (max-width: 1023.98px) { p.text-\[clamp\(1\.1875rem\,3\.4vw\,2\.5rem\)\] { font-size: 24px; } }
+/* 768幅の詰まり: ご依頼の流れ（4段の横並び→1段96px幅・7字/行）は1024未満で2×2に。Message（写真と文の2列→文が232px幅）は1024未満で縦積みに */
+@media (max-width: 1023.98px) {
+  ol.flex.flex-col.items-stretch.gap-3 { flex-wrap: wrap; }
+  ol.flex.flex-col.items-stretch.gap-3 > li { flex: 1 1 45%; }
+  div.flex.flex-col.gap-8.rounded-2xl.bg-white { flex-direction: column; }
+}

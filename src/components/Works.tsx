@@ -53,21 +53,21 @@ const ja = {
             name: "Tulip Ballet Studio様",
             label: "教育・スクール",
             review: (
-                <>非常に丁寧に、かつ、希望どおり作成していただきました！ウェブ関係はまったくわからず、毎回質問したりしていましたが、いつも丁寧に優しく答えてくださいました。また、様々な提案もしてくださり、想像以上の素敵なホームページを作成していただきました。依頼して本当に良かったと実感して<span className="nowrap">おります。</span></>
+                <><p>非常に丁寧に、かつ、希望どおり作成していただきました！ウェブ関係はまったくわからず、毎回質問したりしていましたが、いつも丁寧に優しく答えてくださいました。</p><p>また、様々な提案もしてくださり、想像以上の素敵なホームページを作成していただきました。依頼して本当に良かったと実感して<span className="nowrap">おります。</span></p></>
             ),
         },
         {
             name: "Rythmique Garden様",
             label: "教育・スクール",
             review: (
-                <>初めてのホームページ作成で、何も分からずほぼ全てお任せだったのですが、一つ一つ、丁寧に教えてくださいました。また、様々な提案もしてくださり、想像以上の素敵なホームページを作成していただきました。依頼して本当に良かったと実感して<span className="nowrap">おります。</span></>
+                <><p>初めてのホームページ作成で、何も分からずほぼ全てお任せだったのですが、一つ一つ、丁寧に教えてくださいました。</p><p>また、様々な提案もしてくださり、想像以上の素敵なホームページを作成していただきました。依頼して本当に良かったと実感して<span className="nowrap">おります。</span></p></>
             ),
         },
         {
             name: "Yuma English House様",
             label: "教育・スクール",
             review: (
-                <>英語教室のホームページと、英検対策コースのページの2つを制作していただきました。それぞれ見ていただきたい方が違うので、分けて作るというご提案はとてもありがたかったです。お問い合わせの内容が具体的になり、ご案内もしやすく<span className="nowrap">なりました。</span></>
+                <><p>英語教室のホームページと、英検対策コースのページの2つを制作していただきました。</p><p>それぞれ見ていただきたい方が違うので、分けて作るというご提案はとてもありがたかったです。お問い合わせの内容が具体的になり、ご案内もしやすく<span className="nowrap">なりました。</span></p></>
             ),
         },
     ] as FeaturedCopy[],
@@ -181,9 +181,9 @@ export function Works({ lang = "ja" }: { lang?: Lang }) {
                                         </span>
                                     </p>
                                     <h3 className="mb-4 text-lg font-bold text-ink">{work.name}</h3>
-                                    <p className="flex-1 text-sm leading-[2] text-ink-sub">
+                                    <div className="flex-1 text-sm leading-[2] text-ink-sub [&>p]:leading-[2] [&>p+p]:mt-3">
                                         {work.review ?? work.caption}
-                                    </p>
+                                    </div>
                                 </div>
                             </article>
                         </FadeIn>
