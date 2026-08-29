@@ -316,11 +316,11 @@ const ja = {
     services: [
         {
             title: <>AI活用コンサルティング</>,
-            body: <>「AIで業務を効率化したいが、何から始めればいいか分からない」という方へ。自社の制作現場でAIを日常的に使い倒しているからこそ、机上の空論ではない導入支援ができます。ツールの選定・活用研修から業務フローの<span className="nowrap">設計まで。</span></>,
+            body: <><p>「AIで業務を効率化したいが、何から始めればいいか分からない」という方へ。</p><p>自社の制作現場でAIを日常的に使い倒しているからこそ、机上の空論ではない導入支援ができます。ツールの選定・活用研修から業務フローの<span className="nowrap">設計まで。</span></p></>,
         },
         {
             title: <>HP・LP制作</>,
-            body: <>「誰に、何を、どう届けるか」から設計するホームページ・ランディングページ。デザインの好みではなく、成果から逆算して作ります。<strong className="font-bold text-ink">HP・LPの制作のみのご依頼も歓迎です。</strong> これから作る方は、<a href={withLang("ja", "/preview")} className="font-bold text-coral-deep underline underline-offset-4">無料プレビュー</a>で先にデザインをご覧いただけます。</>,
+            body: <><p>「誰に、何を、どう届けるか」から設計するホームページ・ランディングページ。デザインの好みではなく、成果から逆算して作ります。</p><p><strong className="font-bold text-ink">HP・LPの制作のみのご依頼も歓迎です。</strong> これから作る方は、<a href={withLang("ja", "/preview")} className="font-bold text-coral-deep underline underline-offset-4">無料プレビュー</a>で先にデザインをご覧いただけます。</p></>,
         },
         {
             title: <>SEO・MEO集客</>,
@@ -336,7 +336,7 @@ const ja = {
         },
         {
             title: <>HP運用ツール<span className="nowrap">『SiteChat』</span></>,
-            body: <>公開中のホームページを、チャットで指示するだけで安全に修正できる自社開発ツール。AIが修正案を作り、あなたの承認なしに公開されることはありません。※現在はご希望のお客様にのみ<span className="nowrap">ご案内しています。</span></>,
+            body: <><p>公開中のホームページを、チャットで指示するだけで安全に修正できる自社開発ツール。AIが修正案を作り、あなたの承認なしに公開されることはありません。</p><p>※現在はご希望のお客様にのみ<span className="nowrap">ご案内しています。</span></p></>,
         },
     ],
 };
@@ -427,7 +427,7 @@ export function Service({ lang = "ja" }: { lang?: Lang }) {
                                             {s.title}
                                         </h3>
                                         <span aria-hidden className="mb-5 block h-0.5 w-8 bg-coral" />
-                                        <p className="text-sm leading-[2] text-ink-sub">{s.body}</p>
+                                        <div className="text-sm leading-[2] text-ink-sub [&>p]:leading-[2] [&>p+p]:mt-3">{s.body}</div>
                                     </div>
                                     {/* イラスト */}
                                     <div

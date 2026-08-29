@@ -13,7 +13,7 @@ export const faqs: FaqItem[] = [
         q: "本当に効果は出ますか？",
         a: "「必ず出ます」とは言いません。代わりに、ご提案の段階で「何を・どの順番で・どの数字を目標にやるか」を具体的に示します。公開後は毎月数字を報告するので、効果が出ているかどうかをあいまいにしません。",
         aNode: (
-            <>「必ず出ます」とは言いません。代わりに、ご提案の段階で「何を・どの順番で・どの数字を目標にやるか」を具体的に示します。公開後は毎月数字を報告するので、効果が出ているかどうかをあいまいに<span className="nowrap">しません。</span></>
+            <><p>「必ず出ます」とは言いません。代わりに、ご提案の段階で「何を・どの順番で・どの数字を目標にやるか」を具体的に示します。</p><p className="mt-3">公開後は毎月数字を報告するので、効果が出ているかどうかをあいまいに<span className="nowrap">しません。</span></p></>
         ),
     },
     {
@@ -111,9 +111,9 @@ export function FAQ({ lang = "ja" }: { lang?: Lang }) {
                                         ＋
                                     </span>
                                 </summary>
-                                <p className="pb-6 text-[15px] leading-[2] text-ink-sub">
+                                <div className="pb-6 text-[15px] leading-[2] text-ink-sub [&>p]:leading-[2]">
                                     {faq.aNode ?? faq.a}
-                                </p>
+                                </div>
                             </details>
                         ))}
                     </div>
