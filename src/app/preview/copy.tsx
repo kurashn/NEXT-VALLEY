@@ -199,10 +199,10 @@ const ja = {
             </>
         ),
         prices: [
-            { k: "教室ページ制作（1枚完結）", num: "¥55,000", suffix: "〜" },
+            { k: "集客ページ制作（1枚完結）", num: "¥55,000", suffix: "〜" },
             { k: "ホームページ制作", num: "¥165,000", suffix: "〜" },
         ] as Price[],
-        priceNote: "税込目安。ホームページ制作はお店・法人向け。集客サポートは月¥22,000〜",
+        priceNote: "税込目安。ホームページ制作は複数ページの場合。集客サポートは月¥22,000〜",
     },
     promises: {
         label: "3つの約束",
@@ -477,7 +477,7 @@ const en: typeof ja = {
             { k: "One-page site", prefix: "from ", num: "¥55,000" },
             { k: "Website", prefix: "from ", num: "¥165,000" },
         ],
-        priceNote: "Approximate, tax included. Websites are for shops and companies. Growth support from ¥22,000/mo.",
+        priceNote: "Approximate, tax included. Website = multi-page. Growth support from ¥22,000/mo.",
     },
     promises: {
         label: "THREE PROMISES",

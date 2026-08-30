@@ -122,12 +122,12 @@ export function priceMetadata(lang: Lang): Metadata {
     return {
         title: "料金｜ホームページ制作・Web集客の費用",
         description:
-            "教室ページ制作 ¥55,000〜、ホームページ制作 ¥165,000〜、集客サポート 月¥22,000〜の料金目安。金額を左右する4つの要素、追加料金の考え方、お見積もりまでの流れを解説します。ご提案・お見積もりは無料です。",
+            "集客ページ制作 ¥55,000〜、ホームページ制作 ¥165,000〜、集客サポート 月¥22,000〜の料金目安。金額を左右する4つの要素、追加料金の考え方、お見積もりまでの流れを解説します。ご提案・お見積もりは無料です。",
         alternates: alternatesFor("/price"),
         openGraph: {
             title: "料金｜ホームページ制作・Web集客の費用 | NEXT VALLEY",
             description:
-                "教室ページ制作・ホームページ制作・集客サポートの料金目安。ご提案・お見積もりは無料です。",
+                "集客ページ制作・ホームページ制作・集客サポートの料金目安。ご提案・お見積もりは無料です。",
             url: "https://www.nextvalley-jpn.com/price",
             locale: "ja_JP",
             type: "website",

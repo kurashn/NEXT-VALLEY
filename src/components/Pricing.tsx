@@ -14,8 +14,8 @@ const ja = {
             ご提案・お見積もりまでは無料です。まず内容と金額を見てから、判断してください。<br className="hidden md:block" /> AIで制作の手間を減らしたぶん、制作費は抑え、公開後の集客に力を<span className="nowrap">かけます。</span>
         </>
     ),
-    entryLabel: "教室・お店の方はここから",
-    entryTitle: "教室ページ制作 ＋ 集客サポート",
+    entryLabel: "まずはここから",
+    entryTitle: "集客ページ制作 ＋ 集客サポート",
     entryDesc: (
         <>
             体験申込フォーム付きの1枚完結ページを、AI制作で最短3〜5日で公開。公開後は毎月の数字報告と改善で、申込を増やし<span className="nowrap">続けます。</span>
@@ -24,14 +24,13 @@ const ja = {
         </>
     ),
     entryRows: [
-        { key: "page", name: <>教室ページ制作<span className="nowrap">（1枚完結）</span></>, desc: "体験申込フォーム付き・最短3〜5日で公開", price: "¥55,000〜" },
-        { key: "support", name: <>集客サポート<span className="nowrap">（教室）</span></>, desc: "1枚ページの改善・Googleマップ・LINE・月1回の数字報告", price: "¥22,000〜/月" },
-        { key: "support-shop", name: <>集客サポート<span className="nowrap">（お店）</span></>, desc: "複数ページの更新・Googleマップ・SNS・月2回の数字報告", price: "¥44,000〜/月" },
+        { key: "page", name: <>集客ページ制作<span className="nowrap">（1枚完結）</span></>, desc: "申込フォーム付き・最短3〜5日で公開", price: "¥55,000〜" },
+        { key: "support", name: <>集客サポート</>, desc: "ページの改善・Googleマップ・LINE・毎月の数字報告。範囲に応じてお見積もり", price: "¥22,000〜/月" },
     ],
     entryNote: "税込。制作のみのご依頼も承ります",
     entryCta: "無料プレビューで完成イメージを見る",
     badge: "おすすめ",
-    stepLabel: "お店・法人で、まるごと任せたい方は",
+    stepLabel: "複数ページのサイトごと、まるごと任せたい方は",
     planName: "まるごと集客プラン",
     planDesc: (
         <>
@@ -64,10 +63,9 @@ const ja = {
     thType: "形態",
     thPrice: "目安（税込）",
     rows: [
-        { key: "page", service: <>教室ページ制作<span className="nowrap">（1枚完結）</span></>, type: "買い切り", price: "¥55,000〜" },
-        { key: "hp", service: <>ホームページ制作<span className="nowrap">（お店・法人）</span></>, type: "買い切り", price: "¥165,000〜" },
-        { key: "support", service: <>集客サポート<span className="nowrap">（教室）</span></>, type: "月額・1枚ページ／月1回報告", price: "¥22,000〜/月" },
-        { key: "support-shop", service: <>集客サポート<span className="nowrap">（お店）</span></>, type: "月額・複数ページ／月2回報告", price: "¥44,000〜/月" },
+        { key: "page", service: <>集客ページ制作<span className="nowrap">（1枚完結）</span></>, type: "買い切り", price: "¥55,000〜" },
+        { key: "hp", service: <>ホームページ制作<span className="nowrap">（複数ページ）</span></>, type: "買い切り", price: "¥165,000〜" },
+        { key: "support", service: <>集客サポート</>, type: "月額", price: "¥22,000〜/月" },
         { key: "sns", service: <>SNSマーケティング</>, type: "月額", price: "¥44,000〜/月" },
         { key: "design", service: <>デザイン制作<span className="nowrap">（ロゴ・チラシ等）</span></>, type: "スポット", price: "応相談" },
         { key: "ai", service: <><span className="nowrap">AI活用</span><span className="nowrap">コンサルティング</span></>, type: "スポット / 月額", price: "応相談" },
@@ -86,7 +84,7 @@ const en: typeof ja = {
             The proposal and quote are free. See exactly what you get and what it costs before you decide. <br className="hidden md:block" /> Need just a website or landing page? Single services are welcome too.
         </>
     ),
-    entryLabel: "Schools and shops start here",
+    entryLabel: "Start here",
     entryTitle: "One-page site + growth support",
     entryDesc: (
         <>
@@ -96,14 +94,13 @@ const en: typeof ja = {
         </>
     ),
     entryRows: [
-        { key: "page", name: <>One-page site</>, desc: "Trial-lesson form included, live in 3–5 days", price: "from ¥55,000" },
-        { key: "support", name: <>Growth support <span className="nowrap">(schools)</span></>, desc: "One-page improvements, Google Maps, LINE, monthly report", price: "from ¥22,000/mo" },
-        { key: "support-shop", name: <>Growth support <span className="nowrap">(shops)</span></>, desc: "Multi-page updates, Google Maps, social media, reports twice a month", price: "from ¥44,000/mo" },
+        { key: "page", name: <>One-page site</>, desc: "Inquiry form included, live in 3–5 days", price: "from ¥55,000" },
+        { key: "support", name: <>Growth support</>, desc: "Page improvements, Google Maps, LINE, monthly report. Quoted by scope", price: "from ¥22,000/mo" },
     ],
     entryNote: "Tax incl. Build-only is fine too.",
     entryCta: "See a free preview of your design",
     badge: "Recommended",
-    stepLabel: "Shops and companies: want the whole thing handled?",
+    stepLabel: "Want a full multi-page site handled end to end?",
     planName: "All-in-One Growth Plan",
     planDesc: (
         <>
@@ -136,9 +133,8 @@ const en: typeof ja = {
     thPrice: "Starting at (tax incl.)",
     rows: [
         { key: "page", service: <>One-page site</>, type: "One-time", price: "from ¥55,000" },
-        { key: "hp", service: <>Website (shops &amp; companies)</>, type: "One-time", price: "from ¥165,000" },
-        { key: "support", service: <>Growth support (schools)</>, type: "Monthly · one page / 1 report a month", price: "from ¥22,000/mo" },
-        { key: "support-shop", service: <>Growth support (shops)</>, type: "Monthly · multi-page / 2 reports a month", price: "from ¥44,000/mo" },
+        { key: "hp", service: <>Website (multi-page)</>, type: "One-time", price: "from ¥165,000" },
+        { key: "support", service: <>Growth support</>, type: "Monthly", price: "from ¥22,000/mo" },
         { key: "sns", service: <>Social media marketing</>, type: "Monthly", price: "from ¥44,000/mo" },
         { key: "design", service: <>Design (logos, flyers, etc.)</>, type: "Project", price: "Ask us" },
         { key: "ai", service: <>AI consulting</>, type: "Project / Monthly", price: "Ask us" },
