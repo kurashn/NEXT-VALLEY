@@ -12,23 +12,29 @@ import { withLang, type Lang } from "@/i18n";
 const ja = {
     h1: (
         <>
-            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>AIで、売上と業務を</span></span>
-            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>根本から変える。</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>埼玉北部の教室・お店の</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>集客を、AIで立て直す。</span></span>
         </>
     ),
     lead: (
         <>
             NEXT VALLEYは、AI活用のプロチーム。
             <br />
-            マーケティングもHP・LP制作も、課題に合わせて最適な打ち手を提案し、
+            集客の仕組みづくりからHP・LP制作まで、教室・お店の課題に合わせて最適な打ち手を提案し、
             <br className="hidden md:block" />
             売上アップと業務効率化を<span className="nowrap">支援します。</span>
         </>
     ),
-    cta1Label: "サイトがある方",
-    cta1: "無料で診断を受ける",
-    cta2Label: "これから作る方",
-    cta2: "無料プレビューを見る",
+    cta1Label: "サイトがある方も、これから作る方も",
+    cta1: "LINEで無料診断を受ける",
+    ctaNote: (
+        <>
+            送ると<strong className="font-bold text-white">2営業日以内</strong>に、改善案と概算お見積もりが<span className="nowrap">届きます。</span>
+        </>
+    ),
+    previewPrefix: "これから作る方は、",
+    previewLink: "無料プレビュー",
+    previewSuffix: "で先に完成イメージを見られます。",
     note: (
         <>
             どちらも費用は一切かかりません・しつこい<span className="nowrap">営業なし</span>
@@ -38,23 +44,26 @@ const ja = {
 const en: typeof ja = {
     h1: (
         <>
-            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>Grow your business.</span></span>
-            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>Powered by AI.</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>More customers for your</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>school or shop. Powered by AI.</span></span>
         </>
     ),
     lead: (
         <>
-            NEXT VALLEY is a Japan-based team that puts AI to work for small businesses.{" "}
-            <br className="hidden md:block" />
-            From marketing to websites and landing pages, we recommend only what fits your goals —
-            <br className="hidden md:block" />
-            and help you win more customers with less busywork.
+            NEXT VALLEY is an AI-powered team based in northern Saitama. From marketing systems to websites and landing pages, we recommend only what fits your school or shop — and help you win more customers with less busywork.
         </>
     ),
-    cta1Label: "ALREADY HAVE A WEBSITE?",
-    cta1: "Get a free site check",
-    cta2Label: "BUILDING A NEW ONE?",
-    cta2: "See a free preview",
+    cta1Label: "HAVE A SITE OR STARTING FROM SCRATCH?",
+    cta1: "Get a free site check on LINE",
+    ctaNote: (
+        <>
+            Send us a message and you&apos;ll get concrete improvements and a ballpark quote{" "}
+            <strong className="font-bold text-white">within 2 business days</strong>.
+        </>
+    ),
+    previewPrefix: "Building a new site? ",
+    previewLink: "See a free preview",
+    previewSuffix: " of your design first.",
     note: <>Both are completely free. No pushy sales calls, ever.</>,
 };
 const copy: Record<Lang, typeof ja> = { ja, en };
@@ -101,32 +110,28 @@ export default function Hero({ lang = "ja" }: { lang?: Lang }) {
                     </FadeIn>
 
                     <FadeIn delay={0.55}>
-                        <div className="flex flex-col gap-4 sm:flex-row sm:items-stretch">
-                            {/* サイトがある方 → 無料診断 */}
-                            <a
-                                href="https://lin.ee/N4QXdJL"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn-sheen group flex flex-col justify-center rounded-lg bg-coral px-7 py-4 text-white transition-opacity hover:opacity-90"
-                            >
-                                <span className="text-[11px] font-bold tracking-[0.2em] text-white/80">{t.cta1Label}</span>
-                                <span className="inline-flex items-center gap-3 text-[19px] font-bold">
-                                    {t.cta1}
-                                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                                </span>
+                        {/* 主要動線はLINE無料診断の1本（金継ぎ見立て・問い9） */}
+                        <a
+                            href="https://lin.ee/N4QXdJL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-sheen group inline-flex flex-col justify-center rounded-lg bg-coral px-8 py-4 text-white transition-opacity hover:opacity-90"
+                        >
+                            <span className="text-[11px] font-bold tracking-[0.2em] text-white/80">{t.cta1Label}</span>
+                            <span className="inline-flex items-center gap-3 text-[19px] font-bold">
+                                {t.cta1}
+                                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                            </span>
+                        </a>
+                        <p className="mt-4 text-sm leading-[1.9] text-navy-sub">{t.ctaNote}</p>
+                        {/* 無料プレビューは文中リンクへ格下げ */}
+                        <p className="mt-2 text-sm leading-[1.9] text-navy-sub">
+                            {t.previewPrefix}
+                            <a href={withLang(lang, "/preview")} className="font-bold text-white underline decoration-coral decoration-2 underline-offset-4 transition-colors hover:text-coral">
+                                {t.previewLink}
                             </a>
-                            {/* これから作る方 → 無料プレビュー */}
-                            <a
-                                href={withLang(lang, "/preview")}
-                                className="group flex flex-col justify-center rounded-lg border border-white/40 px-7 py-4 text-white transition-colors hover:border-coral hover:text-coral"
-                            >
-                                <span className="text-[11px] font-bold tracking-[0.2em] text-white/70">{t.cta2Label}</span>
-                                <span className="inline-flex items-center gap-3 text-[19px] font-bold">
-                                    {t.cta2}
-                                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                                </span>
-                            </a>
-                        </div>
+                            {t.previewSuffix}
+                        </p>
                         <p className="mt-4 text-sm text-navy-sub">{t.note}</p>
                     </FadeIn>
                 </div>

@@ -23,14 +23,14 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.nextvalley-jpn.com"),
   title: {
-    default: "NEXT VALLEY | AI活用で売上と業務を変えるプロチーム",
+    default: "NEXT VALLEY | 埼玉北部の教室・お店の集客を、AIで立て直す",
     template: "%s | NEXT VALLEY",
   },
-  description: "集客がうまくいかない、業務に追われている。NEXT VALLEYはAI活用のプロチームです。マーケティングからHP・LP制作まで課題に合わせて提案し、売上アップと業務効率化を根本から支援します。診断・提案・見積もりは無料。",
-  keywords: ["AI活用支援", "AIコンサルティング", "業務効率化", "Web集客", "ホームページ制作", "LP制作", "SEO対策", "MEO対策", "SNSマーケティング", "中小企業"],
+  description: "埼玉北部（本庄・深谷・熊谷など）の教室・お店の集客を、AI活用のプロチームが立て直します。集客の仕組みづくりからHP・LP制作まで課題に合わせて提案。診断・提案・見積もりは無料、LINEで2営業日以内に回答。",
+  keywords: ["埼玉 ホームページ制作", "本庄 ホームページ制作", "教室 集客", "AI活用支援", "AIコンサルティング", "業務効率化", "Web集客", "ホームページ制作", "LP制作", "SEO対策", "MEO対策", "SNSマーケティング", "中小企業"],
   openGraph: {
-    title: "NEXT VALLEY | AI活用で売上と業務を変えるプロチーム",
-    description: "AI活用のプロチームが、マーケティングから制作まで課題に合わせて提案。売上アップと業務効率化を根本から支援します。診断・提案・見積もりは無料。",
+    title: "NEXT VALLEY | 埼玉北部の教室・お店の集客を、AIで立て直す",
+    description: "埼玉北部の教室・お店の集客を、AI活用のプロチームが立て直します。集客の仕組みづくりからHP・LP制作まで課題に合わせて提案。診断・提案・見積もりは無料。",
     url: "https://www.nextvalley-jpn.com",
     siteName: "NEXT VALLEY",
     locale: "ja_JP",
@@ -40,14 +40,14 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "NEXT VALLEY - AI活用で売上と業務を変えるプロチーム",
+        alt: "NEXT VALLEY - 埼玉北部の教室・お店の集客を、AIで立て直す",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NEXT VALLEY | AI活用で売上と業務を変えるプロチーム",
-    description: "AIで、売上と業務を根本から変える。マーケティングから制作まで、課題に合わせて提案します。診断・提案・見積もりは無料。",
+    title: "NEXT VALLEY | 埼玉北部の教室・お店の集客を、AIで立て直す",
+    description: "埼玉北部の教室・お店の集客を、AIで立て直す。集客の仕組みづくりからHP・LP制作まで、課題に合わせて提案します。診断・提案・見積もりは無料。",
   },
   robots: {
     index: true,

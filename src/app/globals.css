@@ -570,7 +570,7 @@ span.absolute.text-\[13px\] { font-size: 16px; }
 .text-4xl { font-size: 48px; }
 p.text-\[clamp\(1\.1875rem\,3\.4vw\,2\.5rem\)\] { font-size: clamp(1.5rem, 3.75vw, 3rem); }
 /* ヒーロー写真の上の文字（画素検査で床割れ・768/390幅）: 狭い幅では写真が文字の下まで回り込むので、写真の濃さを落として文字を立てる */
-@media (max-width: 1279.98px) { .hero-photo-in { opacity: .35 !important; } }
+@media (max-width: 1279.98px) { .hero-photo-in { opacity: .2 !important; } }  /* .35→.2: 見出し変更後、768幅でリード文が写真の明部に掛かり比3.15になったため */
 @media (max-width: 767.98px)  { .hero-photo-in { opacity: .2 !important; } }
 
 /* ── 7. 3巡目 ── */
