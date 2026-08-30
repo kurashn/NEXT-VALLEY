@@ -14,7 +14,7 @@ export function LangSwitch({ className = "" }: { className?: string }) {
     ];
     return (
         <div
-            className={`inline-flex h-9 shrink-0 items-center overflow-hidden rounded-md border border-white/25 text-xs font-bold tracking-wider ${className}`}
+            className={`inline-flex h-[46px] shrink-0 items-center overflow-hidden rounded-md border border-white/25 text-xs font-bold tracking-wider ${className}`}
             aria-label={current === "ja" ? "言語切替" : "Language"}
         >
             {items.map((it) => {
@@ -27,7 +27,7 @@ export function LangSwitch({ className = "" }: { className?: string }) {
                         lang={it.lang}
                         title={it.title}
                         aria-current={active ? "page" : undefined}
-                        className={`flex h-full min-w-10 items-center justify-center px-2.5 transition-colors ${
+                        className={`flex h-full min-w-11 items-center justify-center px-2.5 transition-colors ${
                             active ? "bg-white text-navy-deep" : "text-white/85 hover:bg-white/10 hover:text-white"
                         }`}
                     >

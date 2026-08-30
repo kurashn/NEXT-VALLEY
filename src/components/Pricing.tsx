@@ -5,7 +5,7 @@ import React from "react";
 import { Check, ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading } from "@/components/ui/SerifHeading";
-import { type Lang } from "@/i18n";
+import { withLang, type Lang } from "@/i18n";
 
 const ja = {
     heading: "料金",
@@ -14,11 +14,30 @@ const ja = {
             ご提案・お見積もりまでは無料です。まず内容と金額を見てから、判断してください。<br className="hidden md:block" /> HP・LPの制作のみなど、単品でのご依頼も<span className="nowrap">歓迎です。</span>
         </>
     ),
+    entryLabel: "まずは作るだけ",
+    entryTitle: "HP・LP制作のみ",
+    entryDesc: (
+        <>
+            集客の提案は必要なときだけ。AIを活用した制作フローで、通常1ヶ月かかる構築を最短3〜5日に<span className="nowrap">短縮します。</span>
+        </>
+    ),
+    entryRows: [
+        { key: "lp", name: "LP制作", price: "¥110,000〜" },
+        { key: "hp", name: "ホームページ制作", price: "¥220,000〜" },
+    ],
+    entryNote: "買い切り・税込",
+    entryCta: "無料プレビューで完成イメージを見る",
     badge: "おすすめ",
+    stepLabel: "集客まで任せたい方は",
     planName: "まるごと集客プラン",
     planDesc: (
         <>
             「作る」と「集める」をセットで。この分業をなくすことが、いちばん成果に<span className="nowrap">つながります。</span>
+        </>
+    ),
+    monthlyIncludes: (
+        <>
+            月額に含まれるのは、毎月のアクセス・問い合わせ報告と、それをもとにした改善作業。「作って終わり」に<span className="nowrap">しません。</span>
         </>
     ),
     initialLabel: "初期",
@@ -26,7 +45,8 @@ const ja = {
     initialSuffix: "〜",
     monthlyLabel: "＋ 月額",
     monthlyPrice: "¥44,000",
-    monthlySuffix: "〜（税込）",
+    monthlySuffix: "〜",
+    taxNote: "いずれも税込",
     includes: "プランに含まれるもの",
     /* おすすめパッケージの内容（金額は仮） */
     packageFeatures: [
@@ -62,11 +82,30 @@ const en: typeof ja = {
             The proposal and quote are free. See exactly what you get and what it costs before you decide. <br className="hidden md:block" /> Need just a website or landing page? Single services are welcome too.
         </>
     ),
+    entryLabel: "Just need it built?",
+    entryTitle: "Website or landing page only",
+    entryDesc: (
+        <>
+            We only bring up marketing if it&apos;s relevant to you. Our AI-assisted workflow turns a typical one-month build into as little as 3–5 days.
+        </>
+    ),
+    entryRows: [
+        { key: "lp", name: "Landing page", price: "from ¥110,000" },
+        { key: "hp", name: "Website", price: "from ¥220,000" },
+    ],
+    entryNote: "One-time, tax incl.",
+    entryCta: "See a free preview of your design",
     badge: "Recommended",
+    stepLabel: "Want us to bring the customers too?",
     planName: "All-in-One Growth Plan",
     planDesc: (
         <>
             Build and promote, together. Keeping both in one team is what moves the numbers.
+        </>
+    ),
+    monthlyIncludes: (
+        <>
+            The monthly fee covers your traffic and inquiry report every month, plus the improvements we make based on it. We don&apos;t build and walk away.
         </>
     ),
     initialLabel: "Setup",
@@ -74,7 +113,8 @@ const en: typeof ja = {
     initialSuffix: "+",
     monthlyLabel: "+ Monthly",
     monthlyPrice: "¥44,000",
-    monthlySuffix: "+ (tax incl.)",
+    monthlySuffix: "+",
+    taxNote: "All prices include tax",
     includes: "What’s included",
     packageFeatures: [
         { key: "hp", node: <>A website designed around your goals</> },
@@ -117,6 +157,36 @@ export function Pricing({ lang = "ja" }: { lang?: Lang }) {
                     </p>
                 </FadeIn>
 
+                {/* 入口: 制作のみ（教室・お店が最初に見る小さい額を先頭に） */}
+                <FadeIn>
+                    <div className="mb-6 flex flex-col gap-6 rounded-2xl border border-line bg-white p-8 md:flex-row md:items-center md:gap-10 md:p-10">
+                        <div className="flex-1">
+                            <p className="mb-3 text-xs font-bold tracking-[0.25em] text-coral-deep">{t.entryLabel}</p>
+                            <h3 className="mb-3 text-2xl font-bold leading-snug text-ink md:text-[28px]">{t.entryTitle}</h3>
+                            <p className="text-sm leading-[1.9] text-ink-sub">{t.entryDesc}</p>
+                        </div>
+                        <div className="md:w-[40%]">
+                            <ul className="mb-3 divide-y divide-line">
+                                {t.entryRows.map((r) => (
+                                    <li key={r.key} className="flex items-baseline justify-between gap-4 py-3">
+                                        <span className="text-[15px] font-bold text-ink">{r.name}</span>
+                                        <span className="whitespace-nowrap text-2xl font-bold tabular-nums text-ink">{r.price}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <p className="mb-4 text-xs text-ink-sub">{t.entryNote}</p>
+                            <a
+                                href={withLang(lang, "/preview")}
+                                className="group inline-flex min-h-11 items-center gap-2 py-2 text-[15px] font-bold text-coral-deep underline decoration-2 underline-offset-4 transition-colors hover:text-navy-deep"
+                            >
+                                {t.entryCta}
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                            </a>
+                        </div>
+                    </div>
+                    <p className="mb-4 text-sm font-bold tracking-wider text-ink-sub">{t.stepLabel}</p>
+                </FadeIn>
+
                 {/* おすすめパッケージ */}
                 <FadeIn>
                     <div className="relative mb-8 overflow-hidden rounded-2xl bg-white shadow-[0_20px_48px_rgba(31,26,20,0.1)] md:mb-10">
@@ -140,8 +210,11 @@ export function Pricing({ lang = "ja" }: { lang?: Lang }) {
                                     <h3 className="mb-4 text-2xl font-bold leading-snug md:text-[28px]">
                                         {t.planName}
                                     </h3>
-                                    <p className="mb-8 text-sm leading-[1.9] text-navy-sub">
+                                    <p className="mb-4 text-sm leading-[1.9] text-navy-sub">
                                         {t.planDesc}
+                                    </p>
+                                    <p className="mb-8 text-sm leading-[1.9] text-white">
+                                        {t.monthlyIncludes}
                                     </p>
                                     <p>
                                         <span className="nowrap">
@@ -156,6 +229,7 @@ export function Pricing({ lang = "ja" }: { lang?: Lang }) {
                                             <span className="text-sm">{t.monthlySuffix}</span>
                                         </span>
                                     </p>
+                                    <p className="mt-2 text-xs text-navy-sub">{t.taxNote}</p>
                                 </div>
                                 <span aria-hidden className="absolute bottom-0 left-0 h-1 w-full bg-coral" />
                             </div>
