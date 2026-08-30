@@ -152,7 +152,7 @@ const ja = {
     bannerTitle: (
         <>
             <span className="nowrap"><span className="text-coral">『作る会社』</span>と<span className="text-coral">『集める会社』</span>が</span>
-            分かれている<span className="nowrap">ことです。</span>
+            <span className="nowrap">分かれている</span><span className="nowrap">ことです。</span>
         </>
     ),
 };
@@ -324,7 +324,7 @@ export function Problem({ lang = "ja" }: { lang?: Lang }) {
                             </span>
                             <div className="min-w-0 flex-1">
                                 <p className="mb-2 text-[15px] text-white md:mb-3 md:text-[17px]">{t.bannerLead}</p>
-                                <p className="text-[clamp(1.1875rem,3.4vw,2.5rem)] font-bold leading-[1.5] text-white">
+                                <p className="text-left text-[clamp(1.1875rem,3.4vw,2.5rem)] font-bold leading-[1.5] text-white">
                                     {t.bannerTitle}
                                 </p>
                             </div>
