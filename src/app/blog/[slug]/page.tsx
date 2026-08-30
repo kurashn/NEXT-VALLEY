@@ -207,7 +207,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
                     {/* CTA Section */}
                     <div className="mt-16 border-t pt-16">
-                        <BlogCTA />
+                        <BlogCTA tags={post.tags} categories={post.categories} />
                     </div>
                 </div>
             </article>
