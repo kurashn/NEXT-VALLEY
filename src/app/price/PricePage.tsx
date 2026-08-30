@@ -107,7 +107,7 @@ export function priceMetadata(lang: Lang): Metadata {
         return {
             title: "Pricing | Website production and web marketing",
             description:
-                "Landing pages from ¥110,000 and websites from ¥220,000, plus SEO, Google Maps and social media support. What moves the price, how extra charges work, and how we get to a quote. Proposal and quote are free.",
+                "One-page sites from ¥55,000, websites from ¥165,000, and monthly growth support from ¥22,000. What moves the price, how extra charges work, and how we get to a quote. Proposal and quote are free.",
             alternates: alternatesFor("/price", "en"),
             openGraph: {
                 title: "Pricing | NEXT VALLEY",
@@ -122,12 +122,12 @@ export function priceMetadata(lang: Lang): Metadata {
     return {
         title: "料金｜ホームページ制作・Web集客の費用",
         description:
-            "LP制作 ¥110,000〜、ホームページ制作 ¥220,000〜、SEO・MEO集客やSNS運用の料金目安。金額を左右する4つの要素、追加料金の考え方、お見積もりまでの流れを解説します。ご提案・お見積もりは無料です。",
+            "教室ページ制作 ¥55,000〜、ホームページ制作 ¥165,000〜、集客サポート 月¥22,000〜の料金目安。金額を左右する4つの要素、追加料金の考え方、お見積もりまでの流れを解説します。ご提案・お見積もりは無料です。",
         alternates: alternatesFor("/price"),
         openGraph: {
             title: "料金｜ホームページ制作・Web集客の費用 | NEXT VALLEY",
             description:
-                "ホームページ・LP制作、SEO・MEO集客、SNS運用の料金目安。ご提案・お見積もりは無料です。",
+                "教室ページ制作・ホームページ制作・集客サポートの料金目安。ご提案・お見積もりは無料です。",
             url: "https://www.nextvalley-jpn.com/price",
             locale: "ja_JP",
             type: "website",

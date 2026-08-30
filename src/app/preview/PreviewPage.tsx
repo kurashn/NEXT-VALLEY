@@ -102,7 +102,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                     </Link>
                     <div className="flex items-center gap-3 md:gap-4">
                         {/* 言語切替：読めない人のための導線なので、LPでも省かない（サイズは控えめに） */}
-                        <LangSwitch className="scale-90" />
+                        <LangSwitch />
                         <p className="hidden items-center gap-2 rounded-full bg-navy-deep px-3 py-1.5 text-sm font-bold text-white md:inline-flex">
                             <span className="h-1.5 w-1.5 rounded-full bg-coral" />
                             {t.header.badge(REMAINING_SLOTS)}

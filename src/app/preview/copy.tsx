@@ -199,10 +199,10 @@ const ja = {
             </>
         ),
         prices: [
-            { k: "LP制作", num: "¥110,000", suffix: "〜" },
-            { k: "ホームページ制作", num: "¥220,000", suffix: "〜" },
+            { k: "教室ページ制作（1枚完結）", num: "¥55,000", suffix: "〜" },
+            { k: "ホームページ制作", num: "¥165,000", suffix: "〜" },
         ] as Price[],
-        priceNote: "税込目安。公開後の運用・集客のご相談も承ります。",
+        priceNote: "税込目安。ホームページ制作はお店・法人向け。集客サポートは月¥22,000〜",
     },
     promises: {
         label: "3つの約束",
@@ -474,10 +474,10 @@ const en: typeof ja = {
             </>
         ),
         prices: [
-            { k: "Landing page", prefix: "from ", num: "¥110,000" },
-            { k: "Full website", prefix: "from ", num: "¥220,000" },
+            { k: "One-page site", prefix: "from ", num: "¥55,000" },
+            { k: "Website", prefix: "from ", num: "¥165,000" },
         ],
-        priceNote: "Approximate, tax included. We can also help with running and marketing your site after launch.",
+        priceNote: "Approximate, tax included. Websites are for shops and companies. Growth support from ¥22,000/mo.",
     },
     promises: {
         label: "THREE PROMISES",
