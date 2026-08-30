@@ -8,7 +8,7 @@ export const BlogCTA = () => {
                 「うちの場合は、どこから？」を無料でお<span className="nowrap">答えします</span>
             </h3>
             <p className="mx-auto mb-8 max-w-2xl leading-[1.9] text-ink-sub">
-                NEXT VALLEYは、AI活用のプロチームです。マーケティングもHP・LP制作も、課題に合わせて必要な打ち手だけを提案します。
+                NEXT VALLEYは、教室・お店のWeb集客を制作から公開後の改善まで手がける、埼玉北部の制作チームです。課題に合わせて必要な打ち手だけを提案します。
                 <br className="hidden md:block" />
                 サイトのURLやお悩みをLINEで送るだけで、改善の打ち手と概算お見積もりをお返しします。
             </p>
