@@ -67,7 +67,7 @@ const ja = {
             name: "Yuma English House様",
             label: "教育・スクール",
             review: (
-                <><p>英語教室のホームページと、英検対策コースのページの2つを制作していただきました。</p><p>それぞれ見ていただきたい方が違うので、分けて作るというご提案はとてもありがたかったです。お問い合わせの内容が具体的になり、ご案内もしやすく<span className="nowrap">なりました。</span></p><p className="font-bold text-ink">2026年1〜7月: LINE相談19件 → 体験19件 → <span className="nowrap">入会14名</span><span className="block text-xs font-normal text-ink-sub">月次レポートより。<a href="/blog/case-yuma-english-house" className="inline-flex min-h-11 items-center underline underline-offset-2">事例の詳細</a></span></p></>
+                <><p>英語教室のホームページと、英検対策コースのページの2つを制作していただきました。</p><p>それぞれ見ていただきたい方が違うので、分けて作るというご提案はとてもありがたかったです。お問い合わせの内容が具体的になり、ご案内もしやすく<span className="nowrap">なりました。</span></p></>
             ),
         },
     ] as FeaturedCopy[],
@@ -116,7 +116,7 @@ const en: typeof ja = {
             name: "Yuma English House",
             label: "Education & Schools",
             review: (
-                <><p>They built two things for us: the school&apos;s main website and a separate page for our Eiken prep course. The two reach different audiences, so their suggestion to keep them apart was very welcome. The inquiries we receive are now much more specific, which makes them easier to answer.</p><p className="font-bold text-ink">Jan–Jul 2026: 19 LINE inquiries → 19 trial lessons → 14 new students<span className="block text-xs font-normal text-ink-sub">From their monthly reports.</span></p></>
+                <><p>They built two things for us: the school&apos;s main website and a separate page for our Eiken prep course. The two reach different audiences, so their suggestion to keep them apart was very welcome. The inquiries we receive are now much more specific, which makes them easier to answer.</p></>
             ),
         },
     ],
