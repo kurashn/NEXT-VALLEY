@@ -20,7 +20,8 @@ const ja = {
         <>
             体験申込フォーム付きの1枚完結ページを、AI制作で最短3〜5日で公開。公開後は毎月の数字報告と改善で、申込を増やし<span className="nowrap">続けます。</span>
             <br />
-            月謝7,000円の生徒が2人増えれば、制作費は4か月で回収できる<span className="nowrap">計算です。</span>
+            実例: 英語教室で、2026年1〜7月にLINE相談19件・<span className="nowrap">入会14名</span>（Yuma English House様の月次レポートより）。
+            <a href="/blog/case-yuma-english-house" className="inline-flex min-h-11 items-center font-bold text-coral-deep underline underline-offset-4">事例の詳細を見る</a>
         </>
     ),
     entryRows: [
@@ -90,7 +91,7 @@ const en: typeof ja = {
         <>
             A single-page site with a trial-lesson form, built with AI and live in as little as 3–5 days. After launch, a monthly report and improvements keep the inquiries coming.
             <br />
-            Two new students at ¥7,000/month pay back the build cost in about four months.
+            Real example: an English school saw 19 LINE inquiries and 14 new students in Jan–Jul 2026 (Yuma English House, from their monthly reports).
         </>
     ),
     entryRows: [
