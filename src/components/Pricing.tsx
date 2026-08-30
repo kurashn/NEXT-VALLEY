@@ -11,28 +11,31 @@ const ja = {
     heading: "料金",
     lead: (
         <>
-            ご提案・お見積もりまでは無料です。まず内容と金額を見てから、判断してください。<br className="hidden md:block" /> HP・LPの制作のみなど、単品でのご依頼も<span className="nowrap">歓迎です。</span>
+            ご提案・お見積もりまでは無料です。まず内容と金額を見てから、判断してください。<br className="hidden md:block" /> AIで制作の手間を減らしたぶん、制作費は抑え、公開後の集客に力を<span className="nowrap">かけます。</span>
         </>
     ),
-    entryLabel: "まずは作るだけ",
-    entryTitle: "HP・LP制作のみ",
+    entryLabel: "教室・お店の方はここから",
+    entryTitle: "教室ページ制作 ＋ 集客サポート",
     entryDesc: (
         <>
-            集客の提案は必要なときだけ。AIを活用した制作フローで、通常1ヶ月かかる構築を最短3〜5日に<span className="nowrap">短縮します。</span>
+            体験申込フォーム付きの1枚完結ページを、AI制作で最短3〜5日で公開。公開後は毎月の数字報告と改善で、申込を増やし<span className="nowrap">続けます。</span>
+            <br />
+            月謝7,000円の生徒が2人増えれば、制作費は4か月で回収できる<span className="nowrap">計算です。</span>
         </>
     ),
     entryRows: [
-        { key: "lp", name: "LP制作", price: "¥110,000〜" },
-        { key: "hp", name: "ホームページ制作", price: "¥220,000〜" },
+        { key: "page", name: <>教室ページ制作<span className="nowrap">（1枚完結）</span></>, price: "¥55,000〜" },
+        { key: "support", name: <>集客サポート<span className="nowrap">（教室）</span></>, price: "¥22,000〜/月" },
+        { key: "support-shop", name: <>集客サポート<span className="nowrap">（お店）</span></>, price: "¥44,000〜/月" },
     ],
-    entryNote: "買い切り・税込",
+    entryNote: "税込。制作のみのご依頼も承ります",
     entryCta: "無料プレビューで完成イメージを見る",
     badge: "おすすめ",
-    stepLabel: "集客まで任せたい方は",
+    stepLabel: "お店・法人で、まるごと任せたい方は",
     planName: "まるごと集客プラン",
     planDesc: (
         <>
-            「作る」と「集める」をセットで。この分業をなくすことが、いちばん成果に<span className="nowrap">つながります。</span>
+            複数ページのホームページと集客をセットで。「作る」と「集める」の分業をなくすことが、いちばん成果に<span className="nowrap">つながります。</span>
         </>
     ),
     monthlyIncludes: (
@@ -61,9 +64,10 @@ const ja = {
     thType: "形態",
     thPrice: "目安（税込）",
     rows: [
-        { key: "lp", service: <>LP制作</>, type: "買い切り", price: "¥110,000〜" },
-        { key: "hp", service: <>ホームページ制作</>, type: "買い切り", price: "¥220,000〜" },
-        { key: "seo", service: <>SEO・MEO集客</>, type: "月額", price: "¥33,000〜/月" },
+        { key: "page", service: <>教室ページ制作<span className="nowrap">（1枚完結）</span></>, type: "買い切り", price: "¥55,000〜" },
+        { key: "hp", service: <>ホームページ制作<span className="nowrap">（お店・法人）</span></>, type: "買い切り", price: "¥165,000〜" },
+        { key: "support", service: <>集客サポート<span className="nowrap">（教室）</span></>, type: "月額", price: "¥22,000〜/月" },
+        { key: "support-shop", service: <>集客サポート<span className="nowrap">（お店）</span></>, type: "月額", price: "¥44,000〜/月" },
         { key: "sns", service: <>SNSマーケティング</>, type: "月額", price: "¥44,000〜/月" },
         { key: "design", service: <>デザイン制作<span className="nowrap">（ロゴ・チラシ等）</span></>, type: "スポット", price: "応相談" },
         { key: "ai", service: <><span className="nowrap">AI活用</span><span className="nowrap">コンサルティング</span></>, type: "スポット / 月額", price: "応相談" },
@@ -82,25 +86,28 @@ const en: typeof ja = {
             The proposal and quote are free. See exactly what you get and what it costs before you decide. <br className="hidden md:block" /> Need just a website or landing page? Single services are welcome too.
         </>
     ),
-    entryLabel: "Just need it built?",
-    entryTitle: "Website or landing page only",
+    entryLabel: "Schools and shops start here",
+    entryTitle: "One-page site + growth support",
     entryDesc: (
         <>
-            We only bring up marketing if it&apos;s relevant to you. Our AI-assisted workflow turns a typical one-month build into as little as 3–5 days.
+            A single-page site with a trial-lesson form, built with AI and live in as little as 3–5 days. After launch, a monthly report and improvements keep the inquiries coming.
+            <br />
+            Two new students at ¥7,000/month pay back the build cost in about four months.
         </>
     ),
     entryRows: [
-        { key: "lp", name: "Landing page", price: "from ¥110,000" },
-        { key: "hp", name: "Website", price: "from ¥220,000" },
+        { key: "page", name: <>One-page site</>, price: "from ¥55,000" },
+        { key: "support", name: <>Growth support <span className="nowrap">(schools)</span></>, price: "from ¥22,000/mo" },
+        { key: "support-shop", name: <>Growth support <span className="nowrap">(shops)</span></>, price: "from ¥44,000/mo" },
     ],
-    entryNote: "One-time, tax incl.",
+    entryNote: "Tax incl. Build-only is fine too.",
     entryCta: "See a free preview of your design",
     badge: "Recommended",
-    stepLabel: "Want us to bring the customers too?",
+    stepLabel: "Shops and companies: want the whole thing handled?",
     planName: "All-in-One Growth Plan",
     planDesc: (
         <>
-            Build and promote, together. Keeping both in one team is what moves the numbers.
+            A multi-page website and marketing, together. Keeping both in one team is what moves the numbers.
         </>
     ),
     monthlyIncludes: (
@@ -128,9 +135,10 @@ const en: typeof ja = {
     thType: "Billing",
     thPrice: "Starting at (tax incl.)",
     rows: [
-        { key: "lp", service: <>Landing page</>, type: "One-time", price: "from ¥110,000" },
-        { key: "hp", service: <>Website</>, type: "One-time", price: "from ¥220,000" },
-        { key: "seo", service: <>SEO &amp; Google Maps (local SEO)</>, type: "Monthly", price: "from ¥33,000/mo" },
+        { key: "page", service: <>One-page site</>, type: "One-time", price: "from ¥55,000" },
+        { key: "hp", service: <>Website (shops &amp; companies)</>, type: "One-time", price: "from ¥165,000" },
+        { key: "support", service: <>Growth support (schools)</>, type: "Monthly", price: "from ¥22,000/mo" },
+        { key: "support-shop", service: <>Growth support (shops)</>, type: "Monthly", price: "from ¥44,000/mo" },
         { key: "sns", service: <>Social media marketing</>, type: "Monthly", price: "from ¥44,000/mo" },
         { key: "design", service: <>Design (logos, flyers, etc.)</>, type: "Project", price: "Ask us" },
         { key: "ai", service: <>AI consulting</>, type: "Project / Monthly", price: "Ask us" },
@@ -159,17 +167,17 @@ export function Pricing({ lang = "ja" }: { lang?: Lang }) {
 
                 {/* 入口: 制作のみ（教室・お店が最初に見る小さい額を先頭に） */}
                 <FadeIn>
-                    <div className="mb-6 flex flex-col gap-6 rounded-2xl border border-line bg-white p-8 md:flex-row md:items-center md:gap-10 md:p-10">
+                    <div className="mb-6 flex flex-col gap-6 rounded-2xl border border-line bg-white p-8 lg:flex-row lg:items-center lg:gap-10 md:p-10">
                         <div className="flex-1">
                             <p className="mb-3 text-xs font-bold tracking-[0.25em] text-coral-deep">{t.entryLabel}</p>
                             <h3 className="mb-3 text-2xl font-bold leading-snug text-ink md:text-[28px]">{t.entryTitle}</h3>
                             <p className="text-sm leading-[1.9] text-ink-sub">{t.entryDesc}</p>
                         </div>
-                        <div className="md:w-[40%]">
+                        <div className="lg:w-[40%]">
                             <ul className="mb-3 divide-y divide-line">
                                 {t.entryRows.map((r) => (
-                                    <li key={r.key} className="flex items-baseline justify-between gap-4 py-3">
-                                        <span className="text-[15px] font-bold text-ink">{r.name}</span>
+                                    <li key={r.key} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-3">
+                                        <span className="text-[15px] font-bold leading-snug text-ink">{r.name}</span>
                                         <span className="whitespace-nowrap text-2xl font-bold tabular-nums text-ink">{r.price}</span>
                                     </li>
                                 ))}
