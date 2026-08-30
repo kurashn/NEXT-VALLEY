@@ -24,6 +24,9 @@
 
   /* 記事内テーブル: 1列目（順番・項目名）を折り返さず、セル内の文字は縦書きにしない */
   .prose table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
     @apply w-full text-sm;
     table-layout: auto;
   }
