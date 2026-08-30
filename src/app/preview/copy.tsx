@@ -284,7 +284,7 @@ const ja = {
     footer: {
         tagline: (
             <>
-                屋号 NEXT VALLEY ／ 代表 倉林 駿 ／ AI活用で売上と業務を支援する<span className="nowrap">プロチーム</span>
+                屋号 NEXT VALLEY ／ 代表 倉林 駿 ／ 2021年創業・50社以上の制作・<span className="nowrap">支援実績</span>
             </>
         ),
         links: [

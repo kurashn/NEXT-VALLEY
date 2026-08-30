@@ -20,12 +20,12 @@ const jsonLdCopy = {
   ja: {
     founder: "倉林 駿",
     description:
-      "AI活用で売上と業務を変えるプロチーム。AI活用コンサルティング、HP・LP制作、SEO・MEO集客、SNSマーケティング、HP運用サポートを課題に合わせて提供。",
+      "埼玉北部の教室・お店のWeb集客を、制作から公開後の改善まで一貫して手がける制作チーム。2021年創業・50社以上の実績。教室ページ制作、ホームページ制作、集客サポート、SNSマーケティング、AI活用支援を課題に合わせて提供。",
   },
   en: {
     founder: "Shun Kurahayashi",
     description:
-      "An AI-powered team helping small businesses in Japan grow: AI consulting, website & landing page production, SEO and Google Maps marketing, social media, and ongoing site support.",
+      "A small web team in northern Saitama, Japan, building sites for schools and shops since 2021: AI consulting, website & landing page production, SEO and Google Maps marketing, social media, and ongoing site support.",
   },
 } as const;
 

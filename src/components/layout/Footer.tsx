@@ -28,7 +28,9 @@ const copy = {
         ],
         tagline: (
             <>
-                AI活用で売上と業務を支援する<span className="nowrap">プロチーム</span>。
+                2021年創業。
+                <br />
+                教室・お店のWeb集客を、制作から改善まで。
                 <br />
                 診断・提案・見積もりは無料です。
             </>
@@ -58,7 +60,9 @@ const copy = {
         ],
         tagline: (
             <>
-                An AI-powered team for growth and efficiency.
+                Since 2021.
+                <br />
+                Websites and marketing for schools and shops.
                 <br />
                 Site check, proposal and quote are all free.
             </>

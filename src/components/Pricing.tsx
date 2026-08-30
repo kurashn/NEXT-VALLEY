@@ -24,9 +24,9 @@ const ja = {
         </>
     ),
     entryRows: [
-        { key: "page", name: <>教室ページ制作<span className="nowrap">（1枚完結）</span></>, price: "¥55,000〜" },
-        { key: "support", name: <>集客サポート<span className="nowrap">（教室）</span></>, price: "¥22,000〜/月" },
-        { key: "support-shop", name: <>集客サポート<span className="nowrap">（お店）</span></>, price: "¥44,000〜/月" },
+        { key: "page", name: <>教室ページ制作<span className="nowrap">（1枚完結）</span></>, desc: "体験申込フォーム付き・最短3〜5日で公開", price: "¥55,000〜" },
+        { key: "support", name: <>集客サポート<span className="nowrap">（教室）</span></>, desc: "1枚ページの改善・Googleマップ・LINE・月1回の数字報告", price: "¥22,000〜/月" },
+        { key: "support-shop", name: <>集客サポート<span className="nowrap">（お店）</span></>, desc: "複数ページの更新・Googleマップ・SNS・月2回の数字報告", price: "¥44,000〜/月" },
     ],
     entryNote: "税込。制作のみのご依頼も承ります",
     entryCta: "無料プレビューで完成イメージを見る",
@@ -66,8 +66,8 @@ const ja = {
     rows: [
         { key: "page", service: <>教室ページ制作<span className="nowrap">（1枚完結）</span></>, type: "買い切り", price: "¥55,000〜" },
         { key: "hp", service: <>ホームページ制作<span className="nowrap">（お店・法人）</span></>, type: "買い切り", price: "¥165,000〜" },
-        { key: "support", service: <>集客サポート<span className="nowrap">（教室）</span></>, type: "月額", price: "¥22,000〜/月" },
-        { key: "support-shop", service: <>集客サポート<span className="nowrap">（お店）</span></>, type: "月額", price: "¥44,000〜/月" },
+        { key: "support", service: <>集客サポート<span className="nowrap">（教室）</span></>, type: "月額・1枚ページ／月1回報告", price: "¥22,000〜/月" },
+        { key: "support-shop", service: <>集客サポート<span className="nowrap">（お店）</span></>, type: "月額・複数ページ／月2回報告", price: "¥44,000〜/月" },
         { key: "sns", service: <>SNSマーケティング</>, type: "月額", price: "¥44,000〜/月" },
         { key: "design", service: <>デザイン制作<span className="nowrap">（ロゴ・チラシ等）</span></>, type: "スポット", price: "応相談" },
         { key: "ai", service: <><span className="nowrap">AI活用</span><span className="nowrap">コンサルティング</span></>, type: "スポット / 月額", price: "応相談" },
@@ -96,9 +96,9 @@ const en: typeof ja = {
         </>
     ),
     entryRows: [
-        { key: "page", name: <>One-page site</>, price: "from ¥55,000" },
-        { key: "support", name: <>Growth support <span className="nowrap">(schools)</span></>, price: "from ¥22,000/mo" },
-        { key: "support-shop", name: <>Growth support <span className="nowrap">(shops)</span></>, price: "from ¥44,000/mo" },
+        { key: "page", name: <>One-page site</>, desc: "Trial-lesson form included, live in 3–5 days", price: "from ¥55,000" },
+        { key: "support", name: <>Growth support <span className="nowrap">(schools)</span></>, desc: "One-page improvements, Google Maps, LINE, monthly report", price: "from ¥22,000/mo" },
+        { key: "support-shop", name: <>Growth support <span className="nowrap">(shops)</span></>, desc: "Multi-page updates, Google Maps, social media, reports twice a month", price: "from ¥44,000/mo" },
     ],
     entryNote: "Tax incl. Build-only is fine too.",
     entryCta: "See a free preview of your design",
@@ -137,8 +137,8 @@ const en: typeof ja = {
     rows: [
         { key: "page", service: <>One-page site</>, type: "One-time", price: "from ¥55,000" },
         { key: "hp", service: <>Website (shops &amp; companies)</>, type: "One-time", price: "from ¥165,000" },
-        { key: "support", service: <>Growth support (schools)</>, type: "Monthly", price: "from ¥22,000/mo" },
-        { key: "support-shop", service: <>Growth support (shops)</>, type: "Monthly", price: "from ¥44,000/mo" },
+        { key: "support", service: <>Growth support (schools)</>, type: "Monthly · one page / 1 report a month", price: "from ¥22,000/mo" },
+        { key: "support-shop", service: <>Growth support (shops)</>, type: "Monthly · multi-page / 2 reports a month", price: "from ¥44,000/mo" },
         { key: "sns", service: <>Social media marketing</>, type: "Monthly", price: "from ¥44,000/mo" },
         { key: "design", service: <>Design (logos, flyers, etc.)</>, type: "Project", price: "Ask us" },
         { key: "ai", service: <>AI consulting</>, type: "Project / Monthly", price: "Ask us" },
@@ -179,6 +179,7 @@ export function Pricing({ lang = "ja" }: { lang?: Lang }) {
                                     <li key={r.key} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-3">
                                         <span className="text-[15px] font-bold leading-snug text-ink">{r.name}</span>
                                         <span className="whitespace-nowrap text-2xl font-bold tabular-nums text-ink">{r.price}</span>
+                                        <span className="basis-full text-xs leading-[1.7] text-ink-sub">{r.desc}</span>
                                     </li>
                                 ))}
                             </ul>
