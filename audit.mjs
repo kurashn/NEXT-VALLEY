@@ -353,6 +353,8 @@ for (const vp of WIDTHS) {
     hasTouch: vp.name === 'mobile',
   });
   const page = await ctx.newPage();
+  // 検収がGA/Clarityにヒットを送らないよう遮断（本番URLの検収でも数字を汚さない）
+  await page.route(/googletagmanager\.com|google-analytics\.com|analytics\.google\.com|clarity\.ms/, (r) => r.abort());
 
   if (vp.name === 'mobile') {
     page.on('response', async (res) => {

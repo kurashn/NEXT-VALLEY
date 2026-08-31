@@ -18,7 +18,7 @@ const ja = {
     ),
     lead: (
         <>
-            NEXT VALLEYは、2021年から50社以上のホームページを手がけてきた、埼玉北部の制作チームです。
+            NEXT VALLEYは、2021年から100社以上のホームページを手がけてきた、埼玉北部の制作チームです。
             <br />
             集客の仕組みづくりからHP・LP制作まで、教室・お店の課題に合わせて最適な打ち手を提案し、
             <br className="hidden md:block" />
@@ -50,7 +50,7 @@ const en: typeof ja = {
     ),
     lead: (
         <>
-            NEXT VALLEY is a small web team in northern Saitama that has built sites for 50+ businesses since 2021. From marketing systems to websites and landing pages, we recommend only what fits your school or shop — and help you win more customers with less busywork.
+            NEXT VALLEY is a small web team in northern Saitama that has built sites for 100+ businesses since 2021. From marketing systems to websites and landing pages, we recommend only what fits your school or shop — and help you win more customers with less busywork.
         </>
     ),
     cta1Label: "HAVE A SITE OR STARTING FROM SCRATCH?",

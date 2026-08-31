@@ -284,7 +284,7 @@ const ja = {
     footer: {
         tagline: (
             <>
-                屋号 NEXT VALLEY ／ 代表 倉林 駿 ／ 2021年創業・50社以上の制作・<span className="nowrap">支援実績</span>
+                屋号 NEXT VALLEY ／ 代表 倉林 駿 ／ 2021年創業・100社以上の制作・<span className="nowrap">支援実績</span>
             </>
         ),
         links: [
@@ -339,7 +339,7 @@ const en: typeof ja = {
     },
     statsAria: "Track record",
     stats: [
-        { v: "50+", unit: "", k: "Businesses served" },
+        { v: "100+", unit: "", k: "Businesses served" },
         { v: "2021", unit: "", k: "Founded" },
         { v: "3", unit: "business days", k: "Preview delivered within" },
         { v: "¥0", unit: "", k: "Preview cost" },
