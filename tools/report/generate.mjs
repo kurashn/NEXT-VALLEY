@@ -152,7 +152,7 @@ const html = `<!doctype html>
   .sheet{max-width:1040px;margin:0 auto;padding:16px 16px 48px}
   header{background:var(--navy);color:#fff;border-radius:16px;padding:24px 24px 20px;margin-bottom:12px}
   header .brand{display:flex;align-items:center;gap:10px;font-weight:bold;letter-spacing:.12em;font-size:13px}
-  header .brand .mark{width:18px;height:18px;background:linear-gradient(to bottom right,var(--coral) 50%,#fff 50%);border-radius:2px}
+  header .brand .mark{width:22px;height:22px;padding:3px;border-radius:4px;background:linear-gradient(to bottom right,var(--coral) 50%,var(--navy) 50%) content-box,#fff;}
   h1{font-size:clamp(1.25rem,4vw,1.75rem);margin:10px 0 2px;line-height:1.5}
   header .period{color:#c8d3dc;font-size:13px;margin:0}
   .tabs{position:sticky;top:0;z-index:10;display:flex;gap:6px;background:var(--cream);padding:10px 0;overflow-x:auto;-webkit-overflow-scrolling:touch}
