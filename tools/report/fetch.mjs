@@ -152,7 +152,14 @@ for (const ym of detailYms) {
 
   months.push({
     label: ymFull(ym),
-    hitokoto: manual.hitokoto || `${ymFull(ym)}は、HPに来た人が${gp?.users ?? "—"}人→${g.users ?? "—"}人でした。（この一言は送る前に書き換えてください）`,
+    hitokoto:
+      manual.hitokoto ||
+      (() => {
+        const up = gp && g.users != null && gp.users != null ? (g.users >= gp.users ? `先月の${gp.users}人から増えました` : `先月の${gp.users}人から少し落ち着きました`) : "";
+        const hasManual = Object.keys(manual).length > 0;
+        const tail = hasManual ? "" : " LINEの友だち追加や体験・入会の数もお知らせいただければ、その月のまとめをここに書き添えます。";
+        return `${ymFull(ym)}は、HPに${g.users ?? "—"}人が来ました。${up ? up + "。" : ""}${tail}`;
+      })(),
     funnel,
     focus,
     focusText: manual.focusText || "",

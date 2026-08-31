@@ -126,11 +126,11 @@ const panel = (m, idx) => {
       </section>
     </div>
 
-    <section class="rec-section">
+    ${m.recommends.length ? `<section class="rec-section">
       <h2>今月の推奨 — 次にやると効くこと</h2>
       <ul class="recs">${recs}</ul>
-      ${recCta ? `<p class="rec-cta">${recCta}</p>` : ""}
-    </section>
+      <p class="rec-cta">${recCta}</p>
+    </section>` : ""}
   </div>`;
 };
 
