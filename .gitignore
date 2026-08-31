@@ -43,3 +43,7 @@ next-env.d.ts
 # renewal working files (screenshots of reference sites, audit outputs)
 /docs/renewal/audit/
 /docs/renewal/ref/
+
+# 月次レポートの認証鍵（コミット禁止）
+tools/report/**/service-account*.json
+tools/report/clients/

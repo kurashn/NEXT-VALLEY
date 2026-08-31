@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>サンプル英語教室様 月次レポート 2026年8月</title>
+<style>
+  :root{--navy:#041627;--navy-sub:#5a7184;--coral:#e26c5c;--coral-deep:#b8452f;--cream:#f3f1ec;--line:#e5e5e5;--ink:#1f1a14;--ok:#0a7a44;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;line-height:1.9;font-feature-settings:"palt" 1;-webkit-text-size-adjust:100%}
+  .sheet{max-width:960px;margin:0 auto;padding:16px 16px 48px}
+  header{background:var(--navy);color:#fff;border-radius:16px;padding:24px 24px 20px;margin-bottom:16px}
+  header .brand{display:flex;align-items:center;gap:10px;font-weight:bold;letter-spacing:.12em;font-size:13px;color:#fff}
+  header .brand .mark{width:18px;height:18px;background:var(--coral);clip-path:polygon(0 0,100% 0,0 100%)}
+  h1{font-size:clamp(1.25rem,4vw,1.75rem);margin:10px 0 2px;line-height:1.5}
+  header .period{color:#c8d3dc;font-size:14px;margin:0}
+  section{background:#fff;border-radius:16px;padding:20px;margin-bottom:16px;border:1px solid var(--line)}
+  h2{font-size:16px;margin:0 0 12px;color:var(--navy);border-left:4px solid var(--coral);padding-left:10px;line-height:1.6}
+  .hitokoto{font-size:15px;background:#fdf6f0;border-radius:12px;padding:14px 16px;margin:0}
+  .funnel{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .step{background:var(--cream);border-radius:12px;padding:10px 12px;min-width:0}
+  .step-label{margin:0;font-size:12px;font-weight:bold;color:var(--navy-sub)}
+  .step-arrow{color:var(--coral);margin-right:4px}
+  .step-value{margin:0;font-size:28px;font-weight:bold;color:var(--navy);font-variant-numeric:tabular-nums}
+  .step-unit{font-size:12px;font-weight:normal;color:var(--navy-sub);margin-left:2px}
+  .step-diff{margin:0;font-size:11px}
+  .up{color:var(--ok);font-weight:bold}.down{color:var(--coral-deep);font-weight:bold}.flat{color:var(--navy-sub)}
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap}
+  thead th{background:var(--navy);color:#fff;padding:8px 10px;font-size:12px;position:sticky;top:0}
+  thead th.target{background:var(--coral-deep)}
+  thead th.now{background:#eef4f9;color:var(--navy)}
+  tbody th{text-align:left;padding:8px 10px;background:var(--cream);font-size:12px;position:sticky;left:0;white-space:normal;min-width:11em;line-height:1.5}
+  tbody td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+  td.target{color:var(--coral-deep);font-weight:bold;background:#fdf3f0}
+  td.now,th.now{background:#eef4f9;font-weight:bold}
+  td.now.ok{color:var(--ok)}
+  .hand{font-size:10px;color:var(--navy-sub)}
+  .legend{font-size:11px;color:var(--navy-sub);margin:8px 0 0}
+  .device{display:flex;border-radius:9999px;overflow:hidden;height:34px;font-size:13px;font-weight:bold;color:#fff}
+  .device .m{background:var(--coral);display:flex;align-items:center;padding-left:12px}
+  .device .p{background:var(--navy);display:flex;align-items:center;justify-content:flex-end;padding-right:12px}
+  ol.pages{list-style:none;margin:0;padding:0}
+  ol.pages li{display:grid;grid-template-columns:24px minmax(8em,1fr) minmax(40px,120px) auto;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .rank{width:22px;height:22px;border-radius:50%;background:var(--cream);color:var(--navy);font-weight:bold;font-size:11px;display:flex;align-items:center;justify-content:center}
+  .pt{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bar{height:8px;border-radius:4px;background:var(--coral);opacity:.85;justify-self:start}
+  .pv{font-variant-numeric:tabular-nums;color:var(--navy-sub);white-space:nowrap}
+  table.qt{white-space:normal}
+  table.qt td{text-align:left;font-size:13px}
+  table.qt td.q{font-weight:bold}
+  .next{background:var(--navy);color:#fff;border-radius:12px;padding:14px 16px;font-size:15px;font-weight:bold;margin:0;line-height:1.8}
+  .next .tag{display:inline-block;background:var(--coral);border-radius:4px;font-size:11px;padding:1px 8px;margin-right:8px;vertical-align:2px}
+  footer{color:var(--navy-sub);font-size:11px;text-align:center}
+  @media(max-width:640px){.funnel{grid-template-columns:repeat(2,1fr)}.step-value{font-size:24px}}
+  @media print{
+    body{background:#fff}.sheet{padding:0;max-width:none}
+    section,header{border-radius:0;margin-bottom:10px;border:none;padding:12px 0}
+    header{background:#fff;color:var(--navy);padding:0 0 4px}
+    header .period{color:var(--navy-sub)}
+    .scroll{overflow:visible}
+    .next{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header>
+    <p class="brand"><span class="mark"></span>NEXT VALLEY 月次レポート</p>
+    <h1>サンプル英語教室様</h1>
+    <p class="period">2026年8月分（作成日 2026-08-31）</p>
+  </header>
+
+  <section>
+    <h2>今月のひとこと</h2>
+    <p class="hitokoto">8月は、HPに来た人が211人→245人に増えました。検索で「地域名＋英語教室」から来る人が増えています。体験は2件で先月と同じ。来月は、体験の案内ページの写真を入れ替えます。</p>
+  </section>
+
+  <section>
+    <h2>今月の階段 — お客様がどこまで進んだか</h2>
+    <div class="funnel">
+  <div class="step">
+    <p class="step-label">HPに来た</p>
+    <p class="step-value">245<span class="step-unit">人</span></p>
+    <p class="step-diff"><span class="up">▲ 先月 211</span></p>
+  </div>
+  <div class="step">
+    <p class="step-label"><span class="step-arrow" aria-hidden>→</span>LINEボタンを押した</p>
+    <p class="step-value">13<span class="step-unit">件</span></p>
+    <p class="step-diff"><span class="up">▲ 先月 9</span></p>
+  </div>
+  <div class="step">
+    <p class="step-label"><span class="step-arrow" aria-hidden>→</span>友だち追加</p>
+    <p class="step-value">6<span class="step-unit">件</span></p>
+    <p class="step-diff"><span class="up">▲ 先月 4</span></p>
+  </div>
+  <div class="step">
+    <p class="step-label"><span class="step-arrow" aria-hidden>→</span>無料相談</p>
+    <p class="step-value">3<span class="step-unit">件</span></p>
+    <p class="step-diff"><span class="up">▲ 先月 2</span></p>
+  </div>
+  <div class="step">
+    <p class="step-label"><span class="step-arrow" aria-hidden>→</span>体験</p>
+    <p class="step-value">2<span class="step-unit">件</span></p>
+    <p class="step-diff"><span class="flat">→ 先月と同じ</span></p>
+  </div>
+  <div class="step">
+    <p class="step-label"><span class="step-arrow" aria-hidden>→</span>入会</p>
+    <p class="step-value">1<span class="step-unit">件</span></p>
+    <p class="step-diff"><span class="up">▲ 先月 0</span></p>
+  </div></div>
+  </section>
+
+  <section>
+    <h2>いつもの表 — 月ごとのうごき</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>説明</th><th class="target">目標値</th><th class="">1月</th><th class="">2月</th><th class="">3月</th><th class="">4月</th><th class="">5月</th><th class="">6月</th><th class="">7月</th><th class="now">8月</th></tr></thead>
+        <tbody><tr><th scope="row">HPに来た人数</th><td class="target">180</td><td class="">251</td><td class="">162</td><td class="">231</td><td class="">124</td><td class="">430</td><td class="">142</td><td class="">211</td><td class="now ok">245</td></tr><tr><th scope="row">HPが見られた回数</th><td class="target">550</td><td class="">583</td><td class="">466</td><td class="">692</td><td class="">344</td><td class="">762</td><td class="">390</td><td class="">503</td><td class="now ok">601</td></tr><tr><th scope="row">LINEボタンを押した数</th><td class="target">15</td><td class="">22</td><td class="">8</td><td class="">14</td><td class="">9</td><td class="">7</td><td class="">10</td><td class="">9</td><td class="now">13</td></tr><tr><th scope="row">新しく友だち追加された数 <span class="hand" title="手入力">✍</span></th><td class="target">6</td><td class="">13</td><td class="">1</td><td class="">7</td><td class="">5</td><td class="">2</td><td class="">5</td><td class="">4</td><td class="now ok">6</td></tr><tr><th scope="row">LINEから無料相談が決まった数 <span class="hand" title="手入力">✍</span></th><td class="target">—</td><td class="">7</td><td class="">1</td><td class="">4</td><td class="">2</td><td class="">1</td><td class="">2</td><td class="">2</td><td class="now">3</td></tr><tr><th scope="row">実際に体験の日程が決まった数 <span class="hand" title="手入力">✍</span></th><td class="target">3</td><td class="">7</td><td class="">1</td><td class="">4</td><td class="">2</td><td class="">1</td><td class="">2</td><td class="">2</td><td class="now">2</td></tr><tr><th scope="row">入会した人数 <span class="hand" title="手入力">✍</span></th><td class="target">2</td><td class="">5</td><td class="">4</td><td class="">2</td><td class="">2</td><td class="">—</td><td class="">1</td><td class="">—</td><td class="now">1</td></tr><tr><th scope="row">前月生徒数 ＋ 入会 − 退会 <span class="hand" title="手入力">✍</span></th><td class="target">—</td><td class="">26</td><td class="">29</td><td class="">30</td><td class="">30</td><td class="">29</td><td class="">29</td><td class="">29</td><td class="now">30</td></tr></tbody>
+      </table>
+    </div>
+    <p class="legend">✍ は手で数えている項目。今月の列で<span style="color:var(--ok);font-weight:bold">緑の数字</span>は目標達成です。スマホでは表を横にスクロールできます。</p>
+  </section>
+
+  <section>
+    <h2>見ている端末</h2>
+    <div class="device" role="img" aria-label="スマホ78% パソコン22%">
+      <div class="m" style="width:78%">スマホ 78%</div>
+      <div class="p" style="width:22%">PC 22%</div>
+    </div>
+    <p class="legend">写真や文章は、スマホでどう見えるかを基準に用意するのがおすすめです。</p>
+  </section>
+
+  <section>
+    <h2>よく見られたページ トップ5</h2>
+    <ol class="pages"><li><span class="rank">1</span><span class="pt">トップページ</span><span class="bar" style="width:100%"></span><span class="pv">289回</span></li><li><span class="rank">2</span><span class="pt">体験レッスンのご案内</span><span class="bar" style="width:46%"></span><span class="pv">133回</span></li><li><span class="rank">3</span><span class="pt">英検対策コース</span><span class="bar" style="width:27%"></span><span class="pv">78回</span></li><li><span class="rank">4</span><span class="pt">先生の紹介</span><span class="bar" style="width:19%"></span><span class="pv">55回</span></li><li><span class="rank">5</span><span class="pt">アクセス・教室のようす</span><span class="bar" style="width:16%"></span><span class="pv">46回</span></li></ol>
+  </section>
+
+  <section>
+    <h2>もう少しで見つかる検索の言葉</h2>
+    <div class="scroll">
+      <table class="qt">
+        <thead><tr><th>検索の言葉</th><th>表示された回数</th><th>今の順位</th></tr></thead>
+        <tbody><tr><td class="q">地域名 英語教室</td><td>310回</td><td>12位くらい</td></tr><tr><td class="q">地域名 子ども 英会話</td><td>180回</td><td>14位くらい</td></tr><tr><td class="q">英検 対策 小学生 教室</td><td>95回</td><td>19位くらい</td></tr><tr><td class="q">地域名 習い事 小学生</td><td>60回</td><td>16位くらい</td></tr></tbody>
+      </table>
+    </div>
+    <p class="legend">検索結果に出てはいるものの、まだ押されにくい位置にある言葉です。ここを来月の改善のタネにします。</p>
+  </section>
+
+  
+
+  <section>
+    <h2>来月やること</h2>
+    <p class="next"><span class="tag">NEXT</span>体験レッスンのページの写真を、教室で撮った新しいものに入れ替えます。</p>
+  </section>
+
+  <footer>集計: Googleアナリティクス・Google Search Console／LINEの数字は管理画面から。NEXT VALLEY（www.nextvalley-jpn.com）</footer>
+</div>
+</body>
+</html>

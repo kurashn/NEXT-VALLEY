@@ -1,0 +1,41 @@
+{
+  "client": "サンプル英語教室",
+  "period": "2026年8月",
+  "months": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月"],
+  "hitokoto": "8月は、HPに来た人が211人→245人に増えました。検索で「地域名＋英語教室」から来る人が増えています。体験は2件で先月と同じ。来月は、体験の案内ページの写真を入れ替えます。",
+  "rows": [
+    { "label": "HPに来た人数", "target": 180, "values": [251, 162, 231, 124, 430, 142, 211, 245], "auto": true },
+    { "label": "HPが見られた回数", "target": 550, "values": [583, 466, 692, 344, 762, 390, 503, 601], "auto": true },
+    { "label": "LINEボタンを押した数", "target": 15, "values": [22, 8, 14, 9, 7, 10, 9, 13], "auto": true },
+    { "label": "新しく友だち追加された数", "target": 6, "values": [13, 1, 7, 5, 2, 5, 4, 6], "auto": false },
+    { "label": "LINEから無料相談が決まった数", "target": null, "values": [7, 1, 4, 2, 1, 2, 2, 3], "auto": false },
+    { "label": "実際に体験の日程が決まった数", "target": 3, "values": [7, 1, 4, 2, 1, 2, 2, 2], "auto": false },
+    { "label": "入会した人数", "target": 2, "values": [5, 4, 2, 2, null, 1, null, 1], "auto": false },
+    { "label": "前月生徒数 ＋ 入会 − 退会", "target": null, "values": [26, 29, 30, 30, 29, 29, 29, 30], "auto": false }
+  ],
+  "funnel": [
+    { "label": "HPに来た", "value": 245, "prev": 211 },
+    { "label": "LINEボタンを押した", "value": 13, "prev": 9 },
+    { "label": "友だち追加", "value": 6, "prev": 4 },
+    { "label": "無料相談", "value": 3, "prev": 2 },
+    { "label": "体験", "value": 2, "prev": 2 },
+    { "label": "入会", "value": 1, "prev": 0 }
+  ],
+  "device": { "mobile": 78, "desktop": 22 },
+  "topPages": [
+    { "title": "トップページ", "views": 289 },
+    { "title": "体験レッスンのご案内", "views": 133 },
+    { "title": "英検対策コース", "views": 78 },
+    { "title": "先生の紹介", "views": 55 },
+    { "title": "アクセス・教室のようす", "views": 46 }
+  ],
+  "almostQueries": [
+    { "query": "地域名 英語教室", "impressions": 310, "position": 12.4 },
+    { "query": "地域名 子ども 英会話", "impressions": 180, "position": 14.1 },
+    { "query": "英検 対策 小学生 教室", "impressions": 95, "position": 18.9 },
+    { "query": "地域名 習い事 小学生", "impressions": 60, "position": 16.2 }
+  ],
+  "mapNote": "",
+  "nextAction": "体験レッスンのページの写真を、教室で撮った新しいものに入れ替えます。",
+  "generatedAt": "2026-08-31"
+}
