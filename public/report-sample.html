@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>サンプル英語教室様 月次レポート</title>
+<style>
+  :root{--navy:#041627;--navy-sub:#5a7184;--coral:#e26c5c;--coral-deep:#b8452f;--cream:#f3f1ec;--line:#e5e5e5;--ink:#1f1a14;--ok:#0a7a44;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;line-height:1.9;font-feature-settings:"palt" 1;-webkit-text-size-adjust:100%}
+  .sheet{max-width:1040px;margin:0 auto;padding:16px 16px 48px}
+  header{background:var(--navy);color:#fff;border-radius:16px;padding:24px 24px 20px;margin-bottom:12px}
+  header .brand{display:flex;align-items:center;gap:10px;font-weight:bold;letter-spacing:.12em;font-size:13px}
+  header .brand .mark{width:18px;height:18px;background:linear-gradient(to bottom right,var(--coral) 50%,#fff 50%);border-radius:2px}
+  h1{font-size:clamp(1.25rem,4vw,1.75rem);margin:10px 0 2px;line-height:1.5}
+  header .period{color:#c8d3dc;font-size:13px;margin:0}
+  .tabs{position:sticky;top:0;z-index:10;display:flex;gap:6px;background:var(--cream);padding:10px 0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tab{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--navy-sub);border-radius:9999px;padding:10px 18px;font-size:14px;font-weight:bold;cursor:pointer;min-height:44px}
+  .tab.active{background:var(--navy);border-color:var(--navy);color:#fff}
+  section{background:#fff;border-radius:16px;padding:20px;margin-bottom:14px;border:1px solid var(--line)}
+  h2{font-size:16px;margin:0 0 12px;color:var(--navy);border-left:4px solid var(--coral);padding-left:10px;line-height:1.6}
+  .hitokoto{font-size:15px;background:#fdf6f0;border-radius:12px;padding:14px 16px;margin:0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr}}
+  .funnel{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+  @media(max-width:960px){.funnel{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:560px){.funnel{grid-template-columns:repeat(2,1fr)}}
+  .step{position:relative;background:var(--cream);border:2px solid transparent;border-radius:12px;padding:12px 12px 8px;min-width:0}
+  .step.focus{border-color:var(--coral);background:#fdf3f0}
+  .focus-badge{position:absolute;top:-11px;left:8px;margin:0;background:var(--coral-deep);color:#fff;font-size:10px;font-weight:bold;border-radius:4px;padding:1px 8px;letter-spacing:.05em}
+  .step-label{margin:0;font-size:12px;font-weight:bold;color:var(--navy-sub);line-height:1.5}
+  .step-value{margin:0;font-size:26px;font-weight:bold;color:var(--navy);font-variant-numeric:tabular-nums}
+  .step-unit{font-size:12px;font-weight:normal;color:var(--navy-sub);margin-left:2px}
+  .step-diff{margin:0;font-size:11px;min-height:1.6em}
+  .step-next{font-size:10px;color:var(--navy-sub);border-top:1px dashed var(--line);margin-top:6px;padding-top:4px}
+  .step-next span{font-weight:bold;color:var(--navy)}
+  .focus-note{margin:12px 0 0;font-size:14px;background:#fdf3f0;border:1px solid var(--coral);border-radius:12px;padding:12px 14px}
+  .focus-mark{color:var(--coral-deep);font-weight:bold;margin-right:6px}
+  .up{color:var(--ok);font-weight:bold}.down{color:var(--coral-deep);font-weight:bold}.flat{color:var(--navy-sub)}
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap}
+  thead th{background:var(--navy);color:#fff;padding:8px 10px;font-size:12px}
+  thead th.target{background:var(--coral-deep)}
+  thead th.now{background:#eef4f9;color:var(--navy)}
+  tbody th{text-align:left;padding:8px 10px;background:var(--cream);font-size:12px;position:sticky;left:0;white-space:normal;min-width:11em;line-height:1.5}
+  tbody td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+  td.target{color:var(--coral-deep);font-weight:bold;background:#fdf3f0}
+  td.now,th.now{background:#eef4f9;font-weight:bold}
+  td.now.ok{color:var(--ok)}
+  .legend{font-size:11px;color:var(--navy-sub);margin:8px 0 0}
+  .device{display:flex;border-radius:9999px;overflow:hidden;height:34px;font-size:13px;font-weight:bold;color:#fff}
+  .device .m{background:var(--coral);display:flex;align-items:center;padding-left:12px}
+  .device .p{background:var(--navy);display:flex;align-items:center;justify-content:flex-end;padding-right:12px;min-width:5.5em}
+  ol.pages{list-style:none;margin:0;padding:0}
+  ol.pages li{display:grid;grid-template-columns:24px minmax(8em,1fr) minmax(40px,110px) auto;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .rank{width:22px;height:22px;border-radius:50%;background:var(--cream);color:var(--navy);font-weight:bold;font-size:11px;display:flex;align-items:center;justify-content:center}
+  .pt{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bar{height:8px;border-radius:4px;background:var(--coral);opacity:.85;justify-self:start}
+  .pv{font-variant-numeric:tabular-nums;color:var(--navy-sub);white-space:nowrap}
+  table.qt{white-space:normal}
+  table.qt td{text-align:left;font-size:13px}
+  table.qt td.q{font-weight:bold}
+  .rec-section{background:var(--navy);border:none}
+  .rec-section h2{color:#fff;border-left-color:var(--coral)}
+  ul.recs{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .rec{background:rgba(255,255,255,.06);border-radius:12px;padding:12px 14px}
+  .rec-title{margin:0;color:#fff;font-weight:bold;font-size:15px;line-height:1.7}
+  .rec-no{color:var(--coral);margin-right:6px}
+  .rec-why{margin:2px 0 0;color:#c8d3dc;font-size:13px}
+  .rec-plan{margin:6px 0 0;display:inline-block;background:var(--coral);color:#fff;font-size:11px;font-weight:bold;border-radius:4px;padding:1px 8px}
+  .rec-cta{margin:14px 0 0;color:#fff;font-size:13px;border-top:1px solid rgba(255,255,255,.2);padding-top:12px}
+  footer{color:var(--navy-sub);font-size:11px;text-align:center}
+  @media print{
+    body{background:#fff}.sheet{padding:0;max-width:none}
+    .tabs{display:none}
+    .panel[hidden]{display:none}
+    section,header{border-radius:0;margin-bottom:10px;border:none;padding:12px 0}
+    header{background:#fff;color:var(--navy);padding:0 0 4px}
+    header .period{color:var(--navy-sub)}
+    .scroll{overflow:visible}
+    .rec-section{background:#fff;border:2px solid var(--navy)}
+    .rec-section h2,.rec-title,.rec-cta{color:var(--navy)}
+    .rec{background:var(--cream)}
+    .rec-why{color:var(--navy-sub)}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header>
+    <p class="brand"><span class="mark"></span>NEXT VALLEY 月次レポート</p>
+    <h1>サンプル英語教室様</h1>
+    <p class="period">最終更新 2026-08-31／上のタブで月を切り替えられます</p>
+  </header>
+
+  <nav class="tabs" aria-label="月の切り替え"><button class="tab" data-tab="0">2026年6月</button><button class="tab" data-tab="1">2026年7月</button><button class="tab active" data-tab="2">2026年8月</button></nav>
+
+  
+  <div class="panel" data-panel="0" hidden>
+    <section>
+      <h2>今月のひとこと</h2>
+      <p class="hitokoto">6月は、HPに来た人が430人→142人に落ち着きました。5月が多すぎた反動で、心配は要りません。体験は2件で、狙いどおりのペースです。</p>
+    </section>
+
+    <section>
+      <h2>集客の流れ — HP → LINE → 無料体験 → 入会</h2>
+      <div class="funnel">
+      <div class="step">
+        
+        <p class="step-label">HPに来た</p>
+        <p class="step-value">142<span class="step-unit">人</span></p>
+        <p class="step-diff"><span class="down">▼ 先月 430</span></p>
+        <div class="step-next" aria-hidden>↓ <span>7%が次へ</span></div>
+      </div>
+      <div class="step focus">
+        <p class="focus-badge">いま ここを改善</p>
+        <p class="step-label">LINEボタンを押した</p>
+        <p class="step-value">10<span class="step-unit">件</span></p>
+        <p class="step-diff"><span class="up">▲ 先月 7</span></p>
+        <div class="step-next" aria-hidden>↓ <span>50%が次へ</span></div>
+      </div>
+      <div class="step">
+        
+        <p class="step-label">友だち追加</p>
+        <p class="step-value">5<span class="step-unit">人</span></p>
+        <p class="step-diff"><span class="up">▲ 先月 2</span></p>
+        <div class="step-next" aria-hidden>↓ <span>40%が次へ</span></div>
+      </div>
+      <div class="step">
+        
+        <p class="step-label">無料相談</p>
+        <p class="step-value">2<span class="step-unit">件</span></p>
+        <p class="step-diff"><span class="up">▲ 先月 1</span></p>
+        <div class="step-next" aria-hidden>↓ <span>100%が次へ</span></div>
+      </div>
+      <div class="step">
+        
+        <p class="step-label">体験レッスン</p>
+        <p class="step-value">2<span class="step-unit">件</span></p>
+        <p class="step-diff"><span class="up">▲ 先月 1</span></p>
+        <div class="step-next" aria-hidden>↓ <span>50%が次へ</span></div>
+      </div>
+      <div class="step">
+        
+        <p class="step-label">入会</p>
+        <p class="step-value">1<span class="step-unit">人</span></p>
+        <p class="step-diff"><span class="up">▲ 先月 0</span></p>
+        
+      </div></div>
+      <p class="focus-note"><span class="focus-mark" aria-hidden>◎</span>142人が来て、LINEボタンを押したのは10人。100人に7人の割合です。ボタンの場所と文言を見直すのが近道です。</p>
+    </section>
+
+    <div class="grid2">
+      <section>
+        <h2>見ている端末</h2>
+        <div class="device" role="img" aria-label="スマホ74% パソコン26%">
+          <div class="m" style="width:74%">スマホ 74%</div>
+          <div class="p" style="width:26%">PC 26%</div>
+        </div>
+        <p class="legend">写真や文章は、スマホでどう見えるかを基準に用意するのがおすすめです。</p>
+      </section>
+
+      <section>
+        <h2>よく見られたページ トップ5</h2>
+        <ol class="pages"><li><span class="rank">1</span><span class="pt">トップページ</span><span class="bar" style="width:100%"></span><span class="pv">180回</span></li><li><span class="rank">2</span><span class="pt">体験レッスンのご案内</span><span class="bar" style="width:47%"></span><span class="pv">84回</span></li><li><span class="rank">3</span><span class="pt">英検対策コース</span><span class="bar" style="width:29%"></span><span class="pv">52回</span></li><li><span class="rank">4</span><span class="pt">先生の紹介</span><span class="bar" style="width:21%"></span><span class="pv">38回</span></li><li><span class="rank">5</span><span class="pt">アクセス・教室のようす</span><span class="bar" style="width:17%"></span><span class="pv">30回</span></li></ol>
+      </section>
+    </div>
+
+    <div class="grid2">
+      <section>
+        <h2>いま見つかっている検索の言葉</h2>
+        <div class="scroll">
+          <table class="qt">
+            <thead><tr><th>検索の言葉</th><th>来た回数</th><th>表示回数</th></tr></thead>
+            <tbody><tr><td class="q">教室名</td><td>34回</td><td>120回</td></tr><tr><td class="q">地域名 英語教室</td><td>8回</td><td>260回</td></tr><tr><td class="q">地域名 子ども 英会話</td><td>4回</td><td>150回</td></tr></tbody>
+          </table>
+        </div>
+        <p class="legend">この言葉で検索した人が、実際にサイトへ来ています。</p>
+      </section>
+
+      <section>
+        <h2>もう少しで見つかる検索の言葉</h2>
+        <div class="scroll">
+          <table class="qt">
+            <thead><tr><th>検索の言葉</th><th>表示回数</th><th>今の順位</th></tr></thead>
+            <tbody><tr><td class="q">英検 対策 小学生 教室</td><td>80回</td><td>19位くらい</td></tr><tr><td class="q">地域名 習い事 小学生</td><td>55回</td><td>17位くらい</td></tr></tbody>
+          </table>
+        </div>
+        <p class="legend">表示はされているのに、まだ押されにくい位置にある言葉。改善のタネです。</p>
+      </section>
+    </div>
+
+    <section class="rec-section">
+      <h2>今月の推奨 — 次にやると効くこと</h2>
+      <ul class="recs">
+      <li class="rec">
+        <p class="rec-title"><span class="rec-no">①</span>LINEボタンをページの上にも置く</p>
+        <p class="rec-why">押した人が100人に7人。スクロールしないと押せない位置にあります。</p>
+        <p class="rec-plan">集客サポートの範囲内</p>
+      </li></ul>
+      <p class="rec-cta">実施をご希望の場合は、LINEで「① LINEボタンをページの上にも置く」のように、番号または内容をそのままお送りください。こちらで進めます。</p>
+    </section>
+  </div>
+  <div class="panel" data-panel="1" hidden>
+    <section>
+      <h2>今月のひとこと</h2>
+      <p class="hitokoto">7月は、HPに来た人が211人に回復。検索の「地域名＋英語教室」で見つかり始めています。友だち追加が4人と少なめだったのが来月の課題です。</p>
+    </section>
+
+    <section>
+      <h2>集客の流れ — HP → LINE → 無料体験 → 入会</h2>
+      <div class="funnel">
+      <div class="step">
+        
+        <p class="step-label">HPに来た</p>
+        <p class="step-value">211<span class="step-unit">人</span></p>
+        <p class="step-diff"><span class="up">▲ 先月 142</span></p>
+        <div class="step-next" aria-hidden>↓ <span>4%が次へ</span></div>
+      </div>
+      <div class="step">
+        
+        <p class="step-label">LINEボタンを押した</p>
+        <p class="step-value">9<span class="step-unit">件</span></p>
+        <p class="step-diff"><span class="down">▼ 先月 10</span></p>
+        <div class="step-next" aria-hidden>↓ <span>44%が次へ</span></div>
+      </div>
+      <div class="step focus">
+        <p class="focus-badge">いま ここを改善</p>
+        <p class="step-label">友だち追加</p>
+        <p class="step-value">4<span class="step-unit">人</span></p>
+        <p class="step-diff"><span class="down">▼ 先月 5</span></p>
+        <div class="step-next" aria-hidden>↓ <span>50%が次へ</span></div>
+      </div>
+      <div class="step">
+        
+        <p class="step-label">無料相談</p>
+        <p class="step-value">2<span class="step-unit">件</span></p>
+        <p class="step-diff"><span class="flat">→ 先月と同じ</span></p>
+        <div class="step-next" aria-hidden>↓ <span>100%が次へ</span></div>
+      </div>
+      <div class="step">
+        
+        <p class="step-label">体験レッスン</p>
+        <p class="step-value">2<span class="step-unit">件</span></p>
+        <p class="step-diff"><span class="flat">→ 先月と同じ</span></p>
+        <div class="step-next" aria-hidden>↓ <span>0%が次へ</span></div>
+      </div>
+      <div class="step">
+        
+        <p class="step-label">入会</p>
+        <p class="step-value">0<span class="step-unit">人</span></p>
+        <p class="step-diff"><span class="down">▼ 先月 1</span></p>
+        
+      </div></div>
+      <p class="focus-note"><span class="focus-mark" aria-hidden>◎</span>ボタンを押した9人のうち、友だち追加まで進んだのは4人。追加した後に何が起きるかの説明を、ボタンのそばに一言添えると進みやすくなります。</p>
+    </section>
+
+    <div class="grid2">
+      <section>
+        <h2>見ている端末</h2>
+        <div class="device" role="img" aria-label="スマホ76% パソコン24%">
+          <div class="m" style="width:76%">スマホ 76%</div>
+          <div class="p" style="width:24%">PC 24%</div>
+        </div>
+        <p class="legend">写真や文章は、スマホでどう見えるかを基準に用意するのがおすすめです。</p>
+      </section>
+
+      <section>
+        <h2>よく見られたページ トップ5</h2>
+        <ol class="pages"><li><span class="rank">1</span><span class="pt">トップページ</span><span class="bar" style="width:100%"></span><span class="pv">250回</span></li><li><span class="rank">2</span><span class="pt">体験レッスンのご案内</span><span class="bar" style="width:44%"></span><span class="pv">110回</span></li><li><span class="rank">3</span><span class="pt">英検対策コース</span><span class="bar" style="width:28%"></span><span class="pv">70回</span></li><li><span class="rank">4</span><span class="pt">先生の紹介</span><span class="bar" style="width:18%"></span><span class="pv">44回</span></li><li><span class="rank">5</span><span class="pt">アクセス・教室のようす</span><span class="bar" style="width:16%"></span><span class="pv">41回</span></li></ol>
+      </section>
+    </div>
+
+    <div class="grid2">
+      <section>
+        <h2>いま見つかっている検索の言葉</h2>
+        <div class="scroll">
+          <table class="qt">
+            <thead><tr><th>検索の言葉</th><th>来た回数</th><th>表示回数</th></tr></thead>
+            <tbody><tr><td class="q">教室名</td><td>38回</td><td>130回</td></tr><tr><td class="q">地域名 英語教室</td><td>12回</td><td>290回</td></tr><tr><td class="q">地域名 子ども 英会話</td><td>6回</td><td>170回</td></tr></tbody>
+          </table>
+        </div>
+        <p class="legend">この言葉で検索した人が、実際にサイトへ来ています。</p>
+      </section>
+
+      <section>
+        <h2>もう少しで見つかる検索の言葉</h2>
+        <div class="scroll">
+          <table class="qt">
+            <thead><tr><th>検索の言葉</th><th>表示回数</th><th>今の順位</th></tr></thead>
+            <tbody><tr><td class="q">英検 対策 小学生 教室</td><td>90回</td><td>19位くらい</td></tr><tr><td class="q">地域名 習い事 小学生</td><td>58回</td><td>16位くらい</td></tr></tbody>
+          </table>
+        </div>
+        <p class="legend">表示はされているのに、まだ押されにくい位置にある言葉。改善のタネです。</p>
+      </section>
+    </div>
+
+    <section class="rec-section">
+      <h2>今月の推奨 — 次にやると効くこと</h2>
+      <ul class="recs">
+      <li class="rec">
+        <p class="rec-title"><span class="rec-no">①</span>友だち追加の直前に「追加するとこうなる」の一言を置く</p>
+        <p class="rec-why">ボタンは押されているのに、追加まで進む人が減っています。</p>
+        <p class="rec-plan">集客サポートの範囲内</p>
+      </li></ul>
+      <p class="rec-cta">実施をご希望の場合は、LINEで「① 友だち追加の直前に「追加するとこうなる」の一言を置く」のように、番号または内容をそのままお送りください。こちらで進めます。</p>
+    </section>
+  </div>
+  <div class="panel" data-panel="2" >
+    <section>
+      <h2>今月のひとこと</h2>
+      <p class="hitokoto">8月は、HPに来た人が211人→245人に増えました。検索の「地域名＋英語教室」から来る人が増えています。体験は2件で先月と同じ。入会は1人でした。</p>
+    </section>
+
+    <section>
+      <h2>集客の流れ — HP → LINE → 無料体験 → 入会</h2>
+      <div class="funnel">
+      <div class="step">
+        
+        <p class="step-label">HPに来た</p>
+        <p class="step-value">245<span class="step-unit">人</span></p>
+        <p class="step-diff"><span class="up">▲ 先月 211</span></p>
+        <div class="step-next" aria-hidden>↓ <span>5%が次へ</span></div>
+      </div>
+      <div class="step">
+        
+        <p class="step-label">LINEボタンを押した</p>
+        <p class="step-value">13<span class="step-unit">件</span></p>
+        <p class="step-diff"><span class="up">▲ 先月 9</span></p>
+        <div class="step-next" aria-hidden>↓ <span>46%が次へ</span></div>
+      </div>
+      <div class="step">
+        
+        <p class="step-label">友だち追加</p>
+        <p class="step-value">6<span class="step-unit">人</span></p>
+        <p class="step-diff"><span class="up">▲ 先月 4</span></p>
+        <div class="step-next" aria-hidden>↓ <span>50%が次へ</span></div>
+      </div>
+      <div class="step">
+        
+        <p class="step-label">無料相談</p>
+        <p class="step-value">3<span class="step-unit">件</span></p>
+        <p class="step-diff"><span class="up">▲ 先月 2</span></p>
+        <div class="step-next" aria-hidden>↓ <span>67%が次へ</span></div>
+      </div>
+      <div class="step focus">
+        <p class="focus-badge">いま ここを改善</p>
+        <p class="step-label">体験レッスン</p>
+        <p class="step-value">2<span class="step-unit">件</span></p>
+        <p class="step-diff"><span class="flat">→ 先月と同じ</span></p>
+        <div class="step-next" aria-hidden>↓ <span>50%が次へ</span></div>
+      </div>
+      <div class="step">
+        
+        <p class="step-label">入会</p>
+        <p class="step-value">1<span class="step-unit">人</span></p>
+        <p class="step-diff"><span class="up">▲ 先月 0</span></p>
+        
+      </div></div>
+      <p class="focus-note"><span class="focus-mark" aria-hidden>◎</span>無料相談3件のうち、体験の日程まで決まったのは2件。相談への返信の速さと、日程の候補を先に出すことで取りこぼしを減らせます。</p>
+    </section>
+
+    <div class="grid2">
+      <section>
+        <h2>見ている端末</h2>
+        <div class="device" role="img" aria-label="スマホ78% パソコン22%">
+          <div class="m" style="width:78%">スマホ 78%</div>
+          <div class="p" style="width:22%">PC 22%</div>
+        </div>
+        <p class="legend">写真や文章は、スマホでどう見えるかを基準に用意するのがおすすめです。</p>
+      </section>
+
+      <section>
+        <h2>よく見られたページ トップ5</h2>
+        <ol class="pages"><li><span class="rank">1</span><span class="pt">トップページ</span><span class="bar" style="width:100%"></span><span class="pv">289回</span></li><li><span class="rank">2</span><span class="pt">体験レッスンのご案内</span><span class="bar" style="width:46%"></span><span class="pv">133回</span></li><li><span class="rank">3</span><span class="pt">英検対策コース</span><span class="bar" style="width:27%"></span><span class="pv">78回</span></li><li><span class="rank">4</span><span class="pt">先生の紹介</span><span class="bar" style="width:19%"></span><span class="pv">55回</span></li><li><span class="rank">5</span><span class="pt">アクセス・教室のようす</span><span class="bar" style="width:16%"></span><span class="pv">46回</span></li></ol>
+      </section>
+    </div>
+
+    <div class="grid2">
+      <section>
+        <h2>いま見つかっている検索の言葉</h2>
+        <div class="scroll">
+          <table class="qt">
+            <thead><tr><th>検索の言葉</th><th>来た回数</th><th>表示回数</th></tr></thead>
+            <tbody><tr><td class="q">教室名</td><td>41回</td><td>140回</td></tr><tr><td class="q">地域名 英語教室</td><td>18回</td><td>310回</td></tr><tr><td class="q">地域名 子ども 英会話</td><td>7回</td><td>180回</td></tr><tr><td class="q">地域名 英会話 大人</td><td>3回</td><td>90回</td></tr></tbody>
+          </table>
+        </div>
+        <p class="legend">この言葉で検索した人が、実際にサイトへ来ています。</p>
+      </section>
+
+      <section>
+        <h2>もう少しで見つかる検索の言葉</h2>
+        <div class="scroll">
+          <table class="qt">
+            <thead><tr><th>検索の言葉</th><th>表示回数</th><th>今の順位</th></tr></thead>
+            <tbody><tr><td class="q">英検 対策 小学生 教室</td><td>95回</td><td>19位くらい</td></tr><tr><td class="q">地域名 習い事 小学生</td><td>60回</td><td>16位くらい</td></tr><tr><td class="q">地域名 英語 幼児</td><td>45回</td><td>14位くらい</td></tr></tbody>
+          </table>
+        </div>
+        <p class="legend">表示はされているのに、まだ押されにくい位置にある言葉。改善のタネです。</p>
+      </section>
+    </div>
+
+    <section class="rec-section">
+      <h2>今月の推奨 — 次にやると効くこと</h2>
+      <ul class="recs">
+      <li class="rec">
+        <p class="rec-title"><span class="rec-no">①</span>相談が来たら、日程の候補を3つ先に送る返信の型を作る</p>
+        <p class="rec-why">相談→体験で1件取りこぼしています。返信の型があれば防げます。</p>
+        <p class="rec-plan">集客サポートの範囲内</p>
+      </li>
+      <li class="rec">
+        <p class="rec-title"><span class="rec-no">②</span>「英検 対策」の記事を1本足す</p>
+        <p class="rec-why">検索で95回表示されているのに、まだ19位で届いていません。</p>
+        <p class="rec-plan">ご依頼いただく場合の目安: 記事1本</p>
+      </li></ul>
+      <p class="rec-cta">実施をご希望の場合は、LINEで「① 相談が来たら、日程の候補を3つ先に送る返信の型を作る」、「② 「英検 対策」の記事を1本足す」のように、番号または内容をそのままお送りください。こちらで進めます。</p>
+    </section>
+  </div>
+
+  <section>
+    <h2>いつもの表 — 全期間のうごき</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>説明</th><th class="target">目標値</th><th class="">1月</th><th class="">2月</th><th class="">3月</th><th class="">4月</th><th class="">5月</th><th class="">6月</th><th class="">7月</th><th class="now">8月</th></tr></thead>
+        <tbody><tr><th scope="row">HPに来た人数</th><td class="target">180</td><td class="">251</td><td class="">162</td><td class="">231</td><td class="">124</td><td class="">430</td><td class="">142</td><td class="">211</td><td class="now ok">245</td></tr><tr><th scope="row">HPが見られた回数</th><td class="target">550</td><td class="">583</td><td class="">466</td><td class="">692</td><td class="">344</td><td class="">762</td><td class="">390</td><td class="">503</td><td class="now ok">601</td></tr><tr><th scope="row">LINEボタンを押した数</th><td class="target">15</td><td class="">22</td><td class="">8</td><td class="">14</td><td class="">9</td><td class="">7</td><td class="">10</td><td class="">9</td><td class="now">13</td></tr><tr><th scope="row">新しく友だち追加された数</th><td class="target">6</td><td class="">13</td><td class="">1</td><td class="">7</td><td class="">5</td><td class="">2</td><td class="">5</td><td class="">4</td><td class="now ok">6</td></tr><tr><th scope="row">LINEから無料相談が決まった数</th><td class="target">—</td><td class="">7</td><td class="">1</td><td class="">4</td><td class="">2</td><td class="">1</td><td class="">2</td><td class="">2</td><td class="now">3</td></tr><tr><th scope="row">実際に体験の日程が決まった数</th><td class="target">3</td><td class="">7</td><td class="">1</td><td class="">4</td><td class="">2</td><td class="">1</td><td class="">2</td><td class="">2</td><td class="now">2</td></tr><tr><th scope="row">入会した人数</th><td class="target">2</td><td class="">5</td><td class="">4</td><td class="">2</td><td class="">2</td><td class="">—</td><td class="">1</td><td class="">—</td><td class="now">1</td></tr><tr><th scope="row">前月生徒数 ＋ 入会 − 退会</th><td class="target">—</td><td class="">26</td><td class="">29</td><td class="">30</td><td class="">30</td><td class="">29</td><td class="">29</td><td class="">29</td><td class="now">30</td></tr></tbody>
+      </table>
+    </div>
+    <p class="legend">友だち追加から下は、LINEの管理画面などから手で集計している数字です。今月の列で<span style="color:var(--ok);font-weight:bold">緑の数字</span>は目標達成。スマホでは表を横にスクロールできます。</p>
+  </section>
+
+  <footer>集計: Googleアナリティクス・Google Search Console／LINEの数字は管理画面から。NEXT VALLEY（www.nextvalley-jpn.com）</footer>
+</div>
+<script>
+  (function(){
+    var tabs=document.querySelectorAll('.tab'),panels=document.querySelectorAll('.panel');
+    tabs.forEach(function(t){t.addEventListener('click',function(){
+      tabs.forEach(function(x){x.classList.remove('active')});t.classList.add('active');
+      panels.forEach(function(p){p.hidden=p.getAttribute('data-panel')!==t.getAttribute('data-tab')});
+    })});
+  })();
+</script>
+</body>
+</html>
