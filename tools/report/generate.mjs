@@ -58,16 +58,20 @@ const panel = (m, idx) => {
     .map((q) => `<tr><td class="q">${esc(q.query)}</td><td>${num(q.impressions)}回</td><td>${q.position.toFixed(0)}位くらい</td></tr>`)
     .join("");
 
+  const marks = ["①", "②", "③", "④", "⑤"];
   const recs = m.recommends
     .map(
-      (r) => `
+      (r, i) => `
       <li class="rec">
-        <p class="rec-title">${esc(r.title)}</p>
+        <p class="rec-title"><span class="rec-no">${marks[i] || i + 1}</span>${esc(r.title)}</p>
         <p class="rec-why">${esc(r.why)}</p>
         <p class="rec-plan">${esc(r.plan)}</p>
       </li>`
     )
     .join("");
+  const recCta = m.recommends.length
+    ? `実施をご希望の場合は、LINEで${m.recommends.map((r, i) => `「${marks[i] || i + 1} ${esc(r.title)}」`).join("、")}のように、番号または内容をそのままお送りください。こちらで進めます。`
+    : "";
 
   return `
   <div class="panel" data-panel="${idx}" ${idx === d.months.length - 1 ? "" : "hidden"}>
@@ -125,7 +129,7 @@ const panel = (m, idx) => {
     <section class="rec-section">
       <h2>今月の推奨 — 次にやると効くこと</h2>
       <ul class="recs">${recs}</ul>
-      <p class="rec-cta">実施をご希望の場合は、LINEで「レポートの推奨をお願いします」と一言お送りください。こちらで進めます。</p>
+      ${recCta ? `<p class="rec-cta">${recCta}</p>` : ""}
     </section>
   </div>`;
 };
@@ -148,7 +152,7 @@ const html = `<!doctype html>
   .sheet{max-width:1040px;margin:0 auto;padding:16px 16px 48px}
   header{background:var(--navy);color:#fff;border-radius:16px;padding:24px 24px 20px;margin-bottom:12px}
   header .brand{display:flex;align-items:center;gap:10px;font-weight:bold;letter-spacing:.12em;font-size:13px}
-  header .brand .mark{width:18px;height:18px;background:var(--coral);clip-path:polygon(0 0,100% 0,0 100%)}
+  header .brand .mark{width:18px;height:18px;background:linear-gradient(to bottom right,var(--coral) 50%,#fff 50%);border-radius:2px}
   h1{font-size:clamp(1.25rem,4vw,1.75rem);margin:10px 0 2px;line-height:1.5}
   header .period{color:#c8d3dc;font-size:13px;margin:0}
   .tabs{position:sticky;top:0;z-index:10;display:flex;gap:6px;background:var(--cream);padding:10px 0;overflow-x:auto;-webkit-overflow-scrolling:touch}
@@ -202,6 +206,7 @@ const html = `<!doctype html>
   ul.recs{list-style:none;margin:0;padding:0;display:grid;gap:10px}
   .rec{background:rgba(255,255,255,.06);border-radius:12px;padding:12px 14px}
   .rec-title{margin:0;color:#fff;font-weight:bold;font-size:15px;line-height:1.7}
+  .rec-no{color:var(--coral);margin-right:6px}
   .rec-why{margin:2px 0 0;color:#c8d3dc;font-size:13px}
   .rec-plan{margin:6px 0 0;display:inline-block;background:var(--coral);color:#fff;font-size:11px;font-weight:bold;border-radius:4px;padding:1px 8px}
   .rec-cta{margin:14px 0 0;color:#fff;font-size:13px;border-top:1px solid rgba(255,255,255,.2);padding-top:12px}
