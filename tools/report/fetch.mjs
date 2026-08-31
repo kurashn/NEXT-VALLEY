@@ -92,7 +92,16 @@ for (const ym of detailYms) {
   }
   const tot = mob + pc || 1;
 
-  const pg = await run({ dateRanges: [range], dimensions: [{ name: "pagePath" }, { name: "pageTitle" }], metrics: [{ name: "screenPageViews" }], orderBys: [{ desc: true, metric: { metricName: "screenPageViews" } }], limit: 8 });
+  const pgRaw = await run({ dateRanges: [range], dimensions: [{ name: "pagePath" }, { name: "pageTitle" }], metrics: [{ name: "screenPageViews" }], orderBys: [{ desc: true, metric: { metricName: "screenPageViews" } }], limit: 20 });
+  /* 同じパスがタイトル違いで複数行になるので、パスで合算（タイトルは一番見られた行のもの） */
+  const byPath = new Map();
+  for (const r of pgRaw) {
+    const path = r.dimensionValues[0].value, v = Number(r.metricValues[0].value);
+    if (!byPath.has(path)) byPath.set(path, { path, title: r.dimensionValues[1].value, views: 0 });
+    byPath.get(path).views += v;
+  }
+  const pg = [...byPath.values()].sort((a, b) => b.views - a.views).slice(0, 8)
+    .map((x) => ({ dimensionValues: [{ value: x.path }, { value: x.title }], metricValues: [{ value: String(x.views) }] }));
   /* ページ名: タイトルから「複数ページで共通する末尾（サイト名など）」を繰り返し剥がす */
   const SEP = /\s*[|｜]\s*/;
   let titles = pg.map((r) => (r.dimensionValues[1].value || r.dimensionValues[0].value).split(SEP));
