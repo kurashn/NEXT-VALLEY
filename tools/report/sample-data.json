@@ -1,41 +1,124 @@
 {
   "client": "サンプル英語教室",
-  "period": "2026年8月",
-  "months": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月"],
-  "hitokoto": "8月は、HPに来た人が211人→245人に増えました。検索で「地域名＋英語教室」から来る人が増えています。体験は2件で先月と同じ。来月は、体験の案内ページの写真を入れ替えます。",
-  "rows": [
-    { "label": "HPに来た人数", "target": 180, "values": [251, 162, 231, 124, 430, 142, 211, 245], "auto": true },
-    { "label": "HPが見られた回数", "target": 550, "values": [583, 466, 692, 344, 762, 390, 503, 601], "auto": true },
-    { "label": "LINEボタンを押した数", "target": 15, "values": [22, 8, 14, 9, 7, 10, 9, 13], "auto": true },
-    { "label": "新しく友だち追加された数", "target": 6, "values": [13, 1, 7, 5, 2, 5, 4, 6], "auto": false },
-    { "label": "LINEから無料相談が決まった数", "target": null, "values": [7, 1, 4, 2, 1, 2, 2, 3], "auto": false },
-    { "label": "実際に体験の日程が決まった数", "target": 3, "values": [7, 1, 4, 2, 1, 2, 2, 2], "auto": false },
-    { "label": "入会した人数", "target": 2, "values": [5, 4, 2, 2, null, 1, null, 1], "auto": false },
-    { "label": "前月生徒数 ＋ 入会 − 退会", "target": null, "values": [26, 29, 30, 30, 29, 29, 29, 30], "auto": false }
-  ],
-  "funnel": [
-    { "label": "HPに来た", "value": 245, "prev": 211 },
-    { "label": "LINEボタンを押した", "value": 13, "prev": 9 },
-    { "label": "友だち追加", "value": 6, "prev": 4 },
-    { "label": "無料相談", "value": 3, "prev": 2 },
-    { "label": "体験", "value": 2, "prev": 2 },
-    { "label": "入会", "value": 1, "prev": 0 }
-  ],
-  "device": { "mobile": 78, "desktop": 22 },
-  "topPages": [
-    { "title": "トップページ", "views": 289 },
-    { "title": "体験レッスンのご案内", "views": 133 },
-    { "title": "英検対策コース", "views": 78 },
-    { "title": "先生の紹介", "views": 55 },
-    { "title": "アクセス・教室のようす", "views": 46 }
-  ],
-  "almostQueries": [
-    { "query": "地域名 英語教室", "impressions": 310, "position": 12.4 },
-    { "query": "地域名 子ども 英会話", "impressions": 180, "position": 14.1 },
-    { "query": "英検 対策 小学生 教室", "impressions": 95, "position": 18.9 },
-    { "query": "地域名 習い事 小学生", "impressions": 60, "position": 16.2 }
-  ],
-  "mapNote": "",
-  "nextAction": "体験レッスンのページの写真を、教室で撮った新しいものに入れ替えます。",
-  "generatedAt": "2026-08-31"
+  "generatedAt": "2026-08-31",
+  "table": {
+    "months": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月"],
+    "rows": [
+      { "label": "HPに来た人数", "target": 180, "values": [251, 162, 231, 124, 430, 142, 211, 245] },
+      { "label": "HPが見られた回数", "target": 550, "values": [583, 466, 692, 344, 762, 390, 503, 601] },
+      { "label": "LINEボタンを押した数", "target": 15, "values": [22, 8, 14, 9, 7, 10, 9, 13] },
+      { "label": "新しく友だち追加された数", "target": 6, "values": [13, 1, 7, 5, 2, 5, 4, 6] },
+      { "label": "LINEから無料相談が決まった数", "target": null, "values": [7, 1, 4, 2, 1, 2, 2, 3] },
+      { "label": "実際に体験の日程が決まった数", "target": 3, "values": [7, 1, 4, 2, 1, 2, 2, 2] },
+      { "label": "入会した人数", "target": 2, "values": [5, 4, 2, 2, null, 1, null, 1] },
+      { "label": "前月生徒数 ＋ 入会 − 退会", "target": null, "values": [26, 29, 30, 30, 29, 29, 29, 30] }
+    ]
+  },
+  "months": [
+    {
+      "label": "2026年6月",
+      "hitokoto": "6月は、HPに来た人が430人→142人に落ち着きました。5月が多すぎた反動で、心配は要りません。体験は2件で、狙いどおりのペースです。",
+      "funnel": [
+        { "label": "HPに来た", "unit": "人", "value": 142, "prev": 430 },
+        { "label": "LINEボタンを押した", "unit": "件", "value": 10, "prev": 7 },
+        { "label": "友だち追加", "unit": "人", "value": 5, "prev": 2 },
+        { "label": "無料相談", "unit": "件", "value": 2, "prev": 1 },
+        { "label": "体験レッスン", "unit": "件", "value": 2, "prev": 1 },
+        { "label": "入会", "unit": "人", "value": 1, "prev": 0 }
+      ],
+      "focus": 1,
+      "focusText": "142人が来て、LINEボタンを押したのは10人。100人に7人の割合です。ボタンの場所と文言を見直すのが近道です。",
+      "device": { "mobile": 74, "desktop": 26 },
+      "topPages": [
+        { "title": "トップページ", "views": 180 },
+        { "title": "体験レッスンのご案内", "views": 84 },
+        { "title": "英検対策コース", "views": 52 },
+        { "title": "先生の紹介", "views": 38 },
+        { "title": "アクセス・教室のようす", "views": 30 }
+      ],
+      "nowQueries": [
+        { "query": "教室名", "clicks": 34, "impressions": 120 },
+        { "query": "地域名 英語教室", "clicks": 8, "impressions": 260 },
+        { "query": "地域名 子ども 英会話", "clicks": 4, "impressions": 150 }
+      ],
+      "almostQueries": [
+        { "query": "英検 対策 小学生 教室", "impressions": 80, "position": 19.2 },
+        { "query": "地域名 習い事 小学生", "impressions": 55, "position": 17.0 }
+      ],
+      "recommends": [
+        { "title": "LINEボタンをページの上にも置く", "why": "押した人が100人に7人。スクロールしないと押せない位置にあります。", "plan": "集客サポートの範囲内" }
+      ]
+    },
+    {
+      "label": "2026年7月",
+      "hitokoto": "7月は、HPに来た人が211人に回復。検索の「地域名＋英語教室」で見つかり始めています。友だち追加が4人と少なめだったのが来月の課題です。",
+      "funnel": [
+        { "label": "HPに来た", "unit": "人", "value": 211, "prev": 142 },
+        { "label": "LINEボタンを押した", "unit": "件", "value": 9, "prev": 10 },
+        { "label": "友だち追加", "unit": "人", "value": 4, "prev": 5 },
+        { "label": "無料相談", "unit": "件", "value": 2, "prev": 2 },
+        { "label": "体験レッスン", "unit": "件", "value": 2, "prev": 2 },
+        { "label": "入会", "unit": "人", "value": 0, "prev": 1 }
+      ],
+      "focus": 2,
+      "focusText": "ボタンを押した9人のうち、友だち追加まで進んだのは4人。追加した後に何が起きるかの説明を、ボタンのそばに一言添えると進みやすくなります。",
+      "device": { "mobile": 76, "desktop": 24 },
+      "topPages": [
+        { "title": "トップページ", "views": 250 },
+        { "title": "体験レッスンのご案内", "views": 110 },
+        { "title": "英検対策コース", "views": 70 },
+        { "title": "先生の紹介", "views": 44 },
+        { "title": "アクセス・教室のようす", "views": 41 }
+      ],
+      "nowQueries": [
+        { "query": "教室名", "clicks": 38, "impressions": 130 },
+        { "query": "地域名 英語教室", "clicks": 12, "impressions": 290 },
+        { "query": "地域名 子ども 英会話", "clicks": 6, "impressions": 170 }
+      ],
+      "almostQueries": [
+        { "query": "英検 対策 小学生 教室", "impressions": 90, "position": 18.5 },
+        { "query": "地域名 習い事 小学生", "impressions": 58, "position": 16.4 }
+      ],
+      "recommends": [
+        { "title": "友だち追加の直前に「追加するとこうなる」の一言を置く", "why": "ボタンは押されているのに、追加まで進む人が減っています。", "plan": "集客サポートの範囲内" }
+      ]
+    },
+    {
+      "label": "2026年8月",
+      "hitokoto": "8月は、HPに来た人が211人→245人に増えました。検索の「地域名＋英語教室」から来る人が増えています。体験は2件で先月と同じ。入会は1人でした。",
+      "funnel": [
+        { "label": "HPに来た", "unit": "人", "value": 245, "prev": 211 },
+        { "label": "LINEボタンを押した", "unit": "件", "value": 13, "prev": 9 },
+        { "label": "友だち追加", "unit": "人", "value": 6, "prev": 4 },
+        { "label": "無料相談", "unit": "件", "value": 3, "prev": 2 },
+        { "label": "体験レッスン", "unit": "件", "value": 2, "prev": 2 },
+        { "label": "入会", "unit": "人", "value": 1, "prev": 0 }
+      ],
+      "focus": 4,
+      "focusText": "無料相談3件のうち、体験の日程まで決まったのは2件。相談への返信の速さと、日程の候補を先に出すことで取りこぼしを減らせます。",
+      "device": { "mobile": 78, "desktop": 22 },
+      "topPages": [
+        { "title": "トップページ", "views": 289 },
+        { "title": "体験レッスンのご案内", "views": 133 },
+        { "title": "英検対策コース", "views": 78 },
+        { "title": "先生の紹介", "views": 55 },
+        { "title": "アクセス・教室のようす", "views": 46 }
+      ],
+      "nowQueries": [
+        { "query": "教室名", "clicks": 41, "impressions": 140 },
+        { "query": "地域名 英語教室", "clicks": 18, "impressions": 310 },
+        { "query": "地域名 子ども 英会話", "clicks": 7, "impressions": 180 },
+        { "query": "地域名 英会話 大人", "clicks": 3, "impressions": 90 }
+      ],
+      "almostQueries": [
+        { "query": "英検 対策 小学生 教室", "impressions": 95, "position": 18.9 },
+        { "query": "地域名 習い事 小学生", "impressions": 60, "position": 16.2 },
+        { "query": "地域名 英語 幼児", "impressions": 45, "position": 13.8 }
+      ],
+      "recommends": [
+        { "title": "相談が来たら、日程の候補を3つ先に送る返信の型を作る", "why": "相談→体験で1件取りこぼしています。返信の型があれば防げます。", "plan": "集客サポートの範囲内" },
+        { "title": "「英検 対策」の記事を1本足す", "why": "検索で95回表示されているのに、まだ19位で届いていません。", "plan": "ご依頼いただく場合の目安: 記事1本" }
+      ]
+    }
+  ]
 }
