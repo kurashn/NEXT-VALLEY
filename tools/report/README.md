@@ -8,3 +8,9 @@
 - 本番運用（予定）: クライアントごとに `clients/<名前>.json`（GA4プロパティID・Search ConsoleのURL・目標値・手入力の数字）を置き、取得スクリプトがGA4/Search Console APIから自動で埋める → generate.mjs でHTML化
 - 手入力項目（✍印）: 友だち追加・無料相談・体験・入会・生徒数（LINE公式の管理画面などから月1回）
 - このフォルダはサイトのビルド対象外（src外）。鍵ファイル(service-account.json)は置かない・コミットしない
+
+## 本番運用
+- 初回設定済み: サービスアカウント report-reader@nextvalley-report.iam.gserviceaccount.com（鍵は tools/report/service-account.json・コミット禁止）
+- クライアント追加: `clients/<名前>.config.json` を作り、相手のGA・Search Consoleに上のメールを閲覧者で追加
+- 毎月の生成: `node tools/report/fetch.mjs clients/<名前>.config.json` → 同じ場所に .data.json と .html
+- 手入力（友だち追加・相談・体験・入会など）と「今月のひとこと」「推奨」は config の manual["YYYY-MM"] に書く
