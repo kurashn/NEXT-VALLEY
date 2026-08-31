@@ -103,7 +103,7 @@ for (const ym of detailYms) {
   const pg = [...byPath.values()].sort((a, b) => b.views - a.views).slice(0, 8)
     .map((x) => ({ dimensionValues: [{ value: x.path }, { value: x.title }], metricValues: [{ value: String(x.views) }] }));
   /* ページ名: タイトルから「複数ページで共通する末尾（サイト名など）」を繰り返し剥がす */
-  const SEP = /\s*[|｜]\s*/;
+  const SEP = /\s*[|｜]\s*|\s+[-–—]\s+/;
   let titles = pg.map((r) => (r.dimensionValues[1].value || r.dimensionValues[0].value).split(SEP));
   for (let pass = 0; pass < 3; pass++) {
     const lastCount = {};
