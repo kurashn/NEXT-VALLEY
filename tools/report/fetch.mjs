@@ -92,9 +92,21 @@ for (const ym of detailYms) {
   }
   const tot = mob + pc || 1;
 
-  const pg = await run({ dateRanges: [range], dimensions: [{ name: "pagePath" }, { name: "pageTitle" }], metrics: [{ name: "screenPageViews" }], orderBys: [{ desc: true, metric: { metricName: "screenPageViews" } }], limit: 6 });
-  const pageName = (path, title) => (cfg.pageNames || {})[path] || (title || path).replace(/\s*[|｜–-]\s*[^|｜–-]*$/, "").trim() || path;
-  const topPages = pg.slice(0, 5).map((r) => ({ title: pageName(r.dimensionValues[0].value, r.dimensionValues[1].value), views: Number(r.metricValues[0].value) }));
+  const pg = await run({ dateRanges: [range], dimensions: [{ name: "pagePath" }, { name: "pageTitle" }], metrics: [{ name: "screenPageViews" }], orderBys: [{ desc: true, metric: { metricName: "screenPageViews" } }], limit: 8 });
+  /* ページ名: タイトルから「複数ページで共通する末尾（サイト名など）」を繰り返し剥がす */
+  const SEP = /\s*[|｜]\s*/;
+  let titles = pg.map((r) => (r.dimensionValues[1].value || r.dimensionValues[0].value).split(SEP));
+  for (let pass = 0; pass < 3; pass++) {
+    const lastCount = {};
+    for (const t of titles) if (t.length > 1) lastCount[t[t.length - 1]] = (lastCount[t[t.length - 1]] || 0) + 1;
+    const common = Object.keys(lastCount).filter((k) => lastCount[k] >= 2);
+    if (!common.length) break;
+    titles = titles.map((t) => (t.length > 1 && common.includes(t[t.length - 1]) ? t.slice(0, -1) : t));
+  }
+  const topPages = pg.slice(0, 5).map((r, i) => ({
+    title: (cfg.pageNames || {})[r.dimensionValues[0].value] || titles[i].join("｜") || r.dimensionValues[0].value,
+    views: Number(r.metricValues[0].value),
+  }));
 
   let nowQueries = [], almostQueries = [];
   try {
