@@ -58,9 +58,21 @@ for (const r of await run({ dateRanges: [{ startDate: first, endDate: last }], d
   const ym = r.dimensionValues[0].value;
   if (byYm[ym]) { byYm[ym].users = Number(r.metricValues[0].value); byYm[ym].views = Number(r.metricValues[1].value); }
 }
-for (const r of await run({ dateRanges: [{ startDate: first, endDate: last }], dimensions: [{ name: "yearMonth" }], metrics: [{ name: "eventCount" }], dimensionFilter: { filter: { fieldName: "eventName", stringFilter: { value: cfg.ctaEvent || "line_click" } } } })) {
-  const ym = r.dimensionValues[0].value;
-  if (byYm[ym]) byYm[ym].line = Number(r.metricValues[0].value);
+if (cfg.ctaEvent) {
+  for (const r of await run({ dateRanges: [{ startDate: first, endDate: last }], dimensions: [{ name: "yearMonth" }], metrics: [{ name: "eventCount" }], dimensionFilter: { filter: { fieldName: "eventName", stringFilter: { value: cfg.ctaEvent } } } })) {
+    const ym = r.dimensionValues[0].value;
+    if (byYm[ym]) byYm[ym].line = Number(r.metricValues[0].value);
+  }
+}
+/* ── LP（別プロパティ）を任意で ── */
+const lpByYm = {};
+if (cfg.lpProperty) {
+  for (const ym of ymList) lpByYm[ym] = { users: null, views: null };
+  const lpRows = await ga.properties.runReport({ property: cfg.lpProperty, requestBody: { dateRanges: [{ startDate: first, endDate: last }], dimensions: [{ name: "yearMonth" }], metrics: [{ name: "totalUsers" }, { name: "screenPageViews" }] } }).then((r) => r.data.rows || []);
+  for (const r of lpRows) {
+    const ym = r.dimensionValues[0].value;
+    if (lpByYm[ym]) { lpByYm[ym].users = Number(r.metricValues[0].value); lpByYm[ym].views = Number(r.metricValues[1].value); }
+  }
 }
 
 /* ── 詳細パネル（直近 detailMonths か月・既定3） ── */
@@ -80,9 +92,9 @@ for (const ym of detailYms) {
   }
   const tot = mob + pc || 1;
 
-  const pg = await run({ dateRanges: [range], dimensions: [{ name: "pagePath" }], metrics: [{ name: "screenPageViews" }], orderBys: [{ desc: true, metric: { metricName: "screenPageViews" } }], limit: 6 });
-  const pageName = (p) => (cfg.pageNames || {})[p] || p;
-  const topPages = pg.slice(0, 5).map((r) => ({ title: pageName(r.dimensionValues[0].value), views: Number(r.metricValues[0].value) }));
+  const pg = await run({ dateRanges: [range], dimensions: [{ name: "pagePath" }, { name: "pageTitle" }], metrics: [{ name: "screenPageViews" }], orderBys: [{ desc: true, metric: { metricName: "screenPageViews" } }], limit: 6 });
+  const pageName = (path, title) => (cfg.pageNames || {})[path] || (title || path).replace(/\s*[|｜–-]\s*[^|｜–-]*$/, "").trim() || path;
+  const topPages = pg.slice(0, 5).map((r) => ({ title: pageName(r.dimensionValues[0].value, r.dimensionValues[1].value), views: Number(r.metricValues[0].value) }));
 
   let nowQueries = [], almostQueries = [];
   try {
@@ -100,8 +112,8 @@ for (const ym of detailYms) {
   const g = byYm[ym], gp = prevYm ? byYm[prevYm] : null;
   const funnel = [
     { label: "HPに来た", unit: "人", value: g.users, prev: gp ? gp.users : null },
-    { label: cfg.ctaLabel || "LINEボタンを押した", unit: "件", value: g.line, prev: gp ? gp.line : null },
-    ...(cfg.manualSteps || []).map((s) => ({ label: s.label, unit: s.unit || "件", value: manual[s.key] ?? null, prev: prevManual[s.key] ?? null })),
+    ...(cfg.ctaEvent ? [{ label: cfg.ctaLabel || "LINEボタンを押した", unit: "件", value: g.line, prev: gp ? gp.line : null }] : []),
+    ...(cfg.manualSteps || []).filter((s) => !s.hideInFunnel).map((s) => ({ label: s.label, unit: s.unit || "件", value: manual[s.key] ?? null, prev: prevManual[s.key] ?? null })),
   ];
 
   /* 改善ポイント: 手動指定が無ければ、通過率が一番低い段（値のある範囲）を選ぶ */
@@ -139,7 +151,11 @@ const table = {
   rows: [
     { label: "HPに来た人数", target: t.users ?? null, values: ymList.map((ym) => byYm[ym].users) },
     { label: "HPが見られた回数", target: t.views ?? null, values: ymList.map((ym) => byYm[ym].views) },
-    { label: `${cfg.ctaLabel || "LINEボタンを押した"}数`, target: t.line ?? null, values: ymList.map((ym) => byYm[ym].line) },
+    ...(cfg.lpProperty ? [
+      { label: "LPに来た人数", target: t.lpUsers ?? null, values: ymList.map((ym) => lpByYm[ym].users) },
+      { label: "LPが見られた回数", target: t.lpViews ?? null, values: ymList.map((ym) => lpByYm[ym].views) },
+    ] : []),
+    ...(cfg.ctaEvent ? [{ label: `${cfg.ctaLabel || "LINEボタンを押した"}数`, target: t.line ?? null, values: ymList.map((ym) => byYm[ym].line) }] : []),
     ...(cfg.manualSteps || []).map((s) => ({ label: s.tableLabel || s.label, target: t[s.key] ?? null, values: mrow(s.key) })),
   ],
 };
