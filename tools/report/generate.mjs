@@ -238,7 +238,7 @@ const html = `<!doctype html>
   ${d.months.map(panel).join("")}
 
   <section>
-    <h2>いつもの表 — 全期間のうごき</h2>
+    <h2>月ごとの数字 — 全期間のうごき</h2>
     <div class="scroll">
       <table>
         <thead><tr><th>説明</th><th class="target">目標値</th>${monthsHead}</tr></thead>
