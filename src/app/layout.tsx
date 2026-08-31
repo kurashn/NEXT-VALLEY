@@ -26,11 +26,11 @@ export const metadata: Metadata = {
     default: "NEXT VALLEY | 埼玉北部の教室・お店の集客を、AIで立て直す",
     template: "%s | NEXT VALLEY",
   },
-  description: "埼玉北部（本庄・深谷・熊谷など）の教室・お店の集客を、制作から公開後の改善まで一貫して立て直します。2021年創業・50社以上の実績。診断・提案・見積もりは無料、LINEで2営業日以内に回答。",
+  description: "埼玉北部（本庄・深谷・熊谷など）の教室・お店の集客を、制作から公開後の改善まで一貫して立て直します。2021年創業・100社以上の実績。診断・提案・見積もりは無料、LINEで2営業日以内に回答。",
   keywords: ["埼玉 ホームページ制作", "本庄 ホームページ制作", "教室 集客", "AI活用支援", "AIコンサルティング", "業務効率化", "Web集客", "ホームページ制作", "LP制作", "SEO対策", "MEO対策", "SNSマーケティング", "中小企業"],
   openGraph: {
     title: "NEXT VALLEY | 埼玉北部の教室・お店の集客を、AIで立て直す",
-    description: "埼玉北部の教室・お店の集客を、制作から公開後の改善まで一貫して立て直します。2021年創業・50社以上の実績。診断・提案・見積もりは無料。",
+    description: "埼玉北部の教室・お店の集客を、制作から公開後の改善まで一貫して立て直します。2021年創業・100社以上の実績。診断・提案・見積もりは無料。",
     url: "https://www.nextvalley-jpn.com",
     siteName: "NEXT VALLEY",
     locale: "ja_JP",
@@ -70,18 +70,23 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {isMaintenanceMode ? <Maintenance /> : children}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-T6ZVHJKZ2S"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-T6ZVHJKZ2S');
-          `}
-        </Script>
+        {/* GA4 は本番ビルドだけ読み込む（開発・検収で数字を汚さない） */}
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Script
+              src="https://www.googletagmanager.com/gtag/js?id=G-T6ZVHJKZ2S"
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-T6ZVHJKZ2S');
+              `}
+            </Script>
+          </>
+        )}
         {/* CTAクリック計測: LINE・メールへの遷移をGA4イベントとして送る */}
         <Script id="cta-click-tracking" strategy="afterInteractive">
           {`

@@ -18,7 +18,7 @@ export const AuthorBox = () => {
                     倉林 駿 <span className="ml-2 text-sm font-normal text-ink-sub">NEXT VALLEY 代表</span>
                 </p>
                 <p className="mt-2 text-sm leading-[1.9] text-ink-sub">
-                    2021年にNEXT VALLEYを開始。スクールから企業サイトまで50社以上のホームページ制作・集客支援を行い、
+                    2021年にNEXT VALLEYを開始。スクールから企業サイトまで100社以上のホームページ制作・集客支援を行い、
                     自社の制作・マーケティングの現場でAIを日常的に活用しています。「作って終わり」にしない、
                     数字で判断できるWeb運用を提案するのが仕事です。記事は実際の相談・制作で見てきたことをもとに書いています。
                 </p>
