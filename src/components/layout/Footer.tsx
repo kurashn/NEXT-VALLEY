@@ -16,6 +16,7 @@ const copy = {
         ],
         contentLinks: [
             { name: "無料セルフ診断", href: "/shindan" },
+            { name: "対応エリア（埼玉北部）", href: "/saitama-hokubu" },
             { name: "お役立ちコラム", href: "/blog" },
             { name: "事業情報", href: "/company" },
             { name: "お問い合わせ", href: "/contact" },
