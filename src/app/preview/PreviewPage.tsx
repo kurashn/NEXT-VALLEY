@@ -242,7 +242,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                                 <p className="text-[12px] font-bold tracking-[0.25em] text-ink-sub">{t.answer.usualLabel}</p>
                                 <ol className="mt-5 space-y-3">
                                     {t.answer.usualFlow.map((s, i) => (
-                                        <li key={s} className="flex items-start gap-3 text-[15px] leading-[1.8] text-ink-sub">
+                                        <li key={i} className="flex items-start gap-3 text-[15px] leading-[1.8] text-ink-sub">
                                             <span className="lp-serif mt-0.5 w-6 shrink-0 text-lg leading-none text-ink-sub">{i + 1}</span>
                                             <span className={i === t.answer.usualFlow.length - 1 ? "lp-strike font-bold text-ink" : ""}>{s}</span>
                                         </li>
@@ -260,7 +260,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                                 <p className="text-[12px] font-bold tracking-[0.25em] text-coral">{t.answer.ourLabel}</p>
                                 <ol className="mt-5 space-y-3">
                                     {t.answer.ourFlow.map((s, i) => (
-                                        <li key={s} className="flex items-start gap-3 text-[15px] font-bold leading-[1.8]">
+                                        <li key={i} className="flex items-start gap-3 text-[15px] font-bold leading-[1.8]">
                                             <span className="lp-serif mt-0.5 w-6 shrink-0 text-lg leading-none text-coral">{i + 1}</span>
                                             <span>{s}</span>
                                         </li>

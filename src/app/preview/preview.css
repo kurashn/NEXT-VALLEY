@@ -134,7 +134,9 @@
 
 /* 取り消し線（「一般的な流れ」の否定表現） */
 .lp-strike {
-  background: linear-gradient(transparent 52%, rgba(226, 108, 92, 0.35) 52%, rgba(226, 108, 92, 0.35) 68%, transparent 68%);
+  background-image: linear-gradient(transparent 52%, rgba(226, 108, 92, 0.35) 52%, rgba(226, 108, 92, 0.35) 68%, transparent 68%);
+  background-size: 100% 1.8em;
+  background-repeat: repeat-y;
 }
 
 /* モバイル追従バー分の下余白 */
