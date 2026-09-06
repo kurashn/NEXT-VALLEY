@@ -119,7 +119,7 @@ export function pickVariant(tags: string[] = [], categories: string[] = []): key
     if (hasAny(tags, ["MEO", "Googleマップ", "Googleビジネス", "地図"])) return "maps";
     if (hasAny(tags, ["費用", "料金", "見積", "相場", "制作会社の選び方", "格安", "無料", "お急ぎ"])) return "cost";
     if (hasAny(tags, ["教室", "スクール"])) return "classroom";
-    if (categories.includes("ai-efficiency") || hasAny(tags, ["AI"])) return "ai";
+    if (categories.includes("ai") || hasAny(tags, ["AI"])) return "ai";
     return "default";
 }
 

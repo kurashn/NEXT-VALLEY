@@ -22,6 +22,11 @@ const ja = {
     p1: (
         <>こんにちは、代表の倉林 駿（くらはやし しゅん）<span className="nowrap">です。</span></>
     ),
+    profile: (
+        <>
+            埼玉県本庄市児玉町の出身です。2020年にプログラミングを独学で始め、制作会社で現場経験を積んだのち、2021年にNEXT VALLEYを開業。以来、100社以上のホームページ制作と集客のお手伝いをして<span className="nowrap">きました。</span>
+        </>
+    ),
     p2: (
         <>
             「頼むと高そう」「本当に効果が出るのか分からない」。相談をためらう理由は、だいたいこの<span className="nowrap">2つです。</span>
@@ -51,6 +56,11 @@ const en: typeof ja = {
         </>
     ),
     p1: <>Hi, I’m Shun Kurahayashi, founder of NEXT VALLEY.</>,
+    profile: (
+        <>
+            Born and raised in Honjo, Saitama. I taught myself programming in 2020, gained hands-on experience at a web production company, and founded NEXT VALLEY in 2021. Since then I’ve helped more than 100 businesses with their websites and marketing.
+        </>
+    ),
     p2: (
         <>
             “It’s probably expensive.” “Will it actually work?” In our experience, those two doubts are what keep most people from reaching out.
@@ -108,6 +118,7 @@ export function Representative({ lang = "ja" }: { lang?: Lang }) {
 
                             <div className="space-y-6 text-[15px] leading-[2] tracking-[0.02em] text-ink-sub">
                                 <p>{t.p1}</p>
+                                <p>{t.profile}</p>
                                 <p>{t.p2}</p>
                                 <p>{t.p3}</p>
                                 <p className="font-bold text-ink">{t.p4}</p>

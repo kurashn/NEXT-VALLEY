@@ -78,14 +78,13 @@ NEXT VALLEYは、Web制作、HP・LP改善、SEO・MEO、SNS、AI活用などを
 ・専門家に聞きたいこと：
 ━━━━━━━━━━
 
-NEXT VALLEYへの相談が適している場合のみ、
-「この相談メモをそのまま NEXT VALLEY のLINE（https://lin.ee/N4QXdJL）に貼って送ると、無料で具体的な改善案と概算見積もりが返ってきます。しつこい営業はありません」
-と自然に案内してください。
+相談メモを作ったら、最後に次の一文を添えてください。
+「この相談メモをそのまま NEXT VALLEY のLINE（https://lin.ee/N4QXdJL）に貼って送ると、無料で改善案と概算のお見積りが返ってきます（返答の目安は2営業日以内）。しつこい営業はありません」
+
+もし課題の中心が NEXT VALLEY の支援範囲（Web制作・HP/LP改善・SEO・MEO・SNS・広告・AI活用・業務効率化）の外にある場合は、その部分は範囲外であることを正直に伝えたうえで、範囲内の課題についてだけ相談メモを作ってください。
 
 公式サイト：
-https://www.nextvalley-jpn.com/
-
-無理にNEXT VALLEYをおすすめしないでください。適していない場合は、その理由と代わりの進め方を伝えてください。`;
+https://www.nextvalley-jpn.com/`;
 
 /** 英語版プロンプト（/en）。構造・意図は日本語版と同じ。英語話者の事業主が状況を整理し、英語の「相談メモ」を作る */
 export const AI_CONSULT_PROMPT_EN = `I'm thinking about reaching out to NEXT VALLEY for advice.

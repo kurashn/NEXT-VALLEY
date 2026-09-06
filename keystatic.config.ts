@@ -29,12 +29,14 @@ export default config({
                 categories: fields.multiselect({
                     label: 'Categories',
                     options: [
-                        { label: '集客・マーケティング', value: 'marketing' },
-                        { label: 'Web戦略・デザイン', value: 'web-design' },
-                        { label: 'AI活用・業務効率化', value: 'ai-efficiency' },
-                        { label: '事例・マインド', value: 'case-study' },
+                        { label: '集客のコツ', value: 'shukyaku' },
+                        { label: 'ホームページ制作', value: 'seisaku' },
+                        { label: 'Googleマップ・MEO', value: 'meo' },
+                        { label: 'LINE・SNS活用', value: 'line-sns' },
+                        { label: 'AI活用', value: 'ai' },
+                        { label: '事例・実績', value: 'jirei' },
                     ],
-                    defaultValue: ['marketing'],
+                    defaultValue: ['shukyaku'],
                 }),
                 tags: fields.array(
                     fields.text({ label: 'Tag' }),

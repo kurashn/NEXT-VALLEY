@@ -1,27 +1,32 @@
-import Link from 'next/link';
-import NextImage from 'next/image';
 import { createReader } from '@keystatic/core/reader';
 import config from '../../../keystatic.config';
 import Navbar from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Badge } from '@/components/ui/badge';
+import { BlogList, type BlogListPost } from '@/components/blog/BlogList';
 
 const reader = createReader(process.cwd(), config);
 
 export default async function BlogPage() {
     const posts = await reader.collections.posts.all();
 
-    // Sort posts by date (newest first)
-    const sortedPosts = posts.sort((a, b) => {
-        return new Date(b.entry.publishedDate ?? 0).getTime() - new Date(a.entry.publishedDate ?? 0).getTime();
-    });
+    const sortedPosts: BlogListPost[] = posts
+        .sort((a, b) => new Date(b.entry.publishedDate ?? 0).getTime() - new Date(a.entry.publishedDate ?? 0).getTime())
+        .map((post) => ({
+            slug: post.slug,
+            title: post.entry.title,
+            excerpt: post.entry.excerpt ?? '',
+            publishedDate: post.entry.publishedDate ?? '',
+            coverImage: post.entry.coverImage || `/blog/${post.slug}/opengraph-image`,
+            categories: [...(post.entry.categories ?? [])],
+        }));
 
     return (
         <main className="min-h-screen bg-slate-50">
             <Navbar />
             <section className="pt-32 pb-20 px-4">
                 <div className="max-w-4xl mx-auto">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-12">
                         <Badge className="bg-coral-deep hover:bg-coral-deep text-white border-none px-4 py-1.5 text-sm mb-4 tracking-wider">
                             COLUMN
                         </Badge>
@@ -32,36 +37,7 @@ export default async function BlogPage() {
                             Web制作やマーケティングに関する最新情報をお届けします。
                         </p>
                     </div>
-
-                    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                        {sortedPosts.map((post) => (
-                            <Link
-                                href={`/blog/${post.slug}`}
-                                key={post.slug}
-                                className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100"
-                            >
-                                <div className="aspect-video relative bg-slate-200 overflow-hidden">
-                                    <NextImage
-                                        src={post.entry.coverImage || `/blog/${post.slug}/opengraph-image`}
-                                        alt={post.entry.title}
-                                        fill
-                                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                    />
-                                </div>
-                                <div className="p-6">
-                                    <div className="text-xs text-slate-500 mb-2">
-                                        {post.entry.publishedDate}
-                                    </div>
-                                    <h2 className="text-lg font-bold text-[#002335] mb-2 group-hover:text-[#e26c5c] transition-colors line-clamp-2">
-                                        {post.entry.title}
-                                    </h2>
-                                    <p className="text-sm text-slate-600 line-clamp-3">
-                                        {post.entry.excerpt}
-                                    </p>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
+                    <BlogList posts={sortedPosts} />
                 </div>
             </section>
             <Footer />

@@ -1,6 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
+import NextImage from "next/image";
 import Navbar from "@/components/layout/Navbar";
+import shun from "@/images/shun-new.webp";
 import { Footer } from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
 import { langAttr, type Lang } from "@/i18n";
@@ -46,6 +48,21 @@ const ja = {
     email: "info@nextvalley-jpn.com",
     contactNote: "※ 営業・勧誘のメールは固くお断りいたします。",
     bullet: "・",
+    profileTitle: "代表プロフィール",
+    profileName: "倉林 駿（くらはやし しゅん）",
+    profileBody: (
+        <>
+            <p>
+                埼玉県本庄市児玉町出身。もともとは消防士を目指していましたが、ヘルニアで断念。働き方を考え直すなかで、場所に縛られずに働けるITの道を選びました。
+            </p>
+            <p>
+                2020年、大学4年を前にプログラミングの独学を開始。半年ほどで個人として案件を受注し、Web制作会社で現場経験を積んだのち、2021年1月にNEXT VALLEYを開業しました。以来、ホームページ制作とWebマーケティングで100社以上の事業者様を支援しています。
+            </p>
+            <p>
+                海外では、ノマドワーカー向けのリトリートイベントをタイ（チェンマイ・バンコク・プーケット）、インドネシア（バリ島ウブド）、ベトナム（ダナン）で開催し、コミュニティ運営も行っています。イベントやコミュニティの集客は自分自身の実践テーマでもあり、ご提案には自分で試して効果のあったことを反映しています。
+            </p>
+        </>
+    ),
 };
 const en: typeof ja = {
     badge: "PROFILE",
@@ -88,6 +105,21 @@ const en: typeof ja = {
     email: "info@nextvalley-jpn.com",
     contactNote: "Please note: unsolicited sales and marketing emails are not accepted.",
     bullet: "•",
+    profileTitle: "About the founder",
+    profileName: "Shun Kurahayashi",
+    profileBody: (
+        <>
+            <p>
+                Born and raised in Honjo, Saitama. I originally trained to become a firefighter, but a herniated disc ended that path — and led me to rethink how I wanted to work. That search brought me to tech and to work that isn&rsquo;t tied to one place.
+            </p>
+            <p>
+                I began teaching myself programming in 2020, started taking on client work within about six months, and gained hands-on experience at a web production company before founding NEXT VALLEY in January 2021. Since then, I&rsquo;ve supported more than 100 businesses with web design and marketing.
+            </p>
+            <p>
+                Outside Japan, I host retreat events for remote workers — in Chiang Mai, Bangkok and Phuket (Thailand), Ubud (Bali, Indonesia) and Da Nang (Vietnam) — and run a community around them. Growing events and communities is something I practice myself, and what works there feeds directly into what I recommend to clients.
+            </p>
+        </>
+    ),
 };
 const copy: Record<Lang, typeof ja> = { ja, en };
 
@@ -139,6 +171,26 @@ export function CompanyPage({ lang = "ja" }: { lang?: Lang }) {
                         {t.philosophy}
                     </div>
 
+
+                    {/* 代表プロフィール */}
+                    <div className="mb-16 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                        <div className="p-8 md:p-12">
+                            <h2 className="text-xl font-bold text-[#002335] mb-8 border-l-4 border-[#e26c5c] pl-4">
+                                {t.profileTitle}
+                            </h2>
+                            <div className="flex flex-col gap-8 md:flex-row md:gap-10">
+                                <div className="mx-auto w-full max-w-[260px] shrink-0 md:mx-0 md:w-64">
+                                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                                        <NextImage src={shun} alt={t.profileName} fill className="object-cover" placeholder="blur" sizes="260px" />
+                                    </div>
+                                    <p className="mt-4 text-center font-bold text-[#002335] md:text-left">{t.profileName}</p>
+                                </div>
+                                <div className="space-y-5 text-[15px] leading-loose text-slate-600">
+                                    {t.profileBody}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     {/* Table */}
                     <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
