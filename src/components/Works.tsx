@@ -95,7 +95,7 @@ const ja = {
 };
 const en: typeof ja = {
     heading: "Our work",
-    lead: "Over 50 businesses served, from real estate and construction to e-commerce, fitness, online media, and schools.",
+    lead: "Over 100 businesses served, from real estate and construction to e-commerce, fitness, online media, and schools.",
     imageAlt: (name: string) => `Website for ${name}`,
     featured: [
         {
