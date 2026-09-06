@@ -25,7 +25,7 @@ export default async function BlogPage() {
         <main className="min-h-screen bg-slate-50">
             <Navbar />
             <section className="pt-32 pb-20 px-4">
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-5xl mx-auto">
                     <div className="text-center mb-12">
                         <Badge className="bg-coral-deep hover:bg-coral-deep text-white border-none px-4 py-1.5 text-sm mb-4 tracking-wider">
                             COLUMN

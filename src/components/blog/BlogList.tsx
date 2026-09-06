@@ -42,7 +42,7 @@ export function BlogList({ posts }: { posts: BlogListPost[] }) {
                             role="tab"
                             aria-selected={isActive}
                             onClick={() => setActive(tab)}
-                            className={`min-h-[44px] rounded-full border px-4 py-2 text-sm font-bold transition-colors ${
+                            className={`min-h-[44px] rounded-full border px-3.5 py-2 text-sm font-bold transition-colors ${
                                 isActive
                                     ? 'border-[#e26c5c] bg-[#e26c5c] text-white'
                                     : 'border-slate-200 bg-white text-slate-600 hover:border-[#e26c5c] hover:text-[#e26c5c]'
