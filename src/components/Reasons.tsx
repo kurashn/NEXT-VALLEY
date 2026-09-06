@@ -195,7 +195,7 @@ export function Reasons({ lang = "ja" }: { lang?: Lang }) {
                                     {/* テキスト */}
                                     <div className="flex-1">
                                         <h3
-                                            className="mb-4 text-[clamp(1.375rem,2.6vw,2rem)] font-bold leading-snug tracking-[0.02em] text-navy"
+                                            className="mb-4 text-[clamp(1.15rem,2.6vw,2rem)] font-bold leading-snug tracking-[0.02em] text-navy"
                                             style={{ fontFamily: serif }}
                                         >
                                             {r.title}

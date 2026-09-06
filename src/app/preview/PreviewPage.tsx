@@ -8,7 +8,6 @@ import { StickyApply } from "./StickyApply";
 import { previewCopy, REMAINING_SLOTS, TOTAL_SLOTS, type PreviewCopy } from "./copy";
 import { withLang, langAttr, type Lang } from "@/i18n";
 import { previewJsonLd } from "@/lib/jsonld";
-import { LangSwitch } from "@/i18n/LangSwitch";
 import logo from "@/images/logo-new.png";
 import shun from "@/images/shun-new.webp";
 import fvPhoto from "@/images/preview-fv-laptop.webp"; // Unsplash（商用利用可）: 机の上のノートPC（人物なし）
@@ -98,18 +97,16 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
             <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/5 bg-navy-deep/85 backdrop-blur-md">
                 <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-20 md:px-6">
                     <Link href={withLang(lang, "/")} className="flex min-h-11 items-center">
-                        <Image src={logo} alt="NEXT VALLEY" width={180} height={40} className="h-8 w-auto object-contain md:h-9" priority />
+                        <Image src={logo} alt="NEXT VALLEY" width={180} height={40} className="h-7 w-auto object-contain md:h-9" priority />
                     </Link>
                     <div className="flex items-center gap-3 md:gap-4">
-                        {/* 言語切替：読めない人のための導線なので、LPでも省かない（サイズは控えめに） */}
-                        <LangSwitch />
                         <p className="hidden items-center gap-2 rounded-full bg-navy-deep px-3 py-1.5 text-sm font-bold text-white md:inline-flex">
                             <span className="h-1.5 w-1.5 rounded-full bg-coral" />
                             {t.header.badge(REMAINING_SLOTS)}
                         </p>
                         <a
                             href="#apply"
-                            className="inline-flex h-11 items-center gap-2 rounded-full bg-coral-deep px-5 text-sm font-bold text-white transition-all hover:-translate-y-0.5"
+                            className="inline-flex h-11 items-center gap-1.5 rounded-full bg-coral-deep px-4 text-[13px] font-bold text-white transition-all hover:-translate-y-0.5 md:gap-2 md:px-5 md:text-sm"
                         >
                             <span className="whitespace-nowrap">{t.header.cta}</span>
                             <ArrowRight className="h-4 w-4" aria-hidden />
