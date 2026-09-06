@@ -269,6 +269,8 @@ const ja = {
         lead: (
             <>
                 5つの質問に答えると、申込メッセージが自動でできあがります。それをLINEで送れば、<span className="nowrap">申込完了です。</span>
+                <br />
+                まだ決めていない方は、質問だけでも大丈夫です。LINEで「気になる」と一言送っていただければ、<span className="nowrap">こちらからご説明します。</span>
             </>
         ),
         psAlt: "代表 倉林 駿",
@@ -537,7 +539,7 @@ const en: typeof ja = {
     },
     apply: {
         title: <>Want to see your homepage first?</>,
-        lead: <>Answer five questions and your sign-up message is written for you. Send it via LINE and you&rsquo;re done.</>,
+        lead: <>Answer five questions and your sign-up message is written for you. Send it via LINE and you&rsquo;re done. Not ready yet? Questions are welcome too &mdash; just message us on LINE.</>,
         psAlt: "Shun Kurahayashi, Founder",
         psLabel: "P.S. FROM THE FOUNDER",
         psText: (

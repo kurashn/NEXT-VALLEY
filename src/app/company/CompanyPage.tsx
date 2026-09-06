@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import NextImage from "next/image";
 import Navbar from "@/components/layout/Navbar";
-import shun from "@/images/shun-new.webp";
+import shun from "@/images/shun-photo.webp";
 import { Footer } from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
 import { langAttr, type Lang } from "@/i18n";

@@ -1,7 +1,7 @@
 // Server Component — 記事末尾の著者プロフィール（E-E-A-T: 誰が書いたかを明示）
 
 import Image from "next/image";
-import shun from "@/images/shun-new.webp";
+import shun from "@/images/shun-photo.webp";
 
 export const AuthorBox = () => {
     return (

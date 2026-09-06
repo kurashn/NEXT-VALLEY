@@ -6,7 +6,7 @@ import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading, serif } from "@/components/ui/SerifHeading";
 
-import shun from "@/images/shun-new.webp";
+import shun from "@/images/shun-photo.webp";
 import { type Lang } from "@/i18n";
 
 const ja = {

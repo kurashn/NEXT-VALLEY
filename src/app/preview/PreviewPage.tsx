@@ -9,7 +9,7 @@ import { previewCopy, REMAINING_SLOTS, TOTAL_SLOTS, type PreviewCopy } from "./c
 import { withLang, langAttr, type Lang } from "@/i18n";
 import { previewJsonLd } from "@/lib/jsonld";
 import logo from "@/images/logo-new.png";
-import shun from "@/images/shun-new.webp";
+import shun from "@/images/shun-photo.webp";
 import fvPhoto from "@/images/preview-fv-laptop.webp"; // Unsplash（商用利用可）: 机の上のノートPC（人物なし）
 import "./preview.css";
 
