@@ -4,7 +4,7 @@ import { Noto_Sans_JP, Instrument_Serif } from "next/font/google";
 import { ArrowRight, Check, Gift, ShieldCheck, X, Quote, Lock } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { StickyApply } from "./StickyApply";
-import { previewCopy, REMAINING_SLOTS, TOTAL_SLOTS, FORM_URL, type PreviewCopy } from "./copy";
+import { previewCopy, REMAINING_SLOTS, TOTAL_SLOTS, LINE_URL, type PreviewCopy } from "./copy";
 import { withLang, langAttr, type Lang } from "@/i18n";
 import { previewJsonLd } from "@/lib/jsonld";
 import logo from "@/images/logo-new.png";
@@ -611,7 +611,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                     <FadeIn>
                         <div className="mx-auto max-w-xl text-center">
                             <a
-                                href={FORM_URL}
+                                href={LINE_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="lp-cta btn-sheen group inline-flex h-16 w-full items-center justify-center gap-3 rounded-full bg-coral-deep px-6 text-[18px] font-bold text-white shadow-cta transition-all duration-300 hover:-translate-y-0.5 sm:px-9 sm:text-[19px]"

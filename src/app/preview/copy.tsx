@@ -10,6 +10,7 @@ import type { Lang } from "@/i18n";
 export const REMAINING_SLOTS = 5; // ← 今月の残り枠（毎月ここを更新）
 export const TOTAL_SLOTS = 10;
 export const FORM_URL = "https://forms.gle/FoAHMCtmPhppB8wd8";
+export const LINE_URL = "https://lin.ee/N4QXdJL#from=preview";
 
 type IconItem = { icon: LucideIcon; t: React.ReactNode; d: string };
 type CompareRow = { k: string; a: string; b: string; c: React.ReactNode };
@@ -163,9 +164,9 @@ const ja = {
     flow: {
         label: "申し込みの流れ",
         title: "申し込みから、3ステップ。" as React.ReactNode,
-        lead: "必要なのはヒアリングシートだけ。電話も、打ち合わせの日程調整もありません。" as React.ReactNode,
+        lead: "必要なのはLINEとヒアリングシートだけ。電話も、打ち合わせの日程調整もありません。" as React.ReactNode,
         steps: [
-            { n: "01", t: <>ヒアリングシート（約1分）に<span className="nowrap">答える</span></>, d: "お店・教室のお名前、ホームページを作る目的、載せたい内容、参考にしたいサイト、写真・ロゴの有無など。スマホから約1分で回答できます。写真やロゴがなくても大丈夫です。" },
+            { n: "01", t: <>公式LINEを追加し、ヒアリングシート（約1分）に<span className="nowrap">答える</span></>, d: "友だち追加すると、ヒアリングシートの案内がすぐ届きます。お店・教室のお名前、作る目的、載せたい内容など、スマホから約1分で回答できます。写真やロゴがなくても大丈夫です。" },
             { n: "02", t: "確認のうえ、3営業日以内にトップページ案が届く", d: "事業の実態と、ご希望の内容を確認してから制作に入ります（条件に合わない場合は、その旨をお伝えします）。PC・スマホの2枚の画像でお届け。" },
             { n: "03", t: "見てから、決める", d: "気に入れば正式制作へ（公開まで担当）。気に入らなければ、そこで終わりで大丈夫です。こちらから追いかける連絡はしません。" },
         ] as { n: string; t: React.ReactNode; d: string }[],
@@ -273,13 +274,17 @@ const ja = {
         ),
         lead: (
             <>
-                下のボタンからヒアリングシート（約1分）に答えるだけで、<span className="nowrap">申込完了です。</span>
+                下のボタンから公式LINEを追加すると、ヒアリングシート（約1分）が届きます。答えるだけで<span className="nowrap">申込完了です。</span>
                 <br />
                 まだ決めていない方は、質問だけでも大丈夫です。LINEで「気になる」と一言送っていただければ、<span className="nowrap">こちらからご説明します。</span>
             </>
         ),
-        formButton: "ヒアリングシートに答えて申し込む",
-        formButtonNote: "約1分・費用0円・回答から3営業日以内にお届け",
+        formButton: "LINEで無料プレビューを申し込む",
+        formButtonNote: (
+            <>
+                追加するとヒアリングシート（約1分）が届きます・<span className="nowrap">費用0円</span>・回答から3営業日以内に<span className="nowrap">お届け</span>
+            </>
+        ) as React.ReactNode,
         psAlt: "代表 倉林 駿",
         psLabel: "追伸（代表より）",
         psText: (
@@ -446,9 +451,9 @@ const en: typeof ja = {
     flow: {
         label: "HOW IT WORKS",
         title: "Three steps, start to design.",
-        lead: "All you need is one short hearing sheet. No phone calls, no scheduling meetings.",
+        lead: "All you need is LINE and one short hearing sheet. No phone calls, no scheduling meetings.",
         steps: [
-            { n: "01", t: "Fill in the hearing sheet (about 1 minute)", d: "Your business name and area, what you want the site to do, what to include, sites you like, and whether you have photos or a logo (the sheet is in Japanese). It takes about a minute on your phone. No photos or logo? No problem." },
+            { n: "01", t: "Add our LINE, then fill in the hearing sheet (about 1 minute)", d: "Add us as a friend and the hearing sheet arrives right away — your business name, what you want the site to do, what to include, and so on (the sheet is in Japanese). About a minute on your phone. No photos or logo? No problem." },
             { n: "02", t: "We confirm, then deliver your homepage design within 3 business days", d: "We check that the business is real and what you're looking for before we start (if it's not a fit, we'll let you know). You get two images: desktop and mobile." },
             { n: "03", t: "Look, then decide", d: "Like it? We move to full production and handle everything through launch. Don't? That's the end of it — we won't chase you." },
         ],
@@ -550,9 +555,9 @@ const en: typeof ja = {
     },
     apply: {
         title: <>Want to see your homepage first?</>,
-        lead: <>Fill in the hearing sheet below (about 1 minute) and you&rsquo;re done. Not ready yet? Questions are welcome too &mdash; just message us on LINE.</>,
-        formButton: "Fill in the hearing sheet",
-        formButtonNote: "About 1 minute · ¥0 · delivered within 3 business days",
+        lead: <>Add our official LINE below and the hearing sheet (about 1 minute) arrives right away. Answer it and you&rsquo;re done. Not ready yet? Questions are welcome too &mdash; just message us on LINE.</>,
+        formButton: "Apply on LINE",
+        formButtonNote: (<>Add us and the hearing sheet (about 1 min) arrives right away · ¥0 · delivered within 3 business days</>) as React.ReactNode,
         psAlt: "Shun Kurahayashi, Founder",
         psLabel: "P.S. FROM THE FOUNDER",
         psText: (

@@ -10,7 +10,6 @@ import { FAQ, getFaqs } from "@/components/FAQ";
 import { CTA } from "@/components/CTA";
 import Navbar from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { AIConsultProvider, SelfCheckSection } from "@/components/AIConsult";
 import { langAttr, type Lang } from "@/i18n";
 import { LangHtml } from "@/i18n/LangHtml";
 
@@ -80,11 +79,9 @@ export function HomePage({ lang = "ja" }: { lang?: Lang }) {
           }),
         }}
       />
-      <AIConsultProvider lang={lang}>
       <Navbar lang={lang} />
       <Hero lang={lang} />
       <div id="problem"><Problem lang={lang} /></div>
-      <SelfCheckSection lang={lang} />
       <div id="service"><Service lang={lang} /></div>
       <div id="reason"><Reasons lang={lang} /></div>
       <div id="works"><Works lang={lang} /></div>
@@ -94,7 +91,6 @@ export function HomePage({ lang = "ja" }: { lang?: Lang }) {
       <FAQ lang={lang} />
       <CTA lang={lang} />
       <Footer lang={lang} />
-      </AIConsultProvider>
     </main>
   );
 }

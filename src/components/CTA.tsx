@@ -5,7 +5,6 @@ import React from "react";
 import { MessageCircle, Mail, Check } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading, serif } from "@/components/ui/SerifHeading";
-import { AIConsultTextLink } from "@/components/AIConsult";
 import { withLang, type Lang } from "@/i18n";
 
 const ja = {
@@ -112,14 +111,12 @@ export function CTA({ lang = "ja" }: { lang?: Lang }) {
                             ))}
                         </ul>
 
-                        {/* まだ迷う人向け: 2つのセルフツールへ */}
+                        {/* まだ迷う人向け: セルフ診断へ */}
                         <p className="mt-8 text-sm leading-[2] text-ink-sub">
                             {t.stillPrefix}{" "}
                             <a href={withLang(lang, "/shindan")} className="inline-flex min-h-11 items-center font-bold text-coral-deep underline underline-offset-4 transition-opacity hover:opacity-80">
                                 {t.selfCheck}
                             </a>
-                            <span className="mx-2">{t.separator}</span>
-                            <AIConsultTextLink>{t.aiConsult}</AIConsultTextLink>
                         </p>
 
                         {/* 一言の後押し */}
