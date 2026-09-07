@@ -44,12 +44,12 @@ export function BlogList({ posts }: { posts: BlogListPost[] }) {
                             onClick={() => setActive(tab)}
                             className={`min-h-[44px] rounded-full border px-3.5 py-2 text-sm font-bold transition-colors ${
                                 isActive
-                                    ? 'border-[#e26c5c] bg-[#e26c5c] text-white'
+                                    ? 'border-[#b0432f] bg-[#b0432f] text-white'
                                     : 'border-slate-200 bg-white text-slate-600 hover:border-[#e26c5c] hover:text-[#e26c5c]'
                             }`}
                         >
                             {label}
-                            <span className={`ml-1.5 text-xs ${isActive ? 'text-white/80' : 'text-slate-400'}`}>{count}</span>
+                            <span className={`ml-1.5 text-xs ${isActive ? 'text-white/95' : 'text-slate-500'}`}>{count}</span>
                         </button>
                     );
                 })}

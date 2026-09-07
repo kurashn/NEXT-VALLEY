@@ -7,6 +7,11 @@ import { BlogList, type BlogListPost } from '@/components/blog/BlogList';
 
 const reader = createReader(process.cwd(), config);
 
+function truncateExcerpt(text: string): string {
+    if (text.length <= 65) return text;
+    return text.slice(0, 64).replace(/[、。,\s]+$/, '') + '…';
+}
+
 export default async function BlogPage() {
     const posts = await reader.collections.posts.all();
 
@@ -15,7 +20,8 @@ export default async function BlogPage() {
         .map((post) => ({
             slug: post.slug,
             title: post.entry.title,
-            excerpt: post.entry.excerpt ?? '',
+            // 一覧カードの抜粋は65字で切り詰める（長文は5行超の壁になる・金継ぎ2026-09-07）
+            excerpt: truncateExcerpt(post.entry.excerpt ?? ''),
             publishedDate: post.entry.publishedDate ?? '',
             coverImage: post.entry.coverImage || `/blog/${post.slug}/opengraph-image`,
             categories: [...(post.entry.categories ?? [])],

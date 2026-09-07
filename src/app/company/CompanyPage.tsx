@@ -240,7 +240,7 @@ export function CompanyPage({ lang = "ja" }: { lang?: Lang }) {
                                 <div className="sm:col-span-2">
                                     <dd className="text-base text-slate-600">
                                         {t.email}<br />
-                                        <span className="text-xs text-slate-400 mt-1 block">{t.contactNote}</span>
+                                        <span className="text-xs text-slate-500 mt-1 block">{t.contactNote}</span>
                                     </dd>
                                 </div>
                             </dl>

@@ -119,7 +119,7 @@ export function ShindanPage({ lang = "ja" }: { lang?: Lang }) {
                             href="https://lin.ee/N4QXdJL"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-[#e26c5c] px-8 py-4 font-bold text-white transition-opacity hover:opacity-90"
+                            className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-[#e26c5c] px-8 py-4 text-[19px] font-bold text-white transition-opacity hover:opacity-90"
                         >
                             {t.pro.cta}
                         </a>
