@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import NextImage from "next/image";
 import Navbar from "@/components/layout/Navbar";
 import shun from "@/images/shun-photo.webp";
@@ -246,6 +247,23 @@ export function CompanyPage({ lang = "ja" }: { lang?: Lang }) {
                             </dl>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <section className="pb-20 px-4">
+                <div className="max-w-3xl mx-auto rounded-2xl border border-slate-200 bg-slate-50 p-7 text-center">
+                    {lang === "ja" ? (
+                        <p className="text-sm text-slate-600 leading-relaxed">
+                            ホームページや集客で困っているお知り合いはいませんか。ご紹介いただいた方には紹介料をお渡ししています。
+                            <br />
+                            詳しくは<Link href="/partner" className="font-bold text-[#b0432f] underline underline-offset-2">ご紹介パートナー制度</Link>をご覧ください。
+                        </p>
+                    ) : (
+                        <p className="text-sm text-slate-600 leading-relaxed">
+                            Know someone struggling with their website? We pay a referral fee for introductions.{" "}
+                            <Link href="/partner" className="font-bold text-[#b0432f] underline underline-offset-2">Learn more (Japanese)</Link>
+                        </p>
+                    )}
                 </div>
             </section>
 

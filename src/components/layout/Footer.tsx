@@ -19,6 +19,7 @@ const copy = {
             { name: "対応エリア（埼玉北部）", href: "/saitama-hokubu" },
             { name: "お役立ちコラム", href: "/blog" },
             { name: "事業情報", href: "/company" },
+            { name: "ご紹介パートナー", href: "/partner" },
             { name: "お問い合わせ", href: "/contact" },
         ],
         // 法務ページは日本語のみ（英語版でも日本語ページへリンク）

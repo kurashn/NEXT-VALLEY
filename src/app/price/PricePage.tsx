@@ -218,6 +218,26 @@ export function PricePage({ lang = "ja" }: { lang?: Lang }) {
                 </div>
             </section>
 
+            {/* ご紹介割引の案内 */}
+            <section className="px-4 pb-16 md:px-6">
+                <div className="mx-auto max-w-3xl rounded-2xl border border-line bg-cream p-6 text-center">
+                    <p className="text-sm leading-relaxed text-ink-sub">
+                        {lang === "ja" ? (
+                            <>
+                                ご紹介経由のご契約は、制作費から5,000円引きになります。ご紹介いただいた方には紹介料をお渡しします。詳しくは
+                                <Link href="/partner" className="font-bold text-coral-deep underline underline-offset-2">ご紹介パートナー制度</Link>
+                                をご覧ください。
+                            </>
+                        ) : (
+                            <>
+                                Referred clients get ¥5,000 off production, and referrers receive a referral fee.{" "}
+                                <Link href="/partner" className="font-bold text-coral-deep underline underline-offset-2">Learn more (Japanese)</Link>
+                            </>
+                        )}
+                    </p>
+                </div>
+            </section>
+
             {/* CTA */}
             <section className="bg-navy-deep px-4 py-16 md:px-6 md:py-24">
                 <div className="mx-auto max-w-3xl text-center">
