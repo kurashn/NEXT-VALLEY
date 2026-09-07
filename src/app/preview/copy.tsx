@@ -9,6 +9,7 @@ import type { Lang } from "@/i18n";
 /** 毎月10社限定。残り枠は下の定数を書き換えるだけで全箇所に反映される */
 export const REMAINING_SLOTS = 5; // ← 今月の残り枠（毎月ここを更新）
 export const TOTAL_SLOTS = 10;
+export const FORM_URL = "https://forms.gle/FoAHMCtmPhppB8wd8";
 
 type IconItem = { icon: LucideIcon; t: React.ReactNode; d: string };
 type CompareRow = { k: string; a: string; b: string; c: React.ReactNode };
@@ -24,7 +25,7 @@ const ja = {
     lineButton: "無料プレビューを申し込む",
     ctaNote: (
         <>
-            5つの質問に答えて、LINEで送るだけ（所要2分）・費用0円・<span className="nowrap">断ってOK</span>
+            ヒアリングシートに答えるだけ（約1分）・費用0円・<span className="nowrap">断ってOK</span>
         </>
     ),
     slots: { before: "今月の残り枠 ", after: ` / ${TOTAL_SLOTS}社` },
@@ -41,7 +42,7 @@ const ja = {
         ),
         lead: (
             <>
-                5つの質問に答えるだけ。3営業日以内に、PC・スマホ2枚のデザイン案が<span className="nowrap">届きます。</span>気に入らなければ、そこで終わり。費用も、営業も<span className="nowrap">ありません。</span>
+                かんたんなヒアリングシートに答えるだけ。3営業日以内に、PC・スマホ2枚のデザイン案が<span className="nowrap">届きます。</span>気に入らなければ、そこで終わり。費用も、営業も<span className="nowrap">ありません。</span>
             </>
         ),
         chips: [
@@ -51,7 +52,7 @@ const ja = {
         ],
         note: (
             <>
-                5つの質問に答えて、LINEで送るだけ・所要2分・しつこい<span className="nowrap">営業なし</span>
+                ヒアリングシートに答えるだけ（約1分）・しつこい<span className="nowrap">営業なし</span>
                 <br />
                 ※ 事業者様限定。本気でホームページを作る方のための枠です（簡単な確認あり）
             </>
@@ -107,7 +108,7 @@ const ja = {
         usualClosing: "見るのは、お金を払った後。",
         ourLabel: "NEXT VALLEY の流れ",
         ourFlow: [
-            "このページで5つの質問に答え、LINEで送る（所要2分）",
+            "ヒアリングシート（約1分）に答える",
             <React.Fragment key="o2">3営業日以内に、あなたの<span className="whitespace-nowrap">トップページ案</span>が届く</React.Fragment>,
             "実物を見てから、頼むかどうかを決める",
         ],
@@ -162,19 +163,23 @@ const ja = {
     flow: {
         label: "申し込みの流れ",
         title: "申し込みから、3ステップ。" as React.ReactNode,
-        lead: "必要なのはこのページとLINEだけ。電話も、打ち合わせの日程調整もありません。" as React.ReactNode,
+        lead: "必要なのはヒアリングシートだけ。電話も、打ち合わせの日程調整もありません。" as React.ReactNode,
         steps: [
-            { n: "01", t: <>このページで5つの質問に答え、<span className="nowrap">LINEで送る</span></>, d: "業種・地域・伝えたい強み・好みの雰囲気・素材の有無の5つと、事業が分かるもの（店舗名・SNS・Googleマップ・既存サイトのいずれか）。答えた内容がそのままメッセージになるので、LINEに貼り付けて送るだけ。所要2分。写真やロゴがなくても大丈夫です。" },
+            { n: "01", t: <>ヒアリングシート（約1分）に<span className="nowrap">答える</span></>, d: "お店・教室のお名前、ホームページを作る目的、載せたい内容、参考にしたいサイト、写真・ロゴの有無など。スマホから約1分で回答できます。写真やロゴがなくても大丈夫です。" },
             { n: "02", t: "確認のうえ、3営業日以内にトップページ案が届く", d: "事業の実態と、ご希望の内容を確認してから制作に入ります（条件に合わない場合は、その旨をお伝えします）。PC・スマホの2枚の画像でお届け。" },
             { n: "03", t: "見てから、決める", d: "気に入れば正式制作へ（公開まで担当）。気に入らなければ、そこで終わりで大丈夫です。こちらから追いかける連絡はしません。" },
         ] as { n: string; t: React.ReactNode; d: string }[],
-        chatSample: "【無料プレビュー希望】\n1. 業種・屋号：整体・治療院／〇〇整骨院\n2. 地域：大阪市 北区\n3. 強み：産後の骨盤ケアが得意\n4. 雰囲気：親しみやすい・やさしい\n5. 写真・ロゴ：写真あり・ロゴなし\n6. 事業が分かるもの：Googleマップ「〇〇整骨院」",
-        chatReply: (
-            <>
-                ありがとうございます、確認できました。<span className="font-bold">3営業日以内</span>にトップページ案（PC・スマホ）をお送りします。
-            </>
-        ),
-        cta: <>質問は5つ。答えた内容が、そのまま申込メッセージに<span className="nowrap">なります。</span></>,
+        formTitle: "ヒアリングシートで聞くこと",
+        formItems: [
+            "お店・教室のお名前と所在地",
+            "ホームページを作る目的",
+            "載せたい内容",
+            "参考にしたいサイト",
+            "今のサイト・Instagram（あれば）",
+            "写真・ロゴの有無",
+        ],
+        formNote: "スマホから約1分で回答できます。回答から3営業日以内に、デザイン案をお送りします。",
+        cta: <>所要は約1分。回答から3営業日以内に、デザイン案を<span className="nowrap">お届けします。</span></>,
     },
     pricing: {
         label: "無料の理由と料金",
@@ -263,16 +268,18 @@ const ja = {
     apply: {
         title: (
             <>
-                まずは、あなたのトップページを<br className="md:hidden" /><span className="nowrap">見てみませんか。</span>
+                まずは、あなたの<span className="nowrap">トップページ</span>を<br className="md:hidden" /><span className="nowrap">見てみませんか。</span>
             </>
         ),
         lead: (
             <>
-                5つの質問に答えると、申込メッセージが自動でできあがります。それをLINEで送れば、<span className="nowrap">申込完了です。</span>
+                下のボタンからヒアリングシート（約1分）に答えるだけで、<span className="nowrap">申込完了です。</span>
                 <br />
                 まだ決めていない方は、質問だけでも大丈夫です。LINEで「気になる」と一言送っていただければ、<span className="nowrap">こちらからご説明します。</span>
             </>
         ),
+        formButton: "ヒアリングシートに答えて申し込む",
+        formButtonNote: "約1分・費用0円・回答から3営業日以内にお届け",
         psAlt: "代表 倉林 駿",
         psLabel: "追伸（代表より）",
         psText: (
@@ -307,7 +314,7 @@ const en: typeof ja = {
         cta: "Apply free",
     },
     lineButton: "Get your free preview",
-    ctaNote: <>Five questions, sent via LINE (2 minutes) · ¥0 · Free to say no</>,
+    ctaNote: <>One short hearing sheet (about 1 minute) · ¥0 · Free to say no</>,
     slots: { before: "", after: ` of ${TOTAL_SLOTS} spots left this month` },
     hero: {
         tagLong: "FREE PREVIEW",
@@ -322,7 +329,7 @@ const en: typeof ja = {
         ),
         lead: (
             <>
-                Answer five quick questions. Within 3 business days you&rsquo;ll receive two designs &mdash; desktop and mobile. Don&rsquo;t like them? That&rsquo;s the end of it. No fees, no sales calls.
+                Fill in one short hearing sheet. Within 3 business days you&rsquo;ll receive two designs &mdash; desktop and mobile. Don&rsquo;t like them? That&rsquo;s the end of it. No fees, no sales calls.
             </>
         ),
         chips: [
@@ -332,7 +339,7 @@ const en: typeof ja = {
         ],
         note: (
             <>
-                Five questions, sent via LINE · about 2 minutes · no pushy follow-up
+                One short hearing sheet · about 1 minute · no pushy follow-up
                 <br />
                 For business owners only. Spots are reserved for people who are serious about building a website (we do a quick check).
             </>
@@ -384,7 +391,7 @@ const en: typeof ja = {
         usualClosing: "You see it after you've paid.",
         ourLabel: "THE NEXT VALLEY WAY",
         ourFlow: [
-            "Answer five questions here and send them via LINE (about 2 minutes)",
+            "Fill in the hearing sheet (about 1 minute)",
             "Receive your homepage design within 3 business days",
             "Look at the real thing, then decide whether to hire us",
         ],
@@ -439,19 +446,23 @@ const en: typeof ja = {
     flow: {
         label: "HOW IT WORKS",
         title: "Three steps, start to design.",
-        lead: "All you need is this page and LINE. No phone calls, no scheduling meetings.",
+        lead: "All you need is one short hearing sheet. No phone calls, no scheduling meetings.",
         steps: [
-            { n: "01", t: "Answer five questions here and send them via LINE", d: "Your industry, area, main strength, preferred look, and whether you have photos or a logo — plus one thing that shows your business is real (business name, social media, Google Maps listing, or an existing site). Your answers become the message itself, so you just paste it into LINE and hit send. About 2 minutes. No photos or logo? No problem." },
+            { n: "01", t: "Fill in the hearing sheet (about 1 minute)", d: "Your business name and area, what you want the site to do, what to include, sites you like, and whether you have photos or a logo (the sheet is in Japanese). It takes about a minute on your phone. No photos or logo? No problem." },
             { n: "02", t: "We confirm, then deliver your homepage design within 3 business days", d: "We check that the business is real and what you're looking for before we start (if it's not a fit, we'll let you know). You get two images: desktop and mobile." },
             { n: "03", t: "Look, then decide", d: "Like it? We move to full production and handle everything through launch. Don't? That's the end of it — we won't chase you." },
         ],
-        chatSample: "【Free Preview Request】\n1. Industry / name: Chiropractic / Sakura Clinic\n2. Area: Kita-ku, Osaka\n3. Strength: Postnatal pelvic care\n4. Look & feel: Friendly / warm\n5. Photos / logo: Photos yes, logo no\n6. Proof of business: Google Maps “Sakura Clinic”",
-        chatReply: (
-            <>
-                Thank you &mdash; confirmed. We&rsquo;ll send your homepage design (desktop + mobile) <span className="font-bold">within 3 business days</span>.
-            </>
-        ),
-        cta: <>Five questions. Your answers become the sign-up message itself.</>,
+        formTitle: "What the hearing sheet asks",
+        formItems: [
+            "Business name and area",
+            "What you want the site to do",
+            "What to include",
+            "Sites you'd like to reference",
+            "Current site / Instagram (if any)",
+            "Photos and logo — have them or not",
+        ],
+        formNote: "About 1 minute on your phone. Your design arrives within 3 business days of answering.",
+        cta: <>About 1 minute to answer. Your design arrives within 3 business days.</>,
     },
     pricing: {
         label: "WHY IT'S FREE & WHAT COMES NEXT",
@@ -539,7 +550,9 @@ const en: typeof ja = {
     },
     apply: {
         title: <>Want to see your homepage first?</>,
-        lead: <>Answer five questions and your sign-up message is written for you. Send it via LINE and you&rsquo;re done. Not ready yet? Questions are welcome too &mdash; just message us on LINE.</>,
+        lead: <>Fill in the hearing sheet below (about 1 minute) and you&rsquo;re done. Not ready yet? Questions are welcome too &mdash; just message us on LINE.</>,
+        formButton: "Fill in the hearing sheet",
+        formButtonNote: "About 1 minute · ¥0 · delivered within 3 business days",
         psAlt: "Shun Kurahayashi, Founder",
         psLabel: "P.S. FROM THE FOUNDER",
         psText: (
@@ -570,11 +583,11 @@ export type PreviewCopy = typeof ja;
 const metaJa: Metadata = {
     title: "無料プレビュー制作｜契約前に、あなたのトップページ案をお作りします（毎月10社限定）",
     description:
-        "ホームページをこれから作る方へ。契約の前に、あなたのお店・教室・会社のトップページのデザイン案（PC・スマホ）を無料でお作りします。個人事業主の方も対象。5つの質問に答えるだけ、3営業日以内にお届け。気に入らなければそこで終わり。費用も営業もありません。毎月10社限定。",
+        "ホームページをこれから作る方へ。契約の前に、あなたのお店・教室・会社のトップページのデザイン案（PC・スマホ）を無料でお作りします。個人事業主の方も対象。かんたんなヒアリングシートに答えるだけ、3営業日以内にお届け。気に入らなければそこで終わり。費用も営業もありません。毎月10社限定。",
     alternates: { canonical: "https://www.nextvalley-jpn.com/preview" },
     openGraph: {
         title: "先に、見せます。契約前に、あなたのトップページ案を無料で。｜NEXT VALLEY",
-        description: "5つの質問に答えるだけ。3営業日以内にPC・スマホのデザイン案が届きます。費用0円・契約不要・毎月10社限定。",
+        description: "かんたんなヒアリングシートに答えるだけ。3営業日以内にPC・スマホのデザイン案が届きます。費用0円・契約不要・毎月10社限定。",
         url: "https://www.nextvalley-jpn.com/preview",
         siteName: "NEXT VALLEY",
         locale: "ja_JP",
@@ -587,11 +600,11 @@ const metaJa: Metadata = {
 const metaEn: Metadata = {
     title: "Free Website Preview | See your homepage design before you sign (10 businesses a month)",
     description:
-        "Planning a new website? Before any contract, we design your shop's, studio's, or company's homepage — desktop and mobile — for free. Sole proprietors welcome. Answer 5 questions and receive it within 3 business days. Don't like it? That's the end. No fees, no sales calls. Limited to 10 businesses a month.",
+        "Planning a new website? Before any contract, we design your shop's, studio's, or company's homepage — desktop and mobile — for free. Sole proprietors welcome. Fill in one short hearing sheet and receive it within 3 business days. Don't like it? That's the end. No fees, no sales calls. Limited to 10 businesses a month.",
     alternates: { canonical: "https://www.nextvalley-jpn.com/en/preview" },
     openGraph: {
         title: "See it first. Your homepage design, free, before you sign. | NEXT VALLEY",
-        description: "Answer 5 questions. Desktop and mobile designs within 3 business days. ¥0, no contract, 10 businesses a month.",
+        description: "One short hearing sheet. Desktop and mobile designs within 3 business days. ¥0, no contract, 10 businesses a month.",
         url: "https://www.nextvalley-jpn.com/en/preview",
         siteName: "NEXT VALLEY",
         locale: "en_US",

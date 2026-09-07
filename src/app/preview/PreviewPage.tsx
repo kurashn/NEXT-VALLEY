@@ -3,9 +3,8 @@ import Link from "next/link";
 import { Noto_Sans_JP, Instrument_Serif } from "next/font/google";
 import { ArrowRight, Check, Gift, ShieldCheck, X, Quote, Lock } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { PreviewApply } from "./PreviewApply";
 import { StickyApply } from "./StickyApply";
-import { previewCopy, REMAINING_SLOTS, TOTAL_SLOTS, type PreviewCopy } from "./copy";
+import { previewCopy, REMAINING_SLOTS, TOTAL_SLOTS, FORM_URL, type PreviewCopy } from "./copy";
 import { withLang, langAttr, type Lang } from "@/i18n";
 import { previewJsonLd } from "@/lib/jsonld";
 import logo from "@/images/logo-new.png";
@@ -404,21 +403,20 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                             ))}
                         </ol>
                         <FadeIn delay={0.15} className="lg:col-span-5">
-                            <div className="mx-auto max-w-[380px] overflow-hidden rounded-[28px] border border-line bg-[#8cabd9] shadow-card-hover" aria-hidden>
-                                <div className="flex items-center gap-2 bg-[#2c3e50] px-4 py-3 text-white">
-                                    <span className="h-7 w-7 rounded-full bg-white/20" />
-                                    <span className="text-sm font-bold">NEXT VALLEY</span>
-                                </div>
-                                <div className="space-y-3 p-4 text-[13px] leading-[1.7]">
-                                    <div className="flex justify-end">
-                                        <p className="max-w-[86%] whitespace-pre-line rounded-2xl rounded-tr-sm bg-[#8de055] px-3.5 py-2 text-ink">{t.flow.chatSample}</p>
-                                    </div>
-                                    <div className="flex justify-start">
-                                        <p className="max-w-[86%] rounded-2xl rounded-tl-sm bg-white px-3.5 py-2.5 text-ink">
-                                            {t.flow.chatReply}
-                                        </p>
-                                    </div>
-                                </div>
+                            <div className="mx-auto max-w-[380px] rounded-[28px] border border-line bg-white p-7 shadow-card-hover md:p-8">
+                                <p className="inline-flex items-center gap-2.5 text-[12px] font-bold tracking-[0.25em] text-coral-deep">
+                                    <span aria-hidden className="block h-px w-6 bg-current" />
+                                    {t.flow.formTitle}
+                                </p>
+                                <ul className="mt-5 space-y-2.5 text-[14px] leading-[1.8] text-ink">
+                                    {t.flow.formItems.map((item) => (
+                                        <li key={item} className="flex items-start gap-2.5">
+                                            <span aria-hidden className="mt-[3px] text-coral-deep">✓</span>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <p className="mt-5 border-t border-line pt-4 text-[13px] leading-[1.9] text-ink-sub">{t.flow.formNote}</p>
                             </div>
                         </FadeIn>
                     </div>
@@ -611,7 +609,18 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                         </div>
                     </FadeIn>
                     <FadeIn>
-                        <PreviewApply lang={lang} />
+                        <div className="mx-auto max-w-xl text-center">
+                            <a
+                                href={FORM_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="lp-cta btn-sheen group inline-flex h-16 w-full items-center justify-center gap-3 rounded-full bg-coral-deep px-6 text-[18px] font-bold text-white shadow-cta transition-all duration-300 hover:-translate-y-0.5 sm:px-9 sm:text-[19px]"
+                            >
+                                <span className="whitespace-nowrap">{t.apply.formButton}</span>
+                                <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
+                            </a>
+                            <p className="mt-4 text-sm text-navy-sub">{t.apply.formButtonNote}</p>
+                        </div>
                     </FadeIn>
 
                     {/* 追伸（代表から） */}
