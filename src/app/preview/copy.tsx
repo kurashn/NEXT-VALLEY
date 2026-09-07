@@ -7,7 +7,7 @@ import { Monitor, Smartphone, Sparkles, Palette, Wallet, Eye, Hourglass, Lock, B
 import type { Lang } from "@/i18n";
 
 /** 毎月10社限定。残り枠は下の定数を書き換えるだけで全箇所に反映される */
-export const REMAINING_SLOTS = 5; // ← 今月の残り枠（毎月ここを更新）
+export const REMAINING_SLOTS = 4; // ← 今月の残り枠（毎月ここを更新）
 export const TOTAL_SLOTS = 10;
 export const FORM_URL = "https://forms.gle/FoAHMCtmPhppB8wd8";
 export const LINE_URL = "https://lin.ee/N4QXdJL#from=preview";
