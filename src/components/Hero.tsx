@@ -12,24 +12,24 @@ import { withLang, type Lang } from "@/i18n";
 const ja = {
     h1: (
         <>
-            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>埼玉北部の教室・お店の</span></span>
-            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>集客を、AIで立て直す。</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>Webからの問い合わせ、</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>原因から直して増やす。</span></span>
         </>
     ),
     lead: (
         <>
-            NEXT VALLEYは、2021年から100社以上のホームページを手がけてきた、埼玉北部の制作チームです。
+            NEXT VALLEYは、2021年から100社以上を支援してきた、埼玉北部のWeb集客チームです。
             <br />
-            集客の仕組みづくりからHP・LP制作まで、教室・お店の課題に合わせて最適な打ち手を提案し、
+            「問い合わせが来ない」原因を見つけて、必要な施策だけを実行します。
             <br className="hidden md:block" />
-            売上アップと業務効率化を<span className="nowrap">支援します。</span>
+            ホームページ制作・SEO・Googleマップ・SNS・AIは、そのための<span className="nowrap">手段です。</span>
         </>
     ),
     cta1Label: "サイトがある方も、これから作る方も",
     cta1: "LINEで無料診断を受ける",
     ctaNote: (
         <>
-            送ると<strong className="font-bold text-white">2営業日以内</strong>に、改善案と概算お見積もりが<span className="nowrap">届きます。</span>
+            URLを送るだけで<strong className="font-bold text-white">2営業日以内</strong>に、問題点と直す順番をまとめた診断書が<span className="nowrap">届きます。</span>
         </>
     ),
     previewPrefix: "これから作る方は、",
@@ -44,20 +44,20 @@ const ja = {
 const en: typeof ja = {
     h1: (
         <>
-            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>More customers for your</span></span>
-            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>school or shop. Powered by AI.</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>More inquiries from the web —</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>by fixing the real cause.</span></span>
         </>
     ),
     lead: (
         <>
-            NEXT VALLEY is a small web team in northern Saitama that has built sites for 100+ businesses since 2021. From marketing systems to websites and landing pages, we recommend only what fits your school or shop — and help you win more customers with less busywork.
+            NEXT VALLEY is a small web team in northern Saitama that has helped 100+ businesses since 2021. We find out why inquiries aren&apos;t coming in, then do only what&apos;s needed — websites, SEO, Google Maps, social media, and AI are the tools, not the goal.
         </>
     ),
     cta1Label: "HAVE A SITE OR STARTING FROM SCRATCH?",
     cta1: "Get a free site check on LINE",
     ctaNote: (
         <>
-            Send us a message and you&apos;ll get concrete improvements and a ballpark quote{" "}
+            Just send your URL and you&apos;ll get a written check-up — what&apos;s broken and what to fix first —{" "}
             <strong className="font-bold text-white">within 2 business days</strong>.
         </>
     ),

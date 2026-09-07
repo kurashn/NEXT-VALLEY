@@ -15,16 +15,16 @@ const ja = {
             body: <>LINEまたはメールでご連絡ください。「今のサイトのURLを送るだけ」で<span className="nowrap">大丈夫です。</span></>,
         },
         {
-            title: "ご提案・お見積もり（無料）",
-            body: <>現状を診断し、改善案と金額をセットでご提示します。ここまで費用はかかりません。断っていただいても<span className="nowrap">構いません。</span></>,
+            title: "無料Web集客診断",
+            body: <>ホームページ・検索・Googleマップ・SNS・問い合わせ導線を拝見し、問題点と原因、直す順番を診断書にしてお返しします。ここまで費用は<span className="nowrap">かかりません。</span></>,
         },
         {
-            title: "制作",
-            body: <>AIを活用した制作フローで、通常1ヶ月の構築を最短3〜5日に<span className="nowrap">短縮します。</span></>,
+            title: "必要な施策だけ改善",
+            body: <>制作・SEO・MEO・SNS・AI活用の中から、診断で見つかった原因に効くものだけをご提案します。ご自身で直せる箇所は、そのやり方も<span className="nowrap">お伝えします。</span></>,
         },
         {
-            title: "公開・運用",
-            body: <>公開して終わりではなく、アクセスと問い合わせの数字を見ながら改善を<span className="nowrap">続けます。</span></>,
+            title: "月額伴走",
+            body: <>改善して終わりではなく、アクセスと問い合わせの数字を毎月レポートで確認しながら、次の一手を<span className="nowrap">打ち続けます。</span></>,
         },
     ],
 };
@@ -36,16 +36,16 @@ const en: typeof ja = {
             body: <>Message us on LINE or by email. Sending the URL of your current site is enough to get started.</>,
         },
         {
-            title: "Proposal & quote (free)",
-            body: <>We review where you stand and send you a plan with pricing. Nothing to pay up to this point — and no hard feelings if you pass.</>,
+            title: "Free marketing check-up",
+            body: <>We review your website, search visibility, Google Maps, social media, and inquiry flow — and send you a written report: what&apos;s wrong, why, and what to fix first. Free of charge.</>,
         },
         {
-            title: "Build",
-            body: <>Our AI-assisted workflow cuts a typical one-month build down to as little as 3–5 days.</>,
+            title: "Fix only what matters",
+            body: <>From web production, SEO, Google Maps, social media, and AI, we propose only what addresses the causes we found. If something is easy to fix yourself, we&apos;ll show you how.</>,
         },
         {
-            title: "Launch & grow",
-            body: <>Launch is just the start. We keep improving your site based on real traffic and inquiry numbers.</>,
+            title: "Monthly partnership",
+            body: <>Improvement isn&apos;t a one-off. We track traffic and inquiries in a monthly report and keep making the next move together.</>,
         },
     ],
 };
