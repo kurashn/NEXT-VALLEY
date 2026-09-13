@@ -107,25 +107,6 @@ export default function PartnerPage() {
                 </div>
             </section>
 
-            <section className="py-16 px-4 bg-slate-50">
-                <div className="max-w-3xl mx-auto">
-                    <h2 className="text-2xl font-bold text-[#002335] mb-4 text-center">紹介の言葉に迷ったら</h2>
-                    <p className="text-center text-sm text-slate-600 mb-8">
-                        下の文章を、そのままコピーしてお知り合いに送っていただけます。
-                    </p>
-                    <div className="mx-auto max-w-2xl rounded-2xl border border-slate-200 bg-white p-7 text-slate-700 leading-loose select-all">
-                        ホームページの件、知り合いに埼玉のWeb制作の会社（NEXT VALLEY）があるので紹介できるよ。
-                        契約の前に、トップページのデザイン案を無料で作ってくれるみたい。
-                        気に入らなければ断って大丈夫とのこと。よかったら見てみて。
-                        <br />
-                        https://www.nextvalley-jpn.com/preview
-                    </div>
-                    <p className="mt-4 text-center text-xs text-slate-500">
-                        送ったあと、LINEで「紹介したい」と一言だけ教えてください（紹介料のお支払いに必要です）。
-                    </p>
-                </div>
-            </section>
-
             <section className="py-16 px-4 bg-[#002335] text-white">
                 <div className="max-w-3xl mx-auto text-center">
                     <h2 className="text-2xl font-bold mb-4">ご紹介は、LINEで一言</h2>
