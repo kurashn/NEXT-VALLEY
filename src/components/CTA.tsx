@@ -6,6 +6,7 @@ import { MessageCircle, Mail, Check } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading, serif } from "@/components/ui/SerifHeading";
 import { withLang, type Lang } from "@/i18n";
+import { shindanSlotsJa, shindanSlotsEn } from "@/lib/shindanSlots";
 
 const ja = {
     heading: "お問い合わせ",
@@ -22,6 +23,7 @@ const ja = {
             提案を見てから、頼むかどうか決めて<span className="nowrap">ください。</span>
         </>
     ),
+    badge: shindanSlotsJa,
     lineBtn: "LINEで無料診断を受ける",
     mailBtn: "メールで相談する",
     assurances: ["診断・提案・見積もりは無料", "しつこい営業なし", "全国オンライン対応"],
@@ -46,6 +48,7 @@ const en: typeof ja = {
             Read the proposal first — then decide whether to hire us.
         </>
     ),
+    badge: shindanSlotsEn,
     lineBtn: "Free site check on LINE",
     mailBtn: "Contact us by email",
     assurances: ["Free check, proposal, and quote", "No pushy sales", "Online, anywhere in Japan"],
@@ -77,6 +80,12 @@ export function CTA({ lang = "ja" }: { lang?: Lang }) {
                         <h3 className="mb-5 text-[clamp(1.625rem,4vw,2.75rem)] font-bold leading-[1.45] tracking-tight text-ink">
                             {t.title}
                         </h3>
+                        {/* 毎月の枠（src/lib/shindanSlots.ts で更新） */}
+                        <p className="mb-5">
+                            <span className="inline-block rounded-full border border-coral-deep/30 bg-coral-deep/[0.06] px-4 py-1.5 text-[13px] font-bold tracking-wider text-coral-deep">
+                                {t.badge}
+                            </span>
+                        </p>
                         <p className="lead mx-auto mb-10 max-w-[32em] text-[15px] leading-[2] text-ink-sub">
                             {t.lead}
                         </p>

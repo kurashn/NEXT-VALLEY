@@ -5,12 +5,14 @@ import { SerifHeading } from "@/components/ui/SerifHeading";
 import { ShindanTool } from "@/components/ShindanTool";
 import { langAttr, type Lang } from "@/i18n";
 import { shindanJsonLd } from "@/lib/jsonld";
+import { shindanSlotsJa, shindanSlotsEn } from "@/lib/shindanSlots";
 
 const ja = {
     h1: "Web集客セルフ診断（無料・3分）",
     headingEn: "Check",
     headingJp: "Web集客セルフ診断",
     pro: {
+        badge: shindanSlotsJa,
         heading: "もっと詳しく知りたい方へ — プロによる無料診断",
         lead: "セルフ診断よりさらに踏み込んで、私たちが実際にあなたのサイトをスマホとパソコンで拝見し、A4数ページの診断書にしてお返しします。もちろん無料で、しつこい営業はありません。",
         checkTitle: "拝見する8項目",
@@ -35,6 +37,7 @@ const en: typeof ja = {
     headingEn: "Check",
     headingJp: "Website Self-Check",
     pro: {
+        badge: shindanSlotsEn,
         heading: "Want to go deeper? Get a free professional check-up",
         lead: "Beyond the self-check, we personally review your site on both phone and desktop and send you a written report of several pages. Free, with no pushy sales.",
         checkTitle: "The 8 things we review",
@@ -96,6 +99,9 @@ export function ShindanPage({ lang = "ja" }: { lang?: Lang }) {
                     <ShindanTool lang={lang} />
 
                     <div className="mt-16 rounded-2xl bg-[#002335] p-8 text-white md:p-10">
+                        <p className="mb-4">
+                            <span className="inline-block rounded-full bg-[#e26c5c] px-3 py-1 text-xs font-bold tracking-wider text-white">{t.pro.badge}</span>
+                        </p>
                         <h2 className="mb-4 text-xl font-bold md:text-2xl">{t.pro.heading}</h2>
                         <p className="mb-8 leading-[1.9] text-white/85">{t.pro.lead}</p>
                         <div className="mb-8 grid gap-6 md:grid-cols-2">
