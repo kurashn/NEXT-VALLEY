@@ -46,7 +46,7 @@ type OtherCopy = { name: string; label: string };
 /* ── 文言（日本語 / 英語） ── */
 const ja = {
     heading: "制作実績",
-    lead: "不動産・建設・EC・フィットネス・情報メディア・スクールまで、100社以上の制作・支援実績があります。",
+    lead: "教室・スクールを中心に、店舗・不動産・建設・EC・情報メディアまで、100社以上の制作・支援実績があります。",
     imageAlt: (name: string) => `${name}のホームページ`,
     featured: [
         {

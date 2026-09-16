@@ -14,29 +14,29 @@ import { LangSwitch } from "@/i18n/LangSwitch";
 const copy = {
   ja: {
     links: [
-      { name: "サービス", href: "/#service" },
-      { name: "3分セルフ診断", href: "/shindan" },
+      { name: "支援する範囲", href: "/#service" },
+      { name: "料金", href: "/#price" },
       { name: "無料プレビュー", href: "/preview" },
       { name: "制作実績", href: "/#works" },
-      { name: "私たちの強み", href: "/#reason" },
+      { name: "支援事例", href: "/#case" },
       { name: "お役立ちコラム", href: "/blog" },
       { name: "お問い合わせ", href: "/contact" },
     ],
-    cta: "LINEで無料診断",
+    cta: "無料でデザイン案を見る",
     openMenu: "メニューを開く",
     close: "閉じる",
   },
   en: {
     links: [
-      { name: "Services", href: "/#service" },
-      { name: "3-Min Self-Check", href: "/shindan" },
+      { name: "What we do", href: "/#service" },
+      { name: "Pricing", href: "/#price" },
       { name: "Free Preview", href: "/preview" },
       { name: "Our Work", href: "/#works" },
-      { name: "Why Us", href: "/#reason" },
+      { name: "Case", href: "/#case" },
       { name: "About", href: "/company" },
       { name: "Contact", href: "/contact" },
     ],
-    cta: "Free Site Check on LINE",
+    cta: "See a free design proposal",
     openMenu: "Open menu",
     close: "Close",
   },
@@ -112,9 +112,7 @@ export default function Navbar({ lang = "ja" }: { lang?: Lang }) {
 
           {/* CTA（コーラルの角丸ボタン） */}
           <a
-            href="https://lin.ee/N4QXdJL"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={withLang(lang, "/preview")}
             className={`btn-sheen hidden h-12 shrink-0 items-center gap-3 whitespace-nowrap rounded-lg bg-coral-deep px-6 text-sm font-bold text-white transition-opacity hover:opacity-90 ${deskCta}`}
           >
             {t.cta}
@@ -161,9 +159,7 @@ export default function Navbar({ lang = "ja" }: { lang?: Lang }) {
                     ))}
                   </div>
                   <a
-                    href="https://lin.ee/N4QXdJL"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={withLang(lang, "/preview")}
                     className="inline-flex h-14 items-center justify-center gap-2 rounded-lg bg-coral-deep text-base font-bold text-white"
                   >
                     {t.cta}

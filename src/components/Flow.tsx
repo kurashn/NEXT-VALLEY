@@ -1,99 +1,137 @@
-// Server Component — ご依頼の流れ（sample世界観ブラッシュアップ版）
-// クリーム地・セリフ数字＋矢印でつなぐ4ステップ
+// Server Component — ご依頼の流れ（新しく作る／今のHPを改善する の2通り）
 
 import React from "react";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading, serif } from "@/components/ui/SerifHeading";
-import { type Lang } from "@/i18n";
+import { withLang, type Lang } from "@/i18n";
 
 const ja = {
     heading: "ご依頼の流れ",
-    steps: [
-        {
-            title: "ご相談",
-            body: <>LINEまたはメールでご連絡ください。「今のサイトのURLを送るだけ」で<span className="nowrap">大丈夫です。</span></>,
-        },
-        {
-            title: "無料Web集客診断",
-            body: <>ホームページ・検索・Googleマップ・SNS・問い合わせ導線を拝見し、問題点と原因、直す順番を診断書にしてお返しします。ここまで費用は<span className="nowrap">かかりません。</span></>,
-        },
-        {
-            title: "必要な施策だけ改善",
-            body: <>制作・SEO・MEO・SNS・AI活用の中から、診断で見つかった原因に効くものだけをご提案します。ご自身で直せる箇所は、そのやり方も<span className="nowrap">お伝えします。</span></>,
-        },
-        {
-            title: "月額伴走",
-            body: <>改善して終わりではなく、アクセスと問い合わせの数字を毎月レポートで確認しながら、次の一手を<span className="nowrap">打ち続けます。</span></>,
-        },
+    newLabel: "新しく作る・作り直す",
+    newSteps: [
+        { title: "無料プレビューを申し込む", body: "この時点では費用も契約もありません。" },
+        { title: "ヒアリング", body: "教室のこと、載せたいこと、体験申込までの流れをうかがいます。" },
+        { title: "デザイン案・料金・条件の確認", body: "トップページのデザイン案と、料金・契約条件をご確認いただきます。" },
+        { title: "納得いただけたら正式契約", body: "ご契約日から月額が始まります。断っていただいても構いません。" },
+        { title: "本制作・ご確認・公開", body: "内容を詰めながら作り、ご確認のうえ公開します。" },
+        { title: "更新・管理", body: "公開後の修正と管理をお任せいただけます。必要なときは追加の支援もご相談ください。" },
     ],
+    newCta: "無料でデザイン案を見てみる",
+    fixLabel: "今のホームページを改善する",
+    fixSteps: [
+        { title: "URLとお悩みを送る", body: "LINEに今のサイトのURLと、気になっていることを送ってください。" },
+        { title: "現状と直す順番を確認", body: "ホームページ・検索・Googleマップ・問い合わせ導線を拝見します。" },
+        { title: "対応範囲とお見積もり", body: "必要な範囲だけをお見積もりします。作り直しをおすすめするとは限りません。" },
+        { title: "ご了承のうえ改善", body: "合意いただいた範囲から着手します。" },
+    ],
+    fixCta: "今のサイトの改善点を知りたい",
+    note: "制作にかかる期間は、内容と素材のご準備によって変わります。急ぎのご事情があれば、ご相談ください。",
 };
+
 const en: typeof ja = {
     heading: "How it works",
-    steps: [
-        {
-            title: "Get in touch",
-            body: <>Message us on LINE or by email. Sending the URL of your current site is enough to get started.</>,
-        },
-        {
-            title: "Free marketing check-up",
-            body: <>We review your website, search visibility, Google Maps, social media, and inquiry flow — and send you a written report: what&apos;s wrong, why, and what to fix first. Free of charge.</>,
-        },
-        {
-            title: "Fix only what matters",
-            body: <>From web production, SEO, Google Maps, social media, and AI, we propose only what addresses the causes we found. If something is easy to fix yourself, we&apos;ll show you how.</>,
-        },
-        {
-            title: "Monthly partnership",
-            body: <>Improvement isn&apos;t a one-off. We track traffic and inquiries in a monthly report and keep making the next move together.</>,
-        },
+    newLabel: "Build a new site",
+    newSteps: [
+        { title: "Ask for the free preview", body: "No cost and no contract at this point." },
+        { title: "We ask about your school", body: "What you teach, what to feature, and how people book a trial." },
+        { title: "See the design, price and terms", body: "You review the homepage design along with the price and the contract terms." },
+        { title: "Sign only if it fits", body: "Billing starts on the contract date. Saying no is fine." },
+        { title: "Build, review, launch", body: "We build it out, you check it, then it goes live." },
+        { title: "Updates and management", body: "We keep it updated. Extra support can be arranged when you need it." },
     ],
+    newCta: "See a free design proposal",
+    fixLabel: "Improve your current site",
+    fixSteps: [
+        { title: "Send your URL and concerns", body: "Message us on LINE with the address of your site." },
+        { title: "We check the current state", body: "Your site, search visibility, Google Maps and the path to an enquiry." },
+        { title: "Scope and quote", body: "We quote for what's needed. A rebuild is not always the answer." },
+        { title: "We start once you agree", body: "Work begins on the agreed scope." },
+    ],
+    fixCta: "Get a free site check",
+    note: "How long a build takes depends on the content and how quickly photos and text are ready. Tell us if you're in a hurry.",
 };
+
 const copy: Record<Lang, typeof ja> = { ja, en };
 
 export function Flow({ lang = "ja" }: { lang?: Lang }) {
     const t = copy[lang];
     return (
-        <section className="relative overflow-hidden bg-cream px-4 py-16 md:px-6 md:py-24">
-
+        <section className="relative overflow-hidden bg-base px-4 py-16 md:px-6 md:py-24">
             <div className="relative mx-auto max-w-6xl">
                 <FadeIn>
                     <SerifHeading en="Flow" jp={t.heading} />
                 </FadeIn>
 
-                <ol className="flex flex-col items-stretch gap-3 md:flex-row md:gap-0">
-                    {t.steps.map((s, i) => (
-                        <React.Fragment key={s.title}>
-                            {i > 0 && (
-                                <li
-                                    aria-hidden
-                                    className="flex list-none items-center justify-center py-1 md:px-1 md:py-0"
-                                >
-                                    <ChevronRight className="h-6 w-6 rotate-90 text-coral md:rotate-0" />
-                                </li>
-                            )}
-                            <li className="flex-1 list-none">
-                                <FadeIn delay={i * 0.08} className="h-full">
-                                    <div className="group flex h-full flex-col rounded-2xl bg-white p-7 shadow-[0_16px_40px_rgba(31,26,20,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_56px_rgba(31,26,20,0.1)]">
-                                        <div className="mb-5">
-                                            <p className="mb-1 text-xs font-bold tracking-[0.3em] text-coral-deep">STEP</p>
-                                            <p
-                                                className="text-4xl font-bold leading-none text-coral md:text-5xl"
-                                                style={{ fontFamily: serif }}
-                                            >
-                                                {String(i + 1).padStart(2, "0")}
-                                            </p>
-                                        </div>
-                                        <h3 className="mb-4 text-base font-bold leading-snug text-ink md:text-lg">
-                                            {s.title}
-                                        </h3>
-                                        <p className="text-sm leading-[2] text-ink-sub">{s.body}</p>
-                                    </div>
-                                </FadeIn>
-                            </li>
-                        </React.Fragment>
-                    ))}
-                </ol>
+                <div className="grid gap-5 lg:grid-cols-2">
+                    {/* 新しく作る */}
+                    <FadeIn>
+                        <div className="flex h-full flex-col rounded-2xl bg-navy-deep p-7 text-white md:p-9">
+                            <p className="mb-6 inline-flex w-fit rounded-full bg-coral px-4 py-1.5 text-[12.5px] font-bold text-white">
+                                {t.newLabel}
+                            </p>
+                            <ol className="mb-7 grid gap-4">
+                                {t.newSteps.map((s, i) => (
+                                    <li key={s.title} className="flex gap-4">
+                                        <span
+                                            className="w-7 shrink-0 text-[18px] font-bold leading-tight text-coral"
+                                            style={{ fontFamily: serif }}
+                                        >
+                                            {String(i + 1).padStart(2, "0")}
+                                        </span>
+                                        <span>
+                                            <span className="block text-[15px] font-bold leading-snug">{s.title}</span>
+                                            <span className="mt-1 block text-[13px] leading-[1.9] text-navy-sub">{s.body}</span>
+                                        </span>
+                                    </li>
+                                ))}
+                            </ol>
+                            <a
+                                href={withLang(lang, "/preview")}
+                                className="group mt-auto inline-flex h-13 min-h-12 w-fit items-center gap-2 rounded-full bg-coral px-7 text-[15px] font-bold text-white transition-all hover:-translate-y-0.5 hover:opacity-95"
+                            >
+                                {t.newCta}
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                            </a>
+                        </div>
+                    </FadeIn>
+
+                    {/* 今のHPを改善する */}
+                    <FadeIn delay={0.08}>
+                        <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-7 md:p-9">
+                            <p className="mb-6 inline-flex w-fit rounded-full border border-line px-4 py-1.5 text-[12.5px] font-bold text-ink-sub">
+                                {t.fixLabel}
+                            </p>
+                            <ol className="mb-7 grid gap-4">
+                                {t.fixSteps.map((s, i) => (
+                                    <li key={s.title} className="flex gap-4">
+                                        <span
+                                            className="w-7 shrink-0 text-[18px] font-bold leading-tight text-coral-deep"
+                                            style={{ fontFamily: serif }}
+                                        >
+                                            {String(i + 1).padStart(2, "0")}
+                                        </span>
+                                        <span>
+                                            <span className="block text-[15px] font-bold leading-snug text-ink">{s.title}</span>
+                                            <span className="mt-1 block text-[13px] leading-[1.9] text-ink-sub">{s.body}</span>
+                                        </span>
+                                    </li>
+                                ))}
+                            </ol>
+                            <a
+                                href={withLang(lang, "/shindan")}
+                                className="group mt-auto inline-flex min-h-12 w-fit items-center gap-2 rounded-full border border-line px-7 text-[15px] font-bold text-ink transition-colors hover:border-coral hover:text-coral-deep"
+                            >
+                                {t.fixCta}
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                            </a>
+                        </div>
+                    </FadeIn>
+                </div>
+
+                <FadeIn>
+                    <p className="mt-6 max-w-[46em] text-[13.5px] leading-[2] text-ink-sub">{t.note}</p>
+                </FadeIn>
             </div>
         </section>
     );

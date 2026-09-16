@@ -1,4 +1,4 @@
-// Server Component — FAQ（copy.md セクション9）。開閉はネイティブの details/summary で行う
+// Server Component — FAQ。料金・契約条件は確定しているものだけを書く
 
 import React from "react";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -10,84 +10,107 @@ export type FaqItem = { q: string; a: string; aNode?: React.ReactNode };
 /** 日本語の FAQ（JSON-LD 用に従来どおり export。英語版は getFaqs("en")） */
 export const faqs: FaqItem[] = [
     {
-        q: "本当に効果は出ますか？",
-        a: "「必ず出ます」とは言いません。代わりに、ご提案の段階で「何を・どの順番で・どの数字を目標にやるか」を具体的に示します。公開後は毎月数字を報告するので、効果が出ているかどうかをあいまいにしません。",
+        q: "ホームページの料金を教えてください。",
+        a: "初期制作費は0円、月額8,980円（税込）です。10ページまでの制作と、公開後の修正・更新、ドメイン・サーバー費が含まれます。初年度のお支払い総額は107,760円（税込）です。",
         aNode: (
-            <><p>「必ず出ます」とは言いません。代わりに、ご提案の段階で「何を・どの順番で・どの数字を目標にやるか」を具体的に示します。</p><p className="mt-3">公開後は毎月数字を報告するので、効果が出ているかどうかをあいまいに<span className="nowrap">しません。</span></p></>
+            <>
+                <p>初期制作費は0円、月額8,980円（税込）です。10ページまでの制作と、公開後の修正・更新、ドメイン・サーバー費が<span className="nowrap">含まれます。</span></p>
+                <p className="mt-3">初年度のお支払い総額は107,760円（税込）です。</p>
+            </>
         ),
     },
     {
-        q: "HPやLPの制作だけをお願いすることはできますか？",
-        a: "はい、制作のみのご依頼も承っています。集客やAI活用のご提案は、必要な場合にだけお伝えします。「まずサイトだけ作りたい」で構いません。",
+        q: "無料プレビューでは何がもらえますか？",
+        a: "トップページのデザイン案をお作りしてお見せします。費用はかからず、この時点でのご契約もありません。見たうえで、依頼するかどうかを決めていただけます。",
     },
     {
-        q: "見積もりを頼んだら、しつこく営業されませんか？",
-        a: "電話営業は一切行いません。やり取りはLINEまたはメールのみで、こちらから一方的に連絡することもありません。",
+        q: "いつから料金がかかりますか？",
+        a: "正式にご契約いただいた日から月額が始まります。無料プレビューを見ている間は料金がかかりません。",
+    },
+    {
+        q: "最低契約期間はありますか？",
+        a: "1年間です。ドメイン・サーバー費を含めて初期制作費を0円にしているため、1年間の継続をお願いしています。",
+    },
+    {
+        q: "修正や更新は、何回まで頼めますか？",
+        a: "正式契約後は回数の制限がありません。写真の差し替えやお知らせの更新も、その都度お知らせいただければ対応します。無料プレビューの段階での調整は1回までです。",
         aNode: (
-            <>電話営業は一切行いません。やり取りはLINEまたはメールのみで、こちらから一方的に連絡することも<span className="nowrap">ありません。</span></>
+            <>
+                <p>正式契約後は回数の制限がありません。写真の差し替えやお知らせの更新も、その都度お知らせいただければ<span className="nowrap">対応します。</span></p>
+                <p className="mt-3">無料プレビューの段階での調整は1回までです。</p>
+            </>
         ),
     },
     {
-        q: "Webの知識がまったくなくても、丸投げできますか？",
-        a: "できます。専門用語を使わずにご説明し、文章や写真の準備からこちらで伴走します。ご用意いただくのは「事業への理解」だけです。",
+        q: "Googleマップの運用やSNSの運用も月額に含まれますか？",
+        a: "含まれません。月額に含まれるのは、ホームページへのLINEリンクの設置と、基本的な検索向け設定までです。Googleマップ（MEO）の運用、SNSの運用、継続的なSEO支援、LINE公式アカウントの構築・運用は、内容に応じて別途お見積もりします。",
     },
     {
-        q: "まだ頼むと決めていないのですが、相談だけでもいいですか？",
-        a: "はい。「今のサイトをどう直せばいいか知りたい」という段階のご相談で構いません。提案と見積もりまでは無料です。",
-        aNode: (
-            <>はい。「今のサイトをどう直せばいいか知りたい」という段階のご相談で構いません。提案と見積もりまでは<span className="nowrap">無料です。</span></>
-        ),
+        q: "サイトは自分のものになりますか？",
+        a: "1年以上のご契約で、サイトの譲渡が可能です。手続きの進め方はご相談ください。",
     },
     {
-        q: "制作期間はどれくらいですか？",
-        a: "AIを活用した制作フローにより、通常1ヶ月かかる構築を最短3〜5日に短縮できます。お急ぎの場合もご相談ください。",
-        aNode: (
-            <>AIを活用した制作フローにより、通常1ヶ月かかる構築を最短3〜5日に短縮できます。お急ぎの場合もご<span className="nowrap">相談ください。</span></>
-        ),
+        q: "写真や文章が用意できていなくても頼めますか？",
+        a: "はい。今お持ちの写真とSNSの投稿から始められます。足りないものは、こちらでお伺いしながら文章の案をお作りします。",
+    },
+    {
+        q: "教室以外でも依頼できますか？",
+        a: "できます。教室・スクールのご依頼が中心ですが、店舗やその他の事業者の方からのご相談も承っています。",
     },
     {
         q: "遠方ですが、対応できますか？",
-        a: "全国対応です。打ち合わせはオンライン（LINE・メール・ビデオ通話）で完結します。",
+        a: "全国対応です。打ち合わせはLINE・メール・ビデオ通話で完結します。埼玉北部の方は直接お伺いすることもできます。",
     },
 ];
 
 const faqsEn: FaqItem[] = [
     {
-        q: "Will this actually get results?",
-        a: "We won’t promise “guaranteed results.” What we do instead is spell out, in the proposal itself, exactly what we’ll do, in what order, and which numbers we’re aiming for. After launch you get a report every month, so there’s never any ambiguity about whether it’s working.",
+        q: "How much does a website cost?",
+        a: "There is no setup fee. It is ¥8,980 per month, tax included, covering up to 10 pages, edits and updates after launch, and domain and hosting. The first-year total is ¥107,760 (tax incl.).",
     },
     {
-        q: "Can I hire you just to build a website or landing page?",
-        a: "Yes. Build-only projects are welcome. We only bring up marketing or AI if it’s genuinely relevant to you. “I just want a website for now” is a perfectly good place to start.",
+        q: "What do I get with the free preview?",
+        a: "A design proposal for your homepage. It costs nothing and commits you to nothing. You decide after seeing it.",
     },
     {
-        q: "If I ask for a quote, will I get pushy follow-ups?",
-        a: "No. We never make sales calls. All communication is over LINE or email, and we won’t contact you out of the blue.",
+        q: "When does billing start?",
+        a: "On the day you sign the contract. Nothing is charged while you are looking at the free preview.",
     },
     {
-        q: "I know nothing about websites. Can I leave everything to you?",
-        a: "Absolutely. We explain things in plain language and help with everything from writing the copy to preparing photos. All you need to bring is your knowledge of your own business.",
+        q: "Is there a minimum term?",
+        a: "Twelve months. Because the setup fee is zero and domain and hosting are included, we ask for a year.",
     },
     {
-        q: "I haven’t decided to hire anyone yet. Can I still ask questions?",
-        a: "Of course. “I just want to know how to fix my current site” is reason enough to reach out. The proposal and quote are free.",
+        q: "How many edits can I ask for?",
+        a: "After you sign, there is no limit on how often. Send us new photos or news any time. During the free preview stage, one round of adjustments is included.",
     },
     {
-        q: "How long does a project take?",
-        a: "Thanks to our AI-assisted workflow, a build that normally takes about a month can be done in as little as 3–5 days. If you’re on a tight deadline, let us know.",
+        q: "Does the monthly fee cover Google Maps or social media management?",
+        a: "No. The monthly fee covers a LINE link on your site and basic search settings. Google Maps (MEO) management, social media management, ongoing SEO support, and LINE official account setup and operation are quoted separately.",
     },
     {
-        q: "I’m not nearby. Can you still work with me?",
-        a: "Yes, we work with clients anywhere in Japan. Everything happens online — LINE, email, and video calls.",
+        q: "Will the site be mine?",
+        a: "After twelve months or more, the site can be transferred to you. We'll walk you through the steps.",
+    },
+    {
+        q: "What if I don't have photos or text ready?",
+        a: "That's fine. We can start with the photos you have and your social media posts, and draft the wording with you.",
+    },
+    {
+        q: "Do you only work with schools?",
+        a: "Schools and studios are our focus, but shops and other businesses are welcome to get in touch.",
+    },
+    {
+        q: "I'm not nearby. Can you still help?",
+        a: "Yes, we work with clients across Japan over LINE, email and video calls. If you're in northern Saitama, we can also visit in person.",
     },
 ];
 
-/** 言語別の FAQ 配列（JSON-LD にも表示にも使う） */
-export function getFaqs(lang: Lang = "ja"): FaqItem[] {
+export function getFaqs(lang: Lang): FaqItem[] {
     return lang === "en" ? faqsEn : faqs;
 }
 
-const headings: Record<Lang, string> = { ja: "よくあるご質問", en: "Common questions" };
+const headings: Record<Lang, string> = { ja: "よくあるご質問", en: "FAQ" };
 
 export function FAQ({ lang = "ja" }: { lang?: Lang }) {
     const items = getFaqs(lang);

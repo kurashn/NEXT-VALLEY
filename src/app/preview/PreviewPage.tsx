@@ -82,6 +82,45 @@ function SlotsMeter({ t, dark = true }: { t: PreviewCopy; dark?: boolean }) {
     );
 }
 
+/** 正式制作の条件（金額・期間）。紺地カードの中で使う */
+function TermsList({ t }: { t: PreviewCopy }) {
+    return (
+        <>
+            <ul className="mt-6 divide-y divide-white/10 border-y border-white/10">
+                {t.terms.items.map((it) => (
+                    <li key={it.k} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5 py-3">
+                        <span className="text-[14px] text-navy-sub">{it.k}</span>
+                        <span className="text-[16px] font-bold text-white">{it.v}</span>
+                    </li>
+                ))}
+            </ul>
+            <ul className="mt-5 space-y-2.5">
+                {t.terms.notes.map((n) => (
+                    <li key={n} className="flex gap-2.5 text-[13px] leading-[1.9] text-white/80">
+                        <span aria-hidden className="mt-[10px] h-1 w-1 shrink-0 rounded-full bg-coral" />
+                        <span>{n}</span>
+                    </li>
+                ))}
+            </ul>
+        </>
+    );
+}
+
+/** 申込ボタンのすぐ上に置く、条件のまとめカード */
+function TermsCard({ t, className = "" }: { t: PreviewCopy; className?: string }) {
+    return (
+        <div className={`rounded-[20px] border border-white/15 bg-white/[0.06] p-6 text-left md:p-8 ${className}`}>
+            <p className="inline-flex items-center gap-2.5 text-[12px] font-bold tracking-[0.25em] text-coral">
+                <span aria-hidden className="block h-px w-6 bg-current" />
+                {t.terms.label}
+            </p>
+            <h3 className="mt-3 text-lg font-bold leading-snug text-white md:text-xl">{t.terms.heading}</h3>
+            <p className="mt-3 text-[14px] leading-[1.9] text-navy-sub">{t.terms.lead}</p>
+            <TermsList t={t} />
+        </div>
+    );
+}
+
 /* ───────────────────────── ページ ───────────────────────── */
 
 export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
@@ -455,15 +494,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                                 <p className="mt-4 text-[15px] leading-[2] text-navy-sub">
                                     {t.pricing.nextLead}
                                 </p>
-                                <ul className="mt-6 divide-y divide-white/10 border-y border-white/10">
-                                    {t.pricing.prices.map((p) => (
-                                        <li key={p.k} className="flex items-center justify-between py-3.5">
-                                            <span className="text-[15px]">{p.k}</span>
-                                            <span className="text-lg font-bold">{p.prefix}<span className="lp-serif text-2xl leading-none">{p.num}</span>{p.suffix}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                                <p className="mt-4 text-xs text-navy-sub">{t.pricing.priceNote}</p>
+                                <TermsList t={t} />
                             </div>
                         </FadeIn>
                     </div>
@@ -609,6 +640,9 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                         </div>
                     </FadeIn>
                     <FadeIn>
+                        <TermsCard t={t} className="mx-auto mb-8 max-w-2xl" />
+                    </FadeIn>
+                    <FadeIn>
                         <div className="mx-auto max-w-xl text-center">
                             <a
                                 href={LINE_URL}
@@ -642,7 +676,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
             </section>
 
             {/* ── ミニフッター ── */}
-            <footer className="border-t border-navy-line bg-navy-deep py-10 text-navy-sub">
+            <footer className="border-t border-navy-line bg-navy-deep pt-10 pb-16 text-navy-sub md:pb-10">
                 <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 text-xs md:flex-row md:items-center md:px-6">
                     <div className="flex flex-col gap-3">
                         <Link href={withLang(lang, "/")} className="inline-flex min-h-11 items-center">

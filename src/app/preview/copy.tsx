@@ -14,7 +14,7 @@ export const LINE_URL = "https://lin.ee/N4QXdJL#from=preview";
 
 type IconItem = { icon: LucideIcon; t: React.ReactNode; d: string };
 type CompareRow = { k: string; a: string; b: string; c: React.ReactNode };
-type Price = { k: string; prefix?: string; num: string; suffix?: string };
+type Term = { k: string; v: React.ReactNode };
 
 /* ───────────────────────── 日本語 ───────────────────────── */
 
@@ -37,23 +37,27 @@ const ja = {
         h1a: "先に、見せます。",
         h1b: (
             <>
-                契約の前に、あなたのお店・教室・会社の<br />
+                契約の前に、あなたの教室・スクールの<br />
                 トップページ案を<span className="text-coral">無料で</span>お作りします。
             </>
         ),
         lead: (
             <>
-                かんたんなヒアリングシートに答えるだけ。3営業日以内に、PC・スマホ2枚のデザイン案が<span className="nowrap">届きます。</span>気に入らなければ、そこで終わり。費用も、営業も<span className="nowrap">ありません。</span>
+                体験レッスンの申し込みにつながるトップページ案を、ヒアリングシートに答えるだけでお作りします。3営業日以内に、PC・スマホ2枚のデザイン案が<span className="nowrap">届きます。</span>気に入らなければ、そこで終わり。費用も、営業も<span className="nowrap">ありません。</span>
             </>
         ),
         chips: [
-            { k: "費用", v: "0円" },
-            { k: "納期", v: "3営業日以内" },
-            { k: "契約", v: "不要" },
+            { k: "プレビュー費用", v: "0円" },
+            { k: "お届け", v: "3営業日以内" },
+            { k: "この時点の契約", v: "不要" },
+            { k: "正式制作の初期費用", v: "0円" },
+            { k: "正式制作の月額", v: "8,980円（税込）" },
         ],
         note: (
             <>
                 ヒアリングシートに答えるだけ（約1分）・しつこい<span className="nowrap">営業なし</span>
+                <br />
+                ※ 英語・ダンス・バレエ・音楽などの教室やスクールが中心です。店舗・その他の業種も<span className="nowrap">ご相談ください。</span>
                 <br />
                 ※ 事業者様限定。本気でホームページを作る方のための枠です（簡単な確認あり）
             </>
@@ -80,7 +84,7 @@ const ja = {
             {
                 icon: Eye,
                 t: <>実績は「他社の話」で<span className="nowrap">しかない</span></>,
-                d: "制作会社の実績がきれいでも、それは他社のサイト。「うちのお店・教室・会社なら、どんな見た目になるのか」は、頼むまで分かりません。",
+                d: "制作会社の実績がきれいでも、それは他社のサイト。「うちの教室なら、どんな見た目になるのか」は、頼むまで分かりません。",
             },
             {
                 icon: Hourglass,
@@ -118,14 +122,14 @@ const ja = {
     deliver: {
         label: "お届けするもの",
         title: <>プレビューで、<br className="md:hidden" />お届けするもの。</>,
-        lead: "「ラフなイメージ図」ではありません。気に入れば、そのまま公開まで仕上げられる実物のトップページ案です。気になる点は、プレビューの段階でも1回まで無料で調整します。" as React.ReactNode,
+        lead: "「ラフなイメージ図」ではありません。気に入れば、そのまま公開まで仕上げられる実物のトップページ案です。気になる点は、プレビューの段階でも1回まで無料で調整します（正式契約のあとは、修正・更新が無制限になります）。" as React.ReactNode,
         items: [
             { icon: Monitor, t: "PC版トップページ", d: "実際のブラウザで見た状態の画像。構成・写真の置き方・文字の大きさまで、そのまま確認できます。" },
             { icon: Smartphone, t: "スマホ版トップページ", d: "来訪者の多くはスマホ。指で触る前提のレイアウトを、別途つくって同時にお渡しします。" },
-            { icon: Sparkles, t: <>業種と強みに<span className="nowrap">合わせた構成</span></>, d: "テンプレートの色替えではありません。「誰に・何を・どう伝えるか」から、あなたのお店・教室・会社に合わせて組み立てます。" },
+            { icon: Sparkles, t: <>業種と強みに<span className="nowrap">合わせた構成</span></>, d: "テンプレートの色替えではありません。体験レッスンの申し込みまでどう案内するかを考えて、あなたの教室に合わせて組み立てます。店舗・その他の業種も同じ作り方です。" },
             { icon: Palette, t: "希望の雰囲気を反映", d: "「上品に」「元気に」「信頼感を」。ひと言の希望から、色・書体・余白のトーンを決めます。" },
         ] as IconItem[],
-        cta: <>あなたのお店・教室・会社なら、どんなトップページに<span className="nowrap">なるか。</span><br className="md:hidden" />まず、それを見て<span className="nowrap">ください。</span></>,
+        cta: <>あなたの教室なら、どんなトップページに<span className="nowrap">なるか。</span><br className="md:hidden" />まず、それを見て<span className="nowrap">ください。</span></>,
     },
     compare: {
         label: "ほかとの違い",
@@ -138,10 +142,11 @@ const ja = {
         colCShort: "NEXT VALLEY",
         rows: [
             { k: "契約前にデザインを見られる", a: "△ ラフ案や口頭説明が中心", b: "× テンプレートから選ぶ", c: <>◎ 実物のトップページ案<span className="nowrap">（PC・スマホ）</span></> },
-            { k: "費用が発生するタイミング", a: "契約時（着手金など）", b: "申込時", c: <>正式に依頼すると<span className="nowrap">決めたとき</span></> },
+            { k: "費用が発生するタイミング", a: "契約時（着手金など）", b: "申込時", c: <>正式契約日から<span className="nowrap">（プレビューは0円）</span></> },
             { k: "デザイン案が届くまで", a: "契約後、数週間", b: "―", c: "3営業日以内" },
             { k: "断ったあと", a: "契約後の解約は難しい", b: "返金不可の場合も", c: "そこで終わり・営業なし" },
             { k: "作るのは", a: "会社による", b: "自分で組む", c: "正式制作と同じ担当" },
+            { k: "正式制作の費用", a: "初期費用が数十万円", b: "月額＋自分で作る手間", c: <>初期0円<br />月額8,980円（税込）</> },
         ] as CompareRow[],
     },
     voices: {
@@ -166,13 +171,13 @@ const ja = {
         title: "申し込みから、3ステップ。" as React.ReactNode,
         lead: "必要なのはLINEとヒアリングシートだけ。電話も、打ち合わせの日程調整もありません。" as React.ReactNode,
         steps: [
-            { n: "01", t: <>公式LINEを追加し、ヒアリングシート（約1分）に<span className="nowrap">答える</span></>, d: "友だち追加すると、ヒアリングシートの案内がすぐ届きます。お店・教室のお名前、作る目的、載せたい内容など、スマホから約1分で回答できます。写真やロゴがなくても大丈夫です。" },
+            { n: "01", t: <>公式LINEを追加し、ヒアリングシート（約1分）に<span className="nowrap">答える</span></>, d: "友だち追加すると、ヒアリングシートの案内がすぐ届きます。教室・お店のお名前、作る目的、載せたい内容など、スマホから約1分で回答できます。写真やロゴがなくても大丈夫です。" },
             { n: "02", t: "確認のうえ、3営業日以内にトップページ案が届く", d: "事業の実態と、ご希望の内容を確認してから制作に入ります（条件に合わない場合は、その旨をお伝えします）。PC・スマホの2枚の画像でお届け。" },
-            { n: "03", t: "見てから、決める", d: "気に入れば正式制作へ（公開まで担当）。気に入らなければ、そこで終わりで大丈夫です。こちらから追いかける連絡はしません。" },
+            { n: "03", t: "見てから、決める", d: "気に入れば正式制作へ進みます。条件は、初期制作費0円・月額8,980円（税込）・最低契約期間1年間。料金がかかり始めるのは正式契約日からです。気に入らなければ、そこで終わりで大丈夫です。こちらから追いかける連絡はしません。" },
         ] as { n: string; t: React.ReactNode; d: string }[],
         formTitle: "ヒアリングシートで聞くこと",
         formItems: [
-            "お店・教室のお名前と所在地",
+            "教室・お店のお名前と所在地",
             "ホームページを作る目的",
             "載せたい内容",
             "参考にしたいサイト",
@@ -201,14 +206,34 @@ const ja = {
         nextTitle: <>プレビューのデザインを、<br className="md:hidden" />そのまま公開まで。</>,
         nextLead: (
             <>
-                公開まで進める場合の目安です。内容により変動しますが、正式なお見積もりを先にお出しし、追加費用が出る場合は必ず事前にお<span className="nowrap">伝えします。</span>
+                正式制作に進む場合の条件です。金額も期間も、申し込む前にすべてお伝えします。あとから初期費用を追加で請求することは<span className="nowrap">ありません。</span>
             </>
         ),
-        prices: [
-            { k: "集客ページ制作（1枚完結）", num: "¥55,000", suffix: "〜" },
-            { k: "ホームページ制作", num: "¥165,000", suffix: "〜" },
-        ] as Price[],
-        priceNote: "税込目安。ホームページ制作は複数ページの場合。集客サポートは月¥22,000〜",
+    },
+    terms: {
+        label: "正式制作の条件",
+        heading: "正式制作に進むときの条件",
+        lead: (
+            <>
+                プレビューは無料です。この条件でのご契約になるのは、実物を見て「公開まで進めたい」と決めた<span className="nowrap">ときだけです。</span>
+            </>
+        ) as React.ReactNode,
+        items: [
+            { k: "初期制作費", v: "0円" },
+            { k: "月額", v: "8,980円（税込）" },
+            { k: "制作ページ数", v: "10ページまで" },
+            { k: "修正・更新", v: "無制限" },
+            { k: "ドメイン・サーバー費", v: "月額に含む" },
+            { k: "最低契約期間", v: "1年間" },
+            { k: "課金開始", v: "正式契約日" },
+            { k: "初年度の支払総額", v: "107,760円（税込）" },
+        ] as Term[],
+        notes: [
+            "プレビューを見た時点では、料金は発生しません。料金がかかり始めるのは正式契約日からです。",
+            "1年以上ご契約いただいた場合、サイトをお客様へ譲渡できます。",
+            "Googleマップの運用・SNSの運用・継続的なSEO・LINE公式アカウントの構築と運用といった、継続的な集客支援はこの月額に含みません。ご希望の内容に応じて、別途お見積もりします。",
+            "プレビュー段階の調整は1回まで無料です。修正・更新が無制限になるのは、正式契約のあとです。",
+        ],
     },
     promises: {
         label: "3つの約束",
@@ -216,13 +241,13 @@ const ja = {
         items: [
             { t: "プレビューは完全無料", d: "あとから請求することはありません。費用が発生するのは、気に入って正式制作に進む場合だけです。" },
             { t: "断っても、追いかけません", d: "「今回は見送ります」で終わり。電話営業も、こちらからの催促もしません。" },
-            { t: "契約書も、口約束もなし", d: "プレビューの段階で、何かを約束していただくことはありません。見て、判断するだけです。" },
+            { t: "契約書も、口約束もなし", d: "プレビューの段階で、何かを約束していただくことはありません。見て、判断するだけです。正式制作に進むと決めたときに、あらためて条件をご確認いただきます。" },
         ],
     },
     target: {
         label: "対象となる方",
         title: <>本気でホームページを作る、<br className="md:hidden" />事業者様のための枠です。</>,
-        lead: "誰でも申し込めるキャンペーンではありません。実際に事業をされていて、本当にホームページを作りたい方のために、毎月10社分の制作時間を確保しています。お申し込み後、簡単な確認をさせていただき、条件に合わない場合はお断りすることがあります。" as React.ReactNode,
+        lead: "誰でも申し込めるキャンペーンではありません。実際に事業をされていて、本当にホームページを作りたい方のために、毎月10社分の制作時間を確保しています。英語教室・ダンス・バレエ・音楽など、体験レッスンが入会の入口になる教室・スクールを中心にお受けしています。店舗・その他の業種もご相談ください。お申し込み後、簡単な確認をさせていただき、条件に合わない場合はお断りすることがあります。" as React.ReactNode,
         condLabel: (n: number) => `条件 ${n}`,
         conditions: [
             { icon: BadgeCheck, t: "事業の実態が確認できること", d: "店舗名・SNS・Googleマップ・既存サイト・開業届など、いずれかで事業が分かる方。" },
@@ -232,6 +257,7 @@ const ja = {
         forLabel: "対象の方",
         forWho: [
             "実際に事業をしていて（または開業が決まっていて）、これからホームページを作る",
+            "体験レッスンや問い合わせの申し込みを、もっと分かりやすい形で受けたい",
             "制作会社を比べているが、完成イメージが湧かず決められない",
             "「作る前に、実物を見て判断したい」と思っている",
             "気に入れば、正式制作を前向きに検討できる",
@@ -255,14 +281,19 @@ const ja = {
         label: "よくあるご質問",
         title: "よくあるご質問" as React.ReactNode,
         items: [
-            { q: "本当に無料ですか？あとから請求されませんか？", a: "はい、プレビュー制作は無料です。あとから請求することはありません。費用がかかるのは、気に入って「公開まで進めたい」となった場合の正式制作だけです。" },
+            { q: "本当に無料ですか？あとから請求されませんか？", a: "はい、プレビュー制作は無料です。あとから請求することはありません。費用がかかるのは、気に入って「公開まで進めたい」となった場合の正式制作だけです。正式制作は初期制作費0円・月額8,980円（税込）で、最低契約期間は1年間です。" },
             { q: "断ったら営業されませんか？", a: "されません。「今回は見送ります」で終わりです。こちらから追いかけて連絡することもありません。" },
             { q: "作ったデザインのデータはもらえますか？", a: "プレビューはPC・スマホの画像でお渡しします。編集用データやコードは、正式制作をご依頼いただいた場合にお渡しします。" },
             { q: "写真もロゴもないのですが、大丈夫ですか？", a: "大丈夫です。業種と伝えたいことが分かれば、それに合った構成とデザインでお作りします。素材は正式制作の段階で一緒に準備します。" },
             { q: "「確認」では、何を見るのですか？", a: "実際に事業をされているか（店舗名・SNS・Googleマップ・既存サイトなど）と、ホームページを作る予定が本当にあるか、の2点です。審査のような堅いものではなく、LINEでのやり取りの中で確認します。" },
             { q: "個人事業主・開業前でも申し込めますか？", a: "はい。個人事業主の方も、開業が決まっている方も対象です。屋号や開業予定日、SNSなど、事業が分かるものを教えてください。" },
             { q: "同業ですが、参考に申し込めますか？", a: "申し訳ありませんが、同業（Web制作・デザイン）の方や、参考資料が目的の方はお断りしています。本気でホームページを作る事業者様のための枠です。" },
-            { q: "プレビューを見てから、修正の希望は言えますか？", a: "はい。プレビューの段階でも、気になる点は1回まで無料で調整します。正式制作に進む場合は、そのプレビューをたたき台にして、色・写真・文章などをご希望に合わせて仕上げていきます。" },
+            { q: "プレビューを見てから、修正の希望は言えますか？", a: "はい。プレビューの段階では、気になる点を1回まで無料で調整します。正式制作に進む場合は、そのプレビューをたたき台にして、色・写真・文章などをご希望に合わせて仕上げていきます。正式契約のあとは、修正・更新の回数に制限はありません。" },
+            { q: "正式制作の料金を教えてください。", a: "初期制作費は0円、月額8,980円（税込）です。10ページまでの制作、修正・更新は無制限、ドメイン代とサーバー代も月額に含みます。最低契約期間は1年間で、初年度の支払総額は107,760円（税込）です。" },
+            { q: "いつから料金がかかりますか？", a: "正式契約日からです。プレビューを見た時点では料金は発生しません。見て、断っていただいても費用はかかりません。" },
+            { q: "Googleマップやインスタの運用もお願いできますか？", a: "ご相談いただけます。ただしGoogleマップの運用・SNSの運用・継続的なSEO・LINE公式アカウントの構築と運用といった継続的な集客支援は、月額8,980円（税込）には含みません。ご希望の内容をうかがったうえで、別途お見積もりします。" },
+            { q: "サイトは自分のものになりますか？", a: "1年以上ご契約いただいた場合、サイトをお客様へ譲渡できます。詳しい手順は正式契約の前にご説明します。" },
+            { q: "教室以外の業種でも申し込めますか？", a: "はい。私たちが力を入れているのは教室・スクールですが、店舗やその他の業種もご相談いただけます。まずはヒアリングシートで事業の内容を教えてください。" },
             { q: "なぜ無料でできるのですか？", a: "AIを活用した制作環境で、トップページ1枚を作るコストが大幅に下がったからです。その分を「先に実物を見てもらう」ことに使っています。契約前に判断材料を渡した方が、お互いに後悔がないと考えています。" },
         ],
     },
@@ -282,7 +313,7 @@ const ja = {
         formButton: "LINEで無料プレビューを申し込む",
         formButtonNote: (
             <>
-                追加するとヒアリングシート（約1分）が届きます・<span className="nowrap">費用0円</span>・回答から3営業日以内に<span className="nowrap">お届け</span>
+                追加するとヒアリングシート（約1分）が届きます・プレビューは<span className="nowrap">費用0円</span>・回答から3営業日以内に<span className="nowrap">お届け</span>・この時点では<span className="nowrap">料金はかかりません</span>
             </>
         ) as React.ReactNode,
         psAlt: "代表 倉林 駿",
@@ -308,7 +339,7 @@ const ja = {
             ["/privacy", "プライバシーポリシー"],
         ] as [string, string][],
     },
-    sticky: "無料プレビューを申し込む（2分）",
+    sticky: "無料プレビューを申し込む（約1分）",
 };
 
 /* ───────────────────────── English ───────────────────────── */
@@ -328,7 +359,7 @@ const en: typeof ja = {
         h1a: "See it first.",
         h1b: (
             <>
-                Before you sign anything, we&rsquo;ll design a homepage for your shop, studio, or company &mdash;{" "}
+                Before you sign anything, we&rsquo;ll design a homepage for your school or studio &mdash;{" "}
                 <span className="text-coral">free of charge</span>.
             </>
         ),
@@ -338,13 +369,17 @@ const en: typeof ja = {
             </>
         ),
         chips: [
-            { k: "Cost", v: "¥0" },
+            { k: "Preview cost", v: "¥0" },
             { k: "Delivery", v: "3 business days" },
-            { k: "Contract", v: "None" },
+            { k: "Contract now", v: "None" },
+            { k: "Setup fee", v: "¥0" },
+            { k: "Monthly", v: "¥8,980 (incl. tax)" },
         ],
         note: (
             <>
                 One short hearing sheet · about 1 minute · no pushy follow-up
+                <br />
+                Mainly for schools and studios (English, dance, ballet, music). Shops and other businesses are welcome to ask.
                 <br />
                 For business owners only. Spots are reserved for people who are serious about building a website (we do a quick check).
             </>
@@ -371,7 +406,7 @@ const en: typeof ja = {
             {
                 icon: Eye,
                 t: "Portfolios only show other people's sites",
-                d: "An agency's portfolio may look great, but those are someone else's sites. What your shop, studio, or company would actually look like? You won't know until you've committed.",
+                d: "An agency's portfolio may look great, but those are someone else's sites. What your own school would actually look like? You won't know until you've committed.",
             },
             {
                 icon: Hourglass,
@@ -425,10 +460,11 @@ const en: typeof ja = {
         colCShort: "NEXT VALLEY",
         rows: [
             { k: "See the design before signing", a: "△ Rough sketches or verbal descriptions", b: "× You pick from templates", c: "◎ A real design (desktop + mobile)" },
-            { k: "When you start paying", a: "At signing (deposit, etc.)", b: "At sign-up", c: "Only when you decide to hire us" },
+            { k: "When you start paying", a: "At signing (deposit, etc.)", b: "At sign-up", c: "From the contract date (the preview is ¥0)" },
             { k: "Time until you see a design", a: "Weeks after signing", b: "—", c: "Within 3 business days" },
             { k: "If you say no", a: "Hard to cancel once signed", b: "Often non-refundable", c: "That's the end. No sales calls." },
             { k: "Who does the work", a: "Depends on the agency", b: "You build it yourself", c: "The same team that builds the real site" },
+            { k: "Cost of the real site", a: "A setup fee in the hundreds of thousands", b: "Monthly fee plus your own time", c: <>¥0 setup<br />¥8,980/mo (incl. tax)</> },
         ],
     },
     voices: {
@@ -488,14 +524,34 @@ const en: typeof ja = {
         nextTitle: <>We take the preview design <br className="md:hidden" /> all the way to launch.</>,
         nextLead: (
             <>
-                Guide prices for taking your site to launch. The final cost depends on scope &mdash; you&rsquo;ll get a formal quote first, and we always tell you in advance if anything would add to it.
+                These are the terms if you go ahead. We tell you the price and the term before you apply, and we never add a setup fee later.
             </>
         ),
-        prices: [
-            { k: "One-page site", prefix: "from ", num: "¥55,000" },
-            { k: "Website", prefix: "from ", num: "¥165,000" },
+    },
+    terms: {
+        label: "FULL PRODUCTION TERMS",
+        heading: "Terms if you go ahead",
+        lead: (
+            <>
+                The preview is free. These terms apply only if you see the design and decide to take it to launch.
+            </>
+        ) as React.ReactNode,
+        items: [
+            { k: "Setup fee", v: "¥0" },
+            { k: "Monthly", v: "¥8,980 (incl. tax)" },
+            { k: "Pages built", v: "Up to 10" },
+            { k: "Edits and updates", v: "Unlimited" },
+            { k: "Domain and hosting", v: "Included in the monthly fee" },
+            { k: "Minimum term", v: "1 year" },
+            { k: "Billing starts", v: "On the contract date" },
+            { k: "First-year total", v: "¥107,760 (incl. tax)" },
         ],
-        priceNote: "Approximate, tax included. Website = multi-page. Growth support from ¥22,000/mo.",
+        notes: [
+            "Nothing is charged when you view the preview. Billing starts on the contract date.",
+            "After one year or more on contract, the site can be transferred to you.",
+            "Ongoing growth support — Google Maps, social media, ongoing SEO, and building and running a LINE Official Account — is not included in the monthly fee. We quote it separately based on what you need.",
+            "At the preview stage we make one round of adjustments for free. Unlimited edits and updates start after the contract.",
+        ],
     },
     promises: {
         label: "THREE PROMISES",
@@ -503,13 +559,13 @@ const en: typeof ja = {
         items: [
             { t: "The preview is completely free", d: "We'll never bill you afterward. You pay only if you like it and choose to move to full production." },
             { t: "Say no, and we won't chase you", d: "“Not this time” is the end of the conversation. No sales calls, no follow-up nudges." },
-            { t: "No contract, no verbal commitments", d: "At the preview stage, we ask you to promise nothing. Just look and decide." },
+            { t: "No contract, no verbal commitments", d: "At the preview stage, we ask you to promise nothing. Just look and decide. We go through the terms with you again if you decide to go ahead." },
         ],
     },
     target: {
         label: "WHO IT'S FOR",
         title: <>Reserved for business owners who are serious about building a website.</>,
-        lead: "This isn't an open-to-anyone campaign. Each month we set aside production time for 10 real businesses that genuinely want a website. After you apply, we do a quick check, and we may decline if it's not a fit.",
+        lead: "This isn't an open-to-anyone campaign. Each month we set aside production time for 10 real businesses that genuinely want a website. We focus on schools and studios — English, dance, ballet, music — where a trial lesson is how people join. Shops and other businesses are welcome to ask. After you apply, we do a quick check, and we may decline if it's not a fit.",
         condLabel: (n: number) => `CONDITION ${n}`,
         conditions: [
             { icon: BadgeCheck, t: "We can verify your business", d: "A business name, social media account, Google Maps listing, existing website, or business registration — any one of these." },
@@ -519,6 +575,7 @@ const en: typeof ja = {
         forLabel: "THIS IS FOR YOU IF",
         forWho: [
             "You run a business (or have a confirmed opening date) and need a website",
+            "You want trial lesson sign-ups and enquiries to come in more clearly",
             "You're comparing agencies but can't decide without seeing a finished look",
             "You'd rather see the real thing before committing",
             "You'd seriously consider full production if you like it",
@@ -542,14 +599,19 @@ const en: typeof ja = {
         label: "FAQ",
         title: "Frequently asked questions",
         items: [
-            { q: "Is it really free? Will I be billed later?", a: "Yes, the preview is free, and we'll never bill you afterward. The only cost is full production — if you like the design and want us to take it to launch." },
+            { q: "Is it really free? Will I be billed later?", a: "Yes, the preview is free, and we'll never bill you afterward. The only cost is full production — if you like the design and want us to take it to launch. Full production is ¥0 setup plus ¥8,980 a month (incl. tax), on a one-year minimum term." },
             { q: "If I say no, will you keep contacting me?", a: "No. “Not this time” ends it. We won't reach out to follow up." },
             { q: "Do I get the design files?", a: "The preview comes as desktop and mobile images. Editable files and code are delivered when you commission full production." },
             { q: "I don't have photos or a logo. Is that okay?", a: "Absolutely. As long as we know your industry and what you want to say, we'll build a layout and design that fits. We'll sort out photos and other assets together during full production." },
             { q: "What does the “check” involve?", a: "Two things: that you're actually running a business (business name, social media, Google Maps, existing site, etc.), and that you genuinely plan to build a website. It's not a formal screening — we simply confirm it in the LINE conversation." },
             { q: "Can sole proprietors or pre-opening businesses apply?", a: "Yes. Sole proprietors and businesses with a confirmed opening date are welcome. Just tell us something that shows the business — your trade name, planned opening date, social media, and so on." },
             { q: "I'm in the web business myself. Can I apply for reference?", a: "Sorry, we don't accept applications from fellow web or design professionals, or from anyone looking for reference material. These spots are for business owners who are serious about building a website." },
-            { q: "Can I ask for changes after seeing the preview?", a: "Yes. Even at the preview stage, we'll make one round of adjustments for free. If you move to full production, the preview becomes the starting point and we refine colors, photos, and copy to your liking." },
+            { q: "Can I ask for changes after seeing the preview?", a: "Yes. At the preview stage we make one round of adjustments for free. If you move to full production, the preview becomes the starting point and we refine colors, photos, and copy to your liking. After the contract, there is no limit on edits or updates." },
+            { q: "What does full production cost?", a: "¥0 setup and ¥8,980 a month, tax included. That covers up to 10 pages, unlimited edits and updates, and the domain and hosting fees. The minimum term is one year, so the first-year total is ¥107,760 (incl. tax)." },
+            { q: "When does billing start?", a: "On the contract date. Nothing is charged when you view the preview, and nothing is charged if you say no." },
+            { q: "Can you also run our Google Maps and social media?", a: "We're happy to discuss it, but ongoing growth support — Google Maps, social media, ongoing SEO, and building and running a LINE Official Account — is not included in the ¥8,980 monthly fee. We quote it separately based on what you need." },
+            { q: "Will the site belong to us?", a: "After one year or more on contract, the site can be transferred to you. We explain how before you sign." },
+            { q: "We're not a school. Can we still apply?", a: "Yes. Schools and studios are our focus, but shops and other businesses are welcome to ask. Tell us about your business in the hearing sheet." },
             { q: "Why can you do this for free?", a: "AI-powered production has dramatically lowered the cost of building a single homepage. We put those savings into letting you see the real thing first. We believe handing you something concrete before you sign means fewer regrets for everyone." },
         ],
     },
@@ -557,7 +619,7 @@ const en: typeof ja = {
         title: <>Want to see your homepage first?</>,
         lead: <>Add our official LINE below and the hearing sheet (about 1 minute) arrives right away. Answer it and you&rsquo;re done. Not ready yet? Questions are welcome too &mdash; just message us on LINE.</>,
         formButton: "Apply on LINE",
-        formButtonNote: (<>Add us and the hearing sheet (about 1 min) arrives right away · ¥0 · delivered within 3 business days</>) as React.ReactNode,
+        formButtonNote: (<>Add us and the hearing sheet (about 1 min) arrives right away · the preview is ¥0 · delivered within 3 business days · nothing is charged at this point</>) as React.ReactNode,
         psAlt: "Shun Kurahayashi, Founder",
         psLabel: "P.S. FROM THE FOUNDER",
         psText: (
@@ -577,7 +639,7 @@ const en: typeof ja = {
             ["/privacy", "Privacy policy (JP)"],
         ],
     },
-    sticky: "Get your free preview (2 min)",
+    sticky: "Get your free preview (1 min)",
 };
 
 export const previewCopy: Record<Lang, typeof ja> = { ja, en };
@@ -586,13 +648,13 @@ export type PreviewCopy = typeof ja;
 /* ───────────────────────── metadata ───────────────────────── */
 
 const metaJa: Metadata = {
-    title: "無料プレビュー制作｜契約前に、あなたのトップページ案をお作りします（毎月10社限定）",
+    title: "無料プレビュー制作｜教室・スクールのトップページ案を契約前に無料でお作りします（毎月10社限定）",
     description:
-        "ホームページをこれから作る方へ。契約の前に、あなたのお店・教室・会社のトップページのデザイン案（PC・スマホ）を無料でお作りします。個人事業主の方も対象。かんたんなヒアリングシートに答えるだけ、3営業日以内にお届け。気に入らなければそこで終わり。費用も営業もありません。毎月10社限定。",
+        "英語教室・ダンス・バレエ・音楽など、体験レッスンが入口になる教室・スクールへ。契約の前に、トップページのデザイン案（PC・スマホ）を無料でお作りします。店舗・その他の業種もご相談ください。ヒアリングシートに答えるだけ、3営業日以内にお届け。正式制作は初期制作費0円・月額8,980円（税込）・最低契約期間1年間で、料金がかかり始めるのは正式契約日からです。毎月10社限定。",
     alternates: { canonical: "https://www.nextvalley-jpn.com/preview" },
     openGraph: {
         title: "先に、見せます。契約前に、あなたのトップページ案を無料で。｜NEXT VALLEY",
-        description: "かんたんなヒアリングシートに答えるだけ。3営業日以内にPC・スマホのデザイン案が届きます。費用0円・契約不要・毎月10社限定。",
+        description: "教室・スクールのトップページ案を無料で。3営業日以内にPC・スマホのデザイン案が届きます。プレビューは費用0円・契約不要。正式制作は初期0円・月額8,980円（税込）。毎月10社限定。",
         url: "https://www.nextvalley-jpn.com/preview",
         siteName: "NEXT VALLEY",
         locale: "ja_JP",
@@ -603,9 +665,9 @@ const metaJa: Metadata = {
 };
 
 const metaEn: Metadata = {
-    title: "Free Website Preview | See your homepage design before you sign (10 businesses a month)",
+    title: "Free Website Preview | See your school's homepage design before you sign (10 businesses a month)",
     description:
-        "Planning a new website? Before any contract, we design your shop's, studio's, or company's homepage — desktop and mobile — for free. Sole proprietors welcome. Fill in one short hearing sheet and receive it within 3 business days. Don't like it? That's the end. No fees, no sales calls. Limited to 10 businesses a month.",
+        "Planning a new website? Before any contract, we design your school's or studio's homepage — desktop and mobile — for free. Full production is ¥0 setup plus ¥8,980 a month (incl. tax), on a one-year minimum term, billed from the contract date. Sole proprietors welcome. Fill in one short hearing sheet and receive it within 3 business days. Don't like it? That's the end. No fees, no sales calls. Limited to 10 businesses a month.",
     alternates: { canonical: "https://www.nextvalley-jpn.com/en/preview" },
     openGraph: {
         title: "See it first. Your homepage design, free, before you sign. | NEXT VALLEY",

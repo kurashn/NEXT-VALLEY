@@ -1,142 +1,190 @@
-// Server Component — ファーストビュー（sample/fv-sankou.png の忠実再現）
-// 深い紺地・右側に渓谷の写真（左へフェード）・左コピー・下部に統計3つ
+// Server Component — ファーストビュー
+// 教室・スクール向け。左にコピーと入口商品の料金、右に実際に制作した教室サイト（PC・スマホ）
 
 import React from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 
-import fvbg from "@/images/fvbg.webp";
+import classroomPc from "@/images/hero/classroom-pc.webp";
+import classroomSp from "@/images/hero/classroom-sp.webp";
 import { withLang, type Lang } from "@/i18n";
 
 const ja = {
+    eyebrow: "教室・スクールのWebまわり",
     h1: (
         <>
-            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>Webからの問い合わせ、</span></span>
-            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>原因から直して増やす。</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>教室の魅力が伝わる。</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>体験申込につながる。</span></span>
         </>
     ),
     lead: (
         <>
-            NEXT VALLEYは、2021年から100社以上を支援してきた、埼玉北部のWeb集客チームです。
-            <br />
-            「問い合わせが来ない」原因を見つけて、必要な施策だけを実行します。
+            教室・スクールのホームページ制作から、公開後の更新・集客改善まで。
             <br className="hidden md:block" />
-            ホームページ制作・SEO・Googleマップ・SNS・AIは、そのための<span className="nowrap">手段です。</span>
+            先生がレッスンに集中できるよう、Webまわりをお手伝い<span className="nowrap">します。</span>
         </>
     ),
-    cta1Label: "サイトがある方も、これから作る方も",
-    cta1: "LINEで無料診断を受ける",
-    ctaNote: (
-        <>
-            URLを送るだけで<strong className="font-bold text-white">2営業日以内</strong>に、問題点と直す順番をまとめた診断書が<span className="nowrap">届きます。</span>
-        </>
-    ),
-    previewPrefix: "これから作る方は、",
-    previewLink: "無料プレビュー",
-    previewSuffix: "で先に完成イメージを見られます。",
-    note: (
-        <>
-            どちらも費用は一切かかりません・しつこい<span className="nowrap">営業なし</span>
-        </>
-    ),
+    planLabel: "ホームページ制作・管理",
+    planInitial: "初期費用",
+    planInitialValue: "0円",
+    planMonthly: "月額",
+    planMonthlyValue: "8,980円",
+    planTax: "（税込）",
+    planFeatures: "10ページまで制作・修正無制限・ドメイン／サーバー費込み",
+    planTerms: "最低契約期間1年・ご契約日から課金",
+    planExtra: "継続的な集客支援は別途ご相談",
+    cta: "無料でデザイン案を見てみる",
+    ctaNote: "料金・条件とデザイン案を確認してから、正式依頼を決められます。",
+    subPrefix: "今のホームページで集客を改善したい方は、",
+    subLink: "今のサイトの改善点を知りたい",
+    note: "英語・ダンス・バレエ・音楽などの教室を中心に。店舗・その他の事業者の方もご相談いただけます。",
+    shotAlt: "制作したバレエ教室のホームページ（パソコン表示）",
+    shotAltSp: "制作したバレエ教室のホームページ（スマートフォン表示）",
+    shotCaption: "制作例：Tulip Ballet Studio様",
 };
+
 const en: typeof ja = {
+    eyebrow: "WEB FOR SCHOOLS & STUDIOS",
     h1: (
         <>
-            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>More inquiries from the web —</span></span>
-            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>by fixing the real cause.</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>Show what your school is like.</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>Turn visits into trial bookings.</span></span>
         </>
     ),
     lead: (
         <>
-            NEXT VALLEY is a small web team in northern Saitama that has helped 100+ businesses since 2021. We find out why inquiries aren&apos;t coming in, then do only what&apos;s needed — websites, SEO, Google Maps, social media, and AI are the tools, not the goal.
+            Websites for schools and studios, plus the updates and marketing work that come after launch, so teachers can stay focused on their lessons.
         </>
     ),
-    cta1Label: "HAVE A SITE OR STARTING FROM SCRATCH?",
-    cta1: "Get a free site check on LINE",
-    ctaNote: (
-        <>
-            Just send your URL and you&apos;ll get a written check-up — what&apos;s broken and what to fix first —{" "}
-            <strong className="font-bold text-white">within 2 business days</strong>.
-        </>
-    ),
-    previewPrefix: "Building a new site? ",
-    previewLink: "See a free preview",
-    previewSuffix: " of your design first.",
-    note: <>Both are completely free. No pushy sales calls, ever.</>,
+    planLabel: "Website build & management",
+    planInitial: "Setup",
+    planInitialValue: "¥0",
+    planMonthly: "Monthly",
+    planMonthlyValue: "¥8,980",
+    planTax: " (tax incl.)",
+    planFeatures: "Up to 10 pages, unlimited edits, domain and hosting included",
+    planTerms: "12-month minimum term, billed from the contract date",
+    planExtra: "Ongoing marketing support is quoted separately",
+    cta: "See a free design proposal",
+    ctaNote: "Check the design, the price and the terms before you decide.",
+    subPrefix: "Already have a site and want more inquiries? ",
+    subLink: "Get a free site check",
+    note: "Mainly English, dance, ballet and music schools. Shops and other businesses are welcome too.",
+    shotAlt: "A ballet school website we built, shown on a laptop",
+    shotAltSp: "A ballet school website we built, shown on a phone",
+    shotCaption: "Our work: Tulip Ballet Studio",
 };
+
 const copy: Record<Lang, typeof ja> = { ja, en };
 
 export default function Hero({ lang = "ja" }: { lang?: Lang }) {
     const t = copy[lang];
     return (
-        <section className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-navy-deep pt-20">
-            {/* 渓谷の写真（デスクトップは右側ブレンド、モバイルは減光して全面に） */}
+        <section className="relative overflow-hidden bg-navy-deep pb-16 pt-28 md:pb-24 md:pt-32">
+            {/* 背景の細いグリッド（装飾） */}
             <div
                 aria-hidden
-                className="absolute inset-y-0 right-0 w-full md:w-[62%]"
+                className="absolute inset-0 opacity-[0.35]"
                 style={{
-                    maskImage: "linear-gradient(to right, transparent 0%, black 35%)",
-                    WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 35%)",
+                    backgroundImage:
+                        "linear-gradient(var(--color-navy-line) 1px, transparent 1px), linear-gradient(90deg, var(--color-navy-line) 1px, transparent 1px)",
+                    backgroundSize: "72px 72px",
+                    maskImage: "radial-gradient(120% 80% at 70% 20%, black 0%, transparent 75%)",
+                    WebkitMaskImage: "radial-gradient(120% 80% at 70% 20%, black 0%, transparent 75%)",
                 }}
-            >
-                <Image
-                    src={fvbg}
-                    alt=""
-                    fill
-                    priority
-                    className="hero-photo-in object-cover object-center opacity-45 md:opacity-95"
-                    placeholder="blur"
-                    sizes="(max-width: 768px) 100vw, 62vw"
-                />
-            </div>
+            />
 
-            {/* 左カラムのコピー */}
-            <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 items-center px-4 md:px-6">
-                <div className="hero-scroll-out max-w-3xl py-16">
-                    <p className="eyebrow-in mb-8 text-[13px] font-bold tracking-[0.3em] text-coral">
-                        AI &times; MARKETING &times; PRODUCTION
+            <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 px-4 md:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,46%)] lg:items-center lg:gap-10">
+                {/* 左: コピーと料金 */}
+                <div className="max-w-2xl">
+                    <p className="eyebrow-in mb-6 text-[12px] font-bold tracking-[0.3em] text-coral">
+                        {t.eyebrow}
                     </p>
 
-                    <h1 className="mb-8 text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.35] tracking-tight text-white">
+                    <h1 className="mb-7 text-[clamp(1.9rem,4.4vw,3.5rem)] font-bold leading-[1.4] tracking-tight text-white">
                         {t.h1}
                     </h1>
 
-                    <FadeIn delay={0.4}>
-                        <p className="lead mb-12 text-base leading-[2] text-navy-sub md:text-lg">
-                            {t.lead}
-                        </p>
+                    <FadeIn delay={0.35}>
+                        <p className="lead mb-9 text-[15px] leading-[2] text-navy-sub md:text-base">{t.lead}</p>
+                    </FadeIn>
+
+                    {/* 入口商品の料金 */}
+                    <FadeIn delay={0.45}>
+                        <div className="mb-8 rounded-2xl border border-white/15 bg-white/[0.06] p-5 md:p-6">
+                            <p className="mb-2 text-[13px] font-bold tracking-wider text-white">{t.planLabel}</p>
+                            <p className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
+                                <span className="nowrap">
+                                    <span className="text-[13px] text-navy-sub">{t.planInitial}</span>{" "}
+                                    <span className="text-[26px] font-bold tabular-nums text-white md:text-3xl">{t.planInitialValue}</span>
+                                </span>
+                                <span className="nowrap">
+                                    <span className="text-[13px] text-navy-sub">{t.planMonthly}</span>{" "}
+                                    <span className="text-[26px] font-bold tabular-nums text-coral md:text-3xl">{t.planMonthlyValue}</span>
+                                    <span className="text-[13px] text-navy-sub">{t.planTax}</span>
+                                </span>
+                            </p>
+                            <p className="mt-3 text-[13px] leading-[1.9] text-white/85">{t.planFeatures}</p>
+                            <p className="mt-1 text-[13px] leading-[1.9] text-white/85">{t.planTerms}</p>
+                            <p className="mt-3 border-t border-white/15 pt-3 text-[13px] leading-[1.9] text-navy-sub">
+                                {t.planExtra}
+                            </p>
+                        </div>
                     </FadeIn>
 
                     <FadeIn delay={0.55}>
-                        {/* 主要動線はLINE無料診断の1本（金継ぎ見立て・問い9） */}
                         <a
-                            href="https://lin.ee/N4QXdJL"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-sheen group inline-flex flex-col justify-center rounded-lg bg-coral px-8 py-4 text-white transition-opacity hover:opacity-90"
+                            href={withLang(lang, "/preview")}
+                            className="btn-sheen group inline-flex min-h-14 items-center gap-2.5 rounded-lg bg-coral px-8 text-[17px] font-bold text-white transition-opacity hover:opacity-90"
                         >
-                            <span className="text-[11px] font-bold tracking-[0.2em] text-white/80">{t.cta1Label}</span>
-                            <span className="inline-flex items-center gap-3 text-[19px] font-bold">
-                                {t.cta1}
-                                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </span>
+                            {t.cta}
+                            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden />
                         </a>
-                        <p className="mt-4 text-sm leading-[1.9] text-navy-sub">{t.ctaNote}</p>
-                        {/* 無料プレビューは文中リンクへ格下げ */}
-                        <p className="mt-2 text-sm leading-[1.9] text-navy-sub">
-                            {t.previewPrefix}
-                            <a href={withLang(lang, "/preview")} className="font-bold text-white underline decoration-coral decoration-2 underline-offset-4 transition-colors hover:text-coral">
-                                {t.previewLink}
+                        <p className="mt-3 text-[13px] leading-[1.9] text-navy-sub">{t.ctaNote}</p>
+
+                        <p className="mt-5 text-[13px] leading-[1.9] text-navy-sub">
+                            {t.subPrefix}
+                            <a
+                                href={withLang(lang, "/shindan")}
+                                className="font-bold text-white underline decoration-coral decoration-2 underline-offset-4 hover:text-coral"
+                            >
+                                {t.subLink}
                             </a>
-                            {t.previewSuffix}
                         </p>
-                        <p className="mt-4 text-sm text-navy-sub">{t.note}</p>
+                        <p className="mt-5 max-w-[34em] text-[12.5px] leading-[1.9] text-navy-sub/80">{t.note}</p>
                     </FadeIn>
                 </div>
-            </div>
 
+                {/* 右: 実際に制作した教室サイト */}
+                <FadeIn delay={0.3}>
+                    <figure className="relative mx-auto w-full max-w-[560px] lg:max-w-none">
+                        <div className="overflow-hidden rounded-xl border border-white/15 shadow-[0_28px_70px_rgba(0,0,0,0.45)]">
+                            <div className="flex items-center gap-1.5 bg-[#0b1b28] px-3 py-2" aria-hidden>
+                                <span className="h-2 w-2 rounded-full bg-white/25" />
+                                <span className="h-2 w-2 rounded-full bg-white/25" />
+                                <span className="h-2 w-2 rounded-full bg-white/25" />
+                            </div>
+                            <Image
+                                src={classroomPc}
+                                alt={t.shotAlt}
+                                priority
+                                sizes="(max-width: 1024px) 90vw, 46vw"
+                                className="h-auto w-full"
+                            />
+                        </div>
+                        <div className="absolute -bottom-6 -left-2 w-[22%] min-w-[92px] overflow-hidden rounded-[14px] border-[3px] border-[#0b1b28] shadow-[0_18px_44px_rgba(0,0,0,0.5)] sm:-left-6">
+                            <Image
+                                src={classroomSp}
+                                alt={t.shotAltSp}
+                                sizes="120px"
+                                className="h-auto w-full"
+                            />
+                        </div>
+                        <figcaption className="mt-8 text-right text-[12px] text-navy-sub">{t.shotCaption}</figcaption>
+                    </figure>
+                </FadeIn>
+            </div>
         </section>
     );
 }

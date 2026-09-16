@@ -76,14 +76,36 @@ export function shindanJsonLd(lang: Lang) {
 
 /**
  * 料金ページ（/price）
- * ※ 金額は src/components/Pricing.tsx の rows と揃えること。片方だけ直すと食い違う
+ * ※ 入口商品は「ホームページ制作・管理」（初期0円／月額8,980円税込・最低1年）。
+ *   金額は src/app/price/PricePage.tsx の表記と揃えること。片方だけ直すと食い違う
  */
-const PRICE_ITEMS = [
-    { ja: "LP制作", en: "Landing page", min: 110000, unit: "one-time" },
-    { ja: "ホームページ制作", en: "Website", min: 220000, unit: "one-time" },
-    { ja: "SEO・MEO集客", en: "SEO & Google Maps", min: 33000, unit: "monthly" },
-    { ja: "SNSマーケティング", en: "Social media marketing", min: 44000, unit: "monthly" },
+const PRICE_ITEMS: {
+    ja: string;
+    en: string;
+    /** 月額の商品（monthly）か、買い切りの目安額（from）か */
+    kind: "monthly" | "from";
+    price: number;
+    /** 月額商品の初期費用（0円もそのまま書く） */
+    setup?: number;
+}[] = [
+    { ja: "ホームページ制作・管理", en: "Website build and management", kind: "monthly", price: 8980, setup: 0 },
+    { ja: "集客ページ制作（1枚完結）", en: "One-page site", kind: "from", price: 55000 },
+    { ja: "ホームページ制作（複数ページ・買い切り）", en: "Website (multi-page, one-time)", kind: "from", price: 165000 },
 ];
+
+/** 月額8,980円（税込）を UnitPriceSpecification で表す */
+function monthlySpec(price: number) {
+    return {
+        "@type": "UnitPriceSpecification",
+        price,
+        priceCurrency: "JPY",
+        valueAddedTaxIncluded: true,
+        unitCode: "MON",
+        billingDuration: 1,
+        billingIncrement: 1,
+        referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" },
+    };
+}
 
 export function priceJsonLd(lang: Lang) {
     const url = lang === "en" ? `${SITE}/en/price` : `${SITE}/price`;
@@ -93,8 +115,8 @@ export function priceJsonLd(lang: Lang) {
         name: lang === "en" ? "Website production and web marketing" : "ホームページ制作・Web集客支援",
         description:
             lang === "en"
-                ? "Website and landing page production, SEO and Google Maps marketing, and social media support for small businesses in Japan. Proposal and quote are free."
-                : "ホームページ・LP制作、SEO・MEO集客、SNSマーケティングの料金。ご提案・お見積もりは無料です。",
+                ? "Website build and management with no setup fee, ¥8,980 a month (tax incl.): up to 10 pages, unlimited edits, domain and hosting included, one-year minimum term. One-time builds and ongoing growth work are quoted separately. Proposal and quote are free."
+                : "ホームページ制作・管理は初期制作費0円、月額8,980円（税込）。10ページまで制作、修正・更新は無制限、ドメイン・サーバー費込み、最低契約期間は1年間。買い切りの制作と継続的な集客改善は別途お見積もりします。",
         url,
         provider: org,
         areaServed,
@@ -102,12 +124,25 @@ export function priceJsonLd(lang: Lang) {
             "@type": "Offer",
             name: lang === "en" ? p.en : p.ja,
             priceCurrency: "JPY",
-            priceSpecification: {
-                "@type": "PriceSpecification",
-                minPrice: p.min,
-                priceCurrency: "JPY",
-                valueAddedTaxIncluded: true,
-            },
+            url,
+            priceSpecification:
+                p.kind === "monthly"
+                    ? [
+                          monthlySpec(p.price),
+                          {
+                              "@type": "PriceSpecification",
+                              name: lang === "en" ? "Setup fee" : "初期制作費",
+                              price: p.setup ?? 0,
+                              priceCurrency: "JPY",
+                              valueAddedTaxIncluded: true,
+                          },
+                      ]
+                    : {
+                          "@type": "PriceSpecification",
+                          minPrice: p.price,
+                          priceCurrency: "JPY",
+                          valueAddedTaxIncluded: true,
+                      },
         })),
     };
 }

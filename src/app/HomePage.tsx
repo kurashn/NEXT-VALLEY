@@ -1,8 +1,9 @@
 import Hero from "@/components/Hero";
 import { Problem } from "@/components/Problem";
 import { Service } from "@/components/Service";
-import { Reasons } from "@/components/Reasons";
 import { Works } from "@/components/Works";
+import { Case } from "@/components/Case";
+import { AfterLaunch } from "@/components/AfterLaunch";
 import { Pricing } from "@/components/Pricing";
 import { Flow } from "@/components/Flow";
 import { Representative } from "@/components/Representative";
@@ -19,12 +20,12 @@ const jsonLdCopy = {
   ja: {
     founder: "倉林 駿",
     description:
-      "埼玉北部の教室・お店のWeb集客を、制作から公開後の改善まで一貫して手がける制作チーム。2021年創業・100社以上の実績。集客ページ制作、ホームページ制作、集客サポート、SNSマーケティング、AI活用支援を課題に合わせて提供。",
+      "教室・スクールのホームページ制作と、公開後の更新・集客改善を行う埼玉北部の制作チーム。2021年創業・100社以上の実績。ホームページ制作・管理は初期費用0円、月額8,980円（税込）。",
   },
   en: {
     founder: "Shun Kurahayashi",
     description:
-      "A small web team in northern Saitama, Japan, building sites for schools and shops since 2021: AI consulting, website & landing page production, SEO and Google Maps marketing, social media, and ongoing site support.",
+      "A web team in northern Saitama, Japan, building and managing websites for schools and studios since 2021. No setup fee, 8,980 yen per month including tax, with marketing support quoted separately.",
   },
 } as const;
 
@@ -81,12 +82,13 @@ export function HomePage({ lang = "ja" }: { lang?: Lang }) {
       />
       <Navbar lang={lang} />
       <Hero lang={lang} />
-      <div id="problem"><Problem lang={lang} /></div>
-      <div id="service"><Service lang={lang} /></div>
-      <div id="reason"><Reasons lang={lang} /></div>
-      <div id="works"><Works lang={lang} /></div>
-      <div id="price"><Pricing lang={lang} /></div>
-      <div id="flow"><Flow lang={lang} /></div>
+      <div id="case" className="scroll-mt-24"><Case lang={lang} /></div>
+      <div id="problem" className="scroll-mt-24"><Problem lang={lang} /></div>
+      <div id="service" className="scroll-mt-24"><Service lang={lang} /></div>
+      <div id="price" className="scroll-mt-24"><Pricing lang={lang} /></div>
+      <div id="works" className="scroll-mt-24"><Works lang={lang} /></div>
+      <div id="growth" className="scroll-mt-24"><AfterLaunch lang={lang} /></div>
+      <div id="flow" className="scroll-mt-24"><Flow lang={lang} /></div>
       <Representative lang={lang} />
       <FAQ lang={lang} />
       <CTA lang={lang} />

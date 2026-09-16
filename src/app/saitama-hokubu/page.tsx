@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 export const metadata: Metadata = {
     title: "本庄・熊谷・深谷・伊勢崎のホームページ制作・集客支援",
     description:
-        "埼玉県本庄市のWeb制作・集客支援 NEXT VALLEY。本庄・熊谷・深谷・伊勢崎など埼玉北部の教室・お店のホームページ制作（¥165,000〜）、集客ページ制作（¥55,000〜）、Googleマップ・LINEの集客サポート（月¥22,000〜）。契約前に無料でデザイン案をご覧いただけます。",
+        "埼玉県本庄市のWeb制作・集客支援 NEXT VALLEY。本庄・熊谷・深谷・伊勢崎など埼玉北部の教室・お店のホームページ制作・管理を、初期制作費0円・月額8,980円（税込）でお受けしています。Googleマップ・LINEを使った集客改善もご相談ください。契約前に無料でデザイン案をご覧いただけます。",
     alternates: { canonical: "https://www.nextvalley-jpn.com/saitama-hokubu" },
 };
 
@@ -36,9 +36,21 @@ const areas = [
 ];
 
 const services = [
-    { name: "集客ページ制作（1枚完結）", price: "¥55,000〜", desc: "申込フォーム付きのページを最短3〜5日で公開。まず小さく始めたい方に" },
-    { name: "ホームページ制作（複数ページ）", price: "¥165,000〜", desc: "教室・お店の顔になる本格的なホームページ。制作後の集客まで見据えた設計" },
-    { name: "集客サポート", price: "月¥22,000〜", desc: "Googleマップ・LINE・ページ改善・毎月の数字レポート。作った後を任せたい方に" },
+    {
+        name: "ホームページ制作・管理",
+        price: "月額8,980円",
+        desc: "初期制作費0円・税込。10ページまで制作し、公開後の修正・更新は回数の制限なし。ドメイン・サーバー費も月額に含みます。最低契約期間は1年間（初年度のお支払総額107,760円・税込）",
+    },
+    {
+        name: "継続的な集客改善",
+        price: "お見積もり",
+        desc: "Googleマップの情報整備、体験レッスンページの改善、LINEの相談・予約導線、数字の計測と改善。内容に応じてお見積もりします（月額8,980円には含まれません）",
+    },
+    {
+        name: "買い切りでの制作",
+        price: "¥55,000〜",
+        desc: "月額をお持ちにならず、一度の制作費でお渡しする形。公開後の更新はご自身でしていただきます",
+    },
 ];
 
 export default function SaitamaHokubuPage() {
@@ -96,7 +108,7 @@ export default function SaitamaHokubuPage() {
                 <div className="max-w-4xl mx-auto">
                     <h2 className="text-2xl font-bold text-[#002335] mb-4 text-center">料金の目安</h2>
                     <p className="text-center text-sm text-slate-600 mb-10">
-                        正式なお見積りは内容確定後にご提示します。金額をご確認いただいてからのご契約です。
+                        ホームページ制作・管理は、初期制作費0円・月額8,980円（税込）です。その他は内容確定後に正式なお見積りをご提示します。金額をご確認いただいてからのご契約です。
                     </p>
                     <div className="grid gap-6 md:grid-cols-3">
                         {services.map((s) => (

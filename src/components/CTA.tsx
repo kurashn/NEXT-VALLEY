@@ -1,63 +1,69 @@
-// Server Component — 最終CTA（コンバージョン最適化版）
-// ライト面のまま、中央寄せの大型パネル＋主役のLINEボタン＋安心材料
+// Server Component — 最終CTA。目的別に2つの入口を並べる
 
 import React from "react";
-import { MessageCircle, Mail, Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading, serif } from "@/components/ui/SerifHeading";
 import { withLang, type Lang } from "@/i18n";
-import { shindanSlotsJa, shindanSlotsEn } from "@/lib/shindanSlots";
 
 const ja = {
     heading: "お問い合わせ",
-    eyebrow: <>FREE CHECK &amp; PROPOSAL</>,
+    eyebrow: "CONTACT",
     title: (
         <>
-            まずは、<span className="text-coral-deep">無料診断</span>から。
+            目的に合わせて、<span className="text-coral-deep">2つの入口</span>があります。
         </>
     ),
-    lead: (
+    newTitle: "新しく作りたい・作り直したい",
+    newBody: (
         <>
-            サイトのURLやお悩みをLINEで送るだけ。改善の打ち手と概算お見積もりをまとめてお<span className="nowrap">返しします。</span>
-            <br className="hidden md:block" />
-            提案を見てから、頼むかどうか決めて<span className="nowrap">ください。</span>
+            トップページのデザイン案を無料でお作りします。初期費用0円・月額8,980円（税込）の条件とあわせてご確認いただき、そのうえで正式に依頼するか決められます。
         </>
     ),
-    badge: shindanSlotsJa,
-    lineBtn: "LINEで無料診断を受ける",
-    mailBtn: "メールで相談する",
-    assurances: ["診断・提案・見積もりは無料", "しつこい営業なし", "全国オンライン対応"],
-    stillPrefix: "まだ迷う方は →",
-    selfCheck: "3分セルフ診断",
-    separator: "／",
-    aiConsult: "AIで課題整理",
-    closing: "— 気に入らなければ、断ってください —",
+    newCta: "無料でデザイン案を見てみる",
+    fixTitle: "今のホームページで集客を改善したい",
+    fixBody: (
+        <>
+            今のサイト・検索・Googleマップを拝見して、改善点と直す順番をお返しします。作り直しや月額プランへの切り替えが必要とは限りません。
+        </>
+    ),
+    fixCta: "今のサイトの改善点を知りたい",
+    mailPrefix: "メールでのご相談は",
+    mailLink: "お問い合わせフォーム",
+    mailSuffix: "から。",
+    assurances: ["デザイン案・診断・お見積もりは無料", "電話営業はしません", "全国オンライン対応"],
+    closing: "気に入らなければ、断ってください。",
 };
+
 const en: typeof ja = {
     heading: "Contact",
-    eyebrow: <>FREE CHECK &amp; PROPOSAL</>,
+    eyebrow: "CONTACT",
     title: (
         <>
-            Start with a <span className="text-coral-deep">free site check</span>.
+            Two ways in, <span className="text-coral-deep">depending on what you need</span>.
         </>
     ),
-    lead: (
+    newTitle: "I want a new site, or a rebuild",
+    newBody: (
         <>
-            Just send us your website URL or a quick note on LINE. We’ll reply with concrete improvements and a ballpark quote.{" "}
-            <br className="hidden md:block" />
-            Read the proposal first — then decide whether to hire us.
+            We&apos;ll design your homepage for free. Look at it alongside the terms, no setup fee and ¥8,980 a month including tax, then decide whether to go ahead.
         </>
     ),
-    badge: shindanSlotsEn,
-    lineBtn: "Free site check on LINE",
-    mailBtn: "Contact us by email",
-    assurances: ["Free check, proposal, and quote", "No pushy sales", "Online, anywhere in Japan"],
-    stillPrefix: "Still on the fence? →",
-    selfCheck: "3-minute site check",
-    separator: "/",
-    aiConsult: "Sort it out with AI",
-    closing: "— If it’s not for you, just say no —",
+    newCta: "See a free design proposal",
+    fixTitle: "I have a site and want more bookings",
+    fixBody: (
+        <>
+            We review your site, search visibility and Google Maps, then send back what to fix and in what order. A rebuild or a monthly plan isn&apos;t always the answer.
+        </>
+    ),
+    fixCta: "Get a free site check",
+    mailPrefix: "Prefer email? Use the ",
+    mailLink: "contact form",
+    mailSuffix: ".",
+    assurances: ["Design proposals, checks and quotes are free", "No sales calls", "Online, anywhere in Japan"],
+    closing: "If it isn't for you, just say no.",
 };
+
 const copy: Record<Lang, typeof ja> = { ja, en };
 
 export function CTA({ lang = "ja" }: { lang?: Lang }) {
@@ -66,73 +72,68 @@ export function CTA({ lang = "ja" }: { lang?: Lang }) {
         <section className="relative overflow-hidden bg-base px-4 py-16 md:px-6 md:py-24">
             <div className="relative mx-auto max-w-5xl">
                 <FadeIn>
-                    <SerifHeading en="Contact" jp={t.heading} />
+                    <SerifHeading en={t.eyebrow} jp={t.heading} />
+                    <h3 className="-mt-6 mb-10 text-[clamp(1.4rem,3vw,2rem)] font-bold leading-[1.5] tracking-tight text-ink md:mb-12">
+                        {t.title}
+                    </h3>
                 </FadeIn>
 
-                <FadeIn>
-                    <div className="relative overflow-hidden rounded-[28px] bg-white px-6 py-12 text-center shadow-[0_16px_40px_rgba(31,26,20,0.06)] md:px-16 md:py-16">
-                        {/* 上辺のコーラルアクセント */}
-                        <span aria-hidden className="absolute left-0 top-0 h-1.5 w-full bg-coral" />
-
-                        <p className="mb-5 text-[13px] font-bold tracking-[0.3em] text-coral-deep">
-                            {t.eyebrow}
-                        </p>
-                        <h3 className="mb-5 text-[clamp(1.625rem,4vw,2.75rem)] font-bold leading-[1.45] tracking-tight text-ink">
-                            {t.title}
-                        </h3>
-                        {/* 毎月の枠（src/lib/shindanSlots.ts で更新） */}
-                        <p className="mb-5">
-                            <span className="inline-block rounded-full border border-coral-deep/30 bg-coral-deep/[0.06] px-4 py-1.5 text-[13px] font-bold tracking-wider text-coral-deep">
-                                {t.badge}
-                            </span>
-                        </p>
-                        <p className="lead mx-auto mb-10 max-w-[32em] text-[15px] leading-[2] text-ink-sub">
-                            {t.lead}
-                        </p>
-
-                        {/* 主役: LINE / 従属: メール */}
-                        <div className="mx-auto flex max-w-xl flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+                <div className="grid gap-5 md:grid-cols-2">
+                    {/* 新しく作る */}
+                    <FadeIn>
+                        <div className="flex h-full flex-col rounded-2xl bg-white p-8 shadow-[0_16px_40px_rgba(31,26,20,0.08)] md:p-10">
+                            <h4 className="mb-4 text-[19px] font-bold leading-snug text-ink">{t.newTitle}</h4>
+                            <p className="mb-8 text-[14.5px] leading-[2] text-ink-sub">{t.newBody}</p>
                             <a
-                                href="https://lin.ee/N4QXdJL"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn-sheen inline-flex h-16 items-center justify-center gap-2.5 rounded-full bg-[#05a247] px-8 text-[19px] font-bold text-white shadow-[0_12px_28px_rgba(5,162,71,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(5,162,71,0.45)] sm:flex-1"
+                                href={withLang(lang, "/preview")}
+                                className="btn-sheen group mt-auto inline-flex h-14 items-center justify-center gap-2 rounded-full bg-coral px-7 text-[16px] font-bold text-white transition-all hover:-translate-y-0.5 hover:opacity-95"
                             >
-                                <MessageCircle className="h-6 w-6" aria-hidden />
-                                {t.lineBtn}
-                            </a>
-                            <a
-                                href={withLang(lang, "/contact")}
-                                className="inline-flex h-16 items-center justify-center gap-2 rounded-full border border-line bg-white px-8 text-[15px] font-bold text-ink transition-colors hover:border-coral hover:text-coral-deep"
-                            >
-                                <Mail className="h-5 w-5" aria-hidden />
-                                {t.mailBtn}
+                                {t.newCta}
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
                             </a>
                         </div>
+                    </FadeIn>
 
-                        {/* 安心材料 */}
-                        <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
-                            {t.assurances.map((a) => (
-                                <li key={a} className="flex items-center gap-1.5 text-sm font-bold text-ink-sub">
-                                    <Check className="h-4 w-4 text-coral-deep" aria-hidden />
-                                    {a}
-                                </li>
-                            ))}
-                        </ul>
-
-                        {/* まだ迷う人向け: セルフ診断へ */}
-                        <p className="mt-8 text-sm leading-[2] text-ink-sub">
-                            {t.stillPrefix}{" "}
-                            <a href={withLang(lang, "/shindan")} className="inline-flex min-h-11 items-center font-bold text-coral-deep underline underline-offset-4 transition-opacity hover:opacity-80">
-                                {t.selfCheck}
+                    {/* 今のHPを改善する */}
+                    <FadeIn delay={0.08}>
+                        <div className="flex h-full flex-col rounded-2xl border border-line bg-cream p-8 md:p-10">
+                            <h4 className="mb-4 text-[19px] font-bold leading-snug text-ink">{t.fixTitle}</h4>
+                            <p className="mb-8 text-[14.5px] leading-[2] text-ink-sub">{t.fixBody}</p>
+                            <a
+                                href={withLang(lang, "/shindan")}
+                                className="group mt-auto inline-flex h-14 items-center justify-center gap-2 rounded-full border border-navy-deep bg-white px-7 text-[16px] font-bold text-navy-deep transition-colors hover:border-coral hover:text-coral-deep"
+                            >
+                                {t.fixCta}
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
                             </a>
-                        </p>
+                        </div>
+                    </FadeIn>
+                </div>
 
-                        {/* 一言の後押し */}
-                        <p className="mt-8 text-sm text-ink-sub" style={{ fontFamily: serif }}>
-                            {t.closing}
-                        </p>
-                    </div>
+                <FadeIn>
+                    <p className="mt-8 text-center text-[14px] leading-[2] text-ink-sub">
+                        {t.mailPrefix}
+                        <a
+                            href={withLang(lang, "/contact")}
+                            className="font-bold text-coral-deep underline underline-offset-4 hover:text-navy-deep"
+                        >
+                            {t.mailLink}
+                        </a>
+                        {t.mailSuffix}
+                    </p>
+
+                    <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
+                        {t.assurances.map((a) => (
+                            <li key={a} className="flex items-center gap-1.5 text-[13.5px] font-bold text-ink-sub">
+                                <Check className="h-4 w-4 text-coral-deep" aria-hidden />
+                                {a}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <p className="mt-8 text-center text-sm text-ink-sub" style={{ fontFamily: serif }}>
+                        {t.closing}
+                    </p>
                 </FadeIn>
             </div>
         </section>

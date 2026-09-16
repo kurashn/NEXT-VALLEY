@@ -141,7 +141,7 @@
 
 /* モバイル追従バー分の下余白 */
 @media (max-width: 767px) {
-  .lp-root { padding-bottom: 84px; }
+  .lp-root { padding-bottom: 104px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

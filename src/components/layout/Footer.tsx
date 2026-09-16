@@ -10,7 +10,7 @@ const copy = {
         siteLinks: [
             { name: "サービス", href: "/#service" },
             { name: "制作実績", href: "/#works" },
-            { name: "私たちの強み", href: "/#reason" },
+            { name: "支援事例", href: "/#case" },
             { name: "料金", href: "/price" },
             { name: "ご依頼の流れ", href: "/#flow" },
         ],
@@ -32,9 +32,9 @@ const copy = {
             <>
                 2021年創業。
                 <br />
-                教室・お店のWeb集客を、制作から改善まで。
+                教室・スクールのホームページを、制作から公開後の更新まで。
                 <br />
-                診断・提案・見積もりは無料です。
+                初期費用0円・月額8,980円（税込）。
             </>
         ),
         cta: "LINEで無料診断を受ける",
@@ -45,7 +45,7 @@ const copy = {
         siteLinks: [
             { name: "Services", href: "/#service" },
             { name: "Our Work", href: "/#works" },
-            { name: "Why Us", href: "/#reason" },
+            { name: "Case", href: "/#case" },
             { name: "Pricing", href: "/price" },
             { name: "How It Works", href: "/#flow" },
         ],
