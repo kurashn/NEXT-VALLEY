@@ -78,14 +78,14 @@ const en: typeof ja = {
 const copy: Record<Lang, typeof ja> = { ja, en };
 
 // 写真ごとの段差（参考画像では左から順に少しずつ下がる）
-const photoOffset = ["lg:mt-0", "lg:mt-4", "lg:mt-[68px]"];
+const photoOffset = ["lg:mt-0", "lg:mt-3", "lg:mt-[52px]"];
 
 export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
     const t = copy[lang];
     return (
         <section className="relative overflow-hidden bg-white">
             {/* ── 上段：白地。イラストはこの箱の下辺に揃える ── */}
-            <div className="relative pt-[104px] md:pt-[108px]">
+            <div className="relative pt-[84px] md:pt-[86px]">
                 {/* 街並みのイラスト（PCのみ） */}
                 <div aria-hidden className="pointer-events-none absolute bottom-0 left-0 hidden w-[27%] max-w-[420px] lg:block">
                     <Image src={townLeft} alt="" sizes="28vw" className="h-auto w-full" priority />
@@ -97,7 +97,7 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                 {/* 手書き風の添え文（左）と英字（右） */}
                 <p
                     aria-hidden
-                    className={`${hand.className} pointer-events-none absolute left-[6.5%] top-[128px] hidden -rotate-[9deg] text-[27px] leading-[1.45] tracking-[0.08em] lg:block xl:top-[136px] xl:text-[31px]`}
+                    className={`${hand.className} pointer-events-none absolute left-[6.5%] top-[108px] hidden -rotate-[9deg] text-[27px] leading-[1.45] tracking-[0.08em] lg:block xl:top-[112px] xl:text-[30px]`}
                     style={{ color: TEAL }}
                 >
                     {t.hand1}
@@ -106,7 +106,7 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                 </p>
                 <p
                     aria-hidden
-                    className="pointer-events-none absolute right-[5%] top-[196px] hidden text-[11px] font-bold leading-[1.9] tracking-[0.3em] lg:block xl:top-[206px]"
+                    className="pointer-events-none absolute right-[5%] top-[172px] hidden text-[11px] font-bold leading-[1.9] tracking-[0.3em] lg:block xl:top-[178px]"
                     style={{ color: "#6E8199" }}
                 >
                     {t.en1}
@@ -115,12 +115,12 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                 </p>
 
                 {/* 中央のコピー */}
-                <div className="relative z-10 mx-auto max-w-[760px] px-4 pb-7 text-center md:px-6 md:pb-8">
-                    <p className="mb-3 text-[14px] font-bold tracking-[0.12em] md:text-[16px]" style={{ color: NAVY }}>
+                <div className="relative z-10 mx-auto max-w-[760px] px-4 pb-5 text-center md:px-6 md:pb-6">
+                    <p className="mb-2 text-[14px] font-bold tracking-[0.12em] md:text-[15px]" style={{ color: NAVY }}>
                         {t.eyebrow}
                     </p>
                     <h1
-                        className={`${heavy.className} mb-4 text-[clamp(2.15rem,6.6vw,5.1rem)] leading-[1.1] tracking-[-0.02em]`}
+                        className={`${heavy.className} mb-3 text-[clamp(2.15rem,min(6.4vw,8vh),4.6rem)] leading-[1.1] tracking-[-0.02em]`}
                         style={{ color: NAVY }}
                     >
                         <span className="block">{t.h1a}</span>
@@ -139,35 +139,35 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                             {t.h1b}
                         </span>
                     </h1>
-                    <p className="mb-3 text-[16px] font-bold md:text-[19px]" style={{ color: NAVY }}>
+                    <p className="mb-2.5 text-[16px] font-bold md:text-[18px]" style={{ color: NAVY }}>
                         {t.lead}
                     </p>
-                    <p className="mb-5 flex flex-wrap items-baseline justify-center gap-x-4 gap-y-1 text-[15px] font-bold md:text-[17px]" style={{ color: NAVY }}>
+                    <p className="mb-4 flex flex-wrap items-baseline justify-center gap-x-4 gap-y-1 text-[15px] font-bold md:text-[17px]" style={{ color: NAVY }}>
                         <span className="nowrap">
                             {t.priceInitialLabel}{" "}
-                            <span className="text-[28px] tabular-nums md:text-[34px]" style={{ color: TEAL }}>{t.priceInitial}</span>
+                            <span className="text-[28px] tabular-nums md:text-[31px]" style={{ color: TEAL }}>{t.priceInitial}</span>
                         </span>
                         <span aria-hidden className="hidden text-[#9AA9BC] md:inline">｜</span>
                         <span className="nowrap">
                             {t.priceMonthlyLabel}{" "}
-                            <span className="text-[28px] tabular-nums md:text-[34px]" style={{ color: TEAL }}>{t.priceMonthly}</span>
+                            <span className="text-[28px] tabular-nums md:text-[31px]" style={{ color: TEAL }}>{t.priceMonthly}</span>
                             <span className="text-[14px]">{t.priceTax}</span>
                         </span>
                     </p>
                     <a
                         href={withLang(lang, "/preview")}
-                        className="inline-flex min-h-14 items-center gap-2 rounded-full px-9 text-[17px] font-bold text-white shadow-[0_10px_28px_rgba(253,115,104,0.35)] transition-transform hover:-translate-y-0.5"
+                        className="inline-flex min-h-[52px] items-center gap-2 rounded-full px-9 text-[16px] font-bold text-white shadow-[0_10px_28px_rgba(253,115,104,0.35)] transition-transform hover:-translate-y-0.5"
                         style={{ backgroundColor: CORAL }}
                     >
                         {t.cta}
                         <ArrowUpRight className="h-5 w-5" aria-hidden />
                     </a>
-                    <p className="mt-3 text-[12.5px] leading-[1.9] md:text-[13px]" style={{ color: "#4A5A6E" }}>
+                    <p className="mt-2.5 text-[12.5px] leading-[1.75] md:text-[13px]" style={{ color: "#4A5A6E" }}>
                         {t.terms1}
                         <br />
                         {t.terms2}
                     </p>
-                    <p className="mt-2 text-[12.5px]" style={{ color: "#6E8199" }}>
+                    <p className="mt-1.5 text-[12.5px]" style={{ color: "#6E8199" }}>
                         {t.subPrefix}
                         <a href={withLang(lang, "/shindan")} className="font-bold underline underline-offset-4" style={{ color: NAVY }}>
                             {t.subLink}
@@ -177,7 +177,7 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
             </div>
 
             {/* ── 下段：生成りの帯と写真 ── */}
-            <div className="relative pb-12 pt-9 md:pb-14 md:pt-10" style={{ backgroundColor: CREAM }}>
+            <div className="relative pb-10 pt-7 md:pb-8 md:pt-7" style={{ backgroundColor: CREAM }}>
                 {/* 白地の下辺をゆるく丸める */}
                 <svg aria-hidden viewBox="0 0 1440 22" preserveAspectRatio="none" className="pointer-events-none absolute left-0 top-0 h-[22px] w-full">
                     <path d="M0 0 H1440 V3 C 1120 22, 320 22, 0 3 Z" fill="#fff" />
@@ -186,27 +186,27 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                 {/* コーラルの曲線（PCのみ） */}
                 <svg
                     aria-hidden
-                    viewBox="0 0 1440 460"
+                    viewBox="0 0 1440 430"
                     preserveAspectRatio="none"
                     className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block"
                 >
-                    <path d="M 1017 110 C 1080 70, 1180 46, 1285 58" fill="none" stroke={CORAL} strokeWidth="3" strokeLinecap="round" />
-                    <circle cx="1285" cy="58" r="6" fill={TEAL} />
-                    <path d="M 686 308 C 740 354, 800 366, 860 358 C 920 350, 970 326, 1036 352" fill="none" stroke={CORAL} strokeWidth="3" strokeLinecap="round" />
+                    <path d="M 982 98 C 1040 62, 1140 38, 1240 48" fill="none" stroke={CORAL} strokeWidth="3" strokeLinecap="round" />
+                    <circle cx="1240" cy="48" r="6" fill={TEAL} />
+                    <path d="M 686 282 C 740 322, 800 340, 860 334 C 920 328, 960 300, 1012 320" fill="none" stroke={CORAL} strokeWidth="3" strokeLinecap="round" />
                 </svg>
 
-                <div className="relative mx-auto grid max-w-[1440px] gap-6 px-4 md:px-6 lg:grid-cols-[2.14fr_1fr_1.17fr] lg:items-start lg:gap-7 lg:px-11">
+                <div className="relative mx-auto grid max-w-[1280px] gap-6 px-4 md:px-6 lg:grid-cols-[2.14fr_1fr_1.17fr] lg:items-start lg:gap-7 lg:px-11">
                     {t.photos.map((p, i) => (
                         <figure key={p.key} className={`m-0 ${photoOffset[i]}`}>
                             <div className="overflow-hidden rounded-[18px] shadow-[0_14px_34px_rgba(20,51,90,0.10)]">
                                 <Image
                                     src={p.img}
                                     alt={p.alt}
-                                    sizes={i === 0 ? "(max-width: 1024px) 100vw, 46vw" : "(max-width: 1024px) 100vw, 26vw"}
+                                    sizes={i === 0 ? "(max-width: 1024px) 100vw, 40vw" : "(max-width: 1024px) 100vw, 22vw"}
                                     className="h-auto w-full"
                                 />
                             </div>
-                            <figcaption className="mt-4 text-center">
+                            <figcaption className="mt-3 text-center">
                                 <span className="block text-[15px] font-bold" style={{ color: NAVY }}>
                                     {p.caption}
                                 </span>

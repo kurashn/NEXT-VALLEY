@@ -85,7 +85,7 @@ export default function Navbar({ lang = "ja", variant = "dark" }: { lang?: Lang;
   return (
     <nav className={`fixed left-0 right-0 top-0 z-50 transition-shadow duration-500 ${light ? "border-b border-line bg-white/95 backdrop-blur" : "bg-navy-deep"} ${scrolled ? (light ? "shadow-[0_10px_30px_rgba(20,51,90,0.10)]" : "shadow-[0_10px_36px_rgba(2,10,18,0.45)]") : ""}`}>
       <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <div className="flex h-20 items-center justify-between gap-4 xl:gap-6">
+        <div className={`flex items-center justify-between gap-4 xl:gap-6 ${light ? "h-16" : "h-20"}`}>
           {/* ロゴ */}
           <Link href={withLang(lang, "/")} className="flex min-h-11 shrink-0 items-center">
             <Image
