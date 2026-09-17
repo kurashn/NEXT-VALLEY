@@ -1,5 +1,5 @@
 // Server Component — ファーストビュー v4（fv-v4.png の再現）
-// 白地・中央見出し・左右に街並みのイラスト・下に生成りの帯と3枚の写真
+// 白地・中央見出し・左右に街並みのイラスト
 
 import React from "react";
 import Image from "next/image";
@@ -9,14 +9,10 @@ import { withLang, type Lang } from "@/i18n";
 
 import townLeft from "@/images/fv/town-left.webp";
 import townRight from "@/images/fv/town-right.webp";
-import photoCafe from "@/images/fv/photo-cafe.webp";
-import photoCraft from "@/images/fv/photo-craft.webp";
-import photoSchool from "@/images/fv/photo-school.webp";
 
 const NAVY = "#14335A";
 const TEAL = "#2C8FA8";
 const CORAL = "#FD7368";
-const CREAM = "#FBF4EA";
 
 const ja = {
     eyebrow: "埼玉の会社・お店・教室のためのWeb担当",
@@ -38,11 +34,6 @@ const ja = {
     hand2: "Webの力を。",
     en1: "LOCAL BUSINESS,",
     en2: "NEXT POSSIBILITIES.",
-    photos: [
-        { key: "cafe", img: photoCafe },
-        { key: "craft", img: photoCraft },
-        { key: "school", img: photoSchool },
-    ],
 };
 
 const en: typeof ja = {
@@ -65,17 +56,9 @@ const en: typeof ja = {
     hand2: "with the web behind it.",
     en1: "LOCAL BUSINESS,",
     en2: "NEXT POSSIBILITIES.",
-    photos: [
-        { key: "cafe", img: photoCafe },
-        { key: "craft", img: photoCraft },
-        { key: "school", img: photoSchool },
-    ],
 };
 
 const copy: Record<Lang, typeof ja> = { ja, en };
-
-// 写真ごとの段差（参考画像では左から順に少しずつ下がる）
-const photoOffset = ["lg:mt-0", "lg:mt-3", "lg:mt-[52px]"];
 
 export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
     const t = copy[lang];
@@ -173,40 +156,6 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                 </div>
             </div>
 
-            {/* ── 下段：生成りの帯と写真 ── */}
-            <div className="relative pb-10 pt-7 md:pb-12 md:pt-7" style={{ backgroundColor: CREAM }}>
-                {/* 白地の下辺をゆるく丸める */}
-                <svg aria-hidden viewBox="0 0 1440 22" preserveAspectRatio="none" className="pointer-events-none absolute left-0 top-0 h-[22px] w-full">
-                    <path d="M0 0 H1440 V3 C 1120 22, 320 22, 0 3 Z" fill="#fff" />
-                </svg>
-
-                {/* コーラルの曲線（PCのみ） */}
-                <svg
-                    aria-hidden
-                    viewBox="0 0 1440 430"
-                    preserveAspectRatio="none"
-                    className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block"
-                >
-                    <path d="M 982 98 C 1040 62, 1140 38, 1240 48" fill="none" stroke={CORAL} strokeWidth="3" strokeLinecap="round" />
-                    <circle cx="1240" cy="48" r="6" fill={TEAL} />
-                    <path d="M 686 282 C 740 322, 800 340, 860 334 C 920 328, 960 300, 1012 320" fill="none" stroke={CORAL} strokeWidth="3" strokeLinecap="round" />
-                </svg>
-
-                <div className="relative mx-auto grid max-w-[1280px] gap-6 px-4 md:px-6 lg:grid-cols-[2.14fr_1fr_1.17fr] lg:items-start lg:gap-7 lg:px-11">
-                    {t.photos.map((p, i) => (
-                        <div key={p.key} className={photoOffset[i]}>
-                            <div className="overflow-hidden rounded-[18px] shadow-[0_14px_34px_rgba(20,51,90,0.10)]">
-                                <Image
-                                    src={p.img}
-                                    alt=""
-                                    sizes={i === 0 ? "(max-width: 1024px) 100vw, 40vw" : "(max-width: 1024px) 100vw, 22vw"}
-                                    className="h-auto w-full"
-                                />
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
         </section>
     );
 }

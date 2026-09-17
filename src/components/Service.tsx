@@ -6,17 +6,17 @@ import Image, { type StaticImageData } from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionHeadV4, Teal, Dots } from "@/components/ui/SectionHeadV4";
+import { SupportIllust01 } from "@/components/ui/SupportIllust01";
 import { serif } from "@/components/ui/SerifHeading";
 import { heavy, V4 } from "@/lib/fonts-v4";
 import { withLang, type Lang } from "@/i18n";
 
-import illust01 from "@/images/v4/support-01.webp";
 import illust02 from "@/images/v4/support-02.webp";
 import illust03 from "@/images/v4/support-03.webp";
 
 export type Audience = "general" | "classroom";
 
-type Row = { no: string; title: string; sub: string; body: React.ReactNode; img: StaticImageData };
+type Row = { no: string; title: string; sub: string; body: React.ReactNode; img?: StaticImageData };
 
 const jaGeneral = {
     eyebrow: "支援する内容",
@@ -28,7 +28,7 @@ const jaGeneral = {
     lead: "ホームページの制作・更新・管理を、まとめて任せられます。",
     includedLabel: "基本プランに含まれること",
     rows: [
-        { no: "01", title: "つくる", sub: "ホームページ制作", img: illust01, body: <>会社・お店・教室の魅力が伝わるページを制作。<br className="hidden lg:block" />10ページまで、スマートフォンにも対応。</> },
+        { no: "01", title: "つくる", sub: "ホームページ制作", body: <>会社・お店・教室の魅力が伝わるページを制作。<br className="hidden lg:block" />10ページまで、スマートフォンにも対応。</> },
         { no: "02", title: "更新する", sub: "写真・文章の修正", img: illust02, body: <>写真の差し替えや、お知らせ・営業時間の更新。<br className="hidden lg:block" />修正・更新は、回数を気にせず相談できます。</> },
         { no: "03", title: "管理する", sub: "ドメイン・サーバー管理", img: illust03, body: <>ドメイン・サーバーの管理もまとめて対応。<br className="hidden lg:block" />Webに詳しくなくても、相談できる窓口に。</> },
     ] as Row[],
@@ -61,7 +61,7 @@ const enGeneral: typeof jaGeneral = {
     lead: "Building, updating and managing your website, all in one place.",
     includedLabel: "Included in the basic plan",
     rows: [
-        { no: "01", title: "Build", sub: "Website creation", img: illust01, body: <>Pages that show what your company, shop or school is like. Up to 10 pages, mobile-ready.</> },
+        { no: "01", title: "Build", sub: "Website creation", body: <>Pages that show what your company, shop or school is like. Up to 10 pages, mobile-ready.</> },
         { no: "02", title: "Update", sub: "Photos and text", img: illust02, body: <>New photos, news and opening hours. Ask for edits as often as you need.</> },
         { no: "03", title: "Manage", sub: "Domain and hosting", img: illust03, body: <>We look after the domain and hosting too, so there is one place to ask, however unfamiliar the web is.</> },
     ] as Row[],
@@ -116,7 +116,11 @@ export function Service({ lang = "ja", audience = "general" }: { lang?: Lang; au
                                         </p>
                                     </div>
                                     <div className="hidden lg:block">
-                                        <Image src={r.img} alt="" sizes="220px" className="mx-auto h-auto w-[200px]" />
+                                        {r.img ? (
+                                            <Image src={r.img} alt="" sizes="220px" className="mx-auto h-auto w-[200px]" />
+                                        ) : (
+                                            <SupportIllust01 className="mx-auto h-auto w-[200px]" />
+                                        )}
                                     </div>
                                     <p className="text-[14.5px] leading-[1.9] md:col-span-2 md:text-[15.5px] lg:col-span-1 lg:border-l lg:pl-7" style={{ color: V4.navy, borderColor: "rgba(20,51,90,0.25)" }}>
                                         {r.body}
