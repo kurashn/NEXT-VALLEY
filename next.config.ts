@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
       // 旧サイトのURL（2025年まで検索評価があったページ）を、いちばん近い今のページへ恒久転送
       { source: '/saitama-hp', destination: '/saitama-hokubu', permanent: true },
       { source: '/local-seo', destination: '/blog/local-seo-keywords', permanent: true },
-      { source: '/homepage-info', destination: '/blog/website-preparation', permanent: true },
+      { source: '/homepage-info', destination: '/blog/what-to-write-on-website', permanent: true },
       { source: '/free-img', destination: '/blog/website-preparation', permanent: true },
       { source: '/english-marketing', destination: '/blog/no-students-reasons', permanent: true },
       { source: '/web-kanji', destination: '/company', permanent: true },
