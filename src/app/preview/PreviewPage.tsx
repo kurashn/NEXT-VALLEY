@@ -12,12 +12,9 @@ import { heavy, hand, V4 } from "@/lib/fonts-v4";
 import { withLang, type Lang } from "@/i18n";
 import { LINE_URL, REMAINING_SLOTS, TOTAL_SLOTS } from "./copy";
 import { StickyApply } from "./StickyApply";
+import { MiniSite, Laptop, Phone, Browser, Leaf, SITES } from "./Mock";
 
 import logoDark from "@/images/logo-dark.png";
-import fvMock from "@/images/works/works1.jpg";
-import sampleCompany from "@/images/works/works15.jpg";
-import sampleShop from "@/images/works/works22.jpg";
-import sampleSchool from "@/images/works/works2.jpg";
 
 export { previewMetadata } from "./copy";
 
@@ -44,8 +41,7 @@ const ja = {
         cta: "LINEで無料プレビューを申し込む",
         ctaNote: "友だち追加後、簡単なヒアリングにお答えください。",
         slots: `毎月${TOTAL_SLOTS}社限定・今月あと${REMAINING_SLOTS}社`,
-        mockCaption: "制作したホームページの例",
-        mockAlt: "制作したホームページをパソコンとスマートフォンで表示した例",
+        mockCaption: "デザイン案のイメージ",
     },
     preview: {
         label: "Preview",
@@ -53,12 +49,12 @@ const ja = {
         title: "自分の事業なら、こんなホームページに。",
         lead: "事業の内容と、ご希望の雰囲気を反映します。",
         items: [
-            { img: sampleCompany, alt: "工務店のホームページの例", k: "会社", d: <><span className="nowrap">信頼感と実績が伝わる</span><br /><span className="nowrap">シンプルで誠実なデザイン。</span></> },
-            { img: sampleShop, alt: "理容室のホームページの例", k: "店舗", d: <><span className="nowrap">商品の魅力が伝わる</span><br /><span className="nowrap">写真を活かしたデザイン。</span></> },
-            { img: sampleSchool, alt: "音楽教室のホームページの例", k: "教室", d: <><span className="nowrap">想いが伝わる、</span><br /><span className="nowrap">やさしく上品なデザイン。</span></> },
+            { site: SITES.company, k: "会社", d: <><span className="nowrap">信頼感と実績が伝わる</span><br /><span className="nowrap">シンプルで誠実なデザイン。</span></> },
+            { site: SITES.cafe, k: "店舗", d: <><span className="nowrap">商品の魅力が伝わる</span><br /><span className="nowrap">写真を活かしたデザイン。</span></> },
+            { site: SITES.music, k: "教室", d: <><span className="nowrap">想いが伝わる、</span><br /><span className="nowrap">やさしく上品なデザイン。</span></> },
         ],
         note1: <><span className="nowrap">無料でお届けするのはトップページのデザイン案です。</span><span className="nowrap">下層ページの制作・サイト公開は正式契約後に進めます。</span></>,
-        note2: "掲載画像は、実際に制作したホームページです。",
+        note2: "掲載画像はデザイン案のイメージです。"
     },
     flow: {
         label: "Flow",
@@ -186,10 +182,10 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
 
             {/* FV */}
             <section className="relative overflow-hidden px-4 pb-12 pt-10 md:px-6 md:pb-20 md:pt-16" style={{ background: "linear-gradient(180deg,#FFFFFF 0%,#FBF8F3 100%)" }}>
-                <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[1fr_1.05fr] md:gap-8">
+                <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[1.02fr_1fr] md:gap-10">
                     <div>
                         <p className="text-[13px] font-bold md:text-[14px]" style={{ color: NAVY }}>{t.hero.eyebrow}</p>
-                        <h1 className={`${heavy.className} mt-3 text-[clamp(1.9rem,4.2vw,3.1rem)] leading-[1.28] tracking-[-0.02em]`} style={{ color: NAVY }}>
+                        <h1 className={`${heavy.className} mt-3 text-[clamp(1.85rem,3.6vw,2.85rem)] leading-[1.3] tracking-[-0.02em]`} style={{ color: NAVY }}>
                             {t.hero.h1}
                         </h1>
                         <p className="mt-4 text-[15px] font-bold md:text-[16px]" style={{ color: NAVY }}>{t.hero.lead}</p>
@@ -202,9 +198,14 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                         <p className="mt-3 text-[12.5px]" style={{ color: V4.sub }}>{t.hero.ctaNote}</p>
                         <p className="mt-1 text-[12.5px] font-bold" style={{ color: CORAL }}>{t.hero.slots}</p>
                     </div>
-                    <div className="relative">
-                        <Image src={fvMock} alt={t.hero.mockAlt} priority sizes="(max-width: 768px) 100vw, 55vw" className="h-auto w-full" />
-                        <p className="mt-1 text-right text-[12px]" style={{ color: V4.sub }}>{t.hero.mockCaption} ↗</p>
+                    <div className="relative pb-6 pr-[14%] md:pr-[12%]">
+                        <Laptop className="w-full">
+                            <MiniSite site={SITES.bakery} variant="pc" />
+                        </Laptop>
+                        <Phone className="absolute bottom-0 right-0 w-[30%]">
+                            <MiniSite site={SITES.bakery} variant="sp" />
+                        </Phone>
+                        <p className="mt-3 text-right text-[12px] md:absolute md:bottom-1 md:right-[36%] md:mt-0" style={{ color: V4.sub }}>{t.hero.mockCaption} ↗</p>
                     </div>
                 </div>
             </section>
@@ -221,11 +222,13 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                         {t.preview.items.map((it, i) => (
                             <li key={it.k}>
                                 <FadeIn delay={i * 0.07}>
-                                    <div className="overflow-hidden rounded-[14px] border bg-white p-2 shadow-[0_10px_28px_rgba(20,51,90,0.08)]" style={{ borderColor: "rgba(20,51,90,0.1)" }}>
-                                        <div className="mb-2 flex gap-1.5 px-1 pt-1">
-                                            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "#F26D5B" }} /><span className="h-2 w-2 rounded-full" style={{ backgroundColor: "#F2B84B" }} /><span className="h-2 w-2 rounded-full" style={{ backgroundColor: "#6CC088" }} />
-                                        </div>
-                                        <Image src={it.img} alt={it.alt} sizes="(max-width: 768px) 100vw, 33vw" className="h-auto w-full rounded-[8px]" />
+                                    <div className="relative pb-10 pr-[10%]">
+                                        <Browser>
+                                            <MiniSite site={it.site} variant="pc" />
+                                        </Browser>
+                                        <Phone className="absolute bottom-0 right-0 w-[34%]">
+                                            <MiniSite site={it.site} variant="sp" />
+                                        </Phone>
                                     </div>
                                     <p className={`${heavy.className} mt-4 text-[20px]`} style={{ color: NAVY }}>{it.k}</p>
                                     <p className="mt-1 text-[14px] leading-[1.8]" style={{ color: V4.sub }}>{it.d}</p>
@@ -331,6 +334,8 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                 <p aria-hidden className={`${hand.className} pointer-events-none absolute right-[6%] top-[38%] hidden -rotate-[12deg] text-[24px] leading-[1.6] tracking-[0.08em] lg:block`} style={{ color: TEAL }}>
                     {t.cta.hand.map((l) => <span key={l} className="block">{l}</span>)}
                 </p>
+                <Leaf className="pointer-events-none absolute -left-4 bottom-2 h-[180px] w-auto md:left-[4%] md:h-[220px]" />
+                <Leaf flip className="pointer-events-none absolute -right-4 bottom-2 h-[180px] w-auto md:right-[4%] md:h-[220px]" />
                 <div className="relative mx-auto max-w-3xl text-center">
                     <p className="inline-block border-b pb-1 text-[12px] tracking-[0.3em]" style={{ color: V4.sub, borderColor: "rgba(44,143,168,0.5)" }}>{t.cta.eyebrow}</p>
                     <h2 className={`${heavy.className} mt-6 text-[clamp(1.6rem,3.6vw,2.6rem)] leading-[1.3]`} style={{ color: NAVY }}>{t.cta.title}</h2>
