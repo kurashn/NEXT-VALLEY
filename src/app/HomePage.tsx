@@ -1,4 +1,4 @@
-import Hero from "@/components/Hero";
+import HeroV4 from "@/components/HeroV4";
 import { Problem } from "@/components/Problem";
 import { Service } from "@/components/Service";
 import { Works } from "@/components/Works";
@@ -82,8 +82,8 @@ export function HomePage({ lang = "ja" }: { lang?: Lang }) {
           }),
         }}
       />
-      <Navbar lang={lang} />
-      <Hero lang={lang} />
+      <Navbar lang={lang} variant="light" />
+      <HeroV4 lang={lang} />
       <TrustBar lang={lang} />
       <div id="problem" className="scroll-mt-24"><Problem lang={lang} /></div>
       <div id="service" className="scroll-mt-24"><Service lang={lang} /></div>

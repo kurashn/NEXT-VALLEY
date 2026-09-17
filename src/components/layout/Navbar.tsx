@@ -8,6 +8,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/images/logo-new.png";
+import logoDark from "@/images/logo-dark.png";
 import { withLang, type Lang } from "@/i18n";
 import { LangSwitch } from "@/i18n/LangSwitch";
 
@@ -42,7 +43,8 @@ const copy = {
   },
 } as const;
 
-export default function Navbar({ lang = "ja" }: { lang?: Lang }) {
+export default function Navbar({ lang = "ja", variant = "dark" }: { lang?: Lang; variant?: "dark" | "light" }) {
+  const light = variant === "light";
   const t = copy[lang];
   // スクロールしたら影を落として浮かせる（ページ先頭ではフラット）
   const [scrolled, setScrolled] = useState(false);
@@ -81,13 +83,13 @@ export default function Navbar({ lang = "ja" }: { lang?: Lang }) {
   };
 
   return (
-    <nav className={`fixed left-0 right-0 top-0 z-50 bg-navy-deep transition-shadow duration-500 ${scrolled ? "shadow-[0_10px_36px_rgba(2,10,18,0.45)]" : ""}`}>
+    <nav className={`fixed left-0 right-0 top-0 z-50 transition-shadow duration-500 ${light ? "border-b border-line bg-white/95 backdrop-blur" : "bg-navy-deep"} ${scrolled ? (light ? "shadow-[0_10px_30px_rgba(20,51,90,0.10)]" : "shadow-[0_10px_36px_rgba(2,10,18,0.45)]") : ""}`}>
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex h-20 items-center justify-between gap-4 xl:gap-6">
           {/* ロゴ */}
           <Link href={withLang(lang, "/")} className="flex min-h-11 shrink-0 items-center">
             <Image
-              src={logo}
+              src={light ? logoDark : logo}
               alt="NEXT VALLEY"
               width={180}
               height={40}
@@ -103,7 +105,7 @@ export default function Navbar({ lang = "ja" }: { lang?: Lang }) {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleScroll(e, link.href)}
-                className="whitespace-nowrap text-sm font-medium text-white transition-colors hover:text-coral"
+                className={`whitespace-nowrap text-sm font-medium transition-colors ${light ? "text-ink hover:text-coral-deep" : "text-white hover:text-coral"}`}
               >
                 {link.name}
               </Link>
@@ -113,7 +115,7 @@ export default function Navbar({ lang = "ja" }: { lang?: Lang }) {
           {/* CTA（コーラルの角丸ボタン） */}
           <a
             href={withLang(lang, "/preview")}
-            className={`btn-sheen hidden h-12 shrink-0 items-center gap-3 whitespace-nowrap rounded-lg bg-coral-deep px-6 text-sm font-bold text-white transition-opacity hover:opacity-90 ${deskCta}`}
+            className={`btn-sheen hidden h-12 shrink-0 items-center gap-3 whitespace-nowrap px-6 text-sm font-bold text-white transition-opacity hover:opacity-90 ${light ? "rounded-full bg-[#FD7368]" : "rounded-lg bg-coral-deep"} ${deskCta}`}
           >
             {t.cta}
             <ArrowRight className="h-4 w-4" />
@@ -131,7 +133,7 @@ export default function Navbar({ lang = "ja" }: { lang?: Lang }) {
               <SheetTrigger asChild>
                 <button
                   aria-label={t.openMenu}
-                  className="flex h-11 w-11 items-center justify-center text-white"
+                  className={`flex h-11 w-11 items-center justify-center ${light ? "text-ink" : "text-white"}`}
                 >
                   <Menu className="h-6 w-6" />
                 </button>
