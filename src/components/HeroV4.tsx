@@ -9,7 +9,6 @@ import { withLang, type Lang } from "@/i18n";
 
 import townLeft from "@/images/fv/town-left.webp";
 import townRight from "@/images/fv/town-right.webp";
-import headline from "@/images/fv/headline.png";
 
 const NAVY = "#14335A";
 const TEAL = "#2C8FA8";
@@ -96,7 +95,8 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                     </p>
                     <h1 className="mb-3">
                         <span className="sr-only">{t.h1alt}</span>
-                        <Image src={headline} alt="" priority sizes="(max-width: 768px) 92vw, 720px" className="mx-auto h-auto w-full max-w-[720px]" />
+                        {/* eslint-disable-next-line @next/next/no-img-element -- SVG（ベクター）なので最適化不要 */}
+                        <img src="/fv-headline.svg" alt="" width={2980} height={908} fetchPriority="high" className="mx-auto h-auto w-full max-w-[720px]" />
                     </h1>
                     <p className="mb-2.5 text-[16px] font-bold md:text-[18px]" style={{ color: NAVY }}>
                         {t.lead}
