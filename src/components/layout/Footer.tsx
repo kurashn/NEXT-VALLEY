@@ -14,7 +14,7 @@ const copy = {
             { name: "ご依頼の流れ", href: "/#flow" },
         ],
         contentLinks: [
-            { name: "対応エリア（埼玉を中心に全国）", href: "/saitama-hokubu" },
+            { name: "埼玉のホームページ制作（対応エリア）", href: "/saitama-hokubu" },
             { name: "お役立ちコラム", href: "/blog" },
             { name: "事業情報", href: "/company" },
             { name: "ご紹介パートナー", href: "/partner" },

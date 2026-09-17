@@ -1,7 +1,7 @@
 import { MessageCircle } from "lucide-react";
 
 /* 記事末尾の誘導。記事のタグ・カテゴリから「この記事を読んだ人が次にしたいこと」に合わせて文面を出し分ける。
-   行き先は変えない（LINE無料診断が本命）。副ボタンだけテーマで変える */
+   行き先は変えない（LINEで無料プレビュー申込が本命）。副ボタンだけテーマで変える */
 
 type Variant = {
     eyebrow: string;
@@ -24,26 +24,26 @@ const variants: Record<string, Variant> = {
             <>
                 教室のURL（ペライチやアメブロでも大丈夫です）をLINEで送るだけ。
                 <br className="hidden md:block" />
-                申込が来ない原因と直す順番、概算の費用を2営業日以内にお返しします。
+                申込が来ない原因と直す順番を無料でお返しします。これから作る方は、契約前にトップページのデザイン案を無料でご覧いただけます。
             </>
         ),
-        sub: { label: "無料プレビューを見る", href: "/preview" },
+        sub: { label: "無料プレビューの詳細を見る", href: "/preview" },
     },
     maps: {
         eyebrow: "この記事を読んだ方へ",
         heading: (
             <>
-                Googleマップと今のサイトに、何が足りないか<span className="nowrap">診断します</span>
+                <span className="nowrap">Googleマップと今のサイトに、</span><span className="nowrap">何が足りないか診断します</span>
             </>
         ),
         body: (
             <>
                 お店の名前とサイトのURLをLINEで送るだけ。
                 <br className="hidden md:block" />
-                地図で見つけてもらうために直す順番と、概算の費用を2営業日以内にお返しします。
+                地図で見つけてもらうために直す順番を無料でお返しします。ホームページの制作・管理は初期0円・月額8,980円（税込）です。
             </>
         ),
-        sub: { label: "LINEで無料診断を受ける", href: "https://lin.ee/N4QXdJL" },
+        sub: { label: "無料プレビューの詳細を見る", href: "/preview" },
     },
     line: {
         eyebrow: "この記事を読んだ方へ",
@@ -56,10 +56,10 @@ const variants: Record<string, Variant> = {
             <>
                 今の運用（登録者数・配信の頻度・困っていること）をLINEで送るだけ。
                 <br className="hidden md:block" />
-                最初に整える1つと、概算の費用を2営業日以内にお返しします。
+                最初に整える1つを無料でお返しします。ホームページの制作・管理は初期0円・月額8,980円（税込）です。
             </>
         ),
-        sub: { label: "LINEで無料診断を受ける", href: "https://lin.ee/N4QXdJL" },
+        sub: { label: "無料プレビューの詳細を見る", href: "/preview" },
     },
     cost: {
         eyebrow: "この記事を読んだ方へ",
@@ -70,12 +70,12 @@ const variants: Record<string, Variant> = {
         ),
         body: (
             <>
-                作りたいものと今の状況をLINEで送るだけ。概算のお見積もりを2営業日以内にお返しします。
+                料金は初期制作費0円・月額8,980円（税込）で、見積もりは要りません。
                 <br className="hidden md:block" />
                 これから作る方は、契約前に完成イメージを無料でご覧いただけます。
             </>
         ),
-        sub: { label: "無料プレビューを見る", href: "/preview" },
+        sub: { label: "無料プレビューの詳細を見る", href: "/preview" },
     },
     ai: {
         eyebrow: "この記事を読んだ方へ",
@@ -88,10 +88,10 @@ const variants: Record<string, Variant> = {
             <>
                 「毎週これに時間を取られている」をLINEで送るだけ。
                 <br className="hidden md:block" />
-                最初に手を付ける1つと、概算の費用を2営業日以内にお返しします。
+                最初に手を付ける1つを無料でお返しします。
             </>
         ),
-        sub: { label: "LINEで無料診断を受ける", href: "https://lin.ee/N4QXdJL" },
+        sub: { label: "無料プレビューの詳細を見る", href: "/preview" },
     },
     default: {
         eyebrow: "この記事を読んだ方へ",
@@ -104,10 +104,10 @@ const variants: Record<string, Variant> = {
             <>
                 サイトのURLやお悩みをLINEで送るだけ。
                 <br className="hidden md:block" />
-                改善の打ち手と概算お見積もりを、2営業日以内にお返しします。
+                直す順番を無料でお返しします。これから作る方は、契約前にトップページのデザイン案を無料でご覧いただけます。
             </>
         ),
-        sub: { label: "LINEで無料診断を受ける", href: "https://lin.ee/N4QXdJL" },
+        sub: { label: "無料プレビューの詳細を見る", href: "/preview" },
     },
 };
 
@@ -138,7 +138,7 @@ export const BlogCTA = ({ tags = [], categories = [] }: { tags?: readonly string
                     className="inline-flex h-14 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#05a247] px-5 text-[19px] font-bold text-white sm:px-8 shadow-[0_12px_28px_rgba(5,162,71,0.3)] transition-all hover:-translate-y-0.5 sm:w-auto"
                 >
                     <MessageCircle className="h-5 w-5" aria-hidden />
-                    LINEで無料診断を受ける
+                    LINEで無料プレビューを申し込む
                 </a>
                 <a
                     href={v.sub.href}
@@ -147,7 +147,7 @@ export const BlogCTA = ({ tags = [], categories = [] }: { tags?: readonly string
                     {v.sub.label}
                 </a>
             </div>
-            <p className="mt-4 text-xs text-ink-sub">※ 診断・提案・見積もりは無料です。しつこい営業は一切ありません</p>
+            <p className="mt-4 text-xs text-ink-sub">※ デザイン案は無料です。契約前に費用は発生せず、こちらから追いかける連絡もしません</p>
         </div>
     );
 };
