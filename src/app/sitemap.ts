@@ -30,18 +30,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/privacy',
         '/terms',
         '/tokusho',
-        // English
-        '/en',
-        '/en/preview',
-        '/en/price',
-        '/en/shindan',
-        '/en/contact',
-        '/en/company',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
-        priority: route === '' ? 1 : route === '/en' ? 0.8 : 0.5,
+        priority: route === '' ? 1 : 0.5,
     }));
 
     return [...routes, ...blogPosts];

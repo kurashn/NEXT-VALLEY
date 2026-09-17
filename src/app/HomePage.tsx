@@ -12,7 +12,6 @@ import { CTA } from "@/components/CTA";
 import Navbar from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { langAttr, type Lang } from "@/i18n";
-import { LangHtml } from "@/i18n/LangHtml";
 
 const SITE = "https://www.nextvalley-jpn.com";
 
@@ -35,7 +34,6 @@ export function HomePage({ lang = "ja" }: { lang?: Lang }) {
   const url = lang === "ja" ? SITE : `${SITE}/en`;
   return (
     <main id="top" className="min-h-screen bg-base text-ink selection:bg-coral/20" {...langAttr(lang)}>
-      {lang === "en" && <LangHtml lang="en" />}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

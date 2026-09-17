@@ -1,6 +1,6 @@
-// 多言語（日本語 / 英語）の共通ユーティリティ。
-// 日本語は従来どおりルート直下（/）、英語は /en 配下。各コンポーネントは lang を受け取り、
-// ファイル内の copy = { ja, en } から文言を引く（辞書はコンポーネントごとに持つ）。
+// 言語まわりの共通ユーティリティ。
+// 公開しているのは日本語（/）のみ。英語ページ（/en）は2026年9月に廃止した。
+// 各コンポーネントの copy = { ja, en } の en は将来の再開用に残しているだけで、ページからは使わない。
 
 export type Lang = "ja" | "en";
 export const LANGS: readonly Lang[] = ["ja", "en"] as const;
@@ -32,14 +32,9 @@ export function switchLangPath(pathname: string, to: Lang): string {
     return supported ? withLang("en", base) : "/en";
 }
 
-/** metadata.alternates 用（hreflang） */
-export function alternatesFor(path: string, lang: Lang = "ja") {
-    const ja = path;
-    const en = withLang("en", path);
-    return {
-        canonical: lang === "en" ? en : ja,
-        languages: { ja, en, "x-default": ja },
-    } as const;
+/** metadata.alternates 用（日本語のみ。英語ページ廃止に伴い hreflang は出さない） */
+export function alternatesFor(path: string, _lang: Lang = "ja") {
+    return { canonical: path } as const;
 }
 
 /** ページ内の言語属性（英語ページでは <main lang="en"> を付け、CSS と支援技術に伝える） */

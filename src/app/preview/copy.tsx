@@ -659,7 +659,7 @@ const metaJa: Metadata = {
         siteName: "NEXT VALLEY",
         locale: "ja_JP",
         type: "website",
-        images: [{ url: "/og-preview.png", width: 1200, height: 630, alt: "先に、見せます。あなたのトップページを、無料で。" }],
+        images: [{ url: "/og-preview.png", width: 1200, height: 630, alt: "先に、見せます。契約前に、トップページ案を無料で。" }],
     },
     twitter: { card: "summary_large_image", title: "先に、見せます。契約前に、あなたのトップページ案を無料で。｜NEXT VALLEY", images: ["/og-preview.png"] },
 };
