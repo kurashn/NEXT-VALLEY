@@ -2,9 +2,8 @@
 
 import React from "react";
 import Image, { type StaticImageData } from "next/image";
-import { AppWindow, MousePointer2 } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { SectionHeadV4, Teal, Underline } from "@/components/ui/SectionHeadV4";
+import { SectionHeadV4, Underline } from "@/components/ui/SectionHeadV4";
 import { heavy, V4 } from "@/lib/fonts-v4";
 import { type Lang } from "@/i18n";
 
@@ -30,23 +29,16 @@ const jaGeneral = {
             body: <><span className="nowrap">写真や営業時間を変えたいのに、</span><span className="nowrap">ついそのままになっている。</span></>,
         },
         {
-            no: "02", tag: "CONTACT", img: worryContact, alt: "机でスマートフォンを見る手元",
+            no: "02", tag: "CONTACT", img: worryContact, alt: "お店のカウンターでスマートフォンを見て考える店主",
             title: <>見られているのに、<br />問い合わせにつながらない。</>,
             body: <><span className="nowrap">ホームページやSNSはあるけれど、</span><span className="nowrap">相談や予約がなかなか増えない。</span></>,
         },
         {
-            no: "03", tag: "TIME", img: worryTime, alt: "木材に印をつける職人の手元",
+            no: "03", tag: "TIME", img: worryTime, alt: "現場で寸法を測る職人",
             title: <>Webに使う時間も、<br />相談できる人もいない。</>,
             body: <><span className="nowrap">日々の仕事で手いっぱい。</span><span className="nowrap">何から手をつければいいのか迷っている。</span></>,
         },
     ] as Worry[],
-    bannerTitle: (
-        <>
-            <span className="nowrap">ひとりで抱えず、</span>
-            <span className="nowrap"><Teal>Web担当</Teal>に任せてみませんか。</span>
-        </>
-    ),
-    bannerLead: "制作・更新・管理から、必要に応じた集客改善まで。",
 };
 
 const enGeneral: typeof jaGeneral = {
@@ -59,27 +51,21 @@ const enGeneral: typeof jaGeneral = {
     lead: "When the business keeps you busy, the website is the first thing to slip.",
     worries: [
         {
-            no: "01", tag: "UPDATE", img: worryUpdate, alt: "Hands on a laptop showing a website",
+            no: "01", tag: "UPDATE", img: worryUpdate, alt: "A shop owner looking at a website on a laptop",
             title: <>The site is out of date,<br />and updating it is a mystery.</>,
             body: <>Photos and opening hours need changing, but it never happens.</>,
         },
         {
-            no: "02", tag: "CONTACT", img: worryContact, alt: "Hands checking a smartphone at a table",
+            no: "02", tag: "CONTACT", img: worryContact, alt: "A shop owner checking a phone at the counter",
             title: <>People look,<br />but nobody gets in touch.</>,
             body: <>There is a website and social media, yet enquiries and bookings stay flat.</>,
         },
         {
-            no: "03", tag: "TIME", img: worryTime, alt: "A craftsman's hands marking timber",
+            no: "03", tag: "TIME", img: worryTime, alt: "A craftsman measuring on site",
             title: <>No time for the web,<br />and no one to ask.</>,
             body: <>The day is full already. Where to even start is unclear.</>,
         },
     ] as Worry[],
-    bannerTitle: (
-        <>
-            Don&apos;t carry it alone. Let a <Teal>web partner</Teal> take it on.
-        </>
-    ),
-    bannerLead: "From build, updates and upkeep to improvements when you need them.",
 };
 
 const copy: Record<Lang, typeof jaGeneral> = { ja: jaGeneral, en: enGeneral };
@@ -87,7 +73,7 @@ const copy: Record<Lang, typeof jaGeneral> = { ja: jaGeneral, en: enGeneral };
 export function Problem({ lang = "ja" }: { lang?: Lang }) {
     const t = copy[lang];
     return (
-        <section className="relative overflow-hidden px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: V4.cream }}>
+        <section className="relative overflow-hidden px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: "#FDFAF3" }}>
             <div className="relative mx-auto max-w-6xl">
                 <SectionHeadV4 word="Worries" eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
 
@@ -112,23 +98,6 @@ export function Problem({ lang = "ja" }: { lang?: Lang }) {
                     ))}
                 </ul>
 
-                <FadeIn>
-                    <div className="mt-10 flex flex-col items-center gap-4 rounded-[16px] px-6 py-6 text-center md:mt-12 md:flex-row md:justify-center md:gap-8 md:py-7 md:text-left" style={{ backgroundColor: "#E6F5F4" }}>
-                        <span aria-hidden className="relative inline-flex h-14 w-16 shrink-0 items-center justify-center">
-                            <AppWindow className="h-12 w-14" strokeWidth={1.4} style={{ color: V4.teal }} />
-                            <MousePointer2 className="absolute -bottom-1 right-1 h-6 w-6 fill-current" style={{ color: V4.navy }} />
-                        </span>
-                        <span aria-hidden className="hidden h-12 w-px md:block" style={{ backgroundColor: "rgba(20,51,90,0.3)" }} />
-                        <div>
-                            <p className={`${heavy.className} text-[clamp(1.2rem,2.4vw,1.85rem)] leading-[1.4]`} style={{ color: V4.navy }}>
-                                {t.bannerTitle}
-                            </p>
-                            <p className="mt-1.5 text-[13.5px] md:text-[15px]" style={{ color: V4.navy }}>
-                                {t.bannerLead}
-                            </p>
-                        </div>
-                    </div>
-                </FadeIn>
             </div>
         </section>
     );

@@ -53,26 +53,6 @@ export function previewJsonLd(lang: Lang, faq: { q: string; a: string }[]) {
     };
 }
 
-/** Web集客セルフ診断（/shindan）: 無料で使えるWebツール */
-export function shindanJsonLd(lang: Lang) {
-    const url = lang === "en" ? `${SITE}/en/shindan` : `${SITE}/shindan`;
-    return {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: lang === "en" ? "Website Self-Check" : "Web集客セルフ診断",
-        description:
-            lang === "en"
-                ? "Answer 15 yes/no questions and get your web marketing score, plus the fixes to tackle first. Free, no sign-up."
-                : "はい／いいえの15問に答えるだけで、Web集客のスコアと優先的に直すべきポイントが分かる無料の診断ツール。登録不要・所要3分。",
-        url,
-        applicationCategory: "BusinessApplication",
-        operatingSystem: "Web",
-        browserRequirements: lang === "en" ? "Requires JavaScript" : "JavaScript が有効なブラウザ",
-        inLanguage: lang === "en" ? "en" : "ja",
-        publisher: org,
-        offers: { "@type": "Offer", price: 0, priceCurrency: "JPY" },
-    };
-}
 
 /**
  * 料金ページ（/price）

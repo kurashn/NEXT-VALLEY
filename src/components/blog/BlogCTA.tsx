@@ -1,5 +1,4 @@
 import { MessageCircle } from "lucide-react";
-import { shindanSlotsJa } from "@/lib/shindanSlots";
 
 /* 記事末尾の誘導。記事のタグ・カテゴリから「この記事を読んだ人が次にしたいこと」に合わせて文面を出し分ける。
    行き先は変えない（LINE無料診断が本命）。副ボタンだけテーマで変える */
@@ -44,7 +43,7 @@ const variants: Record<string, Variant> = {
                 地図で見つけてもらうために直す順番と、概算の費用を2営業日以内にお返しします。
             </>
         ),
-        sub: { label: "3分セルフ診断を試す", href: "/shindan" },
+        sub: { label: "LINEで無料診断を受ける", href: "https://lin.ee/N4QXdJL" },
     },
     line: {
         eyebrow: "この記事を読んだ方へ",
@@ -60,7 +59,7 @@ const variants: Record<string, Variant> = {
                 最初に整える1つと、概算の費用を2営業日以内にお返しします。
             </>
         ),
-        sub: { label: "3分セルフ診断を試す", href: "/shindan" },
+        sub: { label: "LINEで無料診断を受ける", href: "https://lin.ee/N4QXdJL" },
     },
     cost: {
         eyebrow: "この記事を読んだ方へ",
@@ -92,7 +91,7 @@ const variants: Record<string, Variant> = {
                 最初に手を付ける1つと、概算の費用を2営業日以内にお返しします。
             </>
         ),
-        sub: { label: "3分セルフ診断を試す", href: "/shindan" },
+        sub: { label: "LINEで無料診断を受ける", href: "https://lin.ee/N4QXdJL" },
     },
     default: {
         eyebrow: "この記事を読んだ方へ",
@@ -108,7 +107,7 @@ const variants: Record<string, Variant> = {
                 改善の打ち手と概算お見積もりを、2営業日以内にお返しします。
             </>
         ),
-        sub: { label: "3分セルフ診断を試す", href: "/shindan" },
+        sub: { label: "LINEで無料診断を受ける", href: "https://lin.ee/N4QXdJL" },
     },
 };
 
@@ -148,7 +147,7 @@ export const BlogCTA = ({ tags = [], categories = [] }: { tags?: readonly string
                     {v.sub.label}
                 </a>
             </div>
-            <p className="mt-4 text-xs text-ink-sub">※ 無料診断は{shindanSlotsJa}。診断・提案・見積もりは無料。しつこい営業は一切ありません</p>
+            <p className="mt-4 text-xs text-ink-sub">※ 診断・提案・見積もりは無料です。しつこい営業は一切ありません</p>
         </div>
     );
 };

@@ -6,7 +6,7 @@ export type Lang = "ja" | "en";
 export const LANGS: readonly Lang[] = ["ja", "en"] as const;
 
 /** 英語版が存在するパス（これ以外は言語切替で /en トップへ誘導） */
-export const EN_PATHS = ["/", "/preview", "/shindan", "/contact", "/company"] as const;
+export const EN_PATHS = ["/", "/preview", "/contact", "/company"] as const;
 
 /** 内部リンクに言語プレフィックスを付ける。外部・mailto・#アンカーはそのまま */
 export function withLang(lang: Lang, href: string): string {

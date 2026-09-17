@@ -1,78 +1,59 @@
-// Server Component — 公開後の集客改善（別途お見積もりの領域）
-// 不安をあおらず、必要になったときだけ相談できることを伝える
+// Server Component — 公開したあとの集客改善（grouthdesign-v2.png の再現）
 
 import React from "react";
-import { chunks } from "@/lib/nowrap";
+import Image, { type StaticImageData } from "next/image";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { SerifHeading } from "@/components/ui/SerifHeading";
+import { SectionHeadV4 } from "@/components/ui/SectionHeadV4";
+import { heavy, V4 } from "@/lib/fonts-v4";
 import { type Lang } from "@/i18n";
 
+import illHp from "@/images/v4/growth-hp.webp";
+import illMap from "@/images/v4/growth-map.webp";
+import illLine from "@/images/v4/growth-line.webp";
+
+const LINE_URL = "https://lin.ee/N4QXdJL";
+const BG = "#FBF8F3";
+
+type Item = { no: string; img: StaticImageData; title: string; sub: string; body: React.ReactNode };
+
 const ja = {
-    heading: "公開したあとの集客改善",
-    lead: (
+    eyebrow: "公開したあとの集客改善",
+    title: (
         <>
-            公開後に「もっと問い合わせを増やしたい」と思ったときに、必要な範囲だけご相談いただけます。
-            <br className="hidden md:block" />
-            月額のホームページ制作・管理だけでも、そのまま使い続けて<span className="nowrap">いただけます。</span>
+            <span className="inline-block border-b-[3px] pb-0.5" style={{ borderColor: V4.teal }}>必要なところから、</span>
+            <span className="nowrap">集客を整える。</span>
         </>
     ),
-    cases: [
-        {
-            key: "cv",
-            when: "サイトは見られているのに、問い合わせが少ない",
-            what: "サービスや体験のページと、問い合わせまでの案内を見直します。どの画面で止まっているかを確かめてから直します。",
-        },
-        {
-            key: "meo",
-            when: "地域の人に見つけてもらえていない",
-            what: "Googleマップの登録内容と、検索での見え方の現状を確認します。写真や情報の不足を埋めるところから始めます。",
-        },
-        {
-            key: "line",
-            when: "LINEを追加してもらったあと、相談が止まる",
-            what: "最初に届く案内の内容と、日程を決めるまでの手順を見直します。やり取りの回数を減らすのが目的です。",
-        },
-    ],
-    flowTitle: "進め方",
-    flow: [
-        "アクセス数や問い合わせの数、事業の状況をうかがいます",
-        "どこで止まっているのかを一緒に確認します",
-        "必要な範囲だけをお見積もりします",
-    ],
-    note: "内容に応じてお見積もりします。金額に納得いただいてから着手します。",
+    lead: <><span className="nowrap">「もっと問い合わせを増やしたい」ときに、</span><span className="nowrap">必要な支援だけ。</span></>,
+    items: [
+        { no: "01", img: illHp, title: "ホームページ", sub: "問い合わせまで、迷わせない。", body: <><span className="nowrap">ページと問い合わせへの案内を</span><span className="nowrap">見直します。</span></> },
+        { no: "02", img: illMap, title: "Googleマップ", sub: "地域の人に、見つけてもらう。", body: <><span className="nowrap">登録情報・写真・検索での見え方を</span><span className="nowrap">整えます。</span></> },
+        { no: "03", img: illLine, title: "LINE", sub: "友だち追加の、その先へ。", body: <><span className="nowrap">最初の案内から予約までの流れを</span><span className="nowrap">整えます。</span></> },
+    ] as Item[],
+    steps: ["現状を確認", "課題を整理", "必要な支援をお見積もり"],
+    note1: <><span className="nowrap">追加支援は別途お見積もり。</span><span className="nowrap">内容・金額にご納得いただいてから着手します。</span></>,
+    note2: <><span className="nowrap">ホームページ制作・管理の基本プランだけでも、</span><span className="nowrap">ご利用いただけます。</span></>,
+    link: "今のホームページを無料診断する",
 };
 
 const en: typeof ja = {
-    heading: "Marketing after launch",
-    lead: (
+    eyebrow: "GROWTH AFTER LAUNCH",
+    title: (
         <>
-            When you want more enquiries after launch, you can ask for just the part you need. The monthly build-and-manage plan works on its own too.
+            <span className="inline-block border-b-[3px] pb-0.5" style={{ borderColor: V4.teal }}>Start where it matters,</span> and grow enquiries.
         </>
     ),
-    cases: [
-        {
-            key: "cv",
-            when: "People visit, but few get in touch",
-            what: "We review the service pages and the path to an enquiry, after checking where people stop.",
-        },
-        {
-            key: "meo",
-            when: "Local customers don't find you",
-            what: "We check your Google Maps listing and how you appear in search, then fill in what's missing.",
-        },
-        {
-            key: "line",
-            when: "Chats go quiet after a LINE follow",
-            what: "We review the first message and the steps to agree on a date, to cut the back and forth.",
-        },
-    ],
-    flowTitle: "How it goes",
-    flow: [
-        "We ask about your visits, enquiries and current situation",
-        "We look together at where people are stopping",
-        "We quote for only the part that needs work",
-    ],
-    note: "Quoted to fit the work. Nothing starts until you agree to the price.",
+    lead: <>When you want more enquiries, only the support you need.</>,
+    items: [
+        { no: "01", img: illHp, title: "Website", sub: "A clear path to the enquiry.", body: <>We review the pages and how they lead to contact.</> },
+        { no: "02", img: illMap, title: "Google Maps", sub: "Get found by people nearby.", body: <>Listing details, photos and how you appear in search.</> },
+        { no: "03", img: illLine, title: "LINE", sub: "Beyond the friend add.", body: <>From the first message to the booking.</> },
+    ] as Item[],
+    steps: ["Review the current state", "Sort the issues", "Quote only what is needed"],
+    note1: <>Extra support is quoted separately and starts only after you agree to the scope and price.</>,
+    note2: <>The basic build-and-manage plan works on its own, too.</>,
+    link: "Get a free check of your site",
 };
 
 const copy: Record<Lang, typeof ja> = { ja, en };
@@ -80,44 +61,53 @@ const copy: Record<Lang, typeof ja> = { ja, en };
 export function AfterLaunch({ lang = "ja" }: { lang?: Lang }) {
     const t = copy[lang];
     return (
-        <section className="relative overflow-hidden bg-cream px-4 py-16 md:px-6 md:py-24">
+        <section className="relative overflow-hidden px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: BG }}>
             <div className="relative mx-auto max-w-6xl">
-                <FadeIn>
-                    <SerifHeading en="Growth" jp={t.heading} />
-                    <p className="lead -mt-6 mb-10 text-[15px] leading-[2] tracking-[0.03em] text-ink-sub md:mb-12">
-                        {t.lead}
-                    </p>
-                </FadeIn>
+                <SectionHeadV4 word="Growth" eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
 
-                <ul className="mb-8 grid gap-4 md:grid-cols-3">
-                    {t.cases.map((c, i) => (
-                        <li key={c.key} className="list-none">
-                            <FadeIn delay={i * 0.07} className="h-full">
-                                <div className="flex h-full flex-col rounded-2xl bg-white p-7 shadow-[0_16px_40px_rgba(31,26,20,0.06)]">
-                                    <p className="mb-3 text-[15px] font-bold leading-snug text-ink">{chunks(c.when)}</p>
-                                    <p className="text-[14px] leading-[2] text-ink-sub">{c.what}</p>
+                <ul className="grid gap-10 md:grid-cols-3 md:gap-0">
+                    {t.items.map((it, i) => (
+                        <li key={it.no} className={`flex flex-col items-center px-2 text-center md:px-6 ${i > 0 ? "md:border-l" : ""}`} style={{ borderColor: "rgba(20,51,90,0.18)" }}>
+                            <FadeIn delay={i * 0.07} className="flex flex-col items-center">
+                                <div className="flex h-[200px] items-center justify-center md:h-[215px]">
+                                    <Image src={it.img} alt="" sizes="(max-width: 768px) 70vw, 30vw" className="h-auto w-[250px] max-w-full md:w-[290px]" />
                                 </div>
+                                <p className="mt-4 text-[14px] font-bold tracking-[0.1em]" style={{ color: V4.teal }}>{it.no}</p>
+                                <h3 className={`${heavy.className} mt-1 text-[clamp(1.35rem,2.2vw,1.8rem)] leading-[1.3]`} style={{ color: V4.navy }}>{it.title}</h3>
+                                <p className="mt-3 text-[15px] font-bold md:text-[16px]" style={{ color: V4.navy }}>{it.sub}</p>
+                                <p className="mt-2 text-[13.5px] leading-[1.8] md:text-[14px]" style={{ color: V4.sub }}>{it.body}</p>
                             </FadeIn>
                         </li>
                     ))}
                 </ul>
 
-                <FadeIn>
-                    <div className="rounded-2xl border border-line bg-base p-7 md:p-8">
-                        <p className="mb-4 text-[11px] font-bold tracking-[0.2em] text-ink-sub">{t.flowTitle}</p>
-                        <ol className="grid gap-3 md:grid-cols-3">
-                            {t.flow.map((f, i) => (
-                                <li key={f} className="flex gap-3 text-[14px] leading-[1.9] text-ink">
-                                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-navy-deep text-[12px] font-bold text-white">
-                                        {i + 1}
-                                    </span>
-                                    <span>{f}</span>
-                                </li>
-                            ))}
-                        </ol>
-                        <p className="mt-5 border-t border-line pt-4 text-[13px] leading-[1.9] text-ink-sub">{t.note}</p>
+                <div className="mt-12 border-t pt-7" style={{ borderColor: "rgba(20,51,90,0.18)" }}>
+                    <ol className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                        {t.steps.map((s, i) => (
+                            <li key={s} className="flex items-center gap-6 text-[15px] font-bold md:text-[17px]" style={{ color: V4.navy }}>
+                                <span><span className="mr-3 tabular-nums" style={{ color: V4.teal }}>0{i + 1}</span>{s}</span>
+                                {i < t.steps.length - 1 && <ArrowRight className="h-5 w-5" strokeWidth={1.5} style={{ color: V4.teal }} aria-hidden />}
+                            </li>
+                        ))}
+                    </ol>
+                    <div className="mt-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                        <div className="flex flex-col gap-1 text-[12.5px] leading-[1.8] md:flex-row md:gap-6 md:text-[13px]" style={{ color: V4.sub }}>
+                            <p>{t.note1}</p>
+                            <span aria-hidden className="hidden h-5 w-px self-center md:block" style={{ backgroundColor: "rgba(20,51,90,0.25)" }} />
+                            <p>{t.note2}</p>
+                        </div>
+                        <a
+                            href={LINE_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex min-h-11 shrink-0 items-center gap-1.5 text-[15px] font-bold underline decoration-2 underline-offset-[6px]"
+                            style={{ color: V4.coralDeep }}
+                        >
+                            {t.link}
+                            <ArrowUpRight className="h-4 w-4" aria-hidden />
+                        </a>
                     </div>
-                </FadeIn>
+                </div>
             </div>
         </section>
     );

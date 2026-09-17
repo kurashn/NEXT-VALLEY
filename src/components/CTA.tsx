@@ -100,7 +100,7 @@ export function CTA({ lang = "ja" }: { lang?: Lang }) {
                             <h4 className="mb-4 text-[19px] font-bold leading-snug text-ink">{t.fixTitle}</h4>
                             <p className="mb-8 text-[14.5px] leading-[2] text-ink-sub">{t.fixBody}</p>
                             <a
-                                href={withLang(lang, "/shindan")}
+                                href="https://lin.ee/N4QXdJL"
                                 className="group mt-auto inline-flex h-14 items-center justify-center gap-2 rounded-full border border-navy-deep bg-white px-7 text-[16px] font-bold text-navy-deep transition-colors hover:border-coral hover:text-coral-deep"
                             >
                                 {t.fixCta}

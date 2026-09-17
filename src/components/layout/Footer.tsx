@@ -14,7 +14,6 @@ const copy = {
             { name: "ご依頼の流れ", href: "/#flow" },
         ],
         contentLinks: [
-            { name: "無料セルフ診断", href: "/shindan" },
             { name: "対応エリア（埼玉を中心に全国）", href: "/saitama-hokubu" },
             { name: "お役立ちコラム", href: "/blog" },
             { name: "事業情報", href: "/company" },
@@ -50,7 +49,6 @@ const copy = {
             { name: "How It Works", href: "/#flow" },
         ],
         contentLinks: [
-            { name: "Free Self-Check", href: "/shindan" },
             { name: "Free Preview", href: "/preview" },
             { name: "About", href: "/company" },
             { name: "Contact", href: "/contact" },

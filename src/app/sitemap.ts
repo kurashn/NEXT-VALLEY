@@ -20,7 +20,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Static routes
     const routes = [
         '',
-        '/shindan',
         '/saitama-hokubu',
         '/preview',
         '/price',

@@ -27,7 +27,7 @@ const ja = {
     cta: "無料でデザイン案を見てみる",
     terms1: "10ページまで・更新無制限・ドメイン／サーバー込み",
     subPrefix: "今のホームページを改善したい方は、",
-    subLink: "無料セルフ診断へ",
+    subLink: "LINEで無料診断へ",
     hand1: "地域の仕事に、",
     hand2: "Webの力を。",
     en1: "LOCAL BUSINESS,",
@@ -46,7 +46,7 @@ const en: typeof ja = {
     cta: "See a free design proposal",
     terms1: "Up to 10 pages, unlimited edits, domain and hosting included",
     subPrefix: "Already have a site? ",
-    subLink: "Get a free site check",
+    subLink: "Get a free site check on LINE",
     hand1: "Local work,",
     hand2: "with the web behind it.",
     en1: "LOCAL BUSINESS,",
@@ -126,7 +126,7 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                     </p>
                     <p className="mt-1.5 text-[12.5px]" style={{ color: "#6E8199" }}>
                         {t.subPrefix}
-                        <a href={withLang(lang, "/shindan")} className="font-bold underline underline-offset-4" style={{ color: NAVY }}>
+                        <a href="https://lin.ee/N4QXdJL" target="_blank" rel="noopener noreferrer" className="font-bold underline underline-offset-4" style={{ color: NAVY }}>
                             {t.subLink}
                         </a>
                     </p>

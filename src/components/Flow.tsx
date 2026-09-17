@@ -1,137 +1,154 @@
-// Server Component — ご依頼の流れ（新しく作る／今のHPを改善する の2通り）
+// Server Component — ご依頼の流れ（flowdesign-v2.png の再現）。目的別に2つの流れを左右に並べる
 
 import React from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { SerifHeading, serif } from "@/components/ui/SerifHeading";
+import { serif } from "@/components/ui/SerifHeading";
+import { mincho, V4 } from "@/lib/fonts-v4";
 import { withLang, type Lang } from "@/i18n";
 
+const LINE_URL = "https://lin.ee/N4QXdJL";
+const BG = "#FBFAF5";
+
+type Track = {
+    tag: string;
+    title: string;
+    steps: [string, string][];
+    note: string;
+    cta: string;
+    href: string;
+    external?: boolean;
+};
+
 const ja = {
-    heading: "ご依頼の流れ",
-    newLabel: "新しく作る・作り直す",
-    newSteps: [
-        { title: "無料プレビューを申し込む", body: "この時点では費用も契約もありません。" },
-        { title: "ヒアリング", body: "事業のこと、載せたいこと、問い合わせや予約までの流れをうかがいます。" },
-        { title: "デザイン案・料金・条件の確認", body: "トップページのデザイン案と、料金・契約条件をご確認いただきます。" },
-        { title: "納得いただけたら正式契約", body: "ご契約日から月額が始まります。断っていただいても構いません。" },
-        { title: "本制作・ご確認・公開", body: "内容を詰めながら作り、ご確認のうえ公開します。" },
-        { title: "更新・管理", body: "公開後の修正と管理をお任せいただけます。必要なときは追加の支援もご相談ください。" },
-    ],
-    newCta: "無料でデザイン案を見てみる",
-    fixLabel: "今のホームページを改善する",
-    fixSteps: [
-        { title: "URLとお悩みを送る", body: "LINEに今のサイトのURLと、気になっていることを送ってください。" },
-        { title: "現状と直す順番を確認", body: "ホームページ・検索・Googleマップ・問い合わせ導線を拝見します。" },
-        { title: "対応範囲とお見積もり", body: "必要な範囲だけをお見積もりします。作り直しをおすすめするとは限りません。" },
-        { title: "ご了承のうえ改善", body: "合意いただいた範囲から着手します。" },
-    ],
-    fixCta: "今のサイトの改善点を知りたい",
-    note: "制作にかかる期間は、内容と素材のご準備によって変わります。急ぎのご事情があれば、ご相談ください。",
+    eyebrow: "ご依頼の流れ",
+    title: "まずは、相談から。",
+    lead: "内容と料金に納得してから、進められます。",
+    left: {
+        tag: "新しく作る・作り直す方",
+        title: "無料プレビューから",
+        steps: [
+            ["お申し込み・ヒアリング", "事業のことや、ご希望を伺います。"],
+            ["デザイン案・料金を確認", "トップページ案と契約条件をご確認。"],
+            ["納得いただけたら、ご契約", "契約日から月額料金が始まります。"],
+            ["制作・公開、その後の管理", "ご確認のうえ公開し、更新も継続対応。"],
+        ],
+        note: "ご契約前のプレビューは無料です。",
+        cta: "無料でデザイン案を見てみる",
+        href: "/preview",
+    } as Track,
+    right: {
+        tag: "今のホームページを改善したい方",
+        title: "無料診断から",
+        steps: [
+            ["URLとお悩みを送る", "LINEで、今の状況を教えてください。"],
+            ["現状と改善の優先順位を確認", "サイトや問い合わせへの流れを確認。"],
+            ["対応範囲とお見積もり", "必要な支援だけをご提案します。"],
+            ["ご承認後に、改善を開始", "合意いただいた内容から進めます。"],
+        ],
+        note: "改善の実施は、別途お見積もりです。",
+        cta: "今のホームページを無料診断する",
+        href: LINE_URL,
+        external: true,
+    } as Track,
 };
 
 const en: typeof ja = {
-    heading: "How it works",
-    newLabel: "Build a new site",
-    newSteps: [
-        { title: "Ask for the free preview", body: "No cost and no contract at this point." },
-        { title: "We ask about your business", body: "What you do, what to feature, and how people get in touch or book." },
-        { title: "See the design, price and terms", body: "You review the homepage design along with the price and the contract terms." },
-        { title: "Sign only if it fits", body: "Billing starts on the contract date. Saying no is fine." },
-        { title: "Build, review, launch", body: "We build it out, you check it, then it goes live." },
-        { title: "Updates and management", body: "We keep it updated. Extra support can be arranged when you need it." },
-    ],
-    newCta: "See a free design proposal",
-    fixLabel: "Improve your current site",
-    fixSteps: [
-        { title: "Send your URL and concerns", body: "Message us on LINE with the address of your site." },
-        { title: "We check the current state", body: "Your site, search visibility, Google Maps and the path to an enquiry." },
-        { title: "Scope and quote", body: "We quote for what's needed. A rebuild is not always the answer." },
-        { title: "We start once you agree", body: "Work begins on the agreed scope." },
-    ],
-    fixCta: "Get a free site check",
-    note: "How long a build takes depends on the content and how quickly photos and text are ready. Tell us if you're in a hurry.",
+    eyebrow: "HOW IT WORKS",
+    title: "Start with a conversation.",
+    lead: "Go ahead only once the scope and price make sense to you.",
+    left: {
+        tag: "Building or rebuilding",
+        title: "From a free preview",
+        steps: [
+            ["Apply and tell us about you", "Your business and what you want."],
+            ["See the design and the price", "Check the homepage proposal and the terms."],
+            ["Sign when it feels right", "The monthly fee starts on the contract date."],
+            ["Build, launch, then upkeep", "We publish after your check and keep updating."],
+        ],
+        note: "The preview before signing is free.",
+        cta: "See a free design proposal",
+        href: "/preview",
+    },
+    right: {
+        tag: "Improving an existing site",
+        title: "From a free check",
+        steps: [
+            ["Send the URL and your concern", "Tell us on LINE where you stand."],
+            ["Review the site and priorities", "We look at the pages and the path to contact."],
+            ["Scope and quote", "Only the support that is needed."],
+            ["Start after your approval", "We proceed with what we agreed."],
+        ],
+        note: "Carrying out improvements is quoted separately.",
+        cta: "Get a free check of your site",
+        href: LINE_URL,
+        external: true,
+    },
 };
 
 const copy: Record<Lang, typeof ja> = { ja, en };
 
+function Card({ track, tone, lang }: { track: Track; tone: "coral" | "teal"; lang: Lang }) {
+    const color = tone === "coral" ? "#E85A4A" : V4.teal;
+    const bg = tone === "coral" ? "#FEF7F4" : "#F4F9FA";
+    const line = tone === "coral" ? "rgba(232,90,74,0.22)" : "rgba(44,143,168,0.22)";
+    const href = track.external ? track.href : withLang(lang, track.href);
+    return (
+        <div className="flex h-full flex-col rounded-[18px] px-6 pb-7 pt-7 md:px-9 md:pb-9 md:pt-8" style={{ backgroundColor: bg, borderTop: `4px solid ${color}` }}>
+            <p className="text-[13px] font-bold md:text-[14px]" style={{ color }}>{track.tag}</p>
+            <h3 className={`${mincho.className} mt-2 text-[clamp(1.5rem,2.6vw,2.1rem)] font-bold leading-[1.3]`} style={{ color: V4.navy }}>{track.title}</h3>
+            <ol className="mt-7 grid gap-6">
+                {track.steps.map(([t, d], i) => (
+                    <li key={t} className="relative grid grid-cols-[52px_1fr] items-start gap-4">
+                        {i < track.steps.length - 1 && <span aria-hidden className="absolute left-[25px] top-[52px] h-[calc(100%+8px)] w-[2px]" style={{ backgroundColor: line }} />}
+                        <span className="relative z-10 flex h-[52px] w-[52px] items-center justify-center rounded-full text-[17px] font-bold text-white" style={{ backgroundColor: color, fontFamily: serif }}>
+                            0{i + 1}
+                        </span>
+                        <div className="pt-1">
+                            <p className="text-[16px] font-bold leading-[1.5] md:text-[17px]" style={{ color: V4.navy }}>{t}</p>
+                            <p className="mt-1 text-[13.5px] leading-[1.7] md:text-[14px]" style={{ color: V4.sub }}>{d}</p>
+                        </div>
+                    </li>
+                ))}
+            </ol>
+            <p className="mt-7 text-center text-[13.5px] font-bold md:text-[14px]" style={{ color }}>＼ {track.note}</p>
+            <a
+                href={href}
+                target={track.external ? "_blank" : undefined}
+                rel={track.external ? "noopener noreferrer" : undefined}
+                className="mt-4 inline-flex min-h-[56px] items-center justify-center gap-2 whitespace-nowrap rounded-full px-4 text-[15px] font-bold transition-transform hover:-translate-y-0.5 md:min-h-[60px] md:px-6 md:text-[18px]"
+                style={tone === "coral" ? { backgroundColor: color, color: "#fff" } : { border: `2px solid ${color}`, color, backgroundColor: "#fff" }}
+            >
+                {track.cta}
+                <ArrowUpRight className="h-5 w-5" aria-hidden />
+            </a>
+        </div>
+    );
+}
+
 export function Flow({ lang = "ja" }: { lang?: Lang }) {
     const t = copy[lang];
     return (
-        <section className="relative overflow-hidden bg-base px-4 py-16 md:px-6 md:py-24">
+        <section className="relative overflow-hidden px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: BG }}>
             <div className="relative mx-auto max-w-6xl">
-                <FadeIn>
-                    <SerifHeading en="Flow" jp={t.heading} />
-                </FadeIn>
-
-                <div className="grid gap-5 lg:grid-cols-2">
-                    {/* 新しく作る */}
-                    <FadeIn>
-                        <div className="flex h-full flex-col rounded-2xl bg-navy-deep p-7 text-white md:p-9">
-                            <p className="mb-6 inline-flex w-fit rounded-full bg-coral px-4 py-1.5 text-[12.5px] font-bold text-white">
-                                {t.newLabel}
-                            </p>
-                            <ol className="mb-7 grid gap-4">
-                                {t.newSteps.map((s, i) => (
-                                    <li key={s.title} className="flex gap-4">
-                                        <span
-                                            className="w-7 shrink-0 text-[18px] font-bold leading-tight text-coral"
-                                            style={{ fontFamily: serif }}
-                                        >
-                                            {String(i + 1).padStart(2, "0")}
-                                        </span>
-                                        <span>
-                                            <span className="block text-[15px] font-bold leading-snug">{s.title}</span>
-                                            <span className="mt-1 block text-[13px] leading-[1.9] text-navy-sub">{s.body}</span>
-                                        </span>
-                                    </li>
-                                ))}
-                            </ol>
-                            <a
-                                href={withLang(lang, "/preview")}
-                                className="group mt-auto inline-flex h-13 min-h-12 w-fit items-center gap-2 rounded-full bg-coral px-7 text-[15px] font-bold text-white transition-all hover:-translate-y-0.5 hover:opacity-95"
-                            >
-                                {t.newCta}
-                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
-                            </a>
-                        </div>
-                    </FadeIn>
-
-                    {/* 今のHPを改善する */}
-                    <FadeIn delay={0.08}>
-                        <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-7 md:p-9">
-                            <p className="mb-6 inline-flex w-fit rounded-full border border-line px-4 py-1.5 text-[12.5px] font-bold text-ink-sub">
-                                {t.fixLabel}
-                            </p>
-                            <ol className="mb-7 grid gap-4">
-                                {t.fixSteps.map((s, i) => (
-                                    <li key={s.title} className="flex gap-4">
-                                        <span
-                                            className="w-7 shrink-0 text-[18px] font-bold leading-tight text-coral-deep"
-                                            style={{ fontFamily: serif }}
-                                        >
-                                            {String(i + 1).padStart(2, "0")}
-                                        </span>
-                                        <span>
-                                            <span className="block text-[15px] font-bold leading-snug text-ink">{s.title}</span>
-                                            <span className="mt-1 block text-[13px] leading-[1.9] text-ink-sub">{s.body}</span>
-                                        </span>
-                                    </li>
-                                ))}
-                            </ol>
-                            <a
-                                href={withLang(lang, "/shindan")}
-                                className="group mt-auto inline-flex min-h-12 w-fit items-center gap-2 rounded-full border border-line px-7 text-[15px] font-bold text-ink transition-colors hover:border-coral hover:text-coral-deep"
-                            >
-                                {t.fixCta}
-                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
-                            </a>
-                        </div>
-                    </FadeIn>
+                <div className="mb-9 flex flex-col gap-5 md:mb-11 md:flex-row md:items-center md:justify-between md:gap-8">
+                    <div className="flex items-center gap-5">
+                        <p aria-label="Flow" className="text-[clamp(2.75rem,6.4vw,5rem)] font-bold leading-none" style={{ fontFamily: serif }}>
+                            <span aria-hidden style={{ color: V4.teal }}>F</span><span aria-hidden style={{ color: V4.coralDeep }}>l</span><span aria-hidden style={{ color: "#B07D1A" }}>o</span><span aria-hidden style={{ color: V4.navy }}>w</span>
+                        </p>
+                        <span aria-hidden className="block h-12 w-px" style={{ backgroundColor: "rgba(20,51,90,0.35)" }} />
+                        <p className="text-[14px] font-bold md:text-[15px]" style={{ color: V4.coralDeep }}>{t.eyebrow}</p>
+                    </div>
+                    <div className="md:text-left">
+                        <h2 className={`${mincho.className} text-[clamp(1.9rem,4vw,3.2rem)] font-bold leading-[1.2] tracking-[0.02em]`} style={{ color: V4.navy }}>{t.title}</h2>
+                        <p className="mt-2 text-[14.5px] md:text-[17px]" style={{ color: V4.sub }}>{t.lead}</p>
+                    </div>
                 </div>
 
-                <FadeIn>
-                    <p className="mt-6 max-w-[46em] text-[13.5px] leading-[2] text-ink-sub">{t.note}</p>
-                </FadeIn>
+                <div className="grid gap-6 md:grid-cols-2 md:gap-8">
+                    <FadeIn className="h-full"><Card track={t.left} tone="coral" lang={lang} /></FadeIn>
+                    <FadeIn delay={0.08} className="h-full"><Card track={t.right} tone="teal" lang={lang} /></FadeIn>
+                </div>
             </div>
         </section>
     );
