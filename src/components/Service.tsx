@@ -14,8 +14,6 @@ import { withLang, type Lang } from "@/i18n";
 import illust02 from "@/images/v4/support-02.webp";
 import illust03 from "@/images/v4/support-03.webp";
 
-export type Audience = "general" | "classroom";
-
 type Row = { no: string; title: string; sub: string; body: React.ReactNode; img?: StaticImageData };
 
 const jaGeneral = {
@@ -40,17 +38,6 @@ const jaGeneral = {
     link: "サービス・料金の詳細を見る",
 };
 
-const ja: typeof jaGeneral = {
-    ...jaGeneral,
-    lead: "教室のホームページの制作・更新・管理を、まとめて任せられます。",
-    rows: [
-        { ...jaGeneral.rows[0], body: <>教室の雰囲気と魅力が伝わるページを制作。<br className="hidden lg:block" />10ページまで、スマートフォンにも対応。</> },
-        { ...jaGeneral.rows[1], body: <>写真の差し替えや、クラス・料金・お知らせの更新。<br className="hidden lg:block" />修正・更新は、回数を気にせず相談できます。</> },
-        jaGeneral.rows[2],
-    ],
-    chips: ["Googleマップ", "LINE", "SEO", "体験申込の導線"],
-};
-
 const enGeneral: typeof jaGeneral = {
     eyebrow: "WHAT WE DO",
     title: (
@@ -73,19 +60,10 @@ const enGeneral: typeof jaGeneral = {
     link: "See services and pricing",
 };
 
-const en: typeof jaGeneral = {
-    ...enGeneral,
-    lead: "Building, updating and managing your school's website, all in one place.",
-    chips: ["Google Maps", "LINE", "SEO", "Trial booking paths"],
-};
+const copy: Record<Lang, typeof jaGeneral> = { ja: jaGeneral, en: enGeneral };
 
-const copy: Record<Lang, Record<Audience, typeof jaGeneral>> = {
-    ja: { general: jaGeneral, classroom: ja },
-    en: { general: enGeneral, classroom: en },
-};
-
-export function Service({ lang = "ja", audience = "general" }: { lang?: Lang; audience?: Audience }) {
-    const t = copy[lang][audience];
+export function Service({ lang = "ja" }: { lang?: Lang }) {
+    const t = copy[lang];
     return (
         <section className="relative overflow-hidden bg-white px-4 py-14 md:px-6 md:py-20">
             <div className="relative mx-auto max-w-6xl">

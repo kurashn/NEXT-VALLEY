@@ -1,4 +1,4 @@
-// Server Component — よくある悩み（worries.png の再現。一般向け／教室向けの2種類）
+// Server Component — よくある悩み（worries.png の再現）
 
 import React from "react";
 import Image, { type StaticImageData } from "next/image";
@@ -11,11 +11,6 @@ import { type Lang } from "@/i18n";
 import worryUpdate from "@/images/v4/worry-update.webp";
 import worryContact from "@/images/v4/worry-contact.webp";
 import worryTime from "@/images/v4/worry-time.webp";
-import photoEnglish from "@/images/problem-english.webp";
-import photoDance from "@/images/problem-dance.webp";
-import photoMusic from "@/images/problem-music.webp";
-
-export type Audience = "general" | "classroom";
 
 type Worry = { no: string; tag: string; title: React.ReactNode; body: React.ReactNode; img: StaticImageData; alt: string };
 
@@ -43,40 +38,6 @@ const jaGeneral = {
             no: "03", tag: "TIME", img: worryTime, alt: "のこぎりで木材を切る職人の手元",
             title: <>Webに使う時間も、<br />相談できる人もいない。</>,
             body: <>日々の仕事で手いっぱい。<br className="hidden lg:block" />何から手をつければいいのか迷っている。</>,
-        },
-    ] as Worry[],
-    bannerTitle: (
-        <>
-            ひとりで抱えず、<Teal>Web担当</Teal>に任せてみませんか。
-        </>
-    ),
-    bannerLead: "制作・更新・管理から、必要に応じた集客改善まで。",
-};
-
-const ja: typeof jaGeneral = {
-    eyebrow: "教室の先生のよくある悩み",
-    title: (
-        <>
-            <span className="nowrap">Webのこと、</span>
-            <span className="nowrap"><Underline>後回し</Underline>になっていませんか。</span>
-        </>
-    ),
-    lead: "レッスンが忙しいと、ホームページのことまで手が回らないものです。",
-    worries: [
-        {
-            no: "01", tag: "UPDATE", img: photoEnglish, alt: "英会話教室のレッスン風景",
-            title: <>ホームページが古いまま。<br />更新の仕方もわからない。</>,
-            body: <>料金や講師が変わったのに、<br className="hidden lg:block" />ついそのままになっている。</>,
-        },
-        {
-            no: "02", tag: "CONTACT", img: photoDance, alt: "ダンス教室のレッスン風景",
-            title: <>見られているのに、<br />体験申込につながらない。</>,
-            body: <>ホームページやInstagramはあるけれど、<br className="hidden lg:block" />申込がなかなか増えない。</>,
-        },
-        {
-            no: "03", tag: "TIME", img: photoMusic, alt: "音楽教室のレッスン風景",
-            title: <>Webに使う時間も、<br />相談できる人もいない。</>,
-            body: <>レッスンと事務で手いっぱい。<br className="hidden lg:block" />何から手をつければいいのか迷っている。</>,
         },
     ] as Worry[],
     bannerTitle: (
@@ -120,24 +81,10 @@ const enGeneral: typeof jaGeneral = {
     bannerLead: "From build, updates and upkeep to improvements when you need them.",
 };
 
-const en: typeof jaGeneral = {
-    ...enGeneral,
-    eyebrow: "WHAT TEACHERS TELL US",
-    lead: "When lessons keep you busy, the website is the first thing to slip.",
-    worries: [
-        { ...enGeneral.worries[0], img: photoEnglish, alt: "An English class in progress", body: <>Fees and teachers have changed, but the site still says otherwise.</> },
-        { ...enGeneral.worries[1], img: photoDance, alt: "A dance class in progress", title: <>People look,<br />but trial bookings don&apos;t follow.</> },
-        { ...enGeneral.worries[2], img: photoMusic, alt: "A music lesson in progress", body: <>Lessons and admin fill the day. Where to start is unclear.</> },
-    ],
-};
+const copy: Record<Lang, typeof jaGeneral> = { ja: jaGeneral, en: enGeneral };
 
-const copy: Record<Lang, Record<Audience, typeof jaGeneral>> = {
-    ja: { general: jaGeneral, classroom: ja },
-    en: { general: enGeneral, classroom: en },
-};
-
-export function Problem({ lang = "ja", audience = "general" }: { lang?: Lang; audience?: Audience }) {
-    const t = copy[lang][audience];
+export function Problem({ lang = "ja" }: { lang?: Lang }) {
+    const t = copy[lang];
     return (
         <section className="relative overflow-hidden px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: V4.cream }}>
             <div className="relative mx-auto max-w-6xl">
