@@ -16,7 +16,7 @@ const CORAL = "#FD7368";
 
 const ja = {
     eyebrow: "埼玉の会社・お店・教室のためのWeb担当",
-    h1a: "あなたは、本業に。",
+    h1a: <>あなたは、<span style={{ color: "#E8503A" }}>本業</span>に。</>,
     h1web: "Web",
     h1b: "は、私たちに。",
     lead: "ホームページ制作から、公開後の更新・管理まで。",
@@ -38,7 +38,7 @@ const ja = {
 
 const en: typeof ja = {
     eyebrow: "WEB SUPPORT FOR COMPANIES, SHOPS AND SCHOOLS IN SAITAMA",
-    h1a: "You run the business.",
+    h1a: <>You run the <span style={{ color: "#E8503A" }}>business</span>.</>,
     h1web: "Web",
     h1b: " is on us.",
     lead: "From building the site to updating and managing it after launch.",
@@ -67,11 +67,11 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
             {/* ── 上段：白地。イラストはこの箱の下辺に揃える ── */}
             <div className="relative pt-[108px] md:pt-[120px]">
                 {/* 街並みのイラスト（PCのみ） */}
-                <div aria-hidden className="pointer-events-none absolute bottom-0 left-0 hidden w-[27%] max-w-[420px] lg:block">
-                    <Image src={townLeft} alt="" sizes="28vw" className="h-auto w-full" priority />
+                <div aria-hidden className="pointer-events-none absolute bottom-0 left-0 hidden w-[30.5%] max-w-[470px] lg:block">
+                    <Image src={townLeft} alt="" sizes="31vw" className="h-auto w-full" priority />
                 </div>
-                <div aria-hidden className="pointer-events-none absolute bottom-0 right-0 hidden w-[25.5%] max-w-[392px] lg:block">
-                    <Image src={townRight} alt="" sizes="26vw" className="h-auto w-full" priority />
+                <div aria-hidden className="pointer-events-none absolute bottom-0 right-0 hidden w-[32.5%] max-w-[500px] lg:block">
+                    <Image src={townRight} alt="" sizes="33vw" className="h-auto w-full" priority />
                 </div>
 
                 {/* 手書き風の添え文（左）と英字（右） */}
@@ -100,7 +100,7 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                         {t.eyebrow}
                     </p>
                     <h1
-                        className={`${heavy.className} mb-3 text-[clamp(2.15rem,min(6.4vw,8vh),4.6rem)] leading-[1.1] tracking-[-0.02em]`}
+                        className={`${heavy.className} mb-3 text-[clamp(2.15rem,min(6.9vw,8.6vh),5.2rem)] leading-[1.08] tracking-[-0.03em]`}
                         style={{ color: NAVY }}
                     >
                         <span className="block">{t.h1a}</span>
@@ -157,8 +157,8 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
 
                 {/* 街並みのイラスト（スマホ・タブレット：本文の下に左右並び） */}
                 <div aria-hidden className="pointer-events-none -mt-2 flex items-end justify-between lg:hidden">
-                    <Image src={townLeft} alt="" sizes="55vw" className="h-auto w-[54%]" priority />
-                    <Image src={townRight} alt="" sizes="50vw" className="h-auto w-[48%]" priority />
+                    <Image src={townLeft} alt="" sizes="55vw" className="h-auto w-[50%]" priority />
+                    <Image src={townRight} alt="" sizes="50vw" className="h-auto w-[52%]" priority />
                 </div>
             </div>
         </section>
