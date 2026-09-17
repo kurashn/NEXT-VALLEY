@@ -30,17 +30,17 @@ const jaGeneral = {
     lead: "本業が忙しいと、ホームページのことまで手が回らないものです。",
     worries: [
         {
-            no: "01", tag: "UPDATE", img: worryUpdate, alt: "机の上のノートパソコンでホームページを開いている手元",
+            no: "01", tag: "UPDATE", img: worryUpdate, alt: "ノートパソコンの前で頬づえをつく女性",
             title: <>ホームページが古いまま。<br />更新の仕方もわからない。</>,
             body: <>写真や営業時間を変えたいのに、<br className="hidden lg:block" />ついそのままになっている。</>,
         },
         {
-            no: "02", tag: "CONTACT", img: worryContact, alt: "花屋の店内でスマートフォンを見る店主",
+            no: "02", tag: "CONTACT", img: worryContact, alt: "カフェの店先でタブレットを持つ店主",
             title: <>見られているのに、<br />問い合わせにつながらない。</>,
             body: <>ホームページやSNSはあるけれど、<br className="hidden lg:block" />相談や予約がなかなか増えない。</>,
         },
         {
-            no: "03", tag: "TIME", img: worryTime, alt: "作業場でノートパソコンに向かう職人",
+            no: "03", tag: "TIME", img: worryTime, alt: "道具の並ぶ工房で作業する職人",
             title: <>Webに使う時間も、<br />相談できる人もいない。</>,
             body: <>日々の仕事で手いっぱい。<br className="hidden lg:block" />何から手をつければいいのか迷っている。</>,
         },
@@ -97,17 +97,17 @@ const enGeneral: typeof jaGeneral = {
     lead: "When the business keeps you busy, the website is the first thing to slip.",
     worries: [
         {
-            no: "01", tag: "UPDATE", img: worryUpdate, alt: "Hands on a laptop showing a website",
+            no: "01", tag: "UPDATE", img: worryUpdate, alt: "A woman at a laptop, chin in hand",
             title: <>The site is out of date,<br />and updating it is a mystery.</>,
             body: <>Photos and opening hours need changing, but it never happens.</>,
         },
         {
-            no: "02", tag: "CONTACT", img: worryContact, alt: "A florist checking a phone in the shop",
+            no: "02", tag: "CONTACT", img: worryContact, alt: "A cafe owner holding a tablet at the shop front",
             title: <>People look,<br />but nobody gets in touch.</>,
             body: <>There is a website and social media, yet enquiries and bookings stay flat.</>,
         },
         {
-            no: "03", tag: "TIME", img: worryTime, alt: "A craftsman at a laptop in the workshop",
+            no: "03", tag: "TIME", img: worryTime, alt: "A craftsman at work in a tool-lined workshop",
             title: <>No time for the web,<br />and no one to ask.</>,
             body: <>The day is full already. Where to even start is unclear.</>,
         },

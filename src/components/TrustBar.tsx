@@ -24,7 +24,7 @@ export function TrustBar({ lang = "ja" }: { lang?: Lang }) {
         <section className="px-4 py-7 md:px-6 md:py-8" style={{ backgroundColor: "#041627" }}>
             <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-y-6 md:grid-cols-4 md:gap-y-0">
                 {items.map((it, i) => {
-                    const color = it.tone === "teal" ? "#8ED4E4" : "#FFFFFF";
+                    const color = "#FFFFFF";
                     return (
                         <li
                             key={it.key}
