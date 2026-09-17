@@ -8,13 +8,13 @@ const ja = [
     { key: "since", value: "2021", unit: "年", label: "創業", note: "制作から公開後の運用まで。", tone: "navy" },
     { key: "count", value: "100", unit: "社以上", label: "制作・支援実績", note: "会社・店舗・教室など幅広く。", tone: "teal" },
     { key: "home", value: "本庄", unit: "", label: "代表の出身地", note: "埼玉とのつながりを大切に。", tone: "navy" },
-    { key: "area", value: "全国対応", unit: "", label: "オンラインで相談・進行", note: "埼玉を中心に、全国へ。", tone: "teal" },
+    { key: "area", value: "全国対応", unit: "", label: "LINE・メールで相談・進行", note: "埼玉を中心に、全国へ。", tone: "teal" },
 ];
 const en: typeof ja = [
     { key: "since", value: "2021", unit: "", label: "Founded", note: "From build to day-to-day upkeep.", tone: "navy" },
     { key: "count", value: "100", unit: "+", label: "Sites built and supported", note: "Companies, shops, schools and more.", tone: "teal" },
     { key: "home", value: "Honjo", unit: "", label: "Where the founder is from", note: "Rooted in Saitama.", tone: "navy" },
-    { key: "area", value: "Japan-wide", unit: "", label: "Online meetings and delivery", note: "Saitama first, then anywhere.", tone: "teal" },
+    { key: "area", value: "Japan-wide", unit: "", label: "LINE and email, start to finish", note: "Saitama first, then anywhere.", tone: "teal" },
 ];
 const copy: Record<Lang, typeof ja> = { ja, en };
 

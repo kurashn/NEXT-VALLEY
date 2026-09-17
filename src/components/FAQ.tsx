@@ -30,7 +30,29 @@ export const faqs: FaqItem[] = [
     },
     {
         q: "最低契約期間はありますか？",
-        a: "1年間です。ドメイン・サーバー費を含めて初期制作費を0円にしているため、1年間の継続をお願いしています。",
+        a: "1年間です。ドメイン・サーバー費を含めて初期制作費を0円にしているため、1年間の継続をお願いしています。1年未満での解約もできますが、その場合サイトの譲渡はできません。",
+    },
+    {
+        q: "1年未満で解約したい場合は、どうなりますか？",
+        a: "解約できます。その場合、サイトは公開終了となり、デザインや文章などのデータの譲渡はできません。解約は前月末までにお知らせください。解約月までの月額をお支払いいただき、お支払い済みの分の返金はありません。お預かりした写真やロゴの元データはお返しします。",
+        aNode: (
+            <>
+                <p>解約できます。その場合、サイトは公開終了となり、デザインや文章などのデータの譲渡は<span className="nowrap">できません。</span></p>
+                <p className="mt-3">解約は前月末までにお知らせください。解約月までの月額をお支払いいただき、お支払い済みの分の返金は<span className="nowrap">ありません。</span></p>
+                <p className="mt-3">お預かりした写真やロゴの元データは<span className="nowrap">お返しします。</span></p>
+            </>
+        ),
+    },
+    {
+        q: "ドメインとサーバーは、どちらが契約しますか？",
+        a: "基本的に当方で契約し、費用は月額に含まれます。追加の料金はかかりません。お客様名義で契約したい場合は、お客様側でご用意いただければ、設定はこちらで行います。1年以上ご契約いただいてサイトを譲渡する際は、当方で契約したドメインもお客様へ移管できます。",
+        aNode: (
+            <>
+                <p>基本的に当方で契約し、費用は月額に含まれます。追加の料金は<span className="nowrap">かかりません。</span></p>
+                <p className="mt-3">お客様名義で契約したい場合は、お客様側でご用意いただければ、設定はこちらで<span className="nowrap">行います。</span></p>
+                <p className="mt-3">1年以上ご契約いただいてサイトを譲渡する際は、当方で契約したドメインもお客様へ<span className="nowrap">移管できます。</span></p>
+            </>
+        ),
     },
     {
         q: "修正や更新は、何回まで頼めますか？",
@@ -60,7 +82,7 @@ export const faqs: FaqItem[] = [
     },
     {
         q: "サイトは自分のものになりますか？",
-        a: "1年以上のご契約で、サイトの譲渡が可能です。手続きの進め方はご相談ください。",
+        a: "1年以上のご契約で、サイトの譲渡が可能です。ドメインも合わせてお客様へ移管できます。手続きの進め方はご相談ください。",
     },
     {
         q: "写真や文章がなくても、頼めますか？",
@@ -72,7 +94,7 @@ export const faqs: FaqItem[] = [
     },
     {
         q: "埼玉以外や遠方でも、対応できますか？",
-        a: "全国対応です。打ち合わせはLINE・メール・ビデオ通話で完結します。埼玉を中心にお手伝いしていますが、地域は問いません。"
+        a: "全国対応です。やり取りはLINEかメールで完結し、オンライン会議や電話は基本的に行いません。埼玉を中心にお手伝いしていますが、地域は問いません。"
     },
 ];
 
@@ -91,7 +113,7 @@ const faqsEn: FaqItem[] = [
     },
     {
         q: "Is there a minimum term?",
-        a: "Twelve months. Because the setup fee is zero and domain and hosting are included, we ask for a year.",
+        a: "Twelve months. Because the setup fee is zero and domain and hosting are included, we ask for a year. You can cancel earlier, but the site cannot be transferred to you in that case.",
     },
     {
         q: "How many edits can I ask for?",
@@ -107,7 +129,15 @@ const faqsEn: FaqItem[] = [
     },
     {
         q: "Will the site be mine?",
-        a: "After twelve months or more, the site can be transferred to you. We'll walk you through the steps.",
+        a: "After twelve months or more, the site can be transferred to you, together with the domain. We'll walk you through the steps.",
+    },
+    {
+        q: "What if I cancel before twelve months?",
+        a: "You can. The site goes offline and the design and content are not transferred. Let us know by the end of the previous month; you pay up to the month of cancellation, and fees already paid are not refunded. Photos and logos you supplied are returned.",
+    },
+    {
+        q: "Who registers the domain and hosting?",
+        a: "We do, and the cost is included in the monthly fee with nothing extra. If you prefer to hold them in your own name, arrange them on your side and we handle the setup. When the site is transferred after twelve months, the domain we registered can be moved to you too.",
     },
     {
         q: "What if I don't have photos or text ready?",
@@ -119,7 +149,7 @@ const faqsEn: FaqItem[] = [
     },
     {
         q: "I'm not nearby. Can you still help?",
-        a: "Yes, we work with clients across Japan over LINE, email and video calls. Northern Saitama is our home ground, but location is no barrier.",
+        a: "Yes, we work with clients across Japan over LINE and email, with no calls or video meetings needed. Northern Saitama is our home ground, but location is no barrier.",
     },
 ];
 
