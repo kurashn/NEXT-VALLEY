@@ -4,6 +4,8 @@ import { Service } from "@/components/Service";
 import { Works } from "@/components/Works";
 import { Case } from "@/components/Case";
 import { AfterLaunch } from "@/components/AfterLaunch";
+import { TrustBar } from "@/components/TrustBar";
+import { Local } from "@/components/Local";
 import { Pricing } from "@/components/Pricing";
 import { Flow } from "@/components/Flow";
 import { Representative } from "@/components/Representative";
@@ -82,11 +84,13 @@ export function HomePage({ lang = "ja" }: { lang?: Lang }) {
       />
       <Navbar lang={lang} />
       <Hero lang={lang} />
-      <div id="case" className="scroll-mt-24"><Case lang={lang} /></div>
+      <TrustBar lang={lang} />
       <div id="problem" className="scroll-mt-24"><Problem lang={lang} /></div>
       <div id="service" className="scroll-mt-24"><Service lang={lang} /></div>
       <div id="price" className="scroll-mt-24"><Pricing lang={lang} /></div>
       <div id="works" className="scroll-mt-24"><Works lang={lang} /></div>
+      <div id="case" className="scroll-mt-24"><Case lang={lang} /></div>
+      <div id="local" className="scroll-mt-24"><Local lang={lang} /></div>
       <div id="growth" className="scroll-mt-24"><AfterLaunch lang={lang} /></div>
       <div id="flow" className="scroll-mt-24"><Flow lang={lang} /></div>
       <Representative lang={lang} />
