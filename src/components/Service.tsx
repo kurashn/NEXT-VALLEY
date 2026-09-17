@@ -1,204 +1,82 @@
-// Server Component — 支援する範囲（4つの段階）
-// 各段階で「月額に含むこと」と「別途お見積もりのこと」を分けて書く
+// Server Component — 支援する内容（support.png の再現）
+// 基本プランに含まれる3つ（つくる・更新する・管理する）と、別途お見積もりの集客改善
 
 import React from "react";
+import Image, { type StaticImageData } from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { SerifHeading, serif } from "@/components/ui/SerifHeading";
-import { type Lang } from "@/i18n";
+import { SectionHeadV4, Teal, Dots } from "@/components/ui/SectionHeadV4";
+import { serif } from "@/components/ui/SerifHeading";
+import { heavy, V4 } from "@/lib/fonts-v4";
+import { withLang, type Lang } from "@/i18n";
 
-type Stage = {
-    key: string;
-    step: string;
-    title: string;
-    body: React.ReactNode;
-    included: string[];
-    optional: string[];
-};
+import illust01 from "@/images/v4/support-01.webp";
+import illust02 from "@/images/v4/support-02.webp";
+import illust03 from "@/images/v4/support-03.webp";
 
 export type Audience = "general" | "classroom";
 
+type Row = { no: string; title: string; sub: string; body: React.ReactNode; img: StaticImageData };
+
 const jaGeneral = {
-    label: "支援する範囲",
-    lead: (
+    eyebrow: "支援する内容",
+    title: (
         <>
-            問い合わせや予約までは、4つの段階に分かれます。どこでつまずいているかによって、やることが変わります。
-            <br className="hidden md:block" />
-            月額のホームページ制作・管理に含むことと、別途お見積もりになることを分けて<span className="nowrap">書きました。</span>
+            つくることも、<Teal>その後</Teal>のことも。
         </>
     ),
-    includedLabel: "月額に含む",
-    optionalLabel: "別途お見積もり",
-    stages: [
-        {
-            key: "find",
-            step: "01",
-            title: "見つけてもらう",
-            body: <>お客様は「地域名＋業種」で検索し、Googleマップと検索結果を見比べます。まず、探している人の目に入ることが<span className="nowrap">必要です。</span></>,
-            included: ["ページの基本的な検索向け設定（タイトル・説明文）", "スマートフォンでの表示"],
-            optional: ["Googleマップ（MEO）の整備・運用", "継続的なSEO支援"],
-        },
-        {
-            key: "tell",
-            step: "02",
-            title: "事業の内容を伝える",
-            body: <>何をしている会社・お店か、料金、場所、雰囲気。知りたいことが揃っていないと、比べる前に<span className="nowrap">離れます。</span></>,
-            included: ["10ページまでの制作", "写真やお知らせの差し替え（回数の制限なし）", "メニュー・料金・アクセスの見せ方の設計"],
-            optional: ["写真撮影", "ロゴ・チラシなどの制作"],
-        },
-        {
-            key: "apply",
-            step: "03",
-            title: "問い合わせ・予約に進んでもらう",
-            body: <>入口が分かりにくいと、興味を持った人でも止まります。どこからでも1回で問い合わせや予約ができる形に<span className="nowrap">します。</span></>,
-            included: ["問い合わせボタンとフォームの設置", "LINEへのリンク設置"],
-            optional: ["LINE公式アカウントの構築・運用", "予約や自動返信の仕組みづくり"],
-        },
-        {
-            key: "improve",
-            step: "04",
-            title: "数字を見て改善する",
-            body: <>公開して終わりにせず、来た人数と問い合わせの数を見ながら、次に直す場所を<span className="nowrap">決めます。</span></>,
-            included: ["公開後の修正・更新（回数の制限なし）"],
-            optional: ["アクセスと問い合わせの計測", "毎月のレポートと改善提案", "改善の実行"],
-        },
-    ] as Stage[],
+    lead: "ホームページの制作・更新・管理を、まとめて任せられます。",
+    includedLabel: "基本プランに含まれること",
+    rows: [
+        { no: "01", title: "つくる", sub: "ホームページ制作", img: illust01, body: <>会社・お店・教室の魅力が伝わるページを制作。<br className="hidden lg:block" />10ページまで、スマートフォンにも対応。</> },
+        { no: "02", title: "更新する", sub: "写真・文章の修正", img: illust02, body: <>写真の差し替えや、お知らせ・営業時間の更新。<br className="hidden lg:block" />修正・更新は、回数を気にせず相談できます。</> },
+        { no: "03", title: "管理する", sub: "ドメイン・サーバー管理", img: illust03, body: <>ドメイン・サーバーの管理もまとめて対応。<br className="hidden lg:block" />Webに詳しくなくても、相談できる窓口に。</> },
+    ] as Row[],
+    optionalPill: "必要に応じて・別途お見積もり",
+    optionalTitle: "集客の改善も、課題に合わせて。",
+    optionalLead: "現状を確認し、必要な支援だけをご提案します。",
+    chips: ["Googleマップ", "LINE", "SEO", "問い合わせ導線"],
+    optionalNote: "※ 継続的な集客支援は、基本プランとは別料金です。",
+    link: "サービス・料金の詳細を見る",
 };
 
 const ja: typeof jaGeneral = {
-    label: "支援する範囲",
-    lead: (
-        <>
-            体験申込までは、4つの段階に分かれます。どこでつまずいているかによって、やることが変わります。
-            <br className="hidden md:block" />
-            月額のホームページ制作・管理に含むことと、別途お見積もりになることを分けて<span className="nowrap">書きました。</span>
-        </>
-    ),
-    includedLabel: "月額に含む",
-    optionalLabel: "別途お見積もり",
-    stages: [
-        {
-            key: "find",
-            step: "01",
-            title: "見つけてもらう",
-            body: <>保護者は「地域名＋教室名」で検索し、Googleマップと検索結果を見比べます。まず、探している人の目に入ることが<span className="nowrap">必要です。</span></>,
-            included: ["ページの基本的な検索向け設定（タイトル・説明文）", "スマートフォンでの表示"],
-            optional: ["Googleマップ（MEO）の整備・運用", "継続的なSEO支援"],
-        },
-        {
-            key: "tell",
-            step: "02",
-            title: "教室の魅力を伝える",
-            body: <>対象年齢・場所・料金・講師・雰囲気。保護者が知りたいことが揃っていないと、比べる前に<span className="nowrap">離れます。</span></>,
-            included: ["10ページまでの制作", "写真やお知らせの差し替え（回数の制限なし）", "クラス・料金・アクセスの見せ方の設計"],
-            optional: ["写真撮影", "ロゴ・チラシなどの制作"],
-        },
-        {
-            key: "apply",
-            step: "03",
-            title: "相談・体験申込に進んでもらう",
-            body: <>申込の入口が分かりにくいと、興味を持った人でも止まります。どこからでも1回で申し込める形に<span className="nowrap">します。</span></>,
-            included: ["申込ボタンと問い合わせフォームの設置", "LINEへのリンク設置"],
-            optional: ["LINE公式アカウントの構築・運用", "予約や自動返信の仕組みづくり"],
-        },
-        {
-            key: "improve",
-            step: "04",
-            title: "数字を見て改善する",
-            body: <>公開して終わりにせず、来た人数と申込の数を見ながら、次に直す場所を<span className="nowrap">決めます。</span></>,
-            included: ["公開後の修正・更新（回数の制限なし）"],
-            optional: ["アクセスと申込の計測", "毎月のレポートと改善提案", "改善の実行"],
-        },
-    ] as Stage[],
+    ...jaGeneral,
+    lead: "教室のホームページの制作・更新・管理を、まとめて任せられます。",
+    rows: [
+        { ...jaGeneral.rows[0], body: <>教室の雰囲気と魅力が伝わるページを制作。<br className="hidden lg:block" />10ページまで、スマートフォンにも対応。</> },
+        { ...jaGeneral.rows[1], body: <>写真の差し替えや、クラス・料金・お知らせの更新。<br className="hidden lg:block" />修正・更新は、回数を気にせず相談できます。</> },
+        jaGeneral.rows[2],
+    ],
+    chips: ["Googleマップ", "LINE", "SEO", "体験申込の導線"],
 };
 
 const enGeneral: typeof jaGeneral = {
-    label: "What we help with",
-    lead: (
+    eyebrow: "WHAT WE DO",
+    title: (
         <>
-            Getting to an enquiry or a booking has four stages. What needs doing depends on where people drop off. Below, what the monthly plan covers is separated from what is quoted separately.
+            The build, and <Teal>everything after</Teal>.
         </>
     ),
-    includedLabel: "In the monthly plan",
-    optionalLabel: "Quoted separately",
-    stages: [
-        {
-            key: "find",
-            step: "01",
-            title: "Be found",
-            body: <>People search for your area and your trade, then compare what they see on Google Maps and in search results.</>,
-            included: ["Basic search settings (title and description)", "Mobile display"],
-            optional: ["Google Maps (MEO) setup and management", "Ongoing SEO support"],
-        },
-        {
-            key: "tell",
-            step: "02",
-            title: "Explain what you do",
-            body: <>What the business does, prices, location, atmosphere. If those are missing, people leave before comparing.</>,
-            included: ["Up to 10 pages", "Photo and news updates, no limit on how often", "Layout for menus, prices and access"],
-            optional: ["Photography", "Logo and print design"],
-        },
-        {
-            key: "apply",
-            step: "03",
-            title: "Make enquiring easy",
-            body: <>If the way to book or ask is hard to find, interested people stop there. We make it one tap from any page.</>,
-            included: ["Enquiry buttons and a contact form", "A link to your LINE account"],
-            optional: ["LINE official account setup and operation", "Booking and auto-reply systems"],
-        },
-        {
-            key: "improve",
-            step: "04",
-            title: "Improve with the numbers",
-            body: <>After launch we look at visits and enquiries to decide what to fix next.</>,
-            included: ["Edits and updates after launch, no limit on how often"],
-            optional: ["Tracking visits and enquiries", "Monthly reporting and proposals", "Carrying out the improvements"],
-        },
-    ] as Stage[],
+    lead: "Building, updating and managing your website, all in one place.",
+    includedLabel: "Included in the basic plan",
+    rows: [
+        { no: "01", title: "Build", sub: "Website creation", img: illust01, body: <>Pages that show what your company, shop or school is like. Up to 10 pages, mobile-ready.</> },
+        { no: "02", title: "Update", sub: "Photos and text", img: illust02, body: <>New photos, news and opening hours. Ask for edits as often as you need.</> },
+        { no: "03", title: "Manage", sub: "Domain and hosting", img: illust03, body: <>We look after the domain and hosting too, so there is one place to ask, however unfamiliar the web is.</> },
+    ] as Row[],
+    optionalPill: "When needed, quoted separately",
+    optionalTitle: "Improvements to bring in more enquiries.",
+    optionalLead: "We look at where you stand and propose only what helps.",
+    chips: ["Google Maps", "LINE", "SEO", "Enquiry paths"],
+    optionalNote: "Ongoing marketing support is priced separately from the basic plan.",
+    link: "See services and pricing",
 };
 
 const en: typeof jaGeneral = {
-    label: "What we help with",
-    lead: (
-        <>
-            Getting to a trial booking has four stages. What needs doing depends on where people drop off. Below, what the monthly plan covers is separated from what is quoted separately.
-        </>
-    ),
-    includedLabel: "In the monthly plan",
-    optionalLabel: "Quoted separately",
-    stages: [
-        {
-            key: "find",
-            step: "01",
-            title: "Be found",
-            body: <>Parents search for your area and your school, then compare what they see on Google Maps and in search results.</>,
-            included: ["Basic search settings (title and description)", "Mobile display"],
-            optional: ["Google Maps (MEO) setup and management", "Ongoing SEO support"],
-        },
-        {
-            key: "tell",
-            step: "02",
-            title: "Show what your school is like",
-            body: <>Ages, location, fees, teachers, atmosphere. If those are missing, people leave before comparing.</>,
-            included: ["Up to 10 pages", "Photo and news updates, no limit on how often", "Layout for classes, fees and access"],
-            optional: ["Photography", "Logo and print design"],
-        },
-        {
-            key: "apply",
-            step: "03",
-            title: "Make enquiring easy",
-            body: <>If the way to book is hard to find, interested people stop there. We make it one tap from any page.</>,
-            included: ["Booking buttons and a contact form", "A link to your LINE account"],
-            optional: ["LINE official account setup and operation", "Booking and auto-reply systems"],
-        },
-        {
-            key: "improve",
-            step: "04",
-            title: "Improve with the numbers",
-            body: <>After launch we look at visits and bookings to decide what to fix next.</>,
-            included: ["Edits and updates after launch, no limit on how often"],
-            optional: ["Tracking visits and bookings", "Monthly reporting and proposals", "Carrying out the improvements"],
-        },
-    ] as Stage[],
+    ...enGeneral,
+    lead: "Building, updating and managing your school's website, all in one place.",
+    chips: ["Google Maps", "LINE", "SEO", "Trial booking paths"],
 };
 
 const copy: Record<Lang, Record<Audience, typeof jaGeneral>> = {
@@ -209,59 +87,84 @@ const copy: Record<Lang, Record<Audience, typeof jaGeneral>> = {
 export function Service({ lang = "ja", audience = "general" }: { lang?: Lang; audience?: Audience }) {
     const t = copy[lang][audience];
     return (
-        <section className="relative overflow-hidden bg-base px-4 py-16 md:px-6 md:py-24">
+        <section className="relative overflow-hidden bg-white px-4 py-14 md:px-6 md:py-20">
             <div className="relative mx-auto max-w-6xl">
+                <SectionHeadV4 word="Support" eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
+
                 <FadeIn>
-                    <SerifHeading en="Support" jp={t.label} />
-                    <p className="lead -mt-6 mb-10 text-[15px] leading-[2] tracking-[0.03em] text-ink-sub md:mb-14">
-                        {t.lead}
-                    </p>
+                    <div className="rounded-[16px] border-[1.5px] bg-white px-5 pb-6 pt-4 md:px-8 md:pb-8" style={{ borderColor: V4.teal }}>
+                        <Dots />
+                        <p className="mt-4 inline-block rounded-md px-4 py-1.5 text-[13px] font-bold text-white md:text-[14px]" style={{ backgroundColor: V4.teal }}>
+                            {t.includedLabel}
+                        </p>
+                        <ol className="mt-2">
+                            {t.rows.map((r, i) => (
+                                <li
+                                    key={r.no}
+                                    className={`grid items-center gap-x-6 gap-y-3 py-6 md:grid-cols-[auto_minmax(0,1fr)] lg:grid-cols-[92px_260px_220px_minmax(0,1fr)] ${i > 0 ? "border-t" : ""}`}
+                                    style={{ borderColor: "rgba(44,143,168,0.28)" }}
+                                >
+                                    <span className="text-[clamp(2.4rem,4.4vw,3.6rem)] font-bold leading-none" style={{ fontFamily: serif, color: i === 1 ? V4.teal : V4.coralDeep }}>
+                                        {r.no}
+                                    </span>
+                                    <div className="md:border-l md:pl-6" style={{ borderColor: "rgba(20,51,90,0.25)" }}>
+                                        <h3 className={`${heavy.className} text-[clamp(1.5rem,2.8vw,2.3rem)] leading-[1.15]`} style={{ color: V4.navy }}>
+                                            {r.title}
+                                        </h3>
+                                        <p className="mt-1 text-[14px] font-bold md:text-[15px]" style={{ color: V4.navy }}>
+                                            {r.sub}
+                                        </p>
+                                    </div>
+                                    <div className="hidden lg:block">
+                                        <Image src={r.img} alt="" sizes="220px" className="mx-auto h-auto w-[200px]" />
+                                    </div>
+                                    <p className="text-[14.5px] leading-[1.9] md:col-span-2 md:text-[15.5px] lg:col-span-1 lg:border-l lg:pl-7" style={{ color: V4.navy, borderColor: "rgba(20,51,90,0.25)" }}>
+                                        {r.body}
+                                    </p>
+                                </li>
+                            ))}
+                        </ol>
+                    </div>
                 </FadeIn>
 
-                <ol className="grid gap-4 md:grid-cols-2">
-                    {t.stages.map((s, i) => (
-                        <li key={s.key} className="list-none">
-                            <FadeIn delay={i * 0.06} className="h-full">
-                                <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-7 md:p-8">
-                                    <div className="mb-4 flex items-baseline gap-4">
-                                        <span className="text-[26px] font-bold leading-none text-coral" style={{ fontFamily: serif }}>
-                                            {s.step}
-                                        </span>
-                                        <h3 className="text-[19px] font-bold leading-snug text-ink">{s.title}</h3>
-                                    </div>
-                                    <p className="mb-6 text-[14.5px] leading-[2] text-ink-sub">{s.body}</p>
-
-                                    <div className="mt-auto grid gap-4">
-                                        <div>
-                                            <p className="mb-2 inline-block rounded-full bg-coral/15 px-3 py-1 text-[11.5px] font-bold text-coral-deep">
-                                                {t.includedLabel}
-                                            </p>
-                                            <ul className="grid gap-1.5">
-                                                {s.included.map((x) => (
-                                                    <li key={x} className="text-[13.5px] leading-[1.8] text-ink">
-                                                        {x}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div className="border-t border-line pt-4">
-                                            <p className="mb-2 inline-block rounded-full border border-line px-3 py-1 text-[11.5px] font-bold text-ink-sub">
-                                                {t.optionalLabel}
-                                            </p>
-                                            <ul className="grid gap-1.5">
-                                                {s.optional.map((x) => (
-                                                    <li key={x} className="text-[13.5px] leading-[1.8] text-ink-sub">
-                                                        {x}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </FadeIn>
-                        </li>
-                    ))}
-                </ol>
+                <FadeIn>
+                    <div className="mt-6 grid gap-6 rounded-[16px] px-6 py-6 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1.1fr)] md:items-center md:gap-8 md:px-9 md:py-7" style={{ backgroundColor: "#E8F4F4" }}>
+                        <div>
+                            <p className="inline-block rounded-full border-[1.5px] px-4 py-1 text-[12.5px] font-bold md:text-[13.5px]" style={{ borderColor: V4.coralDeep, color: V4.coralDeep }}>
+                                {t.optionalPill}
+                            </p>
+                            <p className={`${heavy.className} mt-3 text-[clamp(1.25rem,2.4vw,1.85rem)] leading-[1.35]`} style={{ color: V4.navy }}>
+                                {t.optionalTitle}
+                            </p>
+                            <p className="mt-1.5 text-[14px] md:text-[15px]" style={{ color: V4.navy }}>
+                                {t.optionalLead}
+                            </p>
+                        </div>
+                        <span aria-hidden className="hidden h-24 w-px md:block" style={{ backgroundColor: "rgba(20,51,90,0.3)" }} />
+                        <div>
+                            <ul className="flex flex-wrap gap-2.5">
+                                {t.chips.map((c) => (
+                                    <li key={c} className="rounded-md bg-white px-4 py-2 text-[14px] font-bold" style={{ color: V4.navy }}>
+                                        {c}
+                                    </li>
+                                ))}
+                            </ul>
+                            <div className="mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+                                <p className="text-[12.5px] md:text-[13.5px]" style={{ color: V4.navy }}>
+                                    {t.optionalNote}
+                                </p>
+                                <a
+                                    href={withLang(lang, "/price")}
+                                    className="inline-flex min-h-11 items-center gap-1.5 text-[14px] font-bold underline decoration-2 underline-offset-[6px]"
+                                    style={{ color: V4.navy }}
+                                >
+                                    {t.link}
+                                    <ArrowUpRight className="h-4 w-4" aria-hidden />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </FadeIn>
             </div>
         </section>
     );

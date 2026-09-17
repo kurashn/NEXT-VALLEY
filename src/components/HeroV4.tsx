@@ -4,7 +4,7 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { Noto_Sans_JP, Zen_Kurenaido } from "next/font/google";
+import { heavy, hand } from "@/lib/fonts-v4";
 import { withLang, type Lang } from "@/i18n";
 
 import townLeft from "@/images/fv/town-left.webp";
@@ -12,9 +12,6 @@ import townRight from "@/images/fv/town-right.webp";
 import photoCafe from "@/images/fv/photo-cafe.webp";
 import photoCraft from "@/images/fv/photo-craft.webp";
 import photoSchool from "@/images/fv/photo-school.webp";
-
-const heavy = Noto_Sans_JP({ subsets: ["latin"], weight: ["900"], display: "swap" });
-const hand = Zen_Kurenaido({ subsets: ["latin"], weight: ["400"], display: "swap" });
 
 const NAVY = "#14335A";
 const TEAL = "#2C8FA8";

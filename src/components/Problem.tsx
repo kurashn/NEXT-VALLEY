@@ -1,164 +1,134 @@
-// Server Component — よくある悩み（一般向け／教室向けの2種類）
+// Server Component — よくある悩み（worries.png の再現。一般向け／教室向けの2種類）
 
 import React from "react";
 import Image, { type StaticImageData } from "next/image";
+import { AppWindow, MousePointer2 } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { SectionHeadV4, Teal, Underline } from "@/components/ui/SectionHeadV4";
+import { heavy, V4 } from "@/lib/fonts-v4";
 import { type Lang } from "@/i18n";
 
+import worryUpdate from "@/images/v4/worry-update.webp";
+import worryContact from "@/images/v4/worry-contact.webp";
+import worryTime from "@/images/v4/worry-time.webp";
 import photoEnglish from "@/images/problem-english.webp";
 import photoDance from "@/images/problem-dance.webp";
 import photoMusic from "@/images/problem-music.webp";
 
-const photos: StaticImageData[] = [photoEnglish, photoDance, photoMusic, photoEnglish];
-
 export type Audience = "general" | "classroom";
 
+type Worry = { no: string; tag: string; title: React.ReactNode; body: React.ReactNode; img: StaticImageData; alt: string };
+
 const jaGeneral = {
-    heading: (
+    eyebrow: "よくある悩み",
+    title: (
         <>
-            Web担当がいない会社・お店から、
-            <br />
-            よくうかがう悩みです。
+            <span className="nowrap">Webのこと、</span>
+            <span className="nowrap"><Underline>後回し</Underline>になっていませんか。</span>
         </>
     ),
-    lead: "どれも「事業が良くないから」ではありません。多くは、問い合わせや予約までの道が分かりにくいことが原因です。",
-    problems: [
+    lead: "本業が忙しいと、ホームページのことまで手が回らないものです。",
+    worries: [
         {
-            title: <>Web担当がいない。<br className="hidden md:block" />誰に頼めばいいか分からない</>,
-            body: <>更新も直しも後回し。制作会社に頼むと高そうで、相談する前に<span className="nowrap">止まっている。</span></>,
+            no: "01", tag: "UPDATE", img: worryUpdate, alt: "ノートパソコンで古いホームページを見ながらメモを取る手元",
+            title: <>ホームページが古いまま。<br />更新の仕方もわからない。</>,
+            body: <>写真や営業時間を変えたいのに、<br className="hidden lg:block" />ついそのままになっている。</>,
         },
         {
-            title: <>ホームページが古く、<br className="hidden md:block" />更新できていない</>,
-            body: <>料金もメニューも変わったのに直せないまま。スマートフォンで見ると<span className="nowrap">読みにくい。</span></>,
+            no: "02", tag: "CONTACT", img: worryContact, alt: "店先でスマートフォンを見て考え込む店主",
+            title: <>見られているのに、<br />問い合わせにつながらない。</>,
+            body: <>ホームページやSNSはあるけれど、<br className="hidden lg:block" />相談や予約がなかなか増えない。</>,
         },
         {
-            title: <>Instagramを頑張っても、<br className="hidden md:block" />問い合わせにつながらない</>,
-            body: <>投稿は続けているが、見た人が次にどこへ行けばいいのかが<span className="nowrap">示せていない。</span></>,
+            no: "03", tag: "TIME", img: worryTime, alt: "作業場で書類を見ながら考え込む職人",
+            title: <>Webに使う時間も、<br />相談できる人もいない。</>,
+            body: <>日々の仕事で手いっぱい。<br className="hidden lg:block" />何から手をつければいいのか迷っている。</>,
         },
-        {
-            title: <>Googleマップ・HP・LINEが、<br className="hidden md:block" />つながっていない</>,
-            body: <>それぞれはある。ただ、地図で見つけた人がそのまま予約や問い合わせに<span className="nowrap">進めない。</span></>,
-        },
-    ],
-    bannerLead: "Googleマップも、ホームページも、LINEもある。",
+    ] as Worry[],
     bannerTitle: (
         <>
-            <span className="nowrap">それでも、</span>
-            <span className="nowrap"><span className="text-coral">問い合わせまでの道</span>が</span>
-            <span className="nowrap">つながっていないことがあります。</span>
+            ひとりで抱えず、<Teal>Web担当</Teal>に任せてみませんか。
         </>
     ),
+    bannerLead: "制作・更新・管理から、必要に応じた集客改善まで。",
 };
 
 const ja: typeof jaGeneral = {
-    heading: (
+    eyebrow: "教室の先生のよくある悩み",
+    title: (
         <>
-            教室の先生から、
-            <br />
-            よくうかがう悩みです。
+            <span className="nowrap">Webのこと、</span>
+            <span className="nowrap"><Underline>後回し</Underline>になっていませんか。</span>
         </>
     ),
-    lead: "どれも「教室が良くないから」ではありません。多くは、体験申込までの道が分かりにくいことが原因です。",
-    problems: [
+    lead: "レッスンが忙しいと、ホームページのことまで手が回らないものです。",
+    worries: [
         {
-            title: <>教室の良さが、<br className="hidden md:block" />Webで伝わらない</>,
-            body: <>レッスンの雰囲気も先生の人柄も良いのに、ホームページからはそれが<span className="nowrap">分からない。</span></>,
+            no: "01", tag: "UPDATE", img: photoEnglish, alt: "英会話教室のレッスン風景",
+            title: <>ホームページが古いまま。<br />更新の仕方もわからない。</>,
+            body: <>料金や講師が変わったのに、<br className="hidden lg:block" />ついそのままになっている。</>,
         },
         {
-            title: <>Instagramを頑張っても、<br className="hidden md:block" />申込につながらない</>,
-            body: <>投稿は続けているが、見た人が次にどこへ行けばいいのかが<span className="nowrap">示せていない。</span></>,
+            no: "02", tag: "CONTACT", img: photoDance, alt: "ダンス教室のレッスン風景",
+            title: <>見られているのに、<br />体験申込につながらない。</>,
+            body: <>ホームページやInstagramはあるけれど、<br className="hidden lg:block" />申込がなかなか増えない。</>,
         },
         {
-            title: <>ホームページが古く、<br className="hidden md:block" />更新できていない</>,
-            body: <>料金も講師も変わったのに直せないまま。スマートフォンで見ると文字が<span className="nowrap">小さい。</span></>,
+            no: "03", tag: "TIME", img: photoMusic, alt: "音楽教室のレッスン風景",
+            title: <>Webに使う時間も、<br />相談できる人もいない。</>,
+            body: <>レッスンと事務で手いっぱい。<br className="hidden lg:block" />何から手をつければいいのか迷っている。</>,
         },
-        {
-            title: <>Webに時間を使えず、<br className="hidden md:block" />本業に集中したい</>,
-            body: <>直したい所は分かっている。ただ、レッスンと事務の合間に手を付ける時間が<span className="nowrap">ない。</span></>,
-        },
-    ],
-    bannerLead: "Googleマップも、ホームページも、LINEもある。",
+    ] as Worry[],
     bannerTitle: (
         <>
-            <span className="nowrap">それでも、</span>
-            <span className="nowrap"><span className="text-coral">申込までの道</span>が</span>
-            <span className="nowrap">つながっていないことがあります。</span>
+            ひとりで抱えず、<Teal>Web担当</Teal>に任せてみませんか。
         </>
     ),
+    bannerLead: "制作・更新・管理から、必要に応じた集客改善まで。",
 };
 
 const enGeneral: typeof jaGeneral = {
-    heading: (
+    eyebrow: "COMMON WORRIES",
+    title: (
         <>
-            What small businesses
-            <br />
-            tell us most often.
+            Is the web always <Underline>the thing that waits</Underline>?
         </>
     ),
-    lead: "None of this means the business isn't good. Usually the path to an enquiry or a booking is simply hard to follow.",
-    problems: [
+    lead: "When the business keeps you busy, the website is the first thing to slip.",
+    worries: [
         {
-            title: <>Nobody handles the web,<br className="hidden md:block" /> and who to ask is unclear</>,
-            body: <>Updates and fixes keep getting postponed. Agencies seem expensive, so the question never gets asked.</>,
+            no: "01", tag: "UPDATE", img: worryUpdate, alt: "Hands on a laptop showing an outdated website",
+            title: <>The site is out of date,<br />and updating it is a mystery.</>,
+            body: <>Photos and opening hours need changing, but it never happens.</>,
         },
         {
-            title: <>The site is old<br className="hidden md:block" /> and never updated</>,
-            body: <>Prices and menus have changed, and the text is hard to read on a phone.</>,
+            no: "02", tag: "CONTACT", img: worryContact, alt: "A shop owner looking at a phone, thinking",
+            title: <>People look,<br />but nobody gets in touch.</>,
+            body: <>There is a website and social media, yet enquiries and bookings stay flat.</>,
         },
         {
-            title: <>Instagram takes effort<br className="hidden md:block" /> but brings no enquiries</>,
-            body: <>Posts keep going up, yet nobody is told where to go next.</>,
+            no: "03", tag: "TIME", img: worryTime, alt: "A craftsman reading documents in a workshop",
+            title: <>No time for the web,<br />and no one to ask.</>,
+            body: <>The day is full already. Where to even start is unclear.</>,
         },
-        {
-            title: <>Google Maps, the site and LINE<br className="hidden md:block" /> don't connect</>,
-            body: <>Each one exists, but someone who finds you on the map can't get straight to a booking.</>,
-        },
-    ],
-    bannerLead: "Google Maps, a website, LINE: you may already have them all.",
+    ] as Worry[],
     bannerTitle: (
         <>
-            <span className="nowrap">Even then, </span>
-            <span className="nowrap">the <span className="text-coral">path to an enquiry</span></span>
-            <span className="nowrap"> is often broken.</span>
+            Don&apos;t carry it alone. Let a <Teal>web partner</Teal> take it on.
         </>
     ),
+    bannerLead: "From build, updates and upkeep to improvements when you need them.",
 };
 
 const en: typeof jaGeneral = {
-    heading: (
-        <>
-            What teachers
-            <br />
-            tell us most often.
-        </>
-    ),
-    lead: "None of this means the school isn't good. Usually the path to a trial booking is simply hard to follow.",
-    problems: [
-        {
-            title: <>The website doesn&apos;t show<br className="hidden md:block" /> what the school is like</>,
-            body: <>The lessons and the teacher are great, but none of that comes through online.</>,
-        },
-        {
-            title: <>Instagram takes effort<br className="hidden md:block" /> but brings no bookings</>,
-            body: <>Posts keep going up, yet nobody is told where to go next.</>,
-        },
-        {
-            title: <>The site is old<br className="hidden md:block" /> and never updated</>,
-            body: <>Fees and teachers have changed, and the text is tiny on a phone.</>,
-        },
-        {
-            title: <>No time for the web,<br className="hidden md:block" /> teaching comes first</>,
-            body: <>You know what needs fixing. There is just no time between lessons and admin.</>,
-        },
+    ...enGeneral,
+    eyebrow: "WHAT TEACHERS TELL US",
+    lead: "When lessons keep you busy, the website is the first thing to slip.",
+    worries: [
+        { ...enGeneral.worries[0], img: photoEnglish, alt: "An English class in progress", body: <>Fees and teachers have changed, but the site still says otherwise.</> },
+        { ...enGeneral.worries[1], img: photoDance, alt: "A dance class in progress", title: <>People look,<br />but trial bookings don&apos;t follow.</> },
+        { ...enGeneral.worries[2], img: photoMusic, alt: "A music lesson in progress", body: <>Lessons and admin fill the day. Where to start is unclear.</> },
     ],
-    bannerLead: "Google Maps, a website, LINE — you may already have them all.",
-    bannerTitle: (
-        <>
-            <span className="nowrap">Even then, </span>
-            <span className="nowrap">the <span className="text-coral">path to a booking</span></span>
-            <span className="nowrap"> is often broken.</span>
-        </>
-    ),
 };
 
 const copy: Record<Lang, Record<Audience, typeof jaGeneral>> = {
@@ -168,50 +138,47 @@ const copy: Record<Lang, Record<Audience, typeof jaGeneral>> = {
 
 export function Problem({ lang = "ja", audience = "general" }: { lang?: Lang; audience?: Audience }) {
     const t = copy[lang][audience];
-    const showPhotos = audience === "classroom";
     return (
-        <section className="relative overflow-hidden bg-navy px-4 py-16 text-white md:px-6 md:py-24">
+        <section className="relative overflow-hidden px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: V4.cream }}>
             <div className="relative mx-auto max-w-6xl">
-                <FadeIn>
-                    <h2 className="mb-5 text-[clamp(1.5rem,3.2vw,2.25rem)] font-bold leading-[1.5] tracking-tight">
-                        {t.heading}
-                    </h2>
-                    <p className="mb-10 max-w-[44em] text-[15px] leading-[2] text-navy-sub md:mb-14">{t.lead}</p>
-                </FadeIn>
+                <SectionHeadV4 word="Worries" eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
 
-                <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    {t.problems.map((p, i) => (
-                        <li key={i} className="list-none">
-                            <FadeIn delay={i * 0.07} className="h-full">
-                                <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]">
-                                    {showPhotos && (<div className="relative h-28 w-full overflow-hidden">
-                                        <Image
-                                            src={photos[i]}
-                                            alt=""
-                                            fill
-                                            sizes="(max-width: 640px) 100vw, 25vw"
-                                            className="object-cover opacity-45"
-                                        />
-                                        <span
-                                            aria-hidden
-                                            className="absolute inset-0"
-                                            style={{ background: "linear-gradient(180deg, rgba(4,22,39,0.2) 0%, rgba(4,22,39,0.92) 100%)" }}
-                                        />
-                                    </div>)}
-                                    <div className="flex flex-1 flex-col p-6">
-                                        <h3 className="mb-3 text-[16.5px] font-bold leading-snug">{p.title}</h3>
-                                        <p className="text-[13.5px] leading-[2] text-navy-sub">{p.body}</p>
-                                    </div>
+                <ul className="grid gap-8 md:grid-cols-3 md:gap-6">
+                    {t.worries.map((w, i) => (
+                        <li key={w.no} className="list-none">
+                            <FadeIn delay={i * 0.07}>
+                                <div className="overflow-hidden rounded-[14px] shadow-[0_10px_28px_rgba(20,51,90,0.08)]">
+                                    <Image src={w.img} alt={w.alt} sizes="(max-width: 768px) 100vw, 33vw" className="aspect-[500/342] h-auto w-full object-cover" />
                                 </div>
+                                <p className="mt-4 text-[13px] font-bold tracking-[0.1em]" style={{ color: i === 1 ? V4.teal : V4.coralDeep }}>
+                                    {w.no} <span className="font-medium" style={{ color: i === 1 ? V4.teal : V4.coralDeep }}>/ {w.tag}</span>
+                                </p>
+                                <h3 className={`${heavy.className} mt-2 text-[clamp(1.15rem,1.9vw,1.5rem)] leading-[1.4]`} style={{ color: V4.navy }}>
+                                    {w.title}
+                                </h3>
+                                <p className="mt-2.5 text-[14px] leading-[1.9] md:text-[15px]" style={{ color: V4.navy }}>
+                                    {w.body}
+                                </p>
                             </FadeIn>
                         </li>
                     ))}
                 </ul>
 
                 <FadeIn>
-                    <div className="mt-10 rounded-2xl border border-coral/40 bg-coral/[0.08] p-7 md:mt-12 md:p-9">
-                        <p className="mb-2 text-[13px] text-navy-sub">{t.bannerLead}</p>
-                        <p className="text-[clamp(1.15rem,2.6vw,1.6rem)] font-bold leading-[1.6]">{t.bannerTitle}</p>
+                    <div className="mt-10 flex flex-col items-center gap-4 rounded-[16px] px-6 py-6 text-center md:mt-12 md:flex-row md:justify-center md:gap-8 md:py-7 md:text-left" style={{ backgroundColor: "#E6F5F4" }}>
+                        <span aria-hidden className="relative inline-flex h-14 w-16 shrink-0 items-center justify-center">
+                            <AppWindow className="h-12 w-14" strokeWidth={1.4} style={{ color: V4.teal }} />
+                            <MousePointer2 className="absolute -bottom-1 right-1 h-6 w-6 fill-current" style={{ color: V4.navy }} />
+                        </span>
+                        <span aria-hidden className="hidden h-12 w-px md:block" style={{ backgroundColor: "rgba(20,51,90,0.3)" }} />
+                        <div>
+                            <p className={`${heavy.className} text-[clamp(1.2rem,2.4vw,1.85rem)] leading-[1.4]`} style={{ color: V4.navy }}>
+                                {t.bannerTitle}
+                            </p>
+                            <p className="mt-1.5 text-[13.5px] md:text-[15px]" style={{ color: V4.navy }}>
+                                {t.bannerLead}
+                            </p>
+                        </div>
                     </div>
                 </FadeIn>
             </div>

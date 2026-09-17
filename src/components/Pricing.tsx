@@ -1,205 +1,243 @@
-// Server Component — 入口商品（ホームページ制作・管理）の料金
+// Server Component — 基本プラン・料金（price.png の再現）
 // 1枚のカードに、確定している料金と契約条件だけを載せる
 
 import React from "react";
-import { ArrowRight, Check } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight, Check } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { SerifHeading } from "@/components/ui/SerifHeading";
+import { SectionHeadV4, Dots } from "@/components/ui/SectionHeadV4";
+import { heavy, hand, V4 } from "@/lib/fonts-v4";
 import { withLang, type Lang } from "@/i18n";
 
+import illust from "@/images/v4/price-illust.webp";
+
 const ja = {
-    heading: "料金",
-    lead: (
-        <>
-            会社・店舗・教室のホームページを初期費用0円でお作りし、公開後の更新と管理までお引き受けします。
-            <br className="hidden md:block" />
-            お支払いは月額のみ。制作費をまとめて用意する必要は<span className="nowrap">ありません。</span>
-        </>
-    ),
-    planLabel: "入口商品",
+    eyebrow: "基本プラン・料金",
+    title: "つくる費用を抑えて、長く頼れる。",
+    lead: "ホームページの制作から、公開後の更新・管理まで。",
+    handwriting: ["Your", "Next,", "Together."],
     planName: "ホームページ制作・管理",
     initialLabel: "初期制作費",
-    initialValue: "0円",
+    initialValue: "0",
+    initialUnit: "円",
     monthlyLabel: "月額",
-    monthlyValue: "8,980円",
+    monthlyValue: "8,980",
+    monthlyUnit: "円",
     taxNote: "（税込）",
+    totalLabel: "初年度のお支払い総額",
+    totalValue: "107,760",
+    totalUnit: "円",
+    afterNote: "公開後の修正・更新も、まとめてお任せ。",
+    cta: "無料でデザイン案を見てみる",
+    ctaNote: "デザイン案と料金・条件を確認してから、ご依頼いただけます。",
+    includedTitle: "月額に含まれるもの",
+    included: [
+        { key: "pages", label: "制作ページ数", value: "10", unit: "ページまで" },
+        { key: "edit", label: "修正・更新", value: "無制限", unit: "" },
+        { key: "infra", label: "ドメイン・サーバー費", value: "込み", unit: "" },
+    ],
     termsTitle: "ご契約の条件",
     terms: [
-        { key: "pages", label: "制作ページ数", value: "10ページまで" },
-        { key: "edit", label: "修正・更新", value: "無制限" },
-        { key: "infra", label: "ドメイン・サーバー費", value: "月額に含む" },
-        { key: "term", label: "最低契約期間", value: "1年間" },
-        { key: "start", label: "課金開始", value: "ご契約日から" },
-        { key: "transfer", label: "サイトの譲渡", value: "1年以上のご契約で可能" },
+        { key: "term", label: "最低契約期間", value: "1年間", unit: "" },
+        { key: "start", label: "課金開始", value: "契約日", unit: "" },
+        { key: "transfer", label: "サイト譲渡", value: "1年以上の契約で可能", unit: "" },
     ],
-    totalLabel: "初年度のお支払い総額",
-    totalValue: "107,760円（税込）",
-    benefitsTitle: "任せられること",
-    benefits: [
-        <>写真の差し替えやお知らせの更新を、その都度お伝えいただくだけで<span className="nowrap">対応します。</span></>,
-        <>ドメインの更新やサーバーの管理は当社で行います。期限切れの心配が<span className="nowrap">ありません。</span></>,
-        <>問い合わせや予約までの案内の仕方は、事業の事情を伺いながら制作時に<span className="nowrap">設計します。</span></>,
-        <>制作費の持ち出しがないので、始めるときの負担が<span className="nowrap">小さく済みます。</span></>,
-    ],
-    excludeTitle: "月額に含まれないもの",
-    excludeLead: "次の継続的な支援は、この月額には含まれません。内容に応じてお見積もりします。",
-    excludes: ["Googleマップ（MEO）の運用", "SNSの運用", "継続的なSEO支援", "LINE公式アカウントの構築・運用"],
+    optionalNote: "継続的な集客支援は、別途お見積もりです。",
+    excludeTitle: "月額に含まれない支援",
+    excludes: ["Googleマップ運用", "LINE運用", "継続的なSEO支援", "SNS運用"],
     excludeNote: "月額に含まれるのは、ホームページへのLINEリンクの設置と、基本的な検索向け設定までです。",
-    cta: "無料でデザイン案を見てみる",
-    ctaNote: "デザイン案は無料です。料金と条件を見てから、正式に依頼するか決められます。",
-    other: (
-        <>
-            買い切りでの制作をご希望の方や、他の業種の方は{" "}
-            <a href={withLang("ja", "/price")} className="font-bold text-coral-deep underline underline-offset-4">
-                料金ページ
-            </a>
-            をご覧ください。
-        </>
-    ),
+    link: "料金・サービスの詳細を見る",
 };
 
 const en: typeof ja = {
-    heading: "Pricing",
-    lead: (
-        <>
-            We build your website with no setup fee, then keep it updated and managed after launch. You pay monthly, so there is no large upfront cost.
-        </>
-    ),
-    planLabel: "MAIN PLAN",
+    eyebrow: "BASIC PLAN",
+    title: "Low to start. Reliable for years.",
+    lead: "From building the site to updating and managing it after launch.",
+    handwriting: ["Your", "Next,", "Together."],
     planName: "Website build & management",
     initialLabel: "Setup fee",
     initialValue: "¥0",
+    initialUnit: "",
     monthlyLabel: "Monthly",
     monthlyValue: "¥8,980",
+    monthlyUnit: "",
     taxNote: " (tax incl.)",
+    totalLabel: "First-year total",
+    totalValue: "¥107,760",
+    totalUnit: "",
+    afterNote: "Edits and updates after launch are included.",
+    cta: "See a free design proposal",
+    ctaNote: "Decide after seeing the proposal, the price and the terms.",
+    includedTitle: "Included in the monthly fee",
+    included: [
+        { key: "pages", label: "Pages", value: "Up to 10", unit: "" },
+        { key: "edit", label: "Edits & updates", value: "Unlimited", unit: "" },
+        { key: "infra", label: "Domain & hosting", value: "Included", unit: "" },
+    ],
     termsTitle: "Terms",
     terms: [
-        { key: "pages", label: "Pages", value: "Up to 10" },
-        { key: "edit", label: "Edits & updates", value: "Unlimited" },
-        { key: "infra", label: "Domain & hosting", value: "Included" },
-        { key: "term", label: "Minimum term", value: "12 months" },
-        { key: "start", label: "Billing starts", value: "On the contract date" },
-        { key: "transfer", label: "Site transfer", value: "Available after 12 months" },
+        { key: "term", label: "Minimum term", value: "12 months", unit: "" },
+        { key: "start", label: "Billing starts", value: "Contract date", unit: "" },
+        { key: "transfer", label: "Site transfer", value: "After 12 months", unit: "" },
     ],
-    totalLabel: "First-year total",
-    totalValue: "¥107,760 (tax incl.)",
-    benefitsTitle: "What we take off your hands",
-    benefits: [
-        <>Send us new photos or news and we update the site for you.</>,
-        <>We handle the domain renewal and hosting, so nothing expires unnoticed.</>,
-        <>We design the path to an enquiry or booking with you while the site is being built.</>,
-        <>No setup fee, so starting costs little.</>,
-    ],
+    optionalNote: "Ongoing marketing support is quoted separately.",
     excludeTitle: "Not included in the monthly fee",
-    excludeLead: "These ongoing services are quoted separately, based on what you need.",
-    excludes: ["Google Maps (MEO) management", "Social media management", "Ongoing SEO support", "LINE official account setup & operation"],
+    excludes: ["Google Maps management", "LINE management", "Ongoing SEO", "Social media management"],
     excludeNote: "The monthly fee covers a LINE link on your site and basic search settings.",
-    cta: "See a free design proposal",
-    ctaNote: "The design proposal is free. Decide after seeing the price and the terms.",
-    other: (
-        <>
-            Prefer a one-off build, or run a different kind of business?{" "}
-            <a href={withLang("en", "/price")} className="font-bold text-coral-deep underline underline-offset-4">
-                See the pricing page
-            </a>
-            .
-        </>
-    ),
+    link: "See pricing and services",
 };
 
 const copy: Record<Lang, typeof ja> = { ja, en };
 
+function CheckRow({ label, value, unit }: { label: string; value: string; unit: string }) {
+    return (
+        <li className="flex items-center gap-4 py-3.5" style={{ borderColor: "rgba(44,143,168,0.28)" }}>
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: V4.coralDeep }}>
+                <Check className="h-4 w-4 text-white" strokeWidth={3} aria-hidden />
+            </span>
+            <span className="w-[10.5em] shrink-0 text-[14.5px] font-bold md:text-[15.5px]" style={{ color: V4.navy }}>
+                {label}
+            </span>
+            <span className={`${heavy.className} text-[clamp(1.1rem,1.7vw,1.45rem)] leading-tight`} style={{ color: V4.navy }}>
+                {value}
+                {unit && <span className="ml-0.5 text-[0.75em]">{unit}</span>}
+            </span>
+        </li>
+    );
+}
+
 export function Pricing({ lang = "ja" }: { lang?: Lang }) {
     const t = copy[lang];
     return (
-        <section className="relative overflow-hidden bg-base px-4 py-16 md:px-6 md:py-24">
-            <div className="relative mx-auto max-w-5xl">
-                <FadeIn>
-                    <SerifHeading en="Price" jp={t.heading} />
-                    <p className="lead -mt-6 mb-10 text-[15px] leading-[2] tracking-[0.03em] text-ink-sub md:mb-14">
-                        {t.lead}
-                    </p>
-                </FadeIn>
+        <section className="relative overflow-hidden px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: V4.cream }}>
+            <div className="relative mx-auto max-w-6xl">
+                <SectionHeadV4
+                    word="Price"
+                    eyebrow={t.eyebrow}
+                    title={t.title}
+                    lead={t.lead}
+                    aside={
+                        <p
+                            aria-hidden
+                            className={`${hand.className} hidden shrink-0 rotate-[-8deg] text-[22px] leading-[1.35] tracking-[0.04em] lg:block lg:ml-auto lg:pr-6`}
+                            style={{ color: V4.teal }}
+                        >
+                            {t.handwriting.map((l, i) => (
+                                <span key={i} className="block" style={{ paddingLeft: `${i * 0.6}em` }}>
+                                    {l}
+                                </span>
+                            ))}
+                        </p>
+                    }
+                />
 
                 <FadeIn>
-                    <div className="overflow-hidden rounded-2xl bg-white shadow-[0_20px_48px_rgba(31,26,20,0.1)]">
-                        <div className="flex flex-col md:flex-row">
-                            {/* 料金 */}
-                            <div className="relative bg-navy-deep p-8 text-white md:w-[42%] md:p-10">
-                                <p className="mb-3 text-[11px] font-bold tracking-[0.25em] text-coral">{t.planLabel}</p>
-                                <h3 className="mb-7 text-2xl font-bold leading-snug md:text-[26px]">{t.planName}</h3>
-
-                                <p className="mb-1">
-                                    <span className="text-[13px] text-navy-sub">{t.initialLabel}</span>
-                                    <br />
-                                    <span className="text-[40px] font-bold leading-tight tabular-nums">{t.initialValue}</span>
-                                </p>
-                                <p className="mt-5">
-                                    <span className="text-[13px] text-navy-sub">{t.monthlyLabel}</span>
-                                    <br />
-                                    <span className="text-[40px] font-bold leading-tight tabular-nums text-coral">{t.monthlyValue}</span>
-                                    <span className="text-[13px] text-navy-sub">{t.taxNote}</span>
-                                </p>
-
-                                <div className="mt-7 border-t border-white/15 pt-5">
-                                    <p className="text-[13px] text-navy-sub">{t.totalLabel}</p>
-                                    <p className="text-[19px] font-bold tabular-nums">{t.totalValue}</p>
+                    <div className="rounded-[16px] border-[1.5px] bg-white px-5 pb-6 pt-4 md:px-6 md:pb-6" style={{ borderColor: V4.teal }}>
+                        <Dots />
+                        <div className="mt-4 grid gap-6 lg:grid-cols-[1.05fr_1fr] lg:gap-8">
+                            {/* 左：料金 */}
+                            <div className="rounded-[12px] p-6 md:p-8" style={{ backgroundColor: "#F2FAFB" }}>
+                                <h3 className={`${heavy.className} text-[clamp(1.4rem,2.4vw,1.9rem)] leading-[1.3]`} style={{ color: V4.navy }}>
+                                    {t.planName}
+                                </h3>
+                                <div className="mt-5 flex flex-wrap items-end gap-x-8 gap-y-4">
+                                    <div>
+                                        <p className="text-[14px] font-bold" style={{ color: V4.navy }}>{t.initialLabel}</p>
+                                        <p className={`${heavy.className} mt-1 leading-none tabular-nums`} style={{ color: V4.navy }}>
+                                            <span className="text-[clamp(3rem,5.6vw,4.8rem)]">{t.initialValue}</span>
+                                            {t.initialUnit && <span className="ml-1 text-[clamp(1.2rem,2vw,1.7rem)]">{t.initialUnit}</span>}
+                                        </p>
+                                    </div>
+                                    <span aria-hidden className="hidden h-20 w-px self-center sm:block" style={{ backgroundColor: "rgba(20,51,90,0.25)" }} />
+                                    <div>
+                                        <p className="text-[14px] font-bold" style={{ color: V4.navy }}>{t.monthlyLabel}</p>
+                                        <p className={`${heavy.className} mt-1 leading-none tabular-nums`} style={{ color: V4.coralDeep }}>
+                                            <span className="text-[clamp(3rem,5.6vw,4.8rem)]">{t.monthlyValue}</span>
+                                            {t.monthlyUnit && <span className="ml-1 text-[clamp(1.2rem,2vw,1.7rem)]">{t.monthlyUnit}</span>}
+                                            <span className="ml-1 text-[clamp(0.9rem,1.3vw,1.15rem)]">{t.taxNote}</span>
+                                        </p>
+                                    </div>
                                 </div>
-                                <span aria-hidden className="absolute bottom-0 left-0 h-1 w-full bg-coral" />
-                            </div>
 
-                            {/* 条件と内容 */}
-                            <div className="flex-1 p-8 md:p-10">
-                                <p className="mb-4 text-[11px] font-bold tracking-[0.2em] text-ink-sub">{t.termsTitle}</p>
-                                <dl className="mb-8 divide-y divide-line border-y border-line">
-                                    {t.terms.map((row) => (
-                                        <div key={row.key} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-3">
-                                            <dt className="text-[14px] text-ink-sub">{row.label}</dt>
-                                            <dd className="text-[15px] font-bold text-ink">{row.value}</dd>
-                                        </div>
-                                    ))}
-                                </dl>
-
-                                <p className="mb-4 text-[11px] font-bold tracking-[0.2em] text-ink-sub">{t.benefitsTitle}</p>
-                                <ul className="mb-8 grid gap-3">
-                                    {t.benefits.map((b, i) => (
-                                        <li key={i} className="flex items-start gap-3 text-[14.5px] leading-[1.9] text-ink">
-                                            <span className="mt-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-coral/15">
-                                                <Check className="h-3.5 w-3.5 text-coral-deep" aria-hidden />
-                                            </span>
-                                            <span>{b}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-
+                                <div className="mt-6 flex items-end justify-between gap-4 border-t pt-5" style={{ borderColor: "rgba(44,143,168,0.35)" }}>
+                                    <div>
+                                        <p className="text-[14px] font-bold" style={{ color: V4.navy }}>{t.totalLabel}</p>
+                                        <p className={`${heavy.className} mt-1 leading-none tabular-nums`} style={{ color: V4.navy }}>
+                                            <span className="text-[clamp(2rem,3.4vw,2.9rem)]">{t.totalValue}</span>
+                                            {t.totalUnit && <span className="ml-1 text-[clamp(1rem,1.5vw,1.3rem)]">{t.totalUnit}</span>}
+                                            <span className="ml-1 text-[clamp(0.85rem,1.1vw,1rem)]">{t.taxNote}</span>
+                                        </p>
+                                    </div>
+                                    <Image src={illust} alt="" sizes="180px" className="hidden h-auto w-[150px] shrink-0 sm:block md:w-[170px]" />
+                                </div>
+                                <p className="mt-4 text-[13.5px] font-bold md:text-[16px]" style={{ color: V4.navy }}>
+                                    {t.afterNote}
+                                </p>
                                 <a
                                     href={withLang(lang, "/preview")}
-                                    className="group inline-flex h-14 items-center gap-2 rounded-full bg-coral-deep px-8 text-[15px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-95"
+                                    className="mt-4 flex min-h-[56px] w-full items-center justify-center gap-2 whitespace-nowrap rounded-full px-4 text-[16px] font-bold text-white transition-transform hover:-translate-y-0.5 md:min-h-[60px] md:text-[19px]"
+                                    style={{ backgroundColor: V4.coralDeep }}
                                 >
                                     {t.cta}
-                                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                                    <ArrowUpRight className="h-5 w-5" aria-hidden />
                                 </a>
-                                <p className="mt-3 text-[13px] leading-[1.9] text-ink-sub">{t.ctaNote}</p>
+                                <p className="mt-3 text-center text-[12.5px] md:text-[13.5px]" style={{ color: V4.navy }}>
+                                    {t.ctaNote}
+                                </p>
+                            </div>
+
+                            {/* 右：含まれるもの・条件 */}
+                            <div className="px-1 py-1 lg:border-l lg:pl-8" style={{ borderColor: "rgba(44,143,168,0.35)" }}>
+                                <p className="inline-block rounded-md px-4 py-1.5 text-[14px] font-bold" style={{ backgroundColor: "#DDEFF2", color: V4.teal }}>
+                                    {t.includedTitle}
+                                </p>
+                                <ul className="mt-2 divide-y" style={{ borderColor: "rgba(44,143,168,0.28)" }}>
+                                    {t.included.map((r) => (
+                                        <CheckRow key={r.key} label={r.label} value={r.value} unit={r.unit} />
+                                    ))}
+                                </ul>
+                                <p className="mt-6 inline-block rounded-md px-4 py-1.5 text-[14px] font-bold" style={{ backgroundColor: "#FDE5E0", color: V4.coralDeep }}>
+                                    {t.termsTitle}
+                                </p>
+                                <ul className="mt-2 divide-y" style={{ borderColor: "rgba(44,143,168,0.28)" }}>
+                                    {t.terms.map((r) => (
+                                        <CheckRow key={r.key} label={r.label} value={r.value} unit={r.unit} />
+                                    ))}
+                                </ul>
+                                <p className="mt-5 border-t pt-4 text-[13.5px] md:text-[14.5px]" style={{ color: V4.navy, borderColor: "rgba(44,143,168,0.28)" }}>
+                                    {t.optionalNote}
+                                </p>
                             </div>
                         </div>
                     </div>
                 </FadeIn>
 
-                {/* 含まれないもの */}
                 <FadeIn>
-                    <div className="mt-6 rounded-2xl border border-line bg-cream p-7 md:p-8">
-                        <h3 className="mb-2 text-[16px] font-bold text-ink">{t.excludeTitle}</h3>
-                        <p className="mb-4 text-[14px] leading-[1.9] text-ink-sub">{t.excludeLead}</p>
-                        <ul className="mb-4 flex flex-wrap gap-2">
-                            {t.excludes.map((x) => (
-                                <li key={x} className="rounded-full border border-line bg-white px-4 py-1.5 text-[13px] text-ink">
-                                    {x}
-                                </li>
-                            ))}
-                        </ul>
-                        <p className="text-[13px] leading-[1.9] text-ink-sub">{t.excludeNote}</p>
+                    <div className="mt-7 grid gap-4 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-center md:gap-6">
+                        <p className="text-[15px] font-bold md:text-[16px]" style={{ color: V4.navy }}>
+                            {t.excludeTitle}
+                        </p>
+                        <div>
+                            <ul className="flex flex-wrap gap-2.5">
+                                {t.excludes.map((x) => (
+                                    <li key={x} className="rounded-md border bg-white px-4 py-2 text-[13.5px] font-bold" style={{ color: V4.navy, borderColor: "rgba(20,51,90,0.35)" }}>
+                                        {x}
+                                    </li>
+                                ))}
+                            </ul>
+                            <p className="mt-2.5 text-[12.5px] leading-[1.8] md:text-[13.5px]" style={{ color: V4.navy }}>
+                                {t.excludeNote}
+                            </p>
+                        </div>
+                        <a
+                            href={withLang(lang, "/price")}
+                            className="inline-flex min-h-11 items-center gap-1.5 text-[14.5px] font-bold underline decoration-2 underline-offset-[6px] md:border-l md:pl-6"
+                            style={{ color: V4.navy, borderColor: "rgba(20,51,90,0.3)" }}
+                        >
+                            {t.link}
+                            <ArrowUpRight className="h-4 w-4" aria-hidden />
+                        </a>
                     </div>
-                    <p className="mt-6 text-[14px] leading-[2] text-ink-sub">{t.other}</p>
                 </FadeIn>
             </div>
         </section>
