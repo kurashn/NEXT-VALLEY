@@ -39,9 +39,9 @@ const ja = {
     en1: "LOCAL BUSINESS,",
     en2: "NEXT POSSIBILITIES.",
     photos: [
-        { key: "cafe", img: photoCafe, caption: "お店の毎日を、もっと豊かに。", tag: "CAFE", alt: "カフェでコーヒーを手渡す店主" },
-        { key: "craft", img: photoCraft, caption: "確かな仕事を、地域へ。", tag: "CRAFT", alt: "木材に印をつける職人" },
-        { key: "school", img: photoSchool, caption: "教える時間に、夢中に。", tag: "SCHOOL", alt: "陶芸を教える先生と生徒" },
+        { key: "cafe", img: photoCafe },
+        { key: "craft", img: photoCraft },
+        { key: "school", img: photoSchool },
     ],
 };
 
@@ -66,9 +66,9 @@ const en: typeof ja = {
     en1: "LOCAL BUSINESS,",
     en2: "NEXT POSSIBILITIES.",
     photos: [
-        { key: "cafe", img: photoCafe, caption: "Better days for the shop.", tag: "CAFE", alt: "A cafe owner handing over a coffee" },
-        { key: "craft", img: photoCraft, caption: "Solid work, for the neighbourhood.", tag: "CRAFT", alt: "A craftsman marking timber" },
-        { key: "school", img: photoSchool, caption: "Time to teach, fully present.", tag: "SCHOOL", alt: "A pottery teacher with a student" },
+        { key: "cafe", img: photoCafe },
+        { key: "craft", img: photoCraft },
+        { key: "school", img: photoSchool },
     ],
 };
 
@@ -174,7 +174,7 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
             </div>
 
             {/* ── 下段：生成りの帯と写真 ── */}
-            <div className="relative pb-10 pt-7 md:pb-8 md:pt-7" style={{ backgroundColor: CREAM }}>
+            <div className="relative pb-10 pt-7 md:pb-12 md:pt-7" style={{ backgroundColor: CREAM }}>
                 {/* 白地の下辺をゆるく丸める */}
                 <svg aria-hidden viewBox="0 0 1440 22" preserveAspectRatio="none" className="pointer-events-none absolute left-0 top-0 h-[22px] w-full">
                     <path d="M0 0 H1440 V3 C 1120 22, 320 22, 0 3 Z" fill="#fff" />
@@ -194,24 +194,16 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
 
                 <div className="relative mx-auto grid max-w-[1280px] gap-6 px-4 md:px-6 lg:grid-cols-[2.14fr_1fr_1.17fr] lg:items-start lg:gap-7 lg:px-11">
                     {t.photos.map((p, i) => (
-                        <figure key={p.key} className={`m-0 ${photoOffset[i]}`}>
+                        <div key={p.key} className={photoOffset[i]}>
                             <div className="overflow-hidden rounded-[18px] shadow-[0_14px_34px_rgba(20,51,90,0.10)]">
                                 <Image
                                     src={p.img}
-                                    alt={p.alt}
+                                    alt=""
                                     sizes={i === 0 ? "(max-width: 1024px) 100vw, 40vw" : "(max-width: 1024px) 100vw, 22vw"}
                                     className="h-auto w-full"
                                 />
                             </div>
-                            <figcaption className="mt-3 text-center">
-                                <span className="block text-[15px] font-bold" style={{ color: NAVY }}>
-                                    {p.caption}
-                                </span>
-                                <span className="mt-1 block text-[11px] font-bold tracking-[0.3em]" style={{ color: "#6E8199" }}>
-                                    {p.tag}
-                                </span>
-                            </figcaption>
-                        </figure>
+                        </div>
                     ))}
                 </div>
             </div>

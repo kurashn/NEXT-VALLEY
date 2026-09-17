@@ -10,7 +10,6 @@ import Link from "next/link";
 import logo from "@/images/logo-new.png";
 import logoDark from "@/images/logo-dark.png";
 import { withLang, type Lang } from "@/i18n";
-import { LangSwitch } from "@/i18n/LangSwitch";
 
 const copy = {
   ja: {
@@ -54,10 +53,9 @@ export default function Navbar({ lang = "ja", variant = "dark" }: { lang?: Lang;
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  // PCナビは xl(1280px) から（lg 幅ではリンク＋CTA＋言語切替が収まらないため、それ未満はハンバーガー）
+  // PCナビは xl(1280px) から（lg 幅ではリンク＋CTAが収まらないため、それ未満はハンバーガー）
   const deskNav = "hidden items-center gap-5 xl:flex 2xl:gap-7";
   const deskCta = "xl:inline-flex";
-  const deskSwitch = "hidden shrink-0 xl:block";
   const mobileWrap = "flex shrink-0 items-center gap-2 xl:hidden";
   const navLinks = t.links.map((l) => ({ ...l, href: withLang(lang, l.href) }));
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
@@ -121,14 +119,8 @@ export default function Navbar({ lang = "ja", variant = "dark" }: { lang?: Lang;
             <ArrowRight className="h-4 w-4" />
           </a>
 
-          {/* 言語切替（PC） */}
-          <div className={deskSwitch}>
-            <LangSwitch />
-          </div>
-
           {/* モバイルナビ */}
           <div className={mobileWrap}>
-            <LangSwitch />
             <Sheet>
               <SheetTrigger asChild>
                 <button
