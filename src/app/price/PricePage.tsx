@@ -47,7 +47,7 @@ const ja = {
     inclTitle: "月額に含まれるもの",
     incl: [
         "10ページまでのホームページ制作",
-        "公開後の修正・更新（回数の制限なし）",
+        "公開後の修正・更新（回数の制限なし。デザインの全面的な作り替えは別途お見積もり）",
         "ドメイン・サーバーの管理",
         "お問い合わせ・予約フォームの設置",
         "LINE公式アカウントへのリンク設置",
@@ -161,7 +161,7 @@ const en: typeof ja = {
     inclTitle: "What the monthly fee covers",
     incl: [
         "A website of up to 10 pages",
-        "Edits and updates after launch (no limit on the number)",
+        "Edits and updates after launch (no limit on the number; a full redesign is quoted separately)",
         "Domain and hosting management",
         "Contact and trial-lesson forms",
         "A link to your LINE official account",

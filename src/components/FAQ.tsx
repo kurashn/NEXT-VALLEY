@@ -34,10 +34,12 @@ export const faqs: FaqItem[] = [
     },
     {
         q: "修正や更新は、何回まで頼めますか？",
-        a: "正式契約後は回数の制限がありません。写真の差し替えやお知らせの更新も、その都度お知らせいただければ対応します。無料プレビューの段階での調整は1回までです。",
+        a: "正式契約後は回数の制限がありません。文章や写真の差し替え、お知らせや料金の更新、ページ内の構成の変更など、基本的に何でもお受けします。含まれないのは、デザインを全面的に作り替えることだけです（別途お見積もり）。修正のご依頼は、できるだけ1回にまとめてお送りください。抜け漏れなく、早く反映できます。無料プレビューの段階での調整は1回までです。",
         aNode: (
             <>
-                <p>正式契約後は回数の制限がありません。写真の差し替えやお知らせの更新も、その都度お知らせいただければ<span className="nowrap">対応します。</span></p>
+                <p>正式契約後は回数の制限がありません。文章や写真の差し替え、お知らせや料金の更新、ページ内の構成の変更など、基本的に何でも<span className="nowrap">お受けします。</span></p>
+                <p className="mt-3">含まれないのは、デザインを全面的に作り替えることだけです。その場合は別途<span className="nowrap">お見積もりします。</span></p>
+                <p className="mt-3">修正のご依頼は、できるだけ1回にまとめてお送りください。抜け漏れなく、早く<span className="nowrap">反映できます。</span></p>
                 <p className="mt-3">無料プレビューの段階での調整は1回までです。</p>
             </>
         ),
@@ -83,7 +85,7 @@ const faqsEn: FaqItem[] = [
     },
     {
         q: "How many edits can I ask for?",
-        a: "After you sign, there is no limit on how often. Send us new photos or news any time. During the free preview stage, one round of adjustments is included.",
+        a: "After you sign, there is no limit on how often. Text and photo changes, news and price updates, layout changes within a page: almost anything is covered. The one exception is a full redesign, which is quoted separately. Please send your changes in one batch where you can, so nothing is missed. During the free preview stage, one round of adjustments is included.",
     },
     {
         q: "Does the monthly fee cover Google Maps or social media management?",
