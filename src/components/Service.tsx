@@ -23,12 +23,12 @@ const jaGeneral = {
             つくることも、<Teal>その後</Teal>のことも。
         </>
     ),
-    lead: "ホームページの制作・更新・管理を、まとめて任せられます。",
+    lead: <><span className="nowrap">ホームページの制作・更新・管理を、</span><span className="nowrap">まとめて任せられます。</span></>,
     includedLabel: "基本プランに含まれること",
     rows: [
-        { no: "01", title: "つくる", sub: "ホームページ制作", body: <>会社・お店・教室の魅力が伝わるページを制作。<br className="hidden lg:block" />10ページまで、スマートフォンにも対応。</> },
-        { no: "02", title: "更新する", sub: "写真・文章の修正", img: illust02, body: <>写真の差し替えや、お知らせ・営業時間の更新。<br className="hidden lg:block" />修正・更新は、回数を気にせず相談できます。</> },
-        { no: "03", title: "管理する", sub: "ドメイン・サーバー管理", img: illust03, body: <>ドメイン・サーバーの管理もまとめて対応。<br className="hidden lg:block" />Webに詳しくなくても、相談できる窓口に。</> },
+        { no: "01", title: "つくる", sub: "ホームページ制作", body: <><span className="nowrap">会社・お店・教室の魅力が伝わる</span><span className="nowrap">ページを制作。</span><br className="hidden lg:block" /><span className="nowrap">10ページまで、</span><span className="nowrap">スマートフォンにも対応。</span></> },
+        { no: "02", title: "更新する", sub: "写真・文章の修正", img: illust02, body: <><span className="nowrap">写真の差し替えや、</span><span className="nowrap">お知らせ・営業時間の更新。</span><br className="hidden lg:block" /><span className="nowrap">修正・更新は、</span><span className="nowrap">回数を気にせず相談できます。</span></> },
+        { no: "03", title: "管理する", sub: "ドメイン・サーバー管理", img: illust03, body: <><span className="nowrap">ドメイン・サーバーの管理も</span><span className="nowrap">まとめて対応。</span><br className="hidden lg:block" /><span className="nowrap">Webに詳しくなくても、</span><span className="nowrap">相談できる窓口に。</span></> },
     ] as Row[],
     optionalPill: "必要に応じて・別途お見積もり",
     optionalTitle: "集客の改善も、課題に合わせて。",
@@ -45,7 +45,7 @@ const enGeneral: typeof jaGeneral = {
             The build, and <Teal>everything after</Teal>.
         </>
     ),
-    lead: "Building, updating and managing your website, all in one place.",
+    lead: <>Building, updating and managing your website, all in one place.</>,
     includedLabel: "Included in the basic plan",
     rows: [
         { no: "01", title: "Build", sub: "Website creation", body: <>Pages that show what your company, shop or school is like. Up to 10 pages, mobile-ready.</> },

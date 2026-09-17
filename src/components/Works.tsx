@@ -46,7 +46,7 @@ type OtherCopy = { name: string; label: string };
 /* ── 文言（日本語 / 英語） ── */
 const ja = {
     heading: "制作実績",
-    lead: "教室・スクールを中心に、店舗・不動産・建設・EC・情報メディアまで、100社以上の制作・支援実績があります。",
+    lead: <><span className="nowrap">会社・お店・教室から、</span><span className="nowrap">不動産・建設・EC・情報メディアまで、</span><span className="nowrap">100社以上の制作・支援実績があります。</span></>,
     imageAlt: (name: string) => `${name}のホームページ`,
     featured: [
         {
@@ -95,7 +95,7 @@ const ja = {
 };
 const en: typeof ja = {
     heading: "Our work",
-    lead: "Over 100 businesses served, from real estate and construction to e-commerce, fitness, online media, and schools.",
+    lead: <>Over 100 businesses served, from shops and schools to real estate, construction, e-commerce and online media.</>,
     imageAlt: (name: string) => `Website for ${name}`,
     featured: [
         {

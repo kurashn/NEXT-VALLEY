@@ -11,10 +11,10 @@ const letterColors = ["#2e7f92", "#b8452f", "#b07d1a", "#1a1a1a"];
 
 export function SerifHeading({ en, jp, dark = false }: { en: string; jp: string; dark?: boolean }) {
     return (
-        <InView className="mb-10 flex items-center gap-4 md:mb-14 md:gap-6">
+        <InView className="mb-10 flex flex-wrap items-center gap-4 md:mb-14 md:gap-6">
             <p
                 aria-label={en}
-                className={`sh-letters text-[clamp(3rem,7.5vw,5.5rem)] font-bold leading-none ${dark ? "text-white" : ""}`}
+                className={`sh-letters whitespace-nowrap text-[clamp(2.4rem,7.5vw,5.5rem)] font-bold leading-none ${dark ? "text-white" : ""}`}
                 style={{ fontFamily: serif }}
             >
                 {dark ? (

@@ -95,7 +95,7 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                 </p>
 
                 {/* 中央のコピー */}
-                <div className="relative z-10 mx-auto max-w-[760px] px-4 pb-12 text-center md:px-6 md:pb-16">
+                <div className="relative z-10 mx-auto max-w-[760px] px-4 pb-6 text-center md:px-6 md:pb-8 lg:pb-16">
                     <p className="mb-2 text-[14px] font-bold tracking-[0.12em] md:text-[15px]" style={{ color: NAVY }}>
                         {t.eyebrow}
                     </p>
@@ -154,8 +154,13 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                         </a>
                     </p>
                 </div>
-            </div>
 
+                {/* 街並みのイラスト（スマホ・タブレット：本文の下に左右並び） */}
+                <div aria-hidden className="pointer-events-none -mt-2 flex items-end justify-between lg:hidden">
+                    <Image src={townLeft} alt="" sizes="55vw" className="h-auto w-[54%]" priority />
+                    <Image src={townRight} alt="" sizes="50vw" className="h-auto w-[48%]" priority />
+                </div>
+            </div>
         </section>
     );
 }

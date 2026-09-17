@@ -29,7 +29,7 @@ const ja = {
     totalUnit: "円",
     afterNote: "公開後の修正・更新も、まとめてお任せ。",
     cta: "無料でデザイン案を見てみる",
-    ctaNote: "デザイン案と料金・条件を確認してから、ご依頼いただけます。",
+    ctaNote: <><span className="nowrap">デザイン案と料金・条件を確認してから、</span><span className="nowrap">ご依頼いただけます。</span></>,
     includedTitle: "月額に含まれるもの",
     included: [
         { key: "pages", label: "制作ページ数", value: "10", unit: "ページまで" },
@@ -45,7 +45,7 @@ const ja = {
     optionalNote: "継続的な集客支援は、別途お見積もりです。",
     excludeTitle: "月額に含まれない支援",
     excludes: ["Googleマップ運用", "LINE運用", "継続的なSEO支援", "SNS運用"],
-    excludeNote: "月額に含まれるのは、ホームページへのLINEリンクの設置と、基本的な検索向け設定までです。",
+    excludeNote: <><span className="nowrap">月額に含まれるのは、</span><span className="nowrap">ホームページへのLINEリンクの設置と、</span><span className="nowrap">基本的な検索向け設定までです。</span></>,
     link: "料金・サービスの詳細を見る",
 };
 
@@ -67,7 +67,7 @@ const en: typeof ja = {
     totalUnit: "",
     afterNote: "Edits and updates after launch are included.",
     cta: "See a free design proposal",
-    ctaNote: "Decide after seeing the proposal, the price and the terms.",
+    ctaNote: <>Decide after seeing the proposal, the price and the terms.</>,
     includedTitle: "Included in the monthly fee",
     included: [
         { key: "pages", label: "Pages", value: "Up to 10", unit: "" },
@@ -83,7 +83,7 @@ const en: typeof ja = {
     optionalNote: "Ongoing marketing support is quoted separately.",
     excludeTitle: "Not included in the monthly fee",
     excludes: ["Google Maps management", "LINE management", "Ongoing SEO", "Social media management"],
-    excludeNote: "The monthly fee covers a LINE link on your site and basic search settings.",
+    excludeNote: <>The monthly fee covers a LINE link on your site and basic search settings.</>,
     link: "See pricing and services",
 };
 

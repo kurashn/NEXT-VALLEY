@@ -6,16 +6,16 @@ import { Footer } from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
-    title: "本庄・熊谷・深谷・伊勢崎のホームページ制作・集客支援",
+    title: "対応エリア｜埼玉を中心に、全国オンラインで対応",
     description:
-        "埼玉県本庄市のWeb制作・集客支援 NEXT VALLEY。本庄・熊谷・深谷・伊勢崎など埼玉北部の教室・お店のホームページ制作・管理を、初期制作費0円・月額8,980円（税込）でお受けしています。Googleマップ・LINEを使った集客改善もご相談ください。契約前に無料でデザイン案をご覧いただけます。",
+        "NEXT VALLEY の対応エリア。本庄・熊谷・深谷など埼玉を中心に、全国の小さな会社・お店・教室のホームページ制作・管理を、初期制作費0円・月額8,980円（税込）でオンラインでお受けしています。Googleマップ・LINEを使った集客改善もご相談ください。契約前に無料でデザイン案をご覧いただけます。",
     alternates: { canonical: "https://www.nextvalley-jpn.com/saitama-hokubu" },
 };
 
 const areas = [
     {
         name: "本庄市・児玉郡",
-        body: "代表の地元です。本庄市児玉町を拠点に、地域の教室・お店のホームページ制作と集客のご相談をお受けしています。",
+        body: "代表の地元です。本庄市児玉町で育った目線で、地域の会社・お店・教室のホームページ制作と集客のご相談をお受けしています。",
         link: { href: "/blog/honjo-classroom-website", label: "本庄の教室が体験申込を増やす方法" },
     },
     {
@@ -29,8 +29,8 @@ const areas = [
         link: { href: "/blog/isesaki-honjo-line-marketing", label: "伊勢崎・本庄の教室とお店のLINE活用" },
     },
     {
-        name: "上里町・美里町・寄居町など周辺地域",
-        body: "上記以外の埼玉北部の市町村も対応しています。やりとりはLINE・メールで完結するので、店舗にお伺いしなくても進められます。",
+        name: "埼玉県内のその他の地域・全国",
+        body: "さいたま市・川越市・所沢市など県内全域と、全国どこからでもお受けしています。打ち合わせはLINE・メール・ビデオ通話で完結します。",
         link: null,
     },
 ];
@@ -44,7 +44,7 @@ const services = [
     {
         name: "継続的な集客改善",
         price: "お見積もり",
-        desc: "Googleマップの情報整備、体験レッスンページの改善、LINEの相談・予約導線、数字の計測と改善。内容に応じてお見積もりします（月額8,980円には含まれません）",
+        desc: "Googleマップの情報整備、問い合わせ・予約ページの改善、LINEの相談・予約導線、数字の計測と改善。内容に応じてお見積もりします（月額8,980円には含まれません）",
     },
     {
         name: "買い切りでの制作",
@@ -64,12 +64,14 @@ export default function SaitamaHokubuPage() {
                         AREA
                     </Badge>
                     <h1 className="text-3xl md:text-4xl font-bold mb-6 leading-snug">
-                        本庄・熊谷・深谷・伊勢崎の
-                        <br className="md:hidden" />
+                        埼玉を中心に、全国対応。
+                        <br />
                         ホームページ制作・集客支援
                     </h1>
                     <p className="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
-                        埼玉北部の教室・お店の集客を、地元のWeb制作会社がお手伝いします。
+                        <span className="nowrap">本庄・熊谷・深谷など埼玉を中心に、</span>
+                        <span className="nowrap">全国の会社・お店・教室を</span>
+                        <span className="nowrap">オンラインでお手伝いします。</span>
                     </p>
                 </div>
             </section>
@@ -77,10 +79,10 @@ export default function SaitamaHokubuPage() {
             <section className="py-16 px-4">
                 <div className="max-w-3xl mx-auto space-y-6 text-slate-700 leading-loose">
                     <p>
-                        NEXT VALLEY（ネクストバレー）は、本庄市児玉町出身の代表が運営するWeb制作・集客支援です。埼玉北部を軸に、打ち合わせはオンラインで進めます。2021年の開業以来、100社以上のホームページ制作とWebマーケティングを支援してきました。
+                        NEXT VALLEY（ネクストバレー）は、本庄市児玉町出身の代表が運営するWeb制作・集客支援です。埼玉を中心に全国のお客様と、打ち合わせはオンラインで進めます。2021年の開業以来、100社以上のホームページ制作とWebマーケティングを支援してきました。
                     </p>
                     <p>
-                        大手の制作会社と違うのは、作って終わりにしないことです。ホームページ・Googleマップ・LINEをつなげて「教室やお店を探している地元の方に見つけてもらい、問い合わせにつながる」ところまでを設計します。実際に、自作ホームページで入会ゼロだった子ども向け英語教室が、導線を整えてから7か月で14名の入会につながった事例もあります（<Link href="/blog/case-english-school-zero-to-14" className="text-[#0A5A8A] underline underline-offset-2">事例の詳細はこちら</Link>）。
+                        大手の制作会社と違うのは、作って終わりにしないことです。ホームページ・Googleマップ・LINEをつなげて「会社・お店・教室を探している地域の方に見つけてもらい、問い合わせにつながる」ところまでを設計します。実際に、自作ホームページで入会ゼロだった子ども向け英語教室が、導線を整えてから7か月で14名の入会につながった事例もあります（<Link href="/blog/case-english-school-zero-to-14" className="text-[#0A5A8A] underline underline-offset-2">事例の詳細はこちら</Link>）。
                     </p>
                 </div>
             </section>
@@ -129,7 +131,7 @@ export default function SaitamaHokubuPage() {
                 <div className="max-w-3xl mx-auto text-center">
                     <h2 className="text-2xl font-bold mb-4">契約の前に、実物をご覧ください</h2>
                     <p className="text-white/85 leading-relaxed mb-8">
-                        「頼むと高そう」「効果が出るか分からない」という方のために、ご契約前にあなたのお店・教室のトップページのデザイン案を無料でお作りしています。気に入らなければ、そこで終わりで構いません。
+                        「頼むと高そう」「効果が出るか分からない」という方のために、ご契約前にあなたの会社・お店・教室のトップページのデザイン案を無料でお作りしています。気に入らなければ、そこで終わりで構いません。
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
                         <a

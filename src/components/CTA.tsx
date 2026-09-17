@@ -11,7 +11,7 @@ const ja = {
     eyebrow: "CONTACT",
     title: (
         <>
-            目的に合わせて、<span className="text-coral-deep">2つの入口</span>があります。
+            <span className="nowrap">目的に合わせて、</span><span className="nowrap"><span className="text-coral-deep">2つの入口</span>があります。</span>
         </>
     ),
     newTitle: "新しく作りたい・作り直したい",

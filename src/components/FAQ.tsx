@@ -1,6 +1,7 @@
 // Server Component — FAQ。料金・契約条件は確定しているものだけを書く
 
 import React from "react";
+import { chunks } from "@/lib/nowrap";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading } from "@/components/ui/SerifHeading";
 import { type Lang } from "@/i18n";
@@ -10,7 +11,7 @@ export type FaqItem = { q: string; a: string; aNode?: React.ReactNode };
 /** 日本語の FAQ（JSON-LD 用に従来どおり export。英語版は getFaqs("en")） */
 export const faqs: FaqItem[] = [
     {
-        q: "ホームページの料金を教えてください。",
+        q: "料金を教えてください。",
         a: "初期制作費は0円、月額8,980円（税込）です。10ページまでの制作と、公開後の修正・更新、ドメイン・サーバー費が含まれます。初年度のお支払い総額は107,760円（税込）です。",
         aNode: (
             <>
@@ -20,7 +21,7 @@ export const faqs: FaqItem[] = [
         ),
     },
     {
-        q: "無料プレビューでは何がもらえますか？",
+        q: "無料プレビューで、何がもらえますか？",
         a: "トップページのデザイン案をお作りしてお見せします。費用はかからず、この時点でのご契約もありません。見たうえで、依頼するかどうかを決めていただけます。",
     },
     {
@@ -42,7 +43,7 @@ export const faqs: FaqItem[] = [
         ),
     },
     {
-        q: "Googleマップの運用やSNSの運用も月額に含まれますか？",
+        q: "GoogleマップやSNSの運用も、月額に含まれますか？",
         a: "含まれません。月額に含まれるのは、ホームページへのLINEリンクの設置と、基本的な検索向け設定までです。Googleマップ（MEO）の運用、SNSの運用、継続的なSEO支援、LINE公式アカウントの構築・運用は、内容に応じて別途お見積もりします。",
     },
     {
@@ -50,7 +51,7 @@ export const faqs: FaqItem[] = [
         a: "1年以上のご契約で、サイトの譲渡が可能です。手続きの進め方はご相談ください。",
     },
     {
-        q: "写真や文章が用意できていなくても頼めますか？",
+        q: "写真や文章がなくても、頼めますか？",
         a: "はい。今お持ちの写真とSNSの投稿から始められます。足りないものは、こちらでお伺いしながら文章の案をお作りします。",
     },
     {
@@ -59,7 +60,7 @@ export const faqs: FaqItem[] = [
     },
     {
         q: "埼玉以外や遠方でも、対応できますか？",
-        a: "全国対応です。打ち合わせはLINE・メール・ビデオ通話で完結します。埼玉北部を中心にお手伝いしていますが、地域は問いません。"
+        a: "全国対応です。打ち合わせはLINE・メール・ビデオ通話で完結します。埼玉を中心にお手伝いしていますが、地域は問いません。"
     },
 ];
 
@@ -126,7 +127,7 @@ export function FAQ({ lang = "ja" }: { lang?: Lang }) {
                         {items.map((faq, i) => (
                             <details key={faq.q} className={`group ${i > 0 ? "border-t border-line" : ""}`}>
                                 <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-5 transition-colors hover:text-coral-deep [&::-webkit-details-marker]:hidden">
-                                    <span className="text-base font-bold leading-snug text-ink transition-colors group-hover:text-coral-deep">{faq.q}</span>
+                                    <span className="text-[15px] font-bold leading-snug text-ink transition-colors group-hover:text-coral-deep md:text-base">{chunks(faq.q)}</span>
                                     <span
                                         aria-hidden
                                         className="shrink-0 text-xl font-bold text-coral transition-transform group-open:rotate-45"

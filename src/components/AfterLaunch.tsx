@@ -2,6 +2,7 @@
 // 不安をあおらず、必要になったときだけ相談できることを伝える
 
 import React from "react";
+import { chunks } from "@/lib/nowrap";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading } from "@/components/ui/SerifHeading";
 import { type Lang } from "@/i18n";
@@ -93,7 +94,7 @@ export function AfterLaunch({ lang = "ja" }: { lang?: Lang }) {
                         <li key={c.key} className="list-none">
                             <FadeIn delay={i * 0.07} className="h-full">
                                 <div className="flex h-full flex-col rounded-2xl bg-white p-7 shadow-[0_16px_40px_rgba(31,26,20,0.06)]">
-                                    <p className="mb-3 text-[15px] font-bold leading-snug text-ink">{c.when}</p>
+                                    <p className="mb-3 text-[15px] font-bold leading-snug text-ink">{chunks(c.when)}</p>
                                     <p className="text-[14px] leading-[2] text-ink-sub">{c.what}</p>
                                 </div>
                             </FadeIn>

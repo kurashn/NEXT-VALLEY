@@ -15,7 +15,7 @@ const copy = {
         ],
         contentLinks: [
             { name: "無料セルフ診断", href: "/shindan" },
-            { name: "対応エリア（埼玉北部）", href: "/saitama-hokubu" },
+            { name: "対応エリア（埼玉を中心に全国）", href: "/saitama-hokubu" },
             { name: "お役立ちコラム", href: "/blog" },
             { name: "事業情報", href: "/company" },
             { name: "ご紹介パートナー", href: "/partner" },
@@ -29,11 +29,13 @@ const copy = {
         ],
         tagline: (
             <>
-                2021年創業。
+                <span className="nowrap">2021年創業。</span>
+                <span className="nowrap">埼玉を中心に、全国オンラインで対応。</span>
                 <br />
-                教室・スクールのホームページを、制作から公開後の更新まで。
+                <span className="nowrap">小さな事業のホームページを、</span>
+                <span className="nowrap">制作から公開後の更新・管理まで。</span>
                 <br />
-                初期費用0円・月額8,980円（税込）。
+                <span className="nowrap">初期費用0円・月額8,980円（税込）。</span>
             </>
         ),
         cta: "LINEで無料診断を受ける",
@@ -62,7 +64,7 @@ const copy = {
             <>
                 Since 2021.
                 <br />
-                Websites and marketing for schools and shops.
+                Websites for small businesses, Saitama first and Japan-wide online.
                 <br />
                 Site check, proposal and quote are all free.
             </>
