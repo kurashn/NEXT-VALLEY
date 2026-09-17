@@ -144,22 +144,22 @@ function Word({ word, sub }: { word: string; sub?: string }) {
     );
 }
 
-function LineIcon() {
+function LineIcon({ big = false }: { big?: boolean }) {
     return (
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[11px] font-black" style={{ color: CORAL }} aria-hidden>LINE</span>
+        <span className={`flex shrink-0 items-center justify-center rounded-full bg-white font-black ${big ? "h-12 w-12 text-[14px] md:h-14 md:w-14 md:text-[16px]" : "h-9 w-9 text-[11px]"}`} style={{ color: CORAL }} aria-hidden>LINE</span>
     );
 }
 
-function LineButton({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function LineButton({ children, className = "", big = false }: { children: React.ReactNode; className?: string; big?: boolean }) {
     return (
         <a
             href={LINE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex min-h-[64px] items-center justify-center gap-3 rounded-full pl-4 pr-8 text-[17px] font-bold text-white shadow-[0_12px_30px_rgba(232,80,58,0.3)] transition-transform hover:-translate-y-0.5 md:text-[19px] ${className}`}
+            className={`inline-flex items-center justify-center rounded-full font-bold text-white shadow-[0_12px_30px_rgba(232,80,58,0.3)] transition-transform hover:-translate-y-0.5 ${big ? "min-h-[68px] gap-3 pl-4 pr-7 text-[16px] md:min-h-[88px] md:gap-4 md:pl-5 md:pr-9 md:text-[25px]" : "min-h-[64px] gap-3 pl-4 pr-8 text-[17px] md:text-[19px]"} ${className}`}
             style={{ backgroundColor: CORAL }}
         >
-            <LineIcon />
+            <LineIcon big={big} />
             {children}
             <ArrowUpRight className="h-5 w-5" aria-hidden />
         </a>
@@ -194,47 +194,46 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
             </header>
 
             {/* FV */}
-            <section className="relative overflow-hidden px-4 pb-12 pt-8 md:px-6 md:pb-20 md:pt-12" style={{ background: "linear-gradient(180deg,#FFFFFF 0%,#FBF9F4 100%)" }}>
-                <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[0.92fr_1.08fr] md:gap-4">
+            <section className="relative overflow-hidden px-4 pb-14 pt-8 md:px-6 md:pb-24 md:pt-12" style={{ background: "linear-gradient(180deg,#FFFFFF 0%,#FBF9F4 100%)" }}>
+                <div className="mx-auto grid max-w-[1320px] items-center gap-12 md:grid-cols-[1.06fr_1fr] md:gap-6">
                     <div>
-                        <p className="flex items-center gap-3 text-[14px] font-bold md:text-[16px]" style={{ color: CORAL }}>
-                            <span aria-hidden className="block h-px w-10" style={{ backgroundColor: CORAL }} />
+                        <p className="flex items-center gap-3 text-[15px] font-bold md:text-[18px]" style={{ color: CORAL }}>
+                            <span aria-hidden className="block h-px w-12" style={{ backgroundColor: CORAL }} />
                             {t.hero.eyebrow}
                         </p>
-                        <h1 className={`${heavy.className} mt-4 text-[clamp(1.75rem,3.75vw,2.95rem)] leading-[1.25] tracking-[-0.03em]`} style={{ color: NAVY }}>
+                        <h1 className={`${heavy.className} mt-4 text-[clamp(1.9rem,3.95vw,3.6rem)] leading-[1.22] tracking-[-0.035em]`} style={{ color: NAVY }}>
                             {t.hero.h1}
                         </h1>
-                        <p className="mt-5 text-[16px] leading-[1.8] md:text-[19px]" style={{ color: NAVY }}>{t.hero.lead}</p>
-                        <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-[15px] font-bold md:text-[16px]" style={{ color: NAVY }}>
+                        <p className="mt-5 text-[17px] leading-[1.7] md:text-[23px]" style={{ color: NAVY }}>{t.hero.lead}</p>
+                        <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[16px] font-bold md:text-[19px]" style={{ color: NAVY }}>
                             {t.hero.checks.map((c, i) => (
-                                <li key={i} className="flex items-center gap-2">
-                                    <Check />
+                                <li key={i} className="flex items-center gap-2.5">
+                                    <Check className="h-8 w-8 md:h-9 md:w-9" />
                                     <span>{c}</span>
-                                    {i === 0 && <span aria-hidden className="ml-3 hidden h-6 w-px sm:block" style={{ backgroundColor: "rgba(15,37,64,0.25)" }} />}
+                                    {i === 0 && <span aria-hidden className="ml-3 hidden h-7 w-px sm:block" style={{ backgroundColor: "rgba(15,37,64,0.25)" }} />}
                                 </li>
                             ))}
                         </ul>
-                        <LineButton className="mt-6 w-full sm:w-auto">{t.hero.cta}</LineButton>
-                        <p className="mt-4 text-[14px]" style={{ color: NAVY }}>{t.hero.ctaNote}</p>
-                        <p className="mt-2 text-[12.5px]" style={{ color: SUB }}>{t.hero.terms}</p>
-                        <p className="mt-1 text-[12.5px] font-bold" style={{ color: CORAL }}>{t.hero.slots}</p>
+                        <LineButton className="mt-7 w-full sm:w-auto" big>{t.hero.cta}</LineButton>
+                        <p className="mt-5 text-[15px] md:text-[18px]" style={{ color: NAVY }}>{t.hero.ctaNote}</p>
+                        <p className="mt-2 text-[13px] md:text-[15px]" style={{ color: SUB }}>{t.hero.terms}</p>
                     </div>
-                    <div className="relative pb-10 pr-[20%] pt-8">
-                        <Blob className="pointer-events-none absolute -left-[6%] -top-[2%] h-auto w-[112%]" />
-                        <span className="absolute right-[26%] top-0 z-20 rounded-full border bg-white px-3 py-1 text-[11px] font-bold" style={{ borderColor: TEAL, color: NAVY }}>{t.hero.pc}</span>
+                    <div className="relative pb-[9%] pr-[18%] pt-[5%]">
+                        <Blob className="pointer-events-none absolute -right-[10%] -top-[8%] h-auto w-[92%]" />
+                        <span className="absolute right-[8%] top-0 z-20 rounded-full border-2 bg-white px-4 py-1 text-[12px] font-bold" style={{ borderColor: TEAL, color: NAVY }}>{t.hero.pc}</span>
                         <Laptop className="relative w-full">
                             <MiniSite site={SITES.bakery} variant="pc" />
                         </Laptop>
-                        <span className="absolute -right-2 top-[26%] z-20 rounded-full border bg-white px-3 py-1 text-[11px] font-bold" style={{ borderColor: TEAL, color: NAVY }}>{t.hero.sp}</span>
-                        <Phone className="absolute -bottom-[3%] right-0 z-10 w-[28%]">
+                        <span className="absolute -right-[2%] top-[34%] z-20 rounded-full border-2 bg-white px-4 py-1 text-[12px] font-bold" style={{ borderColor: TEAL, color: NAVY }}>{t.hero.sp}</span>
+                        <Phone className="absolute bottom-0 right-0 z-10 w-[27%]">
                             <MiniSite site={SITES.bakery} variant="sp" />
                         </Phone>
-                        <p className={`${hand.className} absolute bottom-2 left-[30%] text-[15px]`} style={{ color: TEAL }}>{t.hero.caption} <span aria-hidden>⤴</span></p>
+                        <p className={`${hand.className} absolute bottom-[2%] left-[34%] text-[16px]`} style={{ color: TEAL }}>{t.hero.caption} <span aria-hidden>⤴</span></p>
                     </div>
                 </div>
-                <p className="mx-auto mt-6 max-w-6xl text-right text-[12.5px] md:mt-12" style={{ color: NAVY }}>
-                    <span className="inline-block border-b pb-0.5" style={{ borderColor: TEAL }}>{t.hero.note}</span>
-                </p>
+                <div className="mx-auto mt-6 max-w-[1320px] text-right text-[13px] md:mt-2 md:text-[14px]" style={{ color: NAVY }}>
+                    <span className="inline-block border-b pb-1" style={{ borderColor: TEAL }}>{t.hero.note}</span>
+                </div>
             </section>
 
             {/* お届けするデザイン案 */}

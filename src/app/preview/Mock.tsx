@@ -131,15 +131,16 @@ export function MiniSite({ site, variant = "pc" }: { site: MockSite; variant?: "
     );
 }
 
-/** ノートPCの枠 */
+/** ノートPCの枠（銀色の本体・黒い縁） */
 export function Laptop({ children, className = "" }: { children: React.ReactNode; className?: string }) {
     return (
         <div className={className} style={cq}>
-            <div className="rounded-[1.8cqw] bg-[#2A2F3A] p-[1.2cqw] pb-[1.4cqw] shadow-[0_28px_70px_rgba(20,51,90,0.2)]">
-                <div className="overflow-hidden rounded-[0.7cqw] bg-white">{children}</div>
+            <div className="rounded-t-[2cqw] rounded-b-[0.8cqw] bg-[#2B2F38] p-[1.1cqw] pb-[1.3cqw] shadow-[0_30px_70px_rgba(20,51,90,0.22)]">
+                <div className="overflow-hidden rounded-[0.6cqw] bg-white">{children}</div>
             </div>
-            <div className="mx-[-3cqw] h-[2.2cqw] rounded-b-[1.4cqw] bg-[#D9DDE3]" />
-            <div className="mx-auto h-[0.5cqw] w-[26cqw] rounded-b-[0.6cqw] bg-[#B9BFC9]" />
+            <div className="relative mx-[-4cqw] h-[2.6cqw] rounded-b-[1.6cqw]" style={{ background: "linear-gradient(180deg,#E6E9EE 0%,#C9CED6 100%)" }}>
+                <span className="absolute left-1/2 top-0 h-[0.9cqw] w-[16cqw] -translate-x-1/2 rounded-b-[0.8cqw] bg-[#B4BAC4]" />
+            </div>
         </div>
     );
 }
