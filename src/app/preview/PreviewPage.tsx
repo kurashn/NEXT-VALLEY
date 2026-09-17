@@ -8,13 +8,20 @@ import Link from "next/link";
 import { ArrowUpRight, ArrowRight, CalendarDays, Database, CircleCheck } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { serif } from "@/components/ui/SerifHeading";
-import { heavy, hand, V4 } from "@/lib/fonts-v4";
+import { heavy, V4 } from "@/lib/fonts-v4";
 import { withLang, type Lang } from "@/i18n";
 import { LINE_URL, REMAINING_SLOTS, TOTAL_SLOTS } from "./copy";
 import { StickyApply } from "./StickyApply";
-import { MiniSite, Laptop, Phone, Browser, SITES, StepIllustLine, StepIllustDesign, StepIllustDecide, CornerArcs, Blob } from "./Mock";
+import { CornerArcs } from "./Mock";
 
 import logoDark from "@/images/logo-dark.png";
+import fvVisual from "@/images/preview/fv-visual.webp";
+import sampleCompany from "@/images/preview/sample-company.webp";
+import sampleCafe from "@/images/preview/sample-cafe.webp";
+import sampleMusic from "@/images/preview/sample-music.webp";
+import stepLine from "@/images/preview/step-line.webp";
+import stepDesign from "@/images/preview/step-design.webp";
+import stepDecide from "@/images/preview/step-decide.webp";
 
 export { previewMetadata } from "./copy";
 
@@ -44,10 +51,7 @@ const ja = {
         ctaNote: "友だち追加後、簡単なヒアリングにお答えください。",
         terms: "正式制作は、初期0円・月額8,980円（税込）／最低契約期間1年。",
         slots: `毎月${TOTAL_SLOTS}社限定・今月あと${REMAINING_SLOTS}社`,
-        pc: "PC",
-        sp: "スマホ",
-        caption: "デザイン案のイメージ",
-        note: "無料で作成するのはトップページのデザイン案です。",
+        visualAlt: "デザイン案のイメージ：パン屋のホームページをパソコンとスマートフォンで表示した例。無料で作成するのはトップページのデザイン案です。",
     },
     preview: {
         word: "Preview",
@@ -55,9 +59,9 @@ const ja = {
         title: <><span style={{ color: TEAL }}>あなたの事業</span>なら、<span className="nowrap">こんなホームページに。</span></>,
         lead: "事業の内容と、ご希望の雰囲気を反映します。",
         items: [
-            { site: SITES.company, k: "会社", d: "信頼感と、事業の強みが伝わる。" },
-            { site: SITES.cafe, k: "店舗", d: "お店の雰囲気と、こだわりを。" },
-            { site: SITES.music, k: "教室", d: "レッスンの魅力を、わかりやすく。" },
+            { img: sampleCompany, alt: "工務店のホームページのデザイン案（PCとスマホ）", k: "会社", d: "信頼感と、事業の強みが伝わる。" },
+            { img: sampleCafe, alt: "喫茶店のホームページのデザイン案（PCとスマホ）", k: "店舗", d: "お店の雰囲気と、こだわりを。" },
+            { img: sampleMusic, alt: "音楽教室のホームページのデザイン案（PCとスマホ）", k: "教室", d: "レッスンの魅力を、わかりやすく。" },
         ],
         pill: "無料プレビューの範囲",
         note1: "トップページのデザイン案（PC・スマホ）をお届けします。",
@@ -70,9 +74,9 @@ const ja = {
         title: <>申し込みから、<span style={{ color: TEAL }}>3ステップ</span>。</>,
         lead: "デザイン案を見てから、依頼するか決められます。",
         steps: [
-            { n: "01", color: CORAL, Illust: StepIllustLine, t: "LINEで申し込む", d: <><span className="nowrap">友だち追加後、</span><br /><span className="nowrap">簡単なヒアリングに回答。</span></> },
-            { n: "02", color: TEAL, Illust: StepIllustDesign, t: "デザイン案を受け取る", d: <><span className="nowrap">必要情報が揃ってから、</span><br /><span className="nowrap"><b style={{ color: CORAL }}>3営業日以内</b>にお届け。</span></> },
-            { n: "03", color: CORAL, Illust: StepIllustDecide, t: "見てから、決める", d: <><span className="nowrap">内容・料金・条件を確認し、</span><br /><span className="nowrap">依頼するかご判断ください。</span></> },
+            { n: "01", color: CORAL, img: stepLine, t: "LINEで申し込む", d: <><span className="nowrap">友だち追加後、</span><br /><span className="nowrap">簡単なヒアリングに回答。</span></> },
+            { n: "02", color: TEAL, img: stepDesign, t: "デザイン案を受け取る", d: <><span className="nowrap">必要情報が揃ってから、</span><br /><span className="nowrap"><b style={{ color: CORAL }}>3営業日以内</b>にお届け。</span></> },
+            { n: "03", color: CORAL, img: stepDecide, t: "見てから、決める", d: <><span className="nowrap">内容・料金・条件を確認し、</span><br /><span className="nowrap">依頼するかご判断ください。</span></> },
         ],
         note: "合わなければ、見送っていただいて構いません。",
         note2: "お申し込みだけで契約・請求は発生しません。",
@@ -194,7 +198,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
             </header>
 
             {/* FV */}
-            <section className="relative overflow-hidden px-4 pb-14 pt-8 md:px-6 md:pb-24 md:pt-12" style={{ background: "linear-gradient(180deg,#FFFFFF 0%,#FBF9F4 100%)" }}>
+            <section className="relative overflow-hidden px-4 pb-14 pt-8 md:px-6 md:pb-24 md:pt-12" style={{ backgroundColor: "#FEFEFC" }}>
                 <div className="mx-auto grid max-w-[1320px] items-center gap-12 md:grid-cols-[1.06fr_1fr] md:gap-6">
                     <div>
                         <p className="flex items-center gap-3 text-[15px] font-bold md:text-[18px]" style={{ color: CORAL }}>
@@ -218,26 +222,14 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                         <p className="mt-5 text-[15px] md:text-[18px]" style={{ color: NAVY }}>{t.hero.ctaNote}</p>
                         <p className="mt-2 text-[13px] md:text-[15px]" style={{ color: SUB }}>{t.hero.terms}</p>
                     </div>
-                    <div className="relative pb-[9%] pr-[18%] pt-[5%]">
-                        <Blob className="pointer-events-none absolute -right-[10%] -top-[8%] h-auto w-[92%]" />
-                        <span className="absolute right-[8%] top-0 z-20 rounded-full border-2 bg-white px-4 py-1 text-[12px] font-bold" style={{ borderColor: TEAL, color: NAVY }}>{t.hero.pc}</span>
-                        <Laptop className="relative w-full">
-                            <MiniSite site={SITES.bakery} variant="pc" />
-                        </Laptop>
-                        <span className="absolute -right-[2%] top-[34%] z-20 rounded-full border-2 bg-white px-4 py-1 text-[12px] font-bold" style={{ borderColor: TEAL, color: NAVY }}>{t.hero.sp}</span>
-                        <Phone className="absolute bottom-0 right-0 z-10 w-[27%]">
-                            <MiniSite site={SITES.bakery} variant="sp" />
-                        </Phone>
-                        <p className={`${hand.className} absolute bottom-[2%] left-[34%] text-[16px]`} style={{ color: TEAL }}>{t.hero.caption} <span aria-hidden>⤴</span></p>
+                    <div className="relative">
+                        <Image src={fvVisual} alt={t.hero.visualAlt} priority sizes="(max-width: 768px) 100vw, 52vw" className="h-auto w-full" />
                     </div>
-                </div>
-                <div className="mx-auto mt-6 max-w-[1320px] text-right text-[13px] md:mt-2 md:text-[14px]" style={{ color: NAVY }}>
-                    <span className="inline-block border-b pb-1" style={{ borderColor: TEAL }}>{t.hero.note}</span>
                 </div>
             </section>
 
             {/* お届けするデザイン案 */}
-            <section className="px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: CREAM }}>
+            <section className="px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: "#FDFBF7" }}>
                 <div className="mx-auto max-w-6xl">
                     <Word word={t.preview.word} sub={t.preview.sub} />
                     <h2 className={`${heavy.className} text-[clamp(1.6rem,3.6vw,2.9rem)] leading-[1.3]`} style={{ color: NAVY }}>{t.preview.title}</h2>
@@ -246,14 +238,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                         {t.preview.items.map((it, i) => (
                             <li key={it.k}>
                                 <FadeIn delay={i * 0.07}>
-                                    <div className="relative pb-10 pr-[8%]">
-                                        <Browser>
-                                            <MiniSite site={it.site} variant="pc" />
-                                        </Browser>
-                                        <Phone className="absolute bottom-0 right-0 w-[32%]">
-                                            <MiniSite site={it.site} variant="sp" />
-                                        </Phone>
-                                    </div>
+                                    <Image src={it.img} alt={it.alt} sizes="(max-width: 768px) 100vw, 33vw" className="h-auto w-full" />
                                     <p className={`${heavy.className} mt-5 text-[22px] tracking-[0.06em]`} style={{ color: NAVY }}>{it.k}</p>
                                     <p className="mt-1 text-[14.5px]" style={{ color: NAVY }}>{it.d}</p>
                                 </FadeIn>
@@ -275,7 +260,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
             </section>
 
             {/* 3ステップ */}
-            <section id="flow" className="bg-white px-4 py-14 md:px-6 md:py-20">
+            <section id="flow" className="px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: "#FEFDF9" }}>
                 <div className="mx-auto max-w-6xl">
                     <Word word={t.flow.word} sub={t.flow.sub} />
                     <h2 className={`${heavy.className} text-[clamp(1.7rem,4vw,3.2rem)] leading-[1.25]`} style={{ color: NAVY }}>{t.flow.title}</h2>
@@ -286,7 +271,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                                 <li>
                                     <div className="flex items-center gap-3">
                                         <span className="text-[64px] italic leading-none md:text-[76px]" style={{ fontFamily: serif, fontWeight: 700, color: s.color }}>{s.n}</span>
-                                        <s.Illust className="h-auto w-[180px] md:w-[210px]" />
+                                        <span className="flex h-[150px] w-[190px] items-center justify-center md:h-[170px] md:w-[220px]"><Image src={s.img} alt="" sizes="220px" className="h-auto max-h-full w-auto max-w-full" /></span>
                                     </div>
                                     <p className={`${heavy.className} mt-3 text-[22px] md:text-[26px]`} style={{ color: NAVY }}>{s.t}</p>
                                     <p className="mt-2 text-[15px] leading-[1.8] md:text-[16px]" style={{ color: NAVY }}>{s.d}</p>
