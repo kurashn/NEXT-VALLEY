@@ -30,12 +30,12 @@ const jaGeneral = {
             body: <>写真や営業時間を変えたいのに、<br className="hidden lg:block" />ついそのままになっている。</>,
         },
         {
-            no: "02", tag: "CONTACT", img: worryContact, alt: "花屋の店内でスマートフォンを見る店主の手元",
+            no: "02", tag: "CONTACT", img: worryContact, alt: "花屋で電話をしながらメモを取る店主の手元",
             title: <>見られているのに、<br />問い合わせにつながらない。</>,
             body: <>ホームページやSNSはあるけれど、<br className="hidden lg:block" />相談や予約がなかなか増えない。</>,
         },
         {
-            no: "03", tag: "TIME", img: worryTime, alt: "のこぎりで木材を切る職人の手元",
+            no: "03", tag: "TIME", img: worryTime, alt: "木材に印をつける職人の手元",
             title: <>Webに使う時間も、<br />相談できる人もいない。</>,
             body: <>日々の仕事で手いっぱい。<br className="hidden lg:block" />何から手をつければいいのか迷っている。</>,
         },
@@ -63,12 +63,12 @@ const enGeneral: typeof jaGeneral = {
             body: <>Photos and opening hours need changing, but it never happens.</>,
         },
         {
-            no: "02", tag: "CONTACT", img: worryContact, alt: "A florist's hands holding a phone in the shop",
+            no: "02", tag: "CONTACT", img: worryContact, alt: "A florist taking notes while on the phone",
             title: <>People look,<br />but nobody gets in touch.</>,
             body: <>There is a website and social media, yet enquiries and bookings stay flat.</>,
         },
         {
-            no: "03", tag: "TIME", img: worryTime, alt: "A craftsman's hands sawing timber",
+            no: "03", tag: "TIME", img: worryTime, alt: "A craftsman's hands marking timber",
             title: <>No time for the web,<br />and no one to ask.</>,
             body: <>The day is full already. Where to even start is unclear.</>,
         },
