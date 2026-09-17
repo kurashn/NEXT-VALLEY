@@ -32,6 +32,7 @@ const ja = {
     specsTitle: "ご契約の条件",
     specs: [
         { k: "制作ページ数", v: "10ページまで" },
+        { k: "11ページ目以降", v: "1ページにつき月額1,000円（税込）を追加。お知らせ・ブログの記事は数えません" },
         { k: "修正・更新", v: "回数の制限なし" },
         { k: "ドメイン・サーバー費", v: "月額に含みます" },
         { k: "最低契約期間", v: "1年間" },
@@ -146,6 +147,7 @@ const en: typeof ja = {
     specsTitle: "Terms",
     specs: [
         { k: "Pages built", v: "Up to 10 pages" },
+        { k: "11th page onward", v: "¥1,000 a month (tax incl.) per extra page. News and blog posts do not count" }
         { k: "Edits and updates", v: "No limit on the number" },
         { k: "Domain and hosting", v: "Included in the monthly fee" },
         { k: "Minimum term", v: "1 year" },

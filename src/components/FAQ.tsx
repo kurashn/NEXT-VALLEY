@@ -45,6 +45,16 @@ export const faqs: FaqItem[] = [
         ),
     },
     {
+        q: "11ページ以上のホームページも作れますか？",
+        a: "作れます。11ページ目からは、1ページにつき月額1,000円（税込）を追加します。お知らせやブログの記事はページ数に数えません。20ページを超える場合はご相談ください。",
+        aNode: (
+            <>
+                <p>作れます。11ページ目からは、1ページにつき月額1,000円（税込）を<span className="nowrap">追加します。</span></p>
+                <p className="mt-3">お知らせやブログの記事はページ数に数えません。20ページを超える場合は<span className="nowrap">ご相談ください。</span></p>
+            </>
+        ),
+    },
+    {
         q: "GoogleマップやSNSの運用も、月額に含まれますか？",
         a: "含まれません。月額に含まれるのは、ホームページへのLINEリンクの設置と、基本的な検索向け設定までです。Googleマップ（MEO）の運用、SNSの運用、継続的なSEO支援、LINE公式アカウントの構築・運用は、内容に応じて別途お見積もりします。",
     },
@@ -86,6 +96,10 @@ const faqsEn: FaqItem[] = [
     {
         q: "How many edits can I ask for?",
         a: "After you sign, there is no limit on how often. Text and photo changes, news and price updates, layout changes within a page: almost anything is covered. The one exception is a full redesign, which is quoted separately. Please send your changes in one batch where you can, so nothing is missed. During the free preview stage, one round of adjustments is included.",
+    },
+    {
+        q: "Can I have more than 10 pages?",
+        a: "Yes. From the 11th page, each extra page adds ¥1,000 a month (tax incl.). News and blog posts do not count as pages. For more than 20 pages, please ask.",
     },
     {
         q: "Does the monthly fee cover Google Maps or social media management?",
