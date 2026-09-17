@@ -4,11 +4,12 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { heavy, hand } from "@/lib/fonts-v4";
+import { hand } from "@/lib/fonts-v4";
 import { withLang, type Lang } from "@/i18n";
 
 import townLeft from "@/images/fv/town-left.webp";
 import townRight from "@/images/fv/town-right.webp";
+import headline from "@/images/fv/headline.png";
 
 const NAVY = "#14335A";
 const TEAL = "#2C8FA8";
@@ -16,9 +17,7 @@ const CORAL = "#FD7368";
 
 const ja = {
     eyebrow: "埼玉の会社・お店・教室のためのWeb担当",
-    h1a: <>あなたは、<span style={{ color: "#E8503A" }}>本業</span>に。</>,
-    h1web: "Web",
-    h1b: "は、私たちに。",
+    h1alt: "あなたは、本業に。Webは、私たちに。",
     lead: "ホームページ制作から、公開後の更新・管理まで。",
     priceInitialLabel: "初期制作費",
     priceInitial: "0円",
@@ -37,9 +36,7 @@ const ja = {
 
 const en: typeof ja = {
     eyebrow: "WEB SUPPORT FOR COMPANIES, SHOPS AND SCHOOLS IN SAITAMA",
-    h1a: <>You run the <span style={{ color: "#E8503A" }}>business</span>.</>,
-    h1web: "Web",
-    h1b: " is on us.",
+    h1alt: "あなたは、本業に。Webは、私たちに。",
     lead: "From building the site to updating and managing it after launch.",
     priceInitialLabel: "Setup",
     priceInitial: "¥0",
@@ -97,25 +94,9 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                     <p className="mb-2 text-[14px] font-bold tracking-[0.12em] md:text-[15px]" style={{ color: NAVY }}>
                         {t.eyebrow}
                     </p>
-                    <h1
-                        className={`${heavy.className} mb-3 text-[clamp(2.15rem,min(6.9vw,8.6vh),5.2rem)] leading-[1.08] tracking-[-0.03em]`}
-                        style={{ color: NAVY }}
-                    >
-                        <span className="block">{t.h1a}</span>
-                        <span className="block">
-                            <span className="relative inline-block">
-                                <span style={{ color: TEAL }}>{t.h1web}</span>
-                                <svg
-                                    aria-hidden
-                                    viewBox="0 0 100 12"
-                                    preserveAspectRatio="none"
-                                    className="absolute -bottom-[0.1em] left-0 h-[0.17em] w-full"
-                                >
-                                    <path d="M2 8 C 25 3, 50 3, 98 6" fill="none" stroke={CORAL} strokeWidth="5" strokeLinecap="round" />
-                                </svg>
-                            </span>
-                            {t.h1b}
-                        </span>
+                    <h1 className="mb-3">
+                        <span className="sr-only">{t.h1alt}</span>
+                        <Image src={headline} alt="" priority sizes="(max-width: 768px) 92vw, 720px" className="mx-auto h-auto w-full max-w-[720px]" />
                     </h1>
                     <p className="mb-2.5 text-[16px] font-bold md:text-[18px]" style={{ color: NAVY }}>
                         {t.lead}
