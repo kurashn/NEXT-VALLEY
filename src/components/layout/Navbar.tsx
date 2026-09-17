@@ -14,7 +14,7 @@ import { withLang, type Lang } from "@/i18n";
 const copy = {
   ja: {
     links: [
-      { name: "支援する範囲", href: "/#service" },
+      { name: "支援する内容", href: "/#service" },
       { name: "料金", href: "/#price" },
       { name: "無料プレビュー", href: "/preview" },
       { name: "制作実績", href: "/#works" },

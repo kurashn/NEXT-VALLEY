@@ -29,7 +29,7 @@ const ja = {
     terms1: "10ページまで・更新無制限・ドメイン／サーバー込み",
     terms2: "最低契約期間1年・初年度総額107,760円（税込）",
     subPrefix: "今のホームページを改善したい方は、",
-    subLink: "無料診断へ",
+    subLink: "無料セルフ診断へ",
     hand1: "地域の仕事に、",
     hand2: "Webの力を。",
     en1: "LOCAL BUSINESS,",
