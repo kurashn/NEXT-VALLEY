@@ -1,21 +1,18 @@
 // Server Component — 公開したあとの集客改善（grouthdesign-v2.png の再現）
 
 import React from "react";
-import Image, { type StaticImageData } from "next/image";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionHeadV4 } from "@/components/ui/SectionHeadV4";
 import { heavy, V4 } from "@/lib/fonts-v4";
 import { type Lang } from "@/i18n";
 
-import illHp from "@/images/v4/growth-hp.webp";
-import illMap from "@/images/v4/growth-map.webp";
-import illLine from "@/images/v4/growth-line.webp";
+import { GrowthHp, GrowthMap, GrowthLine } from "@/components/ui/GrowthIllust";
 
 const LINE_URL = "https://lin.ee/N4QXdJL";
 const BG = "#FBF8F3";
 
-type Item = { no: string; img: StaticImageData; title: string; sub: string; body: React.ReactNode };
+type Item = { no: string; Illust: React.ComponentType<{ className?: string }>; title: string; sub: string; body: React.ReactNode };
 
 const ja = {
     eyebrow: "公開したあとの集客改善",
@@ -27,9 +24,9 @@ const ja = {
     ),
     lead: <><span className="nowrap">「もっと問い合わせを増やしたい」ときに、</span><span className="nowrap">必要な支援だけ。</span></>,
     items: [
-        { no: "01", img: illHp, title: "ホームページ", sub: "問い合わせまで、迷わせない。", body: <><span className="nowrap">ページと問い合わせへの案内を</span><span className="nowrap">見直します。</span></> },
-        { no: "02", img: illMap, title: "Googleマップ", sub: "地域の人に、見つけてもらう。", body: <><span className="nowrap">登録情報・写真・検索での見え方を</span><span className="nowrap">整えます。</span></> },
-        { no: "03", img: illLine, title: "LINE", sub: "友だち追加の、その先へ。", body: <><span className="nowrap">最初の案内から予約までの流れを</span><span className="nowrap">整えます。</span></> },
+        { no: "01", Illust: GrowthHp, title: "ホームページ", sub: "問い合わせまで、迷わせない。", body: <><span className="nowrap">ページと問い合わせへの案内を</span><span className="nowrap">見直します。</span></> },
+        { no: "02", Illust: GrowthMap, title: "Googleマップ", sub: "地域の人に、見つけてもらう。", body: <><span className="nowrap">登録情報・写真・検索での見え方を</span><span className="nowrap">整えます。</span></> },
+        { no: "03", Illust: GrowthLine, title: "LINE", sub: "友だち追加の、その先へ。", body: <><span className="nowrap">最初の案内から予約までの流れを</span><span className="nowrap">整えます。</span></> },
     ] as Item[],
     steps: ["現状を確認", "課題を整理", "必要な支援をお見積もり"],
     note1: <><span className="nowrap">追加支援は別途お見積もり。</span><span className="nowrap">内容・金額にご納得いただいてから着手します。</span></>,
@@ -46,9 +43,9 @@ const en: typeof ja = {
     ),
     lead: <>When you want more enquiries, only the support you need.</>,
     items: [
-        { no: "01", img: illHp, title: "Website", sub: "A clear path to the enquiry.", body: <>We review the pages and how they lead to contact.</> },
-        { no: "02", img: illMap, title: "Google Maps", sub: "Get found by people nearby.", body: <>Listing details, photos and how you appear in search.</> },
-        { no: "03", img: illLine, title: "LINE", sub: "Beyond the friend add.", body: <>From the first message to the booking.</> },
+        { no: "01", Illust: GrowthHp, title: "Website", sub: "A clear path to the enquiry.", body: <>We review the pages and how they lead to contact.</> },
+        { no: "02", Illust: GrowthMap, title: "Google Maps", sub: "Get found by people nearby.", body: <>Listing details, photos and how you appear in search.</> },
+        { no: "03", Illust: GrowthLine, title: "LINE", sub: "Beyond the friend add.", body: <>From the first message to the booking.</> },
     ] as Item[],
     steps: ["Review the current state", "Sort the issues", "Quote only what is needed"],
     note1: <>Extra support is quoted separately and starts only after you agree to the scope and price.</>,
@@ -70,7 +67,7 @@ export function AfterLaunch({ lang = "ja" }: { lang?: Lang }) {
                         <li key={it.no} className={`flex flex-col items-center px-2 text-center md:px-6 ${i > 0 ? "md:border-l" : ""}`} style={{ borderColor: "rgba(20,51,90,0.18)" }}>
                             <FadeIn delay={i * 0.07} className="flex flex-col items-center">
                                 <div className="flex h-[200px] items-center justify-center md:h-[215px]">
-                                    <Image src={it.img} alt="" sizes="(max-width: 768px) 70vw, 30vw" className="h-auto w-[250px] max-w-full md:w-[290px]" />
+                                    <it.Illust className="h-auto w-[260px] max-w-full md:w-[300px]" />
                                 </div>
                                 <p className="mt-4 text-[14px] font-bold tracking-[0.1em]" style={{ color: V4.teal }}>{it.no}</p>
                                 <h3 className={`${heavy.className} mt-1 text-[clamp(1.35rem,2.2vw,1.8rem)] leading-[1.3]`} style={{ color: V4.navy }}>{it.title}</h3>
