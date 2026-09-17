@@ -147,7 +147,7 @@ const en: typeof ja = {
     specsTitle: "Terms",
     specs: [
         { k: "Pages built", v: "Up to 10 pages" },
-        { k: "11th page onward", v: "¥1,000 a month (tax incl.) per extra page. News and blog posts do not count" }
+        { k: "11th page onward", v: "¥1,000 a month (tax incl.) per extra page. News and blog posts do not count" },
         { k: "Edits and updates", v: "No limit on the number" },
         { k: "Domain and hosting", v: "Included in the monthly fee" },
         { k: "Minimum term", v: "1 year" },
