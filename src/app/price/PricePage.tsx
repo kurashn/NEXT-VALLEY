@@ -315,7 +315,7 @@ export function PricePage({ lang = "ja" }: { lang?: Lang }) {
                     <FadeIn>
                         <p className="mb-4 text-[13px] font-bold tracking-[0.3em] text-coral-deep">{t.eyebrow}</p>
                         <h1 className="mb-6 text-3xl font-bold leading-[1.4] md:text-4xl">{t.h1}</h1>
-                        <p className="text-[15px] leading-[2] text-ink-sub md:text-base">{t.lead}</p>
+                        <p className="text-[15px] leading-[2] text-ink-sub md:text-[16px]">{t.lead}</p>
                     </FadeIn>
                 </div>
             </section>

@@ -16,8 +16,8 @@ const copy = {
     links: [
       { name: "支援する内容", href: "/#service" },
       { name: "料金", href: "/#price" },
-      { name: "無料プレビュー", href: "/preview" },
       { name: "制作実績", href: "/#works" },
+      { name: "ご依頼の流れ", href: "/#flow" },
       { name: "お役立ちコラム", href: "/blog" },
       { name: "お問い合わせ", href: "/contact" },
     ],
@@ -29,8 +29,8 @@ const copy = {
     links: [
       { name: "What we do", href: "/#service" },
       { name: "Pricing", href: "/#price" },
-      { name: "Free Preview", href: "/preview" },
       { name: "Our Work", href: "/#works" },
+      { name: "How it works", href: "/#flow" },
       { name: "About", href: "/company" },
       { name: "Contact", href: "/contact" },
     ],
@@ -144,7 +144,7 @@ export default function Navbar({ lang = "ja", variant = "dark" }: { lang?: Lang;
                         key={link.name}
                         href={link.href}
                         onClick={(e) => /^(?:\/en)?\/#/.test(link.href) && handleScroll(e, link.href)}
-                        className="border-b border-navy-line py-4 text-base font-medium text-white transition-colors hover:text-coral"
+                        className="border-b border-navy-line py-4 text-[16px] font-medium text-white transition-colors hover:text-coral"
                       >
                         {link.name}
                       </a>
@@ -152,7 +152,7 @@ export default function Navbar({ lang = "ja", variant = "dark" }: { lang?: Lang;
                   </div>
                   <a
                     href={withLang(lang, "/preview")}
-                    className="inline-flex h-14 items-center justify-center gap-2 rounded-lg bg-coral-deep text-base font-bold text-white"
+                    className="inline-flex h-14 items-center justify-center gap-2 rounded-lg bg-coral-deep text-[16px] font-bold text-white"
                   >
                     {t.cta}
                     <ArrowRight className="h-4 w-4" />

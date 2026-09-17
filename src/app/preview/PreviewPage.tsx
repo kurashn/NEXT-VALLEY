@@ -184,7 +184,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                             </h1>
                         </FadeIn>
                         <FadeIn delay={0.16}>
-                            <p className="lead mt-8 max-w-[34em] text-base leading-[2] text-navy-sub md:text-lg">
+                            <p className="lead mt-8 max-w-[34em] text-[16px] leading-[2] text-navy-sub md:text-lg">
                                 {t.hero.lead}
                             </p>
                         </FadeIn>
@@ -611,7 +611,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                             {t.faq.items.map((f, i) => (
                                 <details key={f.q} className={`group ${i > 0 ? "border-t border-line" : ""}`}>
                                     <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-5 [&::-webkit-details-marker]:hidden">
-                                        <span className="text-base font-bold leading-snug text-ink transition-colors group-hover:text-coral-deep">{f.q}</span>
+                                        <span className="text-[16px] font-bold leading-snug text-ink transition-colors group-hover:text-coral-deep">{f.q}</span>
                                         <span aria-hidden className="shrink-0 text-xl font-bold text-coral transition-transform group-open:rotate-45">＋</span>
                                     </summary>
                                     <p className="pb-6 text-[15px] leading-[2] text-ink-sub">{f.a}</p>

@@ -127,7 +127,7 @@ export function FAQ({ lang = "ja" }: { lang?: Lang }) {
                         {items.map((faq, i) => (
                             <details key={faq.q} className={`group ${i > 0 ? "border-t border-line" : ""}`}>
                                 <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-5 transition-colors hover:text-coral-deep [&::-webkit-details-marker]:hidden">
-                                    <span className="text-[15px] font-bold leading-snug text-ink transition-colors group-hover:text-coral-deep md:text-base">{chunks(faq.q)}</span>
+                                    <span className="text-[15px] font-bold leading-snug text-ink transition-colors group-hover:text-coral-deep md:text-[16px]">{chunks(faq.q)}</span>
                                     <span
                                         aria-hidden
                                         className="shrink-0 text-xl font-bold text-coral transition-transform group-open:rotate-45"

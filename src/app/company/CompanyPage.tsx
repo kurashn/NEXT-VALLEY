@@ -204,28 +204,28 @@ export function CompanyPage({ lang = "ja" }: { lang?: Lang }) {
                                     <dt className="text-sm font-bold text-[#002335] flex items-center h-full">{t.rowName}</dt>
                                 </div>
                                 <div className="sm:col-span-2 border-b border-slate-100 pb-4 sm:border-none sm:pb-0">
-                                    <dd className="text-base text-slate-600">{t.name}</dd>
+                                    <dd className="text-[16px] text-slate-600">{t.name}</dd>
                                 </div>
 
                                 <div className="sm:col-span-1">
                                     <dt className="text-sm font-bold text-[#002335] flex items-center h-full">{t.rowRep}</dt>
                                 </div>
                                 <div className="sm:col-span-2 border-b border-slate-100 pb-4 sm:border-none sm:pb-0">
-                                    <dd className="text-base text-slate-600">{t.rep}</dd>
+                                    <dd className="text-[16px] text-slate-600">{t.rep}</dd>
                                 </div>
 
                                 <div className="sm:col-span-1">
                                     <dt className="text-sm font-bold text-[#002335] flex items-center h-full">{t.rowFounded}</dt>
                                 </div>
                                 <div className="sm:col-span-2 border-b border-slate-100 pb-4 sm:border-none sm:pb-0">
-                                    <dd className="text-base text-slate-600">{t.founded}</dd>
+                                    <dd className="text-[16px] text-slate-600">{t.founded}</dd>
                                 </div>
 
                                 <div className="sm:col-span-1">
                                     <dt className="text-sm font-bold text-[#002335] py-1">{t.rowServices}</dt>
                                 </div>
                                 <div className="sm:col-span-2 border-b border-slate-100 pb-4 sm:border-none sm:pb-0">
-                                    <dd className="text-base text-slate-600 leading-relaxed space-y-2">
+                                    <dd className="text-[16px] text-slate-600 leading-relaxed space-y-2">
                                         {t.services.map((s) => (
                                             <div key={s} className="flex items-start gap-2">
                                                 <span className="text-coral-deep font-bold">{t.bullet}</span>
@@ -239,7 +239,7 @@ export function CompanyPage({ lang = "ja" }: { lang?: Lang }) {
                                     <dt className="text-sm font-bold text-[#002335] flex items-center h-full">{t.rowContact}</dt>
                                 </div>
                                 <div className="sm:col-span-2">
-                                    <dd className="text-base text-slate-600">
+                                    <dd className="text-[16px] text-slate-600">
                                         {t.email}<br />
                                         <span className="text-xs text-slate-500 mt-1 block">{t.contactNote}</span>
                                     </dd>
