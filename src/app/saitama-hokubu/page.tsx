@@ -14,11 +14,11 @@ const LINE = "https://lin.ee/N4QXdJL";
 export const metadata: Metadata = {
     title: "埼玉のホームページ制作｜初期0円・月額8,980円で制作から更新まで",
     description:
-        "埼玉（本庄・熊谷・深谷・さいたま市など）の小さな会社・お店・教室のホームページ制作。初期制作費0円・月額8,980円（税込）で、10ページまでの制作、修正・更新無制限、ドメイン・サーバー費込み。契約前にトップページのデザイン案を無料でお作りします。やり取りはLINE・メールで完結、全国対応。",
+        "埼玉（さいたま市・川越・熊谷・深谷など）の小さな会社・お店・教室のホームページ制作。初期制作費0円・月額8,980円（税込）で、10ページまでの制作、修正・更新無制限、ドメイン・サーバー費込み。契約前にトップページのデザイン案を無料でお作りします。やり取りはLINE・メールで完結、全国対応。",
     alternates: { canonical: "https://www.nextvalley-jpn.com/saitama-hokubu" },
     openGraph: {
         title: "埼玉のホームページ制作｜初期0円・月額8,980円 | NEXT VALLEY",
-        description: "本庄・熊谷・深谷など埼玉の小さな事業のホームページを、制作から公開後の更新・管理まで。契約前にデザイン案を無料で。",
+        description: "埼玉の小さな事業のホームページを、制作から公開後の更新・管理まで。契約前にデザイン案を無料で。",
         url: "https://www.nextvalley-jpn.com/saitama-hokubu",
     },
 };
@@ -48,9 +48,9 @@ const steps = [
 
 const areas = [
     {
-        name: "本庄市・児玉郡（美里町・神川町・上里町）",
-        body: "代表の地元です。本庄市児玉町で育った目線で、地域の会社・お店・教室のホームページと集客のご相談をお受けしています。",
-        link: { href: "/blog/honjo-classroom-website", label: "本庄の教室が体験申込を増やす方法" },
+        name: "さいたま市・川越市・所沢市・越谷市など県内全域、全国",
+        body: "上尾・鴻巣・加須・久喜・春日部・草加・川口など県内どこでも。やり取りはLINEかメールで完結するので、全国からご依頼いただけます。",
+        link: { href: "/blog/saitama-local-web-agency", label: "埼玉で地元の制作会社を選ぶべきか" },
     },
     {
         name: "熊谷市・深谷市・行田市・羽生市",
@@ -63,9 +63,9 @@ const areas = [
         link: { href: "/blog/isesaki-honjo-line-marketing", label: "伊勢崎・本庄の教室とお店のLINE活用" },
     },
     {
-        name: "さいたま市・川越市・所沢市・越谷市など県内全域、全国",
-        body: "上尾・鴻巣・加須・久喜・春日部・草加・川口など県内どこでも。やり取りはLINEかメールで完結するので、全国からご依頼いただけます。",
-        link: { href: "/blog/saitama-local-web-agency", label: "埼玉で地元の制作会社を選ぶべきか" },
+        name: "本庄市・児玉郡（美里町・神川町・上里町）",
+        body: "代表の地元です。本庄市児玉町で育った目線で、地域の会社・お店・教室のホームページと集客のご相談をお受けしています。",
+        link: { href: "/blog/honjo-classroom-website", label: "本庄の教室が体験申込を増やす方法" },
     },
 ];
 
@@ -121,7 +121,7 @@ export default function SaitamaPage() {
                         <span style={{ color: V4.teal }}>初期0円</span>・<span style={{ color: V4.coralDeep }}>月額8,980円</span>。
                     </h1>
                     <p className="mt-5 text-[16px] leading-[1.9] md:text-[19px]" style={{ color: V4.navy }}>
-                        本庄・熊谷・深谷など埼玉の小さな会社・お店・教室のホームページを、制作から公開後の更新・管理までまとめてお引き受けします。契約前に、トップページのデザイン案を無料でお作りします。
+                        埼玉の小さな会社・お店・教室のホームページを、制作から公開後の更新・管理までまとめてお引き受けします。契約前に、トップページのデザイン案を無料でお作りします。
                     </p>
                     <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[15px] font-bold md:text-[17px]" style={{ color: V4.navy }}>
                         {["10ページまで制作", "修正・更新は無制限", "ドメイン・サーバー費込み", "LINE・メールで完結"].map((c) => (
@@ -191,7 +191,7 @@ export default function SaitamaPage() {
             {/* 対応エリア */}
             <section className="px-4 py-16 md:px-6 md:py-24" style={{ backgroundColor: V4.cream }}>
                 <div className="mx-auto max-w-5xl">
-                    <Head eyebrow="対応エリア" title={<>本庄・熊谷・深谷から、<span className="nowrap">県内全域・全国へ。</span></>} lead="地域の事情に合わせた記事も書いています。あなたの地域に近いものからご覧ください。" />
+                    <Head eyebrow="対応エリア" title={<>埼玉の県内全域から、<span className="nowrap">全国へ。</span></>} lead="地域の事情に合わせた記事も書いています。あなたの地域に近いものからご覧ください。" />
                     <div className="grid gap-5 md:grid-cols-2">
                         {areas.map((a) => (
                             <div key={a.name} className="rounded-2xl border bg-white p-6" style={{ borderColor: "rgba(20,51,90,0.12)" }}>
