@@ -27,7 +27,6 @@ const ja = {
     priceTax: "（税込）",
     cta: "無料でデザイン案を見てみる",
     terms1: "10ページまで・更新無制限・ドメイン／サーバー込み",
-    terms2: "最低契約期間1年・初年度総額107,760円（税込）",
     subPrefix: "今のホームページを改善したい方は、",
     subLink: "無料セルフ診断へ",
     hand1: "地域の仕事に、",
@@ -49,7 +48,6 @@ const en: typeof ja = {
     priceTax: " (tax incl.)",
     cta: "See a free design proposal",
     terms1: "Up to 10 pages, unlimited edits, domain and hosting included",
-    terms2: "12-month minimum term, first-year total ¥107,760 (tax incl.)",
     subPrefix: "Already have a site? ",
     subLink: "Get a free site check",
     hand1: "Local work,",
@@ -144,8 +142,6 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                     </a>
                     <p className="mt-2.5 text-[12.5px] leading-[1.75] md:text-[13px]" style={{ color: "#4A5A6E" }}>
                         {t.terms1}
-                        <br />
-                        {t.terms2}
                     </p>
                     <p className="mt-1.5 text-[12.5px]" style={{ color: "#6E8199" }}>
                         {t.subPrefix}
