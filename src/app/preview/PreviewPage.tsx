@@ -232,7 +232,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                         <p className={`${hand.className} absolute bottom-2 left-[30%] text-[15px]`} style={{ color: TEAL }}>{t.hero.caption} <span aria-hidden>⤴</span></p>
                     </div>
                 </div>
-                <p className="mx-auto mt-4 max-w-6xl text-right text-[12.5px] md:mt-0" style={{ color: NAVY }}>
+                <p className="mx-auto mt-6 max-w-6xl text-right text-[12.5px] md:mt-12" style={{ color: NAVY }}>
                     <span className="inline-block border-b pb-0.5" style={{ borderColor: TEAL }}>{t.hero.note}</span>
                 </p>
             </section>
