@@ -30,7 +30,7 @@ const jaGeneral = {
             body: <><span className="nowrap">写真や営業時間を変えたいのに、</span><span className="nowrap">ついそのままになっている。</span></>,
         },
         {
-            no: "02", tag: "CONTACT", img: worryContact, alt: "花屋で電話をしながらメモを取る店主の手元",
+            no: "02", tag: "CONTACT", img: worryContact, alt: "机でスマートフォンを見る手元",
             title: <>見られているのに、<br />問い合わせにつながらない。</>,
             body: <><span className="nowrap">ホームページやSNSはあるけれど、</span><span className="nowrap">相談や予約がなかなか増えない。</span></>,
         },
@@ -64,7 +64,7 @@ const enGeneral: typeof jaGeneral = {
             body: <>Photos and opening hours need changing, but it never happens.</>,
         },
         {
-            no: "02", tag: "CONTACT", img: worryContact, alt: "A florist taking notes while on the phone",
+            no: "02", tag: "CONTACT", img: worryContact, alt: "Hands checking a smartphone at a table",
             title: <>People look,<br />but nobody gets in touch.</>,
             body: <>There is a website and social media, yet enquiries and bookings stay flat.</>,
         },
