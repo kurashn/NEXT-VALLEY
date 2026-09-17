@@ -30,7 +30,7 @@ export const faqs: FaqItem[] = [
     },
     {
         q: "最低契約期間はありますか？",
-        a: "1年間です。ドメイン・サーバー費を含めて初期制作費を0円にしているため、1年間の継続をお願いしています。1年未満での解約もできますが、その場合サイトの譲渡はできません。",
+        a: "1年間です。ドメイン・サーバー費を含めて初期制作費を0円にしているため、1年間の継続をお願いしています。1年を過ぎると自動で更新され、以降はいつでも解約できます（前月末までにお知らせください）。1年未満での解約もできますが、その場合サイトの譲渡はできません。",
     },
     {
         q: "1年未満で解約したい場合は、どうなりますか？",
@@ -45,12 +45,12 @@ export const faqs: FaqItem[] = [
     },
     {
         q: "ドメインとサーバーは、どちらが契約しますか？",
-        a: "基本的に当方で契約し、費用は月額に含まれます。追加の料金はかかりません。お客様名義で契約したい場合は、お客様側でご用意いただければ、設定はこちらで行います。1年以上ご契約いただいてサイトを譲渡する際は、当方で契約したドメインもお客様へ移管できます。",
+        a: "基本的に当方で契約し、費用は月額に含まれます。追加の料金はかかりません。お客様名義で契約したい場合は、お客様側でご用意いただければ、設定はこちらで行います。1年以上ご契約いただいてサイトを譲渡する際は、当方で契約したドメインもお客様へ移管します。費用はかかりません。",
         aNode: (
             <>
                 <p>基本的に当方で契約し、費用は月額に含まれます。追加の料金は<span className="nowrap">かかりません。</span></p>
                 <p className="mt-3">お客様名義で契約したい場合は、お客様側でご用意いただければ、設定はこちらで<span className="nowrap">行います。</span></p>
-                <p className="mt-3">1年以上ご契約いただいてサイトを譲渡する際は、当方で契約したドメインもお客様へ<span className="nowrap">移管できます。</span></p>
+                <p className="mt-3">1年以上ご契約いただいてサイトを譲渡する際は、当方で契約したドメインもお客様へ移管します。費用は<span className="nowrap">かかりません。</span></p>
             </>
         ),
     },
@@ -82,7 +82,7 @@ export const faqs: FaqItem[] = [
     },
     {
         q: "サイトは自分のものになりますか？",
-        a: "1年以上のご契約で、サイトの譲渡が可能です。ドメインも合わせてお客様へ移管できます。手続きの進め方はご相談ください。",
+        a: "1年以上のご契約で、サイトを譲渡できます。譲渡の費用はかかりません。ドメインも合わせてお客様へ移管します。手続きの進め方はご相談ください。",
     },
     {
         q: "写真や文章がなくても、頼めますか？",
@@ -113,7 +113,7 @@ const faqsEn: FaqItem[] = [
     },
     {
         q: "Is there a minimum term?",
-        a: "Twelve months. Because the setup fee is zero and domain and hosting are included, we ask for a year. You can cancel earlier, but the site cannot be transferred to you in that case.",
+        a: "Twelve months. Because the setup fee is zero and domain and hosting are included, we ask for a year. After that the plan renews automatically and you can cancel any month (let us know by the end of the previous month). You can cancel earlier, but the site cannot be transferred to you in that case.",
     },
     {
         q: "How many edits can I ask for?",
@@ -129,7 +129,7 @@ const faqsEn: FaqItem[] = [
     },
     {
         q: "Will the site be mine?",
-        a: "After twelve months or more, the site can be transferred to you, together with the domain. We'll walk you through the steps.",
+        a: "After twelve months or more, the site can be transferred to you at no charge, together with the domain. We'll walk you through the steps.",
     },
     {
         q: "What if I cancel before twelve months?",
