@@ -65,7 +65,7 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
     return (
         <section className="relative overflow-hidden bg-white">
             {/* ── 上段：白地。イラストはこの箱の下辺に揃える ── */}
-            <div className="relative pt-[84px] md:pt-[86px]">
+            <div className="relative pt-[108px] md:pt-[120px]">
                 {/* 街並みのイラスト（PCのみ） */}
                 <div aria-hidden className="pointer-events-none absolute bottom-0 left-0 hidden w-[27%] max-w-[420px] lg:block">
                     <Image src={townLeft} alt="" sizes="28vw" className="h-auto w-full" priority />
@@ -77,7 +77,7 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                 {/* 手書き風の添え文（左）と英字（右） */}
                 <p
                     aria-hidden
-                    className={`${hand.className} pointer-events-none absolute left-[6.5%] top-[108px] hidden -rotate-[9deg] text-[27px] leading-[1.45] tracking-[0.08em] lg:block xl:top-[112px] xl:text-[30px]`}
+                    className={`${hand.className} pointer-events-none absolute left-[6.5%] top-[142px] hidden -rotate-[9deg] text-[27px] leading-[1.45] tracking-[0.08em] lg:block xl:top-[146px] xl:text-[30px]`}
                     style={{ color: TEAL }}
                 >
                     {t.hand1}
@@ -86,7 +86,7 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                 </p>
                 <p
                     aria-hidden
-                    className="pointer-events-none absolute right-[5%] top-[172px] hidden text-[11px] font-bold leading-[1.9] tracking-[0.3em] lg:block xl:top-[178px]"
+                    className="pointer-events-none absolute right-[5%] top-[206px] hidden text-[11px] font-bold leading-[1.9] tracking-[0.3em] lg:block xl:top-[212px]"
                     style={{ color: "#6E8199" }}
                 >
                     {t.en1}
@@ -95,7 +95,7 @@ export default function HeroV4({ lang = "ja" }: { lang?: Lang }) {
                 </p>
 
                 {/* 中央のコピー */}
-                <div className="relative z-10 mx-auto max-w-[760px] px-4 pb-5 text-center md:px-6 md:pb-6">
+                <div className="relative z-10 mx-auto max-w-[760px] px-4 pb-12 text-center md:px-6 md:pb-16">
                     <p className="mb-2 text-[14px] font-bold tracking-[0.12em] md:text-[15px]" style={{ color: NAVY }}>
                         {t.eyebrow}
                     </p>

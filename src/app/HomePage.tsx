@@ -2,7 +2,6 @@ import HeroV4 from "@/components/HeroV4";
 import { Problem } from "@/components/Problem";
 import { Service } from "@/components/Service";
 import { Works } from "@/components/Works";
-import { Case } from "@/components/Case";
 import { AfterLaunch } from "@/components/AfterLaunch";
 import { TrustBar } from "@/components/TrustBar";
 import { Pricing } from "@/components/Pricing";
@@ -88,7 +87,6 @@ export function HomePage({ lang = "ja" }: { lang?: Lang }) {
       <div id="service" className="scroll-mt-24"><Service lang={lang} /></div>
       <div id="price" className="scroll-mt-24"><Pricing lang={lang} /></div>
       <div id="works" className="scroll-mt-24"><Works lang={lang} /></div>
-      <div id="case" className="scroll-mt-24"><Case lang={lang} /></div>
       <div id="growth" className="scroll-mt-24"><AfterLaunch lang={lang} /></div>
       <div id="flow" className="scroll-mt-24"><Flow lang={lang} /></div>
       <Representative lang={lang} />

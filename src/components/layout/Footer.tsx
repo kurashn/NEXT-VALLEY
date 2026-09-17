@@ -10,7 +10,7 @@ const copy = {
         siteLinks: [
             { name: "サービス", href: "/#service" },
             { name: "制作実績", href: "/#works" },
-            { name: "支援事例", href: "/#case" },
+            { name: "教室の支援事例", href: "/classroom#case" },
             { name: "料金", href: "/price" },
             { name: "ご依頼の流れ", href: "/#flow" },
         ],
@@ -45,7 +45,7 @@ const copy = {
         siteLinks: [
             { name: "Services", href: "/#service" },
             { name: "Our Work", href: "/#works" },
-            { name: "Case", href: "/#case" },
+            { name: "Case", href: "/classroom#case" },
             { name: "Pricing", href: "/price" },
             { name: "How It Works", href: "/#flow" },
         ],
