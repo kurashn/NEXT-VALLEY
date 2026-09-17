@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>NEXT VALLEY 会社資料</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kurenaido&display=swap">
+<style>
+:root{
+  --navy:#041627; --navy2:#14335A; --teal:#2C8FA8; --coral:#E8503A; --coral2:#FD7368;
+  --cream:#FBF4EA; --mist:#E8F4F4; --ink:#14335A; --sub:#4A5A6E; --line:#D9E0E8;
+  --serif:Georgia,"Times New Roman","Hiragino Mincho ProN",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:A4;margin:0}
+html,body{background:#fff}
+body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;color:var(--ink);font-size:10.2pt;line-height:1.8;line-break:strict;overflow-wrap:anywhere}
+.page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;padding:16mm 16mm 14mm;background:#fff}
+.page:last-child{page-break-after:auto}
+.hd{display:flex;justify-content:space-between;align-items:center;padding-bottom:4mm;border-bottom:1px solid var(--line);margin-bottom:7mm}
+.hd img{height:9mm}
+.hd .sec{font-size:8pt;letter-spacing:.24em;color:var(--coral);font-weight:700}
+.ft{position:absolute;left:16mm;right:16mm;bottom:9mm;display:flex;justify-content:space-between;font-size:8pt;color:#7C8B97}
+.kicker{font-size:8.5pt;letter-spacing:.2em;color:var(--coral);font-weight:700;margin-bottom:2mm}
+.word{font-family:var(--serif);font-weight:700;font-size:30pt;line-height:1;letter-spacing:-.01em;margin-bottom:2mm}
+.word .a{color:var(--coral)} .word .b{color:var(--teal)} .word .c{color:var(--navy2)}
+h2{font-size:20pt;font-weight:900;line-height:1.35;letter-spacing:-.01em;margin-bottom:4mm}
+h2 .t{color:var(--teal)} h2 .u{position:relative;display:inline-block}
+h2 .u::after{content:"";position:absolute;left:0;right:0;bottom:1px;height:3px;background:var(--coral2);border-radius:3px}
+.lead{font-size:10.2pt;color:var(--sub);margin-bottom:6mm;max-width:150mm}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5mm}
+.card{border:1px solid var(--line);border-radius:4mm;padding:5mm 5.5mm;background:#fff}
+.card h3{font-size:11pt;font-weight:700;margin-bottom:1.5mm;line-height:1.5}
+.card p{font-size:9.2pt;color:var(--sub);line-height:1.7}
+.cream{background:var(--cream);border-color:transparent}
+.mist{background:var(--mist);border-color:transparent}
+.callout{border-left:3px solid var(--coral);background:#FDECE8;padding:5mm 6mm;border-radius:0 3mm 3mm 0;font-size:10.5pt}
+.callout b{color:var(--coral)}
+table.spec{width:100%;border-collapse:collapse;font-size:10pt}
+table.spec th,table.spec td{text-align:left;padding:3.4mm 0;border-bottom:1px solid var(--line);vertical-align:top}
+table.spec th{width:34mm;font-weight:700;color:var(--ink)}
+table.spec td{color:var(--sub)}
+.tealbox{border:1.5px solid var(--teal);border-radius:4mm;padding:6mm 7mm;background:#fff}
+.dots{display:flex;gap:2mm;margin-bottom:3mm}.dots i{display:block;width:2.6mm;height:2.6mm;border-radius:50%;background:var(--coral2)}
+.pill{display:inline-block;border-radius:2mm;padding:1mm 4mm;font-size:9pt;font-weight:700;color:#fff;background:var(--teal)}
+.pill.coral{background:transparent;color:var(--coral);border:1.5px solid var(--coral)}
+.price{font-size:26pt;font-weight:900;line-height:1;letter-spacing:-.02em}
+.price small{font-size:11pt;font-weight:700;margin-left:1mm}
+.check{list-style:none}.check li{position:relative;padding-left:6mm;margin-bottom:1.2mm;font-size:9.4pt;line-height:1.65}
+.check li::before{content:"";position:absolute;left:0;top:2.2mm;width:3.6mm;height:3.6mm;border-radius:50%;background:var(--coral)}
+.check li::after{content:"";position:absolute;left:1.05mm;top:3mm;width:1.6mm;height:0.9mm;border-left:1.6px solid #fff;border-bottom:1.6px solid #fff;transform:rotate(-45deg)}
+.steps{list-style:none}.steps li{display:grid;grid-template-columns:16mm 1fr;gap:3mm;padding:4mm 0;border-bottom:1px solid var(--line)}
+.steps .n{font-family:var(--serif);font-size:20pt;font-weight:700;color:var(--coral);line-height:1}
+.steps h3{font-size:11.5pt;font-weight:700;margin-bottom:1mm}.steps p{font-size:9.6pt;color:var(--sub)}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:2mm;align-items:center}
+.flow .b{background:var(--mist);border-radius:3mm;text-align:center;padding:4mm 1mm}
+.flow .b .v{font-size:16pt;font-weight:900;line-height:1.1}.flow .b .l{font-size:8pt;color:var(--sub);margin-top:1mm}
+.works{width:100%;border-collapse:collapse;font-size:9.8pt}.works td{padding:2.8mm 0;border-bottom:1px solid var(--line)}
+.works td:last-child{text-align:right;color:var(--sub);font-size:9pt}
+.qr{width:38mm;height:38mm;background:#fff;border-radius:3mm;padding:2mm}
+</style>
+</head>
+<body>
+
+<!-- 1 表紙 -->
+<section class="page" style="background:var(--navy);color:#fff;padding:0">
+  <div style="position:absolute;left:16mm;top:18mm"><img src="assets/logo-white.png" style="height:11mm"></div>
+  <div style="position:absolute;right:-30mm;top:60mm;width:150mm;height:150mm;border:22px solid rgba(255,255,255,.06);transform:rotate(45deg);border-left:none;border-bottom:none"></div>
+  <div style="position:absolute;right:-10mm;top:90mm;width:110mm;height:110mm;border:22px solid rgba(255,255,255,.06);transform:rotate(45deg);border-left:none;border-bottom:none"></div>
+  <div style="position:absolute;left:16mm;top:104mm;width:170mm">
+    <p style="font-size:9pt;letter-spacing:.3em;color:var(--coral2);font-weight:700;margin-bottom:6mm">COMPANY PROFILE</p>
+    <h1 style="font-size:36pt;font-weight:900;line-height:1.2;letter-spacing:-.02em">あなたは、<span style="color:var(--coral2)">本業</span>に。<br><span style="color:#7FD0E3">Web</span>は、私たちに。</h1>
+    <p style="margin-top:8mm;font-size:11.5pt;line-height:1.9;color:rgba(255,255,255,.85)">埼玉を中心に、小さな会社・お店・教室のホームページを、<br>制作から公開後の更新・管理までお引き受けします。<br>初期制作費0円・月額8,980円（税込）。</p>
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:52mm;background:#fff">
+    <img src="assets/town-left.webp" style="position:absolute;left:0;bottom:0;height:50mm">
+    <img src="assets/town-right.webp" style="position:absolute;right:0;bottom:0;height:48mm">
+  </div>
+  <div style="position:absolute;left:16mm;right:16mm;bottom:56mm;display:flex;justify-content:space-between;font-size:8.5pt;color:rgba(255,255,255,.7)"><span>NEXT VALLEY（ネクストバレー）　会社資料</span><span>2026年9月</span></div>
+</section>
+
+<!-- 2 会社概要 -->
+<section class="page">
+  <div class="hd"><img src="assets/logo-dark.png"><span class="sec">COMPANY</span></div>
+  <p class="kicker">会社概要</p>
+  <p class="word"><span class="a">Ab</span><span class="b">ou</span><span class="c">t</span></p>
+  <h2>NEXT VALLEY について</h2>
+  <p class="lead">2021年の開業以来、100社以上のホームページ制作と集客をお手伝いしてきました。本庄市児玉町出身の代表が運営し、埼玉を中心に全国のお客様とLINE・メールで進めています。</p>
+  <table class="spec">
+    <tr><th>屋号</th><td>NEXT VALLEY（ネクストバレー）</td></tr>
+    <tr><th>代表</th><td>倉林 駿（くらはやし しゅん）</td></tr>
+    <tr><th>創業</th><td>2021年1月</td></tr>
+    <tr><th>事業内容</th><td>ホームページの制作・更新・管理（初期制作費0円・月額8,980円）／公開後の集客改善（Googleマップ・LINE・検索からの導線）／毎月の数字レポートに基づく改善提案</td></tr>
+    <tr><th>実績</th><td>100社以上（2021年〜）。会社・店舗・教室・スタジオ・士業・製造業・介護施設・情報メディアなど</td></tr>
+    <tr><th>対応エリア</th><td>埼玉（本庄・熊谷・深谷など）を中心に、全国。やり取りはLINEかメールで完結し、オンライン会議や電話は基本的に行いません</td></tr>
+    <tr><th>連絡先</th><td>info@nextvalley-jpn.com　／　https://www.nextvalley-jpn.com　／　公式LINE https://lin.ee/N4QXdJL</td></tr>
+  </table>
+  <div class="callout" style="margin-top:9mm">私たちは、ホームページを「作って終わり」にしません。<b>公開したあとの更新・管理まで月額に含め</b>、事業主の方が本業に集中できる状態を保つことを仕事にしています。</div>
+  <div class="ft"><span>NEXT VALLEY 会社資料</span><span>2</span></div>
+</section>
+
+<!-- 3 考え方 -->
+<section class="page">
+  <div class="hd"><img src="assets/logo-dark.png"><span class="sec">APPROACH</span></div>
+  <p class="kicker">私たちの考え方</p>
+  <p class="word"><span class="a">Wor</span><span class="b">ri</span><span class="c">es</span></p>
+  <h2>Webのこと、<span class="u">後回し</span>になっていませんか。</h2>
+  <p class="lead">本業が忙しいと、ホームページのことまで手が回らないものです。よくうかがう悩みは、この3つです。</p>
+  <div class="grid3" style="margin-bottom:5mm">
+    <div class="card cream"><p style="font-size:8pt;letter-spacing:.15em;color:var(--coral);font-weight:700">01 / UPDATE</p><h3>ホームページが古いまま。更新の仕方もわからない。</h3><p>写真や営業時間を変えたいのに、ついそのままになっている。</p></div>
+    <div class="card cream"><p style="font-size:8pt;letter-spacing:.15em;color:var(--teal);font-weight:700">02 / CONTACT</p><h3>見られているのに、問い合わせにつながらない。</h3><p>ホームページやSNSはあるけれど、相談や予約がなかなか増えない。</p></div>
+    <div class="card cream"><p style="font-size:8pt;letter-spacing:.15em;color:var(--coral);font-weight:700">03 / TIME</p><h3>Webに使う時間も、相談できる人もいない。</h3><p>日々の仕事で手いっぱい。何から手をつければいいのか迷っている。</p></div>
+  </div>
+  <div class="card mist" style="text-align:center;padding:5mm;margin-bottom:6mm"><p style="font-size:14pt;font-weight:900;color:var(--ink)">ひとりで抱えず、<span style="color:var(--teal)">Web担当</span>に任せてみませんか。</p><p style="margin-top:1mm">制作・更新・管理から、必要に応じた集客改善まで。</p></div>
+  <div class="grid2">
+    <div class="card"><h3>契約前に、実物をお見せします</h3><p>ホームページは「完成するまで見た目が分からない」買い物です。ご契約前にトップページのデザイン案（PC・スマホ）を無料でお作りし、実物を見てからご判断いただけます。</p></div>
+    <div class="card"><h3>初期費用0円。月額だけで持てます</h3><p>制作費をまとめて用意する必要はありません。ドメイン・サーバー費も月額に含み、料金がかかり始めるのは正式契約日からです。</p></div>
+    <div class="card"><h3>公開後の更新は、回数の制限なし</h3><p>文章や写真の差し替え、お知らせや料金の更新は、そのつどご連絡いただければこちらで直します。デザインの全面的な作り替え以外は、基本的に何でもお受けします。</p></div>
+    <div class="card"><h3>数字で、正直に報告します</h3><p>集客改善をお任せいただく場合は、毎月の数字を1枚のレポートにまとめてお渡しします。効いていない施策は、効いていないとお伝えします。</p></div>
+  </div>
+  <div class="ft"><span>NEXT VALLEY 会社資料</span><span>3</span></div>
+</section>
+
+<!-- 4 サービスと料金 -->
+<section class="page">
+  <div class="hd"><img src="assets/logo-dark.png"><span class="sec">SERVICE &amp; PRICE</span></div>
+  <p class="kicker">サービスと料金</p>
+  <p class="word"><span class="a">Pr</span><span class="b">ic</span><span class="c">e</span></p>
+  <h2>つくる費用を抑えて、長く頼れる。</h2>
+  <p class="lead">金額はすべて税込です。基本プランは1つ。継続的な集客改善は、内容に応じてお見積もりします。</p>
+  <div class="tealbox" style="margin-bottom:5mm;padding:5mm 6mm">
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:8mm">
+      <div style="background:#F2FAFB;border-radius:3mm;padding:5mm">
+        <p style="font-size:13pt;font-weight:900;margin-bottom:3mm">ホームページ制作・管理</p>
+        <div style="display:flex;gap:8mm;align-items:flex-end">
+          <div><p style="font-size:9pt;font-weight:700">初期制作費</p><p class="price">0<small>円</small></p></div>
+          <div><p style="font-size:9pt;font-weight:700">月額</p><p class="price" style="color:var(--coral)">8,980<small>円</small><small style="font-size:8.5pt">（税込）</small></p></div>
+        </div>
+        <p style="margin-top:4mm;padding-top:3mm;border-top:1px solid rgba(44,143,168,.35);font-size:9pt;font-weight:700">初年度のお支払い総額　<span style="font-size:13pt;font-weight:900">107,760</span>円（税込）</p>
+        <p style="margin-top:3mm;font-size:9.5pt;font-weight:700">公開後の修正・更新も、まとめてお任せ。</p>
+      </div>
+      <div>
+        <span class="pill">月額に含まれるもの</span>
+        <ul class="check" style="margin:3mm 0 4mm">
+          <li>10ページまでのホームページ制作（スマホ対応）</li>
+          <li>公開後の修正・更新（回数の制限なし）</li>
+          <li>ドメイン・サーバーの取得と管理（費用込み）</li>
+          <li>お問い合わせ・予約フォーム、LINEへのリンク設置</li>
+          <li>基本的な検索向け設定</li>
+        </ul>
+        <span class="pill coral">ご契約の条件</span>
+        <ul class="check" style="margin:3mm 0 0">
+          <li>最低契約期間1年（1年後は自動更新。以降はいつでも解約可）</li>
+          <li>11ページ目以降は1ページにつき月額1,000円。お知らせ・ブログの記事は数えません</li>
+          <li>1年以上のご契約で、サイトとドメインを費用なしで譲渡</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card mist"><span class="pill coral">必要に応じて・別途お見積もり</span><h3 style="margin-top:2.5mm">継続的な集客改善</h3><p>Googleマップの情報整備、LINEでの相談・予約の導線、検索からの改善、計測と毎月のレポート。必要な支援だけをご提案します。</p></div>
+    <div class="card cream"><h3>月額に含まれないもの</h3><p>Googleマップの運用／SNSの運用／継続的なSEO支援／LINE公式アカウントの構築・運用。写真撮影やロゴ・チラシの制作も別途お見積もりです。</p></div>
+  </div>
+  <div class="ft"><span>NEXT VALLEY 会社資料</span><span>4</span></div>
+</section>
+
+<!-- 5 ご依頼の流れ -->
+<section class="page">
+  <div class="hd"><img src="assets/logo-dark.png"><span class="sec">PROCESS</span></div>
+  <p class="kicker">ご依頼の流れ</p>
+  <p class="word"><span class="a">Fl</span><span class="b">o</span><span class="c">w</span></p>
+  <h2>見てから、決められます。</h2>
+  <p class="lead">必要なのはLINEとヒアリングシートだけ。電話も、打ち合わせの日程調整もありません。</p>
+  <ol class="steps">
+    <li><span class="n">01</span><div><h3>公式LINEを追加し、ヒアリングシートに答える（約1分）</h3><p>会社・お店・教室のお名前、作る目的、載せたい内容など。写真やロゴがなくても大丈夫です。</p></div></li>
+    <li><span class="n">02</span><div><h3>3営業日以内に、トップページのデザイン案が届く</h3><p>PC・スマホの2枚の画像でお届けします。事業の内容を確認してから制作に入ります。</p></div></li>
+    <li><span class="n">03</span><div><h3>見てから、決める</h3><p>気に入れば正式制作へ。気に入らなければ、そこで終わりで大丈夫です。こちらから追いかける連絡はしません。</p></div></li>
+    <li><span class="n">04</span><div><h3>正式契約（月額はここから）</h3><p>初期制作費0円・月額8,980円（税込）。料金がかかり始めるのは正式契約日からです。</p></div></li>
+    <li><span class="n">05</span><div><h3>本制作・ご確認・公開</h3><p>10ページまでを制作し、ご確認のうえ公開します。やり取りはLINEかメールで完結します。</p></div></li>
+    <li><span class="n">06</span><div><h3>公開後の更新・管理</h3><p>修正・更新はそのつどご連絡ください。まとめて1回で送っていただくと、漏れなく早く反映できます。</p></div></li>
+  </ol>
+  <div class="grid2" style="margin-top:6mm">
+    <div class="card cream"><h3>しつこい営業はしません</h3><p>デザイン案を見てから、断っていただいて構いません。</p></div>
+    <div class="card cream"><h3>後から請求を増やしません</h3><p>追加が出そうなときは、着手前に必ずお伝えします。</p></div>
+  </div>
+  <div class="ft"><span>NEXT VALLEY 会社資料</span><span>5</span></div>
+</section>
+
+<!-- 6 実績 -->
+<section class="page">
+  <div class="hd"><img src="assets/logo-dark.png"><span class="sec">RESULTS</span></div>
+  <p class="kicker">実績・事例</p>
+  <p class="word"><span class="a">Wo</span><span class="b">rk</span><span class="c">s</span></p>
+  <h2>数字で見る、公開後の改善</h2>
+  <div class="card" style="margin-bottom:7mm">
+    <p style="font-size:8.5pt;letter-spacing:.15em;color:var(--coral);font-weight:700;margin-bottom:3mm">CASE / 子ども向け英会話教室様（自作サイトから乗り換え）</p>
+    <div style="display:grid;grid-template-columns:70mm 1fr;gap:6mm;align-items:center;margin-bottom:5mm">
+      <div><span style="font-size:34pt;font-weight:900;color:var(--coral);line-height:1">0<span style="font-size:12pt">名</span> → 14<span style="font-size:12pt">名</span></span><p style="font-size:8.5pt;color:var(--sub)">入会数（導線を整えてから7か月間）</p></div>
+      <p style="font-size:9.6pt;color:var(--sub)">自作ホームページで入会ゼロだった状態から、検索の整備・申込までの導線の作り直し・LINE窓口の一本化を実施。広告費はかけていません。数字はGoogleアナリティクスとLINEの実測値です。</p>
+    </div>
+    <div class="flow">
+      <div class="b"><div class="v">約1,550</div><div class="l">HP訪問</div></div>
+      <div class="b"><div class="v">37</div><div class="l">LINE友だち追加</div></div>
+      <div class="b"><div class="v">19</div><div class="l">相談</div></div>
+      <div class="b"><div class="v">19</div><div class="l">体験</div></div>
+      <div class="b"><div class="v">14</div><div class="l">入会</div></div>
+    </div>
+    <p style="font-size:8.5pt;color:var(--sub);margin-top:3mm">※ 公開後の集客改善（別途お見積もり）をお任せいただいた事例です。</p>
+  </div>
+  <h3 style="font-size:12pt;font-weight:700;margin-bottom:2mm">制作・支援実績（一部）</h3>
+  <table class="works">
+    <tr><td>Tulip Ballet Studio 様</td><td>バレエ教室／ホームページ制作・お知らせ運用</td></tr>
+    <tr><td>Colours Musical Studio 様</td><td>音楽教室／ホームページ制作・月次レポート</td></tr>
+    <tr><td>DANCE STUDIO PLUS 様</td><td>ダンススタジオ／ホームページ制作・月次レポート</td></tr>
+    <tr><td>Yuma English House 様</td><td>英会話教室／ホームページ制作・集客改善</td></tr>
+    <tr><td>Matsumi 様</td><td>理容・美容／ホームページ制作・月次レポート</td></tr>
+    <tr><td>株式会社西辻工務店 様</td><td>工務店／ホームページ制作</td></tr>
+    <tr><td>久和不動産株式会社 様</td><td>不動産／ホームページ制作</td></tr>
+    <tr><td>介護施設・士業・製造業・情報メディア ほか</td><td>2021年〜 100社以上</td></tr>
+  </table>
+  <div class="ft"><span>NEXT VALLEY 会社資料</span><span>6</span></div>
+</section>
+
+<!-- 7 代表 -->
+<section class="page">
+  <div class="hd"><img src="assets/logo-dark.png"><span class="sec">PROFILE</span></div>
+  <p class="kicker">代表プロフィール</p>
+  <p class="word"><span class="a">Mes</span><span class="b">sa</span><span class="c">ge</span></p>
+  <h2>倉林 駿（くらはやし しゅん）</h2>
+  <div style="display:grid;grid-template-columns:62mm 1fr;gap:8mm;align-items:start;margin-bottom:8mm">
+    <img src="assets/shun.webp" style="width:62mm;border-radius:4mm">
+    <div style="font-size:10pt;color:var(--sub)">
+      <p style="margin-bottom:3mm">埼玉県本庄市児玉町出身。2020年に独学でWeb制作を学び始め、制作会社での経験を経て、2021年1月にNEXT VALLEYとして開業。以来、会社・お店・教室を中心に100社以上のホームページ制作と集客をお手伝いしてきました。</p>
+      <p style="margin-bottom:3mm">大切にしているのは「作って終わりにしない」ことです。ホームページは公開してからが本番で、更新を続け、数字を見ながら直していくことで初めて問い合わせにつながります。だから、公開後の更新・管理まで月額に含める形にしました。</p>
+      <p>やり取りはLINEとメールで完結します。埼玉を中心に、全国のお客様と同じ進め方でお手伝いしています。ご質問はどんな小さなことでも歓迎です。</p>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card cream"><h3>本業に集中してもらう</h3><p>更新も管理もこちらで受け持ち、事業主の方の時間を戻します。</p></div>
+    <div class="card cream"><h3>数字で報告する</h3><p>施策のあとは、毎月の数字で正直にご報告します。</p></div>
+    <div class="card cream"><h3>先に実物を見せる</h3><p>契約の前にデザイン案を無料でお作りし、見てから決めていただきます。</p></div>
+    <div class="card cream"><h3>地元の目線で作る</h3><p>本庄で育った経験をもとに、地域の事業者がどう探され、どう選ばれるかを考えて設計します。</p></div>
+  </div>
+  <div class="ft"><span>NEXT VALLEY 会社資料</span><span>7</span></div>
+</section>
+
+<!-- 8 お問い合わせ -->
+<section class="page">
+  <div class="hd"><img src="assets/logo-dark.png"><span class="sec">CONTACT</span></div>
+  <p class="kicker">お問い合わせ</p>
+  <p class="word"><span class="a">Con</span><span class="b">ta</span><span class="c">ct</span></p>
+  <h2>まずは、無料のデザイン案から。</h2>
+  <p class="lead">「頼むと高そう」「効果が出るか分からない」という方のために、契約の前に実物をご覧いただける入口を2つ用意しています。</p>
+  <div class="grid2" style="margin-bottom:8mm">
+    <div class="card"><p style="font-size:8.5pt;letter-spacing:.15em;color:var(--coral);font-weight:700">これから作る方・作り直したい方</p><h3>無料でデザイン案を見てみる</h3><p>公式LINEを追加し、ヒアリングシート（約1分）に答えていただくと、3営業日以内にトップページのデザイン案（PC・スマホ）をお届けします。気に入らなければ、そこで終わりで構いません。</p></div>
+    <div class="card"><p style="font-size:8.5pt;letter-spacing:.15em;color:var(--teal);font-weight:700">今のホームページを改善したい方</p><h3>無料で見て、直す順番をお返しします</h3><p>公式LINEに今のサイトのURLと、気になっていることを送ってください。ホームページ・検索・Googleマップ・問い合わせ導線を拝見し、直す順番をお返しします。診断だけのご利用で構いません。</p></div>
+  </div>
+  <div style="background:var(--navy);color:#fff;border-radius:5mm;padding:10mm;display:grid;grid-template-columns:40mm 1fr;gap:8mm;align-items:center">
+    <img class="qr" src="qr-line.png">
+    <div>
+      <p style="font-size:15pt;font-weight:900;margin-bottom:3mm">公式LINEでご相談ください</p>
+      <p style="font-size:9.8pt;color:rgba(255,255,255,.85);margin-bottom:3mm">QRコードを読み取って友だち追加後、ご用件を一言送ってください。返信は代表の倉林本人が行います。しつこい営業はしません。</p>
+      <p style="font-size:12pt;font-weight:700">https://lin.ee/N4QXdJL</p>
+      <p style="font-size:9.5pt;color:rgba(255,255,255,.85);margin-top:2mm">メール：info@nextvalley-jpn.com<br>Web：https://www.nextvalley-jpn.com</p>
+    </div>
+  </div>
+  <div class="ft"><span>NEXT VALLEY 会社資料</span><span>8</span></div>
+</section>
+
+</body>
+</html>
