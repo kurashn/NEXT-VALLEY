@@ -20,12 +20,12 @@ const jsonLdCopy = {
   ja: {
     founder: "倉林 駿",
     description:
-      "教室・スクールのホームページ制作と、公開後の更新・集客改善を行う埼玉北部の制作チーム。2021年創業・100社以上の実績。ホームページ制作・管理は初期費用0円、月額8,980円（税込）。",
+      "埼玉の小さな会社・店舗・教室のホームページ制作と、公開後の更新・集客改善。代表は本庄市児玉町出身。2021年創業・100社以上の実績。ホームページ制作・管理は初期費用0円、月額8,980円（税込）。全国オンライン対応。",
   },
   en: {
     founder: "Shun Kurahayashi",
     description:
-      "A web team in northern Saitama, Japan, building and managing websites for schools and studios since 2021. No setup fee, 8,980 yen per month including tax, with marketing support quoted separately.",
+      "A web team from northern Saitama, Japan, building and managing websites for small companies, shops and schools since 2021. No setup fee, 8,980 yen per month including tax, with marketing support quoted separately.",
   },
 } as const;
 

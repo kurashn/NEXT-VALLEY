@@ -54,12 +54,12 @@ export const faqs: FaqItem[] = [
         a: "はい。今お持ちの写真とSNSの投稿から始められます。足りないものは、こちらでお伺いしながら文章の案をお作りします。",
     },
     {
-        q: "教室以外でも依頼できますか？",
-        a: "できます。教室・スクールのご依頼が中心ですが、店舗やその他の事業者の方からのご相談も承っています。",
+        q: "どんな業種でも依頼できますか？",
+        a: "はい。会社・店舗・教室など、Web担当のいない小さな事業を中心にお手伝いしています。業種は問いません。"
     },
     {
-        q: "遠方ですが、対応できますか？",
-        a: "全国対応です。打ち合わせはLINE・メール・ビデオ通話で完結します。埼玉北部の方は直接お伺いすることもできます。",
+        q: "埼玉以外や遠方でも、対応できますか？",
+        a: "全国対応です。打ち合わせはLINE・メール・ビデオ通話で完結します。埼玉北部を中心にお手伝いしていますが、地域は問いません。"
     },
 ];
 
@@ -97,12 +97,12 @@ const faqsEn: FaqItem[] = [
         a: "That's fine. We can start with the photos you have and your social media posts, and draft the wording with you.",
     },
     {
-        q: "Do you only work with schools?",
-        a: "Schools and studios are our focus, but shops and other businesses are welcome to get in touch.",
+        q: "Do you work with any kind of business?",
+        a: "Yes. We mainly help small companies, shops and schools that have nobody handling the web. Any trade is welcome."
     },
     {
         q: "I'm not nearby. Can you still help?",
-        a: "Yes, we work with clients across Japan over LINE, email and video calls. If you're in northern Saitama, we can also visit in person.",
+        a: "Yes, we work with clients across Japan over LINE, email and video calls. Northern Saitama is our home ground, but location is no barrier.",
     },
 ];
 

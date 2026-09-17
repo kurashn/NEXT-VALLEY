@@ -11,7 +11,7 @@ const ja = {
     heading: "料金",
     lead: (
         <>
-            教室のホームページを初期費用0円でお作りし、公開後の更新と管理までお引き受けします。
+            会社・店舗・教室のホームページを初期費用0円でお作りし、公開後の更新と管理までお引き受けします。
             <br className="hidden md:block" />
             お支払いは月額のみ。制作費をまとめて用意する必要は<span className="nowrap">ありません。</span>
         </>
@@ -38,7 +38,7 @@ const ja = {
     benefits: [
         <>写真の差し替えやお知らせの更新を、その都度お伝えいただくだけで<span className="nowrap">対応します。</span></>,
         <>ドメインの更新やサーバーの管理は当社で行います。期限切れの心配が<span className="nowrap">ありません。</span></>,
-        <>体験申込までの案内の仕方は、教室の事情を伺いながら制作時に<span className="nowrap">設計します。</span></>,
+        <>問い合わせや予約までの案内の仕方は、事業の事情を伺いながら制作時に<span className="nowrap">設計します。</span></>,
         <>制作費の持ち出しがないので、始めるときの負担が<span className="nowrap">小さく済みます。</span></>,
     ],
     excludeTitle: "月額に含まれないもの",
@@ -62,7 +62,7 @@ const en: typeof ja = {
     heading: "Pricing",
     lead: (
         <>
-            We build your school&apos;s website with no setup fee, then keep it updated and managed after launch. You pay monthly, so there is no large upfront cost.
+            We build your website with no setup fee, then keep it updated and managed after launch. You pay monthly, so there is no large upfront cost.
         </>
     ),
     planLabel: "MAIN PLAN",
@@ -87,7 +87,7 @@ const en: typeof ja = {
     benefits: [
         <>Send us new photos or news and we update the site for you.</>,
         <>We handle the domain renewal and hosting, so nothing expires unnoticed.</>,
-        <>We design the path to a trial booking with you while the site is being built.</>,
+        <>We design the path to an enquiry or booking with you while the site is being built.</>,
         <>No setup fee, so starting costs little.</>,
     ],
     excludeTitle: "Not included in the monthly fee",

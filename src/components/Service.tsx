@@ -15,7 +15,56 @@ type Stage = {
     optional: string[];
 };
 
-const ja = {
+export type Audience = "general" | "classroom";
+
+const jaGeneral = {
+    label: "支援する範囲",
+    lead: (
+        <>
+            問い合わせや予約までは、4つの段階に分かれます。どこでつまずいているかによって、やることが変わります。
+            <br className="hidden md:block" />
+            月額のホームページ制作・管理に含むことと、別途お見積もりになることを分けて<span className="nowrap">書きました。</span>
+        </>
+    ),
+    includedLabel: "月額に含む",
+    optionalLabel: "別途お見積もり",
+    stages: [
+        {
+            key: "find",
+            step: "01",
+            title: "見つけてもらう",
+            body: <>お客様は「地域名＋業種」で検索し、Googleマップと検索結果を見比べます。まず、探している人の目に入ることが<span className="nowrap">必要です。</span></>,
+            included: ["ページの基本的な検索向け設定（タイトル・説明文）", "スマートフォンでの表示"],
+            optional: ["Googleマップ（MEO）の整備・運用", "継続的なSEO支援"],
+        },
+        {
+            key: "tell",
+            step: "02",
+            title: "事業の内容を伝える",
+            body: <>何をしている会社・お店か、料金、場所、雰囲気。知りたいことが揃っていないと、比べる前に<span className="nowrap">離れます。</span></>,
+            included: ["10ページまでの制作", "写真やお知らせの差し替え（回数の制限なし）", "メニュー・料金・アクセスの見せ方の設計"],
+            optional: ["写真撮影", "ロゴ・チラシなどの制作"],
+        },
+        {
+            key: "apply",
+            step: "03",
+            title: "問い合わせ・予約に進んでもらう",
+            body: <>入口が分かりにくいと、興味を持った人でも止まります。どこからでも1回で問い合わせや予約ができる形に<span className="nowrap">します。</span></>,
+            included: ["問い合わせボタンとフォームの設置", "LINEへのリンク設置"],
+            optional: ["LINE公式アカウントの構築・運用", "予約や自動返信の仕組みづくり"],
+        },
+        {
+            key: "improve",
+            step: "04",
+            title: "数字を見て改善する",
+            body: <>公開して終わりにせず、来た人数と問い合わせの数を見ながら、次に直す場所を<span className="nowrap">決めます。</span></>,
+            included: ["公開後の修正・更新（回数の制限なし）"],
+            optional: ["アクセスと問い合わせの計測", "毎月のレポートと改善提案", "改善の実行"],
+        },
+    ] as Stage[],
+};
+
+const ja: typeof jaGeneral = {
     label: "支援する範囲",
     lead: (
         <>
@@ -62,7 +111,52 @@ const ja = {
     ] as Stage[],
 };
 
-const en: typeof ja = {
+const enGeneral: typeof jaGeneral = {
+    label: "What we help with",
+    lead: (
+        <>
+            Getting to an enquiry or a booking has four stages. What needs doing depends on where people drop off. Below, what the monthly plan covers is separated from what is quoted separately.
+        </>
+    ),
+    includedLabel: "In the monthly plan",
+    optionalLabel: "Quoted separately",
+    stages: [
+        {
+            key: "find",
+            step: "01",
+            title: "Be found",
+            body: <>People search for your area and your trade, then compare what they see on Google Maps and in search results.</>,
+            included: ["Basic search settings (title and description)", "Mobile display"],
+            optional: ["Google Maps (MEO) setup and management", "Ongoing SEO support"],
+        },
+        {
+            key: "tell",
+            step: "02",
+            title: "Explain what you do",
+            body: <>What the business does, prices, location, atmosphere. If those are missing, people leave before comparing.</>,
+            included: ["Up to 10 pages", "Photo and news updates, no limit on how often", "Layout for menus, prices and access"],
+            optional: ["Photography", "Logo and print design"],
+        },
+        {
+            key: "apply",
+            step: "03",
+            title: "Make enquiring easy",
+            body: <>If the way to book or ask is hard to find, interested people stop there. We make it one tap from any page.</>,
+            included: ["Enquiry buttons and a contact form", "A link to your LINE account"],
+            optional: ["LINE official account setup and operation", "Booking and auto-reply systems"],
+        },
+        {
+            key: "improve",
+            step: "04",
+            title: "Improve with the numbers",
+            body: <>After launch we look at visits and enquiries to decide what to fix next.</>,
+            included: ["Edits and updates after launch, no limit on how often"],
+            optional: ["Tracking visits and enquiries", "Monthly reporting and proposals", "Carrying out the improvements"],
+        },
+    ] as Stage[],
+};
+
+const en: typeof jaGeneral = {
     label: "What we help with",
     lead: (
         <>
@@ -107,10 +201,13 @@ const en: typeof ja = {
     ] as Stage[],
 };
 
-const copy: Record<Lang, typeof ja> = { ja, en };
+const copy: Record<Lang, Record<Audience, typeof jaGeneral>> = {
+    ja: { general: jaGeneral, classroom: ja },
+    en: { general: enGeneral, classroom: en },
+};
 
-export function Service({ lang = "ja" }: { lang?: Lang }) {
-    const t = copy[lang];
+export function Service({ lang = "ja", audience = "general" }: { lang?: Lang; audience?: Audience }) {
+    const t = copy[lang][audience];
     return (
         <section className="relative overflow-hidden bg-base px-4 py-16 md:px-6 md:py-24">
             <div className="relative mx-auto max-w-6xl">

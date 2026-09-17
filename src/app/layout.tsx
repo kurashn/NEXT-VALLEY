@@ -23,14 +23,14 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.nextvalley-jpn.com"),
   title: {
-    default: "NEXT VALLEY | 教室・スクールのホームページ制作・管理 初期費用0円／月額8,980円",
+    default: "NEXT VALLEY | 埼玉の小さな事業に、頼れるWeb担当を。初期費用0円／月額8,980円",
     template: "%s | NEXT VALLEY",
   },
-  description: "教室・スクールのホームページ制作・管理を、初期費用0円・月額8,980円（税込）で。体験申込につながる導線づくりから公開後の更新まで。デザイン案は無料でご確認いただけます。",
+  description: "埼玉の小さな会社・店舗・教室に、頼れるWeb担当を。ホームページの制作・更新・管理は初期費用0円・月額8,980円（税込）。問い合わせや予約を増やす改善も相談できます。全国オンライン対応。",
   keywords: ["埼玉 ホームページ制作", "本庄 ホームページ制作", "教室 集客", "AI活用支援", "AIコンサルティング", "業務効率化", "Web集客", "ホームページ制作", "LP制作", "SEO対策", "MEO対策", "SNSマーケティング", "中小企業"],
   openGraph: {
     title: "NEXT VALLEY | 教室・スクールのホームページ制作・管理 初期費用0円／月額8,980円",
-    description: "教室・スクールのホームページ制作・管理。初期費用0円・月額8,980円（税込）、10ページまで・修正無制限・ドメイン／サーバー費込み。デザイン案は無料。",
+    description: "埼玉の小さな会社・店舗・教室のホームページ制作・管理。初期費用0円・月額8,980円（税込）、10ページまで・修正無制限・ドメイン／サーバー費込み。デザイン案は無料。",
     url: "https://www.nextvalley-jpn.com",
     siteName: "NEXT VALLEY",
     locale: "ja_JP",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "NEXT VALLEY | 教室・スクールのホームページ制作・管理 初期費用0円／月額8,980円",
-    description: "教室・スクールのホームページ制作・管理。初期費用0円・月額8,980円（税込）。体験申込につながる導線づくりから、公開後の更新まで。",
+    description: "埼玉の小さな事業に、頼れるWeb担当を。ホームページ制作・管理は初期費用0円・月額8,980円（税込）。問い合わせや予約を増やす改善も。",
   },
   robots: {
     index: true,

@@ -11,7 +11,7 @@ const ja = {
     newLabel: "新しく作る・作り直す",
     newSteps: [
         { title: "無料プレビューを申し込む", body: "この時点では費用も契約もありません。" },
-        { title: "ヒアリング", body: "教室のこと、載せたいこと、体験申込までの流れをうかがいます。" },
+        { title: "ヒアリング", body: "事業のこと、載せたいこと、問い合わせや予約までの流れをうかがいます。" },
         { title: "デザイン案・料金・条件の確認", body: "トップページのデザイン案と、料金・契約条件をご確認いただきます。" },
         { title: "納得いただけたら正式契約", body: "ご契約日から月額が始まります。断っていただいても構いません。" },
         { title: "本制作・ご確認・公開", body: "内容を詰めながら作り、ご確認のうえ公開します。" },
@@ -34,7 +34,7 @@ const en: typeof ja = {
     newLabel: "Build a new site",
     newSteps: [
         { title: "Ask for the free preview", body: "No cost and no contract at this point." },
-        { title: "We ask about your school", body: "What you teach, what to feature, and how people book a trial." },
+        { title: "We ask about your business", body: "What you do, what to feature, and how people get in touch or book." },
         { title: "See the design, price and terms", body: "You review the homepage design along with the price and the contract terms." },
         { title: "Sign only if it fits", body: "Billing starts on the contract date. Saying no is fine." },
         { title: "Build, review, launch", body: "We build it out, you check it, then it goes live." },

@@ -1,5 +1,5 @@
 // Server Component — ファーストビュー
-// 教室・スクール向け。左にコピーと入口商品の料金、右に実際に制作した教室サイト（PC・スマホ）
+// 一般向け／教室向けの2種類。左にコピーと入口商品の料金、右に実際に制作した教室サイト（PC・スマホ）
 
 import React from "react";
 import Image from "next/image";
@@ -10,7 +10,43 @@ import classroomPc from "@/images/hero/classroom-pc.webp";
 import classroomSp from "@/images/hero/classroom-sp.webp";
 import { withLang, type Lang } from "@/i18n";
 
-const ja = {
+export type Audience = "general" | "classroom";
+
+const jaGeneral = {
+    eyebrow: "埼玉の小さな会社・店舗・教室のWebまわり",
+    h1: (
+        <>
+            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>埼玉の小さな事業に、</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>頼れるWeb担当を。</span></span>
+        </>
+    ),
+    lead: (
+        <>
+            ホームページの制作・更新・管理は、初期費用0円・月額8,980円（税込）。
+            <br className="hidden md:block" />
+            問い合わせや予約を増やす改善も、必要に応じて<span className="nowrap">相談できます。</span>
+        </>
+    ),
+    planLabel: "ホームページ制作・管理",
+    planInitial: "初期費用",
+    planInitialValue: "0円",
+    planMonthly: "月額",
+    planMonthlyValue: "8,980円",
+    planTax: "（税込）",
+    planFeatures: "10ページまで制作・修正無制限・ドメイン／サーバー費込み",
+    planTerms: "最低契約期間1年・ご契約日から課金",
+    planExtra: "継続的な集客支援は別途ご相談",
+    cta: "無料でデザイン案を見てみる",
+    ctaNote: "料金・条件とデザイン案を確認してから、正式依頼を決められます。",
+    subPrefix: "今のホームページで集客を改善したい方は、",
+    subLink: "今のサイトの改善点を知りたい",
+    note: "本庄市児玉町出身。埼玉北部を中心に、全国オンラインで対応しています。会社・店舗・教室、どの業種でもご相談ください。",
+    shotAlt: "制作したバレエ教室のホームページ（パソコン表示）",
+    shotAltSp: "制作したバレエ教室のホームページ（スマートフォン表示）",
+    shotCaption: "制作例：Tulip Ballet Studio様",
+};
+
+const jaClassroom: typeof jaGeneral = {
     eyebrow: "教室・スクールのWebまわり",
     h1: (
         <>
@@ -38,13 +74,45 @@ const ja = {
     ctaNote: "料金・条件とデザイン案を確認してから、正式依頼を決められます。",
     subPrefix: "今のホームページで集客を改善したい方は、",
     subLink: "今のサイトの改善点を知りたい",
-    note: "英語・ダンス・バレエ・音楽などの教室を中心に。店舗・その他の事業者の方もご相談いただけます。",
+    note: "英語・ダンス・バレエ・音楽などの教室を中心に。全国オンラインで対応しています。店舗・その他の事業者の方もご相談いただけます。",
     shotAlt: "制作したバレエ教室のホームページ（パソコン表示）",
     shotAltSp: "制作したバレエ教室のホームページ（スマートフォン表示）",
     shotCaption: "制作例：Tulip Ballet Studio様",
 };
 
-const en: typeof ja = {
+const enGeneral: typeof jaGeneral = {
+    eyebrow: "WEB SUPPORT FOR SMALL BUSINESSES IN SAITAMA",
+    h1: (
+        <>
+            <span className="line-mask"><span style={{ animationDelay: "0.1s" }}>A web person you can count on,</span></span>
+            <span className="line-mask"><span style={{ animationDelay: "0.22s" }}>for small businesses in Saitama.</span></span>
+        </>
+    ),
+    lead: (
+        <>
+            Website build, updates and management for ¥8,980 a month with no setup fee. Marketing improvements to bring in more enquiries and bookings can be added when you need them.
+        </>
+    ),
+    planLabel: "Website build & management",
+    planInitial: "Setup",
+    planInitialValue: "¥0",
+    planMonthly: "Monthly",
+    planMonthlyValue: "¥8,980",
+    planTax: " (tax incl.)",
+    planFeatures: "Up to 10 pages, unlimited edits, domain and hosting included",
+    planTerms: "12-month minimum term, billed from the contract date",
+    planExtra: "Ongoing marketing support is quoted separately",
+    cta: "See a free design proposal",
+    ctaNote: "Check the design, the price and the terms before you decide.",
+    subPrefix: "Already have a site and want more enquiries? ",
+    subLink: "Get a free site check",
+    note: "Born in Kodama, Honjo. Focused on northern Saitama and working with clients across Japan online. Companies, shops and schools are all welcome.",
+    shotAlt: "A ballet school website we built, shown on a laptop",
+    shotAltSp: "A ballet school website we built, shown on a phone",
+    shotCaption: "Our work: Tulip Ballet Studio",
+};
+
+const enClassroom: typeof jaGeneral = {
     eyebrow: "WEB FOR SCHOOLS & STUDIOS",
     h1: (
         <>
@@ -76,10 +144,13 @@ const en: typeof ja = {
     shotCaption: "Our work: Tulip Ballet Studio",
 };
 
-const copy: Record<Lang, typeof ja> = { ja, en };
+const copy: Record<Lang, Record<Audience, typeof jaGeneral>> = {
+    ja: { general: jaGeneral, classroom: jaClassroom },
+    en: { general: enGeneral, classroom: enClassroom },
+};
 
-export default function Hero({ lang = "ja" }: { lang?: Lang }) {
-    const t = copy[lang];
+export default function Hero({ lang = "ja", audience = "general" }: { lang?: Lang; audience?: Audience }) {
+    const t = copy[lang][audience];
     return (
         <section className="relative overflow-hidden bg-navy-deep pb-16 pt-28 md:pb-24 md:pt-32">
             {/* 背景の細いグリッド（装飾） */}

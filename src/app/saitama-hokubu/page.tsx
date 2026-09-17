@@ -77,7 +77,7 @@ export default function SaitamaHokubuPage() {
             <section className="py-16 px-4">
                 <div className="max-w-3xl mx-auto space-y-6 text-slate-700 leading-loose">
                     <p>
-                        NEXT VALLEY（ネクストバレー）は、埼玉県本庄市を拠点とするWeb制作・集客支援の事務所です。代表は本庄市児玉町の出身。2021年の開業以来、100社以上のホームページ制作とWebマーケティングを支援してきました。
+                        NEXT VALLEY（ネクストバレー）は、本庄市児玉町出身の代表が運営するWeb制作・集客支援です。埼玉北部を軸に、打ち合わせはオンラインで進めます。2021年の開業以来、100社以上のホームページ制作とWebマーケティングを支援してきました。
                     </p>
                     <p>
                         大手の制作会社と違うのは、作って終わりにしないことです。ホームページ・Googleマップ・LINEをつなげて「教室やお店を探している地元の方に見つけてもらい、問い合わせにつながる」ところまでを設計します。実際に、自作ホームページで入会ゼロだった子ども向け英語教室が、導線を整えてから7か月で14名の入会につながった事例もあります（<Link href="/blog/case-english-school-zero-to-14" className="text-[#0A5A8A] underline underline-offset-2">事例の詳細はこちら</Link>）。

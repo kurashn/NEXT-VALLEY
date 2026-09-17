@@ -1,4 +1,4 @@
-// Server Component — よくある悩み（教室・スクール向けに4つ）
+// Server Component — よくある悩み（一般向け／教室向けの2種類）
 
 import React from "react";
 import Image, { type StaticImageData } from "next/image";
@@ -11,7 +11,46 @@ import photoMusic from "@/images/problem-music.webp";
 
 const photos: StaticImageData[] = [photoEnglish, photoDance, photoMusic, photoEnglish];
 
-const ja = {
+export type Audience = "general" | "classroom";
+
+const jaGeneral = {
+    heading: (
+        <>
+            Web担当がいない会社・お店から、
+            <br />
+            よくうかがう悩みです。
+        </>
+    ),
+    lead: "どれも「事業が良くないから」ではありません。多くは、問い合わせや予約までの道が分かりにくいことが原因です。",
+    problems: [
+        {
+            title: <>Web担当がいない。<br className="hidden md:block" />誰に頼めばいいか分からない</>,
+            body: <>更新も直しも後回し。制作会社に頼むと高そうで、相談する前に<span className="nowrap">止まっている。</span></>,
+        },
+        {
+            title: <>ホームページが古く、<br className="hidden md:block" />更新できていない</>,
+            body: <>料金もメニューも変わったのに直せないまま。スマートフォンで見ると<span className="nowrap">読みにくい。</span></>,
+        },
+        {
+            title: <>Instagramを頑張っても、<br className="hidden md:block" />問い合わせにつながらない</>,
+            body: <>投稿は続けているが、見た人が次にどこへ行けばいいのかが<span className="nowrap">示せていない。</span></>,
+        },
+        {
+            title: <>Googleマップ・HP・LINEが、<br className="hidden md:block" />つながっていない</>,
+            body: <>それぞれはある。ただ、地図で見つけた人がそのまま予約や問い合わせに<span className="nowrap">進めない。</span></>,
+        },
+    ],
+    bannerLead: "Googleマップも、ホームページも、LINEもある。",
+    bannerTitle: (
+        <>
+            <span className="nowrap">それでも、</span>
+            <span className="nowrap"><span className="text-coral">問い合わせまでの道</span>が</span>
+            <span className="nowrap">つながっていないことがあります。</span>
+        </>
+    ),
+};
+
+const ja: typeof jaGeneral = {
     heading: (
         <>
             教室の先生から、
@@ -48,7 +87,44 @@ const ja = {
     ),
 };
 
-const en: typeof ja = {
+const enGeneral: typeof jaGeneral = {
+    heading: (
+        <>
+            What small businesses
+            <br />
+            tell us most often.
+        </>
+    ),
+    lead: "None of this means the business isn't good. Usually the path to an enquiry or a booking is simply hard to follow.",
+    problems: [
+        {
+            title: <>Nobody handles the web,<br className="hidden md:block" /> and who to ask is unclear</>,
+            body: <>Updates and fixes keep getting postponed. Agencies seem expensive, so the question never gets asked.</>,
+        },
+        {
+            title: <>The site is old<br className="hidden md:block" /> and never updated</>,
+            body: <>Prices and menus have changed, and the text is hard to read on a phone.</>,
+        },
+        {
+            title: <>Instagram takes effort<br className="hidden md:block" /> but brings no enquiries</>,
+            body: <>Posts keep going up, yet nobody is told where to go next.</>,
+        },
+        {
+            title: <>Google Maps, the site and LINE<br className="hidden md:block" /> don't connect</>,
+            body: <>Each one exists, but someone who finds you on the map can't get straight to a booking.</>,
+        },
+    ],
+    bannerLead: "Google Maps, a website, LINE: you may already have them all.",
+    bannerTitle: (
+        <>
+            <span className="nowrap">Even then, </span>
+            <span className="nowrap">the <span className="text-coral">path to an enquiry</span></span>
+            <span className="nowrap"> is often broken.</span>
+        </>
+    ),
+};
+
+const en: typeof jaGeneral = {
     heading: (
         <>
             What teachers
@@ -85,10 +161,14 @@ const en: typeof ja = {
     ),
 };
 
-const copy: Record<Lang, typeof ja> = { ja, en };
+const copy: Record<Lang, Record<Audience, typeof jaGeneral>> = {
+    ja: { general: jaGeneral, classroom: ja },
+    en: { general: enGeneral, classroom: en },
+};
 
-export function Problem({ lang = "ja" }: { lang?: Lang }) {
-    const t = copy[lang];
+export function Problem({ lang = "ja", audience = "general" }: { lang?: Lang; audience?: Audience }) {
+    const t = copy[lang][audience];
+    const showPhotos = audience === "classroom";
     return (
         <section className="relative overflow-hidden bg-navy px-4 py-16 text-white md:px-6 md:py-24">
             <div className="relative mx-auto max-w-6xl">
@@ -104,7 +184,7 @@ export function Problem({ lang = "ja" }: { lang?: Lang }) {
                         <li key={i} className="list-none">
                             <FadeIn delay={i * 0.07} className="h-full">
                                 <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]">
-                                    <div className="relative h-28 w-full overflow-hidden">
+                                    {showPhotos && (<div className="relative h-28 w-full overflow-hidden">
                                         <Image
                                             src={photos[i]}
                                             alt=""
@@ -117,7 +197,7 @@ export function Problem({ lang = "ja" }: { lang?: Lang }) {
                                             className="absolute inset-0"
                                             style={{ background: "linear-gradient(180deg, rgba(4,22,39,0.2) 0%, rgba(4,22,39,0.92) 100%)" }}
                                         />
-                                    </div>
+                                    </div>)}
                                     <div className="flex flex-1 flex-col p-6">
                                         <h3 className="mb-3 text-[16.5px] font-bold leading-snug">{p.title}</h3>
                                         <p className="text-[13.5px] leading-[2] text-navy-sub">{p.body}</p>

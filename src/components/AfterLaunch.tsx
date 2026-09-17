@@ -10,7 +10,7 @@ const ja = {
     heading: "公開したあとの集客改善",
     lead: (
         <>
-            公開後に「もっと申込を増やしたい」と思ったときに、必要な範囲だけご相談いただけます。
+            公開後に「もっと問い合わせを増やしたい」と思ったときに、必要な範囲だけご相談いただけます。
             <br className="hidden md:block" />
             月額のホームページ制作・管理だけでも、そのまま使い続けて<span className="nowrap">いただけます。</span>
         </>
@@ -18,8 +18,8 @@ const ja = {
     cases: [
         {
             key: "cv",
-            when: "サイトは見られているのに、申込が少ない",
-            what: "体験レッスンのページと、申込までの案内を見直します。どの画面で止まっているかを確かめてから直します。",
+            when: "サイトは見られているのに、問い合わせが少ない",
+            what: "サービスや体験のページと、問い合わせまでの案内を見直します。どの画面で止まっているかを確かめてから直します。",
         },
         {
             key: "meo",
@@ -34,7 +34,7 @@ const ja = {
     ],
     flowTitle: "進め方",
     flow: [
-        "アクセス数や申込の数、教室の状況をうかがいます",
+        "アクセス数や問い合わせの数、事業の状況をうかがいます",
         "どこで止まっているのかを一緒に確認します",
         "必要な範囲だけをお見積もりします",
     ],
@@ -45,18 +45,18 @@ const en: typeof ja = {
     heading: "Marketing after launch",
     lead: (
         <>
-            When you want more bookings after launch, you can ask for just the part you need. The monthly build-and-manage plan works on its own too.
+            When you want more enquiries after launch, you can ask for just the part you need. The monthly build-and-manage plan works on its own too.
         </>
     ),
     cases: [
         {
             key: "cv",
-            when: "People visit, but few book",
-            what: "We review the trial lesson page and the path to booking, after checking where people stop.",
+            when: "People visit, but few get in touch",
+            what: "We review the service pages and the path to an enquiry, after checking where people stop.",
         },
         {
             key: "meo",
-            when: "Local families don't find you",
+            when: "Local customers don't find you",
             what: "We check your Google Maps listing and how you appear in search, then fill in what's missing.",
         },
         {
@@ -67,7 +67,7 @@ const en: typeof ja = {
     ],
     flowTitle: "How it goes",
     flow: [
-        "We ask about your visits, bookings and current situation",
+        "We ask about your visits, enquiries and current situation",
         "We look together at where people are stopping",
         "We quote for only the part that needs work",
     ],

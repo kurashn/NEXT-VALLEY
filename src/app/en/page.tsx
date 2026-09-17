@@ -3,14 +3,14 @@ import { HomePage } from "../HomePage";
 import { alternatesFor } from "@/i18n";
 
 export const metadata: Metadata = {
-  title: { absolute: "NEXT VALLEY | AI-powered marketing & web team in Japan" },
+  title: { absolute: "NEXT VALLEY | A web person you can count on, for small businesses in Saitama" },
   description:
-    "Not getting enough customers? Buried in busywork? NEXT VALLEY is a small web team in northern Saitama, Japan, that has helped 100+ businesses grow since 2021 — from marketing strategy to websites and landing pages. Free site check, proposal and quote.",
+    "Website build, updates and management for small companies, shops and schools: no setup fee, ¥8,980 a month including tax. From northern Saitama, working with clients across Japan online. Free design proposal first.",
   alternates: alternatesFor("/", "en"),
   openGraph: {
-    title: "NEXT VALLEY | AI-powered marketing & web team in Japan",
+    title: "NEXT VALLEY | Web support for small businesses in Saitama",
     description:
-      "A small web team in northern Saitama (100+ sites since 2021) that recommends only what fits your goals — marketing, websites, landing pages — and helps you win more customers with less busywork. Free site check, proposal and quote.",
+      "No setup fee, ¥8,980 a month for a website that is built, updated and managed for you. Marketing support quoted separately. Free design proposal first.",
     url: "https://www.nextvalley-jpn.com/en",
     siteName: "NEXT VALLEY",
     locale: "en_US",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "NEXT VALLEY | AI-powered marketing & web team in Japan",
     description:
-      "Grow your business, powered by AI. Marketing, websites and landing pages — only what fits your goals. Free site check, proposal and quote.",
+      "A website built, updated and managed for ¥8,980 a month, no setup fee. Free design proposal first.",
   },
 };
 
