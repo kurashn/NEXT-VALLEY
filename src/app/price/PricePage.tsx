@@ -1,7 +1,7 @@
 // 料金ページ（/price）— トップの料金セクションだけでは受け止められない
 // 「ホームページ制作 費用 / 相場」で調べている人のための独立ページ。
 // 入口商品は「ホームページ制作・管理」（初期0円／月額8,980円税込）。
-// 買い切りの料金は「別の頼み方」として下部に残す。
+// 入口商品（月額）と継続的な集客改善（お見積もり）の2本立て。買い切りは扱わない。
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -84,23 +84,10 @@ const ja = {
     opsBody:
         "予約の受付やリマインド、問い合わせ対応にかかる手間を減らす仕組みも、ご相談に応じて一緒に考えます。内容を伺ってからのお見積もりです。",
 
-    /* 買い切り */
-    onetimeTitle: "買い切りでご依頼の場合",
-    onetimeLead:
-        "月額をお持ちにならず、一度の制作費でお渡しする形もお受けしています。公開後の更新はご自身でしていただく前提です。以前からの料金を、この頼み方のために残しています。",
-    thService: "内容",
-    thPrice: "目安（税込）",
-    onetimeRows: [
-        { k: "lp", name: "集客ページ制作（1枚完結）", price: "¥55,000〜", desc: "申込フォーム付きのページを1枚。まず小さく始めたい方に" },
-        { k: "hp", name: "ホームページ制作（複数ページ）", price: "¥165,000〜", desc: "会社・お店・教室の顔になるホームページを一式お渡しします" },
-        { k: "design", name: "デザイン制作（ロゴ・チラシ等）", price: "応相談", desc: "内容を伺ってからお見積もりします" },
-    ],
-    onetimeNote:
-        "内容により変わります。正式な金額は無料のお見積もりでご提示します。月額のホームページ制作・管理とは別の頼み方で、併用はしません。",
 
     factorsTitle: "金額を左右する4つのこと",
     factorsLead:
-        "買い切りの制作や、継続的な集客改善のお見積もりでは、たいていこの4点で金額が変わります。相見積もりを取るときも、ここを揃えて比べると差が分かります。",
+        "継続的な集客改善などのお見積もりでは、たいていこの4点で金額が変わります。相見積もりを取るときも、ここを揃えて比べると差が分かります。",
     factors: [
         {
             n: "01",
@@ -120,7 +107,7 @@ const ja = {
         {
             n: "04",
             t: "公開後をどうするか",
-            d: "更新と改善を続けるか、作ってお渡しして終わりにするか。月額のホームページ制作・管理を選ぶか、買い切りにするかはここで決まります。",
+            d: "公開して終わりにせず、数字を見ながら改善を続けるか。月額に含まれる修正・更新だけで足りるか、継続的な集客改善まで頼むかはここで決まります。",
         },
     ],
     extraTitle: "追加料金について",
@@ -209,22 +196,10 @@ const en: typeof ja = {
     opsBody:
         "If booking, reminders or answering inquiries take too much of your time, we can look at that with you. Quoted once we know what is involved.",
 
-    onetimeTitle: "If you prefer a one-time build",
-    onetimeLead:
-        "You can also pay once and have the site handed over, with no monthly fee. That assumes you update it yourself. These are our existing prices, kept for this way of working.",
-    thService: "Service",
-    thPrice: "Starting at (tax incl.)",
-    onetimeRows: [
-        { k: "lp", name: "One-page site", price: "from ¥55,000", desc: "A single page with an inquiry form, for starting small" },
-        { k: "hp", name: "Website (multi-page)", price: "from ¥165,000", desc: "A full site for your school or shop, handed over to you" },
-        { k: "design", name: "Design (logos, flyers, etc.)", price: "Ask us", desc: "Quoted once we know what you need" },
-    ],
-    onetimeNote:
-        "Final pricing depends on scope and is confirmed in your free quote. This is an alternative to the monthly plan, not an add-on to it.",
 
     factorsTitle: "Four things that move the price",
     factorsLead:
-        "For a one-time build, or for ongoing growth work, the cost usually varies on these four points. Line them up when comparing quotes and the differences become clear.",
+        "For ongoing growth work and other quotes, the cost usually varies on these four points. Line them up when comparing quotes and the differences become clear.",
     factors: [
         {
             n: "01",
@@ -244,7 +219,7 @@ const en: typeof ja = {
         {
             n: "04",
             t: "What happens after launch",
-            d: "Keep improving it, or build it and hand it over? That is what decides between the monthly plan and a one-time build.",
+            d: "Stop at launch, or keep improving with the numbers? That decides whether the edits included in the monthly plan are enough, or ongoing growth work is worth adding.",
         },
     ],
     extraTitle: "About extra charges",
@@ -271,7 +246,7 @@ export function priceMetadata(lang: Lang): Metadata {
         return {
             title: "Pricing | Website production and web marketing",
             description:
-                "Website build and management with no setup fee, ¥8,980 a month (tax incl.): up to 10 pages, unlimited edits, domain and hosting included, one-year minimum. Ongoing growth work quoted by scope. One-time builds from ¥55,000. Proposal and quote are free.",
+                "Website build and management with no setup fee, ¥8,980 a month (tax incl.): up to 10 pages, unlimited edits, domain and hosting included, one-year minimum. Ongoing growth work quoted by scope. Proposal and quote are free.",
             alternates: alternatesFor("/price", "en"),
             openGraph: {
                 title: "Pricing | NEXT VALLEY",
@@ -286,7 +261,7 @@ export function priceMetadata(lang: Lang): Metadata {
     return {
         title: "料金｜ホームページ制作・管理は初期0円＋月額8,980円（税込）",
         description:
-            "ホームページ制作・管理は初期制作費0円、月額8,980円（税込）。10ページまで制作、修正・更新は無制限、ドメイン・サーバー費込み、最低契約1年（初年度総額107,760円・税込）。継続的な集客改善は内容に応じてお見積もり。買い切りは¥55,000〜。ご提案・お見積もりは無料です。",
+            "ホームページ制作・管理は初期制作費0円、月額8,980円（税込）。10ページまで制作、修正・更新は無制限、ドメイン・サーバー費込み、最低契約1年（初年度総額107,760円・税込）。継続的な集客改善は内容に応じてお見積もり。ご提案・お見積もりは無料です。",
         alternates: alternatesFor("/price"),
         openGraph: {
             title: "料金｜ホームページ制作・管理は初期0円＋月額8,980円（税込） | NEXT VALLEY",
@@ -459,30 +434,6 @@ export function PricePage({ lang = "ja" }: { lang?: Lang }) {
                             <h3 className="mb-2 text-[16px] font-bold text-ink">{t.opsTitle}</h3>
                             <p className="text-[14px] leading-[1.95] text-ink-sub">{t.opsBody}</p>
                         </div>
-                    </FadeIn>
-                </div>
-            </section>
-
-            {/* 買い切りでご依頼の場合 */}
-            <section className="px-4 py-16 md:px-6 md:py-20">
-                <div className="mx-auto max-w-5xl">
-                    <FadeIn>
-                        <h2 className="mb-3 text-2xl font-bold leading-snug md:text-3xl">{t.onetimeTitle}</h2>
-                        <p className="mb-8 max-w-3xl text-[15px] leading-[2] text-ink-sub">{t.onetimeLead}</p>
-                    </FadeIn>
-                    <FadeIn>
-                        <div className="overflow-hidden rounded-2xl bg-white p-2 shadow-[0_16px_40px_rgba(31,26,20,0.06)] md:p-4">
-                            <ul className="divide-y divide-line">
-                                {t.onetimeRows.map((r) => (
-                                    <li key={r.k} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 px-3 py-4 md:px-6 md:py-5">
-                                        <span className="text-[15px] font-bold leading-snug text-ink">{r.name}</span>
-                                        <span className="whitespace-nowrap text-xl font-bold tabular-nums text-ink">{r.price}</span>
-                                        <span className="basis-full text-[13px] leading-[1.8] text-ink-sub">{r.desc}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <p className="mt-5 max-w-[42em] text-[14px] leading-[2] text-ink-sub">{t.onetimeNote}</p>
                     </FadeIn>
                 </div>
             </section>

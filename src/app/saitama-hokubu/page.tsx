@@ -46,11 +46,6 @@ const services = [
         price: "お見積もり",
         desc: "Googleマップの情報整備、問い合わせ・予約ページの改善、LINEの相談・予約導線、数字の計測と改善。内容に応じてお見積もりします（月額8,980円には含まれません）",
     },
-    {
-        name: "買い切りでの制作",
-        price: "¥55,000〜",
-        desc: "月額をお持ちにならず、一度の制作費でお渡しする形。公開後の更新はご自身でしていただきます",
-    },
 ];
 
 export default function SaitamaHokubuPage() {

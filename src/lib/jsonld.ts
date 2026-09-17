@@ -82,15 +82,13 @@ export function shindanJsonLd(lang: Lang) {
 const PRICE_ITEMS: {
     ja: string;
     en: string;
-    /** 月額の商品（monthly）か、買い切りの目安額（from）か */
+    /** 月額の商品（monthly）か、目安額（from）か */
     kind: "monthly" | "from";
     price: number;
     /** 月額商品の初期費用（0円もそのまま書く） */
     setup?: number;
 }[] = [
     { ja: "ホームページ制作・管理", en: "Website build and management", kind: "monthly", price: 8980, setup: 0 },
-    { ja: "集客ページ制作（1枚完結）", en: "One-page site", kind: "from", price: 55000 },
-    { ja: "ホームページ制作（複数ページ・買い切り）", en: "Website (multi-page, one-time)", kind: "from", price: 165000 },
 ];
 
 /** 月額8,980円（税込）を UnitPriceSpecification で表す */
@@ -115,8 +113,8 @@ export function priceJsonLd(lang: Lang) {
         name: lang === "en" ? "Website production and web marketing" : "ホームページ制作・Web集客支援",
         description:
             lang === "en"
-                ? "Website build and management with no setup fee, ¥8,980 a month (tax incl.): up to 10 pages, unlimited edits, domain and hosting included, one-year minimum term. One-time builds and ongoing growth work are quoted separately. Proposal and quote are free."
-                : "ホームページ制作・管理は初期制作費0円、月額8,980円（税込）。10ページまで制作、修正・更新は無制限、ドメイン・サーバー費込み、最低契約期間は1年間。買い切りの制作と継続的な集客改善は別途お見積もりします。",
+                ? "Website build and management with no setup fee, ¥8,980 a month (tax incl.): up to 10 pages, unlimited edits, domain and hosting included, one-year minimum term. Ongoing growth work is quoted separately. Proposal and quote are free."
+                : "ホームページ制作・管理は初期制作費0円、月額8,980円（税込）。10ページまで制作、修正・更新は無制限、ドメイン・サーバー費込み、最低契約期間は1年間。継続的な集客改善は別途お見積もりします。",
         url,
         provider: org,
         areaServed,

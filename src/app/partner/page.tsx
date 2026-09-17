@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 export const metadata: Metadata = {
     title: "ご紹介パートナー制度",
     description:
-        "ホームページや集客で困っているお知り合いをご紹介ください。営業はすべてNEXT VALLEYが行い、ご成約時に紹介料をお支払いします。ご紹介された方にも制作費の割引があります。",
+        "ホームページや集客で困っているお知り合いをご紹介ください。営業はすべてNEXT VALLEYが行い、ご成約時に紹介料をお支払いします。ご紹介された方には、初月の月額が無料になる特典があります。",
     alternates: { canonical: "https://www.nextvalley-jpn.com/partner" },
 };
 
@@ -31,9 +31,9 @@ const steps = [
 ];
 
 const rewards = [
-    { name: "ホームページ・集客ページの制作", amount: "ご成約金額の10%", note: "例：165,000円の制作なら16,500円" },
-    { name: "集客サポート（月額契約）", amount: "月額1ヶ月分", note: "3ヶ月のご継続が確認できた時点でお支払い" },
-    { name: "ご紹介された方への特典", amount: "制作費から5,000円引き", note: "ご紹介経由のご契約が対象" },
+    { name: "ホームページ制作・管理（月額8,980円）", amount: "月額1ヶ月分（8,980円）", note: "3ヶ月のご継続が確認できた時点でお支払い" },
+    { name: "継続的な集客改善（お見積もり）", amount: "初回ご請求額の10%", note: "ご入金の確認後にお支払い" },
+    { name: "ご紹介された方への特典", amount: "初月の月額が無料", note: "8,980円分。ご紹介経由のご契約が対象" },
 ];
 
 export default function PartnerPage() {
@@ -100,7 +100,7 @@ export default function PartnerPage() {
                     </div>
                     <ul className="mt-8 mx-auto max-w-2xl space-y-1.5 text-sm text-slate-500 leading-relaxed list-disc pl-5">
                         <li>紹介料は、ご成約とご入金の確認後にお支払いします（銀行振込）</li>
-                        <li>紹介料を受け取りにくい場合は、ご紹介先の割引への上乗せに変更できます（お知り合いがその分お得になります）</li>
+                        <li>紹介料を受け取りにくい場合は、ご紹介先の特典への上乗せに変更できます（初月に加えて翌月も無料になります）</li>
                         <li>ご自身・ご自身の事業のご契約は、紹介料ではなくお見積りにて調整します</li>
                         <li>同じ方を複数の方からご紹介いただいた場合は、先にご連絡いただいた方が対象です</li>
                     </ul>
