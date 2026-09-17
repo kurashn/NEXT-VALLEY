@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
       { source: '/saitama-hp', destination: '/saitama-hokubu', permanent: true },
       { source: '/local-seo', destination: '/blog/local-seo-keywords', permanent: true },
       { source: '/homepage-info', destination: '/blog/what-to-write-on-website', permanent: true },
-      { source: '/free-img', destination: '/blog/website-preparation', permanent: true },
+      { source: '/free-img', destination: '/blog/free-images-for-website', permanent: true },
       { source: '/english-marketing', destination: '/blog/no-students-reasons', permanent: true },
       { source: '/web-kanji', destination: '/company', permanent: true },
       { source: '/works', destination: '/#works', permanent: true },
