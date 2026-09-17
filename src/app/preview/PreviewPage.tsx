@@ -10,6 +10,7 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { serif } from "@/components/ui/SerifHeading";
 import { heavy, V4 } from "@/lib/fonts-v4";
 import { withLang, type Lang } from "@/i18n";
+import { chunks } from "@/lib/nowrap";
 import { LINE_URL, REMAINING_SLOTS, TOTAL_SLOTS } from "./copy";
 import { StickyApply } from "./StickyApply";
 import { CornerArcs } from "./Mock";
@@ -34,7 +35,7 @@ const SUB = "#3B4457";
 const ja = {
     header: { tagline: <>埼玉の小さな事業に、<br />Webで新しい景色を。</>, home: "トップページへ", cta: "無料プレビューを申し込む" },
     hero: {
-        eyebrow: "契約前に見られる、無料デザインプレビュー",
+        eyebrow: <><span className="nowrap">契約前に見られる、</span><span className="nowrap">無料デザインプレビュー</span></>,
         h1: (
             <>
                 あなたの事業の<br />
@@ -47,9 +48,9 @@ const ja = {
             <>プレビュー作成 <span className={`${heavy.className} text-[26px] md:text-[30px]`} style={{ color: CORAL }}>0</span><span className="font-bold" style={{ color: CORAL }}>円</span></>,
             <>申込だけで契約・請求なし</>,
         ],
-        cta: "LINEで無料プレビューを申し込む",
-        ctaNote: "友だち追加後、簡単なヒアリングにお答えください。",
-        terms: "正式制作は、初期0円・月額8,980円（税込）／最低契約期間1年。",
+        cta: <><span className="hidden md:inline">LINEで</span>無料プレビューを申し込む</>,
+        ctaNote: <><span className="nowrap">友だち追加後、</span><span className="nowrap">簡単なヒアリングにお答えください。</span></>,
+        terms: <><span className="nowrap">正式制作は、</span><span className="nowrap">初期0円・月額8,980円（税込）／</span><span className="nowrap">最低契約期間1年。</span></>,
         slots: `毎月${TOTAL_SLOTS}社限定・今月あと${REMAINING_SLOTS}社`,
         visualAlt: "デザイン案のイメージ：パン屋のホームページをパソコンとスマートフォンで表示した例。無料で作成するのはトップページのデザイン案です。",
     },
@@ -57,29 +58,29 @@ const ja = {
         word: "Preview",
         sub: "お届けするデザイン案",
         title: <><span style={{ color: TEAL }}>あなたの事業</span>なら、<span className="nowrap">こんなホームページに。</span></>,
-        lead: "事業の内容と、ご希望の雰囲気を反映します。",
+        lead: <><span className="nowrap">事業の内容と、</span><span className="nowrap">ご希望の雰囲気を反映します。</span></>,
         items: [
             { img: sampleCompany, alt: "工務店のホームページのデザイン案（PCとスマホ）", k: "会社", d: "信頼感と、事業の強みが伝わる。" },
             { img: sampleCafe, alt: "喫茶店のホームページのデザイン案（PCとスマホ）", k: "店舗", d: "お店の雰囲気と、こだわりを。" },
             { img: sampleMusic, alt: "音楽教室のホームページのデザイン案（PCとスマホ）", k: "教室", d: "レッスンの魅力を、わかりやすく。" },
         ],
         pill: "無料プレビューの範囲",
-        note1: "トップページのデザイン案（PC・スマホ）をお届けします。",
-        note2: "下層ページの制作・サイト公開は、正式契約後に進めます。",
+        note1: <><span className="nowrap">トップページのデザイン案（PC・スマホ）を</span><span className="nowrap">お届けします。</span></>,
+        note2: <><span className="nowrap">下層ページの制作・サイト公開は、</span><span className="nowrap">正式契約後に進めます。</span></>,
         note3: "※ 掲載画像はデザイン案のイメージです。",
     },
     flow: {
         word: "Flow",
         sub: "申し込みから受け取りまで",
         title: <>申し込みから、<span style={{ color: TEAL }}>3ステップ</span>。</>,
-        lead: "デザイン案を見てから、依頼するか決められます。",
+        lead: <><span className="nowrap">デザイン案を見てから、</span><span className="nowrap">依頼するか決められます。</span></>,
         steps: [
             { n: "01", color: CORAL, img: stepLine, t: "LINEで申し込む", d: <><span className="nowrap">友だち追加後、</span><br /><span className="nowrap">簡単なヒアリングに回答。</span></> },
             { n: "02", color: TEAL, img: stepDesign, t: "デザイン案を受け取る", d: <><span className="nowrap">必要情報が揃ってから、</span><br /><span className="nowrap"><b style={{ color: CORAL }}>3営業日以内</b>にお届け。</span></> },
             { n: "03", color: CORAL, img: stepDecide, t: "見てから、決める", d: <><span className="nowrap">内容・料金・条件を確認し、</span><br /><span className="nowrap">依頼するかご判断ください。</span></> },
         ],
-        note: "合わなければ、見送っていただいて構いません。",
-        note2: "お申し込みだけで契約・請求は発生しません。",
+        note: <><span className="nowrap">合わなければ、</span><span className="nowrap">見送っていただいて構いません。</span></>,
+        note2: <><span className="nowrap">お申し込みだけで</span><span className="nowrap">契約・請求は発生しません。</span></>,
     },
     price: {
         word: "Price",
@@ -97,7 +98,7 @@ const ja = {
         termValue: "1年間",
         billing: "課金開始：",
         billingValue: "契約日",
-        note: "※ 継続的な集客支援は、別途お見積もりです。",
+        note: <><span className="nowrap">※ 継続的な集客支援は、</span><span className="nowrap">別途お見積もりです。</span></>,
         link: "料金・サービスの詳細を見る",
     },
     faq: {
@@ -108,7 +109,7 @@ const ja = {
         items: [
             { q: "本当に無料ですか？", a: "トップページのデザイン案は無料です。正式契約前に費用は発生しません。" },
             { q: "デザイン案を見てから、断っても大丈夫ですか？", a: "はい。デザイン案と料金・条件を確認してから、ご判断いただけます。こちらから追いかける連絡もしません。" },
-            { q: "まだホームページがなくても申し込めますか？", a: "申し込めます。事業の内容と伝えたいことが分かれば、それに合った構成でお作りします。写真やロゴがなくても大丈夫です。" },
+            { q: "まだホームページがなくても、申し込めますか？", a: "申し込めます。事業の内容と伝えたいことが分かれば、それに合った構成でお作りします。写真やロゴがなくても大丈夫です。" },
             { q: "申し込みには、何を用意すればよいですか？", a: "公式LINEを追加し、ヒアリング（約1分）に答えるだけです。会社・お店・教室のお名前、作る目的、載せたい内容、あれば今のサイトやInstagramを教えてください。" },
         ],
     },
@@ -116,9 +117,9 @@ const ja = {
         eyebrow: "YOUR NEXT, TOGETHER.",
         title: <>まずは、あなたの事業の<br /><span style={{ color: TEAL }}>デザイン案</span>を見てみませんか。</>,
         lead: <><span className="nowrap">新規制作も、リニューアルも。</span><span className="nowrap">LINEからお気軽にご相談ください。</span></>,
-        button: "LINEで無料プレビューを申し込む",
-        steps: "友だち追加 → ヒアリングに回答 → デザイン案を受け取る",
-        note: "お申し込みだけで契約・請求は発生しません。",
+        button: <><span className="hidden md:inline">LINEで</span>無料プレビューを申し込む</>,
+        steps: <><span className="nowrap">友だち追加 →</span> <span className="nowrap">ヒアリングに回答 →</span> <span className="nowrap">デザイン案を受け取る</span></>,
+        note: <><span className="nowrap">お申し込みだけで</span><span className="nowrap">契約・請求は発生しません。</span></>,
     },
     footer: {
         tagline: "埼玉の小さな事業に、頼れるWeb担当を。",
@@ -164,8 +165,8 @@ function LineButton({ children, className = "", big = false }: { children: React
             style={{ backgroundColor: CORAL }}
         >
             <LineIcon big={big} />
-            {children}
-            <ArrowUpRight className="h-5 w-5" aria-hidden />
+            <span className="whitespace-nowrap">{children}</span>
+            <ArrowUpRight className="h-5 w-5 shrink-0" aria-hidden />
         </a>
     );
 }
@@ -198,14 +199,14 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
             </header>
 
             {/* FV */}
-            <section className="relative overflow-hidden px-4 pb-14 pt-8 md:px-6 md:pb-24 md:pt-12" style={{ backgroundColor: "#FEFEFC" }}>
+            <section className="relative overflow-hidden px-4 pb-16 pt-10 md:px-6 md:pb-24 md:pt-16" style={{ backgroundColor: "#FEFEFC" }}>
                 <div className="mx-auto grid max-w-[1320px] items-center gap-12 md:grid-cols-[1.06fr_1fr] md:gap-6">
                     <div>
-                        <p className="flex items-center gap-3 text-[15px] font-bold md:text-[18px]" style={{ color: CORAL }}>
-                            <span aria-hidden className="block h-px w-12" style={{ backgroundColor: CORAL }} />
-                            {t.hero.eyebrow}
+                        <p className="flex items-center gap-3 text-[14px] font-bold md:text-[18px]" style={{ color: CORAL }}>
+                            <span aria-hidden className="block h-px w-8 shrink-0 md:w-12" style={{ backgroundColor: CORAL }} />
+                            <span>{t.hero.eyebrow}</span>
                         </p>
-                        <h1 className={`${heavy.className} mt-4 text-[clamp(1.9rem,3.95vw,3.6rem)] leading-[1.22] tracking-[-0.035em]`} style={{ color: NAVY }}>
+                        <h1 className={`${heavy.className} mt-4 text-[clamp(1.5rem,7.6vw,2.4rem)] leading-[1.22] md:text-[clamp(1.9rem,3.95vw,3.6rem)] tracking-[-0.035em]`} style={{ color: NAVY }}>
                             {t.hero.h1}
                         </h1>
                         <p className="mt-5 text-[17px] leading-[1.7] md:text-[23px]" style={{ color: NAVY }}>{t.hero.lead}</p>
@@ -229,10 +230,10 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
             </section>
 
             {/* お届けするデザイン案 */}
-            <section className="px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: "#FDFBF7" }}>
+            <section className="px-4 py-16 md:px-6 md:py-24" style={{ backgroundColor: "#FDFBF7" }}>
                 <div className="mx-auto max-w-6xl">
                     <Word word={t.preview.word} sub={t.preview.sub} />
-                    <h2 className={`${heavy.className} text-[clamp(1.6rem,3.6vw,2.9rem)] leading-[1.3]`} style={{ color: NAVY }}>{t.preview.title}</h2>
+                    <h2 className={`${heavy.className} text-[clamp(1.6rem,3.6vw,2.9rem)] leading-[1.3] tracking-[-0.02em]`} style={{ color: NAVY }}>{t.preview.title}</h2>
                     <p className="mt-2 text-[15px] md:text-[17px]" style={{ color: NAVY }}>{t.preview.lead}</p>
                     <ul className="mt-9 grid gap-10 md:grid-cols-3 md:gap-8">
                         {t.preview.items.map((it, i) => (
@@ -260,10 +261,10 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
             </section>
 
             {/* 3ステップ */}
-            <section id="flow" className="px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: "#FEFDF9" }}>
+            <section id="flow" className="px-4 py-16 md:px-6 md:py-24" style={{ backgroundColor: "#FEFDF9" }}>
                 <div className="mx-auto max-w-6xl">
                     <Word word={t.flow.word} sub={t.flow.sub} />
-                    <h2 className={`${heavy.className} text-[clamp(1.7rem,4vw,3.2rem)] leading-[1.25]`} style={{ color: NAVY }}>{t.flow.title}</h2>
+                    <h2 className={`${heavy.className} text-[clamp(1.6rem,3.6vw,2.9rem)] leading-[1.3] tracking-[-0.02em]`} style={{ color: NAVY }}>{t.flow.title}</h2>
                     <p className="mt-2 text-[15px] md:text-[18px]" style={{ color: NAVY }}>{t.flow.lead}</p>
                     <ol className="mt-10 grid gap-10 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-start md:gap-4">
                         {t.flow.steps.map((s, i) => (
@@ -295,23 +296,23 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
             </section>
 
             {/* 料金 */}
-            <section className="px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: "#F6F9FA" }}>
+            <section className="px-4 py-16 md:px-6 md:py-24" style={{ backgroundColor: "#F6F9FA" }}>
                 <div className="mx-auto max-w-6xl">
                     <Word word={t.price.word} sub={t.price.sub} />
-                    <h2 className={`${heavy.className} text-[clamp(1.7rem,4vw,3.2rem)] leading-[1.25]`} style={{ color: NAVY }}>{t.price.title}</h2>
+                    <h2 className={`${heavy.className} text-[clamp(1.6rem,3.6vw,2.9rem)] leading-[1.3] tracking-[-0.02em]`} style={{ color: NAVY }}>{t.price.title}</h2>
                     <p className="mt-3 text-[15px] leading-[1.9] md:text-[18px]" style={{ color: NAVY }}>{t.price.lead}</p>
                     <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-0">
                         <div className="md:pr-10">
                             <p className="flex items-center gap-3 text-[14px] font-bold md:text-[16px]" style={{ color: CORAL }}><span aria-hidden className="block h-px w-8" style={{ backgroundColor: CORAL }} />{t.price.leftLabel}</p>
                             <p className={`${heavy.className} mt-3 text-[26px] md:text-[34px]`} style={{ color: NAVY }}>{t.price.plan}</p>
-                            <div className="mt-4 flex items-end gap-6 md:gap-8">
-                                <div className="pr-6 md:pr-8" style={{ borderRight: "1px solid rgba(15,37,64,0.2)" }}>
-                                    <p className="text-[13px] font-bold md:text-[15px]" style={{ color: NAVY }}>{t.price.initialLabel}</p>
-                                    <p className="mt-1 leading-none" style={{ fontFamily: serif, fontWeight: 700, fontStyle: "italic", color: TEAL }}><span className="text-[64px] md:text-[80px]">0</span><span className={`${heavy.className} ml-1 text-[22px] not-italic md:text-[26px]`} style={{ color: NAVY }}>円</span></p>
+                            <div className="mt-4 flex items-end gap-5 md:gap-8">
+                                <div className="pr-5 md:pr-8" style={{ borderRight: "1px solid rgba(15,37,64,0.2)" }}>
+                                    <p className="whitespace-nowrap text-left text-[13px] font-bold md:text-[15px]" style={{ color: NAVY }}>{t.price.initialLabel}</p>
+                                    <p className="mt-1 whitespace-nowrap text-left leading-none" style={{ fontFamily: serif, fontWeight: 700, fontStyle: "italic", color: TEAL }}><span className="text-[48px] md:text-[80px]">0</span><span className={`${heavy.className} ml-1 text-[22px] not-italic md:text-[26px]`} style={{ color: NAVY }}>円</span></p>
                                 </div>
                                 <div>
-                                    <p className="text-[13px] font-bold md:text-[15px]" style={{ color: NAVY }}>{t.price.monthlyLabel}</p>
-                                    <p className="mt-1 leading-none" style={{ fontFamily: serif, fontWeight: 700, fontStyle: "italic", color: CORAL }}><span className="text-[64px] md:text-[80px]">8,980</span><span className={`${heavy.className} ml-1 text-[22px] not-italic md:text-[26px]`}>円</span><span className="ml-1 text-[13px] not-italic md:text-[15px]" style={{ color: NAVY, fontFamily: "inherit" }}>（税込）</span></p>
+                                    <p className="whitespace-nowrap text-left text-[13px] font-bold md:text-[15px]" style={{ color: NAVY }}>{t.price.monthlyLabel}</p>
+                                    <p className="mt-1 whitespace-nowrap text-left leading-none" style={{ fontFamily: serif, fontWeight: 700, fontStyle: "italic", color: CORAL }}><span className="text-[48px] md:text-[80px]">8,980</span><span className={`${heavy.className} ml-1 text-[22px] not-italic md:text-[26px]`}>円</span><span className="mt-1 block text-[12px] not-italic md:ml-1 md:mt-0 md:inline md:text-[15px]" style={{ color: NAVY, fontFamily: "inherit" }}>（税込）</span></p>
                                 </div>
                             </div>
                             <p className="mt-5 border-t pt-4 text-center text-[15px] font-bold md:text-[17px]" style={{ borderColor: "rgba(15,37,64,0.2)", color: NAVY }}>
@@ -347,19 +348,19 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
             </section>
 
             {/* FAQ */}
-            <section className="px-4 py-14 md:px-6 md:py-20" style={{ backgroundColor: CREAM }}>
+            <section className="px-4 py-16 md:px-6 md:py-24" style={{ backgroundColor: CREAM }}>
                 <div className="mx-auto max-w-6xl">
                     <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
                         <Word word={t.faq.word} sub={t.faq.sub} />
                         <p className="text-[13px]" style={{ color: SUB }}>{t.faq.trust.join("　｜　")}</p>
                     </div>
-                    <h2 className={`${heavy.className} text-[clamp(1.7rem,4vw,3.2rem)] leading-[1.25]`} style={{ color: NAVY }}>{t.faq.title}</h2>
+                    <h2 className={`${heavy.className} text-[clamp(1.6rem,3.6vw,2.9rem)] leading-[1.3] tracking-[-0.02em]`} style={{ color: NAVY }}>{t.faq.title}</h2>
                     <div className="mt-6">
                         {t.faq.items.map((f, i) => (
                             <details key={f.q} open={i < 2} className="group border-b" style={{ borderColor: "rgba(15,37,64,0.2)" }}>
                                 <summary className="flex min-h-16 cursor-pointer list-none items-center gap-5 py-5 [&::-webkit-details-marker]:hidden">
                                     <span className="text-[30px] italic leading-none md:text-[36px]" style={{ fontFamily: serif, fontWeight: 700, color: CORAL }}>Q</span>
-                                    <span className={`${heavy.className} flex-1 text-[17px] md:text-[22px]`} style={{ color: NAVY }}>{f.q}</span>
+                                    <span className={`${heavy.className} flex-1 text-[16px] leading-[1.5] md:text-[21px]`} style={{ color: NAVY }}>{chunks(f.q)}</span>
                                     <span aria-hidden className="text-[28px] leading-none" style={{ color: TEAL }}><span className="group-open:hidden">＋</span><span className="hidden group-open:inline">−</span></span>
                                 </summary>
                                 <div className="mb-5 flex items-center gap-5 rounded-[6px] px-5 py-4" style={{ backgroundColor: "#E9F3F5" }}>
@@ -378,7 +379,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                 <div className="relative mx-auto max-w-3xl text-center">
                     <p className="text-[13px] tracking-[0.3em] md:text-[15px]" style={{ color: TEAL }}>{t.cta.eyebrow}</p>
                     <span aria-hidden className="mx-auto mt-3 block h-[2px] w-16" style={{ backgroundColor: CORAL }} />
-                    <h2 className={`${heavy.className} mt-7 text-[clamp(1.7rem,4vw,3.2rem)] leading-[1.3]`} style={{ color: NAVY }}>{t.cta.title}</h2>
+                    <h2 className={`${heavy.className} mt-7 text-[clamp(1.6rem,3.6vw,2.9rem)] leading-[1.35] tracking-[-0.02em]`} style={{ color: NAVY }}>{t.cta.title}</h2>
                     <p className="mt-5 text-[15px] md:text-[18px]" style={{ color: NAVY }}>{t.cta.lead}</p>
                     <LineButton className="mt-8 w-full sm:w-auto sm:px-12">{t.cta.button}</LineButton>
                     <p className="mt-6 text-[14px] md:text-[16px]" style={{ color: NAVY }}>{t.cta.steps}</p>
