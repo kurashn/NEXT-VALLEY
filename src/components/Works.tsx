@@ -32,11 +32,12 @@ import work19 from "@/images/works/works19.jpg";
 import work20 from "@/images/works/works20.jpg";
 import work21 from "@/images/works/works21.jpg";
 import work22 from "@/images/works/works22.jpg";
+import work23 from "@/images/works/works23.jpg";
 
 /* 画像（言語共通。順序は copy.featured / copy.others と一致させる） */
 const featuredImages = [work1, work5, work8];
 const otherImages = [
-    work22, work12, work14, work15, work16, work17, work19, work18, work20, work13,
+    work23, work22, work12, work14, work15, work16, work17, work19, work18, work20, work13,
     work6, work7, work4, work2, work3, work21, work9, work11,
 ];
 
@@ -72,6 +73,7 @@ const ja = {
         },
     ] as FeaturedCopy[],
     others: [
+        { name: "株式会社ミュウシード（夢み寮）様", label: "介護・福祉" },
         { name: "Matsumi様", label: "理容・美容" },
         { name: "BowlingNavi -ボウナビ- 様", label: "メディア・情報サイト" },
         { name: "久和不動産株式会社様", label: "不動産" },
@@ -121,6 +123,7 @@ const en: typeof ja = {
         },
     ],
     others: [
+        { name: "Mew Seed Co., Ltd. (Yumemi-ryo)", label: "Elderly care" },
         { name: "Matsumi", label: "Barbershop" },
         { name: "BowlingNavi", label: "Media & Information Site" },
         { name: "KyuWa Estate Co., Ltd.", label: "Real Estate" },
