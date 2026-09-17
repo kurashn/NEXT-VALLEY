@@ -32,7 +32,7 @@ const ja = {
             <>
                 あなたの事業の<br />
                 <span style={{ color: TEAL }}>ホームページ</span>を、<br />
-                <span className="nowrap"><span style={{ color: CORAL }}>契約前</span>に見てみませんか。</span>
+                <span className="whitespace-nowrap"><span style={{ color: CORAL }}>契約前</span>に見てみませんか。</span>
             </>
         ),
         lead: <><span className="nowrap">事業に合わせたトップページ案を、</span><br className="hidden md:block" /><span className="nowrap">PC・スマホの両方で無料作成。</span></>,
@@ -201,7 +201,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                             <span aria-hidden className="block h-px w-10" style={{ backgroundColor: CORAL }} />
                             {t.hero.eyebrow}
                         </p>
-                        <h1 className={`${heavy.className} mt-4 text-[clamp(1.9rem,4.1vw,3.3rem)] leading-[1.25] tracking-[-0.025em]`} style={{ color: NAVY }}>
+                        <h1 className={`${heavy.className} mt-4 text-[clamp(1.75rem,3.75vw,2.95rem)] leading-[1.25] tracking-[-0.03em]`} style={{ color: NAVY }}>
                             {t.hero.h1}
                         </h1>
                         <p className="mt-5 text-[16px] leading-[1.8] md:text-[19px]" style={{ color: NAVY }}>{t.hero.lead}</p>
@@ -219,14 +219,14 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                         <p className="mt-2 text-[12.5px]" style={{ color: SUB }}>{t.hero.terms}</p>
                         <p className="mt-1 text-[12.5px] font-bold" style={{ color: CORAL }}>{t.hero.slots}</p>
                     </div>
-                    <div className="relative pb-8 pr-[20%] pt-8">
+                    <div className="relative pb-10 pr-[20%] pt-8">
                         <Blob className="pointer-events-none absolute -left-[6%] -top-[2%] h-auto w-[112%]" />
-                        <span className="absolute right-[22%] top-0 z-20 rounded-full border bg-white px-3 py-1 text-[11px] font-bold" style={{ borderColor: TEAL, color: NAVY }}>{t.hero.pc}</span>
+                        <span className="absolute right-[26%] top-0 z-20 rounded-full border bg-white px-3 py-1 text-[11px] font-bold" style={{ borderColor: TEAL, color: NAVY }}>{t.hero.pc}</span>
                         <Laptop className="relative w-full">
                             <MiniSite site={SITES.bakery} variant="pc" />
                         </Laptop>
-                        <span className="absolute -right-2 top-[30%] z-20 rounded-full border bg-white px-3 py-1 text-[11px] font-bold" style={{ borderColor: TEAL, color: NAVY }}>{t.hero.sp}</span>
-                        <Phone className="absolute bottom-0 right-0 z-10 w-[29%]">
+                        <span className="absolute -right-2 top-[26%] z-20 rounded-full border bg-white px-3 py-1 text-[11px] font-bold" style={{ borderColor: TEAL, color: NAVY }}>{t.hero.sp}</span>
+                        <Phone className="absolute -bottom-[3%] right-0 z-10 w-[28%]">
                             <MiniSite site={SITES.bakery} variant="sp" />
                         </Phone>
                         <p className={`${hand.className} absolute bottom-2 left-[30%] text-[15px]`} style={{ color: TEAL }}>{t.hero.caption} <span aria-hidden>⤴</span></p>
