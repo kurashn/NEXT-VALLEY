@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
       { source: '/local-seo', destination: '/blog/local-seo-keywords', permanent: true },
       { source: '/homepage-info', destination: '/blog/what-to-write-on-website', permanent: true },
       { source: '/free-img', destination: '/blog/free-images-for-website', permanent: true },
-      { source: '/english-marketing', destination: '/blog/no-students-reasons', permanent: true },
+      { source: '/english-marketing', destination: '/blog/how-to-get-more-students', permanent: true },
       { source: '/web-kanji', destination: '/company', permanent: true },
       { source: '/works', destination: '/#works', permanent: true },
       { source: '/about', destination: '/company', permanent: true },
