@@ -53,7 +53,9 @@ const last = monthRange(ymList[ymList.length - 1]).endDate;
 
 /* ── GA: 月別の基礎数字 ── */
 const byYm = {};
-for (const ym of ymList) byYm[ym] = { users: null, views: null, line: 0 };
+// ctaEventFrom（"YYYY-MM"）より前の月は、計測を始めていないので 0 ではなく空欄にする
+const ctaFrom = cfg.ctaEventFrom ? cfg.ctaEventFrom.replace("-", "") : null;
+for (const ym of ymList) byYm[ym] = { users: null, views: null, line: ctaFrom && ym < ctaFrom ? null : 0 };
 for (const r of await run({ dateRanges: [{ startDate: first, endDate: last }], dimensions: [{ name: "yearMonth" }], metrics: [{ name: "totalUsers" }, { name: "screenPageViews" }] })) {
   const ym = r.dimensionValues[0].value;
   if (byYm[ym]) { byYm[ym].users = Number(r.metricValues[0].value); byYm[ym].views = Number(r.metricValues[1].value); }
@@ -97,6 +99,7 @@ for (const ym of detailYms) {
   const byPath = new Map();
   for (const r of pgRaw) {
     const path = r.dimensionValues[0].value, v = Number(r.metricValues[0].value);
+    if ((cfg.excludePageTitles || []).some((x) => (r.dimensionValues[1].value || "").includes(x))) continue;
     if (!byPath.has(path)) byPath.set(path, { path, title: r.dimensionValues[1].value, views: 0 });
     byPath.get(path).views += v;
   }
@@ -157,7 +160,9 @@ for (const ym of detailYms) {
       (() => {
         const up = gp && g.users != null && gp.users != null ? (g.users >= gp.users ? `先月の${gp.users}人から増えました` : `先月の${gp.users}人から少し落ち着きました`) : "";
         const hasManual = Object.keys(manual).length > 0;
-        const tail = hasManual ? "" : " LINEの友だち追加や体験・入会の数もお知らせいただければ、その月のまとめをここに書き添えます。";
+        const tail = hasManual ? "" : cfg.askTail != null ? " " + cfg.askTail : cfg.channel === "mail"
+          ? " メールでのお問い合わせや体験・入会の数もお知らせいただければ、その月のまとめをここに書き添えます。"
+          : " LINEの友だち追加や体験・入会の数もお知らせいただければ、その月のまとめをここに書き添えます。";
         return `${ymFull(ym)}は、HPに${g.users ?? "—"}人が来ました。${up ? up + "。" : ""}${tail}`;
       })(),
     funnel,
@@ -168,6 +173,7 @@ for (const ym of detailYms) {
     nowQueries,
     almostQueries,
     recommends: manual.recommends || [],
+    selfTips: manual.selfTips || [],
   });
 }
 
@@ -188,7 +194,7 @@ const table = {
   ],
 };
 
-const data = { client: cfg.client, generatedAt: new Date().toISOString().slice(0, 10), table, months };
+const data = { client: cfg.client, channel: cfg.channel || "line", channelText: cfg.channelText || null, generatedAt: new Date().toISOString().slice(0, 10), table, months };
 const outJson = cfgPath.replace(/\.config\.json$/, ".data.json");
 writeFileSync(outJson, JSON.stringify(data, null, 2));
 console.log("データ:", outJson);
