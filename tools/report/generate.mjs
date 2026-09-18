@@ -6,6 +6,12 @@ const dataPath = process.argv[2] || new URL("./sample-data.json", import.meta.ur
 const outPath = process.argv[3] || dataPath.replace(/\.json$/, ".html");
 const d = JSON.parse(readFileSync(dataPath, "utf8"));
 
+/* 連絡手段の言い回し（config の channel: "line"（既定）| "mail"） */
+const ch = d.channel === "mail"
+  ? { flow: "HP → メール → 無料体験 → 入会", send: "メールで番号をそのままお送りください", legend: "お問い合わせから下は、先生からお知らせいただいた数字です。", foot: "お問い合わせ・体験・入会の数字は先生からのご報告" }
+  : { flow: "HP → LINE → 無料体験 → 入会", send: "LINEで番号をそのままお送りください", legend: "友だち追加から下は、LINEの管理画面などから手で集計している数字です。", foot: "LINEの数字は管理画面から" };
+/* 業種に合わせた言い回し（config の channelText で上書き。未指定なら上の既定） */
+if (d.channelText) Object.assign(ch, d.channelText);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const num = (v) => (v === null || v === undefined || v === "" ? "—" : Number(v).toLocaleString("ja-JP"));
 const diff = (v, p) => {
@@ -15,7 +21,7 @@ const diff = (v, p) => {
   return `<span class="flat">→ 先月と同じ</span>`;
 };
 const hit = (v, t) => (t == null || v == null ? "" : v >= t ? " ok" : "");
-const rate = (a, b) => (b ? Math.round((a / b) * 100) : null);
+const rate = (a, b) => (a == null || !b ? null : Math.round((a / b) * 100));
 
 /* ── いつもの表（全期間・共通） ── */
 const monthsHead = d.table.months.map((m, i) => `<th class="${i === d.table.months.length - 1 ? "now" : ""}">${esc(m)}</th>`).join("");
@@ -37,7 +43,7 @@ const panel = (m, idx) => {
         ${isFocus ? '<p class="focus-badge">いま ここを改善</p>' : ""}
         <p class="step-label">${esc(f.label)}</p>
         <p class="step-value">${num(f.value)}<span class="step-unit">${esc(f.unit)}</span></p>
-        <p class="step-diff">${diff(f.value, f.prev)}</p>
+        <p class="step-diff">${f.note ? `<span class="step-note">${esc(f.note)}</span>` : diff(f.value, f.prev)}</p>
         ${i < m.funnel.length - 1 ? `<div class="step-next" aria-hidden>↓ <span>${rate(m.funnel[i + 1].value, f.value) ?? "—"}%が次へ</span></div>` : ""}
       </div>`;
     })
@@ -69,19 +75,36 @@ const panel = (m, idx) => {
       </li>`
     )
     .join("");
-  const recCta = m.recommends.length
-    ? `実施をご希望の場合は、LINEで${m.recommends.map((r, i) => `「${marks[i] || i + 1} ${esc(r.title)}」`).join("、")}のように、番号または内容をそのままお送りください。こちらで進めます。`
+  const tips = m.selfTips || [];
+  const tipsHtml = tips.length
+    ? `
+    <section>
+      <h2>今月の発信ネタ — お時間があれば</h2>
+      <p class="tips-note">やらなくても大丈夫です。もしInstagramやブログを書く余裕があれば、こんな内容が効きます。</p>
+      <ul class="tips">${tips.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+    </section>`
     : "";
+  const isDone = (x) => (x.r.plan || "").includes("対応済み");
+  const inPlan = m.recommends.map((r, i) => ({ r, i })).filter((x) => (x.r.plan || "").includes("範囲内"));
+  const outPlan = m.recommends.map((r, i) => ({ r, i })).filter((x) => !(x.r.plan || "").includes("範囲内") && !isDone(x));
+  const recCta = [
+    inPlan.length
+      ? `${inPlan.map((x) => marks[x.i] || x.i + 1).join("")}は集客サポートの範囲内ですので、今月中にこちらで対応します（ご都合が悪い場合はお知らせください）。`
+      : "",
+    outPlan.length
+      ? `${outPlan.map((x) => marks[x.i] || x.i + 1).join("")}の実施をご希望の場合は、${ch.send ? ch.send + "。" : ""}ご案内します。`
+      : "",
+  ].filter(Boolean).join(" ");
 
   return `
   <div class="panel" data-panel="${idx}" ${idx === d.months.length - 1 ? "" : "hidden"}>
     <section>
-      <h2>今月のひとこと</h2>
+      <h2>${esc(m.label.replace(/^\d+年/, ""))}のひとこと</h2>
       <p class="hitokoto">${esc(m.hitokoto)}</p>
     </section>
 
     <section>
-      <h2>集客の流れ — HP → LINE → 無料体験 → 入会</h2>
+      <h2>集客の流れ — ${ch.flow}</h2>
       <div class="funnel">${funnel}</div>
       ${m.focusText ? `<p class="focus-note"><span class="focus-mark" aria-hidden>◎</span>${esc(m.focusText)}</p>` : ""}
     </section>
@@ -130,7 +153,8 @@ const panel = (m, idx) => {
       <h2>今月の推奨 — 次にやると効くこと</h2>
       <ul class="recs">${recs}</ul>
       <p class="rec-cta">${recCta}</p>
-    </section>` : ""}
+    </section>
+    ${tipsHtml}` : ""}
   </div>`;
 };
 
@@ -172,6 +196,7 @@ const html = `<!doctype html>
   .step-label{margin:0;font-size:12px;font-weight:bold;color:var(--navy-sub);line-height:1.5}
   .step-value{margin:0;font-size:26px;font-weight:bold;color:var(--navy);font-variant-numeric:tabular-nums}
   .step-unit{font-size:12px;font-weight:normal;color:var(--navy-sub);margin-left:2px}
+  .step-note{font-size:11.5px;color:var(--navy-sub);line-height:1.5;display:block}
   .step-diff{margin:0;font-size:11px;min-height:1.6em}
   .step-next{font-size:10px;color:var(--navy-sub);border-top:1px dashed var(--line);margin-top:6px;padding-top:4px}
   .step-next span{font-weight:bold;color:var(--navy)}
@@ -209,6 +234,8 @@ const html = `<!doctype html>
   .rec-no{color:var(--coral);margin-right:6px}
   .rec-why{margin:2px 0 0;color:#c8d3dc;font-size:13px}
   .rec-plan{margin:6px 0 0;display:inline-block;background:var(--coral);color:#fff;font-size:11px;font-weight:bold;border-radius:4px;padding:1px 8px}
+  .tips-note{font-size:12px;color:#777;margin:0 0 8px}
+  .tips{margin:0;padding-left:1.3em;font-size:14px;line-height:2}
   .rec-cta{margin:14px 0 0;color:#fff;font-size:13px;border-top:1px solid rgba(255,255,255,.2);padding-top:12px}
   footer{color:var(--navy-sub);font-size:11px;text-align:center}
   @media print{
@@ -245,10 +272,10 @@ const html = `<!doctype html>
         <tbody>${tableRows}</tbody>
       </table>
     </div>
-    <p class="legend">友だち追加から下は、LINEの管理画面などから手で集計している数字です。今月の列で<span style="color:var(--ok);font-weight:bold">緑の数字</span>は目標達成。スマホでは表を横にスクロールできます。</p>
+    <p class="legend">${ch.legend}今月の列で<span style="color:var(--ok);font-weight:bold">緑の数字</span>は目標達成。スマホでは表を横にスクロールできます。</p>
   </section>
 
-  <footer>集計: Googleアナリティクス・Google Search Console／LINEの数字は管理画面から。NEXT VALLEY（www.nextvalley-jpn.com）</footer>
+  <footer>集計: Googleアナリティクス・Google Search Console${ch.foot ? "／" + ch.foot : ""}。NEXT VALLEY（www.nextvalley-jpn.com）</footer>
 </div>
 <script>
   (function(){

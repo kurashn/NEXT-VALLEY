@@ -136,7 +136,7 @@ for (const ym of detailYms) {
   const g = byYm[ym], gp = prevYm ? byYm[prevYm] : null;
   const funnel = [
     { label: "HPに来た", unit: "人", value: g.users, prev: gp ? gp.users : null },
-    ...(cfg.ctaEvent ? [{ label: cfg.ctaLabel || "LINEボタンを押した", unit: "件", value: g.line, prev: gp ? gp.line : null }] : []),
+    ...(cfg.ctaEvent ? [{ label: cfg.ctaLabel || "LINEボタンを押した", unit: "件", value: g.line, prev: gp ? gp.line : null, ...(g.line === null && cfg.ctaEventNote ? { note: cfg.ctaEventNote } : {}) }] : []),
     ...(cfg.manualSteps || []).filter((s) => !s.hideInFunnel).map((s) => ({ label: s.label, unit: s.unit || "件", value: manual[s.key] ?? null, prev: prevManual[s.key] ?? null })),
   ];
 
