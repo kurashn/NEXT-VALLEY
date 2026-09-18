@@ -56,6 +56,7 @@ def build(row):
     if kind == "marketing" and not point:
         print(f"  ⚠ {name}: マーケ提案には「指摘」列が必要です。スキップ"); return None
     body = body_tpl.replace("{name}", name).replace("{point}", point)
+    subject = subject.replace("{name}", name)
     msg = EmailMessage()
     msg["From"] = formataddr((str(Header(cfg["from_name"], "utf-8")), cfg["from_email"]))
     msg["To"] = m.group(0)
