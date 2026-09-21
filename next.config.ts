@@ -22,7 +22,6 @@ const nextConfig: NextConfig = {
       { source: '/free-img', destination: '/blog/free-images-for-website', permanent: true },
       { source: '/english-marketing', destination: '/blog/how-to-get-more-students', permanent: true },
       { source: '/web-kanji', destination: '/company', permanent: true },
-      { source: '/works', destination: '/#works', permanent: true },
       { source: '/about', destination: '/company', permanent: true },
       { source: '/recruit', destination: '/partner', permanent: true },
       // 削除したページ（英語版・教室向け・セルフ診断）

@@ -9,7 +9,7 @@ const copy = {
     ja: {
         siteLinks: [
             { name: "サービス", href: "/#service" },
-            { name: "制作実績", href: "/#works" },
+            { name: "制作実績", href: "/works" },
             { name: "料金", href: "/price" },
             { name: "ご依頼の流れ", href: "/#flow" },
         ],

@@ -16,7 +16,7 @@ const copy = {
     links: [
       { name: "支援する内容", href: "/#service" },
       { name: "料金", href: "/#price" },
-      { name: "制作実績", href: "/#works" },
+      { name: "制作実績", href: "/works" },
       { name: "ご依頼の流れ", href: "/#flow" },
       { name: "お役立ちコラム", href: "/blog" },
       { name: "お問い合わせ", href: "/contact" },

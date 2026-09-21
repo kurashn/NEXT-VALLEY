@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { createReader } from '@keystatic/core/reader';
 import config from '../../keystatic.config';
+import { DETAILED } from '@/lib/works';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://www.nextvalley-jpn.com';
@@ -23,6 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/saitama-hokubu',
         '/preview',
         '/price',
+        '/works',
         '/contact',
         '/blog',
         '/company',
@@ -36,5 +38,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: route === '' ? 1 : 0.5,
     }));
 
-    return [...routes, ...blogPosts];
+    const works = DETAILED.map((w) => ({
+        url: `${baseUrl}/works/${w.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.6,
+    }));
+
+    return [...routes, ...works, ...blogPosts];
 }

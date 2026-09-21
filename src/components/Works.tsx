@@ -199,6 +199,11 @@ export function Works({ lang = "ja" }: { lang?: Lang }) {
                     <p className="mt-8 text-sm text-ink-sub">
                         {t.note}
                     </p>
+                    <p className="mt-6">
+                        <a href="/works" className="inline-flex min-h-[52px] items-center gap-2 rounded-full border-2 border-navy-deep bg-white px-7 text-[15px] font-bold text-navy-deep transition-colors hover:border-coral hover:text-coral-deep">
+                            すべての制作実績を見る <span aria-hidden>→</span>
+                        </a>
+                    </p>
                 </FadeIn>
 
             </div>
