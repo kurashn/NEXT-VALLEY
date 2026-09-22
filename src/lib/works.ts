@@ -194,7 +194,7 @@ export const WORKS: Work[] = [
     { slug: "maya-kodomonoie", name: "まや子どもの家 様", category: "school", label: "教育・スクール", image: w3, summary: "まや子どもの家のホームページ。", scope: ["ホームページ制作"], url: "https://maya-kodomonoie.com/" },
     { slug: "k-coaching", name: "K-coaching 様", category: "school", label: "コーチング", image: w11, summary: "コーチングのホームページ。", scope: ["ホームページ制作"] },
     { slug: "chiangmai-station", name: "タイ北部チェンマイ情報ステーション 様", category: "media", label: "情報メディア", image: w13, summary: "チェンマイの情報を届けるメディアサイト。", scope: ["サイト制作"], url: "https://oriental-cnx.com/" },
-    { slug: "yuma-eiken-lp", name: "Yuma English House 英検対策コース 様", category: "lp", label: "LP", image: w21, summary: "英検対策コースの専用ページ。教室のホームページとは分けて、探している方に合わせて作りました。", scope: ["LP制作"], url: "https://eiken.yuma-english.com/" },
+    { slug: "yuma-eiken-lp", name: "Yuma English House 様 英検対策コース", category: "lp", label: "LP", image: w21, summary: "英検対策コースの専用ページ。教室のホームページとは分けて、探している方に合わせて作りました。", scope: ["LP制作"], url: "https://eiken.yuma-english.com/" },
     { slug: "i-second-store", name: "I-SECOND STORE 様", category: "lp", label: "ECサイト", image: w19, summary: "オンラインストア。", scope: ["ECサイト制作"], url: "https://www.i-second.jp/" },
 ];
 
