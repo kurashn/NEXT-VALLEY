@@ -26,9 +26,8 @@ const nextConfig: NextConfig = {
       { source: '/recruit', destination: '/partner', permanent: true },
       // 削除したページ（英語版・教室向け・セルフ診断）
       { source: '/en', destination: '/', permanent: true },
-      { source: '/en/shindan', destination: '/preview', permanent: true },
+      { source: '/en/shindan', destination: '/shindan', permanent: true },
       { source: '/en/:path*', destination: '/:path*', permanent: true },
-      { source: '/shindan', destination: '/preview', permanent: true },
       { source: '/classroom', destination: '/', permanent: true },
       { source: '/report-sample.html', destination: '/blog/monthly-report-sample', permanent: true },
     ];

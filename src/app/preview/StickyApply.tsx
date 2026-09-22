@@ -11,7 +11,7 @@ const copy: Record<Lang, string> = {
 };
 
 /** モバイル下部の追従ボタン。申込フォーム（#apply）が見えている間は隠す */
-export function StickyApply({ lang = "ja" }: { lang?: Lang }) {
+export function StickyApply({ lang = "ja", label, href = LINE_URL }: { lang?: Lang; label?: string; href?: string }) {
     const [hidden, setHidden] = useState(false);
     useEffect(() => {
         const el = document.getElementById("apply");
@@ -26,8 +26,8 @@ export function StickyApply({ lang = "ja" }: { lang?: Lang }) {
             style={{ paddingBottom: "max(12px, env(safe-area-inset-bottom))" }}
             aria-hidden={hidden}
         >
-            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="flex h-14 w-full items-center justify-center gap-2.5 rounded-full bg-coral-deep text-[17px] font-bold text-white shadow-cta" tabIndex={hidden ? -1 : 0}>
-                {copy[lang]}
+            <a href={href} target="_blank" rel="noopener noreferrer" className="flex h-14 w-full items-center justify-center gap-2.5 rounded-full bg-coral-deep text-[17px] font-bold text-white shadow-cta" tabIndex={hidden ? -1 : 0}>
+                {label ?? copy[lang]}
                 <ArrowRight className="h-5 w-5" aria-hidden />
             </a>
         </div>

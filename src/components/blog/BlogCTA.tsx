@@ -43,7 +43,7 @@ const variants: Record<string, Variant> = {
                 地図で見つけてもらうために直す順番を無料でお返しします。ホームページの制作・管理は初期0円・月額8,980円（税込）です。
             </>
         ),
-        sub: { label: "無料プレビューの詳細を見る", href: "/preview" },
+        sub: { label: "無料診断の詳細を見る", href: "/shindan" },
     },
     line: {
         eyebrow: "この記事を読んだ方へ",
@@ -59,7 +59,7 @@ const variants: Record<string, Variant> = {
                 最初に整える1つを無料でお返しします。ホームページの制作・管理は初期0円・月額8,980円（税込）です。
             </>
         ),
-        sub: { label: "無料プレビューの詳細を見る", href: "/preview" },
+        sub: { label: "無料診断の詳細を見る", href: "/shindan" },
     },
     cost: {
         eyebrow: "この記事を読んだ方へ",
@@ -91,7 +91,7 @@ const variants: Record<string, Variant> = {
                 最初に手を付ける1つを無料でお返しします。
             </>
         ),
-        sub: { label: "無料プレビューの詳細を見る", href: "/preview" },
+        sub: { label: "無料診断の詳細を見る", href: "/shindan" },
     },
     default: {
         eyebrow: "この記事を読んだ方へ",
@@ -107,7 +107,7 @@ const variants: Record<string, Variant> = {
                 直す順番を無料でお返しします。これから作る方は、契約前にトップページのデザイン案を無料でご覧いただけます。
             </>
         ),
-        sub: { label: "無料プレビューの詳細を見る", href: "/preview" },
+        sub: { label: "無料診断の詳細を見る", href: "/shindan" },
     },
 };
 

@@ -8,7 +8,6 @@ import { serif } from "@/components/ui/SerifHeading";
 import { heavy, V4 } from "@/lib/fonts-v4";
 import type { Lang } from "@/i18n";
 
-const LINE_URL = "https://lin.ee/N4QXdJL";
 const BG = "#F9F7F1";
 const RULE = "rgba(20,51,90,0.35)";
 
@@ -44,8 +43,8 @@ const t = {
             desc: <><span className="nowrap">サイトの改善点と、</span><span className="nowrap">取り組む順番をお伝えします。</span></>,
             cta: "今のサイトを診断する",
             sub: <><span className="nowrap">改善の実施は、</span><span className="nowrap">別途お見積もり。</span></>,
-            href: LINE_URL,
-            external: true,
+            href: "/shindan",
+            external: false,
             filled: false,
         },
     ],

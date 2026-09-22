@@ -7,7 +7,6 @@ import { serif } from "@/components/ui/SerifHeading";
 import { mincho, V4 } from "@/lib/fonts-v4";
 import { withLang, type Lang } from "@/i18n";
 
-const LINE_URL = "https://lin.ee/N4QXdJL";
 const BG = "#FBFAF5";
 
 type Track = {
@@ -48,8 +47,7 @@ const ja = {
         ],
         note: "改善の実施は、別途お見積もりです。",
         cta: "今のホームページを無料診断する",
-        href: LINE_URL,
-        external: true,
+        href: "/shindan",
     } as Track,
 };
 
@@ -81,8 +79,7 @@ const en: typeof ja = {
         ],
         note: "Carrying out improvements is quoted separately.",
         cta: "Get a free check of your site",
-        href: LINE_URL,
-        external: true,
+        href: "/shindan",
     },
 };
 

@@ -5,11 +5,10 @@ import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionHeadV4 } from "@/components/ui/SectionHeadV4";
 import { heavy, V4 } from "@/lib/fonts-v4";
-import { type Lang } from "@/i18n";
+import { withLang, type Lang } from "@/i18n";
 
 import { GrowthHp, GrowthMap, GrowthLine } from "@/components/ui/GrowthIllust";
 
-const LINE_URL = "https://lin.ee/N4QXdJL";
 const BG = "#FBF8F3";
 
 type Item = { no: string; Illust: React.ComponentType<{ className?: string }>; title: string; sub: string; body: React.ReactNode };
@@ -94,9 +93,7 @@ export function AfterLaunch({ lang = "ja" }: { lang?: Lang }) {
                             <p>{t.note2}</p>
                         </div>
                         <a
-                            href={LINE_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href={withLang(lang, "/shindan")}
                             className="inline-flex min-h-11 shrink-0 items-center gap-1.5 text-[15px] font-bold underline decoration-2 underline-offset-[6px]"
                             style={{ color: V4.coralDeep }}
                         >
