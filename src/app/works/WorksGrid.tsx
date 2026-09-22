@@ -7,6 +7,8 @@ import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { linkOf, type Work, type CategoryKey } from "@/lib/works";
 
 const NAVY = "#14335A", TEAL = "#2C8FA8", CORAL = "#E8503A", SUB = "#4A5A6E";
+// 業種の絞り込みボタン（件数つき）。しゅんの判断で一旦非表示
+const SHOW_FILTER = false;
 
 export function WorksGrid({ works, categories, heavyClass }: { works: Work[]; categories: readonly { key: CategoryKey; label: string }[]; heavyClass: string }) {
     const [cat, setCat] = useState<CategoryKey>("all");
@@ -14,6 +16,7 @@ export function WorksGrid({ works, categories, heavyClass }: { works: Work[]; ca
     const count = (k: CategoryKey) => (k === "all" ? works.length : works.filter((w) => w.category === k).length);
     return (
         <>
+            {SHOW_FILTER && (
             <div className="mb-8 flex flex-wrap gap-2 md:mb-10" role="group" aria-label="業種で絞り込む">
                 {categories.map((c) => {
                     const on = c.key === cat;
@@ -32,6 +35,7 @@ export function WorksGrid({ works, categories, heavyClass }: { works: Work[]; ca
                     );
                 })}
             </div>
+            )}
 
             <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {shown.map((w) => {
