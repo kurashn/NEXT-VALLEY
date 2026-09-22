@@ -49,28 +49,29 @@ export function WorksGrid({ works, categories, heavyClass }: { works: Work[]; ca
                                         <li key={s} className="rounded-full px-2.5 py-0.5 text-[11.5px]" style={{ backgroundColor: "#FBF4EA", color: SUB }}>{s}</li>
                                     ))}
                                 </ul>
-                                {w.detail && (
+                                {w.detail ? (
                                     <span className="mt-4 inline-flex items-center gap-1 pt-1 text-[14px] font-bold" style={{ color: CORAL }}>
                                         詳しく見る <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
                                     </span>
-                                )}
+                                ) : w.url ? (
+                                    <span className="mt-4 inline-flex items-center gap-1 pt-1 text-[14px] font-bold" style={{ color: NAVY }}>
+                                        サイトを見る <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+                                    </span>
+                                ) : null}
                             </div>
                         </>
                     );
                     const cls = "group flex h-full flex-col overflow-hidden rounded-2xl border bg-white transition-all duration-300";
+                    const hover = "flex-1 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(20,51,90,0.1)]";
                     return (
                         <li key={w.slug} className="flex">
                             {w.detail ? (
-                                <Link href={`/works/${w.slug}`} className={`${cls} flex-1 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(20,51,90,0.1)]`} style={{ borderColor: "rgba(20,51,90,0.12)" }}>{inner}</Link>
+                                <Link href={`/works/${w.slug}`} className={`${cls} ${hover}`} style={{ borderColor: "rgba(20,51,90,0.12)" }}>{inner}</Link>
+                            ) : w.url ? (
+                                // 詳細ページがない実績は、カード全体で実際のサイトを開く（新しいタブ）
+                                <a href={w.url} target="_blank" rel="noopener noreferrer" className={`${cls} ${hover}`} style={{ borderColor: "rgba(20,51,90,0.12)" }}>{inner}</a>
                             ) : (
-                                <article className={`${cls} flex-1`} style={{ borderColor: "rgba(20,51,90,0.12)" }}>
-                                    {inner}
-                                    {w.url && (
-                                        <a href={w.url} target="_blank" rel="noopener noreferrer" className="mx-5 mb-5 inline-flex min-h-[44px] w-fit items-center gap-1 text-[13.5px] font-bold underline underline-offset-4 md:mx-6 md:mb-6" style={{ color: NAVY }}>
-                                            サイトを見る <ArrowUpRight className="h-4 w-4" aria-hidden />
-                                        </a>
-                                    )}
-                                </article>
+                                <article className={`${cls} flex-1`} style={{ borderColor: "rgba(20,51,90,0.12)" }}>{inner}</article>
                             )}
                         </li>
                     );

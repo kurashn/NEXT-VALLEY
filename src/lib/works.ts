@@ -24,6 +24,7 @@ import w20 from "@/images/works/works20.jpg";
 import w21 from "@/images/works/works21.jpg";
 import w22 from "@/images/works/works22.jpg";
 import w23 from "@/images/works/works23.jpg";
+import w24 from "@/images/works/works24.jpg";
 
 export const CATEGORIES = [
     { key: "all", label: "すべて" },
@@ -151,6 +152,7 @@ export const WORKS: Work[] = [
         image: w1,
         summary: "バレエ教室のホームページ。はじめての制作で、ご質問に一つずつお答えしながら進めました。",
         scope: ["ホームページ制作"],
+        url: "https://tulipballetstudio.com/",
         detail: {
             voice: [
                 "非常に丁寧に、かつ、希望どおり作成していただきました！ウェブ関係はまったくわからず、毎回質問したりしていましたが、いつも丁寧に優しく答えてくださいました。",
@@ -166,6 +168,7 @@ export const WORKS: Work[] = [
         image: w5,
         summary: "リトミック教室のホームページ。ほぼすべてお任せいただき、ご提案しながら形にしました。",
         scope: ["ホームページ制作"],
+        url: "https://rythmique-garden.com/",
         detail: {
             voice: [
                 "初めてのホームページ作成で、何も分からずほぼ全てお任せだったのですが、一つ一つ、丁寧に教えてくださいました。",
@@ -173,23 +176,24 @@ export const WORKS: Work[] = [
             ],
         },
     },
-    { slug: "kyuwa-fudosan", name: "久和不動産株式会社 様", category: "company", label: "不動産", image: w14, summary: "不動産管理会社のホームページ。", scope: ["ホームページ制作", "公開後の保守"] },
-    { slug: "nishitsuji-koumuten", name: "株式会社西辻工務店 様", category: "company", label: "不動産・建設", image: w15, summary: "工務店のコーポレートサイト。", scope: ["ホームページ制作"] },
-    { slug: "i-second", name: "株式会社アイ・セカンド 様", category: "company", label: "企業サイト", image: w17, summary: "コーポレートサイト。", scope: ["ホームページ制作"] },
-    { slug: "eastern-hawk", name: "イースタンホーク 様", category: "company", label: "不動産サービス", image: w16, summary: "空撮を活かした不動産サービスのサイト。", scope: ["ホームページ制作"] },
+    { slug: "nextvalley", name: "NEXT VALLEY（自社サイト）", category: "company", label: "自社サイト", image: w24, summary: "このサイトです。企画からデザイン、文章、公開後の改善まで、お客様のサイトと同じ進め方で自分たちで作っています。", scope: ["ホームページ制作", "ブログ運用", "月次レポート"], url: "https://www.nextvalley-jpn.com/" },
+    { slug: "kyuwa-fudosan", name: "久和不動産株式会社 様", category: "company", label: "不動産", image: w14, summary: "不動産管理会社のホームページ。", scope: ["ホームページ制作", "公開後の保守"], url: "https://kyuwa-kanri.com/" },
+    { slug: "nishitsuji-koumuten", name: "株式会社西辻工務店 様", category: "company", label: "不動産・建設", image: w15, summary: "工務店のコーポレートサイト。", scope: ["ホームページ制作"], url: "https://www.e-builder.co.jp/" },
+    { slug: "i-second", name: "株式会社アイ・セカンド 様", category: "company", label: "企業サイト", image: w17, summary: "コーポレートサイト。", scope: ["ホームページ制作"], url: "https://i-second.co.jp/" },
+    { slug: "eastern-hawk", name: "イースタンホーク 様", category: "company", label: "不動産サービス", image: w16, summary: "空撮を活かした不動産サービスのサイト。", scope: ["ホームページ制作"], url: "https://eastern-hawk.com/" },
     { slug: "wannabe", name: "株式会社ワナビィ 様", category: "company", label: "企業サイト", image: w7, summary: "放課後等デイサービスを運営する会社のコーポレートサイト。", scope: ["ホームページ制作", "公開後の保守", "月次レポート"], url: "https://wantto.jp/" },
     { slug: "vivid-direction", name: "株式会社ビビッドディレクション 様", category: "company", label: "企業サイト", image: w6, summary: "コーポレートサイト。", scope: ["ホームページ制作", "公開後の保守"] },
     { slug: "mew-seed", name: "株式会社ミュウシード（夢み寮）様", category: "company", label: "介護・福祉", image: w23, summary: "住宅型有料老人ホームのホームページ。", scope: ["ホームページ制作", "公開後の保守", "月次レポート"], url: "https://mew-seed.com/" },
-    { slug: "personal-gym-me", name: "パーソナルジムMe 様", category: "shop", label: "フィットネス", image: w18, summary: "パーソナルジムのホームページ。", scope: ["ホームページ制作"] },
+    { slug: "personal-gym-me", name: "パーソナルジムMe 様", category: "shop", label: "フィットネス", image: w18, summary: "パーソナルジムのホームページ。", scope: ["ホームページ制作"], url: "https://me-gym.com/" },
     { slug: "kurotori-bochi", name: "黒鳥墓地 様", category: "shop", label: "霊園", image: w20, summary: "霊園のホームページ。", scope: ["ホームページ制作"] },
     { slug: "dance-studio-plus", name: "DANCE STUDIO PLUS 様", category: "school", label: "ダンススクール", image: w9, summary: "ダンススクールのホームページ。", scope: ["ホームページ制作", "公開後の保守", "月次レポート"], url: "https://dancestudioplus.com/" },
     { slug: "colours-musical-studio", name: "Colours Musical Studio 様", category: "school", label: "ミュージカル教室", image: w2, summary: "ミュージカル教室のホームページ。", scope: ["ホームページ制作", "公開後の保守", "月次レポート"], url: "https://colours-musicalstudio.com" },
-    { slug: "ecc-ichiriyama", name: "ECCジュニア 一里山教室 様", category: "school", label: "英語教室", image: w4, summary: "英語教室のホームページ。", scope: ["ホームページ制作"] },
-    { slug: "maya-kodomonoie", name: "まや子どもの家 様", category: "school", label: "教育・スクール", image: w3, summary: "まや子どもの家のホームページ。", scope: ["ホームページ制作"] },
+    { slug: "ecc-ichiriyama", name: "ECCジュニア 一里山教室 様", category: "school", label: "英語教室", image: w4, summary: "英語教室のホームページ。", scope: ["ホームページ制作"], url: "https://eccjunior-ichiriyama.com/" },
+    { slug: "maya-kodomonoie", name: "まや子どもの家 様", category: "school", label: "教育・スクール", image: w3, summary: "まや子どもの家のホームページ。", scope: ["ホームページ制作"], url: "https://maya-kodomonoie.com/" },
     { slug: "k-coaching", name: "K-coaching 様", category: "school", label: "コーチング", image: w11, summary: "コーチングのホームページ。", scope: ["ホームページ制作"] },
-    { slug: "chiangmai-station", name: "タイ北部チェンマイ情報ステーション 様", category: "media", label: "情報メディア", image: w13, summary: "チェンマイの情報を届けるメディアサイト。", scope: ["サイト制作"] },
-    { slug: "yuma-eiken-lp", name: "Yuma English House 英検対策コース 様", category: "lp", label: "LP", image: w21, summary: "英検対策コースの専用ページ。教室のホームページとは分けて、探している方に合わせて作りました。", scope: ["LP制作"] },
-    { slug: "i-second-store", name: "I-SECOND STORE 様", category: "lp", label: "ECサイト", image: w19, summary: "オンラインストア。", scope: ["ECサイト制作"] },
+    { slug: "chiangmai-station", name: "タイ北部チェンマイ情報ステーション 様", category: "media", label: "情報メディア", image: w13, summary: "チェンマイの情報を届けるメディアサイト。", scope: ["サイト制作"], url: "https://oriental-cnx.com/" },
+    { slug: "yuma-eiken-lp", name: "Yuma English House 英検対策コース 様", category: "lp", label: "LP", image: w21, summary: "英検対策コースの専用ページ。教室のホームページとは分けて、探している方に合わせて作りました。", scope: ["LP制作"], url: "https://eiken.yuma-english.com/" },
+    { slug: "i-second-store", name: "I-SECOND STORE 様", category: "lp", label: "ECサイト", image: w19, summary: "オンラインストア。", scope: ["ECサイト制作"], url: "https://www.i-second.jp/" },
 ];
 
 export const DETAILED = WORKS.filter((w) => w.detail);
