@@ -95,7 +95,7 @@ def main():
         print("対象なし"); return
     out = os.path.join(ROOT, "tools/sales/out"); os.makedirs(out, exist_ok=True)
     for name, to, body, msg, subject, kind in targets:
-        with open(os.path.join(out, f"{name}.txt"), "w", encoding="utf-8") as f:
+        with open(os.path.join(out, f"{name.replace('/', '／')}.txt"), "w", encoding="utf-8") as f:  # 社名の「/」はファイル名に使えない
             f.write(f"To: {to}\n件名: {subject}\n\n{body}")
     print(f"プレビュー {len(targets)}件 → tools/sales/out/")
     for name, to, body, msg, subject, kind in targets: print(f"  ・[{kind}] {name} <{to}>")
