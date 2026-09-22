@@ -200,7 +200,7 @@ export const WORKS: Work[] = [
 
 export const DETAILED = WORKS.filter((w) => w.detail);
 
-// お客様のサイトへのリンクを表示するか。掲載の了承を取るまでは非表示（URL自体は残す）。自社サイトだけは常に表示
+// 各サイトへのリンクを表示するか。しゅんの判断で一旦すべて非表示（URL自体はデータに残す）
 export const SHOW_CLIENT_LINKS = false;
-export const linkOf = (w: Work) => (SHOW_CLIENT_LINKS || w.slug === "nextvalley" ? w.url : undefined);
+export const linkOf = (w: Work) => (SHOW_CLIENT_LINKS ? w.url : undefined);
 export const findWork = (slug: string) => WORKS.find((w) => w.slug === slug);
