@@ -5,10 +5,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ArrowRight, CircleCheck, Smartphone, MapPin, Route, ListChecks, Wrench } from "lucide-react";
+import { ArrowUpRight, ArrowRight, CircleCheck, Smartphone, MapPin, Route, ListChecks, Wrench, Clock3 } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { serif } from "@/components/ui/SerifHeading";
-import { heavy, V4 } from "@/lib/fonts-v4";
+import { heavy, hand, V4 } from "@/lib/fonts-v4";
 import { chunks } from "@/lib/nowrap";
 import { StickyApply } from "../preview/StickyApply";
 import { CornerArcs } from "../preview/Mock";
@@ -197,35 +197,65 @@ function Check({ className = "h-7 w-7" }: { className?: string }) {
     return <CircleCheck className={className} strokeWidth={1.8} style={{ color: TEAL }} aria-hidden />;
 }
 
-/* FV右側：LINEのやり取りの見本（送る3行 → 返ってくる診断の冒頭） */
+/* FV右側：実機風のスマホに、LINEのやり取りの見本。まわりに「何がもらえるか」のカードを浮かべる */
 function ChatMock() {
-    const bubble = "max-w-[88%] rounded-2xl px-4 py-3 text-[13.5px] leading-[1.75] md:text-[14.5px]";
+    const bubble = "max-w-[86%] rounded-2xl px-3.5 py-2.5 text-[12.5px] leading-[1.7] md:text-[13.5px]";
     return (
-        <div className="relative mx-auto w-full max-w-[420px]" aria-label="LINEでのやり取りの例">
-            <div className="rounded-[28px] border-[6px] p-3 shadow-[0_24px_60px_rgba(15,37,64,0.16)]" style={{ borderColor: "#1B2A3B", backgroundColor: "#EEF3F6" }}>
-                <div className="flex items-center gap-2 px-2 pb-3 pt-1 text-[12.5px] font-bold" style={{ color: NAVY }}>
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full text-[9px] font-black text-white" style={{ backgroundColor: CORAL }}>NV</span>
-                    NEXT VALLEY
+        <div className="relative mx-auto w-full max-w-[560px] px-6 sm:px-0" aria-label="LINEでのやり取りの例">
+            {/* 背景の柔らかい光と、透かしの英字 */}
+            <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full" style={{ background: "radial-gradient(closest-side, rgba(44,143,168,0.16), rgba(44,143,168,0))" }} />
+            <span aria-hidden className="pointer-events-none absolute left-1/2 top-[-14px] hidden -translate-x-1/2 select-none whitespace-nowrap text-[150px] italic leading-none sm:block md:text-[190px]" style={{ fontFamily: serif, fontWeight: 700, color: "rgba(20,51,90,0.045)", letterSpacing: "-0.02em" }}>Check</span>
+
+            {/* スマホ本体 */}
+            <div className="relative mx-auto w-[292px] md:w-[320px]">
+                <div className="relative rounded-[46px] p-[10px] shadow-[0_40px_80px_-24px_rgba(15,37,64,0.35),0_12px_28px_rgba(15,37,64,0.12)]" style={{ backgroundColor: "#14203A" }}>
+                    <div aria-hidden className="absolute left-1/2 top-[10px] z-10 h-[26px] w-[104px] -translate-x-1/2 rounded-b-[16px]" style={{ backgroundColor: "#14203A" }} />
+                    <div className="overflow-hidden rounded-[38px]" style={{ backgroundColor: "#EEF3F6" }}>
+                        <div className="flex items-center gap-2 px-5 pb-3 pt-11 text-[12px] font-bold" style={{ backgroundColor: "#fff", color: NAVY, borderBottom: "1px solid rgba(15,37,64,0.08)" }}>
+                            <span className="flex h-7 w-7 items-center justify-center rounded-full text-[9px] font-black text-white" style={{ backgroundColor: CORAL }}>NV</span>
+                            NEXT VALLEY
+                            <span className="ml-auto text-[10px] font-normal" style={{ color: SUB }}>公式</span>
+                        </div>
+                        <div className="flex flex-col gap-2.5 px-3.5 pb-6 pt-4">
+                            <p className="text-center text-[10px]" style={{ color: SUB }}>月曜 10:12</p>
+                            <div className="flex justify-end">
+                                <p className={`${bubble} rounded-br-md text-white`} style={{ backgroundColor: TEAL }}>
+                                    https://example-piano.jp<br />本庄市のピアノ教室です<br />体験の申込が月1件もありません
+                                </p>
+                            </div>
+                            <p className="text-center text-[10px]" style={{ color: SUB }}>水曜 15:40</p>
+                            <div className="flex justify-start">
+                                <p className={`${bubble} rounded-bl-md bg-white shadow-[0_2px_8px_rgba(15,37,64,0.06)]`} style={{ color: NAVY }}>
+                                    拝見しました。直す順番でお返しします。<br />
+                                    <b style={{ color: CORAL }}>1.</b> スマホの最初の画面に教室名と場所が出ていません → 見出しに「本庄市のピアノ教室」を入れる<br />
+                                    <b style={{ color: CORAL }}>2.</b> 体験申込のボタンが一番下だけ → 最初の画面にも置く<br />
+                                    <b style={{ color: CORAL }}>3.</b> Googleマップの写真が2枚 → 教室内を10枚<br />
+                                    <span style={{ color: SUB }}>1と2は今週中に直せます…</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="flex flex-col gap-2.5 px-1 pb-2">
-                    <div className="flex justify-end">
-                        <p className={`${bubble} rounded-br-md text-white`} style={{ backgroundColor: "#2C8FA8" }}>
-                            https://example-piano.jp<br />本庄市のピアノ教室です<br />体験の申込が月1件もありません
-                        </p>
-                    </div>
-                    <div className="flex justify-start">
-                        <p className={`${bubble} rounded-bl-md bg-white`} style={{ color: NAVY }}>
-                            拝見しました。直す順番でお返しします。<br />
-                            <b style={{ color: CORAL }}>1.</b> スマホの最初の画面に教室名と場所が出ていません → 見出しに「本庄市のピアノ教室」を入れる<br />
-                            <b style={{ color: CORAL }}>2.</b> 体験申込のボタンが一番下だけ → 最初の画面にも置く<br />
-                            <b style={{ color: CORAL }}>3.</b> Googleマップの写真が2枚 → 教室内を10枚<br />
-                            <span style={{ color: SUB }}>1と2は今週中に直せます…</span>
-                        </p>
-                    </div>
-                    <p className="px-1 text-center text-[11px]" style={{ color: SUB }}>3営業日以内にお返しします</p>
+
+                {/* 浮かぶカード：左上「送るのは3行」／右下「3営業日以内」 */}
+                <div className="absolute -left-28 top-[104px] hidden w-[176px] rounded-2xl bg-white p-3.5 shadow-[0_18px_40px_-12px_rgba(15,37,64,0.28)] sm:block" style={{ border: "1px solid rgba(15,37,64,0.08)" }}>
+                    <p className="text-[10.5px] font-bold tracking-[0.12em]" style={{ color: CORAL }}>送るのは</p>
+                    <p className={`${heavy.className} mt-0.5 text-[22px] leading-none`} style={{ color: NAVY }}>3行<span className="ml-1 text-[13px]">だけ</span></p>
+                    <ul className="mt-2 flex flex-col gap-1 text-[11px] leading-[1.5]" style={{ color: SUB }}>
+                        {["URL", "業種と地域", "困っていること"].map((x) => (
+                            <li key={x} className="flex items-center gap-1.5"><CircleCheck className="h-3.5 w-3.5 shrink-0" strokeWidth={2} style={{ color: TEAL }} aria-hidden />{x}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="absolute -right-36 bottom-[96px] hidden items-center gap-3 rounded-2xl bg-white py-3 pl-3 pr-4 shadow-[0_18px_40px_-12px_rgba(15,37,64,0.28)] sm:flex" style={{ border: "1px solid rgba(15,37,64,0.08)" }}>
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full" style={{ backgroundColor: "#E9F3F5" }}><Clock3 className="h-5 w-5" strokeWidth={1.8} style={{ color: TEAL }} aria-hidden /></span>
+                    <span>
+                        <span className={`${heavy.className} block text-[18px] leading-none`} style={{ color: NAVY }}>3営業日<span className="text-[12px]">以内</span></span>
+                        <span className="mt-1 block text-[11px]" style={{ color: SUB }}>LINEで診断が届く</span>
+                    </span>
                 </div>
             </div>
-            <p className="mt-3 text-center text-[11.5px]" style={{ color: SUB }}>※ やり取りの例です（架空の教室）</p>
+            <p className="mt-4 text-center text-[11.5px] md:mt-5" style={{ color: SUB }}>※ やり取りの例です（架空の教室）</p>
         </div>
     );
 }
@@ -253,9 +283,13 @@ export function ShindanPage() {
             </header>
 
             {/* FV */}
-            <section className="relative overflow-hidden px-4 pb-16 pt-10 md:px-6 md:pb-24 md:pt-16" style={{ backgroundColor: "#FEFEFC" }}>
-                <div className="mx-auto grid max-w-[1320px] items-center gap-12 md:grid-cols-[1.15fr_1fr] md:gap-10">
-                    <div>
+            <section className="relative overflow-hidden px-4 pb-14 pt-10 md:px-6 md:pb-24 md:pt-16" style={{ background: "linear-gradient(180deg, #FEFEFC 0%, #F7FAFB 100%)" }}>
+                {/* 右上の細い円弧（ブランド共通のあしらい） */}
+                <svg aria-hidden className="pointer-events-none absolute -right-28 -top-32 hidden h-[420px] w-[420px] md:block" viewBox="0 0 420 420" fill="none">
+                    <circle cx="300" cy="120" r="200" stroke={CORAL} strokeWidth="1.2" opacity="0.35" /><circle cx="340" cy="80" r="200" stroke={TEAL} strokeWidth="1.2" opacity="0.35" />
+                </svg>
+                <div className="mx-auto grid max-w-[1320px] items-center gap-12 lg:grid-cols-[1.12fr_1fr] lg:gap-8">
+                    <div className="relative">
                         <p className="flex items-center gap-3 text-[14px] font-bold md:text-[18px]" style={{ color: CORAL }}>
                             <span aria-hidden className="block h-px w-8 shrink-0 md:w-12" style={{ backgroundColor: CORAL }} />
                             <span>{t.hero.eyebrow}</span>
@@ -264,16 +298,21 @@ export function ShindanPage() {
                             {t.hero.h1}
                         </h1>
                         <p className="mt-5 text-[17px] leading-[1.7] md:text-[22px]" style={{ color: NAVY }}>{t.hero.lead}</p>
-                        <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[16px] font-bold md:text-[19px]" style={{ color: NAVY }}>
+                        <ul className="mt-6 flex flex-wrap items-center gap-2.5 text-[15px] font-bold md:text-[17px]" style={{ color: NAVY }}>
                             {t.hero.checks.map((c, i) => (
-                                <li key={i} className="flex items-center gap-2.5">
-                                    <Check className="h-8 w-8 md:h-9 md:w-9" />
+                                <li key={i} className="flex items-center gap-2 rounded-full bg-white py-2 pl-2.5 pr-4" style={{ border: "1px solid rgba(15,37,64,0.12)" }}>
+                                    <Check className="h-7 w-7" />
                                     <span>{c}</span>
-                                    {i === 0 && <span aria-hidden className="ml-3 hidden h-7 w-px sm:block" style={{ backgroundColor: "rgba(15,37,64,0.25)" }} />}
                                 </li>
                             ))}
                         </ul>
-                        <LineButton className="mt-7 w-full sm:w-auto" big>{t.hero.cta}</LineButton>
+                        <div className="relative mt-7 w-full sm:w-fit">
+                            <LineButton className="w-full sm:w-auto" big>{t.hero.cta}</LineButton>
+                            <p aria-hidden className={`${hand.className} pointer-events-none absolute -top-9 right-0 hidden rotate-[-6deg] whitespace-nowrap text-[24px] leading-none tracking-[0.06em] sm:block sm:-right-2 sm:-top-9 lg:-right-24 lg:-top-7 lg:text-[27px]`} style={{ color: TEAL }}>
+                                URLを送るだけ
+                                <svg aria-hidden className="absolute -bottom-5 left-2 h-6 w-10 md:-left-9 md:top-4" viewBox="0 0 40 24" fill="none"><path d="M36 2c-8 12-20 18-34 16m0 0 6-5m-6 5 7 3" stroke={TEAL} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                            </p>
+                        </div>
                         <p className="mt-5 text-[15px] md:text-[18px]" style={{ color: NAVY }}>{t.hero.ctaNote}</p>
                         <p className="mt-2 text-[13px] md:text-[15px]" style={{ color: SUB }}>{t.hero.terms}</p>
                     </div>
