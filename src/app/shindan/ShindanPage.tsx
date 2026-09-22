@@ -395,19 +395,19 @@ export function ShindanPage() {
                     <Word word={t.flow.word} sub={t.flow.sub} />
                     <h2 className={`${heavy.className} text-[clamp(1.6rem,3.6vw,2.9rem)] leading-[1.3] tracking-[-0.02em]`} style={{ color: NAVY }}>{t.flow.title}</h2>
                     <p className="mt-2 text-[15px] md:text-[18px]" style={{ color: NAVY }}>{t.flow.lead}</p>
-                    <ol className="mt-10 grid gap-10 lg:grid-cols-[1fr_auto_1fr_auto_1fr] lg:items-start lg:gap-4">
+                    <ol className="mt-10 grid gap-10 lg:grid-cols-3 lg:items-start lg:gap-6 xl:grid-cols-[1fr_auto_1fr_auto_1fr] xl:gap-4">
                         {t.flow.steps.map((s, i) => (
                             <React.Fragment key={s.n}>
                                 <li>
                                     <div className="flex items-center gap-3">
                                         <span className="text-[64px] italic leading-none md:text-[76px]" style={{ fontFamily: serif, fontWeight: 700, color: s.color }}>{s.n}</span>
-                                        <span className="flex h-[150px] w-[190px] items-center justify-center md:h-[170px] md:w-[220px]"><Image src={s.img} alt="" sizes="220px" className="h-auto max-h-full w-auto max-w-full" /></span>
+                                        <span className="flex h-[150px] w-[190px] items-center justify-center xl:h-[170px] xl:w-[220px]"><Image src={s.img} alt="" sizes="220px" className="h-auto max-h-full w-auto max-w-full" /></span>
                                     </div>
                                     <p className={`${heavy.className} mt-3 text-[22px] md:text-[26px]`} style={{ color: NAVY }}>{s.t}</p>
                                     <p className="mt-2 text-[15px] leading-[1.8] md:text-[16px]" style={{ color: NAVY }}>{s.d}</p>
                                 </li>
                                 {i < t.flow.steps.length - 1 && (
-                                    <li aria-hidden className="hidden self-center lg:block">
+                                    <li aria-hidden className="hidden self-center xl:block">
                                         <ArrowRight className="h-8 w-8" strokeWidth={1.2} style={{ color: "#9DB6C2" }} />
                                     </li>
                                 )}
