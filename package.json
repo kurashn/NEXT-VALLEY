@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "fonts:local": "node tools/local-fonts/prepare.mjs",
+    "build:local": "NEXT_FONT_GOOGLE_MOCKED_RESPONSES=$PWD/.local-fonts/mock.js next build --webpack"
   },
   "dependencies": {
     "@keystatic/core": "^0.5.48",

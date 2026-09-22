@@ -15,7 +15,7 @@ const LINE = "https://lin.ee/N4QXdJL";
 export const metadata: Metadata = {
     title: "制作実績｜ホームページ・LP・メディアの制作事例",
     description:
-        "NEXT VALLEY の制作実績。不動産・建設・企業サイトから、店舗・教室・情報メディア・LPまで、100社以上の制作と集客をお手伝いしてきました。担当した範囲と、公開後の成果もあわせてご覧いただけます。",
+        "NEXT VALLEY の制作実績。不動産・建設・企業サイトから、店舗・教室・情報メディア・LPまで。担当した範囲と、公開後の成果もあわせてご覧いただけます。",
     alternates: { canonical: "https://www.nextvalley-jpn.com/works" },
     openGraph: { title: "制作実績 | NEXT VALLEY", description: "不動産・建設・企業サイトから、店舗・教室・情報メディア・LPまで。担当した範囲と成果をご覧いただけます。", url: "https://www.nextvalley-jpn.com/works" },
 };
@@ -30,7 +30,7 @@ export default function WorksPage() {
                     <SectionHeadV4
                         word="Works"
                         eyebrow="制作実績"
-                        title={<>作って終わりにしない、<span className="nowrap"><Teal>100社以上</Teal>の実績。</span></>}
+                        title={<>作って終わりにしない、<span className="nowrap"><Teal>制作の実績</Teal>。</span></>}
                         lead={<><span className="nowrap">会社・不動産・建設から、</span><span className="nowrap">店舗・教室・情報メディア・LPまで。</span><span className="nowrap">担当した範囲とあわせてご覧ください。</span></>}
                     />
                     <WorksGrid works={WORKS} categories={CATEGORIES} heavyClass={heavy.className} />

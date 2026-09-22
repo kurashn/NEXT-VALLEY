@@ -47,3 +47,6 @@ next-env.d.ts
 # 月次レポートの認証鍵（コミット禁止）
 tools/report/**/service-account*.json
 tools/report/clients/
+
+# ローカルビルド用のフォント（tools/local-fonts/prepare.mjs が作る）
+.local-fonts/
