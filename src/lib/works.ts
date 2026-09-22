@@ -199,4 +199,8 @@ export const WORKS: Work[] = [
 ];
 
 export const DETAILED = WORKS.filter((w) => w.detail);
+
+// お客様のサイトへのリンクを表示するか。掲載の了承を取るまでは非表示（URL自体は残す）。自社サイトだけは常に表示
+export const SHOW_CLIENT_LINKS = false;
+export const linkOf = (w: Work) => (SHOW_CLIENT_LINKS || w.slug === "nextvalley" ? w.url : undefined);
 export const findWork = (slug: string) => WORKS.find((w) => w.slug === slug);

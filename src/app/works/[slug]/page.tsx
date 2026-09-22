@@ -9,7 +9,7 @@ import Navbar from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { heavy, V4 } from "@/lib/fonts-v4";
 import { serif } from "@/components/ui/SerifHeading";
-import { DETAILED, findWork } from "@/lib/works";
+import { DETAILED, findWork, linkOf } from "@/lib/works";
 
 const LINE = "https://lin.ee/N4QXdJL";
 const RULE = "rgba(20,51,90,0.14)";
@@ -45,6 +45,7 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ slu
     const w = findWork(slug);
     if (!w || !w.detail) notFound();
     const d = w.detail;
+    const url = linkOf(w);
     const i = DETAILED.findIndex((x) => x.slug === w.slug);
     const prev = DETAILED[(i - 1 + DETAILED.length) % DETAILED.length];
     const next = DETAILED[(i + 1) % DETAILED.length];
@@ -86,12 +87,12 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ slu
                                     ))}
                                 </ul>
                             </dd>
-                            {w.url && (
+                            {url && (
                                 <>
                                     <dt className="text-[13px] font-bold" style={{ color: V4.sub }}>サイト</dt>
                                     <dd>
-                                        <a href={w.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-1 break-all text-[15px] font-bold underline underline-offset-4" style={{ color: V4.navy }}>
-                                            {w.url.replace(/^https?:\/\//, "").replace(/\/$/, "")} <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden />
+                                        <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-1 break-all text-[15px] font-bold underline underline-offset-4" style={{ color: V4.navy }}>
+                                            {url.replace(/^https?:\/\//, "").replace(/\/$/, "")} <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden />
                                         </a>
                                     </dd>
                                 </>

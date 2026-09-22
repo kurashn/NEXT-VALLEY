@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
-import type { Work, CategoryKey } from "@/lib/works";
+import { linkOf, type Work, type CategoryKey } from "@/lib/works";
 
 const NAVY = "#14335A", TEAL = "#2C8FA8", CORAL = "#E8503A", SUB = "#4A5A6E";
 
@@ -35,6 +35,7 @@ export function WorksGrid({ works, categories, heavyClass }: { works: Work[]; ca
 
             <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {shown.map((w) => {
+                    const url = linkOf(w);
                     const inner = (
                         <>
                             <div className="relative w-full overflow-hidden bg-white" style={{ aspectRatio: "995 / 580" }}>
@@ -53,7 +54,7 @@ export function WorksGrid({ works, categories, heavyClass }: { works: Work[]; ca
                                     <span className="mt-4 inline-flex items-center gap-1 pt-1 text-[14px] font-bold" style={{ color: CORAL }}>
                                         詳しく見る <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
                                     </span>
-                                ) : w.url ? (
+                                ) : url ? (
                                     <span className="mt-4 inline-flex items-center gap-1 pt-1 text-[14px] font-bold" style={{ color: NAVY }}>
                                         サイトを見る <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
                                     </span>
@@ -67,9 +68,9 @@ export function WorksGrid({ works, categories, heavyClass }: { works: Work[]; ca
                         <li key={w.slug} className="flex">
                             {w.detail ? (
                                 <Link href={`/works/${w.slug}`} className={`${cls} ${hover}`} style={{ borderColor: "rgba(20,51,90,0.12)" }}>{inner}</Link>
-                            ) : w.url ? (
+                            ) : url ? (
                                 // 詳細ページがない実績は、カード全体で実際のサイトを開く（新しいタブ）
-                                <a href={w.url} target="_blank" rel="noopener noreferrer" className={`${cls} ${hover}`} style={{ borderColor: "rgba(20,51,90,0.12)" }}>{inner}</a>
+                                <a href={url} target="_blank" rel="noopener noreferrer" className={`${cls} ${hover}`} style={{ borderColor: "rgba(20,51,90,0.12)" }}>{inner}</a>
                             ) : (
                                 <article className={`${cls} flex-1`} style={{ borderColor: "rgba(20,51,90,0.12)" }}>{inner}</article>
                             )}
