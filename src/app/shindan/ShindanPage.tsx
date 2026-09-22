@@ -201,13 +201,13 @@ function Check({ className = "h-7 w-7" }: { className?: string }) {
 function ChatMock() {
     const bubble = "max-w-[86%] rounded-2xl px-3.5 py-2.5 text-[12.5px] leading-[1.7] md:text-[13.5px]";
     return (
-        <div className="relative mx-auto w-full max-w-[560px] px-6 sm:px-0" aria-label="LINEでのやり取りの例">
+        <div className="relative mx-auto w-full max-w-[560px] px-6 sm:px-0 lg:mx-0 lg:max-w-none" aria-label="LINEでのやり取りの例">
             {/* 背景の柔らかい光と、透かしの英字 */}
-            <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full" style={{ background: "radial-gradient(closest-side, rgba(44,143,168,0.16), rgba(44,143,168,0))" }} />
-            <span aria-hidden className="pointer-events-none absolute left-1/2 top-[-14px] hidden -translate-x-1/2 select-none whitespace-nowrap text-[150px] italic leading-none sm:block md:text-[190px]" style={{ fontFamily: serif, fontWeight: 700, color: "rgba(20,51,90,0.045)", letterSpacing: "-0.02em" }}>Check</span>
+            <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full lg:left-[256px] xl:left-[288px]" style={{ background: "radial-gradient(closest-side, rgba(44,143,168,0.16), rgba(44,143,168,0))" }} />
+            <span aria-hidden className="pointer-events-none absolute left-1/2 top-[-14px] hidden -translate-x-1/2 select-none whitespace-nowrap text-[150px] italic leading-none sm:block md:text-[190px] lg:left-[256px] xl:left-[288px]" style={{ fontFamily: serif, fontWeight: 700, color: "rgba(20,51,90,0.045)", letterSpacing: "-0.02em" }}>Check</span>
 
             {/* スマホ本体 */}
-            <div className="relative mx-auto w-[292px] md:w-[320px]">
+            <div className="relative mx-auto w-[292px] md:w-[320px] lg:ml-24 lg:mr-0 xl:ml-32">
                 <div className="relative rounded-[46px] p-[10px] shadow-[0_40px_80px_-24px_rgba(15,37,64,0.35),0_12px_28px_rgba(15,37,64,0.12)]" style={{ backgroundColor: "#14203A" }}>
                     <div aria-hidden className="absolute left-1/2 top-[10px] z-10 h-[26px] w-[104px] -translate-x-1/2 rounded-b-[16px]" style={{ backgroundColor: "#14203A" }} />
                     <div className="overflow-hidden rounded-[38px]" style={{ backgroundColor: "#EEF3F6" }}>
@@ -247,7 +247,7 @@ function ChatMock() {
                         ))}
                     </ul>
                 </div>
-                <div className="absolute -right-36 bottom-[96px] hidden items-center gap-3 rounded-2xl bg-white py-3 pl-3 pr-4 shadow-[0_18px_40px_-12px_rgba(15,37,64,0.28)] sm:flex" style={{ border: "1px solid rgba(15,37,64,0.08)" }}>
+                <div className="absolute -right-36 bottom-[96px] hidden items-center lg:-right-20 xl:-right-36 gap-3 rounded-2xl bg-white py-3 pl-3 pr-4 shadow-[0_18px_40px_-12px_rgba(15,37,64,0.28)] sm:flex" style={{ border: "1px solid rgba(15,37,64,0.08)" }}>
                     <span className="flex h-10 w-10 items-center justify-center rounded-full" style={{ backgroundColor: "#E9F3F5" }}><Clock3 className="h-5 w-5" strokeWidth={1.8} style={{ color: TEAL }} aria-hidden /></span>
                     <span>
                         <span className={`${heavy.className} block text-[18px] leading-none`} style={{ color: NAVY }}>3営業日<span className="text-[12px]">以内</span></span>
@@ -255,7 +255,7 @@ function ChatMock() {
                     </span>
                 </div>
             </div>
-            <p className="mt-4 text-center text-[11.5px] md:mt-5" style={{ color: SUB }}>※ やり取りの例です（架空の教室）</p>
+            <p className="mt-4 text-center text-[11.5px] md:mt-5 lg:ml-24 lg:w-[320px] xl:ml-32" style={{ color: SUB }}>※ やり取りの例です（架空の教室）</p>
         </div>
     );
 }
@@ -288,7 +288,7 @@ export function ShindanPage() {
                 <svg aria-hidden className="pointer-events-none absolute -right-28 -top-32 hidden h-[420px] w-[420px] md:block" viewBox="0 0 420 420" fill="none">
                     <circle cx="300" cy="120" r="200" stroke={CORAL} strokeWidth="1.2" opacity="0.35" /><circle cx="340" cy="80" r="200" stroke={TEAL} strokeWidth="1.2" opacity="0.35" />
                 </svg>
-                <div className="mx-auto grid max-w-[1320px] items-center gap-12 lg:grid-cols-[1.12fr_1fr] lg:gap-8">
+                <div className="mx-auto grid max-w-[1180px] items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-4">
                     <div className="relative">
                         <p className="flex items-center gap-3 text-[14px] font-bold md:text-[18px]" style={{ color: CORAL }}>
                             <span aria-hidden className="block h-px w-8 shrink-0 md:w-12" style={{ backgroundColor: CORAL }} />
