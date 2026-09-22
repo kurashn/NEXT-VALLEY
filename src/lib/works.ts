@@ -25,6 +25,7 @@ import w21 from "@/images/works/works21.jpg";
 import w22 from "@/images/works/works22.jpg";
 import w23 from "@/images/works/works23.jpg";
 import w24 from "@/images/works/works24.jpg";
+import w25 from "@/images/works/works25.jpg";
 
 export const CATEGORIES = [
     { key: "all", label: "すべて" },
@@ -183,6 +184,7 @@ export const WORKS: Work[] = [
     { slug: "eastern-hawk", name: "イースタンホーク 様", category: "company", label: "不動産サービス", image: w16, summary: "空撮を活かした不動産サービスのサイト。", scope: ["ホームページ制作"], url: "https://eastern-hawk.com/" },
     { slug: "wannabe", name: "株式会社ワナビィ 様", category: "company", label: "企業サイト", image: w7, summary: "放課後等デイサービスを運営する会社のコーポレートサイト。", scope: ["ホームページ制作", "公開後の保守", "月次レポート"], url: "https://wantto.jp/" },
     { slug: "vivid-direction", name: "株式会社ビビッドディレクション 様", category: "company", label: "福祉・教育", image: w6, summary: "放課後等デイサービスを運営する会社のホームページ。", scope: ["ホームページ制作", "公開後の保守"], url: "https://vivid-d.jp/" },
+    { slug: "sincerity", name: "株式会社シンシアリティー（ここなくらぶ）様", category: "company", label: "福祉・教育", image: w25, summary: "放課後等デイサービス・児童発達支援「ここなくらぶ」のホームページ。", scope: ["ホームページ制作"], url: "https://sincerity-inc.co.jp/" },
     { slug: "mew-seed", name: "株式会社ミュウシード（夢み寮）様", category: "company", label: "介護・福祉", image: w23, summary: "住宅型有料老人ホームのホームページ。", scope: ["ホームページ制作", "公開後の保守", "月次レポート"], url: "https://mew-seed.com/" },
     { slug: "personal-gym-me", name: "パーソナルジムMe 様", category: "shop", label: "フィットネス", image: w18, summary: "パーソナルジムのホームページ。", scope: ["ホームページ制作"], url: "https://me-gym.com/" },
     { slug: "kurotori-bochi", name: "黒鳥墓地 様", category: "shop", label: "霊園", image: w20, summary: "霊園のホームページ。", scope: ["ホームページ制作"], url: "https://kurotori-bochi.site/" },
