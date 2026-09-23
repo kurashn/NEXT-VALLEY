@@ -146,7 +146,7 @@ export default function SaitamaPage() {
                         ))}
                     </ul>
                     <p className="mt-8 text-[15px] leading-[1.9] md:text-[16px]" style={{ color: V4.navy }}>
-                        NEXT VALLEY（ネクストバレー）は、本庄市児玉町出身の代表が運営するWeb制作・集客支援です。2021年の開業から、100社以上のホームページ制作と集客をお手伝いしてきました。作って終わりにせず、ホームページ・Googleマップ・LINEをつなげて、問い合わせにつながるところまで設計します。
+                        NEXT VALLEY（ネクストバレー）は、本庄市児玉町出身の代表が運営するWeb制作・集客支援です。2021年の開業から、広告代理店経由の案件を含めて100社以上のホームページ制作と集客をお手伝いしてきました。作って終わりにせず、ホームページ・Googleマップ・LINEをつなげて、問い合わせにつながるところまで設計します。
                     </p>
                 </div>
             </section>
@@ -217,7 +217,7 @@ export default function SaitamaPage() {
                             </Link>
                         ))}
                     </div>
-                    <p className="mt-6 text-[14px]" style={{ color: V4.sub }}>ほかの制作実績は<Link href="/#works" className="underline underline-offset-4" style={{ color: V4.navy }}>トップページの制作実績</Link>をご覧ください。毎月お渡しする集客レポートの<Link href="/blog/monthly-report-sample" className="underline underline-offset-4" style={{ color: V4.navy }}>サンプルも公開しています</Link>。</p>
+                    <p className="mt-6 text-[14px]" style={{ color: V4.sub }}>ほかの制作実績は<Link href="/works" className="underline underline-offset-4" style={{ color: V4.navy }}>制作実績のページ</Link>でご覧ください。毎月お渡しする集客レポートの<Link href="/blog/monthly-report-sample" className="underline underline-offset-4" style={{ color: V4.navy }}>サンプルも公開しています</Link>。</p>
                 </div>
             </section>
 

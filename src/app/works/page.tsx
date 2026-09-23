@@ -34,7 +34,7 @@ export default function WorksPage() {
                         lead={<><span className="nowrap">会社・不動産・建設から、</span><span className="nowrap">店舗・教室・情報メディア・LPまで。</span><span className="nowrap">担当した範囲とあわせてご覧ください。</span></>}
                     />
                     <WorksGrid works={WORKS} categories={CATEGORIES} heavyClass={heavy.className} />
-                    <p className="mt-8 text-[13px]" style={{ color: V4.sub }}>※ 掲載のご了承をいただいている一部です。</p>
+                    <p className="mt-8 text-[13px]" style={{ color: V4.sub }}>※ 掲載しているのは、公開のご了承をいただいた直接のお客様の一部です。広告代理店・SNS運用会社・制作会社を通じてお受けした案件（社名は非公開）を含めると、2021年からの制作・支援は100社以上になります。</p>
                 </div>
             </section>
 

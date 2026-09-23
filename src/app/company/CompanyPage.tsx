@@ -57,7 +57,7 @@ const ja = {
                 埼玉県本庄市児玉町出身。もともとは消防士を目指していましたが、ヘルニアで断念。働き方を考え直すなかで、場所に縛られずに働けるITの道を選びました。
             </p>
             <p>
-                2020年、大学4年を前にプログラミングの独学を開始。半年ほどで個人として案件を受注し、Web制作会社で現場経験を積んだのち、2021年1月にNEXT VALLEYを開業しました。以来、ホームページ制作とWebマーケティングで100社以上の事業者様を支援しています。
+                2020年、大学4年を前にプログラミングの独学を開始。半年ほどで個人として案件を受注し、Web制作会社で現場経験を積んだのち、2021年1月にNEXT VALLEYを開業しました。以来、ホームページ制作とWebマーケティングで100社以上の事業者様を支援しています（広告代理店・制作会社を通じてお受けした案件を含みます）。
             </p>
             <p>
                 海外では、ノマドワーカー向けのリトリートイベントをタイ（チェンマイ・バンコク・プーケット）、インドネシア（バリ島ウブド）、ベトナム（ダナン）で開催し、コミュニティ運営も行っています。イベントやコミュニティの集客は自分自身の実践テーマでもあり、ご提案には自分で試して効果のあったことを反映しています。
@@ -114,7 +114,7 @@ const en: typeof ja = {
                 Born and raised in Honjo, Saitama. I originally trained to become a firefighter, but a herniated disc ended that path — and led me to rethink how I wanted to work. That search brought me to tech and to work that isn&rsquo;t tied to one place.
             </p>
             <p>
-                I began teaching myself programming in 2020, started taking on client work within about six months, and gained hands-on experience at a web production company before founding NEXT VALLEY in January 2021. Since then, I&rsquo;ve supported more than 100 businesses with web design and marketing.
+                I began teaching myself programming in 2020, started taking on client work within about six months, and gained hands-on experience at a web production company before founding NEXT VALLEY in January 2021. Since then, I&rsquo;ve supported more than 100 businesses with web design and marketing, including projects delivered through advertising agencies and production companies.
             </p>
             <p>
                 Outside Japan, I host retreat events for remote workers — in Chiang Mai, Bangkok and Phuket (Thailand), Ubud (Bali, Indonesia) and Da Nang (Vietnam) — and run a community around them. Growing events and communities is something I practice myself, and what works there feeds directly into what I recommend to clients.
