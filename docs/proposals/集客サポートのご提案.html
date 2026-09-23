@@ -1,0 +1,149 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><title>NEXT VALLEY 集客サポートのご提案</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#041627; --navy2:#14335A; --teal:#2C8FA8; --coral:#E8503A; --coral2:#FD7368;
+  --cream:#FBF4EA; --mist:#E8F4F4; --ink:#14335A; --sub:#4A5A6E; --line:#D9E0E8;
+  --serif:Georgia,"Times New Roman","Hiragino Mincho ProN",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:A4;margin:0}
+html,body{background:#fff}
+body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;color:var(--ink);font-size:9pt;line-height:1.7;line-break:strict;overflow-wrap:anywhere}
+.page{width:210mm;height:297mm;position:relative;overflow:hidden;padding:10mm 12mm 10mm;background:#fff}
+.hd{display:flex;justify-content:space-between;align-items:center;padding-bottom:2.5mm;border-bottom:1px solid var(--line);margin-bottom:4mm}
+.hd img{height:6.5mm}
+.hd .sec{font-size:7.5pt;letter-spacing:.22em;color:var(--coral);font-weight:700}
+.kicker{font-size:8pt;letter-spacing:.16em;color:var(--coral);font-weight:700;margin-bottom:1.5mm}
+h1{font-size:17pt;font-weight:900;line-height:1.35;letter-spacing:-.01em}
+h1 .t{color:var(--teal)}
+.lead{font-size:8.8pt;color:var(--sub);margin-top:1.5mm;line-height:1.65}
+h2{font-size:10.5pt;font-weight:900;line-height:1.4;margin-bottom:1.8mm;display:flex;align-items:center;gap:2.5mm}
+h2 .no{font-family:var(--serif);font-style:italic;color:var(--coral);font-size:15pt;line-height:1}
+.sec{margin-top:4mm}
+
+/* 1 いまの状態 */
+.funnel{display:grid;grid-template-columns:1fr 6mm 1fr 6mm 1fr 6mm 1fr;align-items:stretch}
+.funnel .s{border-radius:3mm;padding:2mm 2mm;text-align:center;background:var(--mist)}
+.funnel .s b{display:block;font-size:9.2pt;line-height:1.35}
+.funnel .s span{display:block;font-size:7.4pt;color:var(--sub);margin-top:.5mm;line-height:1.45}
+.funnel .s.stop{background:#FDECE8;outline:1.5px solid var(--coral)}
+.funnel .s.stop b{color:var(--coral)}
+.funnel .ar{display:flex;align-items:center;justify-content:center;color:#9DB6C2;font-size:12pt}
+.diag{margin-top:2mm;font-size:8.5pt;background:var(--cream);border-radius:3mm;padding:2mm 3.5mm;line-height:1.6}
+.diag b{color:var(--coral)}
+
+/* 2 やること */
+.plan{width:100%;border-collapse:collapse}
+.plan th{font-size:7.6pt;color:var(--sub);font-weight:700;text-align:left;padding:0 2mm 1.5mm;border-bottom:1.5px solid var(--navy2)}
+.plan td{vertical-align:top;padding:1.8mm 2mm;border-bottom:1px solid var(--line);font-size:8.1pt;line-height:1.55}
+.plan td.k{width:50mm}
+.plan td.k b{display:block;font-size:9pt;line-height:1.4}
+.plan td.k small{display:block;color:var(--teal);font-weight:700;font-size:7.2pt;margin-top:.4mm}
+.plan td.w{width:38mm;color:var(--sub)}
+.plan tr.free td{background:#FFF8F5}
+.tag{display:inline-block;width:auto;font-size:6.6pt;font-weight:700;border-radius:1.5mm;padding:0 1.6mm;margin-right:1.5mm;line-height:1.6}
+.tag.free{background:var(--coral);color:#fff}
+.tag.plan{background:var(--teal);color:#fff}
+
+/* 3 毎月 */
+.monthly{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm}
+.monthly div{border:1px solid var(--line);border-radius:3mm;padding:1.8mm 2.5mm}
+.monthly b{display:block;font-size:8.6pt}
+.monthly span{font-size:7.4pt;color:var(--sub);line-height:1.5}
+
+/* 4 料金 */
+.bottom{display:grid;grid-template-columns:1.05fr 1fr;gap:4mm;margin-top:4mm}
+.pricebox{border:1.5px solid var(--teal);border-radius:4mm;padding:3mm 4.5mm}
+.pricebox .lbl{font-size:8pt;font-weight:700;color:var(--teal)}
+.pricebox .price{font-size:20pt;font-weight:900;letter-spacing:-.02em;line-height:1.1;margin-top:1mm}
+.pricebox .price small{font-size:9.5pt;font-weight:700;margin-left:1mm}
+.pricebox ul{list-style:none;margin-top:2mm}
+.pricebox li{position:relative;padding-left:4.5mm;font-size:8pt;line-height:1.55;margin-bottom:.4mm}
+.pricebox li::before{content:"";position:absolute;left:0;top:1.9mm;width:2.4mm;height:2.4mm;border-radius:50%;background:var(--coral)}
+.next{background:var(--navy);color:#fff;border-radius:4mm;padding:3mm 4.5mm}
+.next .lbl{font-size:8pt;font-weight:700;color:var(--coral2);letter-spacing:.1em}
+.next ol{list-style:none;margin-top:2mm;counter-reset:n}
+.next li{counter-increment:n;display:grid;grid-template-columns:5mm 1fr;font-size:8.2pt;line-height:1.55;margin-bottom:1mm}
+.next li::before{content:counter(n);font-family:var(--serif);font-style:italic;font-weight:700;color:var(--coral2);font-size:11pt;line-height:1.3}
+.next li b{color:#fff}
+.next p{font-size:8pt;color:rgba(255,255,255,.75);margin-top:1.5mm}
+.ft{position:absolute;left:12mm;right:12mm;bottom:5mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#7C8B97}
+</style></head><body>
+<section class="page">
+  <div class="hd"><img src="../company/assets/logo-dark.png" alt="NEXT VALLEY"><span class="sec">PROPOSAL</span></div>
+
+  <p class="kicker">教室の集客サポートのご提案</p>
+  <h1>見てくれている保護者を、<br><span class="t">毎月の入会</span>につなげる。</h1>
+  <p class="lead">ホームページは、もう見られています。足りないのは、見た人が気軽に申し込める入口です。今のアクセスのままでも、入口を整えるだけで、毎月1〜3名の新しい入会を目指せます。</p>
+
+  <div class="sec">
+    <h2><span class="no">1</span>いまの状態：ほとんどの人が、申し込みの手前で帰っている</h2>
+    <div class="funnel">
+      <div class="s"><b>見つける</b><span>検索・Googleマップ・Instagram</span></div>
+      <div class="ar">→</div>
+      <div class="s"><b>ホームページを見る</b><span>毎月、多くの保護者が来ている</span></div>
+      <div class="ar">→</div>
+      <div class="s stop"><b>申し込む</b><span>ここで止まっている<br>（フォーム入力が手間・まだ迷っている）</span></div>
+      <div class="ar">→</div>
+      <div class="s"><b>体験・入会</b><span>月0〜3件</span></div>
+    </div>
+    <p class="diag">教室の前まで来たのに、ドアが重くて入らずに帰ってしまう状態です。<b>集める人を増やす前に、入口を軽くする</b>のが近道です。</p>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">2</span>やること：入口を軽くして、見つけてもらう場所を増やす</h2>
+    <table class="plan">
+      <tr><th>やること</th><th>中身</th><th>先生にお願いすること</th></tr>
+      <tr class="free"><td class="k"><b>① ホームページの入口をLINEに</b><small><span class="tag free">今の月額で対応</span>いちばん早く効く</small></td>
+        <td>申し込みをフォームからLINEに切り替え、スマホの画面下に「LINEで体験予約」のボタンを常に表示。入力ではなく、タップだけでつながる形にします。</td>
+        <td class="w">なし（こちらで直します）</td></tr>
+      <tr><td class="k"><b>② 公式LINEで、自動で予約まで</b><small><span class="tag plan">プラン</span>先生の手間を増やさない</small></td>
+        <td>友だち追加の直後に、学年とお悩みを選ぶだけの案内が自動で届くように。メニューから予約カレンダーを開き、日時を選べば予約が決まります。</td>
+        <td class="w">予約を受けられる曜日と時間を教えていただく</td></tr>
+      <tr><td class="k"><b>③ 強みのコース専用ページ</b><small><span class="tag plan">プラン</span>先生の強みを一目で伝える</small></td>
+        <td>いちばんの強み（例：英検対策）だけを伝える1ページ。実績の数字、保護者のお悩み、先生の教え方、LINEへのボタンを、上から読むと申し込みたくなる順番で並べます。</td>
+        <td class="w">実績の数字と、生徒さんの声を共有いただく</td></tr>
+      <tr><td class="k"><b>④ 保護者が検索する記事</b><small><span class="tag plan">プラン</span>広告費をかけずに人を集める</small></td>
+        <td>「地域名＋習い事」や「子ども 英語 嫌い」のように、保護者が夜にスマホで調べる悩みに答える記事を、こちらで月2本書きます。</td>
+        <td class="w">記事の内容を確認いただく（5分程度）</td></tr>
+      <tr><td class="k"><b>⑤ Googleマップ</b><small><span class="tag plan">プラン</span>近所の保護者に見つかる</small></td>
+        <td>口コミをお願いするQRコードと声かけの文、写真の追加、月2回の投稿（空き状況・合格実績など）。「今も動いている教室」だと伝わる状態を保ちます。</td>
+        <td class="w">レッスン後に、保護者へQRコードを渡す</td></tr>
+    </table>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">3</span>毎月：数字を見て、次の一手を決める</h2>
+    <div class="monthly">
+      <div><b>数値管理シート</b><span>訪問数・LINE登録・体験・入会を1枚で共有</span></div>
+      <div><b>月1回のレポート</b><span>どこで止まっているかを、1枚にまとめてお送りします</span></div>
+      <div><b>次の一手をご提案</b><span>効果が大きい順に、翌月やることを決めます</span></div>
+      <div><b>やり取りはLINEで</b><span>打ち合わせの日程調整は不要です</span></div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="pricebox">
+      <p class="lbl">料金</p>
+      <p class="price">月額 33,000<small>円（税込）〜</small></p>
+      <ul>
+        <li>まず3か月。合わなければ、3か月で終えて構いません</li>
+        <li>今のホームページの管理費とは別です（①は今の月額の範囲で対応）</li>
+        <li>目安：体験の申し込みが月1〜2件増えれば、十分に回収できる金額です</li>
+      </ul>
+    </div>
+    <div class="next">
+      <p class="lbl">進め方</p>
+      <ol>
+        <li><span><b>①の入口の切り替え</b>を、今の月額の範囲で先に行います</span></li>
+        <li><span>プランをご希望の場合は、<b>LINEでご連絡</b>ください</span></li>
+        <li><span>翌月から②〜⑤を始め、<b>毎月の数字</b>でご報告します</span></li>
+      </ol>
+      <p>ご自身で進めたい場合も、やり方はお伝えします。</p>
+    </div>
+  </div>
+
+  <div class="ft"><span>NEXT VALLEY　倉林 駿　info@nextvalley-jpn.com</span><span>https://www.nextvalley-jpn.com</span></div>
+</section>
+</body></html>
