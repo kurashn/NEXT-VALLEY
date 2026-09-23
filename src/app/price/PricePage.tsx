@@ -54,6 +54,7 @@ const ja = {
         "お問い合わせ・予約フォームの設置",
         "LINE公式アカウントへのリンク設置",
         "基本的な検索向け設定（検索結果に出るページの題名や説明文などの設定）",
+        "毎月のアクセスレポート（見られた数・検索での表示・問い合わせまでの流れを1枚にまとめてお送りします）",
     ],
     exclTitle: "月額に含まれないもの",
     excl: [
@@ -170,6 +171,7 @@ const en: typeof ja = {
         "Contact and trial-lesson forms",
         "A link to your LINE official account",
         "Basic search settings (the page title and description shown in search results)",
+        "A monthly traffic report (visits, search visibility and the path to enquiries, on one page)",
     ],
     exclTitle: "What it does not cover",
     excl: [

@@ -35,6 +35,7 @@ const ja = {
         { key: "pages", label: "制作ページ数", value: "10", unit: "ページまで" },
         { key: "edit", label: "修正・更新", value: "無制限", unit: "" },
         { key: "infra", label: "ドメイン・サーバー費", value: "込み", unit: "" },
+        { key: "report", label: "毎月のアクセスレポート", value: "あり", unit: "" },
     ],
     termsTitle: "ご契約の条件",
     terms: [
@@ -73,6 +74,7 @@ const en: typeof ja = {
         { key: "pages", label: "Pages", value: "Up to 10", unit: "" },
         { key: "edit", label: "Edits & updates", value: "Unlimited", unit: "" },
         { key: "infra", label: "Domain & hosting", value: "Included", unit: "" },
+        { key: "report", label: "Monthly traffic report", value: "Included", unit: "" },
     ],
     termsTitle: "Terms",
     terms: [
