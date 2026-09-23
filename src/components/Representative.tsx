@@ -3,6 +3,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading, serif } from "@/components/ui/SerifHeading";
 
@@ -24,7 +25,7 @@ const ja = {
     ),
     profile: (
         <>
-            埼玉県本庄市児玉町の出身です。2020年にプログラミングを独学で始め、制作会社で現場経験を積んだのち、2021年にNEXT VALLEYを開業。以来、広告代理店や制作会社からの受託を含めて、100社以上のホームページ制作と集客のお手伝いをしてきました。やり取りはLINEかメールで完結し、埼玉を中心に全国のお客様と<span className="nowrap">進めています。</span>
+            埼玉県<Link href="/honjo" className="underline decoration-1 underline-offset-4">本庄市</Link>児玉町の出身です。2020年にプログラミングを独学で始め、制作会社で現場経験を積んだのち、2021年にNEXT VALLEYを開業。以来、広告代理店や制作会社からの受託を含めて、100社以上のホームページ制作と集客のお手伝いをしてきました。やり取りはLINEかメールで完結し、埼玉を中心に全国のお客様と<span className="nowrap">進めています。</span>
         </>
     ),
     p2: (

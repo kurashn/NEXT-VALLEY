@@ -24,6 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/saitama-hokubu',
         '/preview',
         '/shindan',
+        '/honjo',
         '/price',
         '/works',
         '/contact',

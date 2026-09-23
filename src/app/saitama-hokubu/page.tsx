@@ -1,5 +1,5 @@
 // 埼玉のホームページ制作（対応エリア）ページ
-// 「埼玉 ホームページ制作」「本庄市 ホームページ制作」で探している人の受け皿。料金・流れ・地域・実績・FAQを1ページに。
+// 「埼玉 ホームページ制作」で探している人の受け皿。本庄市は専用ページ /honjo。料金・流れ・地域・実績・FAQを1ページに。
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -65,7 +65,7 @@ const areas = [
     {
         name: "本庄市・児玉郡（美里町・神川町・上里町）",
         body: "代表の地元です。本庄市児玉町で育った目線で、地域の会社・お店・教室のホームページと集客のご相談をお受けしています。",
-        link: { href: "/blog/honjo-classroom-website", label: "本庄の教室が体験申込を増やす方法" },
+        link: { href: "/honjo", label: "本庄市のホームページ制作" },
     },
 ];
 

@@ -15,6 +15,7 @@ const copy = {
         ],
         contentLinks: [
             { name: "埼玉のホームページ制作（対応エリア）", href: "/saitama-hokubu" },
+            { name: "本庄市のホームページ制作", href: "/honjo" },
             { name: "お役立ちコラム", href: "/blog" },
             { name: "事業情報", href: "/company" },
             { name: "ご紹介パートナー", href: "/partner" },
