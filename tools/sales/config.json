@@ -1,0 +1,36 @@
+{
+  "from_name": "NEXT VALLEY 倉林駿",
+  "from_email": "info@nextvalley-jpn.com",
+  "imap_host": "imap.gmail.com",
+  "templates": {
+    "hp": "docs/sales/templates/hp.txt",
+    "marketing": "docs/sales/templates/marketing.txt",
+    "both": "docs/sales/templates/both.txt",
+    "shigyo": "docs/sales/templates/shigyo.txt",
+    "shigyo-re": "docs/sales/templates/shigyo-re.txt",
+    "insta": "docs/sales/templates/insta.txt",
+    "partner": "docs/sales/templates/partner-propose.txt",
+    "partner-warm": "docs/sales/templates/partner-propose-warm.txt",
+    "partner-recruit": "docs/sales/templates/partner-recruit.txt",
+    "honjo": "docs/sales/templates/honjo.txt"
+  },
+  "default_template": "hp",
+  "login_email": "ks.nextvalley@gmail.com",
+  "attachments": {
+    "shigyo": [
+      "docs/partner/士業パートナー案内.pdf"
+    ],
+    "shigyo-re": [
+      "docs/partner/士業パートナー案内.pdf"
+    ],
+    "partner": [
+      "docs/partner/NEXT-VALLEY_協業のご案内.pdf"
+    ],
+    "partner-warm": [
+      "docs/partner/NEXT-VALLEY_協業のご案内.pdf"
+    ],
+    "partner-recruit": [
+      "docs/partner/NEXT-VALLEY_協業のご案内.pdf"
+    ]
+  }
+}

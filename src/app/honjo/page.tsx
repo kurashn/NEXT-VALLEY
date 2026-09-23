@@ -93,10 +93,11 @@ const steps = [
 const areas = ["本庄市（本庄地域・児玉地域）", "上里町", "美里町", "神川町", "深谷市", "熊谷市", "伊勢崎市・藤岡市（群馬県）"];
 
 const reads = [
+    { href: "/blog/honjo-google-maps", t: "本庄・児玉のお店と教室が、Googleマップで見つけてもらうためにやること" },
+    { href: "/blog/honjo-website-subsidy", t: "本庄市でホームページを作るときに使える補助金（2026年版）" },
     { href: "/blog/honjo-classroom-website", t: "本庄の教室がホームページで体験レッスンの申込を増やす方法" },
     { href: "/blog/isesaki-honjo-line-marketing", t: "伊勢崎・本庄の教室とお店がLINE公式を「予約と再来店」に使う方法" },
     { href: "/blog/kumagaya-fukaya-shop-web-marketing", t: "熊谷・深谷のお店がGoogleマップとホームページで新規客を増やす手順" },
-    { href: "/blog/meo-guide", t: "教室・習い事のMEO対策まとめ｜読む順番と30日のチェックリスト" },
 ];
 
 const faqs = [
