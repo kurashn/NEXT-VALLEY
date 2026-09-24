@@ -71,7 +71,7 @@ const panel = (m, idx) => {
       <li class="rec"><details>
         <summary>
           <span class="rec-head"><span class="rec-title"><span class="rec-no">${marks[i] || i + 1}</span>${esc(r.title)}</span>
-          <span class="rec-plan${(r.plan || "").includes("集客サポート") ? " support" : (r.plan || "").includes("お知らせください") ? " ask" : ""}">${esc(r.plan)}</span></span>
+          <span class="rec-plan${(r.plan || "").includes("対応済み") ? " done" : (r.plan || "").includes("集客サポート") ? " support" : (r.plan || "").includes("お知らせください") ? " ask" : ""}">${esc(r.plan)}</span></span>
           <span class="rec-toggle" aria-hidden="true"></span>
         </summary>
         <p class="rec-why">${esc(r.why)}</p>
@@ -254,6 +254,7 @@ const html = `<!doctype html>
   .rec-why{margin:2px 0 0;color:#c8d3dc;font-size:13px}
   .rec-plan{margin:6px 0 0;display:inline-block;background:var(--coral);color:#fff;font-size:11px;font-weight:bold;border-radius:4px;padding:1px 8px}
   .rec-plan.support{background:#2C8FA8}
+  .rec-plan.done{background:#0a7a44}
   .rec-plan.ask{background:transparent;border:1px solid #c8d3dc;color:#c8d3dc}
   .tips-note{font-size:12px;color:#777;margin:0 0 8px}
   .tips{margin:0;padding-left:1.3em;font-size:14px;line-height:2}
