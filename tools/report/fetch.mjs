@@ -194,7 +194,7 @@ const table = {
   ],
 };
 
-const data = { client: cfg.client, channel: cfg.channel || "line", channelText: cfg.channelText || null, planLink: cfg.planLink || null, generatedAt: new Date().toISOString().slice(0, 10), table, months };
+const data = { client: cfg.client, channel: cfg.channel || "line", channelText: cfg.channelText || null, planLink: cfg.planLink || null, searchNote: cfg.searchNote || null, generatedAt: new Date().toISOString().slice(0, 10), table, months };
 const outJson = cfgPath.replace(/\.config\.json$/, ".data.json");
 writeFileSync(outJson, JSON.stringify(data, null, 2));
 console.log("データ:", outJson);

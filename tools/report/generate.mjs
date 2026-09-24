@@ -60,6 +60,7 @@ const panel = (m, idx) => {
     .map((q) => `<tr><td class="q">${esc(q.query)}</td><td>${num(q.clicks)}回</td><td>${num(q.impressions)}回</td></tr>`)
     .join("");
 
+  const emptyQ = `<tr><td class="q-empty" colspan="3">${esc(d.searchNote || "この月は、表示できる検索の言葉がありませんでした。")}</td></tr>`;
   const almostQ = m.almostQueries
     .map((q) => `<tr><td class="q">${esc(q.query)}</td><td>${num(q.impressions)}回</td><td>${q.position.toFixed(0)}位くらい</td></tr>`)
     .join("");
@@ -136,7 +137,7 @@ const panel = (m, idx) => {
         <div class="scroll">
           <table class="qt">
             <thead><tr><th>検索の言葉</th><th>来た回数</th><th>表示回数</th></tr></thead>
-            <tbody>${nowQ}</tbody>
+            <tbody>${nowQ || emptyQ}</tbody>
           </table>
         </div>
         <p class="legend">この言葉で検索した人が、実際にサイトへ来ています。</p>
@@ -147,7 +148,7 @@ const panel = (m, idx) => {
         <div class="scroll">
           <table class="qt">
             <thead><tr><th>検索の言葉</th><th>表示回数</th><th>今の順位</th></tr></thead>
-            <tbody>${almostQ}</tbody>
+            <tbody>${almostQ || emptyQ}</tbody>
           </table>
         </div>
         <p class="legend">表示はされているのに、まだ押されにくい位置にある言葉。改善のタネです。</p>
@@ -233,6 +234,7 @@ const html = `<!doctype html>
   table.qt{white-space:normal}
   table.qt td{text-align:left;font-size:13px}
   table.qt td.q{font-weight:bold}
+  table.qt td.q-empty{color:var(--navy-sub);font-size:13px;line-height:1.7;padding:14px 8px}
   .rec-section{background:var(--navy);border:none}
   .rec-section h2{color:#fff;border-left-color:var(--coral)}
   ul.recs{list-style:none;margin:0;padding:0;display:grid;gap:10px}
