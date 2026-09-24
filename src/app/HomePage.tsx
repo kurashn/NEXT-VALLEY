@@ -7,6 +7,7 @@ import { TrustBar } from "@/components/TrustBar";
 import { Pricing } from "@/components/Pricing";
 import { Flow } from "@/components/Flow";
 import { Representative } from "@/components/Representative";
+import { AreaSaitama } from "@/components/AreaSaitama";
 import { FAQ, getFaqs } from "@/components/FAQ";
 import { CTA } from "@/components/CTA";
 import Navbar from "@/components/layout/Navbar";
@@ -61,7 +62,7 @@ export function HomePage({ lang = "ja" }: { lang?: Lang }) {
                   "@type": "PostalAddress",
                   "addressCountry": "JP",
                 },
-                "areaServed": "JP",
+                "areaServed": [{ "@type": "AdministrativeArea", "name": "埼玉県" }, { "@type": "Country", "name": "日本" }],
               },
               {
                 "@type": "FAQPage",
@@ -88,6 +89,7 @@ export function HomePage({ lang = "ja" }: { lang?: Lang }) {
       <div id="growth" className="scroll-mt-24"><AfterLaunch lang={lang} /></div>
       <div id="flow" className="scroll-mt-24"><Flow lang={lang} /></div>
       <Representative lang={lang} />
+      <div id="area" className="scroll-mt-24"><AreaSaitama lang={lang} /></div>
       <FAQ lang={lang} />
       <CTA lang={lang} />
       <Footer lang={lang} />

@@ -1,6 +1,6 @@
 // 本庄市のホームページ制作ページ
 // 「本庄市 ホームページ制作」「ホームページ制作 本庄市」で探している人の受け皿。
-// 地元出身であること・本庄と児玉郡で探されるときの事情・料金・流れ・FAQを1ページに。県全体は /saitama-hokubu。
+// 地元出身であること・本庄と児玉郡で探されるときの事情・料金・流れ・FAQを1ページに。埼玉北部は /saitama-hokubu、県全体はトップページ。
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -50,7 +50,7 @@ const jsonLd = {
             "@type": "BreadcrumbList",
             itemListElement: [
                 { "@type": "ListItem", position: 1, name: "ホーム", item: "https://www.nextvalley-jpn.com/" },
-                { "@type": "ListItem", position: 2, name: "埼玉のホームページ制作", item: "https://www.nextvalley-jpn.com/saitama-hokubu" },
+                { "@type": "ListItem", position: 2, name: "埼玉北部のホームページ制作", item: "https://www.nextvalley-jpn.com/saitama-hokubu" },
                 { "@type": "ListItem", position: 3, name: "本庄市のホームページ制作", item: URL },
             ],
         },
@@ -143,7 +143,7 @@ export default function HonjoPage() {
                     <nav aria-label="パンくず" className="mb-6 text-[12.5px]" style={{ color: V4.sub }}>
                         <Link href="/" className="inline-flex min-h-11 min-w-11 items-center underline underline-offset-4">ホーム</Link>
                         <span className="mx-2">›</span>
-                        <Link href="/saitama-hokubu" className="inline-flex min-h-11 items-center underline underline-offset-4">埼玉のホームページ制作</Link>
+                        <Link href="/saitama-hokubu" className="inline-flex min-h-11 items-center underline underline-offset-4">埼玉北部のホームページ制作</Link>
                         <span className="mx-2">›</span>
                         <span>本庄市</span>
                     </nav>
@@ -240,7 +240,7 @@ export default function HonjoPage() {
                             </li>
                         ))}
                     </ul>
-                    <p className="mt-6 text-[14.5px]" style={{ color: V4.sub }}>埼玉のほかの地域については<Link href="/saitama-hokubu" className="font-bold underline underline-offset-4" style={{ color: V4.navy }}>埼玉のホームページ制作</Link>のページをご覧ください。</p>
+                    <p className="mt-6 text-[14.5px]" style={{ color: V4.sub }}>熊谷・深谷など埼玉北部のほかの地域については<Link href="/saitama-hokubu" className="font-bold underline underline-offset-4" style={{ color: V4.navy }}>埼玉北部のホームページ制作</Link>のページをご覧ください。</p>
 
                     <h3 className={`${heavy.className} mt-12 text-[20px]`} style={{ color: V4.navy }}>本庄・児玉の事業者向けに書いた記事</h3>
                     <ul className="mt-4 grid gap-3 md:grid-cols-2">
