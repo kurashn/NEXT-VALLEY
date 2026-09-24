@@ -71,7 +71,7 @@ const panel = (m, idx) => {
       <li class="rec">
         <p class="rec-title"><span class="rec-no">${marks[i] || i + 1}</span>${esc(r.title)}</p>
         <p class="rec-why">${esc(r.why)}</p>
-        <p class="rec-plan">${esc(r.plan)}</p>
+        <p class="rec-plan${(r.plan || "").includes("集客サポート") ? " support" : (r.plan || "").includes("お知らせください") ? " ask" : ""}">${esc(r.plan)}</p>
       </li>`
     )
     .join("");
@@ -86,7 +86,9 @@ const panel = (m, idx) => {
     : "";
   const isDone = (x) => (x.r.plan || "").includes("対応済み");
   const inPlan = m.recommends.map((r, i) => ({ r, i })).filter((x) => (x.r.plan || "").includes("範囲内"));
-  const outPlan = m.recommends.map((r, i) => ({ r, i })).filter((x) => !(x.r.plan || "").includes("範囲内") && !isDone(x));
+  const isAsk = (x) => (x.r.plan || "").includes("お知らせください");
+  const outPlan = m.recommends.map((r, i) => ({ r, i })).filter((x) => !(x.r.plan || "").includes("範囲内") && !isDone(x) && !isAsk(x));
+  const supportRecs = outPlan.filter((x) => (x.r.plan || "").includes("集客サポート"));
   const recCta = [
     inPlan.length
       ? `${inPlan.map((x) => marks[x.i] || x.i + 1).join("")}は${inPlan.every((x) => (x.r.plan || "").includes("保守")) ? "保守" : "集客サポート"}の範囲内ですので、今月中にこちらで対応します（ご都合が悪い場合はお知らせください）。`
@@ -153,7 +155,7 @@ const panel = (m, idx) => {
       <h2>今月の推奨 — 次にやると効くこと</h2>
       <ul class="recs">${recs}</ul>
       <p class="rec-cta">${recCta}</p>
-      ${d.planLink ? `<p class="rec-plan-link">こうした改善を毎月まとめてお任せいただける<span style="white-space:nowrap">「集客サポート」</span>も始めました。<a href="${esc(d.planLink)}">集客サポートの詳細を見る →</a></p>` : ""}
+      ${d.planLink ? `<p class="rec-plan-link">${supportRecs.length ? supportRecs.map((x) => marks[x.i] || x.i + 1).join("") + "のような改善を" : "こうした改善を"}、毎月まとめてお任せいただける<span style="white-space:nowrap">「集客サポート」</span>も始めました。<a href="${esc(d.planLink)}">集客サポートの詳細を見る →</a></p>` : ""}
     </section>
     ${tipsHtml}` : ""}
   </div>`;
@@ -235,6 +237,8 @@ const html = `<!doctype html>
   .rec-no{color:var(--coral);margin-right:6px}
   .rec-why{margin:2px 0 0;color:#c8d3dc;font-size:13px}
   .rec-plan{margin:6px 0 0;display:inline-block;background:var(--coral);color:#fff;font-size:11px;font-weight:bold;border-radius:4px;padding:1px 8px}
+  .rec-plan.support{background:#2C8FA8}
+  .rec-plan.ask{background:transparent;border:1px solid #c8d3dc;color:#c8d3dc}
   .tips-note{font-size:12px;color:#777;margin:0 0 8px}
   .tips{margin:0;padding-left:1.3em;font-size:14px;line-height:2}
   .rec-cta{margin:14px 0 0;color:#fff;font-size:13px;border-top:1px solid rgba(255,255,255,.2);padding-top:12px}
