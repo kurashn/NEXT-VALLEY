@@ -390,7 +390,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                 <div id="apply-form" className="relative mx-auto mt-12 max-w-3xl scroll-mt-24">
                     <p className="flex items-center gap-4 text-[14px] font-bold md:text-[16px]" style={{ color: NAVY }}>
                         <span aria-hidden className="h-px flex-1" style={{ backgroundColor: "rgba(15,37,64,0.2)" }} />
-                        <span className="whitespace-nowrap"><span className="md:hidden">LINEを使わない方は、フォームでも</span><span className="hidden md:inline">パソコンの方は、フォームでも</span></span>
+                        <span className="whitespace-nowrap">フォームでも受け付けます</span>
                         <span aria-hidden className="h-px flex-1" style={{ backgroundColor: "rgba(15,37,64,0.2)" }} />
                     </p>
                     <div className="mt-6"><PreviewForm /></div>
