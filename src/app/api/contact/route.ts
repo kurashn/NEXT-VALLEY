@@ -91,6 +91,7 @@ export async function POST(request: Request) {
         const website = String(body.website ?? '').trim(); // ハニーポット
         const elapsedMs = Number(body.elapsedMs);
         const turnstileToken = typeof body.turnstileToken === 'string' ? body.turnstileToken : undefined;
+        const kind = body.kind === 'preview' ? 'preview' : 'contact';
 
         // 必須チェック（人間向けのエラー）
         if (!name || !email || !message) {
@@ -121,7 +122,7 @@ export async function POST(request: Request) {
             from: process.env.SMTP_USER,
             to: process.env.CONTACT_EMAIL || 'info@nextvalley-jpn.com',
             replyTo: email,
-            subject: `【NEXT VALLEY】お問い合わせ: ${name}様`,
+            subject: kind === 'preview' ? `【NEXT VALLEY】無料プレビューのお申し込み: ${company || name}様` : `【NEXT VALLEY】お問い合わせ: ${name}様`,
             text: `ウェブサイトからのお問い合わせがありました。
 
 お名前: ${name}

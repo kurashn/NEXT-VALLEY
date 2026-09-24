@@ -158,6 +158,7 @@ export function ContactForm({ lang = "ja" }: { lang?: Lang }) {
                 throw new Error(errorData.details || errorData.error || t.errSend);
             }
 
+            (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.("event", "contact_submit", { event_category: "cta", page_path: location.pathname });
             setIsSubmitted(true);
         } catch (error) {
             console.error(error);

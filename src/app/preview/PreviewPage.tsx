@@ -13,6 +13,7 @@ import { withLang, type Lang } from "@/i18n";
 import { chunks } from "@/lib/nowrap";
 import { LINE_URL, REMAINING_SLOTS, TOTAL_SLOTS } from "./copy";
 import { StickyApply } from "./StickyApply";
+import { PreviewForm } from "./PreviewForm";
 import { CornerArcs } from "./Mock";
 
 import logoDark from "@/images/logo-dark.png";
@@ -221,6 +222,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                         </ul>
                         <LineButton className="mt-7 w-full sm:w-auto" big>{t.hero.cta}</LineButton>
                         <p className="mt-5 text-[15px] md:text-[18px]" style={{ color: NAVY }}>{t.hero.ctaNote}</p>
+                        <a href="#apply-form" className="mt-2 inline-flex min-h-11 items-center text-[14px] font-bold underline underline-offset-4 md:text-[16px]" style={{ color: NAVY }}><span className="md:hidden">LINEを使わない方は、フォームからも申し込めます</span><span className="hidden md:inline">パソコンの方は、フォームからも申し込めます</span></a>
                         <p className="mt-2 text-[13px] md:text-[15px]" style={{ color: SUB }}>{t.hero.terms}</p>
                     </div>
                     <div className="relative">
@@ -384,6 +386,14 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                     <LineButton className="mt-8 w-full sm:w-auto sm:px-12">{t.cta.button}</LineButton>
                     <p className="mt-6 text-[14px] md:text-[16px]" style={{ color: NAVY }}>{t.cta.steps}</p>
                     <p className="mt-3 inline-flex items-center gap-2 text-[14px] md:text-[16px]" style={{ color: NAVY }}><Check className="h-6 w-6" />{t.cta.note}</p>
+                </div>
+                <div id="apply-form" className="relative mx-auto mt-12 max-w-3xl scroll-mt-24">
+                    <p className="flex items-center gap-4 text-[14px] font-bold md:text-[16px]" style={{ color: NAVY }}>
+                        <span aria-hidden className="h-px flex-1" style={{ backgroundColor: "rgba(15,37,64,0.2)" }} />
+                        <span className="whitespace-nowrap"><span className="md:hidden">LINEを使わない方は、フォームでも</span><span className="hidden md:inline">パソコンの方は、フォームでも</span></span>
+                        <span aria-hidden className="h-px flex-1" style={{ backgroundColor: "rgba(15,37,64,0.2)" }} />
+                    </p>
+                    <div className="mt-6"><PreviewForm /></div>
                 </div>
             </section>
 
