@@ -7,7 +7,7 @@
   複数のCSVをまとめて渡せる。優先度（S/A/B）順に並べ、Gmailの一覧で上に来るよう日付をずらす。
 CSVの「連絡手段」列にメールアドレスがある行だけが対象。「接触状況」が「未」以外の行は飛ばす。\n「提案」列で hp（ホームページ提案・既定）／marketing（マーケ提案・「指摘」列の1行が必要）を切り替える。
 """
-import csv, json, os, re, sys, imaplib, time, stat
+import csv, html, json, os, re, sys, imaplib, time, stat
 
 # ── 安全装置 ──────────────────────────────────────────────
 # このスクリプトは Gmail の「下書き」フォルダにメールを置くだけで、送信する機能を持たない。
@@ -46,6 +46,27 @@ def load_env():
 def clean_name(raw):
     return re.sub(r"（.*?）|\(.*?\)", "", raw).strip()
 
+URL_RE = re.compile(r"https?://[^\s　（）()「」、。<>]+")
+
+def to_html(body, kind):
+    """本文をそのままHTMLにする。見た目のURLは変えず、自社サイトへのリンク先にだけ営業メールの目印（utm）を付ける。
+    GA4 で「営業メール（テンプレート別）から何人来たか」を数えるため"""
+    def link(m):
+        url = m.group(0)
+        href = url
+        if "nextvalley-jpn.com" in url:
+            if re.fullmatch(r"https?://[^/]+", href): href += "/"
+            href += ("&" if "?" in url else "?") + f"utm_source=sales_mail&utm_medium=email&utm_campaign={kind}"
+        return f'<a href="{html.escape(href)}">{html.escape(url)}</a>'
+    out = []
+    for line in body.split("\n"):
+        pos, parts = 0, []
+        for m in URL_RE.finditer(line):
+            parts.append(html.escape(line[pos:m.start()])); parts.append(link(m)); pos = m.end()
+        parts.append(html.escape(line[pos:]))
+        out.append("".join(parts))
+    return '<div dir="ltr">' + "<br>\n".join(out) + "</div>"
+
 def build(row):
     name = clean_name(row["事業者名"])
     m = re.search(r"[\w.+-]+@[\w-]+\.[\w.-]+", row["連絡手段"])
@@ -64,6 +85,7 @@ def build(row):
     msg["Date"] = formatdate(localtime=True)
     msg["Message-ID"] = make_msgid()
     msg.set_content(body, charset="utf-8")
+    msg.add_alternative(to_html(body, kind), subtype="html", charset="utf-8")
     for rel in cfg.get("attachments", {}).get(kind, []):
         ap = os.path.join(ROOT, rel)
         if os.path.exists(ap):
