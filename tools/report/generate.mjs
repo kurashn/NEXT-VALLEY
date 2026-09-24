@@ -68,11 +68,14 @@ const panel = (m, idx) => {
   const recs = m.recommends
     .map(
       (r, i) => `
-      <li class="rec">
-        <p class="rec-title"><span class="rec-no">${marks[i] || i + 1}</span>${esc(r.title)}</p>
+      <li class="rec"><details>
+        <summary>
+          <span class="rec-head"><span class="rec-title"><span class="rec-no">${marks[i] || i + 1}</span>${esc(r.title)}</span>
+          <span class="rec-plan${(r.plan || "").includes("集客サポート") ? " support" : (r.plan || "").includes("お知らせください") ? " ask" : ""}">${esc(r.plan)}</span></span>
+          <span class="rec-toggle" aria-hidden="true"></span>
+        </summary>
         <p class="rec-why">${esc(r.why)}</p>
-        <p class="rec-plan${(r.plan || "").includes("集客サポート") ? " support" : (r.plan || "").includes("お知らせください") ? " ask" : ""}">${esc(r.plan)}</p>
-      </li>`
+      </details></li>`
     )
     .join("");
   const tips = m.selfTips || [];
@@ -94,7 +97,7 @@ const panel = (m, idx) => {
       ? `${inPlan.map((x) => marks[x.i] || x.i + 1).join("")}は${inPlan.every((x) => (x.r.plan || "").includes("保守")) ? "保守" : "集客サポート"}の範囲内ですので、今月中にこちらで対応します（ご都合が悪い場合はお知らせください）。`
       : "",
     outPlan.length
-      ? `${outPlan.map((x) => marks[x.i] || x.i + 1).join("")}の実施をご希望の場合は、${ch.send ? ch.send + "。" : ""}ご案内します。`
+      ? `${outPlan.map((x) => marks[x.i] || x.i + 1).join("")}をご希望の場合は、${ch.send ? ch.send + "。" : ""}ご案内します。`
       : "",
   ].filter(Boolean).join(" ");
 
@@ -152,7 +155,8 @@ const panel = (m, idx) => {
     </div>
 
     ${m.recommends.length ? `<section class="rec-section">
-      <h2>今月の推奨 — 次にやると効くこと</h2>
+      <div class="rec-top"><h2>今月の推奨 — 次にやると効くこと</h2><button type="button" class="rec-all">すべて開く</button></div>
+      <p class="rec-hint">項目をタップすると、理由が開きます。</p>
       <ul class="recs">${recs}</ul>
       <p class="rec-cta">${recCta}</p>
       ${d.planLink ? `<p class="rec-plan-link">${supportRecs.length ? supportRecs.map((x) => marks[x.i] || x.i + 1).join("") + "のような改善を" : "こうした改善を"}、毎月まとめてお任せいただける<span style="white-space:nowrap">「集客サポート」</span>も始めました。<a href="${esc(d.planLink)}">集客サポートの詳細を見る →</a></p>` : ""}
@@ -232,8 +236,20 @@ const html = `<!doctype html>
   .rec-section{background:var(--navy);border:none}
   .rec-section h2{color:#fff;border-left-color:var(--coral)}
   ul.recs{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-  .rec{background:rgba(255,255,255,.06);border-radius:12px;padding:12px 14px}
-  .rec-title{margin:0;color:#fff;font-weight:bold;font-size:15px;line-height:1.7}
+  .rec{background:rgba(255,255,255,.06);border-radius:12px;padding:0}
+  .rec summary{list-style:none;cursor:pointer;display:flex;align-items:flex-start;gap:10px;padding:12px 14px;min-height:44px}
+  .rec summary::-webkit-details-marker{display:none}
+  .rec-head{flex:1;min-width:0}
+  .rec-title{display:block;margin:0;color:#fff;font-weight:bold;font-size:15px;line-height:1.7}
+  .rec-toggle{flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.35);position:relative;margin-top:2px}
+  .rec-toggle::before,.rec-toggle::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:2px;background:#fff;transform:translate(-50%,-50%)}
+  .rec-toggle::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .2s}
+  details[open] .rec-toggle::after{transform:translate(-50%,-50%) rotate(0deg)}
+  .rec details > .rec-why{padding:0 14px 12px;margin:0}
+  .rec-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
+  .rec-top h2{margin-bottom:0}
+  .rec-all{flex:0 0 auto;min-height:44px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;border-radius:9999px;padding:0 14px;font-size:13px;font-weight:bold;cursor:pointer}
+  .rec-hint{margin:6px 0 10px;color:#c8d3dc;font-size:12px}
   .rec-no{color:var(--coral);margin-right:6px}
   .rec-why{margin:2px 0 0;color:#c8d3dc;font-size:13px}
   .rec-plan{margin:6px 0 0;display:inline-block;background:var(--coral);color:#fff;font-size:11px;font-weight:bold;border-radius:4px;padding:1px 8px}
@@ -254,6 +270,7 @@ const html = `<!doctype html>
     .scroll{overflow:visible}
     .rec-section{background:#fff;border:2px solid var(--navy)}
     .rec-section h2,.rec-title,.rec-cta,.rec-plan-link,.rec-plan-link a{color:var(--navy)}
+    .rec-all,.rec-hint,.rec-toggle{display:none}
     .rec{background:var(--cream)}
     .rec-why{color:var(--navy-sub)}
   }
@@ -287,6 +304,12 @@ const html = `<!doctype html>
 <script>
   (function(){
     var tabs=document.querySelectorAll('.tab'),panels=document.querySelectorAll('.panel');
+    document.querySelectorAll('.rec-all').forEach(function(btn){btn.addEventListener('click',function(){
+      var list=btn.closest('.rec-section').querySelectorAll('details');
+      var open=Array.prototype.some.call(list,function(d){return !d.open});
+      list.forEach(function(d){d.open=open});btn.textContent=open?'すべて閉じる':'すべて開く';
+    })});
+    window.addEventListener('beforeprint',function(){document.querySelectorAll('.rec details').forEach(function(d){d.open=true})});
     tabs.forEach(function(t){t.addEventListener('click',function(){
       tabs.forEach(function(x){x.classList.remove('active')});t.classList.add('active');
       panels.forEach(function(p){p.hidden=p.getAttribute('data-panel')!==t.getAttribute('data-tab')});
