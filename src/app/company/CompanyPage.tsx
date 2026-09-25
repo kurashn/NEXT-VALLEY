@@ -36,6 +36,9 @@ const ja = {
     rep: "倉林 駿（くらはやし しゅん）",
     rowFounded: "事業開始",
     founded: "2021年1月",
+    rowAddress: "所在地",
+    address: "埼玉県本庄市児玉町金屋",
+    addressNote: "ご相談・お打ち合わせは、LINE・メール・オンラインで承っています。",
     rowServices: "事業内容",
     services: [
         "AI活用コンサルティング",
@@ -93,6 +96,9 @@ const en: typeof ja = {
     rep: "Shun Kurahayashi",
     rowFounded: "Established",
     founded: "January 2021",
+    rowAddress: "Location",
+    address: "Kanaya, Kodama-machi, Honjo, Saitama",
+    addressNote: "Consultations are held via LINE, email, or online meetings.",
     rowServices: "What we do",
     services: [
         "AI consulting for small businesses",
@@ -219,6 +225,16 @@ export function CompanyPage({ lang = "ja" }: { lang?: Lang }) {
                                 </div>
                                 <div className="sm:col-span-2 border-b border-slate-100 pb-4 sm:border-none sm:pb-0">
                                     <dd className="text-[16px] text-slate-600">{t.founded}</dd>
+                                </div>
+
+                                <div className="sm:col-span-1">
+                                    <dt className="text-sm font-bold text-[#002335] flex items-center h-full">{t.rowAddress}</dt>
+                                </div>
+                                <div className="sm:col-span-2 border-b border-slate-100 pb-4 sm:border-none sm:pb-0">
+                                    <dd className="text-[16px] text-slate-600">
+                                        {t.address}
+                                        <span className="text-xs text-slate-500 mt-1 block">{t.addressNote}</span>
+                                    </dd>
                                 </div>
 
                                 <div className="sm:col-span-1">

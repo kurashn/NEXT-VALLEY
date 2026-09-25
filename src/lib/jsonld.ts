@@ -12,6 +12,7 @@ const org = {
     url: SITE,
     logo: `${SITE}/og-image.png`,
     email: "info@nextvalley-jpn.com",
+    address: { "@type": "PostalAddress", addressCountry: "JP", addressRegion: "埼玉県", addressLocality: "本庄市", streetAddress: "児玉町金屋" },
 };
 
 const areaServed = { "@type": "Country", name: "Japan" };

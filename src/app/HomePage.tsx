@@ -61,6 +61,9 @@ export function HomePage({ lang = "ja" }: { lang?: Lang }) {
                 "address": {
                   "@type": "PostalAddress",
                   "addressCountry": "JP",
+                  "addressRegion": "埼玉県",
+                  "addressLocality": "本庄市",
+                  "streetAddress": "児玉町金屋",
                 },
                 "areaServed": [{ "@type": "AdministrativeArea", "name": "埼玉県" }, { "@type": "Country", "name": "日本" }],
               },
