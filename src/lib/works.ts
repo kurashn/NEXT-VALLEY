@@ -75,7 +75,7 @@ export const WORKS: Work[] = [
         label: "英語教室",
         image: w8,
         summary: "入会ゼロだった教室のホームページを作り直し、申込の入口をLINE1本に。7か月で14名のご入会につながりました。",
-        scope: ["ホームページ制作", "コース別LP", "LINE導線の設計", "月次レポート", "集客支援"],
+        scope: ["ホームページ制作", "デザインリニューアル", "コース別LP", "LINE導線の設計", "月次レポート", "集客支援"],
         url: "https://yuma-english.com/",
         detail: {
             before: [
