@@ -29,7 +29,7 @@ const jaGeneral = {
             body: <><span className="nowrap">写真や営業時間を変えたいのに、</span><span className="nowrap">ついそのままになっている。</span></>,
         },
         {
-            no: "02", tag: "CONTACT", img: worryContact, alt: "お店のカウンターでスマートフォンを見て考える店主",
+            no: "02", tag: "CONTACT", img: worryContact, alt: "お店でスマートフォンを見る、エプロン姿の店主",
             title: <>見られているのに、<br />問い合わせにつながらない。</>,
             body: <><span className="nowrap">ホームページやSNSはあるけれど、</span><span className="nowrap">相談や予約がなかなか増えない。</span></>,
         },
