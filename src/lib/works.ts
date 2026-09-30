@@ -188,7 +188,7 @@ export const WORKS: Work[] = [
     { slug: "mew-seed", name: "株式会社ミュウシード（夢み寮）様", category: "company", label: "介護・福祉", image: w23, summary: "住宅型有料老人ホームのホームページ。", scope: ["ホームページ制作", "公開後の保守", "月次レポート"], url: "https://mew-seed.com/" },
     { slug: "personal-gym-me", name: "パーソナルジムMe 様", category: "shop", label: "フィットネス", image: w18, summary: "パーソナルジムのホームページ。", scope: ["ホームページ制作"], url: "https://me-gym.com/" },
     { slug: "kurotori-bochi", name: "黒鳥墓地 様", category: "shop", label: "霊園", image: w20, summary: "霊園のホームページ。", scope: ["ホームページ制作"], url: "https://kurotori-bochi.site/" },
-    { slug: "dance-studio-plus", name: "DANCE STUDIO PLUS 様", category: "school", label: "ダンススクール", image: w9, summary: "ダンススクールのホームページ。", scope: ["ホームページ制作", "公開後の保守", "月次レポート"], url: "https://dancestudioplus.com/" },
+    { slug: "dance-studio-plus", name: "DANCE STUDIO PLUS 様", category: "school", label: "ダンススクール", image: w9, summary: "ダンススクールのホームページ。", scope: ["ホームページ制作", "デザインリニューアル", "公開後の保守", "月次レポート"], url: "https://dancestudioplus.com/" },
     { slug: "colours-musical-studio", name: "Colours Musical Studio 様", category: "school", label: "ミュージカル教室", image: w2, summary: "ミュージカル教室のホームページ。", scope: ["ホームページ制作", "公開後の保守", "月次レポート"], url: "https://colours-musicalstudio.com" },
     { slug: "ecc-ichiriyama", name: "ECCジュニア 一里山教室 様", category: "school", label: "英語教室", image: w4, summary: "英語教室のホームページ。", scope: ["ホームページ制作"], url: "https://eccjunior-ichiriyama.com/" },
     { slug: "maya-kodomonoie", name: "まや子どもの家 様", category: "school", label: "教育・スクール", image: w3, summary: "まや子どもの家のホームページ。", scope: ["ホームページ制作"], url: "https://maya-kodomonoie.com/" },
