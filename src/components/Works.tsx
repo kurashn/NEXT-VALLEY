@@ -35,13 +35,13 @@ import work22 from "@/images/works/works22.jpg";
 import work23 from "@/images/works/works23.jpg";
 
 /* 画像（言語共通。順序は copy.featured / copy.others と一致させる） */
-const featuredImages = [work1, work5, work8];
+const featuredImages = [work9, work5, work8];
 const otherImages = [
-    work9, work23, work22, work12, work14, work15, work16, work17, work19, work18, work20, work13,
+    work1, work23, work22, work12, work14, work15, work16, work17, work19, work18, work20, work13,
     work6, work7, work4, work2, work3, work21, work11,
 ];
 
-type FeaturedCopy = { name: string; label: string; review: React.ReactNode; caption?: string };
+type FeaturedCopy = { name: string; label: string; review?: React.ReactNode; caption?: string };
 type OtherCopy = { name: string; label: string };
 
 /* ── 文言（日本語 / 英語） ── */
@@ -51,11 +51,9 @@ const ja = {
     imageAlt: (name: string) => `${name}のホームページ`,
     featured: [
         {
-            name: "Tulip Ballet Studio様",
+            name: "DANCE STUDIO PLUS様",
             label: "教育・スクール",
-            review: (
-                <><p>非常に丁寧に、かつ、希望どおり作成していただきました！ウェブ関係はまったくわからず、毎回質問したりしていましたが、いつも丁寧に優しく答えてくださいました。</p><p>また、様々な提案もしてくださり、想像以上の素敵なホームページを作成していただきました。依頼して本当に良かったと実感して<span className="nowrap">おります。</span></p></>
-            ),
+            caption: "大分市のダンススクールです。ホームページの制作から、2026年9月のデザインリニューアル、公開後の保守、毎月のアクセスレポートまでを担当しています。",
         },
         {
             name: "Rythmique Garden様",
@@ -73,7 +71,7 @@ const ja = {
         },
     ] as FeaturedCopy[],
     others: [
-        { name: "DANCE STUDIO PLUS様", label: "教育・スクール" },
+        { name: "Tulip Ballet Studio様", label: "教育・スクール" },
         { name: "株式会社ミュウシード（夢み寮）様", label: "介護・福祉" },
         { name: "Matsumi様", label: "理容・美容" },
         { name: "BowlingNavi -ボウナビ- 様", label: "メディア・情報サイト" },
@@ -101,11 +99,9 @@ const en: typeof ja = {
     imageAlt: (name: string) => `Website for ${name}`,
     featured: [
         {
-            name: "Tulip Ballet Studio",
+            name: "DANCE STUDIO PLUS",
             label: "Education & Schools",
-            review: (
-                <>They built exactly what we asked for, and with real care. I knew nothing about websites and had questions at every step, but they always answered kindly and patiently. They also came up with all sorts of ideas, and the site turned out even nicer than I&apos;d imagined. I&apos;m truly glad we asked them.</>
-            ),
+            caption: "A dance school in Oita. We built their website, redesigned it in September 2026, and handle maintenance and monthly analytics reports.",
         },
         {
             name: "Rythmique Garden",
@@ -123,7 +119,7 @@ const en: typeof ja = {
         },
     ],
     others: [
-        { name: "DANCE STUDIO PLUS", label: "Education & Schools" },
+        { name: "Tulip Ballet Studio", label: "Education & Schools" },
         { name: "Mew Seed Co., Ltd. (Yumemi-ryo)", label: "Elderly care" },
         { name: "Matsumi", label: "Barbershop" },
         { name: "BowlingNavi", label: "Media & Information Site" },
