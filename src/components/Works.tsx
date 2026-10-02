@@ -37,8 +37,8 @@ import work23 from "@/images/works/works23.jpg";
 /* 画像（言語共通。順序は copy.featured / copy.others と一致させる） */
 const featuredImages = [work1, work5, work8];
 const otherImages = [
-    work23, work22, work12, work14, work15, work16, work17, work19, work18, work20, work13,
-    work6, work7, work4, work2, work3, work21, work9, work11,
+    work9, work23, work22, work12, work14, work15, work16, work17, work19, work18, work20, work13,
+    work6, work7, work4, work2, work3, work21, work11,
 ];
 
 type FeaturedCopy = { name: string; label: string; review: React.ReactNode; caption?: string };
@@ -73,6 +73,7 @@ const ja = {
         },
     ] as FeaturedCopy[],
     others: [
+        { name: "DANCE STUDIO PLUS様", label: "教育・スクール" },
         { name: "株式会社ミュウシード（夢み寮）様", label: "介護・福祉" },
         { name: "Matsumi様", label: "理容・美容" },
         { name: "BowlingNavi -ボウナビ- 様", label: "メディア・情報サイト" },
@@ -90,7 +91,6 @@ const ja = {
         { name: "Colours Musical Studio様", label: "教育・スクール" },
         { name: "まや子どもの家様", label: "教育・スクール" },
         { name: "Yuma English House 英検対策コース様", label: "教育・スクール（LP）" },
-        { name: "DANCE STUDIO PLUS様", label: "教育・スクール" },
         { name: "K-coaching様", label: "教育・スクール" },
     ] as OtherCopy[],
     note: "※ クライアント様のプライバシー保護のため、一部のみ掲載しております。",
@@ -123,6 +123,7 @@ const en: typeof ja = {
         },
     ],
     others: [
+        { name: "DANCE STUDIO PLUS", label: "Education & Schools" },
         { name: "Mew Seed Co., Ltd. (Yumemi-ryo)", label: "Elderly care" },
         { name: "Matsumi", label: "Barbershop" },
         { name: "BowlingNavi", label: "Media & Information Site" },
@@ -140,7 +141,6 @@ const en: typeof ja = {
         { name: "Colours Musical Studio", label: "Education & Schools" },
         { name: "Maya Children's House", label: "Education & Schools" },
         { name: "Yuma English House: Eiken Prep Course", label: "Education & Schools (Landing Page)" },
-        { name: "DANCE STUDIO PLUS", label: "Education & Schools" },
         { name: "K-coaching", label: "Education & Schools" },
     ],
     note: "To protect our clients' privacy, only a selection of our work is shown here.",
