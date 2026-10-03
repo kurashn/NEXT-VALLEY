@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MessageCircle } from "lucide-react";
+import { LineQrLink } from "@/components/LineQrLink";
 import logo from "@/images/logo-new.png";
 import { withLang, type Lang } from "@/i18n";
 
@@ -99,15 +100,13 @@ export function Footer({ lang = "ja" }: { lang?: Lang }) {
                             />
                         </Link>
                         <p className="mt-5 text-sm leading-[2] text-navy-sub">{t.tagline}</p>
-                        <a
+                        <LineQrLink
                             href="https://lin.ee/N4QXdJL"
-                            target="_blank"
-                            rel="noopener noreferrer"
                             className="mt-6 inline-flex h-12 items-center gap-2 rounded-full bg-coral-deep px-7 text-sm font-bold text-white transition-opacity hover:opacity-90"
                         >
                             <MessageCircle className="h-4 w-4" aria-hidden />
                             {t.cta}
-                        </a>
+                        </LineQrLink>
                     </div>
 
                     {/* リンク列 */}

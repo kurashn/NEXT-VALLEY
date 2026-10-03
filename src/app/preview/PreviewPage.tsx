@@ -5,7 +5,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ArrowRight, CalendarDays, Database, CircleCheck } from "lucide-react";
+import { ArrowUpRight, ArrowRight, ArrowDown, CalendarDays, Database, CircleCheck } from "lucide-react";
+import { LineQrLink } from "@/components/LineQrLink";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { serif } from "@/components/ui/SerifHeading";
 import { heavy, V4 } from "@/lib/fonts-v4";
@@ -51,6 +52,9 @@ const ja = {
         ],
         cta: <><span className="hidden md:inline">LINEで</span>無料プレビューを申し込む</>,
         ctaNote: <><span className="nowrap">友だち追加後、</span><span className="nowrap">簡単なヒアリングにお答えください。</span></>,
+        formCta: "フォームで無料プレビューを申し込む",
+        formNote: <><span className="nowrap">必須は4つだけ。</span><span className="nowrap">ご連絡はメールでお送りします。</span></>,
+        lineAlt: "LINEの方はこちら（QRコード）",
         terms: <><span className="nowrap">正式制作は、</span><span className="nowrap">初期0円・月額8,980円（税込）／</span><span className="nowrap">最低契約期間1年。</span></>,
         slots: `毎月${TOTAL_SLOTS}社限定・今月あと${REMAINING_SLOTS}社`,
         visualAlt: "デザイン案のイメージ：パン屋のホームページをパソコンとスマートフォンで表示した例。無料で作成するのはトップページのデザイン案です。",
@@ -117,10 +121,11 @@ const ja = {
     cta: {
         eyebrow: "YOUR NEXT, TOGETHER.",
         title: <>まずは、あなたの事業の<br /><span style={{ color: TEAL }}>デザイン案</span>を見てみませんか。</>,
-        lead: <><span className="nowrap">新規制作も、リニューアルも。</span><span className="nowrap">LINEからお気軽にご相談ください。</span></>,
+        lead: <><span className="nowrap">新規制作も、リニューアルも。</span><span className="nowrap">LINEかフォームから、</span><span className="nowrap">お気軽にご相談ください。</span></>,
         button: <><span className="hidden md:inline">LINEで</span>無料プレビューを申し込む</>,
         steps: <><span className="nowrap">友だち追加 →</span> <span className="nowrap">ヒアリングに回答 →</span> <span className="nowrap">デザイン案を受け取る</span></>,
         note: <><span className="nowrap">お申し込みだけで</span><span className="nowrap">契約・請求は発生しません。</span></>,
+        formLead: <><span className="nowrap">下のフォームに入力するだけで</span><span className="nowrap">申し込めます。</span></>,
     },
     footer: {
         tagline: "埼玉の小さな事業に、頼れるWeb担当を。",
@@ -158,16 +163,28 @@ function LineIcon({ big = false }: { big?: boolean }) {
 
 function LineButton({ children, className = "", big = false }: { children: React.ReactNode; className?: string; big?: boolean }) {
     return (
-        <a
+        <LineQrLink
             href={LINE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className={`inline-flex items-center justify-center rounded-full font-bold text-white shadow-[0_12px_30px_rgba(232,80,58,0.3)] transition-transform hover:-translate-y-0.5 ${big ? "min-h-[68px] gap-3 pl-4 pr-7 text-[16px] md:min-h-[88px] md:gap-4 md:pl-5 md:pr-9 md:text-[25px]" : "min-h-[64px] gap-3 pl-4 pr-8 text-[17px] md:text-[19px]"} ${className}`}
             style={{ backgroundColor: CORAL }}
         >
             <LineIcon big={big} />
             <span className="whitespace-nowrap">{children}</span>
             <ArrowUpRight className="h-5 w-5 shrink-0" aria-hidden />
+        </LineQrLink>
+    );
+}
+
+/** パソコン向けの主ボタン：ページ下のフォームへ移動する（2026-10-03 パソコンはフォームを主に） */
+function FormButton({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+    return (
+        <a
+            href="#apply-form"
+            className={`min-h-[88px] items-center justify-center gap-4 rounded-full pl-9 pr-9 text-[25px] font-bold text-white shadow-[0_12px_30px_rgba(232,80,58,0.3)] transition-transform hover:-translate-y-0.5 ${className}`}
+            style={{ backgroundColor: CORAL }}
+        >
+            <span className="whitespace-nowrap">{children}</span>
+            <ArrowDown className="h-6 w-6 shrink-0" aria-hidden />
         </a>
     );
 }
@@ -191,9 +208,13 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                     </div>
                     <div className="flex items-center gap-6">
                         <Link href={withLang(lang, "/")} className="hidden text-[13px] font-bold md:inline" style={{ color: NAVY }}>{t.header.home}</Link>
-                        <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 items-center gap-1.5 whitespace-nowrap rounded-full px-5 text-[13px] font-bold text-white md:h-12 md:px-6 md:text-[15px]" style={{ backgroundColor: CORAL }}>
+                        <LineQrLink href={LINE_URL} className="inline-flex h-11 items-center gap-1.5 whitespace-nowrap rounded-full px-5 text-[13px] font-bold text-white md:h-12 md:px-6 md:text-[15px] lg:hidden" style={{ backgroundColor: CORAL }}>
                             {t.header.cta}
                             <ArrowUpRight className="h-4 w-4" aria-hidden />
+                        </LineQrLink>
+                        <a href="#apply-form" className="hidden h-12 items-center gap-1.5 whitespace-nowrap rounded-full px-6 text-[15px] font-bold text-white lg:inline-flex" style={{ backgroundColor: CORAL }}>
+                            {t.header.cta}
+                            <ArrowDown className="h-4 w-4" aria-hidden />
                         </a>
                     </div>
                 </div>
@@ -220,9 +241,14 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                                 </li>
                             ))}
                         </ul>
-                        <LineButton className="mt-7 w-full sm:w-auto" big>{t.hero.cta}</LineButton>
-                        <p className="mt-5 text-[15px] md:text-[18px]" style={{ color: NAVY }}>{t.hero.ctaNote}</p>
-                        <a href="#apply-form" className="mt-2 inline-flex min-h-11 items-center text-[14px] font-bold underline underline-offset-4 md:text-[16px]" style={{ color: NAVY }}><span className="md:hidden">LINEを使わない方は、フォームからも申し込めます</span><span className="hidden md:inline">パソコンの方は、フォームからも申し込めます</span></a>
+                        <LineButton className="mt-7 w-full sm:w-auto lg:hidden" big>{t.hero.cta}</LineButton>
+                        <FormButton className="mt-7 hidden lg:inline-flex">{t.hero.formCta}</FormButton>
+                        <p className="mt-5 text-[15px] md:text-[18px] lg:hidden" style={{ color: NAVY }}>{t.hero.ctaNote}</p>
+                        <p className="mt-5 hidden text-[18px] lg:block" style={{ color: NAVY }}>
+                            {t.hero.formNote}
+                            <LineQrLink href={LINE_URL} className="ml-1 font-bold underline underline-offset-4">{t.hero.lineAlt}</LineQrLink>
+                        </p>
+                        <a href="#apply-form" className="mt-2 inline-flex min-h-11 items-center lg:hidden text-[14px] font-bold underline underline-offset-4 md:text-[16px]" style={{ color: NAVY }}><span className="md:hidden">LINEを使わない方は、フォームからも申し込めます</span><span className="hidden md:inline">パソコンの方は、フォームからも申し込めます</span></a>
                         <p className="mt-2 text-[13px] md:text-[15px]" style={{ color: SUB }}>{t.hero.terms}</p>
                     </div>
                     <div className="relative">
@@ -383,14 +409,18 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                     <span aria-hidden className="mx-auto mt-3 block h-[2px] w-16" style={{ backgroundColor: CORAL }} />
                     <h2 className={`${heavy.className} mt-7 text-[clamp(1.6rem,3.6vw,2.9rem)] leading-[1.35] tracking-[-0.02em]`} style={{ color: NAVY }}>{t.cta.title}</h2>
                     <p className="mt-5 text-[15px] md:text-[18px]" style={{ color: NAVY }}>{t.cta.lead}</p>
-                    <LineButton className="mt-8 w-full sm:w-auto sm:px-12">{t.cta.button}</LineButton>
-                    <p className="mt-6 text-[14px] md:text-[16px]" style={{ color: NAVY }}>{t.cta.steps}</p>
+                    <LineButton className="mt-8 w-full sm:w-auto sm:px-12 lg:hidden">{t.cta.button}</LineButton>
+                    <p className="mt-6 text-[14px] md:text-[16px] lg:hidden" style={{ color: NAVY }}>{t.cta.steps}</p>
+                    <p className="mt-8 hidden text-[18px] lg:block" style={{ color: NAVY }}>
+                        {t.cta.formLead}
+                        <LineQrLink href={LINE_URL} className="ml-1 font-bold underline underline-offset-4">{t.hero.lineAlt}</LineQrLink>
+                    </p>
                     <p className="mt-3 inline-flex items-center gap-2 text-[14px] md:text-[16px]" style={{ color: NAVY }}><Check className="h-6 w-6" />{t.cta.note}</p>
                 </div>
                 <div id="apply-form" className="relative mx-auto mt-12 max-w-3xl scroll-mt-24">
                     <p className="flex items-center gap-4 text-[14px] font-bold md:text-[16px]" style={{ color: NAVY }}>
                         <span aria-hidden className="h-px flex-1" style={{ backgroundColor: "rgba(15,37,64,0.2)" }} />
-                        <span className="whitespace-nowrap">フォームでも受け付けます</span>
+                        <span className="whitespace-nowrap"><span className="lg:hidden">フォームでも受け付けます</span><span className="hidden lg:inline">フォームで申し込む</span></span>
                         <span aria-hidden className="h-px flex-1" style={{ backgroundColor: "rgba(15,37,64,0.2)" }} />
                     </p>
                     <div className="mt-6"><PreviewForm /></div>

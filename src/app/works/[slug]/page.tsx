@@ -10,6 +10,7 @@ import { Footer } from "@/components/layout/Footer";
 import { heavy, V4 } from "@/lib/fonts-v4";
 import { serif } from "@/components/ui/SerifHeading";
 import { DETAILED, findWork, linkOf } from "@/lib/works";
+import { LineQrLink } from "@/components/LineQrLink";
 
 const LINE = "https://lin.ee/N4QXdJL";
 const RULE = "rgba(20,51,90,0.14)";
@@ -187,9 +188,9 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ slu
                         <span className="nowrap">契約の前に、</span><span className="nowrap">トップページのデザイン案を</span><span className="nowrap">無料でお作りします。</span>
                     </p>
                     <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                        <a href={LINE} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[56px] w-full items-center justify-center gap-2 rounded-full px-7 text-[16px] font-bold text-white sm:w-auto" style={{ backgroundColor: V4.coralDeep }}>
+                        <LineQrLink href={LINE} className="inline-flex min-h-[56px] w-full items-center justify-center gap-2 rounded-full px-7 text-[16px] font-bold text-white sm:w-auto" style={{ backgroundColor: V4.coralDeep }}>
                             LINEで無料プレビューを申し込む <ArrowUpRight className="h-4 w-4" aria-hidden />
-                        </a>
+                        </LineQrLink>
                         <Link href="/contact" className="inline-flex min-h-[56px] w-full items-center justify-center rounded-full border-2 bg-white px-7 text-[15px] font-bold sm:w-auto" style={{ borderColor: V4.navy, color: V4.navy }}>
                             協業・制作のご相談
                         </Link>

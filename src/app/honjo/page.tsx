@@ -9,6 +9,7 @@ import Navbar from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { heavy, V4 } from "@/lib/fonts-v4";
 import { chunks } from "@/lib/nowrap";
+import { LineQrLink } from "@/components/LineQrLink";
 
 const LINE = "https://lin.ee/N4QXdJL";
 const URL = "https://www.nextvalley-jpn.com/honjo";
@@ -123,11 +124,11 @@ function Head({ eyebrow, title, lead }: { eyebrow: string; title: React.ReactNod
 
 function LineButton({ children, className = "" }: { children: React.ReactNode; className?: string }) {
     return (
-        <a href={LINE} target="_blank" rel="noopener noreferrer" className={`inline-flex min-h-[60px] items-center justify-center gap-3 rounded-full px-7 text-[17px] font-bold text-white shadow-[0_12px_30px_rgba(232,80,58,0.3)] transition-transform hover:-translate-y-0.5 ${className}`} style={{ backgroundColor: V4.coralDeep }}>
+        <LineQrLink href={LINE} className={`inline-flex min-h-[60px] items-center justify-center gap-3 rounded-full px-7 text-[17px] font-bold text-white shadow-[0_12px_30px_rgba(232,80,58,0.3)] transition-transform hover:-translate-y-0.5 ${className}`} style={{ backgroundColor: V4.coralDeep }}>
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[11px] font-black" style={{ color: V4.coralDeep }} aria-hidden>LINE</span>
             <span className="whitespace-nowrap">{children}</span>
             <ArrowUpRight className="h-5 w-5 shrink-0" aria-hidden />
-        </a>
+        </LineQrLink>
     );
 }
 

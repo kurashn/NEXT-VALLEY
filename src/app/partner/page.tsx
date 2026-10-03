@@ -4,6 +4,7 @@ import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
+import { LineQrLink } from "@/components/LineQrLink";
 
 export const metadata: Metadata = {
     title: "ご紹介パートナー制度",
@@ -113,12 +114,12 @@ export default function PartnerPage() {
                     <p className="text-white/85 leading-relaxed mb-8">
                         公式LINEに「紹介したい」と送ってください。お知り合いの業種と、今どんなことで困っていそうかを、分かる範囲で教えていただければ、あとはこちらで進めます。
                     </p>
-                    <a
+                    <LineQrLink
                         href="https://lin.ee/N4QXdJL"
                         className="inline-flex items-center justify-center rounded-lg bg-[#e26c5c] px-8 py-4 text-[19px] font-bold text-white hover:opacity-90 min-h-[44px]"
                     >
                         LINEで「紹介したい」と送る
-                    </a>
+                    </LineQrLink>
                     <p className="mt-6 text-sm text-white/70">
                         制度についてのご質問だけでも、お気軽にどうぞ。
                         <br />

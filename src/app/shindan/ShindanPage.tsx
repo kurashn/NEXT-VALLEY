@@ -17,6 +17,7 @@ import logoDark from "@/images/logo-dark.png";
 import stepLine from "@/images/preview/step-line.webp";
 import stepDesign from "@/images/preview/step-design.webp";
 import stepDecide from "@/images/preview/step-decide.webp";
+import { LineQrLink } from "@/components/LineQrLink";
 
 export const SHINDAN_LINE_URL = "https://lin.ee/N4QXdJL#from=shindan";
 
@@ -179,17 +180,15 @@ function LineIcon({ big = false }: { big?: boolean }) {
 
 function LineButton({ children, className = "", big = false }: { children: React.ReactNode; className?: string; big?: boolean }) {
     return (
-        <a
+        <LineQrLink
             href={SHINDAN_LINE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className={`inline-flex items-center justify-center rounded-full font-bold text-white shadow-[0_12px_30px_rgba(232,80,58,0.3)] transition-transform hover:-translate-y-0.5 ${big ? "min-h-[68px] gap-3 pl-4 pr-7 text-[16px] md:min-h-[88px] md:gap-4 md:pl-5 md:pr-9 md:text-[25px]" : "min-h-[64px] gap-3 pl-4 pr-8 text-[17px] md:text-[19px]"} ${className}`}
             style={{ backgroundColor: CORAL }}
         >
             <LineIcon big={big} />
             <span className="whitespace-nowrap">{children}</span>
             <ArrowUpRight className="h-5 w-5 shrink-0" aria-hidden />
-        </a>
+        </LineQrLink>
     );
 }
 
@@ -274,10 +273,10 @@ export function ShindanPage() {
                     </div>
                     <div className="flex items-center gap-6">
                         <Link href="/" className="hidden text-[13px] font-bold md:inline" style={{ color: NAVY }}>{t.header.home}</Link>
-                        <a href={SHINDAN_LINE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 items-center gap-1.5 whitespace-nowrap rounded-full px-5 text-[13px] font-bold text-white md:h-12 md:px-6 md:text-[15px]" style={{ backgroundColor: CORAL }}>
+                        <LineQrLink href={SHINDAN_LINE_URL} className="inline-flex h-11 items-center gap-1.5 whitespace-nowrap rounded-full px-5 text-[13px] font-bold text-white md:h-12 md:px-6 md:text-[15px]" style={{ backgroundColor: CORAL }}>
                             {t.header.cta}
                             <ArrowUpRight className="h-4 w-4" aria-hidden />
-                        </a>
+                        </LineQrLink>
                     </div>
                 </div>
             </header>

@@ -9,6 +9,7 @@ import Script from "next/script";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Send, CheckCircle2, MessageCircle } from "lucide-react";
+import { LineQrLink } from "@/components/LineQrLink";
 import type { Lang } from "@/i18n";
 
 const ja = {
@@ -184,15 +185,13 @@ export function ContactForm({ lang = "ja" }: { lang?: Lang }) {
                     </div>
 
                     {/* LINEが最速の案内 */}
-                    <a
+                    <LineQrLink
                         href="https://lin.ee/N4QXdJL"
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="mb-6 flex items-center justify-center gap-2.5 rounded-2xl bg-[#05a247] px-6 py-4 text-[19px] font-bold text-white transition-opacity hover:opacity-90"
                     >
                         <MessageCircle className="h-5 w-5" aria-hidden />
                         {t.lineCta}
-                    </a>
+                    </LineQrLink>
 
                     <div className="rounded-2xl bg-white p-7 shadow-[0_16px_40px_rgba(31,26,20,0.06)] md:p-10">
                         {isSubmitted ? (

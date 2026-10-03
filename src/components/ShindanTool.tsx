@@ -6,6 +6,7 @@ import React, { useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, MessageCircle, RotateCcw } from "lucide-react";
 import { serif } from "@/components/ui/SerifHeading";
 import type { Lang } from "@/i18n";
+import { LineQrLink } from "@/components/LineQrLink";
 
 type Category = "戦略" | "第一印象" | "スマホ対応" | "伝わる内容" | "信頼" | "検索" | "運用";
 
@@ -275,15 +276,13 @@ export function ShindanTool({ lang = "ja" }: { lang?: Lang }) {
                     <p className="mx-auto mb-7 max-w-[30em] text-sm leading-[2] text-navy-sub">
                         {t.ctaLead(score)}
                     </p>
-                    <a
+                    <LineQrLink
                         href="https://lin.ee/N4QXdJL"
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-[#05a247] px-10 text-[19px] font-bold text-white transition-opacity hover:opacity-90"
                     >
                         <MessageCircle className="h-5 w-5" aria-hidden />
                         {t.ctaButton}
-                    </a>
+                    </LineQrLink>
                     <p className="mt-4 text-xs text-navy-sub">{t.ctaNote}</p>
                 </div>
 

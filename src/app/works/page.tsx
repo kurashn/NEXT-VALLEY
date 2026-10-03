@@ -9,6 +9,7 @@ import { SectionHeadV4, Teal } from "@/components/ui/SectionHeadV4";
 import { heavy, V4 } from "@/lib/fonts-v4";
 import { WORKS, CATEGORIES } from "@/lib/works";
 import { WorksGrid } from "./WorksGrid";
+import { LineQrLink } from "@/components/LineQrLink";
 
 const LINE = "https://lin.ee/N4QXdJL";
 
@@ -44,9 +45,9 @@ export default function WorksPage() {
                         <p className="text-[13px] font-bold" style={{ color: V4.coralDeep }}>ホームページを作りたい方へ</p>
                         <h2 className={`${heavy.className} mt-2 text-[22px] leading-[1.5] md:text-[26px]`} style={{ color: V4.navy }}>契約の前に、<span className="nowrap">デザイン案をお作りします。</span></h2>
                         <p className="mt-3 text-left text-[14.5px] leading-[1.9]" style={{ color: V4.sub }}>トップページのデザイン案を、PC・スマートフォンの2枚で無料でお出しします。初期制作費0円・月額8,980円（税込）です。</p>
-                        <a href={LINE} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-[52px] items-center gap-2 rounded-full px-6 text-[15px] font-bold text-white" style={{ backgroundColor: V4.coralDeep }}>
+                        <LineQrLink href={LINE} className="mt-5 inline-flex min-h-[52px] items-center gap-2 rounded-full px-6 text-[15px] font-bold text-white" style={{ backgroundColor: V4.coralDeep }}>
                             LINEで無料プレビューを申し込む <ArrowUpRight className="h-4 w-4" aria-hidden />
-                        </a>
+                        </LineQrLink>
                     </div>
                     <div className="rounded-2xl bg-white p-7 md:p-9">
                         <p className="text-[13px] font-bold" style={{ color: V4.teal }}>広告代理店・運用会社・制作会社の方へ</p>

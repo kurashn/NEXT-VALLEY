@@ -1,4 +1,5 @@
 import { MessageCircle } from "lucide-react";
+import { LineQrLink } from "@/components/LineQrLink";
 
 /* 記事末尾の誘導。記事のタグ・カテゴリから「この記事を読んだ人が次にしたいこと」に合わせて文面を出し分ける。
    行き先は変えない（LINEで無料プレビュー申込が本命）。副ボタンだけテーマで変える */
@@ -17,12 +18,12 @@ const variants: Record<string, Variant> = {
         eyebrow: "この記事を読んだ先生へ",
         heading: (
             <>
-                体験申込が来ない原因、今の教室サイトを見て<span className="nowrap">お答えします</span>
+                <span className="nowrap">体験申込が来ない原因、</span><span className="nowrap">今の教室サイトを見てお答えします</span>
             </>
         ),
         body: (
             <>
-                教室のURL（ペライチやアメブロでも大丈夫です）をLINEで送るだけ。
+                教室のURL（ペライチやアメブロでも大丈夫です）をLINEかフォームで送るだけ。
                 <br className="hidden md:block" />
                 申込が来ない原因と直す順番を無料でお返しします。これから作る方は、契約前にトップページのデザイン案を無料でご覧いただけます。
             </>
@@ -38,7 +39,7 @@ const variants: Record<string, Variant> = {
         ),
         body: (
             <>
-                お店の名前とサイトのURLをLINEで送るだけ。
+                お店の名前とサイトのURLをLINEかフォームで送るだけ。
                 <br className="hidden md:block" />
                 地図で見つけてもらうために直す順番を無料でお返しします。ホームページの制作・管理は初期0円・月額8,980円（税込）です。
             </>
@@ -54,7 +55,7 @@ const variants: Record<string, Variant> = {
         ),
         body: (
             <>
-                今の運用（登録者数・配信の頻度・困っていること）をLINEで送るだけ。
+                今の運用（登録者数・配信の頻度・困っていること）をLINEかフォームで送るだけ。
                 <br className="hidden md:block" />
                 最初に整える1つを無料でお返しします。ホームページの制作・管理は初期0円・月額8,980円（税込）です。
             </>
@@ -86,7 +87,7 @@ const variants: Record<string, Variant> = {
         ),
         body: (
             <>
-                「毎週これに時間を取られている」をLINEで送るだけ。
+                「毎週これに時間を取られている」をLINEかフォームで送るだけ。
                 <br className="hidden md:block" />
                 最初に手を付ける1つを無料でお返しします。
             </>
@@ -102,7 +103,7 @@ const variants: Record<string, Variant> = {
         ),
         body: (
             <>
-                サイトのURLやお悩みをLINEで送るだけ。
+                サイトのURLやお悩みをLINEかフォームで送るだけ。
                 <br className="hidden md:block" />
                 直す順番を無料でお返しします。これから作る方は、契約前にトップページのデザイン案を無料でご覧いただけます。
             </>
@@ -131,14 +132,19 @@ export const BlogCTA = ({ tags = [], categories = [] }: { tags?: readonly string
             <h3 className="mb-4 text-2xl font-bold text-navy md:text-3xl">{v.heading}</h3>
             <p className="mx-auto mb-8 max-w-2xl leading-[1.9] text-ink-sub">{v.body}</p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <a
+                <LineQrLink
                     href={LINE}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex h-14 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#05a247] px-5 text-[19px] font-bold text-white sm:px-8 shadow-[0_12px_28px_rgba(5,162,71,0.3)] transition-all hover:-translate-y-0.5 sm:w-auto"
+                    className="inline-flex h-14 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#05a247] px-5 text-[19px] font-bold text-white sm:px-8 shadow-[0_12px_28px_rgba(5,162,71,0.3)] transition-all hover:-translate-y-0.5 sm:w-auto lg:hidden"
                 >
                     <MessageCircle className="h-5 w-5" aria-hidden />
                     LINEで無料プレビューを申し込む
+                </LineQrLink>
+                {/* パソコンはフォームを主に（2026-10-03） */}
+                <a
+                    href="/preview#apply-form"
+                    className="hidden h-14 items-center justify-center whitespace-nowrap rounded-full bg-coral-deep px-8 text-[19px] font-bold text-white shadow-[0_12px_28px_rgba(176,67,47,0.3)] transition-all hover:-translate-y-0.5 lg:inline-flex"
+                >
+                    フォームで無料プレビューを申し込む
                 </a>
                 <a
                     href={v.sub.href}
@@ -147,6 +153,10 @@ export const BlogCTA = ({ tags = [], categories = [] }: { tags?: readonly string
                     {v.sub.label}
                 </a>
             </div>
+            <p className="mt-5 hidden text-[15px] text-ink-sub lg:block">
+                LINEの方は
+                <LineQrLink href={LINE} className="ml-1 font-bold text-ink underline underline-offset-4">こちら（QRコード）</LineQrLink>
+            </p>
             <p className="mt-4 text-xs text-ink-sub">※ デザイン案は無料です。契約前に費用は発生せず、こちらから追いかける連絡もしません</p>
         </div>
     );
