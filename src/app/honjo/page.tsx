@@ -13,6 +13,7 @@ import { LineQrLink } from "@/components/LineQrLink";
 
 const LINE = "https://lin.ee/N4QXdJL";
 const URL = "https://www.nextvalley-jpn.com/honjo";
+const UPDATED = "2026-10-03"; // 内容を変えたら更新する（ページ下の「最終更新」と構造化データに出る）
 
 export const metadata: Metadata = {
     title: "本庄市のホームページ制作｜本庄市児玉町出身・初期0円・月額8,980円",
@@ -28,7 +29,8 @@ export const metadata: Metadata = {
     twitter: { card: "summary_large_image", title: "本庄市のホームページ制作｜NEXT VALLEY", images: ["/og-image.png"] },
 };
 
-const jsonLd = {
+// faqs より前に置くので、使うときに組み立てる
+const jsonLd = () => ({
     "@context": "https://schema.org",
     "@graph": [
         {
@@ -36,7 +38,7 @@ const jsonLd = {
             name: "本庄市のホームページ制作",
             serviceType: "ホームページ制作・管理",
             url: URL,
-            provider: { "@type": "Organization", name: "NEXT VALLEY", url: "https://www.nextvalley-jpn.com" },
+            provider: { "@id": "https://www.nextvalley-jpn.com/#organization" },
             areaServed: [
                 { "@type": "City", name: "本庄市" },
                 { "@type": "City", name: "上里町" },
@@ -48,6 +50,27 @@ const jsonLd = {
             offers: { "@type": "Offer", price: "8980", priceCurrency: "JPY", description: "初期制作費0円・月額8,980円（税込）・最低契約期間1年" },
         },
         {
+            "@type": "ProfessionalService",
+            "@id": "https://www.nextvalley-jpn.com/#organization",
+            name: "NEXT VALLEY",
+            alternateName: "ネクストバレー",
+            url: "https://www.nextvalley-jpn.com",
+            email: "info@nextvalley-jpn.com",
+            foundingDate: "2021-01",
+            founder: { "@type": "Person", name: "倉林 駿", alternateName: "くらはやし しゅん", description: "埼玉県本庄市児玉町出身" },
+            address: { "@type": "PostalAddress", addressCountry: "JP", addressRegion: "埼玉県", addressLocality: "本庄市", streetAddress: "児玉町金屋" },
+        },
+        {
+            "@type": "WebPage",
+            url: URL,
+            name: "本庄市のホームページ制作｜NEXT VALLEY",
+            dateModified: UPDATED,
+        },
+        {
+            "@type": "FAQPage",
+            mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+        },
+        {
             "@type": "BreadcrumbList",
             itemListElement: [
                 { "@type": "ListItem", position: 1, name: "ホーム", item: "https://www.nextvalley-jpn.com/" },
@@ -56,7 +79,19 @@ const jsonLd = {
             ],
         },
     ],
-};
+});
+
+/* 要点：このページの事実を1か所にまとめる（検索やAIがそのまま引用しやすい形） */
+const facts: [string, string][] = [
+    ["運営", "NEXT VALLEY（ネクストバレー）／代表 倉林 駿（本庄市児玉町出身）"],
+    ["所在地", "埼玉県本庄市児玉町金屋（やり取りはLINE・メール）"],
+    ["開業", "2021年1月"],
+    ["料金", "初期制作費0円・月額8,980円（税込）・最低契約期間1年"],
+    ["月額に含むもの", "10ページまでの制作、修正・更新は回数無制限、ドメイン・サーバー費、毎月のアクセスレポート"],
+    ["契約の前に", "トップページのデザイン案を無料でお作りします（3営業日以内）"],
+    ["対応エリア", "本庄市・上里町・美里町・神川町・深谷市・熊谷市・伊勢崎市ほか（全国対応）"],
+    ["実績", "広告代理店経由の案件を含めて100社以上（2021年〜）"],
+];
 
 /* 本庄・児玉で探されるときの事情（ほかの地域ページとの違いはここ） */
 const local = [
@@ -102,12 +137,19 @@ const reads = [
 ];
 
 const faqs = [
+    { q: "本庄市でホームページ制作を頼むと、費用はどのくらいですか？", a: "NEXT VALLEYは初期制作費0円・月額8,980円（税込）で、初年度のお支払総額は107,760円です。10ページまでの制作、公開後の修正・更新、ドメイン・サーバー費、毎月のアクセスレポートが含まれます。買い切りの制作会社と比べるときは、制作費と保守費を合わせた3年の総額で比べるのがおすすめです。" },
+    { q: "本庄市でホームページ制作に使える補助金はありますか？", a: "主に2つあります。本庄市の「創業スタートアップ支援補助金」と、国の「小規模事業者持続化補助金」です。対象になる方や金額、申請の前に本庄商工会議所・児玉商工会への相談が必要なことは、コラム「本庄市でホームページを作るときに使える補助金」にまとめています。" },
     { q: "本庄の会社ですか？", a: "代表の倉林は本庄市児玉町の出身です。いまは全国のお客様とオンラインでお仕事をしていて、やり取りはLINEかメールで完結します。本庄・児玉の地名や道、お店の探され方は、地元の感覚でお話しできます。" },
     { q: "本当に初期費用はかかりませんか？", a: "かかりません。初期制作費0円・月額8,980円（税込）で、最低契約期間は1年間です。契約日から課金が始まり、それまでのデザイン案は無料です。" },
     { q: "今のホームページを直してもらうだけでもいいですか？", a: "はい。今のサイトのURLを送っていただければ、直す順番を無料でお返しします（無料診断）。作り直しが必要ない場合は、そうお伝えします。" },
     { q: "Googleマップの登録や口コミも相談できますか？", a: "できます。本庄・児玉では、ホームページより先にGoogleマップで見つけてもらう方が多い業種もあります。登録内容・写真・口コミのお願いの仕方まで、ホームページとあわせて整えます。" },
     { q: "写真や文章がまだありません。", a: "大丈夫です。業種と伝えたいことが分かれば、それに合った構成でお作りします。写真や文章は制作の段階で一緒に準備します。" },
 ];
+
+/* 読点「、」と括弧「（」の前で区切り、言葉の途中で折り返さないようにする（スマホの改行落ち対策） */
+function wrapJa(text: string) {
+    return text.split(/(?<=、)|(?=（)/).map((p, i) => <span key={i} className="nowrap">{p}</span>);
+}
 
 function Head({ eyebrow, title, lead }: { eyebrow: string; title: React.ReactNode; lead?: React.ReactNode }) {
     return (
@@ -135,7 +177,7 @@ function LineButton({ children, className = "" }: { children: React.ReactNode; c
 export default function HonjoPage() {
     return (
         <main className="min-h-screen bg-white">
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd()) }} />
             <Navbar variant="light" />
 
             {/* FV */}
@@ -166,6 +208,22 @@ export default function HonjoPage() {
                     </ul>
                     <LineButton className="mt-8 w-full sm:w-auto">無料でデザイン案を見る</LineButton>
                     <p className="mt-3 text-[13px] md:text-[14px]" style={{ color: V4.sub }}><span className="nowrap">申し込みだけで契約・請求は発生しません。</span><span className="nowrap">最低契約期間1年・初年度総額107,760円（税込）。</span></p>
+                </div>
+            </section>
+
+            {/* 要点 */}
+            <section className="px-4 pt-16 md:px-6 md:pt-24">
+                <div className="mx-auto max-w-4xl">
+                    <h2 className={`${heavy.className} text-[clamp(1.3rem,2.6vw,1.8rem)] leading-[1.4]`} style={{ color: V4.navy }}>本庄市のホームページ制作 NEXT VALLEYの要点</h2>
+                    <dl className="mt-5 overflow-hidden rounded-2xl border text-[15px]" style={{ borderColor: "rgba(20,51,90,0.12)" }}>
+                        {facts.map(([k, v]) => (
+                            <div key={k} className="flex flex-col gap-1 border-b px-5 py-3.5 last:border-b-0 sm:flex-row sm:gap-6" style={{ borderColor: "rgba(20,51,90,0.1)" }}>
+                                <dt className="shrink-0 font-bold sm:w-[9em]" style={{ color: V4.navy }}>{k}</dt>
+                                <dd style={{ color: "#2B3A52" }}>{wrapJa(v)}</dd>
+                            </div>
+                        ))}
+                    </dl>
+                    <p className="mt-3 text-right text-[13px]" style={{ color: "#2B3A52" }}>最終更新：<time dateTime={UPDATED}>2026年10月3日</time></p>
                 </div>
             </section>
 
@@ -200,7 +258,7 @@ export default function HonjoPage() {
                         {included.map(([k, v]) => (
                             <div key={k} className="flex flex-col gap-1 border-b px-5 py-4 last:border-b-0 lg:flex-row lg:gap-6" style={{ borderColor: "rgba(20,51,90,0.1)" }}>
                                 <dt className="shrink-0 font-bold lg:w-[42%]" style={{ color: V4.navy }}>{k}</dt>
-                                <dd style={{ color: V4.sub }}>{v}</dd>
+                                <dd style={{ color: V4.sub }}>{wrapJa(v)}</dd>
                             </div>
                         ))}
                     </dl>

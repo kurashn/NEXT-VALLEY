@@ -20,7 +20,7 @@ const jsonLdCopy = {
   ja: {
     founder: "倉林 駿",
     description:
-      "埼玉の小さな会社・店舗・教室のホームページ制作と、公開後の更新・集客改善。代表は本庄市児玉町出身。2021年創業・100社以上の実績。ホームページ制作・管理は初期費用0円、月額8,980円（税込）。全国オンライン対応。",
+      "埼玉の小さな会社・店舗・教室のホームページ制作と、公開後の更新・集客改善。代表は本庄市児玉町出身。2021年創業・広告代理店経由を含め100社以上の実績。ホームページ制作・管理は初期費用0円、月額8,980円（税込）。全国オンライン対応。",
   },
   en: {
     founder: "Shun Kurahayashi",
@@ -43,7 +43,9 @@ export function HomePage({ lang = "ja" }: { lang?: Lang }) {
             "@graph": [
               {
                 "@type": "Organization",
+                "@id": `${SITE}/#organization`,
                 "name": "NEXT VALLEY",
+                "alternateName": "ネクストバレー",
                 "url": SITE,
                 "logo": `${SITE}/og-image.png`,
                 "founder": { "@type": "Person", "name": jl.founder },
