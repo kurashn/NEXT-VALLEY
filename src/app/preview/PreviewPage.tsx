@@ -81,7 +81,7 @@ const ja = {
         lead: <><span className="nowrap">デザイン案を見てから、</span><span className="nowrap">依頼するか決められます。</span></>,
         steps: [
             { n: "01", color: CORAL, img: stepLine, t: "LINEで申し込む", d: <><span className="nowrap">友だち追加後、</span><br /><span className="nowrap">簡単なヒアリングに回答。</span></> },
-            { n: "02", color: TEAL, img: stepDesign, t: "デザイン案を受け取る", d: <><span className="nowrap">必要情報が揃ってから、</span><br /><span className="nowrap"><b style={{ color: CORAL }}>3営業日以内</b>にお届け。</span></> },
+            { n: "02", color: TEAL, img: stepDesign, t: <><span className="nowrap">デザイン案を</span><span className="nowrap">受け取る</span></>, d: <><span className="nowrap">必要情報が揃ってから、</span><br /><span className="nowrap"><b style={{ color: CORAL }}>3営業日以内</b>にお届け。</span></> },
             { n: "03", color: CORAL, img: stepDecide, t: "見てから、決める", d: <><span className="nowrap">内容・料金・条件を確認し、</span><br /><span className="nowrap">依頼するかご判断ください。</span></> },
         ],
         note: <><span className="nowrap">合わなければ、</span><span className="nowrap">見送っていただいて構いません。</span></>,
@@ -93,7 +93,7 @@ const ja = {
         title: <>まずは、<span style={{ color: TEAL }}>仕上がり</span>を<span className="nowrap">知ってほしいから。</span></>,
         lead: <><span className="nowrap">正式な制作をご検討いただくために、</span><span className="nowrap">トップページ案を無料で作成しています。</span><br className="hidden md:block" /><span className="nowrap">ご依頼いただく場合の料金・条件も、</span><span className="nowrap">先にお伝えします。</span></>,
         leftLabel: "正式に制作をご依頼いただく場合",
-        plan: "ホームページ制作・管理",
+        plan: <><span className="nowrap">ホームページ</span><span className="nowrap">制作・管理</span></>,
         initialLabel: "初期制作費",
         monthlyLabel: "月額",
         totalLabel: "初年度総額",
@@ -297,10 +297,11 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                     <ol className="mt-10 grid gap-10 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-start md:gap-4">
                         {t.flow.steps.map((s, i) => (
                             <React.Fragment key={s.n}>
-                                <li>
-                                    <div className="flex items-center gap-3">
+                                <li className="min-w-0">
+                                    {/* タブレット〜1279pxは番号の下に絵（横並びだと3列が入りきらず横にはみ出していた） */}
+                                    <div className="flex items-center gap-3 md:flex-col md:items-start md:gap-2 xl:flex-row xl:items-center xl:gap-3">
                                         <span className="text-[64px] italic leading-none md:text-[76px]" style={{ fontFamily: serif, fontWeight: 700, color: s.color }}>{s.n}</span>
-                                        <span className="flex h-[150px] w-[190px] items-center justify-center md:h-[170px] md:w-[220px]"><Image src={s.img} alt="" sizes="220px" className="h-auto max-h-full w-auto max-w-full" /></span>
+                                        <span className="flex h-[150px] w-[190px] items-center justify-center md:h-[170px] md:w-full md:max-w-[220px] xl:w-[220px]"><Image src={s.img} alt="" sizes="220px" className="h-auto max-h-full w-auto max-w-full" /></span>
                                     </div>
                                     <p className={`${heavy.className} mt-3 text-[22px] md:text-[26px]`} style={{ color: NAVY }}>{s.t}</p>
                                     <p className="mt-2 text-[15px] leading-[1.8] md:text-[16px]" style={{ color: NAVY }}>{s.d}</p>
