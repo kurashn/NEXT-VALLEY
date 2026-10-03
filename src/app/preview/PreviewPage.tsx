@@ -13,7 +13,6 @@ import { heavy, V4 } from "@/lib/fonts-v4";
 import { withLang, type Lang } from "@/i18n";
 import { chunks } from "@/lib/nowrap";
 import { LINE_URL, REMAINING_SLOTS, TOTAL_SLOTS } from "./copy";
-import { StickyApply } from "./StickyApply";
 import { PreviewForm } from "./PreviewForm";
 import { CornerArcs } from "./Mock";
 
@@ -448,7 +447,6 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
                 </div>
             </footer>
 
-            <StickyApply lang={lang} />
         </main>
     );
 }
