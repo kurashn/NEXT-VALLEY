@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
 import { langAttr, type Lang } from "@/i18n";
 
+import { Mascot } from "@/components/Mascot";
 const ja = {
     badge: "PROFILE",
     h1: "事業情報",
@@ -261,6 +262,22 @@ export function CompanyPage({ lang = "ja" }: { lang?: Lang }) {
                                     </dd>
                                 </div>
                             </dl>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ブランドキャラクター */}
+            <section className="pb-12 px-4">
+                <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12">
+                    <h2 className="text-xl font-bold text-[#002335] mb-8 border-l-4 border-[#e26c5c] pl-4">
+                        {lang === "ja" ? "ブランドキャラクター" : "Brand character"}
+                    </h2>
+                    <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-10">
+                        <Mascot pose="main" alt={lang === "ja" ? "NEXT VALLEYのブランドキャラクター、ネクバレ君" : "Nekubare-kun, the NEXT VALLEY brand character"} sizes="200px" className="w-[150px] shrink-0 md:w-[180px]" />
+                        <div className="text-[15px] leading-loose text-slate-600">
+                            <p className="text-[22px] font-bold text-[#002335]">{lang === "ja" ? "ネクバレ君" : "Nekubare-kun"}</p>
+                            <p className="mt-3">{lang === "ja" ? "NEXT VALLEYのブランドキャラクターです。紺のパーカーを着た柴犬で、サイトやSNSでホームページと集客のことをお伝えしていきます。" : "Our brand character: a Shiba Inu in a navy hoodie, sharing tips on websites and attracting customers on our site and social media."}</p>
                         </div>
                     </div>
                 </div>

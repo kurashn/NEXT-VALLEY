@@ -7,6 +7,7 @@ import { serif } from "@/components/ui/SerifHeading";
 import { mincho, V4 } from "@/lib/fonts-v4";
 import { withLang, type Lang } from "@/i18n";
 
+import { Mascot } from "@/components/Mascot";
 const BG = "#FBFAF5";
 
 type Track = {
@@ -91,7 +92,8 @@ function Card({ track, tone, lang }: { track: Track; tone: "coral" | "teal"; lan
     const line = tone === "coral" ? "rgba(232,90,74,0.22)" : "rgba(44,143,168,0.22)";
     const href = track.external ? track.href : withLang(lang, track.href);
     return (
-        <div className="flex h-full flex-col rounded-[18px] px-6 pb-7 pt-7 md:px-9 md:pb-9 md:pt-8" style={{ backgroundColor: bg, borderTop: `4px solid ${color}` }}>
+        <div className="relative flex h-full flex-col rounded-[18px] px-6 pb-7 pt-7 md:px-9 md:pb-9 md:pt-8" style={{ backgroundColor: bg, borderTop: `4px solid ${color}` }}>
+            <Mascot pose={tone === "coral" ? "laptopSmile" : "search"} sizes="130px" className="absolute right-4 top-4 w-[84px] md:right-6 md:top-5 md:w-[118px]" />
             <p className="text-[13px] font-bold md:text-[14px]" style={{ color }}>{track.tag}</p>
             <h3 className={`${mincho.className} mt-2 text-[clamp(1.5rem,2.6vw,2.1rem)] font-bold leading-[1.3]`} style={{ color: V4.navy }}>{track.title}</h3>
             <ol className="mt-7 grid gap-6">

@@ -8,6 +8,7 @@ import { serif } from "@/components/ui/SerifHeading";
 import { heavy, V4 } from "@/lib/fonts-v4";
 import type { Lang } from "@/i18n";
 
+import { Mascot } from "@/components/Mascot";
 const BG = "#F9F7F1";
 const RULE = "rgba(20,51,90,0.35)";
 
@@ -56,7 +57,8 @@ export function CTA({ lang = "ja" }: { lang?: Lang }) {
     void lang;
     return (
         <section id="contact" className="px-4 py-16 md:px-6 md:py-24" style={{ backgroundColor: BG }}>
-            <div className="mx-auto max-w-[1180px]">
+            <div className="relative mx-auto max-w-[1180px]">
+                <Mascot pose="point" sizes="150px" className="absolute -top-4 right-0 w-[76px] md:-top-6 md:w-[132px]" />
                 <FadeIn>
                     {/* 見出し行 */}
                     <div className="flex items-center gap-4 md:gap-5">

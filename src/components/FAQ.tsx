@@ -6,6 +6,7 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { SerifHeading } from "@/components/ui/SerifHeading";
 import { type Lang } from "@/i18n";
 
+import { Mascot } from "@/components/Mascot";
 export type FaqItem = { q: string; a: string; aNode?: React.ReactNode };
 
 /** 日本語の FAQ（JSON-LD 用に従来どおり export。英語版は getFaqs("en")） */
@@ -164,6 +165,7 @@ export function FAQ({ lang = "ja" }: { lang?: Lang }) {
     return (
         <section className="relative overflow-hidden bg-cream px-4 py-16 md:px-6 md:py-24">
             <div className="relative mx-auto max-w-4xl">
+                <Mascot pose="think" sizes="130px" className="absolute -top-2 right-0 w-[72px] md:right-4 md:top-0 md:w-[118px]" />
                 <FadeIn>
                     <SerifHeading en="FAQ" jp={headings[lang]} />
                 </FadeIn>

@@ -9,8 +9,8 @@ import { SectionHeadV4, Dots } from "@/components/ui/SectionHeadV4";
 import { heavy, hand, V4 } from "@/lib/fonts-v4";
 import { withLang, type Lang } from "@/i18n";
 
-import illust from "@/images/v4/price-illust.webp";
 
+import { Mascot } from "@/components/Mascot";
 const ja = {
     eyebrow: "基本プラン・料金",
     title: "つくる費用を抑えて、長く頼れる。",
@@ -170,7 +170,7 @@ export function Pricing({ lang = "ja" }: { lang?: Lang }) {
                                             <span className="ml-1 text-[clamp(0.85rem,1.1vw,1rem)]">{t.taxNote}</span>
                                         </p>
                                     </div>
-                                    <Image src={illust} alt="" sizes="180px" className="hidden h-auto w-[150px] shrink-0 sm:block md:w-[170px]" />
+                                    <Mascot pose="thumbsup" sizes="140px" className="w-[96px] shrink-0 sm:w-[118px] md:w-[130px]" />
                                 </div>
                                 <p className="mt-4 text-[13.5px] font-bold md:text-[16px]" style={{ color: V4.navy }}>
                                     {t.afterNote}

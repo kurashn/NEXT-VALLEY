@@ -1,6 +1,7 @@
 import { MessageCircle } from "lucide-react";
 import { LineQrLink } from "@/components/LineQrLink";
 
+import { Mascot } from "@/components/Mascot";
 /* 記事末尾の誘導。記事のタグ・カテゴリから「この記事を読んだ人が次にしたいこと」に合わせて文面を出し分ける。
    行き先は変えない（LINEで無料プレビュー申込が本命）。副ボタンだけテーマで変える */
 
@@ -18,7 +19,7 @@ const variants: Record<string, Variant> = {
         eyebrow: "この記事を読んだ先生へ",
         heading: (
             <>
-                <span className="nowrap">体験申込が来ない原因、</span><span className="nowrap">今の教室サイトを見てお答えします</span>
+                <span className="nowrap">体験申込が来ない原因、</span><span className="nowrap">今の教室サイトを見て</span><span className="nowrap">お答えします</span>
             </>
         ),
         body: (
@@ -128,6 +129,7 @@ export const BlogCTA = ({ tags = [], categories = [] }: { tags?: readonly string
     const v = variants[pickVariant([...tags], [...categories])];
     return (
         <div className="my-16 rounded-2xl bg-[#eef2f6] p-8 text-center md:p-12">
+            <Mascot pose="teach" sizes="110px" className="mx-auto mb-3 w-[92px]" />
             <p className="mb-3 text-[12px] font-bold tracking-[0.2em] text-coral-deep">{v.eyebrow}</p>
             <h3 className="mb-4 text-2xl font-bold text-navy md:text-3xl">{v.heading}</h3>
             <p className="mx-auto mb-8 max-w-2xl leading-[1.9] text-ink-sub">{v.body}</p>

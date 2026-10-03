@@ -25,6 +25,7 @@ import stepLine from "@/images/preview/step-line.webp";
 import stepDesign from "@/images/preview/step-design.webp";
 import stepDecide from "@/images/preview/step-decide.webp";
 
+import { Mascot } from "@/components/Mascot";
 export { previewMetadata } from "./copy";
 
 const NAVY = "#0F2540";
@@ -405,6 +406,7 @@ export function PreviewPage({ lang = "ja" }: { lang?: Lang }) {
             <section id="apply" className="relative overflow-hidden px-4 py-16 md:px-6 md:py-24" style={{ backgroundColor: "#E7F2F4" }}>
                 <CornerArcs />
                 <div className="relative mx-auto max-w-3xl text-center">
+                    <Mascot pose="laptopSmile" sizes="140px" className="absolute -top-14 right-0 w-[60px] md:-top-6 md:w-[128px]" />
                     <p className="text-[13px] tracking-[0.3em] md:text-[15px]" style={{ color: TEAL }}>{t.cta.eyebrow}</p>
                     <span aria-hidden className="mx-auto mt-3 block h-[2px] w-16" style={{ backgroundColor: CORAL }} />
                     <h2 className={`${heavy.className} mt-7 text-[clamp(1.6rem,3.6vw,2.9rem)] leading-[1.35] tracking-[-0.02em]`} style={{ color: NAVY }}>{t.cta.title}</h2>

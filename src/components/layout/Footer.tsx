@@ -6,6 +6,7 @@ import { LineQrLink } from "@/components/LineQrLink";
 import logo from "@/images/logo-new.png";
 import { withLang, type Lang } from "@/i18n";
 
+import { Mascot } from "@/components/Mascot";
 const copy = {
     ja: {
         siteLinks: [
@@ -83,6 +84,7 @@ export function Footer({ lang = "ja" }: { lang?: Lang }) {
     const legalLinks = t.legalLinks;
     return (
         <footer className="relative bg-navy-deep px-4 pb-10 pt-16 md:px-6">
+            <Mascot pose="peek" sizes="150px" className="absolute right-5 top-0 w-[104px] -translate-y-[88%] md:right-16 md:w-[140px]" />
             {/* 上辺のコーラルライン */}
             <span aria-hidden className="absolute left-0 top-0 h-1 w-full bg-coral" />
 

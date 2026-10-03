@@ -19,6 +19,7 @@ import stepDesign from "@/images/preview/step-design.webp";
 import stepDecide from "@/images/preview/step-decide.webp";
 import { LineQrLink } from "@/components/LineQrLink";
 
+import { Mascot } from "@/components/Mascot";
 export const SHINDAN_LINE_URL = "https://lin.ee/N4QXdJL#from=shindan";
 
 const NAVY = "#0F2540";
@@ -344,7 +345,8 @@ export function ShindanPage() {
 
             {/* 診断で分かること */}
             <section className="px-4 py-16 md:px-6 md:py-24" style={{ backgroundColor: "#FEFDF9" }}>
-                <div className="mx-auto max-w-6xl">
+                <div className="relative mx-auto max-w-6xl">
+                    <Mascot pose="search" sizes="140px" className="absolute -top-6 right-0 w-[80px] md:top-0 md:w-[128px]" />
                     <Word word={t.what.word} sub={t.what.sub} />
                     <h2 className={`${heavy.className} text-[clamp(1.6rem,3.6vw,2.9rem)] leading-[1.3] tracking-[-0.02em]`} style={{ color: NAVY }}>{t.what.title}</h2>
                     <p className="mt-2 text-[15px] md:text-[17px]" style={{ color: NAVY }}>{t.what.lead}</p>

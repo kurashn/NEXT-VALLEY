@@ -8,10 +8,11 @@ import React, { useState } from "react";
 import Script from "next/script";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Send, CheckCircle2, MessageCircle } from "lucide-react";
+import { Send, MessageCircle } from "lucide-react";
 import { LineQrLink } from "@/components/LineQrLink";
 import type { Lang } from "@/i18n";
 
+import { Mascot } from "@/components/Mascot";
 const ja = {
     categories: [
         "無料診断を受けたい",
@@ -196,9 +197,7 @@ export function ContactForm({ lang = "ja" }: { lang?: Lang }) {
                     <div className="rounded-2xl bg-white p-7 shadow-[0_16px_40px_rgba(31,26,20,0.06)] md:p-10">
                         {isSubmitted ? (
                             <div className="py-12 text-center">
-                                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#05a247]/10 text-[#05a247]">
-                                    <CheckCircle2 className="h-8 w-8" />
-                                </div>
+                                <Mascot pose="cheer" sizes="130px" className="mx-auto mb-5 w-[120px]" />
                                 <h2 className="mb-4 text-2xl font-bold text-ink">{t.doneTitle}</h2>
                                 <p className="leading-[2] text-ink-sub">
                                     {t.doneBody}
